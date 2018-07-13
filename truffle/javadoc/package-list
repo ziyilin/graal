@@ -20,6 +20,7 @@ org.graalvm.nativeimage.c.type
 org.graalvm.options
 org.graalvm.polyglot
 org.graalvm.polyglot.io
+org.graalvm.polyglot.management
 org.graalvm.polyglot.proxy
 org.graalvm.polyglot.tck
 org.graalvm.word
