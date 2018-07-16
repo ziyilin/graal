@@ -511,7 +511,7 @@ as an example.</p>
 <h3 id="intellij-idea">IntelliJ IDEA</h3>
 <p>SimpleLanguage project has been tested with IntelliJ IDEA 2016.3.4. Open IntelliJ IDEA and, from the main menu bar, select  File -&gt; New -&gt; Project from existing Sources -&gt; Select <code>simplelanguage</code> folder -&gt; Check “Create module groups for multi-module Maven projects” -&gt; Finish.  All dependencies will be included automatically.</p>
 
-<h3 id="running">Running</h3>
+<h2 id="running">Running</h2>
 <p>To run a SimpleLanguage source file, execute</p>
 <pre><code class="language-shell">$ ./sl language/tests/HelloWorld.sl
 </code></pre>
@@ -551,7 +551,75 @@ running:</p>
 
 <pre><code class="language-shell">$ /path/to/graalvm/bin/gu -F install /path/to/sl-component.jar
 </code></pre>
-<h3 id="running-simplelanguage-with-the-newest-version-of-graal-compiler">Running SimpleLanguage with the Newest Version of Graal Compiler</h3>
+<h2 id="the-simplelanguage-native-image">The SimpleLanguage native image</h2>
+
+<p>Truffle language implementations can be AOT compiled using the GraalVM
+<a href="/docs/reference-manual/aot-compilation/">native-image</a>
+tool.  Running <code>mvn package</code> in the simplelanguage folder also builds a
+<code>slnative</code> executable in the <code>native</code> directory. This executable is the full
+SimpleLanguage implementation as a single native application, and has no need
+for a GraalVM in order to execute SimpleLanguage code. Besides this, a big advantage
+of using the native image when compared to running on the GraalVM is the greatly
+faster startup time as shown bellow.</p>
+
+<pre><code class="language-shell">$ time ./sl language/tests/HelloWorld.sl 
+== running on org.graalvm.polyglot.Engine@2db0f6b2
+Hello World!
+
+real    0m0.405s
+user    0m0.660s
+sys     0m0.108s
+
+$ time ./native/slnative
+language/tests/HelloWorld.sl 
+== running on org.graalvm.polyglot.Engine@7fd046f06898
+Hello World!
+
+real    0m0.004s
+user    0m0.000s
+sys     0m0.000s
+</code></pre>
+
+<p>This snipped shows a timed execution of a “Hello World” program using the sl
+launcher script, which runs SimpleLanguage on GraalVM, and using the native
+image. We can see that when running on GraalVM the execution takes 405ms. Since
+our SimpleLanguage program does just one print statement, we can conclude that
+almost all of this time is spent starting up GraalVM and initializing the
+language itself. When using the native image we see that the execution takes
+only 4ms, showing two orders of magnitude faster startup than running on the
+GraalVM.</p>
+
+<p>For more information on the <code>native-image</code> tool consider reading the <a href="/docs/reference-manual/aot-compilation/">reference
+manual</a>.</p>
+
+<h3 id="disabling-the-simplelanguage-native-image-build">Disabling the SimpleLanguage native image build</h3>
+
+<p>Building the native image through maven is attached to the maven <code>package</code>
+phase. Since the native image build can take a bit of time, we provide the
+option to skip this build by setting the <code>SL_BUILD_NATIVE</code> environment variable
+to <code>false</code> like so:</p>
+
+<pre><code class="language-shell">$ export SL_BUILD_NATIVE=false
+$ mvn package
+...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building simplelanguage-graalvm-native 
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- exec-maven-plugin:1.6.0:exec (make_native) @ simplelanguage-graalvm-native ---
+Skipping the native image build because SL_BUILD_NATIVE is set to false.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 0.514 s
+[INFO] Finished at: 2018-07-16T11:23:56+02:00
+[INFO] Final Memory: 22M/428M
+[INFO] ------------------------------------------------------------------------
+...
+</code></pre>
+
+<h2 id="running-simplelanguage-with-the-newest-version-of-graal-compiler">Running SimpleLanguage with the Newest Version of Graal Compiler</h2>
 
 <p>In the outstanding case that you need to execute SimpleLanguage with the newest
 version of graal, please follow these instructions:</p>

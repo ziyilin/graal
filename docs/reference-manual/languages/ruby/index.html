@@ -626,7 +626,7 @@ mod.instance_eval(src, "(ERB)")
 
 Benchmark.ips do |x|
   x.iterations = 3
-  x.report("erb") { mod.render(title, content) }
+  x.report("erb") { mod.render(title, content).bytes }
 end
 </code></pre>
 
@@ -656,16 +656,16 @@ $ ruby benchmark.rb
 <table>
   <thead>
     <tr>
-      <th>MRI 2.3.7</th>
-      <th>JRuby 9.1.16.0</th>
+      <th>MRI 2.4.4</th>
+      <th>JRuby 9.2.2.0</th>
       <th>TruffleRuby</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>668 K renders/s</td>
-      <td>877 K renders/s</td>
-      <td>43 M renders/s</td>
+      <td>231 K renders/s</td>
+      <td>709 K renders/s</td>
+      <td>978 K renders/s</td>
     </tr>
   </tbody>
 </table>
