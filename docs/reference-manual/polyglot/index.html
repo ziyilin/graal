@@ -556,7 +556,7 @@ Throughout this section you learn how to combine multiple languages using our po
 <p>The following examples are designed to get you started with a basic polyglot application.
 Select a section for your <em>Start Language</em> and then select a tab for the <em>Target Language</em>.</p>
 
-<p>Ensure you set up GraalVM before you begin. See <a href="/docs/getting-started/">Get Started</a>.</p>
+<p>Ensure you set up GraalVM and export the GraalVM home directory as the $GRAALVM_HOME before you begin. See <a href="/docs/getting-started/">Get Started</a>.</p>
 
 <p><strong>Requirement:</strong> to start an application with LLVM as a Target Language, make sure to precompile polyglot.c file provided below.</p>
 
@@ -2366,7 +2366,7 @@ $ node --polyglot --jvm polyglot.js
         <span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">"polyglot.bc"</span><span class="o">);</span>
         <span class="n">Source</span> <span class="n">source</span> <span class="o">=</span> <span class="n">Source</span><span class="o">.</span><span class="na">newBuilder</span><span class="o">(</span><span class="s">"llvm"</span><span class="o">,</span> <span class="n">file</span><span class="o">).</span><span class="na">build</span><span class="o">();</span>
         <span class="n">Value</span> <span class="n">cpart</span> <span class="o">=</span> <span class="n">polyglot</span><span class="o">.</span><span class="na">eval</span><span class="o">(</span><span class="n">source</span><span class="o">);</span>
-        <span class="n">cpart</span><span class="o">.</span><span class="na">getMember</span><span class="o">(</span><span class="s">"main"</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span> 
+        <span class="n">cpart</span><span class="o">.</span><span class="na">getMember</span><span class="o">(</span><span class="s">"main"</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
     <span class="o">}</span>
 <span class="o">}</span>
 <span class="c1">// END-SNIPPET</span>
@@ -2486,7 +2486,8 @@ $ java Polyglot
     <span class="k">return</span> <span class="n">element</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="c1">// END-SNIPPET
-</span>  </code></pre></figure>
+</span>
+  </code></pre></figure>
 
 
   
@@ -2872,12 +2873,12 @@ In <em>Proceedings of the 11th Dynamic Language Symposium (DLS)</em>.</li>
 
 <p>With polyglot applications it is often impossible to decide what the primary language of an application is.
 Therefore, we have added an experimental new launcher called <code>polyglot</code> to GraalVM.
-This launcher runs code for any installed Graal language without requiring to select a primary language.
+For the moment, this launcher runs code for JavaScript, Ruby, R, and LLVM without requiring to select a primary language.
 The polyglot launcher does not require the <code>--polyglot</code> option, it is enabled by default.</p>
 
 <p>This is how you can run a polyglot application by using the examples from above:</p>
 
-<pre><code class="language-shell">$ polyglot --jvm polyglot.js polyglot.R polyglot.py polyglot.rb polyglot.bc
+<pre><code class="language-shell">$ polyglot --jvm polyglot.js polyglot.R polyglot.rb polyglot.bc
 </code></pre>
 
 <p>We have also included a basic experimental shell for multiple languages called the <em>Polyglot Shell</em>.

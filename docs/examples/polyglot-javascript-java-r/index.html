@@ -525,7 +525,7 @@ to the path, using a command-line shell for Linux:</p>
 
 <p>Note that this application contains R code, so you need to install the R language component to add R support to GraalVM, run the Graal updater command to do it:</p>
 
-<pre><code class="language-shell">gu install org.graalvm.r
+<pre><code class="language-shell">gu install R
 </code></pre>
 
 <p>For more information on using Graal updater please refer to <a href="/docs/reference-manual/graal-updater/">its documentation</a>.</p>
@@ -535,7 +535,7 @@ to the path, using a command-line shell for Linux:</p>
 <p>To run the application, you need to execute the <code>server.js</code> file.
 You can run it with the following command (or run the <code>run.sh</code> script):</p>
 
-<pre><code>$GRAALVM_HOME/bin/node --jvm --polyglot server.js
+<pre><code>$GRAALVM_HOME/bin/node --polyglot --jvm server.js
 </code></pre>
 
 <p>If you would like to run the benchmark on a different instance of Node,

@@ -484,7 +484,7 @@ It aims to use most of the available Truffle features and documents their use ex
     <pre><code class="language-shell">$ export JAVA_HOME=/path/to/graalvm/Contents/Home
 </code></pre>
   </li>
-  <li>Execute <code>mvn package</code> to build the language.</li>
+  <li>Execute <code>mvn package</code> from SimpleLanguage folder to build the language.</li>
   <li>Run in the simplelanguage root folder:
     <pre><code class="language-shell">$ ./sl ./language/tests/HelloWorld.sl
 </code></pre>
@@ -525,7 +525,7 @@ as an example.</p>
   <li>Download the <a href="https://lafo.ssw.uni-linz.ac.at/pub/idealgraphvisualizer/">Ideal Graph Visualizer</a>
  and unpack the downloaded archive in the <code>simplelanguage</code> folder;</li>
   <li>Launch IGV with from <code>simplelanguage</code> folder:
-    <pre><code class="language-shell">$ idealgraphvsiualizer/bin/idealgraphvsiualizer --jdkhome /path/to/graalvm 
+    <pre><code class="language-shell">$ idealgraphvsiualizer/bin/idealgraphvsiualizer --jdkhome /path/to/graalvm
 </code></pre>
   </li>
   <li>Execute the following to dump graphs to IGV:
@@ -562,7 +562,7 @@ for a GraalVM in order to execute SimpleLanguage code. Besides this, a big advan
 of using the native image when compared to running on the GraalVM is the greatly
 faster startup time as shown bellow.</p>
 
-<pre><code class="language-shell">$ time ./sl language/tests/HelloWorld.sl 
+<pre><code class="language-shell">$ time ./sl language/tests/HelloWorld.sl
 == running on org.graalvm.polyglot.Engine@2db0f6b2
 Hello World!
 
@@ -571,7 +571,7 @@ user    0m0.660s
 sys     0m0.108s
 
 $ time ./native/slnative
-language/tests/HelloWorld.sl 
+language/tests/HelloWorld.sl
 == running on org.graalvm.polyglot.Engine@7fd046f06898
 Hello World!
 
@@ -604,9 +604,9 @@ $ mvn package
 ...
 [INFO]                                                                         
 [INFO] ------------------------------------------------------------------------
-[INFO] Building simplelanguage-graalvm-native 
+[INFO] Building simplelanguage-graalvm-native
 [INFO] ------------------------------------------------------------------------
-[INFO] 
+[INFO]
 [INFO] --- exec-maven-plugin:1.6.0:exec (make_native) @ simplelanguage-graalvm-native ---
 Skipping the native image build because SL_BUILD_NATIVE is set to false.
 [INFO] ------------------------------------------------------------------------
