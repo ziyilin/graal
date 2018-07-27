@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta property="og:image" content="/resources/img/logo-colored.svg" />
+  <meta property="og:image" content="/resources/img/graalvm-rgb.png" />
 
   <title>
     
@@ -488,19 +488,19 @@ For example, running the following command will install Ruby support:</p>
 <pre><code>$ java -version
 java version "1.8.0_172"
 Java(TM) SE Runtime Environment (build 1.8.0_172-b11)
-GraalVM 1.0.0-rc4 (build 25.71-b01-internal-jvmci-0.45, mixed mode)
+GraalVM 1.0.0-rc5 (build 25.71-b01-internal-jvmci-0.46, mixed mode)
 
 $ node -v
 v8.11.1
 
 $ lli --version
-Graal llvm 6.0.0 (GraalVM EE Native 1.0.0-rc4)
+Graal llvm 6.0.0 (GraalVM EE Native 1.0.0-rc5)
 </code></pre>
 
 <p>If you have, e.g., the Ruby language component installed, you can check its version as well:</p>
 
 <pre><code class="language-shell">$ ruby -v
-truffleruby 1.0.0-rc4, like ruby 2.4.4, GraalVM CE Native [x86_64-darwin]
+truffleruby 1.0.0-rc5, like ruby 2.4.4, GraalVM CE Native [x86_64-darwin]
 </code></pre>
 
 <h3 id="running-applications">Running Applications</h3>
@@ -676,7 +676,7 @@ $ ruby -r chunky_png -e "puts ChunkyPNG::Color.to_hex(ChunkyPNG::Color('mintcrea
 
 <p>The only supported version of Bundler at the moment is <code>1.16.x</code>.</p>
 
-<pre><code>$ gem install bundler -v 1.16.2
+<pre><code>$ gem install bundler -v 1.16.3
 $ bundle exec ...
 </code></pre>
 
@@ -808,14 +808,14 @@ EOF
 
 <p>The native image is much faster than running the same code on the JVM directly:</p>
 <pre><code>$ time bin/java PrettyPrintJSON &lt; test.json &gt; /dev/null
-real	0m1.288s
-user	0m2.842s
-sys	0m0.313s
+real	0m1.101s
+user	0m2.471s
+sys	0m0.237s
 
 $ time ./prettyprintjson &lt; test.json &gt; /dev/null
-real	0m0.042s
-user	0m0.014s
-sys	0m0.018s
+real	0m0.037s
+user	0m0.015s
+sys	0m0.016s
 </code></pre>
 <p>There are certain limitations of ahead-of-time compilation with GraalVM,
 listed <a href="/docs/reference-manual/aot-compilation/">here</a>.</p>
