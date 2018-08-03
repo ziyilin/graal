@@ -87,3 +87,7 @@ org.truffleruby.handlers=java.util.logging.FileHandler
 java.util.logging.FileHandler.pattern=ruby.log
 org.truffleruby.level=CONFIG
 ```
+## Troubleshooting TruffleRuby
+The GraalVM implementation of Ruby is experimental and we can not guarantee it to be bug free.
+TruffleRuby uses sophisticated techniques to optimise a Ruby program and its users are strongly encouraged to submit useful bug reports to [Truffleruby issues](https://github.com/oracle/truffleruby/issues).
+ If you encounter a performance problem, please  consider the recommendations in [Reporting Performance Problems](https://github.com/oracle/truffleruby/blob/master/doc/user/reporting-performance-problems.md) document  .

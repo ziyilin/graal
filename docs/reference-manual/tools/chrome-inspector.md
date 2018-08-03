@@ -62,14 +62,14 @@ The node.js implementation that GraalVM provides accepts the same options as
 [node.js built on the V8 JavaScript engine](https://nodejs.org/), such as:
 
 ```
---inspect[=<port number>]
+--inspect[=[host:]<port number>]
 ```
 
 Enables the inspector agent and listens on port 9229 by default. To listen on a
 different port, specify the optional port number.
 
 ```
---inspect-brk[=<port number>]
+--inspect-brk[=[host:]<port number>]
 ```
 
 Enables the inspector agent and suspends on the first line of the application
@@ -79,7 +79,7 @@ the optional port number. This applies to the `node` launcher only.
 ### Other Language Launchers
 
 Other guest language launchers such as `js`, `python`, `Rscript` and `ruby`
-accept the `--inspect[=<port number>]` option, but suspend on the first line of
+accept the `--inspect[=[host:]<port number>]` option, but suspend on the first line of
 the application code by default.
 
 ```
@@ -104,7 +104,25 @@ default, the path is randomly generated.
 
 when true, the local host address is used instead of the loopback address. That
 allows remote connection of the inspector client. By default, the loopback
-address is used.
+address is used. This option became obsolete after being able to specify the host
+name in `--inspect` option and may be removed in future versions.
+
+```
+--inspect.Secure=(true|false)
+```
+
+when true, use TLS/SSL to secure the debugging protocol. Besides changing the WS
+(web socket) protocol to WSS, the HTTP endpoint that serves metadata about the debuggee
+is also changed to HTTPS. This is not compatible e.g. with
+[chrome://inspect](chrome://inspect) page, which is not able to provide the debuggee
+information and launch the debugger then. Launch debugging via the printed WSS URL directly.
+
+Use the standard `javax.net.ssl.*` system options to provide information about
+keystore with the TLS/SSL encryption keys, or following options:
+* `--inspect.KeyStore` keystore file path,
+* `--inspect.KeyStoreType` keystore file type (defaults to JKS),
+* `--inspect.KeyStorePassword` keystore password,
+* `--inspect.KeyPassword` password for recovering keys, if it's different from the keystore password.
 
 ```
 --inspect.WaitAttached=(true|false)
@@ -114,6 +132,24 @@ when true, no guest language source code is executed until the inspector client
 is attached. Unlike `--inspect.Suspend=true`, the execution is resumed right
 after the client is attached. That assures that no execution is missed by the
 inspector client. It is `false` by default.
+
+### Advanced Debug Options
+Following options are for language experts and language developers:
+
+```
+--inspect.Initialization=(true|false)
+```
+
+when true, inspect the language initialization phase. When initial suspension is
+active, suspends at the begining of language initialization and not necessarily
+at the begining of the application code. It's `false` by default.
+
+```
+--inspect.Internal=(true|false)
+```
+
+when true, internal sources are inspected as well. Internal sources may provide
+language implementation details. It's `false` by default.
 
 ### Programmatic Launch of Inspector Backend
 

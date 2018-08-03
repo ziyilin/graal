@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta property="og:image" content="/resources/img/graalvm-rgb.png" />
+  <meta property="og:image" content="/resources/img/graalvm.png" />
 
   <title>
     
@@ -613,13 +613,13 @@ including stepping through language boundaries during guest language
 <p>The node.js implementation that GraalVM provides accepts the same options as
 <a href="https://nodejs.org/">node.js built on the V8 JavaScript engine</a>, such as:</p>
 
-<pre><code>--inspect[=&lt;port number&gt;]
+<pre><code>--inspect[=[host:]&lt;port number&gt;]
 </code></pre>
 
 <p>Enables the inspector agent and listens on port 9229 by default. To listen on a
 different port, specify the optional port number.</p>
 
-<pre><code>--inspect-brk[=&lt;port number&gt;]
+<pre><code>--inspect-brk[=[host:]&lt;port number&gt;]
 </code></pre>
 
 <p>Enables the inspector agent and suspends on the first line of the application
@@ -629,7 +629,7 @@ the optional port number. This applies to the <code>node</code> launcher only.</
 <h3 id="other-language-launchers">Other Language Launchers</h3>
 
 <p>Other guest language launchers such as <code>js</code>, <code>python</code>, <code>Rscript</code> and <code>ruby</code>
-accept the <code>--inspect[=&lt;port number&gt;]</code> option, but suspend on the first line of
+accept the <code>--inspect[=[host:]&lt;port number&gt;]</code> option, but suspend on the first line of
 the application code by default.</p>
 
 <pre><code>--inspect.Suspend=(true|false)
@@ -651,7 +651,26 @@ default, the path is randomly generated.</p>
 
 <p>when true, the local host address is used instead of the loopback address. That
 allows remote connection of the inspector client. By default, the loopback
-address is used.</p>
+address is used. This option became obsolete after being able to specify the host
+name in <code>--inspect</code> option and may be removed in future versions.</p>
+
+<pre><code>--inspect.Secure=(true|false)
+</code></pre>
+
+<p>when true, use TLS/SSL to secure the debugging protocol. Besides changing the WS
+(web socket) protocol to WSS, the HTTP endpoint that serves metadata about the debuggee
+is also changed to HTTPS. This is not compatible e.g. with
+<a href="chrome://inspect">chrome://inspect</a> page, which is not able to provide the debuggee
+information and launch the debugger then. Launch debugging via the printed WSS URL directly.</p>
+
+<p>Use the standard <code>javax.net.ssl.*</code> system options to provide information about
+keystore with the TLS/SSL encryption keys, or following options:</p>
+<ul>
+  <li><code>--inspect.KeyStore</code> keystore file path,</li>
+  <li><code>--inspect.KeyStoreType</code> keystore file type (defaults to JKS),</li>
+  <li><code>--inspect.KeyStorePassword</code> keystore password,</li>
+  <li><code>--inspect.KeyPassword</code> password for recovering keys, if it’s different from the keystore password.</li>
+</ul>
 
 <pre><code>--inspect.WaitAttached=(true|false)
 </code></pre>
@@ -660,6 +679,22 @@ address is used.</p>
 is attached. Unlike <code>--inspect.Suspend=true</code>, the execution is resumed right
 after the client is attached. That assures that no execution is missed by the
 inspector client. It is <code>false</code> by default.</p>
+
+<h3 id="advanced-debug-options">Advanced Debug Options</h3>
+<p>Following options are for language experts and language developers:</p>
+
+<pre><code>--inspect.Initialization=(true|false)
+</code></pre>
+
+<p>when true, inspect the language initialization phase. When initial suspension is
+active, suspends at the begining of language initialization and not necessarily
+at the begining of the application code. It’s <code>false</code> by default.</p>
+
+<pre><code>--inspect.Internal=(true|false)
+</code></pre>
+
+<p>when true, internal sources are inspected as well. Internal sources may provide
+language implementation details. It’s <code>false</code> by default.</p>
 
 <h3 id="programmatic-launch-of-inspector-backend">Programmatic Launch of Inspector Backend</h3>
 

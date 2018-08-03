@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta property="og:image" content="/resources/img/graalvm-rgb.png" />
+  <meta property="og:image" content="/resources/img/graalvm.png" />
 
   <title>
     
@@ -548,8 +548,8 @@ $(document).ready(function(){
   <li>All while maintaining very high compatibility with the standard implementation of Ruby</li>
 </ul>
 
-<p>If you’re attempting to experiment with deploying TruffleRuby to production we’d
-encourage you to contact us so we can help you understand what is possible at
+<p>If you are attempting to experiment with deploying TruffleRuby to production we
+would encourage you to contact us so we can help you understand what is possible at
 the moment and to help solve any issues for you.</p>
 
 <h2 id="installing-truffleruby">Installing TruffleRuby</h2>
@@ -581,7 +581,7 @@ $ ruby -r chunky_png -e "puts ChunkyPNG::Color.to_hex(ChunkyPNG::Color('mintcrea
 
 <p>The only supported version of Bundler at the moment is <code>1.16.x</code>.</p>
 
-<pre><code>$ gem install bundler -v 1.16.2
+<pre><code>$ gem install bundler -v 1.16.3
 $ bundle exec ...
 </code></pre>
 
@@ -717,7 +717,7 @@ suite and the Ruby Spec project.</p>
 <h2 id="interoperability">Interoperability</h2>
 
 <p>GraalVM supports several other programming languages, including JavaScript, R,
-Python 3, and LLVM. TruffleRuby lets you run code from these languages, and use
+Python, and LLVM. TruffleRuby lets you run code from these languages, and use
 objects and methods from one language in another.</p>
 
 <p>As an example, we can pass a JSON-encoded string into Graal.js, decode it into
@@ -1228,6 +1228,10 @@ to log to a file and to set the level.</p>
 java.util.logging.FileHandler.pattern=ruby.log
 org.truffleruby.level=CONFIG
 </code></pre>
+<h2 id="troubleshooting-truffleruby">Troubleshooting TruffleRuby</h2>
+<p>The GraalVM implementation of Ruby is experimental and we can not guarantee it to be bug free.
+TruffleRuby uses sophisticated techniques to optimise a Ruby program and its users are strongly encouraged to submit useful bug reports to <a href="https://github.com/oracle/truffleruby/issues">Truffleruby issues</a>.
+ If you encounter a performance problem, please  consider the recommendations in <a href="https://github.com/oracle/truffleruby/blob/master/doc/user/reporting-performance-problems.md">Reporting Performance Problems</a> document  .</p>
 
 
               </div>

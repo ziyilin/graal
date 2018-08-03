@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta property="og:image" content="/resources/img/graalvm-rgb.png" />
+  <meta property="og:image" content="/resources/img/graalvm.png" />
 
   <title>
     
@@ -730,6 +730,51 @@ cpart.freeNativePoint(pointArray);
 Point&lt;5.000000,7.000000&gt;
 Point&lt;3.000000,6.000000&gt;
 Point&lt;17.000000,42.000000&gt;
+</code></pre>
+
+<h2 id="interoperability-with-java">Interoperability with Java </h2>
+<p> <em>Polyglot interoperability protocol</em>, that comes with GraalVM, offers bi-directional
+access between guest languages and host languages.
+As a result, you can call a precompiled source file in LLVM bitcode format directly from Java code.</p>
+
+<p>Put this C code into a file named <em>polyglot.c</em> :</p>
+
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;polyglot.h&gt;
+
+int main() {
+    void *arrayType = polyglot_java_type("int[]");
+    void *array = polyglot_new_instance(arrayType, 4);
+    polyglot_set_array_element(array, 2, 24, 42);
+    int element = polyglot_as_i32(polyglot_get_array_element(array, 2));
+    printf("%d\n", element);
+    return element;
+}
+</code></pre>
+
+<p>This example requires GraalVM home directory to be exported as $GRAALVM_HOME.
+See <a href="https://www.graalvm.org/docs/getting-started/">Get Started</a>. Pre-compile <em>polyglot.c</em> to LLVM bitcode with: </p>
+
+<pre><code class="language-shell">clang -g -O1 -c -emit-llvm -I$GRAALVM_HOME/jre/languages/llvm polyglot.c 
+</code></pre>
+
+<p>Then compile the Polyglot class below to Java bytecode and run it on GraalVM:</p>
+<pre><code>import java.io.*;
+import org.graalvm.polyglot.*;
+
+class Polyglot {
+    public static void main(String[] args) throws IOException {
+        Context polyglot = Context.newBuilder().
+        		               allowAllAccess(true).build();
+        File file = new File("polyglot.bc");
+        Source source = Source.newBuilder("llvm", file).build();
+        Value cpart = polyglot.eval(source);
+        cpart.getMember("main").execute();
+    }
+}
+</code></pre>
+<pre><code class="language-shell"> $ javac Polyglot.java
+ $ java HelloWorld
 </code></pre>
 
 <p>See the <a href="/docs/reference-manual/polyglot/">Polyglot Reference</a> and the
