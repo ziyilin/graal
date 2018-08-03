@@ -9,7 +9,7 @@
 
   <title>
     
-      GraalVM Documentation
+      Release notes
     
   </title>
   <meta
@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="/assets/main.css">
   <link rel="stylesheet" href="/resources/styles/extra.css">
 
-  <link rel="canonical" href="https://www.graalvm.org/docs/">
+  <link rel="canonical" href="https://www.graalvm.org/docs/release-notes/">
   <link rel="alternate" type="application/rss+xml" title="GraalVM" href="/feed.xml">
   <script src="/resources/lib/jquery/jquery-3.2.1.min.js"></script>
   <script src="/resources/lib/bootstrap/js/bootstrap.min.js"></script>
@@ -155,7 +155,7 @@
 
         
       <li class="menu__item">
-        <a  class="menu__link menu__link--current"   href="/docs/">
+        <a  class="menu__link"   href="/docs/">
           Docs
         </a>
       </li>
@@ -332,7 +332,7 @@ $(document).ready(function(){
     
       
         
-          <li class="toc-bullets-main">
+        <li class="toc-bullets-main toc-bullets-highlight">
         
           
           <a href="/docs/release-notes/">
@@ -340,6 +340,23 @@ $(document).ready(function(){
           </a>
         </li>
 
+
+        
+          <div>
+  <script>
+    var scriptElement = document.currentScript;
+    var div = $(scriptElement.parentElement);
+    $(window).on("load", function() {
+      $("#content-wrapper h1, #content-wrapper h2").each(function() {
+        var li = $("<li></li>", { class: "toc-bullets-sub" });
+        var a = $("<a></a>", { href: "#" + $(this).attr("id") });
+        a.text($(this).text());
+        li.append(a);
+        div.append(li);
+      });
+    });
+  </script>
+</div>
 
         
 
@@ -424,86 +441,391 @@ $(document).ready(function(){
     
             <div class="col-sm-9">
               <div id="content-wrapper" class="docs-content docs-content--with-sidebar">
-                <h1 id="a-short-introduction-to-graalvm">A short introduction to GraalVM</h1>
-
-<p>GraalVM is an ecosystem and shared runtime offering performance advantages
-not only to JVM-based languages such as Java, Scala, Groovy, and
-Kotlin, but also to other programming languages such as JavaScript, Ruby, Python, and R.
-Additionally, it enables the execution of native code on the JVM via an LLVM front-end.
-GraalVM 1.0 is based on JDK 8.</p>
-
-<p><img src="/docs/img/graalvm_architecture.png" alt="GraalVM system diagram" /></p>
-
-<p>The preceding diagram illustrates the architecture of GraalVM as an open ecosystem.</p>
-
-<p>The virtualization layer represents programming languages, provided by GraalVM.
-The execution of guest programming languages, namely JavaScript, Ruby, R, Python
-and LLVM bitcode, in the same runtime as the host JVM-based application is now down-to-earth.
-The host language and guest languages can directly interoperate with each other
-and pass data back and forth in the same memory space.</p>
-
-<p>The bottom part demonstrates the applicability range. GraalVM can either run standalone,
-be embedded as part of OpenJDK or node.js platforms,
-or even embed inside databases such as MySQL or <a href="https://oracle.github.io/oracle-db-mle/">Oracle RDBMS</a>.</p>
-
-<p>The GraalVM 1.0 release contains language interpreters for:</p>
-<ul>
-  <li>JVM-based languages like Java, Scala, Groovy, or Kotlin</li>
-  <li>JavaScript (including node.js)</li>
-  <li>languages compiling to LLVM bitcode like C, C++, or Rust</li>
-  <li>experimental versions of Ruby, R, and Python</li>
-</ul>
-
-<p>GraalVM includes the following components:</p>
-<ul>
-  <li><strong>Graal</strong>: A dynamic just-in-time (JIT) compiler that improves efficiency and
-speed of applications through unique approaches to code analysis and
-optimization.</li>
-  <li><strong>Graal Polyglot APIs</strong>: APIs for combining programming
-languages in a shared runtime. These APIs allow you to match programming
-languages to your needs and gives you better performance using fewer resources.</li>
-  <li><strong>Graal SDK</strong>:
-A set of APIs useful for embedding Graal languages and configuring native images.</li>
-  <li><strong>Oracle HotSpot Java Virtual Machine (JVM)</strong>: A runtime environment for JVM-based
-languages and supported guest programming languages.</li>
-</ul>
-
-<h2 id="graalvm-features">GraalVM Features</h2>
-
-<p>GraalVM lets you:</p>
+                <p>If you find an issue or want to submit a feature request please use the repositories for the project closest related to the issue:</p>
 
 <ul>
-  <li><a href="/docs/examples/java-performance-examples/">Run your code faster and more efficiently</a></li>
-  <li><a href="/docs/reference-manual/polyglot/">Interoperate directly with most modern programming languages</a></li>
-  <li><a href="/docs/graalvm-as-a-platform/embed/">Embed languages with the Graal SDK</a></li>
-  <li><a href="/docs/reference-manual/aot-compilation/">Create compiled native images</a></li>
-  <li><a href="/docs/reference-manual/tools/">Use a single set of tools to monitor, debug, and profile all your code</a></li>
+  <li><a href="https://github.com/oracle/graal">GraalVM, Graal compiler, native images, Truffle, tools, regular expressions</a></li>
+  <li><a href="https://github.com/graalvm/graaljs">JavaScript engine</a></li>
+  <li><a href="https://github.com/graalvm/sulong">LLVM interpreter</a></li>
+  <li><a href="https://github.com/oracle/truffleruby">Ruby</a></li>
+  <li><a href="https://github.com/oracle/fastr">R</a></li>
+  <li><a href="https://github.com/graalvm/graalpython">Python</a></li>
 </ul>
 
-<h2 id="graalvm-documentation">GraalVM Documentation</h2>
+<p>If in doubt, the main repository will work, we’d be happy to hear any feedback: <a href="https://github.com/oracle/graal">oracle/graal</a>.</p>
 
-<p>Whether you are here to try running an application with GraalVM for the first
-time or ready to start coding with the Graal Polyglot APIs, check out the Graal
-documentation to help you on your way.</p>
+<p>On this page, we would like to highlight the most important changes in the <strong>GraalVM</strong> releases. There are different components to GraalVM, so we highlight the changes to these separately.</p>
+
+<h2 id="10-rc5">1.0-RC5</h2>
+
+<p>GraalVM 1.0-rc5 is the first release where we provide <strong>pre-built binaries for GraalVM CE on macOS</strong>. As always all binaries are available from the <a href="/downloads">downloads page</a>.</p>
+
+<p><strong>KNOWN ISSUES</strong></p>
 
 <ul>
-  <li><a href="/docs/getting-started/">Get Started</a></li>
-  <li><a href="/docs/examples/">Examples</a></li>
-  <li><a href="/docs/reference-manual/compatibility/">Compatibility</a></li>
-  <li><a href="/docs/reference-manual/">Reference Manual</a></li>
-  <li><a href="/docs/graalvm-as-a-platform/">GraalVM as a Platform</a></li>
-  <li><a href="/docs/faq/">FAQ</a></li>
+  <li>The GraalVM CE image for MacOS currently depends on some libraries that are not installed by default on current MacOS versions.
+This might cause issues with UI-related functionality:
+    <pre><code>Library not loaded: /usr/X11/lib/libfreetype.6.dylib
+</code></pre>
+    <p>The necessary components can be added, e.g., by installing <a href="https://www.xquartz.org">https://www.xquartz.org</a>. We will remove this dependency in upcoming versions of GraalVM CE for MacOS.</p>
+  </li>
 </ul>
 
-<p>Alternatively you can have a look at the reference documentation in <a href="http://www.graalvm.org/sdk/javadoc/">JavaDoc</a>:</p>
+<h3 id="graalvm-for-java-developers-graalvm--compiler">GraalVM for Java developers (GraalVM + compiler)</h3>
+
 <ul>
-  <li>The <a href="http://www.graalvm.org/sdk/javadoc/org/graalvm/polyglot/package-summary.html">Polyglot Package</a> allows you to configure and run polyglot applications.</li>
-  <li>The <a href="http://www.graalvm.org/sdk/javadoc/org/graalvm/polyglot/proxy/package-summary.html">Proxy Package</a> allows you to mimic Graal language objects using proxies.</li>
-  <li>The <a href="http://www.graalvm.org/sdk/javadoc/org/graalvm/polyglot/io/package-summary.html">IO Package</a> allows you to customize the file system access of languages.</li>
+  <li>1.0-RC5 includes JVMCI changes necessary to support compiling Graal ahead of time and deploying as a shared library alongside <code>libjvm.so</code> (i.e., libgraal). Note that the implementation of <em>libgraal</em> itself is not a part of this release as it is still under development.</li>
 </ul>
 
-<p>If you can’t find the answer you need or have a troubleshooting query,
-<a href="/community/">get in touch with us</a>.</p>
+<h3 id="native-image-generation">Native image generation</h3>
+
+<ul>
+  <li>Added API that allows an application to distinguish between native image building, native image runtime, and regular Java execution. For more information and documentation, look at the class  <a href="https://github.com/oracle/graal/blob/master/sdk/src/org.graalvm.nativeimage/src/org/graalvm/nativeimage/ImageInfo.java">ImageInfo</a>.</li>
+</ul>
+
+<h3 id="javascript">JavaScript</h3>
+
+<ul>
+  <li>Removed legacy NashornExtensions option, use <code>--js.nashorn-compat</code> instead.</li>
+  <li>Added support for <code>Symbol.prototype.description</code>.</li>
+  <li>Added support for <code>String.prototype.matchAll</code>.</li>
+</ul>
+
+<p>More details can be found in the <a href="https://github.com/graalvm/graaljs/blob/master/CHANGELOG.md">project changelog on GitHub</a>.</p>
+
+<h3 id="ruby">Ruby</h3>
+<p>The full <a href="https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md">changelog is available</a> in the GitHub repository, but here are some of the most notable changes.</p>
+
+<ul>
+  <li>Simpler installation on macOS: it is no longer needed to add LLVM (<code>/usr/local/opt/llvm@4/bin</code>) to PATH on macOS.</li>
+  <li><code>--log.ruby.level=</code> can be used to set the log level from any language launcher.</li>
+  <li><code>String#unpack1</code> has been implemented.</li>
+  <li>Optimized required and optional keyword arguments.</li>
+  <li><code>-Dtruffleruby.log</code> and <code>TRUFFLERUBY_LOG</code> have been removed - use <code>-Dpolyglot.log.ruby.level</code>.</li>
+  <li>The custom log levels <code>PERFORMANCE</code> and <code>PATCH</code> have been removed.</li>
+</ul>
+
+<h3 id="python">Python</h3>
+
+<ul>
+  <li>Generator expressions now properly evaluate their first iterator in the definition scope at definition time.</li>
+  <li>Fixes for embedders to ensure top scopes are stable and local scopes always contain TruffleObjects.</li>
+  <li>C-API improvements to support simple Cython modules.</li>
+  <li>Support recognition of Python source files with the polyglot launcher, so that now <code>--language python</code> is not necessary when starting Python scripts with the polyglot launcher (note that the polyglot launcher still needs to be rebuilt using <code>bin/gu rebuild-images polyglot</code> after installing Python).</li>
+</ul>
+
+<p>Full changelog is available on GitHub <a href="https://github.com/graalvm/graalpython/blob/master/CHANGELOG.md">CHANGELOG.md</a></p>
+
+<h3 id="r">R</h3>
+
+<p>See <a href="https://github.com/oracle/fastr/blob/master/CHANGELOG.md">CHANGELOG</a> for a complete list.</p>
+
+<h3 id="llvm-interpreter-for-cc--other-native-languages">LLVM interpreter for C/C++ &amp; other native languages</h3>
+
+<p>Changelog: <a href="https://github.com/graalvm/sulong/blob/master/CHANGELOG.md">https://github.com/graalvm/sulong/blob/master/CHANGELOG.md</a></p>
+
+<ul>
+  <li>Support the <code>__builtin_debugtrap</code> function based on LLVM’s <code>@llvmn.debugtrap</code> intrinsic, which can be used to drop into the debugger (e.g., Chrome Inspector).</li>
+  <li>Support “zero-length array at end of struct” pattern when accessing polyglot values as structs.</li>
+  <li>Improved performance of global variable access.</li>
+  <li>Improved support for vectorized bitcode operations generated by clang.</li>
+</ul>
+
+<h3 id="api-changes-for-graalvm-integrators">API changes for GraalVM integrators</h3>
+
+<ul>
+  <li>Added new <a href="http://www.graalvm.org/sdk/javadoc/org/graalvm/polyglot/management/ExecutionListener.html">execution listener API</a> that allows for simple, efficient and fine-grained introspection of executed code.</li>
+  <li>Changed the default language context policy from <code>SHARED</code> to <code>EXCLUSIVE</code>, i.e. by default there is one exclusive language instance per polyglot or inner context. This can be configured by the language using the <a href="http://www.graalvm.org/truffle/javadoc/com/oracle/truffle/api/TruffleLanguage.ContextPolicy.html">context policy</a>.</li>
+</ul>
+
+<p>To see the full list of changes to the APIs please refer to the project changelogs:</p>
+
+<ul>
+  <li><a href="https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md">Graal SDK changelog</a></li>
+  <li><a href="https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md">Truffle changelog</a></li>
+</ul>
+
+<h3 id="tools">Tools</h3>
+<h4 id="visualvm">VisualVM</h4>
+<ul>
+  <li>VisualVM was added to the GraalVM CE distribution.</li>
+</ul>
+
+<h2 id="10-rc4">1.0-RC4</h2>
+
+<h3 id="general-remarks">General Remarks</h3>
+
+<p>While we provide updated components for all languages for this rc4 release, only the JavaScript component received fixes from its upstream repository. All other languages are unchanged in terms of functionality</p>
+
+<p>The next release, rc5, is planned for the beginning of August and will provide updates for all components.</p>
+
+<h3 id="javascript-1">JavaScript</h3>
+
+<p>The GraalVM JavaScript component has been updated to provide better compatibility with the Nashorn engine. There now is a <code>--nashorn-compat</code> flag to enable backwards compatibility functionality. This flag is highly discouraged for new applications, but can simplify the migration from Nashorn to GraalVM for existing code.</p>
+
+<ul>
+  <li>Access getters and setters like fields</li>
+  <li>Provide Java.extend, Java.super, JavaImporter, JSAdapter</li>
+  <li>Allow to construct Interfaces or AbstractClasses</li>
+  <li>
+    <p>Provide top-level package globals <code>java</code>, <code>javafx</code>, <code>javax</code>, <code>com</code>, <code>org</code>, <code>edu</code></p>
+  </li>
+  <li>Provide Java.isScriptFunction, Java.isScriptObject, Java.isJavaMethod and Java.isJavaFunction</li>
+</ul>
+
+<p>Some global functions and objects have been added for the scripting mode and can be enabled with the -<code>-scripting</code> flag:</p>
+
+<ul>
+  <li>Provide <code>$EXEC</code>, <code>$ENV</code>, <code>$ARG</code>, <code>$OPTIONS</code></li>
+</ul>
+
+<h2 id="10-rc3">1.0-RC3</h2>
+
+<h3 id="graalvm-for-java-developers-graalvm--compiler-1">GraalVM for Java developers (GraalVM + compiler)</h3>
+
+<ul>
+  <li>Updated the underlying JDK version to “1.8.0_172” from “1.8.0_171”. You can find the JDK release notes at the <a href="http://www.oracle.com/technetwork/java/javase/8u172-relnotes-4308893.html">Oracle Technology Network</a> website.</li>
+  <li>Fixed a rare NullPointerException during JVMCI initialization.</li>
+</ul>
+
+<h3 id="native-image-generation-1">Native image generation</h3>
+
+<ul>
+  <li>Added support for java.lang.reflect.Proxy supporting both automatic detection and manual configuration. Please refer to <a href="https://github.com/oracle/graal/blob/master/substratevm/DYNAMIC_PROXY.md">the documentation on GitHub</a> for the details.</li>
+  <li>Added support for Classloader.getResource() and similar methods.</li>
+  <li>Added support for loading services through theServiceLoader.</li>
+  <li>Fixed a ClassCastException on generating native images for profile-guided-optimizations (with the–pgo-instrument command line option).</li>
+</ul>
+
+<h3 id="javascript-2">JavaScript</h3>
+
+<ul>
+  <li>Enabled code sharing between Contexts with the same Engine.</li>
+  <li>Added support for <code>BigInt</code> arithmetic expressions.</li>
+  <li>Added a flag for the Nashorn compatibility mode <code>--js.nashorn-compat</code>, for the details and migration from Nashorn please <a href="https://github.com/graalvm/graaljs/blob/master/docs/user/NashornMigrationGuide.md">refer to the documentation</a>.</li>
+  <li>Rename the flag for the V8 compatibility mode to <code>js.v8-compat</code>.</li>
+</ul>
+
+<p>More details can be found in the <a href="https://github.com/graalvm/graaljs/blob/master/CHANGELOG.md">project changelog on GitHub</a>.</p>
+
+<h3 id="ruby-1">Ruby</h3>
+
+<p>The full <a href="https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md">changelog is available</a> in the GitHub repository, but here are some of the most notable changes.</p>
+
+<ul>
+  <li>Added ability to call is_a? on foreign objects.</li>
+  <li>Fixed: Qnil/Qtrue/Qfalse/Qundef can now be used as initial value for global variables in C extensions.</li>
+  <li>Fixed: SIGPIPE is correctly caught on SubstrateVM, and the corresponding write() raises Errno::EPIPE when the read end of a pipe or socket is closed.</li>
+  <li>Fixed determining the source encoding for eval() based on the magic encoding comment.</li>
+</ul>
+
+<p>Additionally, we implemented a number of performance improvements for stat()-related calls, eval(), String substitutions, reading from IO and more.</p>
+
+<h3 id="python-1">Python</h3>
+
+<p>GraalVM Python implementation is still in the early stages, but we’re making progress towards the goal of running applications which use SciPy.</p>
+
+<ul>
+  <li>Various C-API improvements allow to run <strong>simple NumPy examples.</strong></li>
+  <li>Implemented buffered I/O and more encodings support, which enables working with files through the standard open function without having to force unbuffered access, and enables working with files that have encodings other than utf-8.</li>
+  <li>Most math module functions are now implemented and work correctly.</li>
+  <li>The random module substitute was removed and we now run the standard library random module to be fully compatible.</li>
+  <li>Improved thread-safety in the embedded scenarios when using Python contexts from multiple threads.</li>
+</ul>
+
+<p>More details are available in <a href="https://github.com/graalvm/graalpython/blob/master/CHANGELOG.md">the project’s changelog</a> on GitHub.</p>
+
+<h3 id="r-1">R</h3>
+
+<ul>
+  <li>Added more missing R builtins and C API functions, see <a href="https://github.com/oracle/fastr/blob/master/CHANGELOG.md">CHANGELOG</a> for a complete list.</li>
+  <li>Simplified installation, the script that configures FastR for the current system jre/languages/R/bin/configure_fastr does not require Autotools anymore.</li>
+  <li>Added configuration files to allow users to build a native image of the FastR runtime, which reduces the startup time. Run jre/languages/R/bin/install_r_native_image to build the image.</li>
+  <li>Fixed an issue with the plotting window not displaying anything after it was closed and reopened.</li>
+</ul>
+
+<h3 id="llvm-interpreter-for-cc--other-native-languages-1">LLVM interpreter for C/C++ &amp; other native languages</h3>
+
+<ul>
+  <li>New builtins polyglot_from_typed and polyglot_as_typed, which can be used to dynamically attach types to polyglot objects.</li>
+  <li>Implementers of TruffleObject can now respond to the GetDynamicType message to provide a type when an object is accessed from LLVM code.</li>
+</ul>
+
+<p>More details are available in <a href="https://github.com/graalvm/sulong/blob/master/CHANGELOG.md">the project changelog</a>.</p>
+
+<h3 id="api-changes-for-graalvm-integrators-1">API changes for GraalVM integrators</h3>
+
+<ul>
+  <li>Added support for <a href="http://www.graalvm.org/sdk/javadoc/org/graalvm/polyglot/Context.Builder.html#logHandler-java.util.logging.Handler-">logging</a> in Truffle languages and instruments.</li>
+  <li>Removed deprecated ResultVerifier.getDefaultResultVerifier API.</li>
+</ul>
+
+<p>To see the list of changes to the APIs please refer to the project changelogs:</p>
+
+<ul>
+  <li><a href="https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md">Graal SDK changelog</a></li>
+  <li><a href="https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md">Truffle changelog</a></li>
+</ul>
+
+<h3 id="tools-1">Tools</h3>
+
+<h5 id="visualvm-1">VisualVM</h5>
+
+<p>We improved memory footprint and introduced several UI improvements for cleaner more responsive experience of VisualVM. In addition to that, there are the following improvements:</p>
+
+<ul>
+  <li>Added recognition of the LLVM interpreter (Sulong) processes.</li>
+  <li>Improved displaying logical values of guest languages’ objects.</li>
+  <li>Improved the Object Query Language (OQL) Console for inspecting memory dumps functionality — sorting, filtering, aggregation, unlimited number of results now work.</li>
+</ul>
+
+<h4 id="chrome-inspector">Chrome inspector</h4>
+
+<ul>
+  <li>Multiple inspector sessions for multiple polyglot engines can run on the same port now.</li>
+</ul>
+
+<h2 id="10-rc2">1.0-RC2</h2>
+
+<h3 id="graalvm-for-java-developers">GraalVM for Java developers</h3>
+<ul>
+  <li>Updated the underlying JDK version to “1.8.0_171” from “1.8.0_161”. You can find the JDK release notes at the <a href="http://www.oracle.com/technetwork/java/javase/8u171-relnotes-4308888.html">Oracle Technology Network</a> website.</li>
+  <li>Improved support for the Java Microbenchmark harness. Since JMH 1.21, GraalVM is a <a href="http://mail.openjdk.java.net/pipermail/jmh-dev/2018-May/002753.html">recognized and supported JVM</a>.</li>
+  <li>Fixed a <a href="https://github.com/oracle/graal/issues/341">StackOverflow exception</a> an improved performance when recursively inlining of invokedynamic instructions.</li>
+  <li>Fixed a <a href="https://github.com/oracle/graal/issues/423">compiler error</a> causing incorrect code generation while building the scalac compiler.</li>
+</ul>
+
+<h3 id="native-image-generation-2">Native image generation</h3>
+
+<ul>
+  <li>Added support for building statically linked native images. Now you can pass <code>--static</code>, and if you have static libc and zlib installed, it generates a standalone executable that won’t require libc for running.</li>
+  <li>Added Classpath exception to the license of <a href="https://github.com/oracle/graal/blob/master/substratevm/LICENSE.md">SubstrateVM</a> and the <a href="https://github.com/oracle/graal/blob/master/compiler/LICENSE.md">Graal compiler</a> components to make sure all GraalVM code ending up in a native image is subject to this clause.</li>
+  <li>
+    <p>Fixed the handling of implicit exceptions (NullPointerExeption, ArrayIndexOutOfBoundsException, ClassCastException, …): all exceptions now have correct stack traces and can be caught as expected. Previously, implicit exceptions were sometimes not caught by an exception handler within the same method.</p>
+  </li>
+  <li>Fixed a number of exceptions during the generation of native images that were reported by early adopters. Thank you for the reports on <a href="http://github.com/oracle/graal/issues">GitHub</a> - keep them coming!</li>
+</ul>
+
+<h3 id="javascript-3">JavaScript</h3>
+
+<ul>
+  <li>Updated <a href="https://nodejs.org/en/blog/release/v8.11.1/">Node.js to 8.11.1</a> (from 8.9.4), it’s not a breaking change, but it brings numerous improvements, including CVE-listed security fixes.</li>
+</ul>
+
+<h3 id="llvm-interpreter-for-cc--other-native-languages-2">LLVM interpreter for C/C++ &amp; other native languages</h3>
+
+<ul>
+  <li>Added a new API for accessing Java types and instantiating foreign objects from LLVM languanges.</li>
+</ul>
+
+<p>Now it is possible to easily call Java code from native programs compiled to the LLVM bitcode. The example below shows how you can access Java’s BigInteger long math operations from C.</p>
+
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;polyglot.h&gt;
+int main() {
+    void *bigInteger = polyglot_java_type("java.math.BigInteger");
+    void *(*BigInteger_valueOf)(long) = polyglot_get_member(bigInteger, "valueOf");
+
+    void *bi = BigInteger_valueOf(2);
+    void *result = polyglot_invoke(bi, "pow", 256);
+
+    char buffer[100];
+    polyglot_as_string(polyglot_invoke(result, "toString"),
+                       buffer,
+                       sizeof(buffer),
+                       "ascii");
+
+    printf("%s\n", buffer);
+}
+</code></pre>
+
+<p>If we compile it to the LLVM bitcode, we can execute it with GraalVM. You can see that it computes the value of2^256 which isn’t that easy to do in C otherwise.</p>
+
+<pre><code># shelajev at shrimp.local in /tmp
+→ clang -c -O1 -emit-llvm -I$GRAALVM_HOME/jre/languages/llvm big-integer-demo.c
+
+# shelajev at shrimp.local in /tmp
+→ lli --jvm big-integer-demo.bc
+115792089237316195423570985008687907853269984665640564039457584007913129639936
+</code></pre>
+
+<p>A more detailed list of changes to the LLVM interpreter can be found in the <a href="https://github.com/graalvm/sulong/blob/master/CHANGELOG.md">full changelog</a>.</p>
+
+<h3 id="ruby-2">Ruby</h3>
+
+<ul>
+  <li>We are now compatible with Ruby 2.4.4.</li>
+  <li>Java.import name imports Java classes as top-level constants.</li>
+  <li>Coercion of foreign numbers to Ruby numbers now works.</li>
+  <li>to_s works on all foreign objects and calls the Java toString.</li>
+  <li>to_str will try to UNBOX and then re-try to_str, in order to provoke the unboxing of foreign strings.</li>
+</ul>
+
+<p>Much more details can be found in the full <a href="https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md">changelog</a>.</p>
+
+<h3 id="r-2">R</h3>
+
+<p>Among the other changes, we improved the stability of GraalVM’s R implementation.</p>
+
+<ul>
+  <li>Added a./jre/languages/R/bin/configure_fastr script that allows FastR’s native build scripts to adopt to the current system, which makes installing R packages much more stable.</li>
+  <li>The fastr_errors.log file was renamed to fastr_errors_pidXYZ.log and is stored in either initial working directory, the user home directory, /tmp, or the FastR home directory (picking the first location that is writeable). Please add it to the bug reports if you submit issues, thank you!</li>
+</ul>
+
+<h3 id="python-2">Python</h3>
+
+<ul>
+  <li>Added support for the Python <a href="https://docs.python.org/3/library/unittest.html">unittest</a> framework.</li>
+  <li>Python now supports breaking on exceptions and unwinding to stack frames in Chrome inspector.</li>
+</ul>
+
+<h3 id="api-changes-for-graalvm-integrators-2">API changes for GraalVM integrators</h3>
+
+<p>Both Graal SDK and Truffle are offering API for developers trying to build things on top of GraalVM, language implementations, embedding GraalVM, and so on.</p>
+
+<ul>
+  <li>Enabled code sharing between guest language Contexts with the same Engine, speeding up the repeated evaluation of the code.</li>
+</ul>
+
+<p>To see the list of changes to the APIs please refer to the project changelogs:</p>
+
+<ul>
+  <li><a href="https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md">Graal SDK changelog</a></li>
+  <li><a href="https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md">Truffle changelog</a></li>
+</ul>
+
+<h3 id="tools-2">Tools</h3>
+
+<h4 id="visualvm-2">VisualVM</h4>
+<ul>
+  <li>Fixed the issues with loading polyglot heap dumps</li>
+  <li>fixed executing of scripts in R console</li>
+  <li>improved recognition of R REPL</li>
+  <li>fixed ‘loop to’ nodes</li>
+  <li>fixed memory leak in child nodes</li>
+  <li>improved appearance on MacOS</li>
+  <li>A11Y fixes</li>
+  <li>added roots histogram for class</li>
+</ul>
+
+<h4 id="graal-updater-gu">Graal Updater <code>gu</code></h4>
+
+<ul>
+  <li>The default operation mode changed from “install from local files” to “install from catalog”.</li>
+  <li>-c option for installing from the catalog, can be omitted (installing from the catalog the default), but specifying -c still works.</li>
+  <li>Use -F to install from local files, i.e. bin/gu -F /tmp/ruby-installable.jar.</li>
+</ul>
+
+<h4 id="chrome-inspector-1">Chrome Inspector</h4>
+
+<p>Fixed a number of issues:</p>
+
+<ul>
+  <li>fixed the initial suspend of node scripts with no statement on the first line</li>
+  <li>fixed tooltip issues and representation of the functions</li>
+  <li>fixed issues with re-connection of Chrome inspector client</li>
+</ul>
+
 
               </div>
     

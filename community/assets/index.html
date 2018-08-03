@@ -9,7 +9,7 @@
 
   <title>
     
-      GraalVM Documentation
+      Presentation materials
     
   </title>
   <meta
@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="/assets/main.css">
   <link rel="stylesheet" href="/resources/styles/extra.css">
 
-  <link rel="canonical" href="https://www.graalvm.org/docs/">
+  <link rel="canonical" href="https://www.graalvm.org/community/assets/">
   <link rel="alternate" type="application/rss+xml" title="GraalVM" href="/feed.xml">
   <script src="/resources/lib/jquery/jquery-3.2.1.min.js"></script>
   <script src="/resources/lib/bootstrap/js/bootstrap.min.js"></script>
@@ -155,7 +155,7 @@
 
         
       <li class="menu__item">
-        <a  class="menu__link menu__link--current"   href="/docs/">
+        <a  class="menu__link"   href="/docs/">
           Docs
         </a>
       </li>
@@ -202,321 +202,168 @@
 
       <main  class="content"   aria-label="Content">
         <div class="wrapper wrapper-content">
-  <article class="docs">
-
+  <!--
+<section class="section-heading">
   <div class="container-fluid container-fluid--custom-sm">
     <div class="row">
       <div class="col-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1">
-          <div class="row d-flex flex-wrap">
-            <div class="col-sm-3 col-bg">
-              <div class="sidebar-wrap">
-                <div class="sidebar">
-                  
-<div class="toc-floating">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="page-heading">
+              <h2 class="page-heading__title">Community</h2>
+              <p class="page-heading__description">
+                Become a GraalVM contributor
+              </p>
+            </div>
 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+-->
+<section>
+  <div class="container-fluid container-fluid--custom-sm">
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1">
+        <div class="row d-flex flex-wrap">
+          <div class="col-sm-3 col-bg">
+            <div class="sidebar-wrap">
+              <div class="sidebar">
+                <div class="toc-floating">
+                  <ul class="toc-bullets">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      
 
-<script>
-var sidebar = document.currentScript.parentElement;
+                      
+                      <a href="/community/">
+                        Community
+                      </a>
+                    </li>
+                    
+                    
+                    <li>
+                      
 
-// 
-//   $(document).ready(function(){
-//     $('.sidebar-wrap').stickySidebar({
-//       topSpacing: 74,
-//       bottomSpacing: 40
-//     });
-//   });
-//
-// 
+                      
+                      <a href="/community/publications/">
+                        Publications
+                      </a>
+                    </li>
+                    
+                    
+                    <li>
+                      
 
+                      
+                      <a href="/community/press/">
+                        GraalVM in the Press
+                      </a>
+                    </li>
+                    
+                    
+                    <li>
+                      
 
-$(document).ready(function(){
-  var header = $('.header').height();
-  var invisibleBlock;
+                      
+                      <a href="/community/videos/">
+                        Videos
+                      </a>
+                    </li>
+                    
+                    
+                    <li>
+                      
 
-  $("#content-wrapper h1, #content-wrapper h2").each(function() {
-    invisibleBlock = $(this).before("<div class='anchor' id="+ $(this).attr("id") +"></div>");
-  });
+                      
+                      <a href="/community/contributors/">
+                        Contributors
+                      </a>
+                    </li>
+                    
+                    
+                    <li>
+                      
 
-  $(window).scroll(function() {
-    var lastitem = null;
-    $("#content-wrapper h1, #content-wrapper h2").each(function() {
-      var heading = $(this);
-      var position = (heading.position().top - heading.height()) - $(window).scrollTop();
-      var listitem = $(sidebar).find("li").filter(function() {
-        return $(this).find("a").attr("href") == "#" + heading.attr("id");
-      });
-      listitem.removeClass("toc-bullets-focused");
-      if (position <= 0) {
-        lastitem = listitem;
-      }
-    });
-    if (lastitem != null) lastitem.addClass("toc-bullets-focused");
-  });
-});
-
-</script>
-
-<ul class="toc-bullets">
-
-  
-    
-
-    
-      
-        
-          <li class="toc-bullets-main">
-        
-          
-          <a href="/docs/why-graal/">
-            Why GraalVM?
-          </a>
-        </li>
-
-
-        
-
-
-        
-      
-    
-      
-        
-          <li class="toc-bullets-main">
-        
-          
-          <a href="/docs/getting-started/">
-            Getting Started
-          </a>
-        </li>
-
-
-        
-
-
-        
-      
-    
-      
-        
-          <li class="toc-bullets-main">
-        
-          
-          <a href="/docs/examples/">
-            Examples
-          </a>
-        </li>
-
-
-        
-
-
-        
-      
-    
-      
-        
-          <li class="toc-bullets-main">
-        
-          
-          <a href="/docs/reference-manual/compatibility/">
-            Compatibility
-          </a>
-        </li>
-
-
-        
-
-
-        
-      
-    
-      
-        
-          <li class="toc-bullets-main">
-        
-          
-          <a href="/docs/release-notes/">
-            Release notes
-          </a>
-        </li>
-
-
-        
-
-
-        
-      
-    
-      
-        
-          <li class="toc-bullets-main">
-        
-          
-          <a href="/docs/reference-manual/">
-            Reference Manual
-          </a>
-        </li>
-
-
-        
-
-
-        
-      
-    
-      
-        
-          <li class="toc-bullets-main">
-        
-          
-          <a href="/docs/graalvm-as-a-platform/">
-            GraalVM as a Platform
-          </a>
-        </li>
-
-
-        
-
-
-        
-      
-    
-      
-        
-          <li class="toc-bullets-main">
-        
-          
-          <a href="/docs/faq/">
-            FAQ
-          </a>
-        </li>
-
-
-        
-
-
-        
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-</ul>
-
-</div>
-
+                      
+                      <a href="/community/conduct/">
+                        Code of Conduct
+                      </a>
+                    </li>
+                    
+                    
+                    
+                    
+                  </ul>
                 </div>
               </div>
             </div>
-    
-            <div class="col-sm-9">
-              <div id="content-wrapper" class="docs-content docs-content--with-sidebar">
-                <h1 id="a-short-introduction-to-graalvm">A short introduction to GraalVM</h1>
+          </div>
 
-<p>GraalVM is an ecosystem and shared runtime offering performance advantages
-not only to JVM-based languages such as Java, Scala, Groovy, and
-Kotlin, but also to other programming languages such as JavaScript, Ruby, Python, and R.
-Additionally, it enables the execution of native code on the JVM via an LLVM front-end.
-GraalVM 1.0 is based on JDK 8.</p>
+          <div class="col-sm-9">
+            <div id="content-wrapper" class="docs-content docs-content--with-sidebar">
+              <p>The GraalVM team regularly presents at various conferences and meetups. We’re delighted to learn that you’ve taken interest in GraalVM and would like to share this interest with your network. Whether you’re presenting at a conference, a meetup, or writing an article, you can use the images on this page in your creative work.
+These images are the intellectual property of the Oracle and cannot be altered without Oracle’s permission. Please use it responsibly. For the proper use guidelines please contact us: graalvm-users@oss.oracle.com.</p>
+
+<p>Please attribute them back to this website, so more people could find it. And please make sure to state your affiliation with the GraalVM project, whether you’re a part of the team or just a fan.</p>
+
+<h3 id="graalvm-logo">GraalVM logo</h3>
+
+<p><img src="/uploads/GraalVM-logo-rgb.png" alt="GraalVM logo" /></p>
+
+<h3 id="graalvm-overview">GraalVM overview</h3>
+
+<p>GraalVM supports many languages and runs in various environments.</p>
 
 <p><img src="/docs/img/graalvm_architecture.png" alt="GraalVM system diagram" /></p>
 
-<p>The preceding diagram illustrates the architecture of GraalVM as an open ecosystem.</p>
+<h3 id="graalvm-components">GraalVM components</h3>
 
-<p>The virtualization layer represents programming languages, provided by GraalVM.
-The execution of guest programming languages, namely JavaScript, Ruby, R, Python
-and LLVM bitcode, in the same runtime as the host JVM-based application is now down-to-earth.
-The host language and guest languages can directly interoperate with each other
-and pass data back and forth in the same memory space.</p>
+<p>GraalVM functionality is enabled by several layers: it uses JVM as a platform, uses Java level compiler interface, <a href="http://openjdk.java.net/jeps/243">JVMCI</a> to integrate with it, uses a framework for implementing managed languages Truffle to run languages it has interpreters for, and through the LLVM bitcode interpreter, Sulong, it can run native code.</p>
 
-<p>The bottom part demonstrates the applicability range. GraalVM can either run standalone,
-be embedded as part of OpenJDK or node.js platforms,
-or even embed inside databases such as MySQL or <a href="https://oracle.github.io/oracle-db-mle/">Oracle RDBMS</a>.</p>
+<p><img src="/uploads/GraalVM-platform-layers.png" alt="GraalVM platform layers diagram" /></p>
 
-<p>The GraalVM 1.0 release contains language interpreters for:</p>
-<ul>
-  <li>JVM-based languages like Java, Scala, Groovy, or Kotlin</li>
-  <li>JavaScript (including node.js)</li>
-  <li>languages compiling to LLVM bitcode like C, C++, or Rust</li>
-  <li>experimental versions of Ruby, R, and Python</li>
-</ul>
+<h3 id="performance-comparison-with-best-competition-2017">Performance comparison with best competition (2017)</h3>
+<p>The <a href="http://dl.acm.org/citation.cfm?id=3062381"><strong>Practical partial evaluation for high-performance dynamic language runtimes</strong></a> paper by
+Thomas Würthinger, Christian Wimmer, Christian Humer, Andreas Wöß, Lukas Stadler, Chris Seaton, Gilles Duboscq, Doug Simon, Matthias Grimmer compared performance of GraalVM against other runtimes. Here’s a one-image summary of the findings. For proper interpretation please read the paper.</p>
 
-<p>GraalVM includes the following components:</p>
-<ul>
-  <li><strong>Graal</strong>: A dynamic just-in-time (JIT) compiler that improves efficiency and
-speed of applications through unique approaches to code analysis and
-optimization.</li>
-  <li><strong>Graal Polyglot APIs</strong>: APIs for combining programming
-languages in a shared runtime. These APIs allow you to match programming
-languages to your needs and gives you better performance using fewer resources.</li>
-  <li><strong>Graal SDK</strong>:
-A set of APIs useful for embedding Graal languages and configuring native images.</li>
-  <li><strong>Oracle HotSpot Java Virtual Machine (JVM)</strong>: A runtime environment for JVM-based
-languages and supported guest programming languages.</li>
-</ul>
+<p><img src="/uploads/GraalVM-performance-2017.png" alt="GraalVM performance comparison (2017)" /></p>
 
-<h2 id="graalvm-features">GraalVM Features</h2>
+<h3 id="sample-applications">Sample applications</h3>
 
-<p>GraalVM lets you:</p>
+<p>You can find several sample applications to play with and refer to on the <a href="/docs/examples">examples page</a>.</p>
 
-<ul>
-  <li><a href="/docs/examples/java-performance-examples/">Run your code faster and more efficiently</a></li>
-  <li><a href="/docs/reference-manual/polyglot/">Interoperate directly with most modern programming languages</a></li>
-  <li><a href="/docs/graalvm-as-a-platform/embed/">Embed languages with the Graal SDK</a></li>
-  <li><a href="/docs/reference-manual/aot-compilation/">Create compiled native images</a></li>
-  <li><a href="/docs/reference-manual/tools/">Use a single set of tools to monitor, debug, and profile all your code</a></li>
-</ul>
+            </div>
 
-<h2 id="graalvm-documentation">GraalVM Documentation</h2>
-
-<p>Whether you are here to try running an application with GraalVM for the first
-time or ready to start coding with the Graal Polyglot APIs, check out the Graal
-documentation to help you on your way.</p>
-
-<ul>
-  <li><a href="/docs/getting-started/">Get Started</a></li>
-  <li><a href="/docs/examples/">Examples</a></li>
-  <li><a href="/docs/reference-manual/compatibility/">Compatibility</a></li>
-  <li><a href="/docs/reference-manual/">Reference Manual</a></li>
-  <li><a href="/docs/graalvm-as-a-platform/">GraalVM as a Platform</a></li>
-  <li><a href="/docs/faq/">FAQ</a></li>
-</ul>
-
-<p>Alternatively you can have a look at the reference documentation in <a href="http://www.graalvm.org/sdk/javadoc/">JavaDoc</a>:</p>
-<ul>
-  <li>The <a href="http://www.graalvm.org/sdk/javadoc/org/graalvm/polyglot/package-summary.html">Polyglot Package</a> allows you to configure and run polyglot applications.</li>
-  <li>The <a href="http://www.graalvm.org/sdk/javadoc/org/graalvm/polyglot/proxy/package-summary.html">Proxy Package</a> allows you to mimic Graal language objects using proxies.</li>
-  <li>The <a href="http://www.graalvm.org/sdk/javadoc/org/graalvm/polyglot/io/package-summary.html">IO Package</a> allows you to customize the file system access of languages.</li>
-</ul>
-
-<p>If you can’t find the answer you need or have a troubleshooting query,
-<a href="/community/">get in touch with us</a>.</p>
-
-              </div>
-    
-              <div role="button" class="menu-btn menu-btn--sidebar js-show-sidebar" title="sweet hamburger">
-                <div class="hamburger"><div class="inner"></div></div>
-              </div>
+            <div role="button" class="menu-btn menu-btn--sidebar js-show-sidebar" title="sweet hamburger">
+              <div class="hamburger"><div class="inner"></div></div>
             </div>
           </div>
         </div>
+      </div>
     </div>
   </div>
-</article>
-
+</section>
 </div>
 
       </main>
