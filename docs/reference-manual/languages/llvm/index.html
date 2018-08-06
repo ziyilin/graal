@@ -749,8 +749,8 @@ Point&lt;3.000000,6.000000&gt;
 Point&lt;17.000000,42.000000&gt;
 </code></pre>
 
-<h2 id="interoperability-with-java">Interoperability with Java </h2>
-<p> <em>Polyglot interoperability protocol</em>, that comes with GraalVM, offers bi-directional
+<h2 id="interoperability-with-java">Interoperability with Java</h2>
+<p><em>Polyglot interoperability protocol</em>, that comes with GraalVM, offers bi-directional
 access between guest languages and host languages.
 As a result, you can call a precompiled source file in LLVM bitcode format directly from Java code.</p>
 
@@ -770,9 +770,9 @@ int main() {
 </code></pre>
 
 <p>This example requires GraalVM home directory to be exported as $GRAALVM_HOME.
-See <a href="https://www.graalvm.org/docs/getting-started/">Get Started</a>. Pre-compile <em>polyglot.c</em> to LLVM bitcode with: </p>
+See <a href="https://www.graalvm.org/docs/getting-started/">Get Started</a>. Pre-compile <em>polyglot.c</em> to LLVM bitcode with:</p>
 
-<pre><code class="language-shell">clang -g -O1 -c -emit-llvm -I$GRAALVM_HOME/jre/languages/llvm polyglot.c 
+<pre><code class="language-shell">clang -g -O1 -c -emit-llvm -I$GRAALVM_HOME/jre/languages/llvm polyglot.c
 </code></pre>
 
 <p>Then compile the Polyglot class below to Java bytecode and run it on GraalVM:</p>
@@ -790,13 +790,24 @@ class Polyglot {
     }
 }
 </code></pre>
-<pre><code class="language-shell"> $ javac Polyglot.java
- $ java HelloWorld
+<pre><code class="language-shell">$ javac Polyglot.java
+$ java HelloWorld
 </code></pre>
 
 <p>See the <a href="/docs/reference-manual/polyglot/">Polyglot Reference</a> and the
 <a href="/docs/graalvm-as-a-platform/embed/">Embedding documentation</a>
 for more information about interoperability with other programming languages.</p>
+
+<h2 id="source-level-debugging">Source-Level Debugging</h2>
+
+<p>You can use <a href="/docs/reference-manual/tools/">GraalVM’s Debugger</a> to debug the program
+you compiled to LLVM bitcode.
+To use this feature, please make sure to compile your program with debug information by specifying the <code>-g</code>
+argument when compiling with <code>clang</code>.
+This gives you the ability to step through the program’s source code and set breakpoints in it.
+To also be able to inspect the local and global variables of your program you may pass
+<code>--llvm.enableLVI=true</code> as argument to <code>lli</code>.
+This option is not enabled per default as it can significantly decrease your program’s run-time performance.</p>
 
 <h2 id="llvm-compatibility">LLVM Compatibility</h2>
 
@@ -831,6 +842,9 @@ search for library dependencies. Paths are delimited by <code>:</code>.</p>
 can contain precompiled native libraries (<code>*.so</code>/<code>*.dylib</code>) and bitcode
 libraries (<code>*.bc</code>). Files with a relative path are looked up relative to
 <code>llvm.libraryPath</code>. Entries are delimited by <code>:</code>.</p>
+
+<p><code>--llvm.enableLVI=&lt;true/false&gt;</code>: enable source-level symbol inspection in the
+debugger. This defaults to <code>false</code> as it can decrease run-time performance.</p>
 
 <p><code>--version</code> prints the version and exit.</p>
 
