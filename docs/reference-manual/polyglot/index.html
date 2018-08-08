@@ -2872,7 +2872,7 @@ $ lli --polyglot --jvm polyglot.bc
 42
 </code></pre>
 
-<h3 id="how-does-polyglot-work">How does Polyglot Work</h3>
+<h3 id="how-does-polyglot-work">How Does Polyglot Work</h3>
 
 <p>In order to provide foreign polyglot values meaning in the languages we have developed the so-called <em>polyglot interoperability protocol</em>.
 This interoperability protocol consists of a set of standardized messages that every Graal language implements and uses for foreign polyglot values.
@@ -2891,12 +2891,12 @@ In <em>Proceedings of the 11th Dynamic Language Symposium (DLS)</em>.</li>
 
 <p>With polyglot applications it is often impossible to decide what the primary language of an application is.
 Therefore, we have added an experimental new launcher called <code>polyglot</code> to GraalVM.
-For the moment, this launcher runs code for JavaScript, Ruby, R, and LLVM without requiring to select a primary language.
+For the moment, this launcher runs code for JavaScript, Ruby, and R without requiring to select a primary language.
 The polyglot launcher does not require the <code>--polyglot</code> option, it is enabled by default.</p>
 
 <p>This is how you can run a polyglot application by using the examples from above:</p>
 
-<pre><code class="language-shell">$ polyglot --jvm polyglot.js polyglot.R polyglot.rb polyglot.bc
+<pre><code class="language-shell">$ polyglot --jvm polyglot.js polyglot.R polyglot.rb
 </code></pre>
 
 <p>We have also included a basic experimental shell for multiple languages called the <em>Polyglot Shell</em>.
