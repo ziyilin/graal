@@ -1095,9 +1095,6 @@ the GraalVM development team or third party developers.</p>
 
     <p>Now, when you open the Monitoring Agent’s page, you can see the virtual machine is running with some
  system information displayed by default.</p>
-
-    <p>For script developers who are interested in more information about
- <code>HelloWorld.js</code>, the following script is available in the <a href="http://www.graalvm.org/truffle/javadoc/index.html?com/oracle/truffle/api/vm/PolyglotEngine.html">Polyglot Engine</a> section.</p>
   </li>
   <li>
     <p>In the Agent window, select <code>Polyglot Engine - 1</code> from the second drop-down
@@ -1145,14 +1142,13 @@ available in <code>--jvm</code> mode only for the GraalVM launchers.</p>
 
 <pre><code>node --jvm --agent HelloWorld.js
 </code></pre>
-
 <p>Then do the following:</p>
 <ol>
   <li>Open Agent and enable <strong>Agent Specializations</strong> from the list of instruments.</li>
+  <li><strong>Start tracing</strong>, using the button below.</li>
   <li>Reload the <code>HelloWorld.js</code> application in your browser.</li>
-  <li>Return to the Agent window and open the <code>HelloWorld.js</code> script.</li>
-  <li>Select <strong>Agent Specializations</strong> from the drop-down box next to the
-<strong>filename</strong> tab.</li>
+  <li>Return to the Agent window and <strong>Stop Tracing</strong>.</li>
+  <li>Open the <code>HelloWorld.js</code> and select <strong>Agent Specializations</strong> from the drop-down box next to the filename tab.</li>
 </ol>
 
 <p>Data such as the following displays specializations of various JavaScript
@@ -1172,7 +1168,7 @@ statements:</p>
 </ul>
 
 <h3 id="starting-graal-visualvm">Starting Graal VisualVM</h3>
-<p>To start Graal VisualVM execute <code>jvisualvm</code>. Immediately after startup the tool shows all locally running Java processes in the Applications area, including the VisualVM process itself.</p>
+<p>To start Graal VisualVM execute <code>jvisualvm</code>. Immediately after the startup, the tool shows all locally running Java processes in the Applications area, including the VisualVM process itself.</p>
 
 <p><strong>NOTE:</strong> Substrate VM processes are only displayed in the Applications area if created by the <code>native-image</code> tool with the <code>-H:+AllowVMInspection</code> flag. Guest language REPL process must be started with the <code>--jvm</code> flag to monitor it using Graal VisualVM.</p>
 

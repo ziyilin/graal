@@ -7,7 +7,7 @@ GraalVM comes with **Graal VisualVM**, an enhanced version of the popular [Visua
  - __R:__ Heap Summary, Objects View
 
 ### Starting Graal VisualVM
-To start Graal VisualVM execute `jvisualvm`. Immediately after startup the tool shows all locally running Java processes in the Applications area, including the VisualVM process itself.
+To start Graal VisualVM execute `jvisualvm`. Immediately after the startup, the tool shows all locally running Java processes in the Applications area, including the VisualVM process itself.
 
 __NOTE:__ Substrate VM processes are only displayed in the Applications area if created by the `native-image` tool with the `-H:+AllowVMInspection` flag. Guest language REPL process must be started with the `--jvm` flag to monitor it using Graal VisualVM.
 

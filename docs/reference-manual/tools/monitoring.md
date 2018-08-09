@@ -74,9 +74,6 @@ Get familiar with using the GraalVM Agent with this Hello World example.
     Now, when you open the Monitoring Agent's page, you can see the virtual machine is running with some
     system information displayed by default.
 
-    For script developers who are interested in more information about
-    `HelloWorld.js`, the following script is available in the [Polyglot Engine](http://www.graalvm.org/truffle/javadoc/index.html?com/oracle/truffle/api/vm/PolyglotEngine.html) section.
-
 4. In the Agent window, select `Polyglot Engine - 1` from the second drop-down
 box at the top. You should see the sources loaded in the Polyglot Engine
 and the available instruments as shown in the following image:
@@ -119,13 +116,12 @@ In this case, you should launch `HelloWorld.js` as follows:
 ```
 node --jvm --agent HelloWorld.js
 ```
-
 Then do the following:
 1. Open Agent and enable **Agent Specializations** from the list of instruments.
-2. Reload the `HelloWorld.js` application in your browser.
-3. Return to the Agent window and open the `HelloWorld.js` script.
-4. Select **Agent Specializations** from the drop-down box next to the
-**filename** tab.
+2. **Start tracing**, using the button below.
+3. Reload the `HelloWorld.js` application in your browser.
+4. Return to the Agent window and **Stop Tracing**.
+5. Open the `HelloWorld.js` and select **Agent Specializations** from the drop-down box next to the filename tab.
 
 Data such as the following displays specializations of various JavaScript
 statements:
