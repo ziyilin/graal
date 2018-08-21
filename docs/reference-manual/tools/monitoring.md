@@ -118,7 +118,7 @@ node --jvm --agent HelloWorld.js
 ```
 Then do the following:
 1. Open Agent and enable **Agent Specializations** from the list of instruments.
-2. **Start tracing**, using the button below.
+2. **Start Tracing**, using the button below.
 3. Reload the `HelloWorld.js` application in your browser.
 4. Return to the Agent window and **Stop Tracing**.
 5. Open the `HelloWorld.js` and select **Agent Specializations** from the drop-down box next to the filename tab.

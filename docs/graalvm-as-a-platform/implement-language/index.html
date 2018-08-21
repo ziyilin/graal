@@ -527,7 +527,7 @@ as an example.</p>
 <p>NetBeans provides GUI support for debugging arbitrary languages. In order to upload SimpleLanguage to NetBeans interface, proceed to File -&gt; Open Project -&gt; select <code>simplelanguage</code> folder -&gt; check “Open Required Projects” -&gt; open Project.</p>
 
 <h3 id="intellij-idea">IntelliJ IDEA</h3>
-<p>SimpleLanguage project has been tested with IntelliJ IDEA 2016.3.4. Open IntelliJ IDEA and, from the main menu bar, select  File -&gt; New -&gt; Project from existing Sources -&gt; Select <code>simplelanguage</code> folder -&gt; Check “Create module groups for multi-module Maven projects” -&gt; Finish.  All dependencies will be included automatically.</p>
+<p>SimpleLanguage project has been tested with IntelliJ IDEA 2018.2. Open IntelliJ IDEA and, from the main menu bar, select  File -&gt; Open -&gt; Navigate to and select the <code>simplelanguage</code> folder -&gt; Press “OK”.  All dependencies will be included automatically.</p>
 
 <h2 id="running">Running</h2>
 <p>To run a SimpleLanguage source file, execute</p>
@@ -598,7 +598,7 @@ user    0m0.000s
 sys     0m0.000s
 </code></pre>
 
-<p>This snipped shows a timed execution of a “Hello World” program using the sl
+<p>This snippet shows a timed execution of a “Hello World” program using the sl
 launcher script, which runs SimpleLanguage on GraalVM, and using the native
 image. We can see that when running on GraalVM the execution takes 405ms. Since
 our SimpleLanguage program does just one print statement, we can conclude that
