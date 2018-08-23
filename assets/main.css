@@ -4798,7 +4798,7 @@ p {
   display: block !important; }
 
 strong {
-  font-weight: 600; }
+  font-weight: 599; }
 
 .link-main {
   display: inline-block;
@@ -5374,6 +5374,10 @@ input[type='submit'] {
     @media (min-width: 768px) {
       .menu__item {
         margin: 0 17px; } }
+    .menu__item .github-widget {
+      position: relative;
+      top: 3px !important;
+      left: -4px; }
   .menu__logo {
     padding: 25px 15px;
     background-color: #ffffff; }
@@ -5423,7 +5427,7 @@ input[type='submit'] {
 
 .home-banner {
   position: relative;
-  height: 62vh;
+  height: 77vh;
   display: flex;
   align-items: center;
   background-color: #02677d;
@@ -5435,28 +5439,39 @@ input[type='submit'] {
     content: "";
     left: 0;
     right: 0;
-    top: 63%;
+    top: 0;
     margin: 0 auto;
-    width: 100%;
+    width: 1440px;
     height: 100%;
-    background-image: url("/resources/img/unite.svg");
+    background-image: url("/resources/img/back-03-03-03.svg");
     background-repeat: no-repeat;
-    background-position-y: 50%;
     background-size: contain;
-    z-index: -1;
-    transform: translateY(-50%); }
+    z-index: -1; }
+  @media (min-width: 768px) {
+    .home-banner {
+      height: 62vh; } }
   .home-banner__content {
     max-width: 950px;
     margin: 0 auto;
     padding: 0 15px;
-    width: 100%; }
+    width: 100%;
+    position: relative; }
     @media (min-width: 768px) {
       .home-banner__content {
         text-align: left; } }
     .home-banner__content p {
+      text-align: left;
       margin-bottom: 35px;
       color: rgba(255, 255, 255, 0.8);
       font-size: 24px; }
+  .home-banner__video {
+    display: none; }
+    @media (min-width: 768px) {
+      .home-banner__video {
+        position: absolute;
+        display: block;
+        right: 0;
+        top: -50%; } }
   .home-banner__logo {
     margin-top: 0; }
 

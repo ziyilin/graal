@@ -144,7 +144,7 @@
   <nav class="menu">
     <div class="menu__logo">
       <a href="/">
-        <img src="/resources/img/logo-colored.svg" alt="graalvm_logo">
+        <img src="/resources/img/logo-colored.svg" alt="">
       </a>
     </div>
 
@@ -176,13 +176,20 @@
 
        
       <li class="menu__item">
-        <a class="menu__link menu__link--iconed" href="https://twitter.com/graalvm" aria-label="twitter">
+        <a class="menu__link menu__link--iconed" href="https://twitter.com/graalvm">
           <svg class="icon icon-social-network"><use xlink:href="#icon-social-network"></use></svg>
         </a>
 
-        <a class="menu__link menu__link--iconed" href="https://github.com/oracle/graal" aria-label="github">
+        <a class="menu__link menu__link--iconed" href="https://github.com/oracle/graal">
           <svg class="icon icon-github-sign"><use xlink:href="#icon-github-sign"></use></svg>
         </a>
+      </li>
+
+      <li class="menu__item">
+        <span class="github-widget">
+          <!-- Place this tag where you want the button to render. -->
+          <a class="github-button" href="https://github.com/oracle/graal" data-icon="octicon-star" data-show-count="true" aria-label="Star oracle/graal on GitHub">Star</a>
+        </span>
       </li>
 
       <li class="menu__item">
@@ -211,6 +218,13 @@
       <a href='/docs/why-graal/' class="btn btn-primary">WHY GRAALVM</a>
       <a href='/docs/getting-started/' class="btn btn-secondary">GET STARTED</a>
     </div>
+
+    <div class="home-banner__video">
+      <video width="450" height="450" id="banner-video" playsinline autoplay muted>
+        <source src="/resources/img/banner-illustration.webm" type="video/webm">
+        Your browser does not support the video tag.
+      </video>
+    </div>
   </div>
 </div>
 
@@ -228,7 +242,7 @@
           <div class="col-sm-6">
             <p>
               GraalVM is a universal virtual machine for running applications written in
-              JavaScript, Python, Ruby, R, JVM-based languages
+              JavaScript, Python 3, Ruby, R, JVM-based languages
               like Java, Scala, Kotlin, and LLVM-based languages such as C and C++.
             </p>
             <p>

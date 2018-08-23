@@ -144,7 +144,7 @@
   <nav class="menu">
     <div class="menu__logo">
       <a href="/">
-        <img src="/resources/img/logo-colored.svg" alt="graalvm_logo">
+        <img src="/resources/img/logo-colored.svg" alt="">
       </a>
     </div>
 
@@ -176,13 +176,20 @@
 
        
       <li class="menu__item">
-        <a class="menu__link menu__link--iconed" href="https://twitter.com/graalvm" aria-label="twitter">
+        <a class="menu__link menu__link--iconed" href="https://twitter.com/graalvm">
           <svg class="icon icon-social-network"><use xlink:href="#icon-social-network"></use></svg>
         </a>
 
-        <a class="menu__link menu__link--iconed" href="https://github.com/oracle/graal" aria-label="github">
+        <a class="menu__link menu__link--iconed" href="https://github.com/oracle/graal">
           <svg class="icon icon-github-sign"><use xlink:href="#icon-github-sign"></use></svg>
         </a>
+      </li>
+
+      <li class="menu__item">
+        <span class="github-widget">
+          <!-- Place this tag where you want the button to render. -->
+          <a class="github-button" href="https://github.com/oracle/graal" data-icon="octicon-star" data-show-count="true" aria-label="Star oracle/graal on GitHub">Star</a>
+        </span>
       </li>
 
       <li class="menu__item">
@@ -598,7 +605,7 @@ user    0m0.000s
 sys     0m0.000s
 </code></pre>
 
-<p>This snippet shows a timed execution of a “Hello World” program using the sl
+<p>This snipped shows a timed execution of a “Hello World” program using the sl
 launcher script, which runs SimpleLanguage on GraalVM, and using the native
 image. We can see that when running on GraalVM the execution takes 405ms. Since
 our SimpleLanguage program does just one print statement, we can conclude that
