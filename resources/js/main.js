@@ -295,6 +295,25 @@ $(document).ready(function() {
       element.nextUntil("h3").slideToggle();
     }
   }
+
+  // (function() {
+  //   var video = $("#js-video");
+  //   video.width(450);
+  //   video.height(450);
+  //   var largeScreenRes = 1600;
+  //
+  //   $(window).on('resize', function() {
+  //     var windowWidth = $(window).innerWidth();
+  //     if (windowWidth >= largeScreenRes) {
+  //       video.width(650);
+  //       video.height(650);
+  //       console.log(windowWidth);
+  //     } else {
+  //       video.width(450);
+  //       video.height(450);
+  //     }
+  //   });
+  // })();
 });
 
 
@@ -443,3 +462,14 @@ function clearResults() {
 }
 
 clearResults();
+
+var safVideo = document.getElementById('js-safary-video');
+var defVideo = document.getElementById('js-def-video');
+
+if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
+  defVideo.style.display = 'none';
+  safVideo.style.display = 'block';
+} else {
+  safVideo.style.display = "none";
+  defVideo.style.display = 'block';
+}

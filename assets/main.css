@@ -4765,8 +4765,7 @@ li > ol {
   margin-bottom: 0; }
 .docs-content li {
   font-size: 1em;
-  margin-bottom: 7px;
-  text-align: justify; }
+  margin-bottom: 7px; }
   .docs-content li:last-of-type {
     margin-bottom: 0; }
 
@@ -4786,8 +4785,7 @@ p {
   font-size: 1em;
   line-height: 1.8;
   color: #44505f;
-  margin-bottom: 15px;
-  text-align: justify; }
+  margin-bottom: 15px; }
   @media (min-width: 768px) {
     p {
       margin-bottom: 25px; } }
@@ -4798,7 +4796,7 @@ p {
   display: block !important; }
 
 strong {
-  font-weight: 599; }
+  font-weight: 600; }
 
 .link-main {
   display: inline-block;
@@ -5450,6 +5448,9 @@ input[type='submit'] {
   @media (min-width: 768px) {
     .home-banner {
       height: 62vh; } }
+  @media (min-width: 1921px) {
+    .home-banner {
+      height: 90vh; } }
   .home-banner__content {
     max-width: 950px;
     margin: 0 auto;
@@ -5464,14 +5465,33 @@ input[type='submit'] {
       margin-bottom: 35px;
       color: rgba(255, 255, 255, 0.8);
       font-size: 24px; }
-  .home-banner__video {
-    display: none; }
-    @media (min-width: 768px) {
-      .home-banner__video {
-        position: absolute;
-        display: block;
-        right: 0;
-        top: -50%; } }
+  @media (max-width: 767.98px) {
+    .home-banner__video {
+      display: none !important; } }
+  @media (min-width: 768px) {
+    .home-banner__video {
+      position: absolute;
+      display: block;
+      right: 0;
+      top: -50%; } }
+  @media (min-width: 1600px) {
+    .home-banner__video {
+      top: -70%; } }
+  @media (min-width: 1921px) {
+    .home-banner__video {
+      right: -125px;
+      top: -75%; } }
+  .home-banner__video__source {
+    width: 450px;
+    height: 450px; }
+    @media (min-width: 1600px) {
+      .home-banner__video__source {
+        width: 550px;
+        height: 550px; } }
+    @media (min-width: 1921px) {
+      .home-banner__video__source {
+        width: 650px;
+        height: 650px; } }
   .home-banner__logo {
     margin-top: 0; }
 
@@ -5634,8 +5654,7 @@ input[type='submit'] {
       font-size: 15px;
       font-weight: 400;
       line-height: 22px;
-      margin-bottom: 12px;
-      text-align: center; }
+      margin-bottom: 12px; }
 
 .vlog__title {
   color: #44505f;
@@ -5732,8 +5751,7 @@ input[type='submit'] {
   .toc-bullets li {
     font-size: 0.8rem;
     list-style-type: none;
-    padding-left: 0;
-    text-align: left; }
+    padding-left: 0; }
     .toc-bullets li:before {
       display: none; }
     .toc-bullets li a {
@@ -6026,9 +6044,6 @@ table {
 .alert-danger {
   background-color: #FEFFE8;
   border-color: #f7efe6; }
-
-.alert-danger li {
-  color: #44505f; }
 
 /* Tomorrow Night Eighties Theme */
 /* Original theme - https://github.com/chriskempson/tomorrow-theme */
