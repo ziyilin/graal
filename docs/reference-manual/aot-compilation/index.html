@@ -596,7 +596,10 @@ help to search for class files through separated list of directories, JAR archiv
     <p><code>--shared</code>  builds shared library;</p>
   </li>
   <li>
-    <p><code>--static</code>  builds statically linked executable (requires static libc and zlib) (since 1.0.0-rc2)</p>
+    <p><code>--static</code>  builds statically linked executable (requires static libc and zlib) (since 1.0-rc2)</p>
+  </li>
+  <li>
+    <p><code>--delay-class-initialization-to-runtime=&lt;comma separate list of class names&gt;</code> delays class initialization to runtime for given classes and their subclasses (since 1.0-rc6)</p>
   </li>
   <li>
     <p><code>-D&lt;name&gt;=&lt;value&gt;</code>  sets a system property</p>
