@@ -463,6 +463,80 @@ $(document).ready(function(){
 
 <p>On this page, we would like to highlight the most important changes in the <strong>GraalVM</strong> releases. There are different components to GraalVM, so we highlight the changes to these separately.</p>
 
+<h2 id="10-rc6">1.0-RC6</h2>
+
+<p><strong>KNOWN ISSUES</strong></p>
+
+<ul>
+  <li>The GraalVM CE image for MacOS currently depends on some libraries that are not installed by default on current MacOS versions.
+This might cause issues with UI-related functionality:
+    <pre><code>Library not loaded: /usr/X11/lib/libfreetype.6.dylib
+</code></pre>
+    <p>The necessary components can be added, e.g., by installing <a href="https://www.xquartz.org">https://www.xquartz.org</a>. We will remove this dependency in upcoming versions of GraalVM CE for MacOS.</p>
+  </li>
+  <li>Note that due do the issue with the underlying platform Java Mission Control freezes at startup on MacOS. Because of that we removed the <code>jmc</code> utility from the distribution. For more information and workarounds please see the <a href="https://www.oracle.com/technetwork/java/javase/jmc55-release-notes-2412446.html#known-iss">JMC known issues page</a>.</li>
+</ul>
+
+<h3 id="graalvm-for-java-developers-graalvm--compiler">GraalVM for Java developers (GraalVM + compiler)</h3>
+
+<ul>
+  <li>New optimization to remove unnecessary allocation in some calls to <code>Enum.values()</code>.  See <a href="https://github.com/oracle/graal/issues/574">calls to Enum.values() don’t optimise away as expected</a> for the details.</li>
+</ul>
+
+<h3 id="native-image-generation">Native image generation</h3>
+
+<ul>
+  <li>Delay class initialization to runtime: By default, all classes that are seen as reachable for a native image are initialized during image building, i.e., the class initialization method is executed during image building and is not seen as a reachable method at runtime. But for some classes, it is necessary to execute the class initialization method at runtime. This is now possible using the new option <code>--delay-class-initialization-to-runtime=&lt;comma separate list of class names&gt;</code> or using the new API class <a href="http://www.graalvm.org/sdk/javadoc/org/graalvm/nativeimage/RuntimeClassInitialization.html">RuntimeClassInitialization</a>.</li>
+  <li>Direct byte buffer are no longer allowed in the image heap: We added a new verification during image generation to ensure that no direct or mapped byte buffers (<code>MappedByteBuffer</code> instances) are in the image heap. Such buffers have either a pointer to C memory or reference a file descriptor, i.e., native resources that are available during image generation but no longer at image runtime. Using such a buffer would lead to a segfault at runtime. We discovered this issue because Netty has a few direct buffers that are created in class initializers. It is necessary to delay the initialization of such classes to runtime.</li>
+  <li>Better automatic discovery of classes, methods, and fields accessed via reflection. When String parameters of <code>Class.forName</code>, <code>Class.getMethod</code>, <code>Class.getField</code>, and other similar classes can be constant folded during image generation, then these classes, methods, and fields are automatically registered for reflection usage and do not need to be registered manually on the command line. Constant String parameters are a common pattern to support, e.g., different JDK versions or different library versions where a class, method, or field is not present in all cases and therefore cannot be used directly.</li>
+</ul>
+
+<h3 id="llvm-interpreter-sulong">LLVM interpreter (Sulong)</h3>
+
+<p>The full <a href="https://github.com/graalvm/sulong/blob/master/CHANGELOG.md">changelog</a>
+is available on GitHub.</p>
+
+<ul>
+  <li>Support for LLVM IR-level debugging, i.e., debugging at the level of <code>*.ll</code> instead of <code>*.c</code> files.</li>
+  <li>New polyglot cast functions for primitive array types, which allows object from other languages to be used like primitive arrays.</li>
+  <li>Support for function pointer members in <code>polyglot_as_typed</code>, which allows objects from other languages to be used in expressions like <code>obj-&gt;func(args)</code>.</li>
+</ul>
+
+<h3 id="python">Python</h3>
+
+<p>The full <a href="https://github.com/graalvm/graalpython/blob/master/CHANGELOG.md">changelog</a> is available on GitHub.</p>
+
+<ul>
+  <li>Improved compatibility with regular expressions by including CPython’s sre module as a fallback engine (in addition to Truffle’s regular expression engine).</li>
+  <li>C extension modules can now be compiled with LLVM 5+, which was prevented by internal incompatibilities before.</li>
+  <li>Introduced lazy string concatenation to significantly speed up code patterns that repeatedly concatenated strings.</li>
+  <li>Numerous C-API improvements to extend support for scikit-learn.</li>
+  <li>Extensions and fixes in various areas: behavior of function and code objects, collections, exception handling during import, type ids, documentation and generators.</li>
+  <li>Update standard library to CPython 3.6.5.</li>
+  <li>Enable reuse of ASTs in multiple Contexts (requires the contexts to be created in the same polyglot Engine).</li>
+</ul>
+
+<h3 id="r">R</h3>
+
+<p>The full <a href="https://github.com/oracle/fastr/blob/master/CHANGELOG.md">changelog</a>
+is available on GitHub.</p>
+
+<ul>
+  <li>Support for reading/writing graphical parameters via <code>par</code>.</li>
+  <li>Added numerous builtins to the C API, enabling support for packages like RCurl, rjson, compare, naivebayes, etc.</li>
+  <li>Added support for formulas that include <code>...</code>.</li>
+  <li>Various bug fixes: attributes of <code>NULL</code> objects, of <code>CR/LF</code> handling in readLine, <code>La_chol</code> with pivot, warnings/errors in vector coercion.</li>
+</ul>
+
+<h3 id="api-changes-for-graalvm-integrators-sdk--truffle">API changes for GraalVM integrators (SDK + Truffle)</h3>
+
+<p>To see the list of changes to the APIs please refer to the project changelogs:</p>
+
+<ul>
+  <li><a href="https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md">Graal SDK changelog</a></li>
+  <li><a href="https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md">Truffle changelog</a></li>
+</ul>
+
 <h2 id="10-rc5">1.0-RC5</h2>
 
 <p>GraalVM 1.0-rc5 is the first release where we provide <strong>pre-built binaries for GraalVM CE on macOS</strong>. As always all binaries are available from the <a href="/downloads">downloads page</a>.</p>
@@ -478,13 +552,13 @@ This might cause issues with UI-related functionality:
   </li>
 </ul>
 
-<h3 id="graalvm-for-java-developers-graalvm--compiler">GraalVM for Java developers (GraalVM + compiler)</h3>
+<h3 id="graalvm-for-java-developers-graalvm--compiler-1">GraalVM for Java developers (GraalVM + compiler)</h3>
 
 <ul>
   <li>1.0-RC5 includes JVMCI changes necessary to support compiling Graal ahead of time and deploying as a shared library alongside <code>libjvm.so</code> (i.e., libgraal). Note that the implementation of <em>libgraal</em> itself is not a part of this release as it is still under development.</li>
 </ul>
 
-<h3 id="native-image-generation">Native image generation</h3>
+<h3 id="native-image-generation-1">Native image generation</h3>
 
 <ul>
   <li>Added API that allows an application to distinguish between native image building, native image runtime, and regular Java execution. For more information and documentation, look at the class  <a href="https://github.com/oracle/graal/blob/master/sdk/src/org.graalvm.nativeimage/src/org/graalvm/nativeimage/ImageInfo.java">ImageInfo</a>.</li>
@@ -512,7 +586,7 @@ This might cause issues with UI-related functionality:
   <li>The custom log levels <code>PERFORMANCE</code> and <code>PATCH</code> have been removed.</li>
 </ul>
 
-<h3 id="python">Python</h3>
+<h3 id="python-1">Python</h3>
 
 <ul>
   <li>Generator expressions now properly evaluate their first iterator in the definition scope at definition time.</li>
@@ -523,7 +597,7 @@ This might cause issues with UI-related functionality:
 
 <p>Full changelog is available on GitHub <a href="https://github.com/graalvm/graalpython/blob/master/CHANGELOG.md">CHANGELOG.md</a></p>
 
-<h3 id="r">R</h3>
+<h3 id="r-1">R</h3>
 
 <p>See <a href="https://github.com/oracle/fastr/blob/master/CHANGELOG.md">CHANGELOG</a> for a complete list.</p>
 
@@ -588,14 +662,14 @@ This might cause issues with UI-related functionality:
 
 <h2 id="10-rc3">1.0-RC3</h2>
 
-<h3 id="graalvm-for-java-developers-graalvm--compiler-1">GraalVM for Java developers (GraalVM + compiler)</h3>
+<h3 id="graalvm-for-java-developers-graalvm--compiler-2">GraalVM for Java developers (GraalVM + compiler)</h3>
 
 <ul>
   <li>Updated the underlying JDK version to “1.8.0_172” from “1.8.0_171”. You can find the JDK release notes at the <a href="http://www.oracle.com/technetwork/java/javase/8u172-relnotes-4308893.html">Oracle Technology Network</a> website.</li>
   <li>Fixed a rare NullPointerException during JVMCI initialization.</li>
 </ul>
 
-<h3 id="native-image-generation-1">Native image generation</h3>
+<h3 id="native-image-generation-2">Native image generation</h3>
 
 <ul>
   <li>Added support for java.lang.reflect.Proxy supporting both automatic detection and manual configuration. Please refer to <a href="https://github.com/oracle/graal/blob/master/substratevm/DYNAMIC_PROXY.md">the documentation on GitHub</a> for the details.</li>
@@ -628,7 +702,7 @@ This might cause issues with UI-related functionality:
 
 <p>Additionally, we implemented a number of performance improvements for stat()-related calls, eval(), String substitutions, reading from IO and more.</p>
 
-<h3 id="python-1">Python</h3>
+<h3 id="python-2">Python</h3>
 
 <p>GraalVM Python implementation is still in the early stages, but we’re making progress towards the goal of running applications which use SciPy.</p>
 
@@ -642,7 +716,7 @@ This might cause issues with UI-related functionality:
 
 <p>More details are available in <a href="https://github.com/graalvm/graalpython/blob/master/CHANGELOG.md">the project’s changelog</a> on GitHub.</p>
 
-<h3 id="r-1">R</h3>
+<h3 id="r-2">R</h3>
 
 <ul>
   <li>Added more missing R builtins and C API functions, see <a href="https://github.com/oracle/fastr/blob/master/CHANGELOG.md">CHANGELOG</a> for a complete list.</li>
@@ -702,7 +776,7 @@ This might cause issues with UI-related functionality:
   <li>Fixed a <a href="https://github.com/oracle/graal/issues/423">compiler error</a> causing incorrect code generation while building the scalac compiler.</li>
 </ul>
 
-<h3 id="native-image-generation-2">Native image generation</h3>
+<h3 id="native-image-generation-3">Native image generation</h3>
 
 <ul>
   <li>Added support for building statically linked native images. Now you can pass <code>--static</code>, and if you have static libc and zlib installed, it generates a standalone executable that won’t require libc for running.</li>
@@ -770,7 +844,7 @@ int main() {
 
 <p>Much more details can be found in the full <a href="https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md">changelog</a>.</p>
 
-<h3 id="r-2">R</h3>
+<h3 id="r-3">R</h3>
 
 <p>Among the other changes, we improved the stability of GraalVM’s R implementation.</p>
 
@@ -779,7 +853,7 @@ int main() {
   <li>The fastr_errors.log file was renamed to fastr_errors_pidXYZ.log and is stored in either initial working directory, the user home directory, /tmp, or the FastR home directory (picking the first location that is writeable). Please add it to the bug reports if you submit issues, thank you!</li>
 </ul>
 
-<h3 id="python-2">Python</h3>
+<h3 id="python-3">Python</h3>
 
 <ul>
   <li>Added support for the Python <a href="https://docs.python.org/3/library/unittest.html">unittest</a> framework.</li>
