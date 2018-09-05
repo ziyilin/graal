@@ -9,9 +9,9 @@
 ### Native image generation
 
 * Added support for java.lang.reflect.Proxy supporting both automatic detection and manual configuration. Please refer to [the documentation on GitHub](https://github.com/oracle/graal/blob/master/substratevm/DYNAMIC_PROXY.md) for the details.
-* Added support for Classloader.getResource() and similar methods.
-* Added support for loading services through theServiceLoader.
-* Fixed a ClassCastException on generating native images for profile-guided-optimizations (with the--pgo-instrument command line option).
+* Added support for `Classloader.getResource()` and similar methods.
+* Added support for loading services through `theServiceLoader`.
+* Fixed a `ClassCastException` on generating native images for profile-guided-optimizations (with the `--pgo-instrument` command line option).
 
 ### JavaScript
 
@@ -26,12 +26,12 @@ More details can be found in the [project changelog on GitHub](https://github.co
 
 The full [changelog is available](https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md) in the GitHub repository, but here are some of the most notable changes.
 
-* Added ability to call is_a? on foreign objects.
+* Added ability to call `is_a?` on foreign objects.
 * Fixed: Qnil/Qtrue/Qfalse/Qundef can now be used as initial value for global variables in C extensions.
-* Fixed: SIGPIPE is correctly caught on SubstrateVM, and the corresponding write() raises Errno::EPIPE when the read end of a pipe or socket is closed.
-* Fixed determining the source encoding for eval() based on the magic encoding comment.
+* Fixed: SIGPIPE is correctly caught on SubstrateVM, and the corresponding `write()` raises `Errno::EPIPE` when the read end of a pipe or socket is closed.
+* Fixed determining the source encoding for `eval()` based on the magic encoding comment.
 
-Additionally, we implemented a number of performance improvements for stat()-related calls, eval(), String substitutions, reading from IO and more.
+Additionally, we implemented a number of performance improvements for `stat()` related calls, `eval()`, String substitutions, reading from IO and more.
 
 ### Python
 
@@ -48,14 +48,14 @@ More details are available in [the project’s changelog](https://github.com/gra
 ### R
 
 * Added more missing R builtins and C API functions, see [CHANGELOG](https://github.com/oracle/fastr/blob/master/CHANGELOG.md) for a complete list.
-* Simplified installation, the script that configures FastR for the current system jre/languages/R/bin/configure_fastr does not require Autotools anymore.
-* Added configuration files to allow users to build a native image of the FastR runtime, which reduces the startup time. Run jre/languages/R/bin/install_r_native_image to build the image.
+* Simplified installation, the script that configures FastR for the current system  `jre/languages/R/bin/configure_fastr` does not require Autotools anymore.
+* Added configuration files to allow users to build a native image of the FastR runtime, which reduces the startup time. Run `jre/languages/R/bin/install_r_native_image` to build the image.
 * Fixed an issue with the plotting window not displaying anything after it was closed and reopened.
 
 ### LLVM interpreter for C/C++ & other native languages
 
-* New builtins polyglot_from_typed and polyglot_as_typed, which can be used to dynamically attach types to polyglot objects.
-* Implementers of TruffleObject can now respond to the GetDynamicType message to provide a type when an object is accessed from LLVM code.
+* New builtins _polyglot_from_typed_ and _polyglot_as_typed_, which can be used to dynamically attach types to polyglot objects.
+* Implementers of TruffleObject can now respond to the `GetDynamicType` message to provide a type when an object is accessed from LLVM code.
 
 More details are available in [the project changelog](https://github.com/graalvm/sulong/blob/master/CHANGELOG.md).
 

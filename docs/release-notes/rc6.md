@@ -10,7 +10,7 @@ Library not loaded: /usr/X11/lib/libfreetype.6.dylib
 ```
 The necessary components can be added, e.g., by installing [https://www.xquartz.org](https://www.xquartz.org). We will remove this dependency in upcoming versions of GraalVM CE for MacOS.
 
-* Note that due do the issue with the underlying platform Java Mission Control freezes at startup on MacOS. Because of that we removed the `jmc` utility from the distribution. For more information and workarounds please see the [JMC known issues page](https://www.oracle.com/technetwork/java/javase/jmc55-release-notes-2412446.html#known-iss).
+* Note that due do the issue with the underlying platform Java Mission Control (`jmc`) freezes at startup on MacOS. For more information and workarounds please see the [JMC known issues page](https://www.oracle.com/technetwork/java/javase/jmc55-release-notes-2412446.html#known-iss).
 
 ### GraalVM for Java developers (GraalVM + compiler)
 
@@ -30,6 +30,17 @@ is available on GitHub.
 * Support for LLVM IR-level debugging, i.e., debugging at the level of `*.ll` instead of `*.c` files.
 * New polyglot cast functions for primitive array types, which allows object from other languages to be used like primitive arrays.
 * Support for function pointer members in `polyglot_as_typed`, which allows objects from other languages to be used in expressions like `obj->func(args)`.
+
+### Ruby
+The complete [changelog](https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md) is available on GitHub. Here is a short list of most notable changes.
+
+* TruffleRuby is now usable as a JSR 223 (`javax.script`) language;
+* A [migration guide from JRuby](https://github.com/oracle/truffleruby/blob/master/doc/user/jruby-migration.md) is now included.
+* The embedded configuration `-Xembedded` can now be set set on the launcher command line.
+* `Polyglot.export` can now be used with primitives and converts strings to Java, when `Polyglot.import` converts them from Java.
+* Foreign objects optimisations such as unboxing foreign strings on `to_s`, `to_str`, and `inspect`.
+* Optimized performance and keyword rest arguments `(def foo(**kwrest))`.
+* Multiple bug fixes from user reports.
 
 ### Python
 

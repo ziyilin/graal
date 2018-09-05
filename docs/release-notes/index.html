@@ -474,7 +474,7 @@ This might cause issues with UI-related functionality:
 </code></pre>
     <p>The necessary components can be added, e.g., by installing <a href="https://www.xquartz.org">https://www.xquartz.org</a>. We will remove this dependency in upcoming versions of GraalVM CE for MacOS.</p>
   </li>
-  <li>Note that due do the issue with the underlying platform Java Mission Control freezes at startup on MacOS. Because of that we removed the <code>jmc</code> utility from the distribution. For more information and workarounds please see the <a href="https://www.oracle.com/technetwork/java/javase/jmc55-release-notes-2412446.html#known-iss">JMC known issues page</a>.</li>
+  <li>Note that due do the issue with the underlying platform Java Mission Control (<code>jmc</code>) freezes at startup on MacOS. For more information and workarounds please see the <a href="https://www.oracle.com/technetwork/java/javase/jmc55-release-notes-2412446.html#known-iss">JMC known issues page</a>.</li>
 </ul>
 
 <h3 id="graalvm-for-java-developers-graalvm--compiler">GraalVM for Java developers (GraalVM + compiler)</h3>
@@ -500,6 +500,19 @@ is available on GitHub.</p>
   <li>Support for LLVM IR-level debugging, i.e., debugging at the level of <code>*.ll</code> instead of <code>*.c</code> files.</li>
   <li>New polyglot cast functions for primitive array types, which allows object from other languages to be used like primitive arrays.</li>
   <li>Support for function pointer members in <code>polyglot_as_typed</code>, which allows objects from other languages to be used in expressions like <code>obj-&gt;func(args)</code>.</li>
+</ul>
+
+<h3 id="ruby">Ruby</h3>
+<p>The complete <a href="https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md">changelog</a> is available on GitHub. Here is a short list of most notable changes.</p>
+
+<ul>
+  <li>TruffleRuby is now usable as a JSR 223 (<code>javax.script</code>) language;</li>
+  <li>A <a href="https://github.com/oracle/truffleruby/blob/master/doc/user/jruby-migration.md">migration guide from JRuby</a> is now included.</li>
+  <li>The embedded configuration <code>-Xembedded</code> can now be set set on the launcher command line.</li>
+  <li><code>Polyglot.export</code> can now be used with primitives and converts strings to Java, when <code>Polyglot.import</code> converts them from Java.</li>
+  <li>Foreign objects optimisations such as unboxing foreign strings on <code>to_s</code>, <code>to_str</code>, and <code>inspect</code>.</li>
+  <li>Optimized performance and keyword rest arguments <code>(def foo(**kwrest))</code>.</li>
+  <li>Multiple bug fixes from user reports.</li>
 </ul>
 
 <h3 id="python">Python</h3>
@@ -574,7 +587,7 @@ This might cause issues with UI-related functionality:
 
 <p>More details can be found in the <a href="https://github.com/graalvm/graaljs/blob/master/CHANGELOG.md">project changelog on GitHub</a>.</p>
 
-<h3 id="ruby">Ruby</h3>
+<h3 id="ruby-1">Ruby</h3>
 <p>The full <a href="https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md">changelog is available</a> in the GitHub repository, but here are some of the most notable changes.</p>
 
 <ul>
@@ -673,9 +686,9 @@ This might cause issues with UI-related functionality:
 
 <ul>
   <li>Added support for java.lang.reflect.Proxy supporting both automatic detection and manual configuration. Please refer to <a href="https://github.com/oracle/graal/blob/master/substratevm/DYNAMIC_PROXY.md">the documentation on GitHub</a> for the details.</li>
-  <li>Added support for Classloader.getResource() and similar methods.</li>
-  <li>Added support for loading services through theServiceLoader.</li>
-  <li>Fixed a ClassCastException on generating native images for profile-guided-optimizations (with the–pgo-instrument command line option).</li>
+  <li>Added support for <code>Classloader.getResource()</code> and similar methods.</li>
+  <li>Added support for loading services through <code>theServiceLoader</code>.</li>
+  <li>Fixed a <code>ClassCastException</code> on generating native images for profile-guided-optimizations (with the <code>--pgo-instrument</code> command line option).</li>
 </ul>
 
 <h3 id="javascript-2">JavaScript</h3>
@@ -689,18 +702,18 @@ This might cause issues with UI-related functionality:
 
 <p>More details can be found in the <a href="https://github.com/graalvm/graaljs/blob/master/CHANGELOG.md">project changelog on GitHub</a>.</p>
 
-<h3 id="ruby-1">Ruby</h3>
+<h3 id="ruby-2">Ruby</h3>
 
 <p>The full <a href="https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md">changelog is available</a> in the GitHub repository, but here are some of the most notable changes.</p>
 
 <ul>
-  <li>Added ability to call is_a? on foreign objects.</li>
+  <li>Added ability to call <code>is_a?</code> on foreign objects.</li>
   <li>Fixed: Qnil/Qtrue/Qfalse/Qundef can now be used as initial value for global variables in C extensions.</li>
-  <li>Fixed: SIGPIPE is correctly caught on SubstrateVM, and the corresponding write() raises Errno::EPIPE when the read end of a pipe or socket is closed.</li>
-  <li>Fixed determining the source encoding for eval() based on the magic encoding comment.</li>
+  <li>Fixed: SIGPIPE is correctly caught on SubstrateVM, and the corresponding <code>write()</code> raises <code>Errno::EPIPE</code> when the read end of a pipe or socket is closed.</li>
+  <li>Fixed determining the source encoding for <code>eval()</code> based on the magic encoding comment.</li>
 </ul>
 
-<p>Additionally, we implemented a number of performance improvements for stat()-related calls, eval(), String substitutions, reading from IO and more.</p>
+<p>Additionally, we implemented a number of performance improvements for <code>stat()</code> related calls, <code>eval()</code>, String substitutions, reading from IO and more.</p>
 
 <h3 id="python-2">Python</h3>
 
@@ -720,16 +733,16 @@ This might cause issues with UI-related functionality:
 
 <ul>
   <li>Added more missing R builtins and C API functions, see <a href="https://github.com/oracle/fastr/blob/master/CHANGELOG.md">CHANGELOG</a> for a complete list.</li>
-  <li>Simplified installation, the script that configures FastR for the current system jre/languages/R/bin/configure_fastr does not require Autotools anymore.</li>
-  <li>Added configuration files to allow users to build a native image of the FastR runtime, which reduces the startup time. Run jre/languages/R/bin/install_r_native_image to build the image.</li>
+  <li>Simplified installation, the script that configures FastR for the current system  <code>jre/languages/R/bin/configure_fastr</code> does not require Autotools anymore.</li>
+  <li>Added configuration files to allow users to build a native image of the FastR runtime, which reduces the startup time. Run <code>jre/languages/R/bin/install_r_native_image</code> to build the image.</li>
   <li>Fixed an issue with the plotting window not displaying anything after it was closed and reopened.</li>
 </ul>
 
 <h3 id="llvm-interpreter-for-cc--other-native-languages-1">LLVM interpreter for C/C++ &amp; other native languages</h3>
 
 <ul>
-  <li>New builtins polyglot_from_typed and polyglot_as_typed, which can be used to dynamically attach types to polyglot objects.</li>
-  <li>Implementers of TruffleObject can now respond to the GetDynamicType message to provide a type when an object is accessed from LLVM code.</li>
+  <li>New builtins <em>polyglot_from_typed</em> and <em>polyglot_as_typed</em>, which can be used to dynamically attach types to polyglot objects.</li>
+  <li>Implementers of TruffleObject can now respond to the <code>GetDynamicType</code> message to provide a type when an object is accessed from LLVM code.</li>
 </ul>
 
 <p>More details are available in <a href="https://github.com/graalvm/sulong/blob/master/CHANGELOG.md">the project changelog</a>.</p>
@@ -779,24 +792,22 @@ This might cause issues with UI-related functionality:
 <h3 id="native-image-generation-3">Native image generation</h3>
 
 <ul>
-  <li>Added support for building statically linked native images. Now you can pass <code>--static</code>, and if you have static libc and zlib installed, it generates a standalone executable that won’t require libc for running.</li>
+  <li>Added support for building statically linked native images. Now you can pass <code>--static</code>, and if you have static libc and zlib installed, it generates a standalone executable that will not require libc for running.</li>
   <li>Added Classpath exception to the license of <a href="https://github.com/oracle/graal/blob/master/substratevm/LICENSE.md">SubstrateVM</a> and the <a href="https://github.com/oracle/graal/blob/master/compiler/LICENSE.md">Graal compiler</a> components to make sure all GraalVM code ending up in a native image is subject to this clause.</li>
-  <li>
-    <p>Fixed the handling of implicit exceptions (NullPointerExeption, ArrayIndexOutOfBoundsException, ClassCastException, …): all exceptions now have correct stack traces and can be caught as expected. Previously, implicit exceptions were sometimes not caught by an exception handler within the same method.</p>
-  </li>
-  <li>Fixed a number of exceptions during the generation of native images that were reported by early adopters. Thank you for the reports on <a href="http://github.com/oracle/graal/issues">GitHub</a> - keep them coming!</li>
+  <li>Fixed the handling of implicit exceptions (NullPointerExeption, ArrayIndexOutOfBoundsException, ClassCastException, …): all exceptions now have correct stack traces and can be caught as expected. Previously, implicit exceptions were sometimes not caught by an exception handler within the same method.</li>
+  <li>Fixed a number of exceptions during the generation of native images that were reported by early adopters.</li>
 </ul>
 
 <h3 id="javascript-3">JavaScript</h3>
 
 <ul>
-  <li>Updated <a href="https://nodejs.org/en/blog/release/v8.11.1/">Node.js to 8.11.1</a> (from 8.9.4), it’s not a breaking change, but it brings numerous improvements, including CVE-listed security fixes.</li>
+  <li>Updated <a href="https://nodejs.org/en/blog/release/v8.11.1/">Node.js to 8.11.1</a> (from 8.9.4), it is not a breaking change, but it brings numerous improvements, including CVE-listed security fixes.</li>
 </ul>
 
 <h3 id="llvm-interpreter-for-cc--other-native-languages-2">LLVM interpreter for C/C++ &amp; other native languages</h3>
 
 <ul>
-  <li>Added a new API for accessing Java types and instantiating foreign objects from LLVM languanges.</li>
+  <li>Added a new API for accessing Java types and instantiating foreign objects from LLVM languages.</li>
 </ul>
 
 <p>Now it is possible to easily call Java code from native programs compiled to the LLVM bitcode. The example below shows how you can access Java’s BigInteger long math operations from C.</p>
@@ -832,14 +843,14 @@ int main() {
 
 <p>A more detailed list of changes to the LLVM interpreter can be found in the <a href="https://github.com/graalvm/sulong/blob/master/CHANGELOG.md">full changelog</a>.</p>
 
-<h3 id="ruby-2">Ruby</h3>
+<h3 id="ruby-3">Ruby</h3>
 
 <ul>
   <li>We are now compatible with Ruby 2.4.4.</li>
   <li>Java.import name imports Java classes as top-level constants.</li>
   <li>Coercion of foreign numbers to Ruby numbers now works.</li>
-  <li>to_s works on all foreign objects and calls the Java toString.</li>
-  <li>to_str will try to UNBOX and then re-try to_str, in order to provoke the unboxing of foreign strings.</li>
+  <li><code>to_s</code> works on all foreign objects and calls the Java <code>toString</code>.</li>
+  <li><code>to_str</code> will try to UNBOX and then re-try <code>to_str</code>, in order to provoke the unboxing of foreign strings.</li>
 </ul>
 
 <p>Much more details can be found in the full <a href="https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md">changelog</a>.</p>
@@ -849,8 +860,8 @@ int main() {
 <p>Among the other changes, we improved the stability of GraalVM’s R implementation.</p>
 
 <ul>
-  <li>Added a./jre/languages/R/bin/configure_fastr script that allows FastR’s native build scripts to adopt to the current system, which makes installing R packages much more stable.</li>
-  <li>The fastr_errors.log file was renamed to fastr_errors_pidXYZ.log and is stored in either initial working directory, the user home directory, /tmp, or the FastR home directory (picking the first location that is writeable). Please add it to the bug reports if you submit issues, thank you!</li>
+  <li>Added a <code>/jre/languages/R/bin/configure_fastr</code> script that allows FastR’s native build scripts to adopt to the current system, which makes installing R packages much more stable.</li>
+  <li>The <em>fastr_errors.log</em> file was renamed to <em>fastr_errors_pidXYZ.log</em> and is stored in either initial working directory, the user home directory, /tmp, or the FastR home directory (picking the first location that is writeable). Please add it to the bug reports if you submit issues.</li>
 </ul>
 
 <h3 id="python-3">Python</h3>
@@ -882,10 +893,10 @@ int main() {
   <li>Fixed the issues with loading polyglot heap dumps</li>
   <li>fixed executing of scripts in R console</li>
   <li>improved recognition of R REPL</li>
-  <li>fixed ‘loop to’ nodes</li>
+  <li>fixed <code>loop to</code> nodes</li>
   <li>fixed memory leak in child nodes</li>
   <li>improved appearance on MacOS</li>
-  <li>A11Y fixes</li>
+  <li>Applicability fixes</li>
   <li>added roots histogram for class</li>
 </ul>
 
@@ -893,8 +904,8 @@ int main() {
 
 <ul>
   <li>The default operation mode changed from “install from local files” to “install from catalog”.</li>
-  <li>-c option for installing from the catalog, can be omitted (installing from the catalog the default), but specifying -c still works.</li>
-  <li>Use -F to install from local files, i.e. bin/gu -F /tmp/ruby-installable.jar.</li>
+  <li><code>-c</code> option for installing from the catalog, can be omitted (installing from the catalog the default), but specifying <code>-c</code> still works.</li>
+  <li>Use <code>-F</code> to install from local files, i.e. <code>bin/gu -F /tmp/ruby-installable.jar</code>.</li>
 </ul>
 
 <h4 id="chrome-inspector-1">Chrome Inspector</h4>

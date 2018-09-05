@@ -8,19 +8,18 @@
 
 ### Native image generation
 
-* Added support for building statically linked native images. Now you can pass `--static`, and if you have static libc and zlib installed, it generates a standalone executable that won’t require libc for running.
+* Added support for building statically linked native images. Now you can pass `--static`, and if you have static libc and zlib installed, it generates a standalone executable that will not require libc for running.
 * Added Classpath exception to the license of [SubstrateVM](https://github.com/oracle/graal/blob/master/substratevm/LICENSE.md) and the [Graal compiler](https://github.com/oracle/graal/blob/master/compiler/LICENSE.md) components to make sure all GraalVM code ending up in a native image is subject to this clause.
 * Fixed the handling of implicit exceptions (NullPointerExeption, ArrayIndexOutOfBoundsException, ClassCastException, …): all exceptions now have correct stack traces and can be caught as expected. Previously, implicit exceptions were sometimes not caught by an exception handler within the same method.
-
-* Fixed a number of exceptions during the generation of native images that were reported by early adopters. Thank you for the reports on [GitHub](http://github.com/oracle/graal/issues) - keep them coming!
+* Fixed a number of exceptions during the generation of native images that were reported by early adopters.
 
 ### JavaScript
 
-* Updated [Node.js to 8.11.1](https://nodejs.org/en/blog/release/v8.11.1/) (from 8.9.4), it’s not a breaking change, but it brings numerous improvements, including CVE-listed security fixes.
+* Updated [Node.js to 8.11.1](https://nodejs.org/en/blog/release/v8.11.1/) (from 8.9.4), it is not a breaking change, but it brings numerous improvements, including CVE-listed security fixes.
 
 ### LLVM interpreter for C/C++ & other native languages
 
-* Added a new API for accessing Java types and instantiating foreign objects from LLVM languanges.
+* Added a new API for accessing Java types and instantiating foreign objects from LLVM languages.
 
 Now it is possible to easily call Java code from native programs compiled to the LLVM bitcode. The example below shows how you can access Java’s BigInteger long math operations from C.
 
@@ -62,8 +61,8 @@ A more detailed list of changes to the LLVM interpreter can be found in the [ful
 * We are now compatible with Ruby 2.4.4.
 * Java.import name imports Java classes as top-level constants.
 * Coercion of foreign numbers to Ruby numbers now works.
-* to_s works on all foreign objects and calls the Java toString.
-* to_str will try to UNBOX and then re-try to_str, in order to provoke the unboxing of foreign strings.
+* `to_s` works on all foreign objects and calls the Java `toString`.
+* `to_str` will try to UNBOX and then re-try `to_str`, in order to provoke the unboxing of foreign strings.
 
 Much more details can be found in the full [changelog](https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md).
 
@@ -71,8 +70,8 @@ Much more details can be found in the full [changelog](https://github.com/oracle
 
 Among the other changes, we improved the stability of GraalVM’s R implementation.
 
-* Added a./jre/languages/R/bin/configure_fastr script that allows FastR’s native build scripts to adopt to the current system, which makes installing R packages much more stable.
-* The fastr_errors.log file was renamed to fastr_errors_pidXYZ.log and is stored in either initial working directory, the user home directory, /tmp, or the FastR home directory (picking the first location that is writeable). Please add it to the bug reports if you submit issues, thank you!
+* Added a `/jre/languages/R/bin/configure_fastr` script that allows FastR’s native build scripts to adopt to the current system, which makes installing R packages much more stable.
+* The _fastr_errors.log_ file was renamed to _fastr_errors_pidXYZ.log_ and is stored in either initial working directory, the user home directory, /tmp, or the FastR home directory (picking the first location that is writeable). Please add it to the bug reports if you submit issues.
 
 ### Python
 
@@ -96,17 +95,17 @@ To see the list of changes to the APIs please refer to the project changelogs:
 * Fixed the issues with loading polyglot heap dumps
 * fixed executing of scripts in R console
 * improved recognition of R REPL
-* fixed ‘loop to’ nodes
+* fixed `loop to` nodes
 * fixed memory leak in child nodes
 * improved appearance on MacOS
-* A11Y fixes
+* Applicability fixes
 * added roots histogram for class
 
 #### Graal Updater `gu`
 
 * The default operation mode changed from “install from local files” to “install from catalog”.
-* -c option for installing from the catalog, can be omitted (installing from the catalog the default), but specifying -c still works.
-* Use -F to install from local files, i.e. bin/gu -F /tmp/ruby-installable.jar.
+* `-c` option for installing from the catalog, can be omitted (installing from the catalog the default), but specifying `-c` still works.
+* Use `-F` to install from local files, i.e. `bin/gu -F /tmp/ruby-installable.jar`.
 
 #### Chrome Inspector
 
