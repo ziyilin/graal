@@ -475,11 +475,11 @@ if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('
 }
 
 //play video on hover
-$(document).on('mouseover', 'video', function() {
+$("body").on('mouseover', 'video', function() {
   $(this).get(0).play(); 
 }); 
 
 //pause video on mouse leave
-$(document).on('mouseleave', 'video', function() { 
+$("body").on('mouseleave', 'video', function() { 
   $(this).get(0).pause(); 
 });
