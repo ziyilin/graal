@@ -314,7 +314,25 @@ $(document).ready(function() {
   //     }
   //   });
   // })();
+
+
+  (function() {
+    var videoId = $('#js-video');
+    console.log(videoId);
+    //play video on hover
+    $("body").on('mouseover', '.home-banner__video', function() {
+      console.log("start");
+      videoId.get(0).play(); 
+    });
+
+    //pause video on mouse leave
+    $("body").on('mouseleave', '.home-banner__video', function() { 
+      console.log("end");
+      videoId.get(0).pause(); 
+    });
+  })()
 });
+
 
 
 // if (window.location.href.toString().split(window.location.host)[1] === '/docs/faq/') {
@@ -473,13 +491,3 @@ if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('
   safVideo.style.display = "none";
   defVideo.style.display = 'block';
 }
-
-//play video on hover
-$("body").on('mouseover', 'video', function() {
-  $(this).get(0).play(); 
-}); 
-
-//pause video on mouse leave
-$("body").on('mouseleave', 'video', function() { 
-  $(this).get(0).pause(); 
-});
