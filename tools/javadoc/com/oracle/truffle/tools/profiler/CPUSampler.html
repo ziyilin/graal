@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":9,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10};
+var methods = {"i0":10,"i1":10,"i2":9,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":10};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -195,7 +195,7 @@ sampler.close();
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/tools/profiler/CPUSampler.html#close--">close</a></span>()</code>
-<div class="block">Closes the sampler for fuhrer use, deleting all the gathered data.</div>
+<div class="block">Closes the sampler for further use, deleting all the gathered data.</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
@@ -293,6 +293,12 @@ sampler.close();
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/tools/profiler/CPUSampler.html#setStackLimit-int-">setStackLimit</a></span>(int&nbsp;stackLimit)</code>
 <div class="block">Sets the maximum amount of stack frames that are sampled.</div>
+</td>
+</tr>
+<tr id="i21" class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Thread.html?is-external=true" title="class or interface in java.lang">Thread</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../com/oracle/truffle/tools/profiler/StackTraceEntry.html" title="class in com.oracle.truffle.tools.profiler">StackTraceEntry</a>&gt;&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/tools/profiler/CPUSampler.html#takeSample--">takeSample</a></span>()</code>
+<div class="block">Sample all threads and gather their current stack trace entries.</div>
 </td>
 </tr>
 </table>
@@ -604,7 +610,7 @@ sampler.close();
 <li class="blockList">
 <h4>close</h4>
 <pre>public&nbsp;void&nbsp;close()</pre>
-<div class="block">Closes the sampler for fuhrer use, deleting all the gathered data.</div>
+<div class="block">Closes the sampler for further use, deleting all the gathered data.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/Closeable.html?is-external=true#close--" title="class or interface in java.io">close</a></code>&nbsp;in interface&nbsp;<code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/Closeable.html?is-external=true" title="class or interface in java.io">Closeable</a></code></dd>
@@ -634,7 +640,7 @@ sampler.close();
 <a name="setGatherSelfHitTimes-boolean-">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>setGatherSelfHitTimes</h4>
 <pre>public&nbsp;void&nbsp;setGatherSelfHitTimes(boolean&nbsp;gatherSelfHitTimes)</pre>
@@ -645,6 +651,24 @@ sampler.close();
 <dd><code>gatherSelfHitTimes</code> - new value for whether or not to gather timestamps</dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>0.30</dd>
+</dl>
+</li>
+</ul>
+<a name="takeSample--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>takeSample</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Thread.html?is-external=true" title="class or interface in java.lang">Thread</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../com/oracle/truffle/tools/profiler/StackTraceEntry.html" title="class in com.oracle.truffle.tools.profiler">StackTraceEntry</a>&gt;&gt;&nbsp;takeSample()</pre>
+<div class="block">Sample all threads and gather their current stack trace entries. The returned map and lists
+ are unmodifiable and represent atomic snapshots of the stack at the time when this method was
+ invoked. Only active threads are sampled. A thread is active if it has at least one entry on
+ the stack. The sampling is initialized if this method is invoked for the first time or
+ reinitialized if the configuration changes.</div>
+<dl>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>1.0</dd>
 </dl>
 </li>
 </ul>

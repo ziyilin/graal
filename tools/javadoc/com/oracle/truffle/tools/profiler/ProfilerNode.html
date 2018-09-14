@@ -47,7 +47,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../../com/oracle/truffle/tools/profiler/MemoryTracer.Payload.html" title="class in com.oracle.truffle.tools.profiler"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li>Next&nbsp;Class</li>
+<li><a href="../../../../../com/oracle/truffle/tools/profiler/StackTraceEntry.html" title="class in com.oracle.truffle.tools.profiler"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?com/oracle/truffle/tools/profiler/ProfilerNode.html" target="_top">Frames</a></li>
@@ -159,7 +159,9 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/tools/profiler/ProfilerNode.html#getTags--">getTags</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/tools/profiler/ProfilerNode.html#getTags--">getTags</a></span>()</code>
+<div class="block">Returns a set tags a stack location marked with.</div>
+</td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
@@ -227,7 +229,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>true if the parent chain contains a <a href="../../../../../com/oracle/truffle/tools/profiler/ProfilerNode.html" title="class in com.oracle.truffle.tools.profiler"><code>ProfilerNode</code></a> with the same
-         <code>SourceLocation</code>, otherwise false</dd>
+         <a href="../../../../../com/oracle/truffle/tools/profiler/StackTraceEntry.html" title="class in com.oracle.truffle.tools.profiler"><code>StackTraceEntry</code></a>, otherwise false</dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>0.30</dd>
 </dl>
@@ -257,8 +259,8 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getRootName()</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>The name of the root node in which
-         the <code>SourceLocation</code> associated with this <a href="../../../../../com/oracle/truffle/tools/profiler/ProfilerNode.html" title="class in com.oracle.truffle.tools.profiler"><code>ProfilerNode</code></a> appears</dd>
+<dd>The name of the root node in which this <a href="../../../../../com/oracle/truffle/tools/profiler/ProfilerNode.html" title="class in com.oracle.truffle.tools.profiler"><code>ProfilerNode</code></a>
+         appears.</dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>0.30</dd>
 </dl>
@@ -271,10 +273,11 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li class="blockList">
 <h4>getTags</h4>
 <pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;&gt;&nbsp;getTags()</pre>
+<div class="block">Returns a set tags a stack location marked with. Common tags are <code>root</code>,
+ <code>statement</code> and <code>expression</code>. Whether statement or
+ expression stack trace entries appear depends on the configured
+ <a href="../../../../../com/oracle/truffle/tools/profiler/CPUSampler.html#setFilter-com.oracle.truffle.api.instrumentation.SourceSectionFilter-"><code>filter</code></a>.</div>
 <dl>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>A set of <code>tags</code> for the
-         <code>SourceLocation</code> associated with this <a href="../../../../../com/oracle/truffle/tools/profiler/ProfilerNode.html" title="class in com.oracle.truffle.tools.profiler"><code>ProfilerNode</code></a></dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>0.30</dd>
 </dl>
@@ -322,7 +325,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../../com/oracle/truffle/tools/profiler/MemoryTracer.Payload.html" title="class in com.oracle.truffle.tools.profiler"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li>Next&nbsp;Class</li>
+<li><a href="../../../../../com/oracle/truffle/tools/profiler/StackTraceEntry.html" title="class in com.oracle.truffle.tools.profiler"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?com/oracle/truffle/tools/profiler/ProfilerNode.html" target="_top">Frames</a></li>

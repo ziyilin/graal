@@ -66,7 +66,7 @@
 <!--   -->
 </a></div>
 <!-- ========= END OF TOP NAVBAR ========= -->
-<div class="contentContainer"><a href="#I:C">C</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:V">V</a>&nbsp;<a name="I:C">
+<div class="contentContainer"><a href="#I:C">C</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:V">V</a>&nbsp;<a name="I:C">
 <!--   -->
 </a>
 <h2 class="title">C</h2>
@@ -85,7 +85,7 @@
 </dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/CPUSampler.html#close--">close()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/CPUSampler.html" title="class in com.oracle.truffle.tools.profiler">CPUSampler</a></dt>
 <dd>
-<div class="block">Closes the sampler for fuhrer use, deleting all the gathered data.</div>
+<div class="block">Closes the sampler for further use, deleting all the gathered data.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/CPUTracer.html#close--">close()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/CPUTracer.html" title="class in com.oracle.truffle.tools.profiler">CPUTracer</a></dt>
 <dd>
@@ -122,6 +122,13 @@
 <dd>
 <div class="block">Holds data on how many times a section of source code was executed.</div>
 </dd>
+</dl>
+<a name="I:E">
+<!--   -->
+</a>
+<h2 class="title">E</h2>
+<dl>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/StackTraceEntry.html#equals-java.lang.Object-">equals(Object)</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/StackTraceEntry.html" title="class in com.oracle.truffle.tools.profiler">StackTraceEntry</a></dt>
 </dl>
 <a name="I:F">
 <!--   -->
@@ -184,6 +191,10 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/ProfilerNode.html#getRootName--">getRootName()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/ProfilerNode.html" title="class in com.oracle.truffle.tools.profiler">ProfilerNode</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/StackTraceEntry.html#getRootName--">getRootName()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/StackTraceEntry.html" title="class in com.oracle.truffle.tools.profiler">StackTraceEntry</a></dt>
+<dd>
+<div class="block">Returns the name of the root node.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/CPUSampler.html#getRootNodes--">getRootNodes()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/CPUSampler.html" title="class in com.oracle.truffle.tools.profiler">CPUSampler</a></dt>
 <dd>
 <div class="block">Merges all the 'per thread' profiles into one set of nodes and returns it.</div>
@@ -204,14 +215,26 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/ProfilerNode.html#getSourceSection--">getSourceSection()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/ProfilerNode.html" title="class in com.oracle.truffle.tools.profiler">ProfilerNode</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/StackTraceEntry.html#getSourceSection--">getSourceSection()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/StackTraceEntry.html" title="class in com.oracle.truffle.tools.profiler">StackTraceEntry</a></dt>
+<dd>
+<div class="block">Returns the source section of the stack trace entry.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/CPUSampler.html#getStackLimit--">getStackLimit()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/CPUSampler.html" title="class in com.oracle.truffle.tools.profiler">CPUSampler</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/MemoryTracer.html#getStackLimit--">getStackLimit()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/MemoryTracer.html" title="class in com.oracle.truffle.tools.profiler">MemoryTracer</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/CPUTracer.Payload.html#getTags--">getTags()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/CPUTracer.Payload.html" title="class in com.oracle.truffle.tools.profiler">CPUTracer.Payload</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns a set tags a stack location marked with.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/ProfilerNode.html#getTags--">getTags()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/ProfilerNode.html" title="class in com.oracle.truffle.tools.profiler">ProfilerNode</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns a set tags a stack location marked with.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/StackTraceEntry.html#getTags--">getTags()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/StackTraceEntry.html" title="class in com.oracle.truffle.tools.profiler">StackTraceEntry</a></dt>
+<dd>
+<div class="block">Returns a set tags a stack location marked with.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/CPUSampler.html#getThreadToNodesMap--">getThreadToNodesMap()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/CPUSampler.html" title="class in com.oracle.truffle.tools.profiler">CPUSampler</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/MemoryTracer.html#getThreadToNodesMap--">getThreadToNodesMap()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/MemoryTracer.html" title="class in com.oracle.truffle.tools.profiler">MemoryTracer</a></dt>
@@ -228,6 +251,7 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/MemoryTracer.html#hasData--">hasData()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/MemoryTracer.html" title="class in com.oracle.truffle.tools.profiler">MemoryTracer</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/StackTraceEntry.html#hashCode--">hashCode()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/StackTraceEntry.html" title="class in com.oracle.truffle.tools.profiler">StackTraceEntry</a></dt>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/CPUSampler.html#hasStackOverflowed--">hasStackOverflowed()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/CPUSampler.html" title="class in com.oracle.truffle.tools.profiler">CPUSampler</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/MemoryTracer.html#hasStackOverflowed--">hasStackOverflowed()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/MemoryTracer.html" title="class in com.oracle.truffle.tools.profiler">MemoryTracer</a></dt>
@@ -249,8 +273,24 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/MemoryTracer.html#isCollecting--">isCollecting()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/MemoryTracer.html" title="class in com.oracle.truffle.tools.profiler">MemoryTracer</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/StackTraceEntry.html#isCompiled--">isCompiled()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/StackTraceEntry.html" title="class in com.oracle.truffle.tools.profiler">StackTraceEntry</a></dt>
+<dd>
+<div class="block">Returns <code>true</code> if this stack entry was executed in compiled mode at the time when
+ the stack trace was captured, else <code>false</code>.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/CPUSampler.html#isGatherSelfHitTimes--">isGatherSelfHitTimes()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/CPUSampler.html" title="class in com.oracle.truffle.tools.profiler">CPUSampler</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/StackTraceEntry.html#isInlined--">isInlined()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/StackTraceEntry.html" title="class in com.oracle.truffle.tools.profiler">StackTraceEntry</a></dt>
+<dd>
+<div class="block">Returns <code>true</code> if this stack entry was executed in compiled mode and was inlined
+ in a parent stack entry at the time when the stack trace was captured, else
+ <code>false</code>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/StackTraceEntry.html#isInterpreted--">isInterpreted()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/StackTraceEntry.html" title="class in com.oracle.truffle.tools.profiler">StackTraceEntry</a></dt>
+<dd>
+<div class="block">Returns <code>true</code> if this stack entry was executed in interpreted mode at the time
+ when the stack trace was captured, else <code>false</code>.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/MemoryTracer.AllocationEventInfo.html#isReallocation--">isReallocation()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/MemoryTracer.AllocationEventInfo.html" title="class in com.oracle.truffle.tools.profiler">MemoryTracer.AllocationEventInfo</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/ProfilerNode.html#isRecursive--">isRecursive()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/ProfilerNode.html" title="class in com.oracle.truffle.tools.profiler">ProfilerNode</a></dt>
@@ -344,6 +384,25 @@
 <dd>
 <div class="block">Sets the size of the shadow stack.</div>
 </dd>
+<dt><a href="com/oracle/truffle/tools/profiler/StackTraceEntry.html" title="class in com.oracle.truffle.tools.profiler"><span class="typeNameLink">StackTraceEntry</span></a> - Class in <a href="com/oracle/truffle/tools/profiler/package-summary.html">com.oracle.truffle.tools.profiler</a></dt>
+<dd>
+<div class="block">An entry in a stack trace, as returned by <a href="com/oracle/truffle/tools/profiler/CPUSampler.html#takeSample--"><code>CPUSampler.takeSample()</code></a>.</div>
+</dd>
+</dl>
+<a name="I:T">
+<!--   -->
+</a>
+<h2 class="title">T</h2>
+<dl>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/CPUSampler.html#takeSample--">takeSample()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/CPUSampler.html" title="class in com.oracle.truffle.tools.profiler">CPUSampler</a></dt>
+<dd>
+<div class="block">Sample all threads and gather their current stack trace entries.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/StackTraceEntry.html#toStackTraceElement--">toStackTraceElement()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/StackTraceEntry.html" title="class in com.oracle.truffle.tools.profiler">StackTraceEntry</a></dt>
+<dd>
+<div class="block">Converts the stack trace entry to a Java stack trace element.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/StackTraceEntry.html#toString--">toString()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/StackTraceEntry.html" title="class in com.oracle.truffle.tools.profiler">StackTraceEntry</a></dt>
 </dl>
 <a name="I:V">
 <!--   -->
@@ -360,7 +419,7 @@
 the order they are declared.</div>
 </dd>
 </dl>
-<a href="#I:C">C</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:V">V</a>&nbsp;</div>
+<a href="#I:C">C</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:V">V</a>&nbsp;</div>
 <!-- ======= START OF BOTTOM NAVBAR ====== -->
 <div class="bottomNav"><a name="navbar.bottom">
 <!--   -->
