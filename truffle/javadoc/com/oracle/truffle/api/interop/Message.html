@@ -946,9 +946,12 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
  </pre>
 
  Calling <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.Factory.html#accessMessage-com.oracle.truffle.api.interop.Message-"><code>the target</code></a>
- created for this message should yield value of <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang"><code>Boolean</code></a>. If the object responds with
- <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true#TRUE" title="class or interface in java.lang"><code>Boolean.TRUE</code></a>, the object can be accessed by <a href="../../../../../com/oracle/truffle/api/interop/Message.html#AS_POINTER"><code>Message.AS_POINTER</code></a> message.
+ created for this message should yield a <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang"><code>Boolean</code></a>. If the object responds with
+ <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true#TRUE" title="class or interface in java.lang"><code>Boolean.TRUE</code></a>, the object can be accessed by the <a href="../../../../../com/oracle/truffle/api/interop/Message.html#AS_POINTER"><code>Message.AS_POINTER</code></a> message. An
+ object that responds with <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true#TRUE" title="class or interface in java.lang"><code>Boolean.TRUE</code></a> to <a href="../../../../../com/oracle/truffle/api/interop/Message.html#IS_POINTER"><code>Message.IS_POINTER</code></a> <b>MUST</b> also
+ implement <a href="../../../../../com/oracle/truffle/api/interop/Message.html#TO_NATIVE"><code>Message.TO_NATIVE</code></a>, which should just return the receiver.
 
+ <p>
  It is expected that objects should only return <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true#TRUE" title="class or interface in java.lang"><code>Boolean.TRUE</code></a> here if the native
  pointer value corresponding to this object already exists, and obtaining it is a cheap
  operation. If an object can be transformed to a pointer representation, but this hasn't
