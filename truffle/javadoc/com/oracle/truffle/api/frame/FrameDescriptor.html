@@ -115,8 +115,7 @@ var activeTableTab = "activeTableTab";
 extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
 implements <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Cloneable.html?is-external=true" title="class or interface in java.lang">Cloneable</a></pre>
 <div class="block">Descriptor of the slots of frame objects. Multiple frame instances are associated with one such
- descriptor. The FrameDescriptor is not thread-safe until it's given to a first RootNode's
- constructor. After that it has thread-safe properties.</div>
+ descriptor. The FrameDescriptor is thread-safe.</div>
 <dl>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>0.8 or earlier</dd>
@@ -245,8 +244,7 @@ implements <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Cloneable
 <tr id="i12" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/frame/FrameDescriptor.html#getSize--">getSize</a></span>()</code>
-<div class="block">Returns the size of an array which is needed for storing all the slots in it using their
- <a href="../../../../../com/oracle/truffle/api/frame/FrameSlot.html#getIndex--"><code>FrameSlot.getIndex()</code></a> as a position in the array.</div>
+<div class="block">Returns the size of an array which is needed for storing all the frame slots.</div>
 </td>
 </tr>
 <tr id="i13" class="rowColor">
@@ -579,9 +577,8 @@ implements <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Cloneable
 <li class="blockList">
 <h4>getSize</h4>
 <pre>public&nbsp;int&nbsp;getSize()</pre>
-<div class="block">Returns the size of an array which is needed for storing all the slots in it using their
- <a href="../../../../../com/oracle/truffle/api/frame/FrameSlot.html#getIndex--"><code>FrameSlot.getIndex()</code></a> as a position in the array. (The number may be bigger than the
- number of slots, if some slots are removed.)</div>
+<div class="block">Returns the size of an array which is needed for storing all the frame slots. (The number may
+ be bigger than the number of slots, if some slots are removed.)</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the size of the frame</dd>
