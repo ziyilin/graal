@@ -9,7 +9,7 @@
 
   <title>
     
-      GraalVM Contributors
+      Events Map
     
   </title>
   <meta
@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="/assets/main.css">
   <link rel="stylesheet" href="/resources/styles/extra.css">
 
-  <link rel="canonical" href="https://www.graalvm.org/community/contributors/">
+  <link rel="canonical" href="https://www.graalvm.org/community/events/">
   <link rel="alternate" type="application/rss+xml" title="GraalVM" href="/feed.xml">
   <script src="/resources/lib/jquery/jquery-3.2.1.min.js"></script>
   <script src="/resources/lib/bootstrap/js/bootstrap.min.js"></script>
@@ -209,163 +209,344 @@
 
       <main  class="content"   aria-label="Content">
         <div class="wrapper wrapper-content">
-  <!--
-<section class="section-heading">
   <div class="container-fluid container-fluid--custom-sm">
-    <div class="row">
-      <div class="col-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="page-heading">
-              <h2 class="page-heading__title">Community</h2>
-              <p class="page-heading__description">
-                Become a GraalVM contributor
-              </p>
-            </div>
+  <div class="row mt-4">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1">
+      <a href="/" class="link-back"><i>←</i>Back</a>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1">
+      <h1 class="mt-2">Events map</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1">
+      <div id="map" class="events-map"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1">
+      <div class="events-table">
+        <div class="events-table__row" id="event-one">
+          <div class="events-table__count">
+          <span>
+            1
+          </span>
           </div>
+          <ul class="events-table__details">
+            <li class="events-table__detail">
+              <h4 class="events-table__detail__title">Date</h4>
+              <p>October 20-21, 2018</p>
+            </li>
+
+            <li class="events-table__detail">
+              <h4 class="events-table__detail__title">Conference</h4>
+              <p>JokerConf</p>
+            </li>
+
+            <li class="events-table__detail">
+              <h4 class="events-table__detail__title">Location</h4>
+              <p>Saint Petersburg, Russia</p>
+            </li>
+
+            <li class="events-table__detail">
+              <h4 class="events-table__detail__title">Speaker</h4>
+              <p>Oleg Šelajev</p>
+            </li>
+
+            <li class="events-table__detail">
+              <h4 class="events-table__detail__title">Session Name</h4>
+              <p>
+                Compiling Java ahead-of-time with GraalVM
+              </p>
+            </li>
+          </ul>
         </div>
+
+        <div class="events-table__row" id="event-two">
+          <div class="events-table__count">
+          <span>
+            2
+          </span>
+          </div>
+          <ul class="events-table__details">
+            <li class="events-table__detail">
+              <h4 class="events-table__detail__title">Date</h4>
+              <p>October 22-25, 2018</p>
+            </li>
+
+            <li class="events-table__detail">
+              <h4 class="events-table__detail__title">Conference</h4>
+              <p>Oracle Code One</p>
+            </li>
+
+            <li class="events-table__detail">
+              <h4 class="events-table__detail__title">Location</h4>
+              <p>San Francisco, USA</p>
+            </li>
+
+            <li class="events-table__detail">
+              <h4 class="events-table__detail__title">Speakers</h4>
+              <p>Oleg Šelajev
+              <br>Chris Seaton
+              <br>Christian Wimmer</p>
+            </li>
+
+            <li class="events-table__detail">
+              <h4 class="events-table__detail__title">Session Names</h4>
+              <p>Ten Things You Can Do with GraalVM
+                <br>Instant Startup and Low Footprint for Java
+                <br>GraalVM: Vision and Roadmap
+              </p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="events-table__row" id="event-three">
+          <div class="events-table__count">
+          <span>
+            3
+          </span>
+          </div>
+          <ul class="events-table__details">
+            <li class="events-table__detail">
+              <h4 class="events-table__detail__title">Date</h4>
+              <p>November 2, 2018</p>
+            </li>
+
+            <li class="events-table__detail">
+              <h4 class="events-table__detail__title">Conference</h4>
+              <p>GOTO Berlin</p>
+            </li>
+
+            <li class="events-table__detail">
+              <h4 class="events-table__detail__title">Location</h4>
+              <p>Berlin, Germany</p>
+            </li>
+
+            <li class="events-table__detail">
+              <h4 class="events-table__detail__title">Speaker</h4>
+              <p>Oleg Šelajev</p>
+            </li>
+
+
+            <li class="events-table__detail">
+              <h4 class="events-table__detail__title">Session Name</h4>
+              <p>
+                GraalVM: Run Programs Faster Anywhere
+              </p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="events-table__row" id="event-four">
+          <div class="events-table__count">
+          <span>
+            4
+          </span>
+          </div>
+          <ul class="events-table__details">
+            <li class="events-table__detail">
+              <h4 class="events-table__detail__title">Date</h4>
+              <p>November 8, 2018</p>
+            </li>
+
+            <li class="events-table__detail">
+              <h4 class="events-table__detail__title">Conference</h4>
+              <p>JFall</p>
+            </li>
+
+            <li class="events-table__detail">
+              <h4 class="events-table__detail__title">Location</h4>
+              <p>Haarlem, Netherlands</p>
+            </li>
+
+            <li class="events-table__detail">
+              <h4 class="events-table__detail__title">Speaker</h4>
+              <p>Oleg Šelajev</p>
+            </li>
+
+            <li class="events-table__detail">
+              <h4 class="events-table__detail__title">Session Name</h4>
+              <p>
+                Developer's Introduction to GraalVM
+              </p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="events-table__row" id="event-four">
+          <div class="events-table__count">
+          <span>
+            5
+          </span>
+          </div>
+          <ul class="events-table__details">
+            <li class="events-table__detail">
+              <h4 class="events-table__detail__title">Date</h4>
+              <p>November 12-16, 2018</p>
+            </li>
+
+            <li class="events-table__detail">
+              <h4 class="events-table__detail__title">Conference</h4>
+              <p>Devoxx Belgium</p>
+            </li>
+
+            <li class="events-table__detail">
+              <h4 class="events-table__detail__title">Location</h4>
+              <p>Antwerp, Belgium</p>
+            </li>
+
+            <li class="events-table__detail">
+              <h4 class="events-table__detail__title">Speaker</h4>
+              <p>Oleg Šelajev, Thomas Wuerthinger</p>
+            </li>
+
+            <li class="events-table__detail">
+              <h4 class="events-table__detail__title">Session Name</h4>
+              <p>
+                GraalVM: Run Programs Faster Anywhere
+              </p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="events-table__row" id="event-four">
+          <div class="events-table__count">
+          <span>
+            6
+          </span>
+          </div>
+          <ul class="events-table__details">
+            <li class="events-table__detail">
+              <h4 class="events-table__detail__title">Date</h4>
+              <p>November 19-23, 2018</p>
+            </li>
+
+            <li class="events-table__detail">
+              <h4 class="events-table__detail__title">Conference</h4>
+              <p>GOTO Copenhagen</p>
+            </li>
+
+            <li class="events-table__detail">
+              <h4 class="events-table__detail__title">Location</h4>
+              <p>Copenhagen, Denmark</p>
+            </li>
+
+            <li class="events-table__detail">
+              <h4 class="events-table__detail__title">Speaker</h4>
+              <p>Chris Seaton</p>
+            </li>
+
+            <li class="events-table__detail">
+              <h4 class="events-table__detail__title">Session Name</h4>
+              <p>
+                Turning the JVM into a Polyglot VM with Graal
+              </p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="events-table__row" id="event-four">
+          <div class="events-table__count">
+          <span>
+            7
+          </span>
+          </div>
+          <ul class="events-table__details">
+            <li class="events-table__detail">
+              <h4 class="events-table__detail__title">Date</h4>
+              <p>November 23-24, 2018</p>
+            </li>
+
+            <li class="events-table__detail">
+              <h4 class="events-table__detail__title">Conference</h4>
+              <p>Devoxx Ukraine</p>
+            </li>
+
+            <li class="events-table__detail">
+              <h4 class="events-table__detail__title">Location</h4>
+              <p>Kyiv, Ukraine</p>
+            </li>
+
+            <li class="events-table__detail">
+              <h4 class="events-table__detail__title">Speaker</h4>
+              <p>Oleg Šelajev</p>
+            </li>
+
+            <li class="events-table__detail">
+              <h4 class="events-table__detail__title">Session Name</h4>
+              <p>
+                Java Developer's Introduction to GraalVM
+              </p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="events-table__row" id="event-four">
+          <div class="events-table__count">
+          <span>
+            8
+          </span>
+          </div>
+          <ul class="events-table__details">
+            <li class="events-table__detail">
+              <h4 class="events-table__detail__title">Date</h4>
+              <p>March 19-21, 2019</p>
+            </li>
+
+            <li class="events-table__detail">
+              <h4 class="events-table__detail__title">Conference</h4>
+              <p>JAVALAND 2019</p>
+            </li>
+
+            <li class="events-table__detail">
+              <h4 class="events-table__detail__title">Location</h4>
+              <p>Brühl, Germany</p>
+            </li>
+
+            <li class="events-table__detail">
+              <h4 class="events-table__detail__title">Speaker</h4>
+              <p>Oleg Šelajev</p>
+            </li>
+
+            <li class="events-table__detail">
+              <h4 class="events-table__detail__title">Session Name</h4>
+              <p>
+                GraalVM: Run Programs Faster Anywhere
+              </p>
+            </li>
+          </ul>
+        </div>
+
       </div>
     </div>
   </div>
-</section>
--->
-<section>
-  <div class="container-fluid container-fluid--custom-sm">
-    <div class="row">
-      <div class="col-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1">
-        <div class="row d-flex flex-wrap">
-          <div class="col-sm-3 col-bg">
-            <div class="sidebar-wrap">
-              <div class="sidebar">
-                <div class="toc-floating">
-                  <ul class="toc-bullets">
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    <li>
-                      
+</div>
 
-                      
-                      <a href="/community/">
-                        Community
-                      </a>
-                    </li>
-                    
-                    
-                    <li>
-                      
+<div class="container-fluid container-fluid--custom-sm">
+  <div class="row">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="docs-content">
+            <div class="row">
+              <div class="col-md-10">
+                
 
-                      
-                      <a href="/community/events/">
-                        Events Map
-                      </a>
-                    </li>
-                    
-                    
-                    <li>
-                      
 
-                      
-                      <a href="/community/publications/">
-                        Publications
-                      </a>
-                    </li>
-                    
-                    
-                    <li>
-                      
-
-                      
-                      <a href="/community/press/">
-                        GraalVM in the Press
-                      </a>
-                    </li>
-                    
-                    
-                    <li>
-                      
-
-                      
-                      <a href="/community/videos/">
-                        Videos
-                      </a>
-                    </li>
-                    
-                    
-                    <li class="toc-bullets-highlight">
-                      
-
-                      
-                      <a href="/community/contributors/">
-                        Contributors
-                      </a>
-                    </li>
-                    
-                    
-                    <li>
-                      
-
-                      
-                      <a href="/community/conduct/">
-                        Code of Conduct
-                      </a>
-                    </li>
-                    
-                    
-                    
-                    
-                  </ul>
-                </div>
               </div>
             </div>
           </div>
-
-          <div class="col-sm-9">
-            <div id="content-wrapper" class="docs-content docs-content--with-sidebar">
-              <h1 id="graalvm-contributors">GraalVM Contributors</h1>
-
-<p>We welcome contributions to the GraalVM project from the community and are thankful for past contributions both big and small. There have already been significant contributions to the GraalVM project from both industry and academia. Among the key academic collaborators are Johannes Kepler University Linz, TU Berlin, University of Edinburgh, LaBRI, University of California (Irvine), Purdue University, TU Dortmund, University of California (Davis), and the University of Lugano. Notable industrial contributors have been Intel, AMD, and RedHat.</p>
-
-<p>We want to grow the GraalVM community both in terms of language-agnostic tooling as well as new supported languages. Only a large community can make this project into a strong language virtualization technology.</p>
-
-<p>We offer summer internships for master or PhD students who want to join us in the mission to build a universal polyglot virtual machine. Please send your CV and preferred location (Zurich, Linz, Prague, or California) to
-<a href="mailto:graalvm-internships_ww_grp@oracle.com">graalvm-internships_ww_grp@oracle.com</a> if you are interested in such an opportunity.</p>
-
-<h1 id="want-to-become-a-graalvm-contributor">Want to Become a GraalVM Contributor?</h1>
-<p>GraalVM is an open source Oracle project community where people from all over the world contribute their work, help each other, and make GraalVM innovative. We welcome you and look forward to your contributions!</p>
-
-<p>Open issues or contribute your code on <a href="https://github.com/oracle/graal" target="_blank">GitHub</a>. Note that to submit pull requests to the GraalVM, you need to sign the <a href="https://www.oracle.com/technetwork/community/oca-486395.html" target="_blank">Oracle Contributor Agreement</a>.</p>
-
-<p>Abide by our <a href="/community/conduct" target="_blank">Contributor Covenant Code of Conduct</a>.</p>
-
-            </div>
-
-            <div role="button" class="menu-btn menu-btn--sidebar js-show-sidebar" title="sweet hamburger">
-              <div class="hamburger"><div class="inner"></div></div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
   </div>
-</section>
+</div>
+
 </div>
 
       </main>
