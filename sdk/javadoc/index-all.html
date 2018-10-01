@@ -2221,6 +2221,18 @@
 <dd>
 <div class="block">Cursor to iterate over a mutable map.</div>
 </dd>
+<dt><a href="org/graalvm/polyglot/io/MessageEndpoint.html" title="interface in org.graalvm.polyglot.io"><span class="typeNameLink">MessageEndpoint</span></a> - Interface in <a href="org/graalvm/polyglot/io/package-summary.html">org.graalvm.polyglot.io</a></dt>
+<dd>
+<div class="block">An endpoint representing one side of <a href="org/graalvm/polyglot/io/MessageTransport.html" title="interface in org.graalvm.polyglot.io"><code>message transport</code></a>.</div>
+</dd>
+<dt><a href="org/graalvm/polyglot/io/MessageTransport.html" title="interface in org.graalvm.polyglot.io"><span class="typeNameLink">MessageTransport</span></a> - Interface in <a href="org/graalvm/polyglot/io/package-summary.html">org.graalvm.polyglot.io</a></dt>
+<dd>
+<div class="block">Allows to take over transport of message communication initiated by an instrument.</div>
+</dd>
+<dt><a href="org/graalvm/polyglot/io/MessageTransport.VetoException.html" title="class in org.graalvm.polyglot.io"><span class="typeNameLink">MessageTransport.VetoException</span></a> - Exception in <a href="org/graalvm/polyglot/io/package-summary.html">org.graalvm.polyglot.io</a></dt>
+<dd>
+<div class="block">Thrown when a transport connection is vetoed.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Source.Builder.html#mimeType-java.lang.String-">mimeType(String)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Source.Builder.html" title="class in org.graalvm.polyglot">Source.Builder</a></dt>
 <dd>
 <div class="block">Explicitly assigns a <a href="org/graalvm/polyglot/Source.html#getMimeType--"><code>MIME type</code></a> to the <a href="org/graalvm/polyglot/Source.Builder.html#build--"><code>to-be-built</code></a> <a href="org/graalvm/polyglot/Source.html" title="class in org.graalvm.polyglot"><code>Source</code></a>.</div>
@@ -2370,6 +2382,10 @@
 <dd>
 <div class="block">Set a listener that is notified when an execution of an element was entered and
  completed.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/graalvm/polyglot/io/MessageTransport.html#open-java.net.URI-org.graalvm.polyglot.io.MessageEndpoint-">open(URI, MessageEndpoint)</a></span> - Method in interface org.graalvm.polyglot.io.<a href="org/graalvm/polyglot/io/MessageTransport.html" title="interface in org.graalvm.polyglot.io">MessageTransport</a></dt>
+<dd>
+<div class="block">Called when a connection to an URI is to be established.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Context.Builder.html#option-java.lang.String-java.lang.String-">option(String, String)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></dt>
 <dd>
@@ -3162,6 +3178,34 @@
 </a>
 <h2 class="title">S</h2>
 <dl>
+<dt><span class="memberNameLink"><a href="org/graalvm/polyglot/io/MessageEndpoint.html#sendBinary-java.nio.ByteBuffer-">sendBinary(ByteBuffer)</a></span> - Method in interface org.graalvm.polyglot.io.<a href="org/graalvm/polyglot/io/MessageEndpoint.html" title="interface in org.graalvm.polyglot.io">MessageEndpoint</a></dt>
+<dd>
+<div class="block">Send a binary message.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/graalvm/polyglot/io/MessageEndpoint.html#sendClose--">sendClose()</a></span> - Method in interface org.graalvm.polyglot.io.<a href="org/graalvm/polyglot/io/MessageEndpoint.html" title="interface in org.graalvm.polyglot.io">MessageEndpoint</a></dt>
+<dd>
+<div class="block">Close the connection.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/graalvm/polyglot/io/MessageEndpoint.html#sendPing-java.nio.ByteBuffer-">sendPing(ByteBuffer)</a></span> - Method in interface org.graalvm.polyglot.io.<a href="org/graalvm/polyglot/io/MessageEndpoint.html" title="interface in org.graalvm.polyglot.io">MessageEndpoint</a></dt>
+<dd>
+<div class="block">Send a ping request.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/graalvm/polyglot/io/MessageEndpoint.html#sendPong-java.nio.ByteBuffer-">sendPong(ByteBuffer)</a></span> - Method in interface org.graalvm.polyglot.io.<a href="org/graalvm/polyglot/io/MessageEndpoint.html" title="interface in org.graalvm.polyglot.io">MessageEndpoint</a></dt>
+<dd>
+<div class="block">Send a pong reply as a response to ping.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/graalvm/polyglot/io/MessageEndpoint.html#sendText-java.lang.String-">sendText(String)</a></span> - Method in interface org.graalvm.polyglot.io.<a href="org/graalvm/polyglot/io/MessageEndpoint.html" title="interface in org.graalvm.polyglot.io">MessageEndpoint</a></dt>
+<dd>
+<div class="block">Send a text message.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Context.Builder.html#serverTransport-org.graalvm.polyglot.io.MessageTransport-">serverTransport(MessageTransport)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></dt>
+<dd>
+<div class="block">Take over transport of message communication with a server peer.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Engine.Builder.html#serverTransport-org.graalvm.polyglot.io.MessageTransport-">serverTransport(MessageTransport)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Engine.Builder.html" title="class in org.graalvm.polyglot">Engine.Builder</a></dt>
+<dd>
+<div class="block">Take over transport of message communication with a server peer.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/nativeimage/RuntimeOptions.html#set-java.lang.String-java.lang.Object-">set(String, Object)</a></span> - Static method in class org.graalvm.nativeimage.<a href="org/graalvm/nativeimage/RuntimeOptions.html" title="class in org.graalvm.nativeimage">RuntimeOptions</a></dt>
 <dd>
 <div class="block">Set the value of the option with the provided name to the new value.</div>
@@ -3550,6 +3594,10 @@ the order they are declared.</div>
 <dd>
 <div class="block">Returns an array containing the constants of this enum type, in
 the order they are declared.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/graalvm/polyglot/io/MessageTransport.VetoException.html#VetoException-java.lang.String-">VetoException(String)</a></span> - Constructor for exception org.graalvm.polyglot.io.<a href="org/graalvm/polyglot/io/MessageTransport.VetoException.html" title="class in org.graalvm.polyglot.io">MessageTransport.VetoException</a></dt>
+<dd>
+<div class="block">Create a new VetoException.</div>
 </dd>
 <dt><a href="org/graalvm/nativeimage/c/type/VoidPointer.html" title="interface in org.graalvm.nativeimage.c.type"><span class="typeNameLink">VoidPointer</span></a> - Interface in <a href="org/graalvm/nativeimage/c/type/package-summary.html">org.graalvm.nativeimage.c.type</a></dt>
 <dd>

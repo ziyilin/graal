@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -178,6 +178,12 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code><a href="../../../org/graalvm/polyglot/Engine.Builder.html" title="class in org.graalvm.polyglot">Engine.Builder</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/Engine.Builder.html#serverTransport-org.graalvm.polyglot.io.MessageTransport-">serverTransport</a></span>(<a href="../../../org/graalvm/polyglot/io/MessageTransport.html" title="interface in org.graalvm.polyglot.io">MessageTransport</a>&nbsp;serverTransport)</code>
+<div class="block">Take over transport of message communication with a server peer.</div>
+</td>
+</tr>
+<tr id="i8" class="altColor">
+<td class="colFirst"><code><a href="../../../org/graalvm/polyglot/Engine.Builder.html" title="class in org.graalvm.polyglot">Engine.Builder</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/Engine.Builder.html#useSystemProperties-boolean-">useSystemProperties</a></span>(boolean&nbsp;enabled)</code>
 <div class="block">Specifies whether the engine should use <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/System.html?is-external=true#getProperty-java.lang.String-" title="class or interface in java.lang"><code>system
  properties</code></a> if no explicit option is <a href="../../../org/graalvm/polyglot/Engine.Builder.html#option-java.lang.String-java.lang.String-"><code>set</code></a>.</div>
@@ -321,6 +327,28 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <dd>1.0</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../org/graalvm/polyglot/Engine.Builder.html#option-java.lang.String-java.lang.String-"><code>To set a single option.</code></a></dd>
+</dl>
+</li>
+</ul>
+<a name="serverTransport-org.graalvm.polyglot.io.MessageTransport-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>serverTransport</h4>
+<pre>public&nbsp;<a href="../../../org/graalvm/polyglot/Engine.Builder.html" title="class in org.graalvm.polyglot">Engine.Builder</a>&nbsp;serverTransport(<a href="../../../org/graalvm/polyglot/io/MessageTransport.html" title="interface in org.graalvm.polyglot.io">MessageTransport</a>&nbsp;serverTransport)</pre>
+<div class="block">Take over transport of message communication with a server peer. Provide an
+ implementation of <a href="../../../org/graalvm/polyglot/io/MessageTransport.html" title="interface in org.graalvm.polyglot.io"><code>MessageTransport</code></a> to virtualize a transport of messages to a
+ server endpoint.
+ <a href="../../../org/graalvm/polyglot/io/MessageTransport.html#open-java.net.URI-org.graalvm.polyglot.io.MessageEndpoint-"><code>MessageTransport.open(java.net.URI, org.graalvm.polyglot.io.MessageEndpoint)</code></a>
+ corresponds to accept of a server socket.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>serverTransport</code> - an implementation of message transport interceptor</dd>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>1.0</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../org/graalvm/polyglot/io/MessageTransport.html" title="interface in org.graalvm.polyglot.io"><code>MessageTransport</code></a></dd>
 </dl>
 </li>
 </ul>
