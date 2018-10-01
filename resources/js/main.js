@@ -579,7 +579,7 @@ function initialize() {
 
   // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
   let mapOptions = {
-    zoom: 1.5,
+    zoom: 2.5,
     center: new google.maps.LatLng(defaultView),
     disableDefaultUI: true,
     styles: [
