@@ -1,13 +1,12 @@
-
 // On-load actions.
-$(window).on("load", function() {
+$(window).on("load", function () {
   $("body").removeClass("preload");
 });
 
 function copySnippet(elem) {
   var div = $(elem.parentElement.parentElement);
   text = "";
-  div.find("figure").each(function() {
+  div.find("figure").each(function () {
     var currentText = $(this).text();
     text += currentText;
   });
@@ -52,8 +51,8 @@ function createTerminal(serverUrl, containerId, terminalId, uid) {
 
   $(terminalId).animate({
     height: "260px"
-  }, revealDuration, function() {
-    $(terminalId).terminal(function(command) {
+  }, revealDuration, function () {
+    $(terminalId).terminal(function (command) {
       var shell = this;
 
       if (command !== "") {
@@ -62,7 +61,7 @@ function createTerminal(serverUrl, containerId, terminalId, uid) {
         shell.set_prompt("");
         var escapedLine = encodeURIComponent(command);
         var url = serverUrl + "/send-line?uid=" + uid + "&line=" + escapedLine;
-        $.get(url).done(function(data) {
+        $.get(url).done(function (data) {
           console.log(data);
           data = JSON.parse(data);
           if (data["language"]) {
@@ -81,7 +80,7 @@ function createTerminal(serverUrl, containerId, terminalId, uid) {
             shell.freeze(false);
             shell.set_prompt(currentPrompt);
           }
-        }).fail(function(r) {
+        }).fail(function (r) {
           shell.echo("Server error code " + r.status + ": " + r.statusText);
           shell.enable();
         })
@@ -93,9 +92,9 @@ function createTerminal(serverUrl, containerId, terminalId, uid) {
       name: "graalvm_shell",
       height: 240,
       prompt: "js> ",
-      onInit: function() {
+      onInit: function () {
         var shell = this;
-        $(terminalId).click(function() {
+        $(terminalId).click(function () {
           console.log("Focused terminal.");
           shell.focus(true);
         });
@@ -119,7 +118,7 @@ function createTerminal(serverUrl, containerId, terminalId, uid) {
 
 function establishSessionAndCreateTerminal(serverUrl) {
   console.log("Establishing shell session with " + serverUrl);
-  $.get(serverUrl + "/start-session").done(function(data) {
+  $.get(serverUrl + "/start-session").done(function (data) {
     console.log(data);
     data = JSON.parse(data);
     if (data["error"]) {
@@ -128,20 +127,20 @@ function establishSessionAndCreateTerminal(serverUrl) {
       console.log("Starting terminal session...");
       createTerminal(serverUrl, "#terminal-container", "#terminal", data["uid"]);
     }
-  }).fail(function(r) {
+  }).fail(function (r) {
     console.error(r);
   });
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
 
   // highlightjs init
-  $('pre code').each(function(i, block) {
+  $('pre code').each(function (i, block) {
     hljs.highlightBlock(block);
   });
 
   // slick slider init
-  (function() {
+  (function () {
     $('.video-carousel').slick({
       dots: true,
       accessibility: true,
@@ -166,10 +165,10 @@ $(document).ready(function() {
     "showTime": true,
     "showImages": false,
     "lang": 'en',
-    "customCallback": function(data){
+    "customCallback": function (data) {
       var el = $("#tweets");
-      for(var i in data) {
-        el.append('<div>'+data[i]+'</div>');
+      for (var i in data) {
+        el.append('<div>' + data[i] + '</div>');
       }
       el.slick({
         dots: false,
@@ -199,13 +198,13 @@ $(document).ready(function() {
   };
   twitterFetcher.fetch(configProfile);
 
-  (function() {
+  (function () {
     var topBanner = $('.home-banner');
     var header = $('.header');
     var topBannerHeight = topBanner.innerHeight();
     var showed = false;
 
-    $(window).scroll(function() {
+    $(window).scroll(function () {
       var scrollTop = $(document).scrollTop();
 
       if (scrollTop > topBannerHeight && !showed) {
@@ -213,7 +212,7 @@ $(document).ready(function() {
         showed = true;
       } else if (scrollTop <= topBannerHeight && showed) {
         header.removeClass('header--filled animated fadeIn').addClass('header--filled animated fadeOut');
-        setTimeout(function() {
+        setTimeout(function () {
           header.removeClass('header--filled animated fadeOut');
         }, 500);
         showed = false;
@@ -222,7 +221,7 @@ $(document).ready(function() {
   }());
 
   // stiky content menu
-  (function() {
+  (function () {
     var headerHeight = $('.header').innerHeight();
     var sectionHeadingHeight = $('.section-heading').innerHeight();
     var offsetTop = parseInt(headerHeight) + parseInt(sectionHeadingHeight);
@@ -230,7 +229,7 @@ $(document).ready(function() {
     var contentMenuHorixontal = $(".toc-bullets--horizontal");
     var showed = false;
 
-    $(window).scroll(function() {
+    $(window).scroll(function () {
       var scrollTop = $(document).scrollTop();
 
       if (scrollTop > offsetTop && !showed) {
@@ -246,7 +245,7 @@ $(document).ready(function() {
 
   // mobile menu
   if ($('.js-show-menu').length) {
-    $(".js-show-menu, .overlay").click(function(e) {
+    $(".js-show-menu, .overlay").click(function (e) {
       e.preventDefault();
       $('body').toggleClass('overflow-hidden');
       $(".menu-btn--menu").toggleClass('menu-open').toggleClass('close');
@@ -257,8 +256,8 @@ $(document).ready(function() {
     });
   }
 
-  if($(".js-show-sidebar").length) {
-    $(".js-show-sidebar, .overlay").click(function(e) {
+  if ($(".js-show-sidebar").length) {
+    $(".js-show-sidebar, .overlay").click(function (e) {
       e.preventDefault();
       $('body').toggleClass('overflow-hidden');
       $(".menu-btn--sidebar").toggleClass('menu-open');
@@ -285,7 +284,7 @@ $(document).ready(function() {
 
     allIds.keypress(function (e) {
       var key = e.which;
-      if(key == 13) {
+      if (key == 13) {
         showHiddenContent($(this));
       }
     });
@@ -316,23 +315,19 @@ $(document).ready(function() {
   // })();
 
 
-  (function() {
+  (function () {
     var videoId = $('#js-video');
-    console.log(videoId);
     //play video on hover
-    $("body").on('mouseover', '.home-banner__video', function() {
-      console.log("start");
-      videoId.get(0).play(); 
+    $("body").on('mouseover', '.home-banner__video', function () {
+      videoId.get(0).play();
     });
 
     //pause video on mouse leave
-    $("body").on('mouseleave', '.home-banner__video', function() { 
-      console.log("end");
-      videoId.get(0).pause(); 
+    $("body").on('mouseleave', '.home-banner__video', function () {
+      videoId.get(0).pause();
     });
   })()
 });
-
 
 
 // if (window.location.href.toString().split(window.location.host)[1] === '/docs/faq/') {
@@ -390,7 +385,7 @@ var btnsArray = document.querySelectorAll(".js-popup");
 var closeModal = document.getElementById("js-close");
 var btn;
 
-[].forEach.call(btnsArray,function(el){
+[].forEach.call(btnsArray, function (el) {
   el.addEventListener('click', function (e) {
     e.preventDefault();
     var videoIndex = this.dataset.video;
@@ -400,20 +395,20 @@ var btn;
 });
 
 if (closeModal) {
-  closeModal.onclick = function() {
+  closeModal.onclick = function () {
     modal.style.display = "none";
     stopVideo();
   };
 }
 
-window.onclick = function(event) {
+window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
     stopVideo();
   }
 };
 
-document.addEventListener('keyup', function(event) {
+document.addEventListener('keyup', function (event) {
   if (event.keyCode == 27) {
     modal.style.display = "none";
     stopVideo();
@@ -427,6 +422,7 @@ var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 var player, lastVideoId = '';
+
 function onYouTubeIframeAPIReady() {
   player = new YT.Player('player', {
     height: 'auto',
@@ -459,6 +455,7 @@ function onPlayerStateChange(event) {
     done = true;
   }
 }
+
 function stopVideo() {
   player.pauseVideo();
 }
@@ -484,10 +481,450 @@ clearResults();
 var safVideo = document.getElementById('js-safary-video');
 var defVideo = document.getElementById('js-def-video');
 
-if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
-  defVideo.style.display = 'none';
-  safVideo.style.display = 'block';
-} else {
-  safVideo.style.display = "none";
-  defVideo.style.display = 'block';
+if (safVideo && defVideo) {
+  if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
+    defVideo.style.display = 'none';
+    safVideo.style.display = 'block';
+  } else {
+    safVideo.style.display = "none";
+    defVideo.style.display = 'block';
+  }
+}
+
+
+if ($('#map').length) {
+  jQuery(function($) {
+    // Asynchronously Load the map API
+    var script = document.createElement('script');
+    script.src = "//maps.googleapis.com/maps/api/js?key=&sensor=false&callback=initialize";
+    document.body.appendChild(script);
+  });
+}
+
+
+// Initialize and add the map
+function initialize() {
+  let defaultView = {lat: 46.214484, lng: -21.114842};
+  const locations = {
+    saintpetersburg: [
+      {
+        conference: 'JokerConf',
+        date: 'October 20-21, 2018',
+        url: '#event-one',
+        position: {lat: 59.762016, lng: 30.356999}
+      }
+    ],
+    sanfrancisco: [
+      {
+        conference: 'Oracle Code One',
+        date: 'October 22-25, 2018',
+        url: '#event-two',
+        position: {lat: 37.783638, lng: -122.400888}
+      }
+    ],
+    berlin: [
+      {
+        conference: 'GOTO Berlin',
+        date: 'November 2, 2018',
+        url: '#event-three',
+        position: {lat: 52.520782, lng: 13.416515}
+      }
+    ],
+    haarlem: [
+      {
+        conference: 'JFall',
+        date: 'November 8, 2018',
+        url: '#event-four',
+        position: {lat: 52.015803, lng: 5.648064}
+      }
+    ],
+    antwerpen: [
+      {
+        conference: 'Devoxx Belgium',
+        date: 'November 12-16, 2018',
+        url: '#event-five',
+        position: {lat: 51.246048, lng: 4.416641}
+      }
+    ],
+    copenhagen: [
+      {
+        conference: 'GOTO Copenhagen',
+        date: 'November 19-23, 2018',
+        url: '#event-six',
+        position: {lat: 55.637904, lng: 12.576342}
+      }
+    ],
+    kyiv: [
+      {
+        conference: 'Devoxx Ukraine',
+        date: 'November 23-24, 2018',
+        url: '#event-seven',
+        position: {lat: 50.449100, lng: 30.540826}
+      }
+    ],
+    bruhl: [
+      {
+        conference: 'JAVALAND',
+        date: 'March 19-21, 2019',
+        url: '#event-eight',
+        position: {lat: 50.799537, lng: 6.879517}
+      }
+    ]
+  };
+
+  let labels = '12345678';
+  let labelIndex = 0;
+  let markerDefault = '/resources/img/marker.svg';
+  let markerActive = '/resources/img/marker-active.svg';
+
+  // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+  let mapOptions = {
+    zoom: 1.5,
+    center: new google.maps.LatLng(defaultView),
+    disableDefaultUI: true,
+    styles: [
+      {
+        "featureType": "all",
+        "elementType": "all",
+        "stylers": [
+          {
+            "visibility": "on"
+          }
+        ]
+      },
+      {
+        "featureType": "administrative",
+        "elementType": "geometry",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "administrative",
+        "elementType": "geometry.fill",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "administrative",
+        "elementType": "geometry.stroke",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "administrative",
+        "elementType": "labels",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "administrative",
+        "elementType": "labels.text.fill",
+        "stylers": [
+          {
+            "color": "#0c0b0b"
+          }
+        ]
+      },
+      {
+        "featureType": "administrative.country",
+        "elementType": "all",
+        "stylers": [
+          {
+            "visibility": "on"
+          }
+        ]
+      },
+      {
+        "featureType": "administrative.country",
+        "elementType": "geometry",
+        "stylers": [
+          {
+            "hue": "#ff0000"
+          },
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "administrative.country",
+        "elementType": "geometry.fill",
+        "stylers": [
+          {
+            "color": "#180c0c"
+          },
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "administrative.country",
+        "elementType": "geometry.stroke",
+        "stylers": [
+          {
+            "visibility": "on"
+          },
+          {
+            "color": "#d2d7da"
+          },
+          {
+            "weight": "1.00"
+          }
+        ]
+      },
+      {
+        "featureType": "administrative.country",
+        "elementType": "labels",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "administrative.country",
+        "elementType": "labels.text",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "administrative.province",
+        "elementType": "all",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "administrative.land_parcel",
+        "elementType": "all",
+        "stylers": [
+          {
+            "hue": "#ff0069"
+          }
+        ]
+      },
+      {
+        "featureType": "landscape",
+        "elementType": "all",
+        "stylers": [
+          {
+            "hue": "#2800ff"
+          },
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "landscape",
+        "elementType": "geometry",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "landscape",
+        "elementType": "geometry.fill",
+        "stylers": [
+          {
+            "visibility": "on"
+          },
+          {
+            "color": "#a6afb6"
+          },
+          {
+            "gamma": "1.00"
+          }
+        ]
+      },
+      {
+        "featureType": "poi",
+        "elementType": "all",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "road",
+        "elementType": "all",
+        "stylers": [
+          {
+            "saturation": -100
+          },
+          {
+            "lightness": 45
+          }
+        ]
+      },
+      {
+        "featureType": "road",
+        "elementType": "labels.text.fill",
+        "stylers": [
+          {
+            "color": "#090909"
+          }
+        ]
+      },
+      {
+        "featureType": "road.highway",
+        "elementType": "all",
+        "stylers": [
+          {
+            "visibility": "simplified"
+          }
+        ]
+      },
+      {
+        "featureType": "road.arterial",
+        "elementType": "labels.icon",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "transit",
+        "elementType": "all",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "water",
+        "elementType": "all",
+        "stylers": [
+          {
+            "visibility": "on"
+          },
+          {
+            "hue": "#ff0000"
+          }
+        ]
+      },
+      {
+        "featureType": "water",
+        "elementType": "geometry.fill",
+        "stylers": [
+          {
+            "visibility": "on"
+          },
+          {
+            "color": "#ffffff"
+          }
+        ]
+      },
+      {
+        "featureType": "water",
+        "elementType": "geometry.stroke",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "water",
+        "elementType": "labels",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "water",
+        "elementType": "labels.text.fill",
+        "stylers": [
+          {
+            "color": "#9b7f7f"
+          }
+        ]
+      },
+      {
+        "featureType": "water",
+        "elementType": "labels.text.stroke",
+        "stylers": [
+          {
+            "color": "#fef7f7"
+          }
+        ]
+      }
+    ]
+  };
+
+
+  const mapElement = document.getElementById('map');
+
+  // Create the Google Map using our element and options defined above
+  const map = new google.maps.Map(mapElement, mapOptions);
+
+  for (let city in locations) {
+    let bounds = new google.maps.LatLngBounds();
+    let cityLocations = locations[city];
+
+    for (let i = 0; i < cityLocations.length; i++) {
+      const marker = new google.maps.Marker({
+        position: cityLocations[i].position,
+        map: map,
+        icon: markerDefault,
+        label: {
+          text: labels[labelIndex++ % labels.length],
+          color: "white",
+          fontSize: '11px'
+        },
+        url: cityLocations[i].url
+      });
+
+      bounds.extend(marker.position);
+      const infoWindow = new google.maps.InfoWindow();
+      let infoWindowContent = '<div class="info-tooltip"><div class="info-tooltip__col"><h4 class="events-table__detail__title">Conference</h4><p>' + cityLocations[i].conference + '</p></div><div class="info-tooltip__col"><h4 class="events-table__detail__title">Date</h4><p>' + cityLocations[i].date + '</p></div></div>'
+
+      google.maps.event.addListener(marker, "mouseover", function () {
+        marker.setIcon(markerActive);
+        infoWindow.setContent(infoWindowContent);
+        infoWindow.open(map, marker);
+      });
+
+      google.maps.event.addListener(marker, 'mouseout', function () {
+        marker.setIcon(markerDefault);
+        infoWindow.close(map, marker);
+      });
+
+      google.maps.event.addListener(marker, "click", function () {
+        let elem = $(marker.url);
+        let eventTableRow = $('.events-table__row');
+        eventTableRow.removeClass('active');
+
+        $('html, body').animate({
+          scrollTop: elem.offset().top - 70
+        }, 1000 );
+        elem.toggleClass('active');
+      });
+    }
+  }
 }

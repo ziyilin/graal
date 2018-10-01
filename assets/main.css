@@ -4627,6 +4627,14 @@ figcaption {
 .hide {
   display: none; }
 
+.link-back {
+  color: #505d6e; }
+  .link-back i {
+    font-style: normal;
+    margin-right: 5px; }
+  .link-back:hover {
+    color: #d9810c; }
+
 h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
   line-height: 1.3;
@@ -6190,6 +6198,91 @@ table {
 .alert-danger {
   background-color: #FEFFE8;
   border-color: #f7efe6; }
+
+.events-map {
+  height: 400px;
+  width: 100%; }
+
+.events-table {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px; }
+  .events-table__count {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 40px;
+    min-width: 40px;
+    margin-bottom: 25px; }
+    @media (min-width: 576px) {
+      .events-table__count {
+        margin-bottom: 0; } }
+    @media (min-width: 768px) {
+      .events-table__count {
+        flex-basis: 75px;
+        min-width: 75px; } }
+    .events-table__count span {
+      color: rgba(68, 80, 95, 0.75);
+      font-size: 27px;
+      font-weight: 400;
+      line-height: 28px;
+      text-transform: uppercase; }
+  .events-table__row {
+    display: flex;
+    border-bottom: 1px solid #d7dae1;
+    padding: 25px 10px 10px;
+    flex-direction: column; }
+    @media (min-width: 576px) {
+      .events-table__row {
+        flex-direction: row;
+        padding: 25px 0 15px; } }
+    .events-table__row.active {
+      background-color: rgba(242, 145, 17, 0.1); }
+  .events-table__details {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    width: 100%; }
+  .events-table__detail {
+    width: 50%;
+    padding-left: 0;
+    margin-bottom: 20px; }
+    .events-table__detail:before {
+      display: none; }
+    .events-table__detail:last-of-type {
+      width: 100%; }
+      @media (min-width: 576px) {
+        .events-table__detail:last-of-type {
+          width: 33%;
+          margin-right: auto; } }
+    @media (min-width: 576px) {
+      .events-table__detail {
+        width: 33%; } }
+    .events-table__detail__title {
+      color: rgba(68, 80, 95, 0.75);
+      font-size: 12px;
+      line-height: 28px;
+      text-transform: uppercase;
+      margin: 0; }
+    .events-table__detail p {
+      color: #44505f;
+      font-size: 13px;
+      margin-bottom: 0;
+      font-weight: 500; }
+
+.info-tooltip {
+  display: flex; }
+  .info-tooltip__col:first-child {
+    margin-right: 20px; }
+  .info-tooltip__col p {
+    color: #44505f;
+    font-size: 13px;
+    font-weight: 400;
+    word-break: keep-all;
+    white-space: nowrap;
+    margin-bottom: 0; }
 
 /* Tomorrow Night Eighties Theme */
 /* Original theme - https://github.com/chriskempson/tomorrow-theme */
