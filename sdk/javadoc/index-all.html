@@ -1443,6 +1443,10 @@
 <dd>
 <div class="block">Returns the exception of this source location after it was executed.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="org/graalvm/nativeimage/ProcessProperties.html#getExecutableName--">getExecutableName()</a></span> - Static method in class org.graalvm.nativeimage.<a href="org/graalvm/nativeimage/ProcessProperties.html" title="class in org.graalvm.nativeimage">ProcessProperties</a></dt>
+<dd>
+<div class="block">Return the name of the executable.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/PolyglotException.html#getExitStatus--">getExitStatus()</a></span> - Method in exception org.graalvm.polyglot.<a href="org/graalvm/polyglot/PolyglotException.html" title="class in org.graalvm.polyglot">PolyglotException</a></dt>
 <dd>
 <div class="block">Returns the exit status if this exception indicates that the application was <a href="org/graalvm/polyglot/PolyglotException.html#isExit--"><code>exited</code></a>.</div>
@@ -1622,6 +1626,16 @@
 <dd>
 <div class="block">Returns the Object that is the referent of this PinnedObject.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="org/graalvm/nativeimage/ProcessProperties.html#getObjectFile-java.lang.String-">getObjectFile(String)</a></span> - Static method in class org.graalvm.nativeimage.<a href="org/graalvm/nativeimage/ProcessProperties.html" title="class in org.graalvm.nativeimage">ProcessProperties</a></dt>
+<dd>
+<div class="block">Return the path of the object file defining the symbol specified as a <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang"><code>String</code></a>
+ containing the symbol name.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/graalvm/nativeimage/ProcessProperties.html#getObjectFile-org.graalvm.nativeimage.c.function.CEntryPointLiteral-">getObjectFile(CEntryPointLiteral&lt;?&gt;)</a></span> - Static method in class org.graalvm.nativeimage.<a href="org/graalvm/nativeimage/ProcessProperties.html" title="class in org.graalvm.nativeimage">ProcessProperties</a></dt>
+<dd>
+<div class="block">Return the path of the object file defining the symbol specified as a
+ <a href="org/graalvm/nativeimage/c/function/CEntryPointLiteral.html" title="class in org.graalvm.nativeimage.c.function"><code>CEntryPointLiteral</code></a> containing a function pointer to symbol.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/nativeimage/c/CContext.Directives.html#getOptions--">getOptions()</a></span> - Method in interface org.graalvm.nativeimage.c.<a href="org/graalvm/nativeimage/c/CContext.Directives.html" title="interface in org.graalvm.nativeimage.c">CContext.Directives</a></dt>
 <dd>
 <div class="block">Returns options to be passed to the C compiler when processing the directives.</div>
@@ -1655,6 +1669,10 @@
 <dd>
 <div class="block">Provides programmatic access to the polyglot stack trace information printed by
  <a href="org/graalvm/polyglot/PolyglotException.html#printStackTrace--"><code>PolyglotException.printStackTrace()</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/graalvm/nativeimage/ProcessProperties.html#getProcessID--">getProcessID()</a></span> - Static method in class org.graalvm.nativeimage.<a href="org/graalvm/nativeimage/ProcessProperties.html" title="class in org.graalvm.nativeimage">ProcessProperties</a></dt>
+<dd>
+<div class="block">Get the Process ID of the process executing the image.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/TypeLiteral.html#getRawType--">getRawType()</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/TypeLiteral.html" title="class in org.graalvm.polyglot">TypeLiteral</a></dt>
 <dd>
@@ -2646,6 +2664,10 @@
 <dd>
 <div class="block">Prints host and guest language stack frames to specified print writer.</div>
 </dd>
+<dt><a href="org/graalvm/nativeimage/ProcessProperties.html" title="class in org.graalvm.nativeimage"><span class="typeNameLink">ProcessProperties</span></a> - Class in <a href="org/graalvm/nativeimage/package-summary.html">org.graalvm.nativeimage</a></dt>
+<dd>
+<div class="block">Utility class to get and set properties of the OS process at run time.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/nativeimage/ImageInfo.html#PROPERTY_IMAGE_CODE_KEY">PROPERTY_IMAGE_CODE_KEY</a></span> - Static variable in class org.graalvm.nativeimage.<a href="org/graalvm/nativeimage/ImageInfo.html" title="class in org.graalvm.nativeimage">ImageInfo</a></dt>
 <dd>
 <div class="block">Holds the string that is the name of the system property providing information about the
@@ -3225,6 +3247,10 @@
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/io/FileSystem.html#setAttribute-java.nio.file.Path-java.lang.String-java.lang.Object-java.nio.file.LinkOption...-">setAttribute(Path, String, Object, LinkOption...)</a></span> - Method in interface org.graalvm.polyglot.io.<a href="org/graalvm/polyglot/io/FileSystem.html" title="interface in org.graalvm.polyglot.io">FileSystem</a></dt>
 <dd>
 <div class="block">Sets a file's attribute.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/graalvm/nativeimage/ProcessProperties.html#setLocale-java.lang.String-java.lang.String-">setLocale(String, String)</a></span> - Static method in class org.graalvm.nativeimage.<a href="org/graalvm/nativeimage/ProcessProperties.html" title="class in org.graalvm.nativeimage">ProcessProperties</a></dt>
+<dd>
+<div class="block">Set the program locale.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/PolyglotException.html#setStackTrace-java.lang.StackTraceElement:A-">setStackTrace(StackTraceElement[])</a></span> - Method in exception org.graalvm.polyglot.<a href="org/graalvm/polyglot/PolyglotException.html" title="class in org.graalvm.polyglot">PolyglotException</a></dt>
 <dd>
