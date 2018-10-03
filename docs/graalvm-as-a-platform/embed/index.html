@@ -2693,6 +2693,38 @@ for (;;) {
 }
 </code></pre>
 
+<h2 id="step-through-with-execution-listeners">Step through with Execution Listeners</h2>
+<p>GraalVM Polyglot API allows to instrument the execution of guest languages through <a href="http://www.graalvm.org/sdk/javadoc/org/graalvm/polyglot/management/ExecutionListener.html">ExecutionListener class</a>. For example, it lets you attach an execution listener that is invoked for every statement of the guest language program. Execution listeners
+are designed as simple API for polyglot embedders and may become handy in, e.g., single-stepping through the program to detect potentially malicious code by counting the number of statements executed.</p>
+
+<pre><code class="language-Java">import org.graalvm.polyglot.*;
+import org.graalvm.polyglot.management.*;
+
+public class ExecutionListenerTest {
+ public static void main(String[] args) {
+ Context context = Context.create("js");
+ ExecutionListener listener = ExecutionListener.newBuilder()
+          .onEnter((e) -&gt; System.out.println(
+                  e.getLocation().getCharacters()))
+          .statements(true)
+          .attach(context.getEngine());
+ context.eval("js", "for (var i = 0; i &lt; 2; i++);");
+ listener.close();
+    }
+}
+</code></pre>
+
+<p>In this code:</p>
+<ul>
+  <li>The <code>Context.create()</code> call creates a new context for the guest language.</li>
+  <li>Create an execution listener builder by invoking <code>ExecutionListeners.newBuilder()</code>.</li>
+  <li>Set <code>onEnter</code> event to notify when element’s execution is entered and consumed. At least one event consumer and one filtered source element needs to be enabled.</li>
+  <li>To complete the listener attachment, <code>attach()</code> needs to be invoked.</li>
+  <li>The <code>statements(true)</code> filters execution listeners to statements only.</li>
+  <li>The <code>context.eval()</code> call evaluates a specified snippet of guest language code.</li>
+  <li>The <code>listener.close()</code> closes a listener earlier, however execution listeners are automatically closed with the engine.</li>
+</ul>
+
               </div>
     
               <div role="button" class="menu-btn menu-btn--sidebar js-show-sidebar" title="sweet hamburger">
@@ -2777,7 +2809,7 @@ for (;;) {
     </div>
     <div class="overlay"></div>
 
-    <script src="/resources/lib/twitter-fetcher.js"></script>
+    <script src='/resources/lib/twitter-fetcher.js'></script>
     <script src='/resources/lib/slick-slider/slick.min.js'></script>
     <script src='/resources/js/main.js'></script>
   </body>
