@@ -27,7 +27,7 @@ Note that due do the issue with the underlying platform Java Mission control fre
 More details can be found in the [project changelog on GitHub](https://github.com/graalvm/graaljs/blob/master/CHANGELOG.md ).
 
 ### LLVM interpreter (Sulong)
-The full [changelog](https://github.com/graalvm/sulong/blob/master/CHANGELOG.md) is available on GitHub.
+The full [changelog](https://github.com/oracle/graal/blob/master/sulong/CHANGELOG.md) is available on GitHub.
 
 * New polyglot builtin `polyglot_has_member`.
 * Removed support for implicit polyglot types for local variables as the availability of type information is not guaranteed. Explicit polyglot casts are now strictly required (`polyglot_as_typed`). See [docs/INTEROP.md](https://ol-bitbucket.us.oracle.com/projects/G/repos/graal/browse/sulong/docs/INTEROP.md) and [polyglot.h](https://ol-bitbucket.us.oracle.com/projects/G/repos/graal/browse/sulong/projects/com.oracle.truffle.llvm.libraries.bitcode/include/polyglot.h) for more details.
