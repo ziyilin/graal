@@ -2135,6 +2135,14 @@
 <dd>
 <div class="block">Destroys the given handle.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="org/graalvm/nativeimage/ProcessProperties.html#destroy-long-">destroy(long)</a></span> - Static method in class org.graalvm.nativeimage.<a href="org/graalvm/nativeimage/ProcessProperties.html" title="class in org.graalvm.nativeimage">ProcessProperties</a></dt>
+<dd>
+<div class="block">Kills the process.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/graalvm/nativeimage/ProcessProperties.html#destroyForcibly-long-">destroyForcibly(long)</a></span> - Static method in class org.graalvm.nativeimage.<a href="org/graalvm/nativeimage/ProcessProperties.html" title="class in org.graalvm.nativeimage">ProcessProperties</a></dt>
+<dd>
+<div class="block">Kills the process forcibly.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/api/TruffleOptions.html#DetailedRewriteReasons">DetailedRewriteReasons</a></span> - Static variable in class com.oracle.truffle.api.<a href="com/oracle/truffle/api/TruffleOptions.html" title="class in com.oracle.truffle.api">TruffleOptions</a></dt>
 <dd>
 <div class="block">Enables the generation of detailed rewrite reasons.</div>
@@ -3478,7 +3486,7 @@
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/nativeimage/ProcessProperties.html#getExecutableName--">getExecutableName()</a></span> - Static method in class org.graalvm.nativeimage.<a href="org/graalvm/nativeimage/ProcessProperties.html" title="class in org.graalvm.nativeimage">ProcessProperties</a></dt>
 <dd>
-<div class="block">Return the name of the executable.</div>
+<div class="block">Return the canonicalized absolute pathname of the executable.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/tck/Snippet.html#getExecutableValue--">getExecutableValue()</a></span> - Method in class org.graalvm.polyglot.tck.<a href="org/graalvm/polyglot/tck/Snippet.html" title="class in org.graalvm.polyglot.tck">Snippet</a></dt>
 <dd>
@@ -4268,6 +4276,10 @@
 <dt><span class="memberNameLink"><a href="org/graalvm/nativeimage/ProcessProperties.html#getProcessID--">getProcessID()</a></span> - Static method in class org.graalvm.nativeimage.<a href="org/graalvm/nativeimage/ProcessProperties.html" title="class in org.graalvm.nativeimage">ProcessProperties</a></dt>
 <dd>
 <div class="block">Get the Process ID of the process executing the image.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/graalvm/nativeimage/ProcessProperties.html#getProcessID-java.lang.Process-">getProcessID(Process)</a></span> - Static method in class org.graalvm.nativeimage.<a href="org/graalvm/nativeimage/ProcessProperties.html" title="class in org.graalvm.nativeimage">ProcessProperties</a></dt>
+<dd>
+<div class="block">Get the Process ID of the given process object.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/api/debug/DebugValue.html#getProperties--">getProperties()</a></span> - Method in class com.oracle.truffle.api.debug.<a href="com/oracle/truffle/api/debug/DebugValue.html" title="class in com.oracle.truffle.api.debug">DebugValue</a></dt>
 <dd>
@@ -5283,6 +5295,10 @@
 <dd>
 <div class="block">Test if the reporter instance is actually doing some reporting when notify methods are
  called.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/graalvm/nativeimage/ProcessProperties.html#isAlive-long-">isAlive(long)</a></span> - Static method in class org.graalvm.nativeimage.<a href="org/graalvm/nativeimage/ProcessProperties.html" title="class in org.graalvm.nativeimage">ProcessProperties</a></dt>
+<dd>
+<div class="block">Tests whether the process represented by the given Process ID is alive.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/word/LocationIdentity.html#isAny--">isAny()</a></span> - Method in class org.graalvm.word.<a href="org/graalvm/word/LocationIdentity.html" title="class in org.graalvm.word">LocationIdentity</a></dt>
 <dd>
