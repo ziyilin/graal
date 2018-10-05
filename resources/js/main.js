@@ -506,11 +506,19 @@ if ($('#map').length) {
 function initialize() {
   let defaultView = {lat: 46.214484, lng: -21.114842};
   const locations = {
+    prague: [
+      {
+        conference: 'GeeCon',
+        date: 'October 18-19, 2018',
+        url: '#event-one',
+        position: {lat: 50.109042, lng: 14.585350}
+      }
+    ],
     saintpetersburg: [
       {
         conference: 'JokerConf',
         date: 'October 20-21, 2018',
-        url: '#event-one',
+        url: '#event-two',
         position: {lat: 59.762016, lng: 30.356999}
       }
     ],
@@ -518,7 +526,7 @@ function initialize() {
       {
         conference: 'Oracle Code One',
         date: 'October 22-25, 2018',
-        url: '#event-two',
+        url: '#event-three',
         position: {lat: 37.783638, lng: -122.400888}
       }
     ],
@@ -526,7 +534,7 @@ function initialize() {
       {
         conference: 'GOTO Berlin',
         date: 'November 2, 2018',
-        url: '#event-three',
+        url: '#event-four',
         position: {lat: 52.520782, lng: 13.416515}
       }
     ],
@@ -534,7 +542,7 @@ function initialize() {
       {
         conference: 'JFall',
         date: 'November 8, 2018',
-        url: '#event-four',
+        url: '#event-five',
         position: {lat: 52.015803, lng: 5.648064}
       }
     ],
@@ -542,7 +550,7 @@ function initialize() {
       {
         conference: 'Devoxx Belgium',
         date: 'November 12-16, 2018',
-        url: '#event-five',
+        url: '#event-six',
         position: {lat: 51.246048, lng: 4.416641}
       }
     ],
@@ -550,7 +558,7 @@ function initialize() {
       {
         conference: 'GOTO Copenhagen',
         date: 'November 19-23, 2018',
-        url: '#event-six',
+        url: '#event-seven',
         position: {lat: 55.637904, lng: 12.576342}
       }
     ],
@@ -558,7 +566,7 @@ function initialize() {
       {
         conference: 'Devoxx Ukraine',
         date: 'November 23-24, 2018',
-        url: '#event-seven',
+        url: '#event-eight',
         position: {lat: 50.449100, lng: 30.540826}
       }
     ],
@@ -566,13 +574,13 @@ function initialize() {
       {
         conference: 'JAVALAND',
         date: 'March 19-21, 2019',
-        url: '#event-eight',
+        url: '#event-nine',
         position: {lat: 50.799537, lng: 6.879517}
       }
     ]
   };
 
-  let labels = '12345678';
+  let labels = '123456789';
   let labelIndex = 0;
   let markerDefault = '/resources/img/marker.svg';
   let markerActive = '/resources/img/marker-active.svg';
