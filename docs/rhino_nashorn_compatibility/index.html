@@ -5,16 +5,15 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex, follow">
 
   <title>
     
-      GraalVM goes native
+      Graal.js Compatibility to Rhino/Nashorn
     
   </title>
   <meta
     name="GraalVM website: documentation, tutorials, news and general information."
-    content="Matthias Grimmer"
+    content="GraalVM is an ecosystem for programming languages and set of next generation tools for high performance applications."
   >
 
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
@@ -22,7 +21,7 @@
   <link rel="stylesheet" href="/assets/main.css">
   <link rel="stylesheet" href="/resources/styles/extra.css">
 
-  <link rel="canonical" href="https://www.graalvm.org/graal/polyglot/2018/01/04/graalvm-goes-native.html">
+  <link rel="canonical" href="https://www.graalvm.org/docs/rhino_nashorn_compatibility/">
   <link rel="alternate" type="application/rss+xml" title="GraalVM" href="/feed.xml">
   <script src="/resources/lib/jquery/jquery-3.2.1.min.js"></script>
   <script src="/resources/lib/bootstrap/js/bootstrap.min.js"></script>
@@ -202,94 +201,223 @@
 
       <main  class="content"   aria-label="Content">
         <div class="wrapper wrapper-content">
-  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article class="docs">
 
-  <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">GraalVM goes native</h1>
-    <p class="post-meta">
-      <time datetime="2018-01-04T13:41:20+02:00" itemprop="datePublished">
-        
-        Jan 4, 2018
-      </time>
-      <!-- Look the author details up from the site config. -->
-      
+  <div class="container-fluid container-fluid--custom-sm">
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1">
+          <div class="row d-flex flex-wrap">
+            <div class="col-sm-3 col-bg">
+              <div class="sidebar-wrap">
+                <div class="sidebar">
+                  
+<div class="toc-floating">
 
-      <!-- Output author details if some exist. -->
-      
-    </p>
-  </header>
 
-  <div class="post-content" itemprop="articleBody">
-    <div class="authorBlock">
-  <p class="post-authorName">
-    <a href="https://github.com/grimmerm" target="blank">Matthias Grimmer</a><img src="https://avatars3.githubusercontent.com/u/9483985?s=400&amp;v=4" href="https://github.com/grimmerm" target="blank" />
-    </p>
-    </div>
-<div class="faded-line"></div>
+<script>
+var sidebar = document.currentScript.parentElement;
 
-<h1 id="sulong-can-execute-llvm-based-languages-on-the-jvm">Sulong can execute LLVM-based languages on the JVM</h1>
-<p>TO DO:
-Needs revision of Roland Schatz or Christian Haeubl</p>
+// 
+//   $(document).ready(function(){
+//     $('.sidebar-wrap').stickySidebar({
+//       topSpacing: 74,
+//       bottomSpacing: 40
+//     });
+//   });
+//
+// 
 
-<p>The GraalVM is a multi-language platform and can efficiently execute your Java, JavaScript, Node, Ruby, or R application.
-However, it misses low-level languages such as C/C++ or Fortran.
-To call functions written in such languages, the GraalVM has to resort to the Java Native Interface (JNI) or other native function interfaces.
-These native function interfaces add run-time overhead since data structures have to be converted or (un)marshalled when transferring data between Java and the target language.
-Also, language boundaries are compilation boundaries, so a compiler cannot, for example, apply function inlining across languages.
-With project Sulong, that is about to change!
-We are introducing Project Sulong, a system that enriches the GraalVM with a variety of new languages by executing LLVM IR.
-Sulong is an LLVM IR interpreter, which executes all languages that have an LLVM IR front end, including C/C++, Fortran, Ada, Rust, and Haskell.
-It enables us to efficiently implement the native interfaces of other GraalVM languages (e.g. Ruby or R) and to efficiently embed low-level code.
-For example, Sulong allows you to run Ruby applications with C extensions on the GraalVM.
-The future is safe! We are currently researching technology that will allows Sulong to guarantee memory safety when executing low-level languages like C/C++.
-C/C++ allows programmers to do untyped memory accesses, including pointer arithmetic, which can result in errors such as buffer overflows, dangling pointers, invalid deallocations, or null pointer accesses.
-With future version of Sulong, we want to guarantee memory safety for those parts of you application that are implemented in C/C++.</p>
 
-<p><strong><em>How does it work?</em></strong></p>
+$(document).ready(function(){
+  var header = $('.header').height();
+  var invisibleBlock;
 
-<p>Sulong is an LLVM IR interpreter as part of the GraalVM.
-You can use LLVM front ends to compile source languages such as C/C++ or Fortran to LLVM IR and then execute it on the GraalVM.
-Sulong’s Truffle interpreter optimizes the IR based on the profile feedback that it observes at run time.
-Eventually, the IR is partially evaluated and compiled to machine code useing the dynamic compiler Graal.
-One concern for Sulong is seamless and efficient interoperability with native shared libraries such as the C standard library.
-Reusing existing code in low-level languages such as C/C++ is commonly done by linking user programs against a shared native library that is present as a machine code binary but not available as source code (e.g. the C standard library).
-Sulong ships with a native interface to call native functions of such a library.
-We align LLVM IR objects (structs, arrays, and vectors) using the same layout as in executables produced by static compilers.
-When Sulong calls a native function, this native function can directly operate on allocations provided by Sulong, since they match the platform’s Application Binary Interface.
-Thus, Sulong does not need to marshal or convert objects when calling shared library functions, and can call native functions with zero overhead when compared to native to native calls in executables.</p>
+  $("#content-wrapper h1, #content-wrapper h2").each(function() {
+    invisibleBlock = $(this).before("<div class='anchor' id="+ $(this).attr("id") +"></div>");
+  });
 
-<p><strong><em>Running C extensions on Sulong</em></strong></p>
+  $(window).scroll(function() {
+    var lastitem = null;
+    $("#content-wrapper h1, #content-wrapper h2").each(function() {
+      var heading = $(this);
+      var position = (heading.position().top - heading.height()) - $(window).scrollTop();
+      var listitem = $(sidebar).find("li").filter(function() {
+        return $(this).find("a").attr("href") == "#" + heading.attr("id");
+      });
+      listitem.removeClass("toc-bullets-focused");
+      if (position <= 0) {
+        lastitem = listitem;
+      }
+    });
+    if (lastitem != null) lastitem.addClass("toc-bullets-focused");
+  });
+});
 
-<p>Many modern VMs have an API that can integrate native code, for example the C extension API of Ruby.
-The APIs against which native code is written often simply provide direct access to the internal data structures of the standard language implementation.
-For example, Ruby C extensions are written against the API of the original Ruby implementation MRI.
-Developers of a C extension for Ruby get access to this API by including the ruby.h header file.
-The C extension code is then dynamically loaded and linked into the Ruby VM when the Ruby program starts to run.
-This API contains functions that allow C code to manipulate Ruby objects at a high level, but also includes routines that let you directly access pointers to internal data such as the character array in a string object.
-The API is simple, powerful, and reasonably efficient, but it only works well for the language implementations for which they were designed.
-As dynamic languages become more and more popular, they are going to be reimplemented using modern VM technologies such as dynamic compilation and advanced garbage collection, e.g., JRuby or TruffleRuby.
-Both engines outperform existing MRI by an order of magnitude.
-However, these implementations typically use significantly different internal data structures, which makes an implementation of the original APIs for C extensions hard.
-The GraalVM’s Ruby implementation uses Sulong to implement the C extension API.
-The native part of the Ruby application is hereby executed by Sulong.
-The C extension API offers a wide variety of functions that are used to access and manipulate Ruby object from within C.
-Sulong implements these functions using the GraalVM’s cross-language interoperability mechanism, which allows to directly access Ruby data and interface to the Ruby implementation.</p>
+</script>
 
-<p><strong><em>The future is safe</em></strong></p>
-
-<p>We are currently researching an extension to Sulong that can guarantee memory safety.
-Our idea is to replace unmanaged memory allocations and replace them by managed Java allocations that represent C data structures.
-Since Java provides well-specified automatic bounds and type checks, the interpreter automatically checks and detects invalid accesses such as out-of-bounds accesses, use-after-free errors, and null pointer dereferences.
-All kind of data (primitives, pointers, functions, arrays, and structs) is implemented using Java objects, which allows us to ensure spatial as well as temporal memory safety.
-With this future extension of Sulong, an application will not compromise memory safety when using C/C++.</p>
-
-<p><strong><em>Summary</em></strong></p>
-
-<p>Do not hesitate and run your first C/C++ application on the GraalVM. Proceed to <a href="http://www.oracle.com/technetwork/oracle-labs/program-languages/downloads/index.html" target="blank">Oracle Technology Network</a> page where you can download GraalVM including Sulong.</p>
-
-  </div>
+<ul class="toc-bullets">
 
   
+    
+
+    
+      
+        
+          <li class="toc-bullets-main">
+        
+          
+          <a href="/docs/why-graal/">
+            Why GraalVM?
+          </a>
+        </li>
+
+
+        
+
+
+        
+      
+    
+      
+        
+          <li class="toc-bullets-main">
+        
+          
+          <a href="/docs/getting-started/">
+            Getting Started
+          </a>
+        </li>
+
+
+        
+
+
+        
+      
+    
+      
+        
+          <li class="toc-bullets-main">
+        
+          
+          <a href="/docs/examples/">
+            Examples
+          </a>
+        </li>
+
+
+        
+
+
+        
+      
+    
+      
+        
+          <li class="toc-bullets-main">
+        
+          
+          <a href="/docs/reference-manual/compatibility/">
+            Compatibility
+          </a>
+        </li>
+
+
+        
+
+
+        
+      
+    
+      
+        
+          <li class="toc-bullets-main">
+        
+          
+          <a href="/docs/reference-manual/">
+            Reference Manual
+          </a>
+        </li>
+
+
+        
+
+
+        
+      
+    
+      
+        
+          <li class="toc-bullets-main">
+        
+          
+          <a href="/docs/graalvm-as-a-platform/">
+            GraalVM as a Platform
+          </a>
+        </li>
+
+
+        
+
+
+        
+      
+    
+      
+        
+          <li class="toc-bullets-main">
+        
+          
+          <a href="/docs/faq/">
+            FAQ
+          </a>
+        </li>
+
+
+        
+
+
+        
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</ul>
+
+</div>
+
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-sm-9">
+              <div id="content-wrapper" class="docs-content docs-content--with-sidebar">
+                <h3 id="rhinonashorn-to-graaljs-migration-guide">Rhino/Nashorn to Graal.js migration guide</h3>
+
+              </div>
+    
+              <div role="button" class="menu-btn menu-btn--sidebar js-show-sidebar" title="sweet hamburger">
+                <div class="hamburger"><div class="inner"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
 </article>
 
 </div>
@@ -324,7 +452,7 @@ With this future extension of Sulong, an application will not compromise memory 
               <li class="footer-list__item"><a href="/community">Get support</a></li>
               <li class="footer-list__item"><a href="/community/conduct">Code of Conduct</a></li>
               <li class="footer-list__item"><a href="/community/publications">Publications</a></li>
-              <li class="footer-list__item"><a href="https://medium.com/oracledevs">Developers Blog</a></li>
+              <li class="footer-list__item"><a href="https://medium.com/graalvm">Developers Blog</a></li>
             </ul>
           </div>
 
