@@ -99,7 +99,7 @@ public @interface <span class="memberNameLabel">CEntryPoint</span></pre>
  <p>
  An execution context must be passed as a parameter and can be either an <a href="../../../../../org/graalvm/nativeimage/IsolateThread.html" title="interface in org.graalvm.nativeimage"><code>IsolateThread</code></a>
  that is specific to the current thread, or an <a href="../../../../../org/graalvm/nativeimage/Isolate.html" title="interface in org.graalvm.nativeimage"><code>Isolate</code></a> for an isolate in which the current
- thread is attached. These pointers can be obtained via the methods of <a href="../../../../../org/graalvm/nativeimage/c/function/CEntryPointContext.html" title="class in org.graalvm.nativeimage.c.function"><code>CEntryPointContext</code></a>.
+ thread is attached. These pointers can be obtained via the methods of <a href="../../../../../org/graalvm/nativeimage/CurrentIsolate.html" title="class in org.graalvm.nativeimage"><code>CurrentIsolate</code></a>.
  When there is more than one parameter of these types, exactly one of the parameters must be
  annotated with <a href="../../../../../org/graalvm/nativeimage/c/function/CEntryPoint.IsolateThreadContext.html" title="annotation in org.graalvm.nativeimage.c.function"><code>CEntryPoint.IsolateThreadContext</code></a> for <a href="../../../../../org/graalvm/nativeimage/IsolateThread.html" title="interface in org.graalvm.nativeimage"><code>IsolateThread</code></a>, or <a href="../../../../../org/graalvm/nativeimage/c/function/CEntryPoint.IsolateContext.html" title="annotation in org.graalvm.nativeimage.c.function"><code>CEntryPoint.IsolateContext</code></a>
  for <a href="../../../../../org/graalvm/nativeimage/Isolate.html" title="interface in org.graalvm.nativeimage"><code>Isolate</code></a>.

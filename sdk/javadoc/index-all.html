@@ -406,6 +406,10 @@
 <div class="block">Creates a new execution listener using the current builder configuration and attaches it
  to an engine.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="org/graalvm/nativeimage/Isolates.html#attachCurrentThread-org.graalvm.nativeimage.Isolate-">attachCurrentThread(Isolate)</a></span> - Static method in class org.graalvm.nativeimage.<a href="org/graalvm/nativeimage/Isolates.html" title="class in org.graalvm.nativeimage">Isolates</a></dt>
+<dd>
+<div class="block">Attaches the current thread to the passed isolate.</div>
+</dd>
 </dl>
 <a name="I:B">
 <!--   -->
@@ -441,6 +445,11 @@
 <dd>
 <div class="block">Compares this Unsigned with the specified value.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="org/graalvm/nativeimage/Isolates.CreateIsolateParameters.Builder.html#build--">build()</a></span> - Method in class org.graalvm.nativeimage.<a href="org/graalvm/nativeimage/Isolates.CreateIsolateParameters.Builder.html" title="class in org.graalvm.nativeimage">Isolates.CreateIsolateParameters.Builder</a></dt>
+<dd>
+<div class="block">Produces the final <a href="org/graalvm/nativeimage/Isolates.CreateIsolateParameters.html" title="class in org.graalvm.nativeimage"><code>Isolates.CreateIsolateParameters</code></a> with the values set previously by
+ the builder methods.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/options/OptionDescriptor.Builder.html#build--">build()</a></span> - Method in class org.graalvm.options.<a href="org/graalvm/options/OptionDescriptor.Builder.html" title="class in org.graalvm.options">OptionDescriptor.Builder</a></dt>
 <dd>
 <div class="block">Builds and returns a new option descriptor.</div>
@@ -454,6 +463,10 @@
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Source.Builder.html#build--">build()</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Source.Builder.html" title="class in org.graalvm.polyglot">Source.Builder</a></dt>
 <dd>
 <div class="block">Uses configuration of this builder to create new <a href="org/graalvm/polyglot/Source.html" title="class in org.graalvm.polyglot"><code>Source</code></a> object.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/graalvm/nativeimage/Isolates.CreateIsolateParameters.Builder.html#Builder--">Builder()</a></span> - Constructor for class org.graalvm.nativeimage.<a href="org/graalvm/nativeimage/Isolates.CreateIsolateParameters.Builder.html" title="class in org.graalvm.nativeimage">Isolates.CreateIsolateParameters.Builder</a></dt>
+<dd>
+<div class="block">Creates a new builder with default values.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Source.Builder.html#buildLiteral--">buildLiteral()</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Source.Builder.html" title="class in org.graalvm.polyglot">Source.Builder</a></dt>
 <dd>
@@ -559,10 +572,6 @@
 <dt><a href="org/graalvm/nativeimage/c/function/CEntryPoint.IsolateThreadContext.html" title="annotation in org.graalvm.nativeimage.c.function"><span class="typeNameLink">CEntryPoint.IsolateThreadContext</span></a> - Annotation Type in <a href="org/graalvm/nativeimage/c/function/package-summary.html">org.graalvm.nativeimage.c.function</a></dt>
 <dd>
 <div class="block">Designates an <a href="org/graalvm/nativeimage/IsolateThread.html" title="interface in org.graalvm.nativeimage"><code>IsolateThread</code></a> parameter to use as the execution context.</div>
-</dd>
-<dt><a href="org/graalvm/nativeimage/c/function/CEntryPointContext.html" title="class in org.graalvm.nativeimage.c.function"><span class="typeNameLink">CEntryPointContext</span></a> - Class in <a href="org/graalvm/nativeimage/c/function/package-summary.html">org.graalvm.nativeimage.c.function</a></dt>
-<dd>
-<div class="block">Utility methods that provide access to the current isolate.</div>
 </dd>
 <dt><a href="org/graalvm/nativeimage/c/function/CEntryPointLiteral.html" title="class in org.graalvm.nativeimage.c.function"><span class="typeNameLink">CEntryPointLiteral</span></a>&lt;<a href="org/graalvm/nativeimage/c/function/CEntryPointLiteral.html" title="type parameter in CEntryPointLiteral">T</a> extends <a href="org/graalvm/nativeimage/c/function/CFunctionPointer.html" title="interface in org.graalvm.nativeimage.c.function">CFunctionPointer</a>&gt; - Class in <a href="org/graalvm/nativeimage/c/function/package-summary.html">org.graalvm.nativeimage.c.function</a></dt>
 <dd>
@@ -887,6 +896,10 @@
 <dd>
 <div class="block">Creates a directory.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="org/graalvm/nativeimage/Isolates.html#createIsolate-org.graalvm.nativeimage.Isolates.CreateIsolateParameters-">createIsolate(Isolates.CreateIsolateParameters)</a></span> - Static method in class org.graalvm.nativeimage.<a href="org/graalvm/nativeimage/Isolates.html" title="class in org.graalvm.nativeimage">Isolates</a></dt>
+<dd>
+<div class="block">Creates a new isolate with the passed <a href="org/graalvm/nativeimage/Isolates.CreateIsolateParameters.html" title="class in org.graalvm.nativeimage">parameters</a>.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/collections/Pair.html#createLeft-L-">createLeft(L)</a></span> - Static method in class org.graalvm.collections.<a href="org/graalvm/collections/Pair.html" title="class in org.graalvm.collections">Pair</a></dt>
 <dd>
 <div class="block">Constructs a pair with its left value being <code>left</code>, or returns an empty pair if
@@ -933,6 +946,10 @@
 <dt><a href="org/graalvm/nativeimage/c/struct/CTypedefOfInfo.html" title="annotation in org.graalvm.nativeimage.c.struct"><span class="typeNameLink">CTypedefOfInfo</span></a> - Annotation Type in <a href="org/graalvm/nativeimage/c/struct/package-summary.html">org.graalvm.nativeimage.c.struct</a></dt>
 <dd>
 <div class="block">Informational only.</div>
+</dd>
+<dt><a href="org/graalvm/nativeimage/CurrentIsolate.html" title="class in org.graalvm.nativeimage"><span class="typeNameLink">CurrentIsolate</span></a> - Class in <a href="org/graalvm/nativeimage/package-summary.html">org.graalvm.nativeimage</a></dt>
+<dd>
+<div class="block">Utility methods that provide access to the current isolate.</div>
 </dd>
 </dl>
 <a name="I:D">
@@ -981,6 +998,11 @@
 <dt><span class="memberNameLink"><a href="org/graalvm/nativeimage/ProcessProperties.html#destroyForcibly-long-">destroyForcibly(long)</a></span> - Static method in class org.graalvm.nativeimage.<a href="org/graalvm/nativeimage/ProcessProperties.html" title="class in org.graalvm.nativeimage">ProcessProperties</a></dt>
 <dd>
 <div class="block">Kills the process forcibly.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/graalvm/nativeimage/Isolates.html#detachThread-org.graalvm.nativeimage.IsolateThread-">detachThread(IsolateThread)</a></span> - Static method in class org.graalvm.nativeimage.<a href="org/graalvm/nativeimage/Isolates.html" title="class in org.graalvm.nativeimage">Isolates</a></dt>
+<dd>
+<div class="block">Detaches the passed isolate thread from its isolate and discards any state or context that is
+ associated with it.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/nativeimage/Feature.html#duringAnalysis-org.graalvm.nativeimage.Feature.DuringAnalysisAccess-">duringAnalysis(Feature.DuringAnalysisAccess)</a></span> - Method in interface org.graalvm.nativeimage.<a href="org/graalvm/nativeimage/Feature.html" title="interface in org.graalvm.nativeimage">Feature</a></dt>
 <dd>
@@ -1407,13 +1429,18 @@
 <dd>
 <div class="block">Returns the currently entered polyglot context.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="org/graalvm/nativeimage/c/function/CEntryPointContext.html#getCurrentIsolate--">getCurrentIsolate()</a></span> - Static method in class org.graalvm.nativeimage.c.function.<a href="org/graalvm/nativeimage/c/function/CEntryPointContext.html" title="class in org.graalvm.nativeimage.c.function">CEntryPointContext</a></dt>
-<dd>
-<div class="block">Returns the current isolate.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="org/graalvm/nativeimage/c/function/CEntryPointContext.html#getCurrentIsolateThread--">getCurrentIsolateThread()</a></span> - Static method in class org.graalvm.nativeimage.c.function.<a href="org/graalvm/nativeimage/c/function/CEntryPointContext.html" title="class in org.graalvm.nativeimage.c.function">CEntryPointContext</a></dt>
+<dt><span class="memberNameLink"><a href="org/graalvm/nativeimage/CurrentIsolate.html#getCurrentThread--">getCurrentThread()</a></span> - Static method in class org.graalvm.nativeimage.<a href="org/graalvm/nativeimage/CurrentIsolate.html" title="class in org.graalvm.nativeimage">CurrentIsolate</a></dt>
 <dd>
 <div class="block">Returns the current thread in the current isolate.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/graalvm/nativeimage/Isolates.html#getCurrentThread-org.graalvm.nativeimage.Isolate-">getCurrentThread(Isolate)</a></span> - Static method in class org.graalvm.nativeimage.<a href="org/graalvm/nativeimage/Isolates.html" title="class in org.graalvm.nativeimage">Isolates</a></dt>
+<dd>
+<div class="block">Given an isolate to which the current thread is attached, returns the address of the thread's
+ associated isolate thread structure.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/graalvm/nativeimage/Isolates.CreateIsolateParameters.html#getDefault--">getDefault()</a></span> - Static method in class org.graalvm.nativeimage.<a href="org/graalvm/nativeimage/Isolates.CreateIsolateParameters.html" title="class in org.graalvm.nativeimage">Isolates.CreateIsolateParameters</a></dt>
+<dd>
+<div class="block">Returns a <a href="org/graalvm/nativeimage/Isolates.CreateIsolateParameters.html" title="class in org.graalvm.nativeimage"><code>Isolates.CreateIsolateParameters</code></a> with all default values.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Language.html#getDefaultMimeType--">getDefaultMimeType()</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Language.html" title="class in org.graalvm.polyglot">Language</a></dt>
 <dd>
@@ -1511,6 +1538,15 @@
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Engine.html#getInstruments--">getInstruments()</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Engine.html" title="class in org.graalvm.polyglot">Engine</a></dt>
 <dd>
 <div class="block">Gets all installed instruments of this engine.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/graalvm/nativeimage/CurrentIsolate.html#getIsolate--">getIsolate()</a></span> - Static method in class org.graalvm.nativeimage.<a href="org/graalvm/nativeimage/CurrentIsolate.html" title="class in org.graalvm.nativeimage">CurrentIsolate</a></dt>
+<dd>
+<div class="block">Returns the current isolate.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/graalvm/nativeimage/Isolates.html#getIsolate-org.graalvm.nativeimage.IsolateThread-">getIsolate(IsolateThread)</a></span> - Static method in class org.graalvm.nativeimage.<a href="org/graalvm/nativeimage/Isolates.html" title="class in org.graalvm.nativeimage">Isolates</a></dt>
+<dd>
+<div class="block">Given an isolate thread structure for the current thread, determines to which isolate it
+ belongs and returns the address of the isolate structure.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/collections/UnmodifiableMapCursor.html#getKey--">getKey()</a></span> - Method in interface org.graalvm.collections.<a href="org/graalvm/collections/UnmodifiableMapCursor.html" title="interface in org.graalvm.collections">UnmodifiableMapCursor</a></dt>
 <dd>
@@ -1702,6 +1738,10 @@
 <dt><span class="memberNameLink"><a href="org/graalvm/nativeimage/Feature.html#getRequiredFeatures--">getRequiredFeatures()</a></span> - Method in interface org.graalvm.nativeimage.<a href="org/graalvm/nativeimage/Feature.html" title="interface in org.graalvm.nativeimage">Feature</a></dt>
 <dd>
 <div class="block">Returns the list of features that this feature depends on.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/graalvm/nativeimage/Isolates.CreateIsolateParameters.html#getReservedAddressSpaceSize--">getReservedAddressSpaceSize()</a></span> - Method in class org.graalvm.nativeimage.<a href="org/graalvm/nativeimage/Isolates.CreateIsolateParameters.html" title="class in org.graalvm.nativeimage">Isolates.CreateIsolateParameters</a></dt>
+<dd>
+<div class="block">Returns the size in bytes for the reserved virtual address space of the new isolate.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/management/ExecutionEvent.html#getReturnValue--">getReturnValue()</a></span> - Method in class org.graalvm.polyglot.management.<a href="org/graalvm/polyglot/management/ExecutionEvent.html" title="class in org.graalvm.polyglot.management">ExecutionEvent</a></dt>
 <dd>
@@ -2106,6 +2146,26 @@
 <dt><a href="org/graalvm/nativeimage/Isolate.html" title="interface in org.graalvm.nativeimage"><span class="typeNameLink">Isolate</span></a> - Interface in <a href="org/graalvm/nativeimage/package-summary.html">org.graalvm.nativeimage</a></dt>
 <dd>
 <div class="block">Pointer to the runtime data structure for an isolate.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/graalvm/nativeimage/Isolates.IsolateException.html#IsolateException-java.lang.String-">IsolateException(String)</a></span> - Constructor for exception org.graalvm.nativeimage.<a href="org/graalvm/nativeimage/Isolates.IsolateException.html" title="class in org.graalvm.nativeimage">Isolates.IsolateException</a></dt>
+<dd>
+<div class="block">Constructs a new exception with the specified detail message.</div>
+</dd>
+<dt><a href="org/graalvm/nativeimage/Isolates.html" title="class in org.graalvm.nativeimage"><span class="typeNameLink">Isolates</span></a> - Class in <a href="org/graalvm/nativeimage/package-summary.html">org.graalvm.nativeimage</a></dt>
+<dd>
+<div class="block">Support for the creation, access to, and tear-down of isolates.</div>
+</dd>
+<dt><a href="org/graalvm/nativeimage/Isolates.CreateIsolateParameters.html" title="class in org.graalvm.nativeimage"><span class="typeNameLink">Isolates.CreateIsolateParameters</span></a> - Class in <a href="org/graalvm/nativeimage/package-summary.html">org.graalvm.nativeimage</a></dt>
+<dd>
+<div class="block">Parameters for the creation of an isolate.</div>
+</dd>
+<dt><a href="org/graalvm/nativeimage/Isolates.CreateIsolateParameters.Builder.html" title="class in org.graalvm.nativeimage"><span class="typeNameLink">Isolates.CreateIsolateParameters.Builder</span></a> - Class in <a href="org/graalvm/nativeimage/package-summary.html">org.graalvm.nativeimage</a></dt>
+<dd>
+<div class="block">Builder for a <a href="org/graalvm/nativeimage/Isolates.CreateIsolateParameters.html" title="class in org.graalvm.nativeimage"><code>Isolates.CreateIsolateParameters</code></a> instance.</div>
+</dd>
+<dt><a href="org/graalvm/nativeimage/Isolates.IsolateException.html" title="class in org.graalvm.nativeimage"><span class="typeNameLink">Isolates.IsolateException</span></a> - Exception in <a href="org/graalvm/nativeimage/package-summary.html">org.graalvm.nativeimage</a></dt>
+<dd>
+<div class="block">An exception thrown in the context of managing isolates.</div>
 </dd>
 <dt><a href="org/graalvm/nativeimage/IsolateThread.html" title="interface in org.graalvm.nativeimage"><span class="typeNameLink">IsolateThread</span></a> - Interface in <a href="org/graalvm/nativeimage/package-summary.html">org.graalvm.nativeimage</a></dt>
 <dd>
@@ -3184,6 +3244,10 @@
 <div class="block">Registers the provided classes, and all of their subclasses, for class re-initialization at
  runtime.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="org/graalvm/nativeimage/Isolates.CreateIsolateParameters.Builder.html#reservedAddressSpaceSize-org.graalvm.word.UnsignedWord-">reservedAddressSpaceSize(UnsignedWord)</a></span> - Method in class org.graalvm.nativeimage.<a href="org/graalvm/nativeimage/Isolates.CreateIsolateParameters.Builder.html" title="class in org.graalvm.nativeimage">Isolates.CreateIsolateParameters.Builder</a></dt>
+<dd>
+<div class="block">Sets the size in bytes for the reserved virtual address space of the new isolate.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/collections/EconomicSet.html#retainAll-org.graalvm.collections.EconomicSet-">retainAll(EconomicSet&lt;E&gt;)</a></span> - Method in interface org.graalvm.collections.<a href="org/graalvm/collections/EconomicSet.html" title="interface in org.graalvm.collections">EconomicSet</a></dt>
 <dd>
 <div class="block">Removes from this set all of its elements that are not contained in <code>other</code>.</div>
@@ -3406,6 +3470,10 @@
 </a>
 <h2 class="title">T</h2>
 <dl>
+<dt><span class="memberNameLink"><a href="org/graalvm/nativeimage/Isolates.html#tearDownIsolate-org.graalvm.nativeimage.IsolateThread-">tearDownIsolate(IsolateThread)</a></span> - Static method in class org.graalvm.nativeimage.<a href="org/graalvm/nativeimage/Isolates.html" title="class in org.graalvm.nativeimage">Isolates</a></dt>
+<dd>
+<div class="block">Tears down an isolate.</div>
+</dd>
 <dt><a href="org/graalvm/nativeimage/Threading.html" title="class in org.graalvm.nativeimage"><span class="typeNameLink">Threading</span></a> - Class in <a href="org/graalvm/nativeimage/package-summary.html">org.graalvm.nativeimage</a></dt>
 <dd>
 <div class="block">Functionality related to execution in threads.</div>
