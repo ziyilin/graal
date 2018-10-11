@@ -1547,6 +1547,10 @@
 <dd>
 <div class="block">Creates an copy of this allocator state.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/TruffleFile.html#copy-com.oracle.truffle.api.TruffleFile-java.nio.file.CopyOption...-">copy(TruffleFile, CopyOption...)</a></span> - Method in class com.oracle.truffle.api.<a href="com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a></dt>
+<dd>
+<div class="block">Copies the file.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/io/FileSystem.html#copy-java.nio.file.Path-java.nio.file.Path-java.nio.file.CopyOption...-">copy(Path, Path, CopyOption...)</a></span> - Method in interface org.graalvm.polyglot.io.<a href="org/graalvm/polyglot/io/FileSystem.html" title="interface in org.graalvm.polyglot.io">FileSystem</a></dt>
 <dd>
 <div class="block">Copies source file to target file.</div>
@@ -1852,6 +1856,10 @@
 <div class="block">Constructs a pair with its left value being <code>left</code>, or returns an empty pair if
  <code>left</code> is null.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/TruffleFile.html#createLink-com.oracle.truffle.api.TruffleFile-">createLink(TruffleFile)</a></span> - Method in class com.oracle.truffle.api.<a href="com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a></dt>
+<dd>
+<div class="block">Creates a new link to an existing target <i>(optional operation)</i>.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/io/FileSystem.html#createLink-java.nio.file.Path-java.nio.file.Path-">createLink(Path, Path)</a></span> - Method in interface org.graalvm.polyglot.io.<a href="org/graalvm/polyglot/io/FileSystem.html" title="interface in org.graalvm.polyglot.io">FileSystem</a></dt>
 <dd>
 <div class="block">Creates a new link for an existing file.</div>
@@ -1934,6 +1942,10 @@
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/tck/LanguageProvider.html#createStatements-org.graalvm.polyglot.Context-">createStatements(Context)</a></span> - Method in interface org.graalvm.polyglot.tck.<a href="org/graalvm/polyglot/tck/LanguageProvider.html" title="interface in org.graalvm.polyglot.tck">LanguageProvider</a></dt>
 <dd>
 <div class="block">Creates a collection of functions representing language statements to test.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/TruffleFile.html#createSymbolicLink-com.oracle.truffle.api.TruffleFile-java.nio.file.attribute.FileAttribute...-">createSymbolicLink(TruffleFile, FileAttribute&lt;?&gt;...)</a></span> - Method in class com.oracle.truffle.api.<a href="com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a></dt>
+<dd>
+<div class="block">Creates a symbolic link to a target <i>(optional operation)</i>.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/io/FileSystem.html#createSymbolicLink-java.nio.file.Path-java.nio.file.Path-java.nio.file.attribute.FileAttribute...-">createSymbolicLink(Path, Path, FileAttribute&lt;?&gt;...)</a></span> - Method in interface org.graalvm.polyglot.io.<a href="org/graalvm/polyglot/io/FileSystem.html" title="interface in org.graalvm.polyglot.io">FileSystem</a></dt>
 <dd>
@@ -2223,6 +2235,14 @@
 <dt><span class="memberNameLink"><a href="org/graalvm/options/OptionDescriptors.html#EMPTY">EMPTY</a></span> - Static variable in interface org.graalvm.options.<a href="org/graalvm/options/OptionDescriptors.html" title="interface in org.graalvm.options">OptionDescriptors</a></dt>
 <dd>
 <div class="block">An empty set of option descriptors.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/TruffleFile.html#endsWith-java.lang.String-">endsWith(String)</a></span> - Method in class com.oracle.truffle.api.<a href="com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a></dt>
+<dd>
+<div class="block">Tests if this <a href="com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> path ends with the given path.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/TruffleFile.html#endsWith-com.oracle.truffle.api.TruffleFile-">endsWith(TruffleFile)</a></span> - Method in class com.oracle.truffle.api.<a href="com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a></dt>
+<dd>
+<div class="block">Tests if this <a href="com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> path ends with the given <a href="com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> path.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Context.Builder.html#engine-org.graalvm.polyglot.Engine-">engine(Engine)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></dt>
 <dd>
@@ -3585,6 +3605,10 @@
 <dd>
 <div class="block">A set of handles that is kept alive globally.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/TruffleFile.html#getGroup-java.nio.file.LinkOption...-">getGroup(LinkOption...)</a></span> - Method in class com.oracle.truffle.api.<a href="com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a></dt>
+<dd>
+<div class="block">Returns the group owner of the file.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/PolyglotException.html#getGuestObject--">getGuestObject()</a></span> - Method in exception org.graalvm.polyglot.<a href="org/graalvm/polyglot/PolyglotException.html" title="class in org.graalvm.polyglot">PolyglotException</a></dt>
 <dd>
 <div class="block">Returns an additional guest language object.</div>
@@ -4199,6 +4223,10 @@
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/api/debug/DebugValue.html#getOriginalLanguage--">getOriginalLanguage()</a></span> - Method in class com.oracle.truffle.api.debug.<a href="com/oracle/truffle/api/debug/DebugValue.html" title="class in com.oracle.truffle.api.debug">DebugValue</a></dt>
 <dd>
 <div class="block">Get the original language that created the value, if any.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/TruffleFile.html#getOwner-java.nio.file.LinkOption...-">getOwner(LinkOption...)</a></span> - Method in class com.oracle.truffle.api.<a href="com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a></dt>
+<dd>
+<div class="block">Returns the owner of the file.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/tck/ResultVerifier.SnippetRun.html#getParameters--">getParameters()</a></span> - Method in class org.graalvm.polyglot.tck.<a href="org/graalvm/polyglot/tck/ResultVerifier.SnippetRun.html" title="class in org.graalvm.polyglot.tck">ResultVerifier.SnippetRun</a></dt>
 <dd>
@@ -6586,6 +6614,11 @@
 <dd>
 <div class="block">Returns a new context builder useful to create inner context instances.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/TruffleFile.html#newDirectoryStream--">newDirectoryStream()</a></span> - Method in class com.oracle.truffle.api.<a href="com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a></dt>
+<dd>
+<div class="block">Opens a directory, returning a <a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/DirectoryStream.html?is-external=true" title="class or interface in java.nio.file"><code>DirectoryStream</code></a> to iterate over all entries in the
+ directory.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/io/FileSystem.html#newDirectoryStream-java.nio.file.Path-java.nio.file.DirectoryStream.Filter-">newDirectoryStream(Path, DirectoryStream.Filter&lt;? super Path&gt;)</a></span> - Method in interface org.graalvm.polyglot.io.<a href="org/graalvm/polyglot/io/FileSystem.html" title="interface in org.graalvm.polyglot.io">FileSystem</a></dt>
 <dd>
 <div class="block">Returns directory entries.</div>
@@ -7952,6 +7985,11 @@
 <dd>
 <div class="block">Registers additional service.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/TruffleFile.html#relativize-com.oracle.truffle.api.TruffleFile-">relativize(TruffleFile)</a></span> - Method in class com.oracle.truffle.api.<a href="com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a></dt>
+<dd>
+<div class="block">Creates a <a href="com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> with a relative path between this <a href="com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> and a
+ given <a href="com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a>.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/api/object/Property.html#relocate-com.oracle.truffle.api.object.Location-">relocate(Location)</a></span> - Method in class com.oracle.truffle.api.object.<a href="com/oracle/truffle/api/object/Property.html" title="class in com.oracle.truffle.api.object">Property</a></dt>
 <dd>
 <div class="block">Change the property's location.</div>
@@ -8866,6 +8904,14 @@
  whenever the execution is suspended and with a list of source syntax elements on which it is
  possible to step.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/TruffleFile.html#startsWith-java.lang.String-">startsWith(String)</a></span> - Method in class com.oracle.truffle.api.<a href="com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a></dt>
+<dd>
+<div class="block">Tests if this <a href="com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> path starts with the given path.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/TruffleFile.html#startsWith-com.oracle.truffle.api.TruffleFile-">startsWith(TruffleFile)</a></span> - Method in class com.oracle.truffle.api.<a href="com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a></dt>
+<dd>
+<div class="block">Tests if this <a href="com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> path starts with the given <a href="com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> path.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/management/ExecutionListener.Builder.html#statements-boolean-">statements(boolean)</a></span> - Method in class org.graalvm.polyglot.management.<a href="org/graalvm/polyglot/management/ExecutionListener.Builder.html" title="class in org.graalvm.polyglot.management">ExecutionListener.Builder</a></dt>
 <dd>
 <div class="block">Include program locations that are marked as statements.</div>
@@ -9669,6 +9715,10 @@ the order they are declared.</div>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/api/nodes/NodeVisitor.html#visit-com.oracle.truffle.api.nodes.Node-">visit(Node)</a></span> - Method in interface com.oracle.truffle.api.nodes.<a href="com/oracle/truffle/api/nodes/NodeVisitor.html" title="interface in com.oracle.truffle.api.nodes">NodeVisitor</a></dt>
 <dd>
 <div class="block">This visitor method is called for every node in the tree.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/TruffleFile.html#visit-java.nio.file.FileVisitor-int-java.nio.file.FileVisitOption...-">visit(FileVisitor&lt;TruffleFile&gt;, int, FileVisitOption...)</a></span> - Method in class com.oracle.truffle.api.<a href="com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a></dt>
+<dd>
+<div class="block">Visits this <a href="com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> file tree.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/api/nodes/GraphPrintVisitor.GraphPrintAdapter.html#visited-java.lang.Object-">visited(Object)</a></span> - Method in class com.oracle.truffle.api.nodes.<a href="com/oracle/truffle/api/nodes/GraphPrintVisitor.GraphPrintAdapter.html" title="class in com.oracle.truffle.api.nodes">GraphPrintVisitor.GraphPrintAdapter</a></dt>
 <dd>

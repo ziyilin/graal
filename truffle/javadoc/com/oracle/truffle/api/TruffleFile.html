@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":10,"i22":10,"i23":10,"i24":10,"i25":10,"i26":10,"i27":10,"i28":10,"i29":10,"i30":10,"i31":10,"i32":10,"i33":10,"i34":10,"i35":10,"i36":10,"i37":10,"i38":10,"i39":10,"i40":10,"i41":10,"i42":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":10,"i22":10,"i23":10,"i24":10,"i25":10,"i26":10,"i27":10,"i28":10,"i29":10,"i30":10,"i31":10,"i32":10,"i33":10,"i34":10,"i35":10,"i36":10,"i37":10,"i38":10,"i39":10,"i40":10,"i41":10,"i42":10,"i43":10,"i44":10,"i45":10,"i46":10,"i47":10,"i48":10,"i49":10,"i50":10,"i51":10,"i52":10,"i53":10,"i54":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -134,262 +134,340 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#copy-com.oracle.truffle.api.TruffleFile-java.nio.file.CopyOption...-">copy</a></span>(<a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a>&nbsp;target,
+    <a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/CopyOption.html?is-external=true" title="class or interface in java.nio.file">CopyOption</a>...&nbsp;options)</code>
+<div class="block">Copies the file.</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#createDirectories-java.nio.file.attribute.FileAttribute...-">createDirectories</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/attribute/FileAttribute.html?is-external=true" title="class or interface in java.nio.file.attribute">FileAttribute</a>&lt;?&gt;...&nbsp;attributes)</code>
 <div class="block">Creates a directory and all nonexistent parent directories.</div>
 </td>
 </tr>
-<tr id="i1" class="rowColor">
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#createDirectory-java.nio.file.attribute.FileAttribute...-">createDirectory</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/attribute/FileAttribute.html?is-external=true" title="class or interface in java.nio.file.attribute">FileAttribute</a>&lt;?&gt;...&nbsp;attributes)</code>
 <div class="block">Creates a new directory.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#createFile-java.nio.file.attribute.FileAttribute...-">createFile</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/attribute/FileAttribute.html?is-external=true" title="class or interface in java.nio.file.attribute">FileAttribute</a>&lt;?&gt;...&nbsp;attributes)</code>
 <div class="block">Creates a new empty file.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#createLink-com.oracle.truffle.api.TruffleFile-">createLink</a></span>(<a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a>&nbsp;target)</code>
+<div class="block">Creates a new link to an existing target <i>(optional operation)</i>.</div>
+</td>
+</tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#createSymbolicLink-com.oracle.truffle.api.TruffleFile-java.nio.file.attribute.FileAttribute...-">createSymbolicLink</a></span>(<a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a>&nbsp;target,
+                  <a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/attribute/FileAttribute.html?is-external=true" title="class or interface in java.nio.file.attribute">FileAttribute</a>&lt;?&gt;...&nbsp;attrs)</code>
+<div class="block">Creates a symbolic link to a target <i>(optional operation)</i>.</div>
+</td>
+</tr>
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#delete--">delete</a></span>()</code>
 <div class="block">Deletes the file.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#endsWith-java.lang.String-">endsWith</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;other)</code>
+<div class="block">Tests if this <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> path ends with the given path.</div>
+</td>
+</tr>
+<tr id="i8" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#endsWith-com.oracle.truffle.api.TruffleFile-">endsWith</a></span>(<a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a>&nbsp;other)</code>
+<div class="block">Tests if this <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> path ends with the given <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> path.</div>
+</td>
+</tr>
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#equals-java.lang.Object-">equals</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;other)</code></td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#exists-java.nio.file.LinkOption...-">exists</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/LinkOption.html?is-external=true" title="class or interface in java.nio.file">LinkOption</a>...&nbsp;options)</code>
 <div class="block">Tests existence of a file.</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code><a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#getAbsoluteFile--">getAbsoluteFile</a></span>()</code>
 <div class="block">Resolves this <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> to absolute <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a>.</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code><a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#getCanonicalFile-java.nio.file.LinkOption...-">getCanonicalFile</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/LinkOption.html?is-external=true" title="class or interface in java.nio.file">LinkOption</a>...&nbsp;options)</code>
 <div class="block">Returns a <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> representing the real (canonical) path of an existing file.</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/attribute/FileTime.html?is-external=true" title="class or interface in java.nio.file.attribute">FileTime</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#getCreationTime-java.nio.file.LinkOption...-">getCreationTime</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/LinkOption.html?is-external=true" title="class or interface in java.nio.file">LinkOption</a>...&nbsp;options)</code>
 <div class="block">Returns the creation time.</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i14" class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/attribute/GroupPrincipal.html?is-external=true" title="class or interface in java.nio.file.attribute">GroupPrincipal</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#getGroup-java.nio.file.LinkOption...-">getGroup</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/LinkOption.html?is-external=true" title="class or interface in java.nio.file">LinkOption</a>...&nbsp;options)</code>
+<div class="block">Returns the group owner of the file.</div>
+</td>
+</tr>
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/attribute/FileTime.html?is-external=true" title="class or interface in java.nio.file.attribute">FileTime</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#getLastAccessTime-java.nio.file.LinkOption...-">getLastAccessTime</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/LinkOption.html?is-external=true" title="class or interface in java.nio.file">LinkOption</a>...&nbsp;options)</code>
 <div class="block">Returns the last access time.</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i16" class="altColor">
 <td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/attribute/FileTime.html?is-external=true" title="class or interface in java.nio.file.attribute">FileTime</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#getLastModifiedTime-java.nio.file.LinkOption...-">getLastModifiedTime</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/LinkOption.html?is-external=true" title="class or interface in java.nio.file">LinkOption</a>...&nbsp;options)</code>
 <div class="block">Returns the last modified time.</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i17" class="rowColor">
 <td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#getName--">getName</a></span>()</code>
 <div class="block">Returns the name of this <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a>.</div>
 </td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i18" class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/attribute/UserPrincipal.html?is-external=true" title="class or interface in java.nio.file.attribute">UserPrincipal</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#getOwner-java.nio.file.LinkOption...-">getOwner</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/LinkOption.html?is-external=true" title="class or interface in java.nio.file">LinkOption</a>...&nbsp;options)</code>
+<div class="block">Returns the owner of the file.</div>
+</td>
+</tr>
+<tr id="i19" class="rowColor">
 <td class="colFirst"><code><a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#getParent--">getParent</a></span>()</code>
 <div class="block">Returns a parent <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> or null when the file does not have a parent.</div>
 </td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i20" class="altColor">
 <td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#getPath--">getPath</a></span>()</code>
 <div class="block">Returns the string representation of this <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a>.</div>
 </td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i21" class="rowColor">
 <td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/attribute/PosixFilePermission.html?is-external=true" title="class or interface in java.nio.file.attribute">PosixFilePermission</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#getPosixPermissions-java.nio.file.LinkOption...-">getPosixPermissions</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/LinkOption.html?is-external=true" title="class or interface in java.nio.file">LinkOption</a>...&nbsp;linkOptions)</code>
 <div class="block">Returns the file's Posix permissions.</div>
 </td>
 </tr>
-<tr id="i15" class="rowColor">
+<tr id="i22" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#hashCode--">hashCode</a></span>()</code></td>
 </tr>
-<tr id="i16" class="altColor">
+<tr id="i23" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#isAbsolute--">isAbsolute</a></span>()</code>
 <div class="block">Tests if this <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a>'s path is absolute.</div>
 </td>
 </tr>
-<tr id="i17" class="rowColor">
+<tr id="i24" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#isDirectory-java.nio.file.LinkOption...-">isDirectory</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/LinkOption.html?is-external=true" title="class or interface in java.nio.file">LinkOption</a>...&nbsp;options)</code>
 <div class="block">Tests if a file is a directory.</div>
 </td>
 </tr>
-<tr id="i18" class="altColor">
+<tr id="i25" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#isExecutable--">isExecutable</a></span>()</code>
 <div class="block">Tests if a file is executable.</div>
 </td>
 </tr>
-<tr id="i19" class="rowColor">
+<tr id="i26" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#isReadable--">isReadable</a></span>()</code>
 <div class="block">Tests if a file is readable.</div>
 </td>
 </tr>
-<tr id="i20" class="altColor">
+<tr id="i27" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#isRegularFile-java.nio.file.LinkOption...-">isRegularFile</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/LinkOption.html?is-external=true" title="class or interface in java.nio.file">LinkOption</a>...&nbsp;options)</code>
 <div class="block">Tests if a file is a regular file.</div>
 </td>
 </tr>
-<tr id="i21" class="rowColor">
+<tr id="i28" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#isSymbolicLink--">isSymbolicLink</a></span>()</code>
 <div class="block">Tests if a file is a symbolic link.</div>
 </td>
 </tr>
-<tr id="i22" class="altColor">
+<tr id="i29" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#isWritable--">isWritable</a></span>()</code>
 <div class="block">Tests if a file is writable.</div>
 </td>
 </tr>
-<tr id="i23" class="rowColor">
+<tr id="i30" class="altColor">
 <td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#list--">list</a></span>()</code>
 <div class="block">Returns a collection of <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a>s in the directory denoted by this
  <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a>.</div>
 </td>
 </tr>
-<tr id="i24" class="altColor">
+<tr id="i31" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#move-com.oracle.truffle.api.TruffleFile-java.nio.file.CopyOption...-">move</a></span>(<a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a>&nbsp;target,
     <a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/CopyOption.html?is-external=true" title="class or interface in java.nio.file">CopyOption</a>...&nbsp;options)</code>
 <div class="block">Moves or renames the file.</div>
 </td>
 </tr>
-<tr id="i25" class="rowColor">
+<tr id="i32" class="altColor">
 <td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/BufferedReader.html?is-external=true" title="class or interface in java.io">BufferedReader</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#newBufferedReader--">newBufferedReader</a></span>()</code>
 <div class="block">Opens a file for reading returning a <a href="http://docs.oracle.com/javase/8/docs/api/java/io/BufferedReader.html?is-external=true" title="class or interface in java.io"><code>BufferedReader</code></a> to access the file content.</div>
 </td>
 </tr>
-<tr id="i26" class="altColor">
+<tr id="i33" class="rowColor">
 <td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/BufferedReader.html?is-external=true" title="class or interface in java.io">BufferedReader</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#newBufferedReader-java.nio.charset.Charset-">newBufferedReader</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/charset/Charset.html?is-external=true" title="class or interface in java.nio.charset">Charset</a>&nbsp;charset)</code>
 <div class="block">Opens a file for reading returning a <a href="http://docs.oracle.com/javase/8/docs/api/java/io/BufferedReader.html?is-external=true" title="class or interface in java.io"><code>BufferedReader</code></a> to access the file content.</div>
 </td>
 </tr>
-<tr id="i27" class="rowColor">
+<tr id="i34" class="altColor">
 <td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/BufferedWriter.html?is-external=true" title="class or interface in java.io">BufferedWriter</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#newBufferedWriter-java.nio.charset.Charset-java.nio.file.OpenOption...-">newBufferedWriter</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/charset/Charset.html?is-external=true" title="class or interface in java.nio.charset">Charset</a>&nbsp;charset,
                  <a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/OpenOption.html?is-external=true" title="class or interface in java.nio.file">OpenOption</a>...&nbsp;options)</code>
 <div class="block">Opens a file for writing returning an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/BufferedWriter.html?is-external=true" title="class or interface in java.io"><code>BufferedWriter</code></a>.</div>
 </td>
 </tr>
-<tr id="i28" class="altColor">
+<tr id="i35" class="rowColor">
 <td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/BufferedWriter.html?is-external=true" title="class or interface in java.io">BufferedWriter</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#newBufferedWriter-java.nio.file.OpenOption...-">newBufferedWriter</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/OpenOption.html?is-external=true" title="class or interface in java.nio.file">OpenOption</a>...&nbsp;options)</code>
 <div class="block">Opens a file for writing returning an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/BufferedWriter.html?is-external=true" title="class or interface in java.io"><code>BufferedWriter</code></a>.</div>
 </td>
 </tr>
-<tr id="i29" class="rowColor">
+<tr id="i36" class="altColor">
 <td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/nio/channels/SeekableByteChannel.html?is-external=true" title="class or interface in java.nio.channels">SeekableByteChannel</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#newByteChannel-java.util.Set-java.nio.file.attribute.FileAttribute...-">newByteChannel</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;? extends <a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/OpenOption.html?is-external=true" title="class or interface in java.nio.file">OpenOption</a>&gt;&nbsp;options,
               <a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/attribute/FileAttribute.html?is-external=true" title="class or interface in java.nio.file.attribute">FileAttribute</a>&lt;?&gt;...&nbsp;attributes)</code>
 <div class="block">Opens or creates a file returning a <a href="http://docs.oracle.com/javase/8/docs/api/java/nio/channels/SeekableByteChannel.html?is-external=true" title="class or interface in java.nio.channels"><code>SeekableByteChannel</code></a> to access the file content.</div>
 </td>
 </tr>
-<tr id="i30" class="altColor">
+<tr id="i37" class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/DirectoryStream.html?is-external=true" title="class or interface in java.nio.file">DirectoryStream</a>&lt;<a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#newDirectoryStream--">newDirectoryStream</a></span>()</code>
+<div class="block">Opens a directory, returning a <a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/DirectoryStream.html?is-external=true" title="class or interface in java.nio.file"><code>DirectoryStream</code></a> to iterate over all entries in the
+ directory.</div>
+</td>
+</tr>
+<tr id="i38" class="altColor">
 <td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io">InputStream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#newInputStream-java.nio.file.OpenOption...-">newInputStream</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/OpenOption.html?is-external=true" title="class or interface in java.nio.file">OpenOption</a>...&nbsp;options)</code>
 <div class="block">Opens a file for reading returning an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io"><code>InputStream</code></a> to access the file content.</div>
 </td>
 </tr>
-<tr id="i31" class="rowColor">
+<tr id="i39" class="rowColor">
 <td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io">OutputStream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#newOutputStream-java.nio.file.OpenOption...-">newOutputStream</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/OpenOption.html?is-external=true" title="class or interface in java.nio.file">OpenOption</a>...&nbsp;options)</code>
 <div class="block">Opens a file for writing returning an <a href="http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io"><code>OutputStream</code></a>.</div>
 </td>
 </tr>
-<tr id="i32" class="altColor">
+<tr id="i40" class="altColor">
 <td class="colFirst"><code><a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#normalize--">normalize</a></span>()</code>
 <div class="block">Returns a <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> with removed redundant name elements in it's path.</div>
 </td>
 </tr>
-<tr id="i33" class="rowColor">
+<tr id="i41" class="rowColor">
 <td class="colFirst"><code>byte[]</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#readAllBytes--">readAllBytes</a></span>()</code>
 <div class="block">Reads a file content as bytes.</div>
 </td>
 </tr>
-<tr id="i34" class="altColor">
+<tr id="i42" class="altColor">
+<td class="colFirst"><code><a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#relativize-com.oracle.truffle.api.TruffleFile-">relativize</a></span>(<a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a>&nbsp;other)</code>
+<div class="block">Creates a <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> with a relative path between this <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> and a
+ given <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a>.</div>
+</td>
+</tr>
+<tr id="i43" class="rowColor">
 <td class="colFirst"><code><a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#resolve-java.lang.String-">resolve</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name)</code>
 <div class="block">Resolves given string path representation against this <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a>.</div>
 </td>
 </tr>
-<tr id="i35" class="rowColor">
+<tr id="i44" class="altColor">
 <td class="colFirst"><code><a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#resolveSibling-java.lang.String-">resolveSibling</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name)</code>
 <div class="block">Resolves given string path representation against the parent of this <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a>.</div>
 </td>
 </tr>
-<tr id="i36" class="altColor">
+<tr id="i45" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#setCreationTime-java.nio.file.attribute.FileTime-java.nio.file.LinkOption...-">setCreationTime</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/attribute/FileTime.html?is-external=true" title="class or interface in java.nio.file.attribute">FileTime</a>&nbsp;time,
                <a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/LinkOption.html?is-external=true" title="class or interface in java.nio.file">LinkOption</a>...&nbsp;options)</code>
 <div class="block">Sets the file's creation time.</div>
 </td>
 </tr>
-<tr id="i37" class="rowColor">
+<tr id="i46" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#setLastAccessTime-java.nio.file.attribute.FileTime-java.nio.file.LinkOption...-">setLastAccessTime</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/attribute/FileTime.html?is-external=true" title="class or interface in java.nio.file.attribute">FileTime</a>&nbsp;time,
                  <a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/LinkOption.html?is-external=true" title="class or interface in java.nio.file">LinkOption</a>...&nbsp;options)</code>
 <div class="block">Sets the file's last access time.</div>
 </td>
 </tr>
-<tr id="i38" class="altColor">
+<tr id="i47" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#setLastModifiedTime-java.nio.file.attribute.FileTime-java.nio.file.LinkOption...-">setLastModifiedTime</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/attribute/FileTime.html?is-external=true" title="class or interface in java.nio.file.attribute">FileTime</a>&nbsp;time,
                    <a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/LinkOption.html?is-external=true" title="class or interface in java.nio.file">LinkOption</a>...&nbsp;options)</code>
 <div class="block">Sets the file's last modified time.</div>
 </td>
 </tr>
-<tr id="i39" class="rowColor">
+<tr id="i48" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#setPosixPermissions-java.util.Set-java.nio.file.LinkOption...-">setPosixPermissions</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;? extends <a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/attribute/PosixFilePermission.html?is-external=true" title="class or interface in java.nio.file.attribute">PosixFilePermission</a>&gt;&nbsp;permissions,
                    <a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/LinkOption.html?is-external=true" title="class or interface in java.nio.file">LinkOption</a>...&nbsp;linkOptions)</code>
 <div class="block">Sets the file's Posix permissions.</div>
 </td>
 </tr>
-<tr id="i40" class="altColor">
+<tr id="i49" class="rowColor">
 <td class="colFirst"><code>long</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#size-java.nio.file.LinkOption...-">size</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/LinkOption.html?is-external=true" title="class or interface in java.nio.file">LinkOption</a>...&nbsp;options)</code>
 <div class="block">Returns the size of a file.</div>
 </td>
 </tr>
-<tr id="i41" class="rowColor">
+<tr id="i50" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#startsWith-java.lang.String-">startsWith</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;other)</code>
+<div class="block">Tests if this <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> path starts with the given path.</div>
+</td>
+</tr>
+<tr id="i51" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#startsWith-com.oracle.truffle.api.TruffleFile-">startsWith</a></span>(<a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a>&nbsp;other)</code>
+<div class="block">Tests if this <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> path starts with the given <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> path.</div>
+</td>
+</tr>
+<tr id="i52" class="altColor">
 <td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#toString--">toString</a></span>()</code></td>
 </tr>
-<tr id="i42" class="altColor">
+<tr id="i53" class="rowColor">
 <td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#toUri--">toUri</a></span>()</code>
 <div class="block">Returns the <a href="http://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net"><code>URI</code></a> representation of this <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a>.</div>
+</td>
+</tr>
+<tr id="i54" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#visit-java.nio.file.FileVisitor-int-java.nio.file.FileVisitOption...-">visit</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/FileVisitor.html?is-external=true" title="class or interface in java.nio.file">FileVisitor</a>&lt;<a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a>&gt;&nbsp;visitor,
+     int&nbsp;maxDepth,
+     <a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/FileVisitOption.html?is-external=true" title="class or interface in java.nio.file">FileVisitOption</a>...&nbsp;options)</code>
+<div class="block">Visits this <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> file tree.</div>
 </td>
 </tr>
 </table>
@@ -1297,7 +1375,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <a name="normalize--">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>normalize</h4>
 <pre>public&nbsp;<a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a>&nbsp;normalize()</pre>
@@ -1305,6 +1383,337 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the normalized <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a></dd>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>1.0</dd>
+</dl>
+</li>
+</ul>
+<a name="relativize-com.oracle.truffle.api.TruffleFile-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>relativize</h4>
+<pre>public&nbsp;<a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a>&nbsp;relativize(<a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a>&nbsp;other)</pre>
+<div class="block">Creates a <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> with a relative path between this <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> and a
+ given <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a>.
+ <p>
+ Relativization is the inverse of <a href="../../../../com/oracle/truffle/api/TruffleFile.html#resolve-java.lang.String-"><code>resolution</code></a>.
+ Relativization constructs a <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> with relative path that when
+ <a href="../../../../com/oracle/truffle/api/TruffleFile.html#resolve-java.lang.String-"><code>resolved</code></a> against this <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> yields a
+ <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> locating the same file as given <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a>. A relative path
+ cannot be constructed if only one of the <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a>s is <a href="../../../../com/oracle/truffle/api/TruffleFile.html#isAbsolute--"><code>absolute</code></a>.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>other</code> - the <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> to relativize against this <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> with relative path between this and <code>other</code>
+         <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a>s</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalArgumentException.html?is-external=true" title="class or interface in java.lang">IllegalArgumentException</a></code> - when <code>other</code> cannot be relativized against this
+             <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a></dd>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>1.0</dd>
+</dl>
+</li>
+</ul>
+<a name="startsWith-java.lang.String-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>startsWith</h4>
+<pre>public&nbsp;boolean&nbsp;startsWith(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;other)</pre>
+<div class="block">Tests if this <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> path starts with the given path. The path <code>foo/bar</code>
+ starts with <code>foo</code> and <code>foo/bar</code> but does not start with <code>f</code>.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>other</code> - the path</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd><code>true</code> if this <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> path starts with given path</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalArgumentException.html?is-external=true" title="class or interface in java.lang">IllegalArgumentException</a></code> - if the path cannot be parsed.</dd>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>1.0</dd>
+</dl>
+</li>
+</ul>
+<a name="startsWith-com.oracle.truffle.api.TruffleFile-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>startsWith</h4>
+<pre>public&nbsp;boolean&nbsp;startsWith(<a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a>&nbsp;other)</pre>
+<div class="block">Tests if this <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> path starts with the given <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> path. The
+ path <code>foo/bar</code> starts with <code>foo</code> and <code>foo/bar</code> but does not start with
+ <code>f</code>.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>other</code> - the <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd><code>true</code> if this <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> path starts with given <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a>
+         path</dd>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>1.0</dd>
+</dl>
+</li>
+</ul>
+<a name="endsWith-java.lang.String-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>endsWith</h4>
+<pre>public&nbsp;boolean&nbsp;endsWith(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;other)</pre>
+<div class="block">Tests if this <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> path ends with the given path. The path <code>foo/bar</code>
+ ends with <code>bar</code> and <code>foo/bar</code> but does not end with <code>r</code>.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>other</code> - the path</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd><code>true</code> if this <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> path ends with given path</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalArgumentException.html?is-external=true" title="class or interface in java.lang">IllegalArgumentException</a></code> - if the path cannot be parsed.</dd>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>1.0</dd>
+</dl>
+</li>
+</ul>
+<a name="endsWith-com.oracle.truffle.api.TruffleFile-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>endsWith</h4>
+<pre>public&nbsp;boolean&nbsp;endsWith(<a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a>&nbsp;other)</pre>
+<div class="block">Tests if this <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> path ends with the given <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> path. The path
+ <code>foo/bar</code> ends with <code>bar</code> and <code>foo/bar</code> but does not end with <code>r</code>.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>other</code> - the <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd><code>true</code> if this <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> path ends with given <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a>
+         path</dd>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>1.0</dd>
+</dl>
+</li>
+</ul>
+<a name="createLink-com.oracle.truffle.api.TruffleFile-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createLink</h4>
+<pre>public&nbsp;void&nbsp;createLink(<a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a>&nbsp;target)
+                throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<div class="block">Creates a new link to an existing target <i>(optional operation)</i>.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>target</code> - the existing file to link</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/FileAlreadyExistsException.html?is-external=true" title="class or interface in java.nio.file">FileAlreadyExistsException</a></code> - if the file or directory already exists on given path</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - in case of IO error</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/UnsupportedOperationException.html?is-external=true" title="class or interface in java.lang">UnsupportedOperationException</a></code> - if the <a href="../../../../org/graalvm/polyglot/io/FileSystem.html" title="interface in org.graalvm.polyglot.io"><code>FileSystem</code></a> implementation does not
+             support links</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/SecurityException.html?is-external=true" title="class or interface in java.lang">SecurityException</a></code> - if the <a href="../../../../org/graalvm/polyglot/io/FileSystem.html" title="interface in org.graalvm.polyglot.io"><code>FileSystem</code></a> denied the operation</dd>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>1.0</dd>
+</dl>
+</li>
+</ul>
+<a name="createSymbolicLink-com.oracle.truffle.api.TruffleFile-java.nio.file.attribute.FileAttribute...-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createSymbolicLink</h4>
+<pre>public&nbsp;void&nbsp;createSymbolicLink(<a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a>&nbsp;target,
+                               <a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/attribute/FileAttribute.html?is-external=true" title="class or interface in java.nio.file.attribute">FileAttribute</a>&lt;?&gt;...&nbsp;attrs)
+                        throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<div class="block">Creates a symbolic link to a target <i>(optional operation)</i>.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>target</code> - the target of the symbolic link</dd>
+<dd><code>attrs</code> - the optional attributes to set atomically when creating the symbolic link</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/FileAlreadyExistsException.html?is-external=true" title="class or interface in java.nio.file">FileAlreadyExistsException</a></code> - if the file or directory already exists on given path</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - in case of IO error</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/UnsupportedOperationException.html?is-external=true" title="class or interface in java.lang">UnsupportedOperationException</a></code> - if the <a href="../../../../org/graalvm/polyglot/io/FileSystem.html" title="interface in org.graalvm.polyglot.io"><code>FileSystem</code></a> implementation does not
+             support symbolic links or the attributes contain an attribute which cannot be set
+             atomically</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/SecurityException.html?is-external=true" title="class or interface in java.lang">SecurityException</a></code> - if the <a href="../../../../org/graalvm/polyglot/io/FileSystem.html" title="interface in org.graalvm.polyglot.io"><code>FileSystem</code></a> denied the operation</dd>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>1.0</dd>
+</dl>
+</li>
+</ul>
+<a name="getOwner-java.nio.file.LinkOption...-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getOwner</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/attribute/UserPrincipal.html?is-external=true" title="class or interface in java.nio.file.attribute">UserPrincipal</a>&nbsp;getOwner(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/LinkOption.html?is-external=true" title="class or interface in java.nio.file">LinkOption</a>...&nbsp;options)
+                       throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<div class="block">Returns the owner of the file.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>options</code> - the options determining how the symbolic links should be handled</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the file owner</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - in case of IO error</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/UnsupportedOperationException.html?is-external=true" title="class or interface in java.lang">UnsupportedOperationException</a></code> - if the <a href="../../../../org/graalvm/polyglot/io/FileSystem.html" title="interface in org.graalvm.polyglot.io"><code>FileSystem</code></a> implementation does not
+             support owner attribute</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/SecurityException.html?is-external=true" title="class or interface in java.lang">SecurityException</a></code> - if the <a href="../../../../org/graalvm/polyglot/io/FileSystem.html" title="interface in org.graalvm.polyglot.io"><code>FileSystem</code></a> denied the operation</dd>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>1.0</dd>
+</dl>
+</li>
+</ul>
+<a name="getGroup-java.nio.file.LinkOption...-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getGroup</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/attribute/GroupPrincipal.html?is-external=true" title="class or interface in java.nio.file.attribute">GroupPrincipal</a>&nbsp;getGroup(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/LinkOption.html?is-external=true" title="class or interface in java.nio.file">LinkOption</a>...&nbsp;options)
+                        throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<div class="block">Returns the group owner of the file.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>options</code> - the options determining how the symbolic links should be handled</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the file owner</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - in case of IO error</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/UnsupportedOperationException.html?is-external=true" title="class or interface in java.lang">UnsupportedOperationException</a></code> - if the <a href="../../../../org/graalvm/polyglot/io/FileSystem.html" title="interface in org.graalvm.polyglot.io"><code>FileSystem</code></a> implementation does not
+             support group owner attribute</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/SecurityException.html?is-external=true" title="class or interface in java.lang">SecurityException</a></code> - if the <a href="../../../../org/graalvm/polyglot/io/FileSystem.html" title="interface in org.graalvm.polyglot.io"><code>FileSystem</code></a> denied the operation</dd>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>1.0</dd>
+</dl>
+</li>
+</ul>
+<a name="newDirectoryStream--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>newDirectoryStream</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/DirectoryStream.html?is-external=true" title="class or interface in java.nio.file">DirectoryStream</a>&lt;<a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a>&gt;&nbsp;newDirectoryStream()
+                                                throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<div class="block">Opens a directory, returning a <a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/DirectoryStream.html?is-external=true" title="class or interface in java.nio.file"><code>DirectoryStream</code></a> to iterate over all entries in the
+ directory.
+ <p>
+ The <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a>s returned by the directory stream's <a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/DirectoryStream.html?is-external=true#iterator--" title="class or interface in java.nio.file"><code>iterator</code></a> are created as if by <a href="../../../../com/oracle/truffle/api/TruffleFile.html#resolve-java.lang.String-"><code>resolving</code></a> the name of the
+ directory entry against this <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a>.
+ <p>
+ When not using the try-with-resources construct, then the directory stream's
+ <a href="http://docs.oracle.com/javase/8/docs/api/java/io/Closeable.html?is-external=true#close--" title="class or interface in java.io"><code>close</code></a> method should be called after iteration is completed.
+ <p>
+ The code which iterates over all files can use simpler <a href="../../../../com/oracle/truffle/api/TruffleFile.html#list--"><code>TruffleFile.list()</code></a> method.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a new opened <a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/DirectoryStream.html?is-external=true" title="class or interface in java.nio.file"><code>DirectoryStream</code></a> object</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - in case of IO error</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/SecurityException.html?is-external=true" title="class or interface in java.lang">SecurityException</a></code> - if the <a href="../../../../org/graalvm/polyglot/io/FileSystem.html" title="interface in org.graalvm.polyglot.io"><code>FileSystem</code></a> denied the operation</dd>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>1.0</dd>
+</dl>
+</li>
+</ul>
+<a name="visit-java.nio.file.FileVisitor-int-java.nio.file.FileVisitOption...-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>visit</h4>
+<pre>public&nbsp;void&nbsp;visit(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/FileVisitor.html?is-external=true" title="class or interface in java.nio.file">FileVisitor</a>&lt;<a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a>&gt;&nbsp;visitor,
+                  int&nbsp;maxDepth,
+                  <a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/FileVisitOption.html?is-external=true" title="class or interface in java.nio.file">FileVisitOption</a>...&nbsp;options)
+           throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<div class="block">Visits this <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> file tree.
+
+ <p>
+ This method walks a file tree rooted at this <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a>. The file tree traversal is
+ <em>depth-first</em>. The appropriate method on give <a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/FileVisitor.html?is-external=true" title="class or interface in java.nio.file"><code>FileVisitor</code></a> is invoked for each
+ met file. File tree traversal completes when all accessible files in the tree have been
+ visited, a <a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/FileVisitor.html?is-external=true" title="class or interface in java.nio.file"><code>FileVisitor</code></a> visit method returns a <a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/FileVisitResult.html?is-external=true#TERMINATE" title="class or interface in java.nio.file"><code>FileVisitResult.TERMINATE</code></a> or a
+ <a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/FileVisitor.html?is-external=true" title="class or interface in java.nio.file"><code>FileVisitor</code></a> method terminates due to an uncaught exception.
+
+ <p>
+ For each file encountered this method attempts to read its
+ <a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/attribute/BasicFileAttributes.html?is-external=true" title="class or interface in java.nio.file.attribute"><code>BasicFileAttributes</code></a>. If the file is not a directory then the
+ <a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/FileVisitor.html?is-external=true#visitFile-T-java.nio.file.attribute.BasicFileAttributes-" title="class or interface in java.nio.file"><code>visitFile</code></a> method is invoked with the file attributes. If the
+ file attributes cannot be read, due to an I/O exception, then the
+ <a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/FileVisitor.html?is-external=true#visitFileFailed-T-java.io.IOException-" title="class or interface in java.nio.file"><code>visitFileFailed</code></a> method is invoked with the I/O exception.
+
+ <p>
+ Where the file is a directory, and the directory could not be opened, then the
+ <code>visitFileFailed</code> method is invoked with the I/O exception, after which, the file tree
+ walk continues, by default, at the next <em>sibling</em> of the directory.
+
+ <p>
+ Where the directory is opened successfully, then the entries in the directory, and their
+ <em>descendants</em> are visited. When all entries have been visited, or an I/O error occurs
+ during iteration of the directory, then the directory is closed and the visitor's
+ <a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/FileVisitor.html?is-external=true#postVisitDirectory-T-java.io.IOException-" title="class or interface in java.nio.file"><code>postVisitDirectory</code></a> method is invoked. The file tree
+ walk then continues, by default, at the next <em>sibling</em> of the directory.
+
+ <p>
+ By default, symbolic links are not automatically followed by this method. If the
+ <code>options</code> parameter contains the <a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/FileVisitOption.html?is-external=true#FOLLOW_LINKS" title="class or interface in java.nio.file"><code>FOLLOW_LINKS</code></a>
+ option then symbolic links are followed.
+
+ <p>
+ The <code>maxDepth</code> parameter is the maximum number of levels of directories to visit. A
+ value of <code>0</code> means that only the starting file is visited. The <code>visitFile</code> method
+ is invoked for all files, including directories, encountered at <code>maxDepth</code>, unless the
+ basic file attributes cannot be read, in which case the <code>visitFileFailed</code> method is invoked.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>visitor</code> - the <a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/FileVisitor.html?is-external=true" title="class or interface in java.nio.file"><code>FileVisitor</code></a> to invoke for each file</dd>
+<dd><code>maxDepth</code> - the maximum number of directory levels to visit, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true#MAX_VALUE" title="class or interface in java.lang"><code>MAX_VALUE</code></a> may be used to indicate that all levels should be visited.</dd>
+<dd><code>options</code> - the options configuring the file tree traversal</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalArgumentException.html?is-external=true" title="class or interface in java.lang">IllegalArgumentException</a></code> - if the <code>maxDepth</code> parameter is negative</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - in case of IO error</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/SecurityException.html?is-external=true" title="class or interface in java.lang">SecurityException</a></code> - if the <a href="../../../../org/graalvm/polyglot/io/FileSystem.html" title="interface in org.graalvm.polyglot.io"><code>FileSystem</code></a> denied the operation</dd>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>1.0</dd>
+</dl>
+</li>
+</ul>
+<a name="copy-com.oracle.truffle.api.TruffleFile-java.nio.file.CopyOption...-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>copy</h4>
+<pre>public&nbsp;void&nbsp;copy(<a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a>&nbsp;target,
+                 <a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/CopyOption.html?is-external=true" title="class or interface in java.nio.file">CopyOption</a>...&nbsp;options)
+          throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<div class="block">Copies the file. When the file is a directory the copy creates an empty directory in the
+ target location, the directory entries are not copied. This method can be used with the
+ <a href="../../../../com/oracle/truffle/api/TruffleFile.html#visit-java.nio.file.FileVisitor-int-java.nio.file.FileVisitOption...-"><code>visit</code></a> method to copy the whole sub-tree.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>target</code> - the path of a target file</dd>
+<dd><code>options</code> - the options specifying how the copy should be performed, see
+            <a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/StandardCopyOption.html?is-external=true" title="class or interface in java.nio.file"><code>StandardCopyOption</code></a></dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/UnsupportedOperationException.html?is-external=true" title="class or interface in java.lang">UnsupportedOperationException</a></code> - if <code>options</code> contains unsupported option</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/FileAlreadyExistsException.html?is-external=true" title="class or interface in java.nio.file">FileAlreadyExistsException</a></code> - if the target path already exists and the <code>options</code>
+             don't contain <a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/StandardCopyOption.html?is-external=true#REPLACE_EXISTING" title="class or interface in java.nio.file"><code>StandardCopyOption.REPLACE_EXISTING</code></a> option</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/DirectoryNotEmptyException.html?is-external=true" title="class or interface in java.nio.file">DirectoryNotEmptyException</a></code> - if the <code>options</code> contain
+             <a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/StandardCopyOption.html?is-external=true#REPLACE_EXISTING" title="class or interface in java.nio.file"><code>StandardCopyOption.REPLACE_EXISTING</code></a> but the <code>target</code> is a non empty
+             directory</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - in case of IO error</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/SecurityException.html?is-external=true" title="class or interface in java.lang">SecurityException</a></code> - if the <a href="../../../../org/graalvm/polyglot/io/FileSystem.html" title="interface in org.graalvm.polyglot.io"><code>FileSystem</code></a> denied the operation</dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>1.0</dd>
 </dl>
