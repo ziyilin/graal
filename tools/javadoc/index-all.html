@@ -79,6 +79,10 @@
 <dd>
 <div class="block">Erases all the data gathered by the tracer.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/HeapMonitor.html#clearData--">clearData()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/HeapMonitor.html" title="class in com.oracle.truffle.tools.profiler">HeapMonitor</a></dt>
+<dd>
+<div class="block">Erases all the data gathered by the <a href="com/oracle/truffle/tools/profiler/HeapMonitor.html" title="class in com.oracle.truffle.tools.profiler"><code>HeapMonitor</code></a>.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/MemoryTracer.html#clearData--">clearData()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/MemoryTracer.html" title="class in com.oracle.truffle.tools.profiler">MemoryTracer</a></dt>
 <dd>
 <div class="block">Erases all the data gathered by the tracer.</div>
@@ -90,6 +94,10 @@
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/CPUTracer.html#close--">close()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/CPUTracer.html" title="class in com.oracle.truffle.tools.profiler">CPUTracer</a></dt>
 <dd>
 <div class="block">Closes the tracer for fuhrer use, deleting all the gathered data.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/HeapMonitor.html#close--">close()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/HeapMonitor.html" title="class in com.oracle.truffle.tools.profiler">HeapMonitor</a></dt>
+<dd>
+<div class="block">Closes the <a href="com/oracle/truffle/tools/profiler/HeapMonitor.html" title="class in com.oracle.truffle.tools.profiler"><code>HeapMonitor</code></a> for further use, deleting all the gathered data.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/MemoryTracer.html#close--">close()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/MemoryTracer.html" title="class in com.oracle.truffle.tools.profiler">MemoryTracer</a></dt>
 <dd>
@@ -143,6 +151,10 @@
 <dd>
 <div class="block">Finds <a href="com/oracle/truffle/tools/profiler/CPUTracer.html" title="class in com.oracle.truffle.tools.profiler"><code>CPUTracer</code></a> associated with given engine.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/HeapMonitor.html#find-org.graalvm.polyglot.Engine-">find(Engine)</a></span> - Static method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/HeapMonitor.html" title="class in com.oracle.truffle.tools.profiler">HeapMonitor</a></dt>
+<dd>
+<div class="block">Returns the <a href="com/oracle/truffle/tools/profiler/HeapMonitor.html" title="class in com.oracle.truffle.tools.profiler"><code>HeapMonitor</code></a> associated with a given engine.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/MemoryTracer.html#find-org.graalvm.polyglot.Engine-">find(Engine)</a></span> - Static method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/MemoryTracer.html" title="class in com.oracle.truffle.tools.profiler">MemoryTracer</a></dt>
 <dd>
 <div class="block">Finds <a href="com/oracle/truffle/tools/profiler/MemoryTracer.html" title="class in com.oracle.truffle.tools.profiler"><code>MemoryTracer</code></a> associated with given engine.</div>
@@ -153,6 +165,14 @@
 </a>
 <h2 class="title">G</h2>
 <dl>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/HeapSummary.html#getAliveBytes--">getAliveBytes()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/HeapSummary.html" title="class in com.oracle.truffle.tools.profiler">HeapSummary</a></dt>
+<dd>
+<div class="block">Returns the number of bytes used by alive object instances.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/HeapSummary.html#getAliveInstances--">getAliveInstances()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/HeapSummary.html" title="class in com.oracle.truffle.tools.profiler">HeapSummary</a></dt>
+<dd>
+<div class="block">Returns the number of objects that are alive (i.e.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/MemoryTracer.AllocationEventInfo.html#getAllocated--">getAllocated()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/MemoryTracer.AllocationEventInfo.html" title="class in com.oracle.truffle.tools.profiler">MemoryTracer.AllocationEventInfo</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/ProfilerNode.html#getChildren--">getChildren()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/ProfilerNode.html" title="class in com.oracle.truffle.tools.profiler">ProfilerNode</a></dt>
@@ -241,6 +261,14 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/MemoryTracer.Payload.html#getTotalAllocations--">getTotalAllocations()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/MemoryTracer.Payload.html" title="class in com.oracle.truffle.tools.profiler">MemoryTracer.Payload</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/HeapSummary.html#getTotalBytes--">getTotalBytes()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/HeapSummary.html" title="class in com.oracle.truffle.tools.profiler">HeapSummary</a></dt>
+<dd>
+<div class="block">Returns the total number of bytes allocated.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/HeapSummary.html#getTotalInstances--">getTotalInstances()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/HeapSummary.html" title="class in com.oracle.truffle.tools.profiler">HeapSummary</a></dt>
+<dd>
+<div class="block">Returns the total number of allocated instances.</div>
+</dd>
 </dl>
 <a name="I:H">
 <!--   -->
@@ -249,6 +277,11 @@
 <dl>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/CPUSampler.html#hasData--">hasData()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/CPUSampler.html" title="class in com.oracle.truffle.tools.profiler">CPUSampler</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/HeapMonitor.html#hasData--">hasData()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/HeapMonitor.html" title="class in com.oracle.truffle.tools.profiler">HeapMonitor</a></dt>
+<dd>
+<div class="block">Returns <code>true</code> if the <a href="com/oracle/truffle/tools/profiler/HeapMonitor.html" title="class in com.oracle.truffle.tools.profiler"><code>HeapMonitor</code></a> has collected any data, else
+ <code>false</code>.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/MemoryTracer.html#hasData--">hasData()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/MemoryTracer.html" title="class in com.oracle.truffle.tools.profiler">MemoryTracer</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/StackTraceEntry.html#hashCode--">hashCode()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/StackTraceEntry.html" title="class in com.oracle.truffle.tools.profiler">StackTraceEntry</a></dt>
@@ -256,6 +289,16 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/MemoryTracer.html#hasStackOverflowed--">hasStackOverflowed()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/MemoryTracer.html" title="class in com.oracle.truffle.tools.profiler">MemoryTracer</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="com/oracle/truffle/tools/profiler/HeapMonitor.html" title="class in com.oracle.truffle.tools.profiler"><span class="typeNameLink">HeapMonitor</span></a> - Class in <a href="com/oracle/truffle/tools/profiler/package-summary.html">com.oracle.truffle.tools.profiler</a></dt>
+<dd>
+<div class="block">Implementation of a heap allocation monitor for
+ Truffle languages built on top of the
+ Truffle instrumentation framework.</div>
+</dd>
+<dt><a href="com/oracle/truffle/tools/profiler/HeapSummary.html" title="class in com.oracle.truffle.tools.profiler"><span class="typeNameLink">HeapSummary</span></a> - Class in <a href="com/oracle/truffle/tools/profiler/package-summary.html">com.oracle.truffle.tools.profiler</a></dt>
+<dd>
+<div class="block">Represents a summary of total and alive instances and object sizes.</div>
+</dd>
 </dl>
 <a name="I:I">
 <!--   -->
@@ -271,6 +314,10 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/CPUTracer.html#isCollecting--">isCollecting()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/CPUTracer.html" title="class in com.oracle.truffle.tools.profiler">CPUTracer</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/HeapMonitor.html#isCollecting--">isCollecting()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/HeapMonitor.html" title="class in com.oracle.truffle.tools.profiler">HeapMonitor</a></dt>
+<dd>
+<div class="block">Returns <code>true</code> if the heap monitor is collecting data, else <code>false</code>.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/MemoryTracer.html#isCollecting--">isCollecting()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/MemoryTracer.html" title="class in com.oracle.truffle.tools.profiler">MemoryTracer</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/StackTraceEntry.html#isCompiled--">isCompiled()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/StackTraceEntry.html" title="class in com.oracle.truffle.tools.profiler">StackTraceEntry</a></dt>
@@ -339,6 +386,10 @@
 <dd>
 <div class="block">Controls whether the tracer is collecting data or not.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/HeapMonitor.html#setCollecting-boolean-">setCollecting(boolean)</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/HeapMonitor.html" title="class in com.oracle.truffle.tools.profiler">HeapMonitor</a></dt>
+<dd>
+<div class="block">Controls whether the <a href="com/oracle/truffle/tools/profiler/HeapMonitor.html" title="class in com.oracle.truffle.tools.profiler"><code>HeapMonitor</code></a> is collecting data or not.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/MemoryTracer.html#setCollecting-boolean-">setCollecting(boolean)</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/MemoryTracer.html" title="class in com.oracle.truffle.tools.profiler">MemoryTracer</a></dt>
 <dd>
 <div class="block">Controls whether the tracer is collecting data or not.</div>
@@ -394,14 +445,23 @@
 </a>
 <h2 class="title">T</h2>
 <dl>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/HeapMonitor.html#takeMetaObjectSummary--">takeMetaObjectSummary()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/HeapMonitor.html" title="class in com.oracle.truffle.tools.profiler">HeapMonitor</a></dt>
+<dd>
+<div class="block">Returns a summary of the current state of the heap grouped by language and meta object name.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/CPUSampler.html#takeSample--">takeSample()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/CPUSampler.html" title="class in com.oracle.truffle.tools.profiler">CPUSampler</a></dt>
 <dd>
 <div class="block">Sample all threads and gather their current stack trace entries.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/HeapMonitor.html#takeSummary--">takeSummary()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/HeapMonitor.html" title="class in com.oracle.truffle.tools.profiler">HeapMonitor</a></dt>
+<dd>
+<div class="block">Returns a summary of the current state of the heap.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/StackTraceEntry.html#toStackTraceElement--">toStackTraceElement()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/StackTraceEntry.html" title="class in com.oracle.truffle.tools.profiler">StackTraceEntry</a></dt>
 <dd>
 <div class="block">Converts the stack trace entry to a Java stack trace element.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/HeapSummary.html#toString--">toString()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/HeapSummary.html" title="class in com.oracle.truffle.tools.profiler">HeapSummary</a></dt>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/tools/profiler/StackTraceEntry.html#toString--">toString()</a></span> - Method in class com.oracle.truffle.tools.profiler.<a href="com/oracle/truffle/tools/profiler/StackTraceEntry.html" title="class in com.oracle.truffle.tools.profiler">StackTraceEntry</a></dt>
 </dl>
 <a name="I:V">
