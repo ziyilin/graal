@@ -185,19 +185,19 @@
         </a>
       </li>
 
-      <li class="menu__item">
+      <li class="menu__item"  tabindex="0">
         <span class="github-widget">
           <!-- Place this tag where you want the button to render. -->
-          <a class="github-button" href="https://github.com/oracle/graal" data-icon="octicon-star" data-show-count="true" aria-label="Star oracle/graal on GitHub">Star</a>
+          <a tabindex="-1" class="github-button" href="https://github.com/oracle/graal" data-icon="octicon-star" data-show-count="true" aria-label="Star oracle/graal on GitHub">Star</a>
         </span>
       </li>
 
-      <li class="menu__item">
+      <li class="menu__item" tabindex="-1">
         <a href="/downloads/" class="btn btn-try btn-primary">Try graalvm</a>
       </li>
     </ul>
 
-    <div role="button" class="menu-btn menu-btn--menu js-show-menu" title="sweet hamburger">
+    <div role="button" class="menu-btn menu-btn--menu js-show-menu" tabindex="-1" title="sweet hamburger">
       <div class="hamburger"><div class="inner"></div></div>
     </div>
 
@@ -647,11 +647,16 @@ Skipping the native image build because SL_BUILD_NATIVE is set to false.
 <h2 id="running-simplelanguage-with-the-newest-version-of-graal-compiler">Running SimpleLanguage with the Newest Version of Graal Compiler</h2>
 
 <p>In the outstanding case that you need to execute SimpleLanguage with the newest
-version of graal, please follow these instructions:</p>
+version of Graal compiler, please follow these instructions:</p>
 
 <ol>
-  <li>Clone the graal repository:
-    <pre><code class="language-shell">$ git clone https://github.com/oracle/graal.git
+  <li>Download the latest JVMCI JDK 8 from <a href="http://www.oracle.com/technetwork/oracle-labs/program-languages/downloads/index.html">Oracle Technology Network Downloads</a> and point JAVA_HOME at it:
+    <pre><code class="language-shell">$ export JAVA_HOME=/path/to/labsjdk1.8.0_172-jvmci-0.48
+</code></pre>
+  </li>
+  <li>Clone the Graal repository from SimpleLanguage folder:
+    <pre><code class="language-shell">$ cd /path/to/simplelanguage
+$ git clone https://github.com/oracle/graal.git
 </code></pre>
   </li>
   <li>Clone the mx repository:
@@ -659,19 +664,19 @@ version of graal, please follow these instructions:</p>
 </code></pre>
   </li>
   <li>Add mx to your path:
-    <pre><code class="language-shell">$ PATH=/path/to/mx:$PATH
+    <pre><code class="language-shell">$ export PATH=/path/to/mx:$PATH
 </code></pre>
   </li>
-  <li>Navigate to the compiler folder in the graal repository:
+  <li>Navigate to the compiler folder in Graal repository:
     <pre><code class="language-shell">$ cd /path/to/graal/compiler
 </code></pre>
   </li>
-  <li>Build the graal compiler:
+  <li>Build the Graal compiler:
     <pre><code class="language-shell">$ mx build
 </code></pre>
   </li>
   <li>Run SimpleLanguage using the mx command:
-    <pre><code class="language-shell">$ mx -v --jdk=jvmci vm -cp /path/to/sl-launcher-1.0-SNAPSHOT.jar:/path/to/simplelanguage-1.0-SNAPSHOT.jar com.oracle.truffle.sl.launcher.SLMain  /path/to/SlScript.sl
+    <pre><code class="language-shell">$ mx -v --jdk=jvmci vm -cp /path/to/simplelanguage/launcher/target/sl-launcher-1.0-SNAPSHOT.jar:/path/to/simplelanguage/language/target/simplelanguage-1.0-SNAPSHOT.jar com.oracle.truffle.sl.launcher.SLMain  /path/to/simplelanguage/language/tests/SlScript.sl
 </code></pre>
   </li>
 </ol>

@@ -3,7 +3,7 @@
 
 ### General Remarks
 
-While we provide updated components for all languages for this rc4 release, only the JavaScript component received fixes from its upstream repository. All other languages are unchanged in terms of functionality
+While we provide updated components for all languages for this rc4 release, only the JavaScript component received fixes from its upstream repository. All other languages are unchanged in terms of functionality.
 
 The next release, rc5, is planned for the beginning of August and will provide updates for all components.
 

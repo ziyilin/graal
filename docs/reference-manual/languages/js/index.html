@@ -185,19 +185,19 @@
         </a>
       </li>
 
-      <li class="menu__item">
+      <li class="menu__item"  tabindex="0">
         <span class="github-widget">
           <!-- Place this tag where you want the button to render. -->
-          <a class="github-button" href="https://github.com/oracle/graal" data-icon="octicon-star" data-show-count="true" aria-label="Star oracle/graal on GitHub">Star</a>
+          <a tabindex="-1" class="github-button" href="https://github.com/oracle/graal" data-icon="octicon-star" data-show-count="true" aria-label="Star oracle/graal on GitHub">Star</a>
         </span>
       </li>
 
-      <li class="menu__item">
+      <li class="menu__item" tabindex="-1">
         <a href="/downloads/" class="btn btn-try btn-primary">Try graalvm</a>
       </li>
     </ul>
 
-    <div role="button" class="menu-btn menu-btn--menu js-show-menu" title="sweet hamburger">
+    <div role="button" class="menu-btn menu-btn--menu js-show-menu" tabindex="-1" title="sweet hamburger">
       <div class="hamburger"><div class="inner"></div></div>
     </div>
 
@@ -698,7 +698,7 @@ for more information about interoperability with other programming languages.</p
 
 <p>GraalVM is <a href="http://www.ecma-international.org/ecma-262/8.0/index.html">ECMAScript 2017</a> compliant and fully compatible with a diverse range of active Node.js (npm) modules.
 More than 50,000 npm packages are regularly tested and compatible with GraalVM, including modules like express, react, async, request, browserify, grunt, mocha, and underscore.
-This release of GraalVM is based on Node.js version 8.11.1.</p>
+This release of GraalVM is based on Node.js version 10.9.0.</p>
 
 <h3 id="is-graalvm-compatible-with-the-javascript-language">Is GraalVM compatible with the JavaScript language?</h3>
 
@@ -718,7 +718,7 @@ Even though this test set includes some draft features, GraalVM compliance is ar
 <pre><code>mx test262 gate
 </code></pre>
 
-<p>This will execute test262 in a mode to guarantee that local changes don’t regress compatibility, i.e., results in an error if any tests expected to pass actually fail.
+<p>This will execute test262 in a mode to guarantee that local changes do not regress compatibility, i.e., results in an error if any tests expected to pass actually fail.
 Individual tests can be executed with</p>
 <pre><code>mx test262 single=built-ins/Array/length.js
 </code></pre>

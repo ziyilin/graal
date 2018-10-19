@@ -185,19 +185,19 @@
         </a>
       </li>
 
-      <li class="menu__item">
+      <li class="menu__item"  tabindex="0">
         <span class="github-widget">
           <!-- Place this tag where you want the button to render. -->
-          <a class="github-button" href="https://github.com/oracle/graal" data-icon="octicon-star" data-show-count="true" aria-label="Star oracle/graal on GitHub">Star</a>
+          <a tabindex="-1" class="github-button" href="https://github.com/oracle/graal" data-icon="octicon-star" data-show-count="true" aria-label="Star oracle/graal on GitHub">Star</a>
         </span>
       </li>
 
-      <li class="menu__item">
+      <li class="menu__item" tabindex="-1">
         <a href="/downloads/" class="btn btn-try btn-primary">Try graalvm</a>
       </li>
     </ul>
 
-    <div role="button" class="menu-btn menu-btn--menu js-show-menu" title="sweet hamburger">
+    <div role="button" class="menu-btn menu-btn--menu js-show-menu" tabindex="-1" title="sweet hamburger">
       <div class="hamburger"><div class="inner"></div></div>
     </div>
 
@@ -2912,7 +2912,7 @@ This is how you can start it:</p>
 
 <pre><code class="language-shell">$ polyglot --jvm --shell
 
-GraalVM MultiLanguage Shell 1.0.0-rc7
+GraalVM MultiLanguage Shell 1.0.0-rc8
 Copyright (c) 2013-2018, Oracle and/or its affiliates
   JavaScript version 1.0
   Python version 3.7.0

@@ -185,19 +185,19 @@
         </a>
       </li>
 
-      <li class="menu__item">
+      <li class="menu__item"  tabindex="0">
         <span class="github-widget">
           <!-- Place this tag where you want the button to render. -->
-          <a class="github-button" href="https://github.com/oracle/graal" data-icon="octicon-star" data-show-count="true" aria-label="Star oracle/graal on GitHub">Star</a>
+          <a tabindex="-1" class="github-button" href="https://github.com/oracle/graal" data-icon="octicon-star" data-show-count="true" aria-label="Star oracle/graal on GitHub">Star</a>
         </span>
       </li>
 
-      <li class="menu__item">
+      <li class="menu__item" tabindex="-1">
         <a href="/downloads/" class="btn btn-try btn-primary">Try graalvm</a>
       </li>
     </ul>
 
-    <div role="button" class="menu-btn menu-btn--menu js-show-menu" title="sweet hamburger">
+    <div role="button" class="menu-btn menu-btn--menu js-show-menu" tabindex="-1" title="sweet hamburger">
       <div class="hamburger"><div class="inner"></div></div>
     </div>
 
@@ -2696,8 +2696,11 @@ for (;;) {
 <h2 id="enable-source-caching">Enable Source Caching</h2>
 <p>Another good feature, GraalVM Polyglot API permits, is the source caching.<br />
 For that reason, use <a href="https://www.graalvm.org/sdk/javadoc/org/graalvm/polyglot/Source.Builder">Source.Builder</a>
-class that represents a builder for <a href="https://www.graalvm.org/sdk/javadoc/org/graalvm/polyglot/Source.html">Source</a> objects and allows the source to be parsed and compiled only once per execution <a href="https://www.graalvm.org/sdk/javadoc/org/graalvm/polyglot/Engine.html">Engine</a>.
-It allows the compiled code to be reused across multiple contexts if they are created with an explicit engine. If no explicit engine is passed, then the context does not share code with other contexts.</p>
+class that represents a builder for <a href="https://www.graalvm.org/sdk/javadoc/org/graalvm/polyglot/Source.html">Source</a>
+objects and allows the source to be parsed and compiled only once per execution <a href="https://www.graalvm.org/sdk/javadoc/org/graalvm/polyglot/Engine.html">Engine</a>.
+It allows the compiled code to be reused across multiple contexts
+if they are created with an explicit engine.
+If no explicit engine is passed, then the context does not share code with other contexts.</p>
 
 <p><code>Source.Builder</code> class has code caching enabled by default, namely,
 if a source instance of your program  is no longer referenced,
@@ -2705,16 +2708,12 @@ then the cache will be freed automatically.
 Also, if the underlying context or engine is no longer referenced,
 then cached code for evaluated sources will be freed automatically.
 However, you may apply <a href="https://www.graalvm.org/sdk/javadoc/org/graalvm/polyglot/Source.Builder.html#cached-boolean-">cached(boolean cached)</a> method to enable or disable code caching for the source objects.
-If caching is set to false, then the source requires parsing every time
-the source is evaluated but does not remember any state.</p>
-
-<p>Disabling caching may be useful in case the source is known to only be evaluated once,
-or when the compiler has to evaluate more complicated code.</p>
+If caching is set to false, then the source requires parsing every time it is evaluated.
+Disabling caching may be useful in case the source is known to only be evaluated once.</p>
 
 <p>Consider the following code snippet as an example.</p>
 
 <pre><code>import org.graalvm.polyglot.*;
-import org.graalvm.polyglot.Source.Builder;
 
 public class EngineBuilder {
 public static void main(String[] args) {
@@ -2735,19 +2734,20 @@ public static void main(String[] args) {
 
 <p>In this code: </p>
 <ul>
-  <li><code>import org.graalvm.polyglot.Source.Builder</code> imports the Source.Builder class of the Polyglot API.</li>
-  <li><code>Engine.create()</code> creates a new engine instance with default configuration and all installed languages.</li>
-  <li><code>Source.create()</code> evaluates the expression “21 + 21” with language “js”, which is the language identifier for JavaScript. Each source should be associated with the ID of the language.</li>
-  <li><code>engine(engine).build()</code> builds a new context builder that allows to configure an engine instance.</li>
-  <li><code>context.eval(source)</code> evaluates the source code by using the language specified in the source.</li>
-  <li>The <code>asInt</code> call converts the result to a Java integer.</li>
+  <li><code>import org.graalvm.polyglot.*</code> imports the base API for the Polyglot API.</li>
+  <li><code>Engine.create()</code> creates a new engine instance with the default configuration.</li>
+  <li><code>Source.create()</code> creates a source object for the expression “21 + 21”
+with “js” language, which is the language identifier for JavaScript.</li>
+  <li><code>Context.newBuilder().engine(engine).build()</code> builds a new context with
+an explicit engine assigned to it. All contexts associated with an engine share the code.</li>
+  <li><code>context.eval(source).asInt()</code> evaluates the source and returns the result as <code>Value</code> instance.</li>
 </ul>
 
 <h2 id="step-through-with-execution-listeners">Step through with Execution Listeners</h2>
 <p>GraalVM Polyglot API allows to instrument the execution of guest languages through <a href="http://www.graalvm.org/sdk/javadoc/org/graalvm/polyglot/management/ExecutionListener.html">ExecutionListener class</a>. For example, it lets you attach an execution listener that is invoked for every statement of the guest language program. Execution listeners
 are designed as simple API for polyglot embedders and may become handy in, e.g., single-stepping through the program to detect potentially malicious code by counting the number of statements executed.</p>
 
-<pre><code class="language-Java">import org.graalvm.polyglot.*;
+<pre><code class="language-java">import org.graalvm.polyglot.*;
 import org.graalvm.polyglot.management.*;
 
 public class ExecutionListenerTest {

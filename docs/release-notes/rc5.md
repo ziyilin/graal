@@ -50,7 +50,7 @@ Full changelog is available on GitHub [CHANGELOG.md](https://github.com/graalvm/
 
 ### R
 
-See [CHANGELOG](https://github.com/oracle/fastr/blob/master/CHANGELOG.md) for a complete list.
+See [CHANGELOG](https://github.com/oracle/fastr/blob/master/CHANGELOG.md) for the list of changes.
 
 ### LLVM interpreter for C/C++ & other native languages
 
@@ -72,5 +72,5 @@ To see the full list of changes to the APIs please refer to the project changelo
 * [Truffle changelog](https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md)
 
 ### Tools
-#### VisualVM
+**VisualVM**
 * VisualVM was added to the GraalVM CE distribution.

@@ -185,19 +185,19 @@
         </a>
       </li>
 
-      <li class="menu__item">
+      <li class="menu__item"  tabindex="0">
         <span class="github-widget">
           <!-- Place this tag where you want the button to render. -->
-          <a class="github-button" href="https://github.com/oracle/graal" data-icon="octicon-star" data-show-count="true" aria-label="Star oracle/graal on GitHub">Star</a>
+          <a tabindex="-1" class="github-button" href="https://github.com/oracle/graal" data-icon="octicon-star" data-show-count="true" aria-label="Star oracle/graal on GitHub">Star</a>
         </span>
       </li>
 
-      <li class="menu__item">
+      <li class="menu__item" tabindex="-1">
         <a href="/downloads/" class="btn btn-try btn-primary">Try graalvm</a>
       </li>
     </ul>
 
-    <div role="button" class="menu-btn menu-btn--menu js-show-menu" title="sweet hamburger">
+    <div role="button" class="menu-btn menu-btn--menu js-show-menu" tabindex="-1" title="sweet hamburger">
       <div class="hamburger"><div class="inner"></div></div>
     </div>
 
@@ -512,19 +512,19 @@ For example, running the following command will install Ruby support:</p>
 <pre><code>$ java -version
 java version "1.8.0_172"
 Java(TM) SE Runtime Environment (build 1.8.0_172-b11)
-GraalVM 1.0.0-rc7 (build 25.71-b01-internal-jvmci-0.48, mixed mode)
+GraalVM 1.0.0-rc8 (build 25.71-b01-internal-jvmci-0.48, mixed mode)
 
 $ node -v
-v8.11.1
+v10.9.0
 
 $ lli --version
-Graal llvm 6.0.0 (GraalVM EE Native 1.0.0-rc7)
+Graal llvm 6.0.0 (GraalVM EE Native 1.0.0-rc8)
 </code></pre>
 
 <p>If you have, e.g., the Ruby language component installed, you can check its version as well:</p>
 
 <pre><code class="language-shell">$ ruby -v
-truffleruby 1.0.0-rc7, like ruby 2.4.4, GraalVM CE Native [x86_64-darwin]
+truffleruby 1.0.0-rc8, like ruby 2.4.4, GraalVM CE Native [x86_64-darwin]
 </code></pre>
 
 <h3 id="running-applications">Running Applications</h3>
