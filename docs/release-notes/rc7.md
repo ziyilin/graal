@@ -1,18 +1,8 @@
 ## 1.0-RC7
 
-**KNOWN ISSUES**
-* The GraalVM CE image for MacOS currently depends on some libraries that are not installed by default on current MacOS versions.
-This might cause issues with UI-related functionality:
-```
-Library not loaded: /usr/X11/lib/libfreetype.6.dylib
-```
-The necessary components can be added, e.g., by installing [https://www.xquartz.org](https://www.xquartz.org). We will remove this dependency in upcoming versions of GraalVM CE for MacOS.
-
 ### GraalVM for Java developers (GraalVM + compiler)
 
-Added the virtualization of `Unsafe` compare and swap calls, for more details see [GH-636](https://github.com/oracle/graal/pull/636).
-
-Note that due do the issue with the underlying platform Java Mission control freezes at startup on MacOS. Because of that we removed the `jmc` utility from the distribution. For more information and workarounds please see the [JMC known issues page](https://www.oracle.com/technetwork/java/javase/jmc55-release-notes-2412446.html#known-iss).
+* Added the virtualization of `Unsafe` compare and swap calls, for more details see [GH-636](https://github.com/oracle/graal/pull/636).
 
 ### Native image generation
 

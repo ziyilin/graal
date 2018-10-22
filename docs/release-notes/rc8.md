@@ -1,17 +1,5 @@
 ## 1.0-RC8
 
-**KNOWN ISSUES**
-
-* Support for isolates in native-image is still experimental. A problem with garbage collection that can lead to stability issues has been identified and will be fixed in an upcoming release.
-
-* The GraalVM CE image for MacOS currently depends on some libraries that are not installed by default on current MacOS versions.
-This might cause issues with UI-related functionality:
-```
-Library not loaded: /usr/X11/lib/libfreetype.6.dylib
-```
-The necessary components can be added, e.g., by installing [https://www.xquartz.org](https://www.xquartz.org). We will remove this dependency in upcoming versions of GraalVM CE for MacOS.
-* Due do the issue with the underlying platform, Java Mission control freezes at startup on MacOS. Because of that we removed the `jmc` utility from the distribution. For more information and workarounds please see the [JMC known issues page](https://www.oracle.com/technetwork/java/javase/jmc55-release-notes-2412446.html#known-iss).
-
 ### GraalVM for Java Developers (GraalVM + compiler)
 * Added the support for Intel bit manipulation instructions. For more details, see [#666](https://github.com/oracle/graal/pull/666).
 * Virtualize `unsafe` compare and swap calls on non-escaping objects. See [#636](https://github.com/oracle/graal/pull/636).

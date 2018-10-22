@@ -9,7 +9,7 @@
 
   <title>
     
-      Release notes
+      Release Notes
     
   </title>
   <meta
@@ -343,7 +343,7 @@ $(document).ready(function(){
         
           
           <a href="/docs/release-notes/">
-            Release notes
+            Release Notes
           </a>
         </li>
 
@@ -451,33 +451,18 @@ $(document).ready(function(){
                 <p>If you find an issue or want to submit a feature request please use the repositories for the project closest related to the issue:</p>
 
 <ul>
-  <li><a href="https://github.com/oracle/graal">GraalVM, Graal compiler, native images, Truffle, tools, regular expressions</a></li>
+  <li><a href="https://github.com/oracle/graal">GraalVM, Graal compiler, native images, LLVM interpreter, Truffle, tools, regular expressions</a></li>
   <li><a href="https://github.com/graalvm/graaljs">JavaScript engine</a></li>
-  <li><a href="https://github.com/oracle/graal/tree/master/sulong">LLVM interpreter</a></li>
   <li><a href="https://github.com/oracle/truffleruby">Ruby</a></li>
   <li><a href="https://github.com/oracle/fastr">R</a></li>
   <li><a href="https://github.com/graalvm/graalpython">Python</a></li>
 </ul>
 
-<p>If in doubt, the main repository will work, we’d be happy to hear any feedback: <a href="https://github.com/oracle/graal">oracle/graal</a>.</p>
+<p>If in doubt, the main repository will work, we’d be happy to hear any feedback: <a href="https://github.com/oracle/graal">oracle/graal</a>. Known issues with the components GraalVM uses are listed <a href="/docs/release-notes/known-issues/">here</a>.</p>
 
 <p>On this page, we would like to highlight the most important changes in the <strong>GraalVM</strong> releases. There are different components to GraalVM, so we highlight the changes to these separately.</p>
+
 <h2 id="10-rc8">1.0-RC8</h2>
-
-<p><strong>KNOWN ISSUES</strong></p>
-
-<ul>
-  <li>
-    <p>Support for isolates in native-image is still experimental. A problem with garbage collection that can lead to stability issues has been identified and will be fixed in an upcoming release.</p>
-  </li>
-  <li>The GraalVM CE image for MacOS currently depends on some libraries that are not installed by default on current MacOS versions.
-This might cause issues with UI-related functionality:
-    <pre><code>Library not loaded: /usr/X11/lib/libfreetype.6.dylib
-</code></pre>
-    <p>The necessary components can be added, e.g., by installing <a href="https://www.xquartz.org">https://www.xquartz.org</a>. We will remove this dependency in upcoming versions of GraalVM CE for MacOS.</p>
-  </li>
-  <li>Due do the issue with the underlying platform, Java Mission control freezes at startup on MacOS. Because of that we removed the <code>jmc</code> utility from the distribution. For more information and workarounds please see the <a href="https://www.oracle.com/technetwork/java/javase/jmc55-release-notes-2412446.html#known-iss">JMC known issues page</a>.</li>
-</ul>
 
 <h3 id="graalvm-for-java-developers-graalvm--compiler">GraalVM for Java Developers (GraalVM + compiler)</h3>
 <ul>
@@ -584,21 +569,11 @@ All service implementation classes, listed in the <code>META-INF</code> director
 
 <h2 id="10-rc7">1.0-RC7</h2>
 
-<p><strong>KNOWN ISSUES</strong></p>
-<ul>
-  <li>The GraalVM CE image for MacOS currently depends on some libraries that are not installed by default on current MacOS versions.
-This might cause issues with UI-related functionality:
-    <pre><code>Library not loaded: /usr/X11/lib/libfreetype.6.dylib
-</code></pre>
-    <p>The necessary components can be added, e.g., by installing <a href="https://www.xquartz.org">https://www.xquartz.org</a>. We will remove this dependency in upcoming versions of GraalVM CE for MacOS.</p>
-  </li>
-</ul>
-
 <h3 id="graalvm-for-java-developers-graalvm--compiler-1">GraalVM for Java developers (GraalVM + compiler)</h3>
 
-<p>Added the virtualization of <code>Unsafe</code> compare and swap calls, for more details see <a href="https://github.com/oracle/graal/pull/636">GH-636</a>.</p>
-
-<p>Note that due do the issue with the underlying platform Java Mission control freezes at startup on MacOS. Because of that we removed the <code>jmc</code> utility from the distribution. For more information and workarounds please see the <a href="https://www.oracle.com/technetwork/java/javase/jmc55-release-notes-2412446.html#known-iss">JMC known issues page</a>.</p>
+<ul>
+  <li>Added the virtualization of <code>Unsafe</code> compare and swap calls, for more details see <a href="https://github.com/oracle/graal/pull/636">GH-636</a>.</li>
+</ul>
 
 <h3 id="native-image-generation-1">Native image generation</h3>
 
@@ -686,18 +661,6 @@ is available on GitHub.</p>
 </ul>
 
 <h2 id="10-rc6">1.0-RC6</h2>
-
-<p><strong>KNOWN ISSUES</strong></p>
-
-<ul>
-  <li>The GraalVM CE image for MacOS currently depends on some libraries that are not installed by default on current MacOS versions.
-This might cause issues with UI-related functionality:
-    <pre><code>Library not loaded: /usr/X11/lib/libfreetype.6.dylib
-</code></pre>
-    <p>The necessary components can be added, e.g., by installing <a href="https://www.xquartz.org">https://www.xquartz.org</a>. We will remove this dependency in upcoming versions of GraalVM CE for MacOS.</p>
-  </li>
-  <li>Note that due do the issue with the underlying platform Java Mission Control (<code>jmc</code>) freezes at startup on MacOS. For more information and workarounds please see the <a href="https://www.oracle.com/technetwork/java/javase/jmc55-release-notes-2412446.html#known-iss">JMC known issues page</a>.</li>
-</ul>
 
 <h3 id="graalvm-for-java-developers-graalvm--compiler-2">GraalVM for Java developers (GraalVM + compiler)</h3>
 

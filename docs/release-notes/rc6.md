@@ -1,17 +1,6 @@
 
 ## 1.0-RC6
 
-**KNOWN ISSUES**
-
-* The GraalVM CE image for MacOS currently depends on some libraries that are not installed by default on current MacOS versions.
-This might cause issues with UI-related functionality:
-```
-Library not loaded: /usr/X11/lib/libfreetype.6.dylib
-```
-The necessary components can be added, e.g., by installing [https://www.xquartz.org](https://www.xquartz.org). We will remove this dependency in upcoming versions of GraalVM CE for MacOS.
-
-* Note that due do the issue with the underlying platform Java Mission Control (`jmc`) freezes at startup on MacOS. For more information and workarounds please see the [JMC known issues page](https://www.oracle.com/technetwork/java/javase/jmc55-release-notes-2412446.html#known-iss).
-
 ### GraalVM for Java developers (GraalVM + compiler)
 
 * New optimization to remove unnecessary allocation in some calls to `Enum.values()`.  See [calls to Enum.values() don't optimise away as expected](https://github.com/oracle/graal/issues/574) for the details.
