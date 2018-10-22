@@ -529,11 +529,7 @@ All service implementation classes, listed in the <code>META-INF</code> director
 <p>A complete <a href="https://github.com/graalvm/graaljs/blob/master/CHANGELOG.md">changelog</a> is available on GitHub.</p>
 
 <h3 id="llvm-interpreter-sulong">LLVM Interpreter (Sulong)</h3>
-<p>With GraalVM 1.0-rc8 Enterprise Edition the LLVM Interpreter announced:</p>
-<ul>
-  <li>Better exceptions for memory access violations in sandboxed execution make it easier to diagnose the underlying problem. For example, an invalid access is now reported as Illegal pointer access <code>0x0000000000000001</code> instead of ERROR<code> java.lang.UnsupportedOperationException org.graalvm.polyglot.PolyglotException</code> (note that these are proper exceptions that can be caught and handled).</li>
-  <li>Source-level debugging of C/C++/… code is now supported when running bitcode in sandboxed mode.</li>
-</ul>
+<p>The project <a href="https://github.com/oracle/graal/blob/master/sulong/CHANGELOG.md">changelog</a> is available on GitHub.</p>
 
 <h3 id="ruby">Ruby</h3>
 <ul>

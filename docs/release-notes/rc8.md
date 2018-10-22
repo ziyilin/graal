@@ -51,9 +51,7 @@ All service implementation classes, listed in the `META-INF` directory, are avai
 A complete [changelog](https://github.com/graalvm/graaljs/blob/master/CHANGELOG.md) is available on GitHub.
 
 ### LLVM Interpreter (Sulong)
-With GraalVM 1.0-rc8 Enterprise Edition the LLVM Interpreter announced:
-* Better exceptions for memory access violations in sandboxed execution make it easier to diagnose the underlying problem. For example, an invalid access is now reported as Illegal pointer access `0x0000000000000001` instead of ERROR` java.lang.UnsupportedOperationException org.graalvm.polyglot.PolyglotException` (note that these are proper exceptions that can be caught and handled).
-* Source-level debugging of C/C++/... code is now supported when running bitcode in sandboxed mode.
+The project [changelog](https://github.com/oracle/graal/blob/master/sulong/CHANGELOG.md) is available on GitHub.
 
 ### Ruby
 * Ubuntu 18.04 LTS, Fedora 28, and macOS 10.14 (Mojave) now supported.
