@@ -23,7 +23,6 @@
   <link rel="stylesheet" href="/resources/styles/extra.css">
 
   <link rel="canonical" href="https://www.graalvm.org/docs/getting-started/">
-  <link rel="alternate" type="application/rss+xml" title="GraalVM" href="/feed.xml">
   <script src="/resources/lib/jquery/jquery-3.2.1.min.js"></script>
   <script src="/resources/lib/bootstrap/js/bootstrap.min.js"></script>
   <script src="/resources/lib/sticky-sidebar/resizeSensor.js"></script>
@@ -448,8 +447,8 @@ $(document).ready(function(){
     
             <div class="col-sm-9">
               <div id="content-wrapper" class="docs-content docs-content--with-sidebar">
-                <p>Get started with GraalVM and configure it to run programs written in Java (or other JVM-based languages), JavaScript
-and Node.js, Ruby, R, or Python. This page guides you through downloading and installing GraalVM and adding support for additional languages, and shows you how to run simple programs on GraalVM.</p>
+                <p>Get started with GraalVM and configure it to run programs written in Java (or other JVM-based languages), JavaScript and Node.js, Ruby, R, or Python.
+This page guides you through downloading and installing GraalVM and adding support for additional languages, and shows you how to run simple programs on GraalVM.</p>
 
 <h2 id="download-graalvm">Download GraalVM</h2>
 
@@ -525,6 +524,77 @@ Graal llvm 6.0.0 (GraalVM EE Native 1.0.0-rc8)
 
 <pre><code class="language-shell">$ ruby -v
 truffleruby 1.0.0-rc8, like ruby 2.4.4, GraalVM CE Native [x86_64-darwin]
+</code></pre>
+<h3 id="graalvm-docker-containers">GraalVM Docker Containers</h3>
+
+<p>The official Docker images for GraalVM CE are available from the Docker Hub:
+<a href="https://hub.docker.com/r/oracle/graalvm-ce/">https://hub.docker.com/r/oracle/graalvm-ce/</a>.</p>
+
+<p>If you want to use the Docker container with GraalVM CE use the <code>docker pull</code> command:</p>
+<pre><code>docker pull oracle/graalvm-ce:1.0.0-rc8
+</code></pre>
+
+<p>The image is based on Oracle Linux and has GraalVM CE downloaded, unzipped and made available.
+It means that Java, JavaScript, Node and the LLVM interpreter are available out of the box.</p>
+
+<p>You can start a container and enter the <code>bash</code> session with the following run command:</p>
+<pre><code>docker run -it oracle/graalvm-ce:1.0.0-rc8 bash
+</code></pre>
+
+<p>Check that <code>java</code>, <code>js</code> and other commands work as expected.</p>
+<pre><code>→ docker run -it oracle/graalvm-ce:1.0.0-rc8 bash
+bash-4.2# java -version
+openjdk version "1.8.0_172"
+OpenJDK Runtime Environment (build 1.8.0_172-20180625212755.graaluser.jdk8u-src-tar-g-b11)
+GraalVM 1.0.0-rc8 (build 25.71-b01-internal-jvmci-0.48, mixed mode)
+bash-4.2# node
+&gt; 1 + 1
+2
+&gt; quit()
+bash-4.2# lli --version
+Graal llvm 6.0.0 (GraalVM CE Native 1.0.0-rc8)
+bash-4.2#
+</code></pre>
+
+<p>Please note that the image contains only the components immediately available in the GraalVM CE distribution.
+However, the <a href="/docs/reference-manual/graal-updater/">Graal updater utility</a> is on the path.
+You can install support for additional languages like Ruby, R, or Python at will. For example, the following command
+installs the Ruby support (the output below is truncated for brevity):</p>
+
+<pre><code>docker run -it oracle/graalvm-ce:1.0.0-rc8 bash
+bash-4.2# gu install ruby
+Downloading: Component catalog
+Processing component archive: Component ruby
+Downloading: Component ruby
+[######              ]
+...
+</code></pre>
+
+<p>If you want to mount a directory from the host system to have it locally available in the container,
+use <a href="https://docs.docker.com/storage/volumes/#choose-the--v-or---mount-flag">Docker volumes</a>.</p>
+
+<p>Here is a sample command that maps the <code>/absolute/path/to/dir/no/trailing/slash</code> directory from the host system to the <code>/path/inside/container</code> inside the container.</p>
+
+<pre><code>docker run -it -v /absolute/path/to/dir/no/trailing/slash:/path/inside/container oracle/graalvm-ce:1.0.0-rc8 bash
+</code></pre>
+
+<p>If you want to create docker images that contain GraalVM Ruby, R, or Python implementation, you can use dockerfiles like the example below, which uses <code>oracle/graalvm-ce:1.0.0-rc8</code> as the base image, installs Ruby support using the <code>gu</code> utility, then creates and runs a sample Ruby program.</p>
+
+<pre><code>FROM oracle/graalvm-ce:1.0.0-rc8
+RUN gu install ruby
+WORKDIR /workdir
+RUN echo 'puts "Hello from Truffleruby!\nVersion: #{RUBY_DESCRIPTION}"' &gt; app.rb
+CMD ruby app.rb
+</code></pre>
+
+<p>If you put the above snippet in the <code>Dockerfile</code> in the current directory,
+you can build and run it with the following commands.</p>
+
+<pre><code>docker build -t truffleruby-demo .
+...
+$ docker run -it --rm truffleruby-demo
+Hello from Truffleruby!
+Version: truffleruby 1.0.0-rc8, like ruby 2.4.4, GraalVM CE Native [x86_64-linux]
 </code></pre>
 
 <h3 id="running-applications">Running Applications</h3>
@@ -652,7 +722,7 @@ command and supports all Node.js APIs.</p>
 
 <p>More information on compatibility with the Node.js and configuring GraalVM read the <a href="/docs/reference-manual/languages/js/">reference manual on JavaScript in GraalVM</a>.</p>
 
-<h2 id="running-the-llvm-interpreter">Running the LLVM interpreter</h2>
+<h2 id="running-llvm-interpreter">Running LLVM Interpreter</h2>
 
 <p>The LLVM interpreter in GraalVM executes LLVM bitcode, and therefore any programming language that can be compiled to LLVM bitcode.</p>
 
