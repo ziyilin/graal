@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":9,"i1":9,"i2":9,"i3":9};
+var methods = {"i0":9,"i1":9,"i2":9,"i3":9,"i4":9};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -135,23 +135,30 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>static void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/nativeimage/RuntimeReflection.html#register-boolean-java.lang.reflect.Field...-">register</a></span>(boolean&nbsp;finalIsWritable,
+        <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/reflect/Field.html?is-external=true" title="class or interface in java.lang.reflect">Field</a>...&nbsp;fields)</code>
+<div class="block">Makes the provided fields available for reflection at run time.</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/nativeimage/RuntimeReflection.html#register-java.lang.Class...-">register</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;...&nbsp;classes)</code>
 <div class="block">Makes the provided classes available for reflection at run time.</div>
 </td>
 </tr>
-<tr id="i1" class="rowColor">
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/nativeimage/RuntimeReflection.html#register-java.lang.reflect.Executable...-">register</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/reflect/Executable.html?is-external=true" title="class or interface in java.lang.reflect">Executable</a>...&nbsp;methods)</code>
 <div class="block">Makes the provided methods available for reflection at run time.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/nativeimage/RuntimeReflection.html#register-java.lang.reflect.Field...-">register</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/reflect/Field.html?is-external=true" title="class or interface in java.lang.reflect">Field</a>...&nbsp;fields)</code>
 <div class="block">Makes the provided fields available for reflection at run time.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/nativeimage/RuntimeReflection.html#registerForReflectiveInstantiation-java.lang.Class...-">registerForReflectiveInstantiation</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;...&nbsp;classes)</code>
 <div class="block">Makes the provided classes available for reflective instantiation by
@@ -222,6 +229,26 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
  by <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true#getField-java.lang.String-" title="class or interface in java.lang"><code>Class.getField(java.lang.String)</code></a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true#getFields--" title="class or interface in java.lang"><code>Class.getFields()</code></a>,and all the other methods on <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang"><code>Class</code></a>
  that return a single or a list of fields.</div>
 <dl>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>1.0</dd>
+</dl>
+</li>
+</ul>
+<a name="register-boolean-java.lang.reflect.Field...-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>register</h4>
+<pre>public static&nbsp;void&nbsp;register(boolean&nbsp;finalIsWritable,
+                            <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/reflect/Field.html?is-external=true" title="class or interface in java.lang.reflect">Field</a>...&nbsp;fields)</pre>
+<div class="block">Makes the provided fields available for reflection at run time. The fields will be returned
+ by <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true#getField-java.lang.String-" title="class or interface in java.lang"><code>Class.getField(java.lang.String)</code></a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true#getFields--" title="class or interface in java.lang"><code>Class.getFields()</code></a>,and all the other methods on <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang"><code>Class</code></a>
+ that return a single or a list of fields.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>finalIsWritable</code> - for all of the passed fields which are marked <code>final</code>, indicates
+            whether it should be possible to change their value using reflection.</dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>1.0</dd>
 </dl>
