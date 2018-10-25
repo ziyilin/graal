@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -156,6 +156,13 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <div class="block">Provide a list of <a href="../../../../../com/oracle/truffle/api/debug/SourceElement.html" title="enum in com.oracle.truffle.api.debug"><code>SourceElement</code></a>s that are enabled for the step.</div>
 </td>
 </tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code><a href="../../../../../com/oracle/truffle/api/debug/StepConfig.Builder.html" title="class in com.oracle.truffle.api.debug">StepConfig.Builder</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/debug/StepConfig.Builder.html#suspendAnchors-com.oracle.truffle.api.debug.SourceElement-com.oracle.truffle.api.debug.SuspendAnchor...-">suspendAnchors</a></span>(<a href="../../../../../com/oracle/truffle/api/debug/SourceElement.html" title="enum in com.oracle.truffle.api.debug">SourceElement</a>&nbsp;element,
+              <a href="../../../../../com/oracle/truffle/api/debug/SuspendAnchor.html" title="enum in com.oracle.truffle.api.debug">SuspendAnchor</a>...&nbsp;anchors)</code>
+<div class="block">Provide a list of <a href="../../../../../com/oracle/truffle/api/debug/SuspendAnchor.html" title="enum in com.oracle.truffle.api.debug"><code>SuspendAnchor</code></a>s for individual <a href="../../../../../com/oracle/truffle/api/debug/SourceElement.html" title="enum in com.oracle.truffle.api.debug"><code>SourceElement</code></a>s.</div>
+</td>
+</tr>
 </table>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
@@ -195,6 +202,44 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <dd><code>elements</code> - a non-empty list of source elements</dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>0.33</dd>
+</dl>
+</li>
+</ul>
+<a name="suspendAnchors-com.oracle.truffle.api.debug.SourceElement-com.oracle.truffle.api.debug.SuspendAnchor...-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>suspendAnchors</h4>
+<pre>public&nbsp;<a href="../../../../../com/oracle/truffle/api/debug/StepConfig.Builder.html" title="class in com.oracle.truffle.api.debug">StepConfig.Builder</a>&nbsp;suspendAnchors(<a href="../../../../../com/oracle/truffle/api/debug/SourceElement.html" title="enum in com.oracle.truffle.api.debug">SourceElement</a>&nbsp;element,
+                                         <a href="../../../../../com/oracle/truffle/api/debug/SuspendAnchor.html" title="enum in com.oracle.truffle.api.debug">SuspendAnchor</a>...&nbsp;anchors)</pre>
+<div class="block">Provide a list of <a href="../../../../../com/oracle/truffle/api/debug/SuspendAnchor.html" title="enum in com.oracle.truffle.api.debug"><code>SuspendAnchor</code></a>s for individual <a href="../../../../../com/oracle/truffle/api/debug/SourceElement.html" title="enum in com.oracle.truffle.api.debug"><code>SourceElement</code></a>s. By
+ default, following suspend anchors are applied:
+ <table>
+ <tr>
+ <th><a href="../../../../../com/oracle/truffle/api/debug/SourceElement.html" title="enum in com.oracle.truffle.api.debug"><code>SourceElement</code></a></th>
+ <th><a href="../../../../../com/oracle/truffle/api/debug/SuspendAnchor.html" title="enum in com.oracle.truffle.api.debug"><code>SuspendAnchor</code></a>s</th>
+ </tr>
+ <tr>
+ <td><a href="../../../../../com/oracle/truffle/api/debug/SourceElement.html#ROOT"><code>ROOT</code></a></td>
+ <td><a href="../../../../../com/oracle/truffle/api/debug/SuspendAnchor.html#BEFORE"><code>BEFORE</code></a>, <a href="../../../../../com/oracle/truffle/api/debug/SuspendAnchor.html#AFTER"><code>AFTER</code></a></td>
+ </tr>
+ <tr>
+ <td><a href="../../../../../com/oracle/truffle/api/debug/SourceElement.html#STATEMENT"><code>STATEMENT</code></a></td>
+ <td><a href="../../../../../com/oracle/truffle/api/debug/SuspendAnchor.html#BEFORE"><code>BEFORE</code></a></td>
+ </tr>
+ <tr>
+ <td><a href="../../../../../com/oracle/truffle/api/debug/SourceElement.html#EXPRESSION"><code>EXPRESSION</code></a></td>
+ <td><a href="../../../../../com/oracle/truffle/api/debug/SuspendAnchor.html#BEFORE"><code>BEFORE</code></a>, <a href="../../../../../com/oracle/truffle/api/debug/SuspendAnchor.html#AFTER"><code>AFTER</code></a></td>
+ </tr>
+ </table>
+ This method can be called repeatedly to override the defaults.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>element</code> - the element to set the suspend anchor for</dd>
+<dd><code>anchors</code> - a list of suspend anchors</dd>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>1.0</dd>
 </dl>
 </li>
 </ul>

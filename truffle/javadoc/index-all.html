@@ -6383,6 +6383,11 @@
 <dd>
 <div class="block">Returns the execution event node that was inserted at this location given an event binding.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/instrumentation/Instrumenter.html#lookupExecutionEventNode-com.oracle.truffle.api.nodes.Node-com.oracle.truffle.api.instrumentation.EventBinding-">lookupExecutionEventNode(Node, EventBinding&lt;?&gt;)</a></span> - Method in class com.oracle.truffle.api.instrumentation.<a href="com/oracle/truffle/api/instrumentation/Instrumenter.html" title="class in com.oracle.truffle.api.instrumentation">Instrumenter</a></dt>
+<dd>
+<div class="block">Returns the execution event node that was inserted at the node's location given an event
+ binding, if any.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/api/instrumentation/EventContext.html#lookupExecutionEventNodes-java.util.Collection-">lookupExecutionEventNodes(Collection&lt;EventBinding&lt;? extends ExecutionEventNodeFactory&gt;&gt;)</a></span> - Method in class com.oracle.truffle.api.instrumentation.<a href="com/oracle/truffle/api/instrumentation/EventContext.html" title="class in com.oracle.truffle.api.instrumentation">EventContext</a></dt>
 <dd>
 <div class="block">Returns all execution event nodes in the insertion order at this location, whose event
@@ -9054,6 +9059,10 @@
 <dt><a href="com/oracle/truffle/api/debug/SuspendAnchor.html" title="enum in com.oracle.truffle.api.debug"><span class="typeNameLink">SuspendAnchor</span></a> - Enum in <a href="com/oracle/truffle/api/debug/package-summary.html">com.oracle.truffle.api.debug</a></dt>
 <dd>
 <div class="block">Describes where, within a guest language source section, the suspend position is.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/debug/StepConfig.Builder.html#suspendAnchors-com.oracle.truffle.api.debug.SourceElement-com.oracle.truffle.api.debug.SuspendAnchor...-">suspendAnchors(SourceElement, SuspendAnchor...)</a></span> - Method in class com.oracle.truffle.api.debug.<a href="com/oracle/truffle/api/debug/StepConfig.Builder.html" title="class in com.oracle.truffle.api.debug">StepConfig.Builder</a></dt>
+<dd>
+<div class="block">Provide a list of <a href="com/oracle/truffle/api/debug/SuspendAnchor.html" title="enum in com.oracle.truffle.api.debug"><code>SuspendAnchor</code></a>s for individual <a href="com/oracle/truffle/api/debug/SourceElement.html" title="enum in com.oracle.truffle.api.debug"><code>SourceElement</code></a>s.</div>
 </dd>
 <dt><a href="com/oracle/truffle/api/debug/SuspendedCallback.html" title="interface in com.oracle.truffle.api.debug"><span class="typeNameLink">SuspendedCallback</span></a> - Interface in <a href="com/oracle/truffle/api/debug/package-summary.html">com.oracle.truffle.api.debug</a></dt>
 <dd>
