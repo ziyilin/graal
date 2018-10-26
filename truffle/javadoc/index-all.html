@@ -4935,6 +4935,15 @@
 <dd>
 <div class="block">Check whether the shape has a property with the given key.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/debug/DebugValue.html#hasReadSideEffects--">hasReadSideEffects()</a></span> - Method in class com.oracle.truffle.api.debug.<a href="com/oracle/truffle/api/debug/DebugValue.html" title="class in com.oracle.truffle.api.debug">DebugValue</a></dt>
+<dd>
+<div class="block">Returns <code>true</code> if reading of this value can have side-effects, else
+ <code>false</code>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/interop/KeyInfo.html#hasReadSideEffects-int-">hasReadSideEffects(int)</a></span> - Static method in class com.oracle.truffle.api.interop.<a href="com/oracle/truffle/api/interop/KeyInfo.html" title="class in com.oracle.truffle.api.interop">KeyInfo</a></dt>
+<dd>
+<div class="block">Test if <a href="com/oracle/truffle/api/interop/Message.html#READ"><code>Message.READ</code></a> may have side-effects.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/options/OptionValues.html#hasSetOptions--">hasSetOptions()</a></span> - Method in interface org.graalvm.options.<a href="org/graalvm/options/OptionValues.html" title="interface in org.graalvm.options">OptionValues</a></dt>
 <dd>
 <div class="block">Determines if a value for any of the option keys in <a href="org/graalvm/options/OptionValues.html#getDescriptors--"><code>option
@@ -4957,6 +4966,15 @@
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/api/object/Shape.html#hasTransitionWithKey-java.lang.Object-">hasTransitionWithKey(Object)</a></span> - Method in class com.oracle.truffle.api.object.<a href="com/oracle/truffle/api/object/Shape.html" title="class in com.oracle.truffle.api.object">Shape</a></dt>
 <dd>
 <div class="block">Query whether the shape has a transition with the given key.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/debug/DebugValue.html#hasWriteSideEffects--">hasWriteSideEffects()</a></span> - Method in class com.oracle.truffle.api.debug.<a href="com/oracle/truffle/api/debug/DebugValue.html" title="class in com.oracle.truffle.api.debug">DebugValue</a></dt>
+<dd>
+<div class="block">Returns <code>true</code> if setting a new value can have side-effects, else
+ <code>false</code>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/interop/KeyInfo.html#hasWriteSideEffects-int-">hasWriteSideEffects(int)</a></span> - Static method in class com.oracle.truffle.api.interop.<a href="com/oracle/truffle/api/interop/KeyInfo.html" title="class in com.oracle.truffle.api.interop">KeyInfo</a></dt>
+<dd>
+<div class="block">Test if <a href="com/oracle/truffle/api/interop/Message.html#WRITE"><code>Message.WRITE</code></a> may have side-effects.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/options/OptionDescriptor.Builder.html#help-java.lang.String-">help(String)</a></span> - Method in class org.graalvm.options.<a href="org/graalvm/options/OptionDescriptor.Builder.html" title="class in org.graalvm.options">OptionDescriptor.Builder</a></dt>
 <dd>
@@ -7846,6 +7864,10 @@
 <div class="block">Reads the value of the array element with the specified index, treating the pointer as an
  array of the C type.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/interop/KeyInfo.html#READ_SIDE_EFFECTS">READ_SIDE_EFFECTS</a></span> - Static variable in class com.oracle.truffle.api.interop.<a href="com/oracle/truffle/api/interop/KeyInfo.html" title="class in com.oracle.truffle.api.interop">KeyInfo</a></dt>
+<dd>
+<div class="block">Single bit that is set if <a href="com/oracle/truffle/api/interop/Message.html#READ"><code>Message.READ</code></a> may have side-effects.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/api/interop/KeyInfo.html#READABLE">READABLE</a></span> - Static variable in class com.oracle.truffle.api.interop.<a href="com/oracle/truffle/api/interop/KeyInfo.html" title="class in com.oracle.truffle.api.interop">KeyInfo</a></dt>
 <dd>
 <div class="block">Single bit that is set if <a href="com/oracle/truffle/api/interop/Message.html#READ"><code>reading</code></a> an existing key is supported.</div>
@@ -10006,6 +10028,10 @@ the order they are declared.</div>
 <dd>
 <div class="block">Writes the value of the array element with the specified index, treating the pointer as an
  array of the C type.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/interop/KeyInfo.html#WRITE_SIDE_EFFECTS">WRITE_SIDE_EFFECTS</a></span> - Static variable in class com.oracle.truffle.api.interop.<a href="com/oracle/truffle/api/interop/KeyInfo.html" title="class in com.oracle.truffle.api.interop">KeyInfo</a></dt>
+<dd>
+<div class="block">Single bit that is set if <a href="com/oracle/truffle/api/interop/Message.html#WRITE"><code>Message.WRITE</code></a> may have side-effects.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/word/Pointer.html#writeByte-org.graalvm.word.WordBase-byte-org.graalvm.word.LocationIdentity-">writeByte(WordBase, byte, LocationIdentity)</a></span> - Method in interface org.graalvm.word.<a href="org/graalvm/word/Pointer.html" title="interface in org.graalvm.word">Pointer</a></dt>
 <dd>

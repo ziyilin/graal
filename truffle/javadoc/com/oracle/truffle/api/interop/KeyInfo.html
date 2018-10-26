@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":9,"i1":9,"i2":9,"i3":9,"i4":9,"i5":9,"i6":9,"i7":9};
+var methods = {"i0":9,"i1":9,"i2":9,"i3":9,"i4":9,"i5":9,"i6":9,"i7":9,"i8":9,"i9":9};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -120,6 +120,10 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
  <li><a href="../../../../../com/oracle/truffle/api/interop/KeyInfo.html#INVOCABLE"><code>KeyInfo.INVOCABLE</code></a>: if <a href="../../../../../com/oracle/truffle/api/interop/Message.html#INVOKE"><code>invoking</code></a> an existing key is supported.
  <li><a href="../../../../../com/oracle/truffle/api/interop/KeyInfo.html#REMOVABLE"><code>KeyInfo.REMOVABLE</code></a> if <a href="../../../../../com/oracle/truffle/api/interop/Message.html#REMOVE"><code>removing</code></a> an existing key is supported.
  <li><a href="../../../../../com/oracle/truffle/api/interop/KeyInfo.html#INTERNAL"><code>KeyInfo.INTERNAL</code></a> if an existing key is internal.
+ <li><a href="../../../../../com/oracle/truffle/api/interop/KeyInfo.html#READ_SIDE_EFFECTS"><code>KeyInfo.READ_SIDE_EFFECTS</code></a> if <a href="../../../../../com/oracle/truffle/api/interop/Message.html#READ"><code>Message.READ</code></a> of the key value may have side-effects,
+ i.e. may change values of some keys, state of objects, etc.
+ <li><a href="../../../../../com/oracle/truffle/api/interop/KeyInfo.html#WRITE_SIDE_EFFECTS"><code>KeyInfo.WRITE_SIDE_EFFECTS</code></a> if <a href="../../../../../com/oracle/truffle/api/interop/Message.html#WRITE"><code>Message.WRITE</code></a> of the key value may have side-effects,
+ i.e. may change values of other keys, state of other objects, etc.
  <p>
  When a <a href="../../../../../com/oracle/truffle/api/interop/KeyInfo.html#isReadable-int-"><code>readable</code></a> or <a href="../../../../../com/oracle/truffle/api/interop/KeyInfo.html#isWritable-int-"><code>writable</code></a> flag is
  <code>true</code>, it does not necessarily guarantee that subsequent <a href="../../../../../com/oracle/truffle/api/interop/Message.html#READ"><code>Message.READ</code></a> or
@@ -183,14 +187,26 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>static int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/KeyInfo.html#READABLE">READABLE</a></span></code>
-<div class="block">Single bit that is set if <a href="../../../../../com/oracle/truffle/api/interop/Message.html#READ"><code>reading</code></a> an existing key is supported.</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/KeyInfo.html#READ_SIDE_EFFECTS">READ_SIDE_EFFECTS</a></span></code>
+<div class="block">Single bit that is set if <a href="../../../../../com/oracle/truffle/api/interop/Message.html#READ"><code>Message.READ</code></a> may have side-effects.</div>
 </td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/KeyInfo.html#READABLE">READABLE</a></span></code>
+<div class="block">Single bit that is set if <a href="../../../../../com/oracle/truffle/api/interop/Message.html#READ"><code>reading</code></a> an existing key is supported.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/KeyInfo.html#REMOVABLE">REMOVABLE</a></span></code>
 <div class="block">Single bit that is set if <a href="../../../../../com/oracle/truffle/api/interop/Message.html#REMOVE"><code>removing</code></a> an existing key is supported.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/KeyInfo.html#WRITE_SIDE_EFFECTS">WRITE_SIDE_EFFECTS</a></span></code>
+<div class="block">Single bit that is set if <a href="../../../../../com/oracle/truffle/api/interop/Message.html#WRITE"><code>Message.WRITE</code></a> may have side-effects.</div>
 </td>
 </tr>
 </table>
@@ -210,47 +226,59 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>static boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/KeyInfo.html#hasReadSideEffects-int-">hasReadSideEffects</a></span>(int&nbsp;infoBits)</code>
+<div class="block">Test if <a href="../../../../../com/oracle/truffle/api/interop/Message.html#READ"><code>Message.READ</code></a> may have side-effects.</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>static boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/KeyInfo.html#hasWriteSideEffects-int-">hasWriteSideEffects</a></span>(int&nbsp;infoBits)</code>
+<div class="block">Test if <a href="../../../../../com/oracle/truffle/api/interop/Message.html#WRITE"><code>Message.WRITE</code></a> may have side-effects.</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>static boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/KeyInfo.html#isExisting-int-">isExisting</a></span>(int&nbsp;infoBits)</code>
 <div class="block">Test if the bits represent an existing key.</div>
 </td>
 </tr>
-<tr id="i1" class="rowColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>static boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/KeyInfo.html#isInsertable-int-">isInsertable</a></span>(int&nbsp;infoBits)</code>
 <div class="block">Test if <a href="../../../../../com/oracle/truffle/api/interop/Message.html#WRITE"><code>writing</code></a> a new key is supported.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>static boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/KeyInfo.html#isInternal-int-">isInternal</a></span>(int&nbsp;infoBits)</code>
 <div class="block">Test if an existing key is internal.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>static boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/KeyInfo.html#isInvocable-int-">isInvocable</a></span>(int&nbsp;infoBits)</code>
 <div class="block">Test if <a href="../../../../../com/oracle/truffle/api/interop/Message.html#INVOKE"><code>invoking</code></a> an existing key is supported.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>static boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/KeyInfo.html#isModifiable-int-">isModifiable</a></span>(int&nbsp;infoBits)</code>
 <div class="block">Test if <a href="../../../../../com/oracle/truffle/api/interop/Message.html#WRITE"><code>writing</code></a> an existing key is supported.</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>static boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/KeyInfo.html#isReadable-int-">isReadable</a></span>(int&nbsp;infoBits)</code>
 <div class="block">Test if <a href="../../../../../com/oracle/truffle/api/interop/Message.html#READ"><code>reading</code></a> an existing key is supported.</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>static boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/KeyInfo.html#isRemovable-int-">isRemovable</a></span>(int&nbsp;infoBits)</code>
 <div class="block">Test if <a href="../../../../../com/oracle/truffle/api/interop/Message.html#WRITE"><code>writing</code></a> a new key is supported.</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>static boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/KeyInfo.html#isWritable-int-">isWritable</a></span>(int&nbsp;infoBits)</code>
 <div class="block">Test if <a href="../../../../../com/oracle/truffle/api/interop/Message.html#READ"><code>writing</code></a> an existing or new key is supported.</div>
@@ -306,7 +334,8 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>0.33</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../../constant-values.html#com.oracle.truffle.api.interop.KeyInfo.READABLE">Constant Field Values</a></dd>
+<dd><a href="../../../../../com/oracle/truffle/api/interop/KeyInfo.html#READ_SIDE_EFFECTS"><code>KeyInfo.READ_SIDE_EFFECTS</code></a>, 
+<a href="../../../../../constant-values.html#com.oracle.truffle.api.interop.KeyInfo.READABLE">Constant Field Values</a></dd>
 </dl>
 </li>
 </ul>
@@ -322,7 +351,8 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>0.33</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../../constant-values.html#com.oracle.truffle.api.interop.KeyInfo.MODIFIABLE">Constant Field Values</a></dd>
+<dd><a href="../../../../../com/oracle/truffle/api/interop/KeyInfo.html#WRITE_SIDE_EFFECTS"><code>KeyInfo.WRITE_SIDE_EFFECTS</code></a>, 
+<a href="../../../../../constant-values.html#com.oracle.truffle.api.interop.KeyInfo.MODIFIABLE">Constant Field Values</a></dd>
 </dl>
 </li>
 </ul>
@@ -377,7 +407,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <a name="INSERTABLE">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>INSERTABLE</h4>
 <pre>public static final&nbsp;int INSERTABLE</pre>
@@ -387,6 +417,44 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <dd>0.33</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../../../constant-values.html#com.oracle.truffle.api.interop.KeyInfo.INSERTABLE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="READ_SIDE_EFFECTS">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>READ_SIDE_EFFECTS</h4>
+<pre>public static final&nbsp;int READ_SIDE_EFFECTS</pre>
+<div class="block">Single bit that is set if <a href="../../../../../com/oracle/truffle/api/interop/Message.html#READ"><code>Message.READ</code></a> may have side-effects. A read side-effect
+ means any change in runtime state that is observable by the guest language program. For
+ instance in JavaScript a property <a href="../../../../../com/oracle/truffle/api/interop/Message.html#READ"><code>Message.READ</code></a> may have side-effects if the property
+ has a getter function.</div>
+<dl>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>1.0</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../../constant-values.html#com.oracle.truffle.api.interop.KeyInfo.READ_SIDE_EFFECTS">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="WRITE_SIDE_EFFECTS">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>WRITE_SIDE_EFFECTS</h4>
+<pre>public static final&nbsp;int WRITE_SIDE_EFFECTS</pre>
+<div class="block">Single bit that is set if <a href="../../../../../com/oracle/truffle/api/interop/Message.html#WRITE"><code>Message.WRITE</code></a> may have side-effects. A write side-effect
+ means any change in runtime state, besides the write operation of the member, that is
+ observable by the guest language program. For instance in JavaScript a property
+ <a href="../../../../../com/oracle/truffle/api/interop/Message.html#WRITE"><code>Message.WRITE</code></a> may have side-effects if the property has a setter function.</div>
+<dl>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>1.0</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../../constant-values.html#com.oracle.truffle.api.interop.KeyInfo.WRITE_SIDE_EFFECTS">Constant Field Values</a></dd>
 </dl>
 </li>
 </ul>
@@ -437,6 +505,34 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <dl>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>0.26</dd>
+</dl>
+</li>
+</ul>
+<a name="hasReadSideEffects-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>hasReadSideEffects</h4>
+<pre>public static&nbsp;boolean&nbsp;hasReadSideEffects(int&nbsp;infoBits)</pre>
+<div class="block">Test if <a href="../../../../../com/oracle/truffle/api/interop/Message.html#READ"><code>Message.READ</code></a> may have side-effects.</div>
+<dl>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>1.0</dd>
+</dl>
+</li>
+</ul>
+<a name="hasWriteSideEffects-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>hasWriteSideEffects</h4>
+<pre>public static&nbsp;boolean&nbsp;hasWriteSideEffects(int&nbsp;infoBits)</pre>
+<div class="block">Test if <a href="../../../../../com/oracle/truffle/api/interop/Message.html#WRITE"><code>Message.WRITE</code></a> may have side-effects.</div>
+<dl>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>1.0</dd>
 </dl>
 </li>
 </ul>

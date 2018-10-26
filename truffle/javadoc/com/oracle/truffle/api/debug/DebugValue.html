@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":10,"i2":10,"i3":10,"i4":10,"i5":6,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":6,"i13":6,"i14":6,"i15":6,"i16":6,"i17":10};
+var methods = {"i0":6,"i1":10,"i2":10,"i3":10,"i4":10,"i5":6,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":6,"i12":6,"i13":10,"i14":6,"i15":6,"i16":6,"i17":6,"i18":6,"i19":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -208,43 +208,57 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 </td>
 </tr>
 <tr id="i11" class="rowColor">
+<td class="colFirst"><code>abstract boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/debug/DebugValue.html#hasReadSideEffects--">hasReadSideEffects</a></span>()</code>
+<div class="block">Returns <code>true</code> if reading of this value can have side-effects, else
+ <code>false</code>.</div>
+</td>
+</tr>
+<tr id="i12" class="altColor">
+<td class="colFirst"><code>abstract boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/debug/DebugValue.html#hasWriteSideEffects--">hasWriteSideEffects</a></span>()</code>
+<div class="block">Returns <code>true</code> if setting a new value can have side-effects, else
+ <code>false</code>.</div>
+</td>
+</tr>
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/debug/DebugValue.html#isArray--">isArray</a></span>()</code>
 <div class="block">Returns <code>true</code> if this value represents an array, <code>false</code> otherwise.</div>
 </td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i14" class="altColor">
 <td class="colFirst"><code>abstract boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/debug/DebugValue.html#isInternal--">isInternal</a></span>()</code>
 <div class="block">Returns <code>true</code> if this value represents an internal variable or property,
  <code>false</code> otherwise.</div>
 </td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code>abstract boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/debug/DebugValue.html#isReadable--">isReadable</a></span>()</code>
 <div class="block">Returns <code>true</code> if this value can be read else <code>false</code>.</div>
 </td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i16" class="altColor">
 <td class="colFirst"><code>abstract boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/debug/DebugValue.html#isWritable--">isWritable</a></span>()</code>
 <div class="block">Returns <code>true</code> if this value can be written to, else <code>false</code>.</div>
 </td>
 </tr>
-<tr id="i15" class="rowColor">
+<tr id="i17" class="rowColor">
 <td class="colFirst"><code>abstract void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/debug/DebugValue.html#set-com.oracle.truffle.api.debug.DebugValue-">set</a></span>(<a href="../../../../../com/oracle/truffle/api/debug/DebugValue.html" title="class in com.oracle.truffle.api.debug">DebugValue</a>&nbsp;value)</code>
 <div class="block">Sets the value using another <a href="../../../../../com/oracle/truffle/api/debug/DebugValue.html" title="class in com.oracle.truffle.api.debug"><code>DebugValue</code></a>.</div>
 </td>
 </tr>
-<tr id="i16" class="altColor">
+<tr id="i18" class="altColor">
 <td class="colFirst"><code>abstract void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/debug/DebugValue.html#set-java.lang.Object-">set</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;primitiveValue)</code>
 <div class="block">Sets a primitive value.</div>
 </td>
 </tr>
-<tr id="i17" class="rowColor">
+<tr id="i19" class="rowColor">
 <td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/debug/DebugValue.html#toString--">toString</a></span>()</code>
 <div class="block">Returns a string representation of the debug value.</div>
@@ -374,6 +388,36 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <dd>0.17</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../../../com/oracle/truffle/api/debug/DebugValue.html#as-java.lang.Class-"><code>DebugValue.as(Class)</code></a></dd>
+</dl>
+</li>
+</ul>
+<a name="hasReadSideEffects--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>hasReadSideEffects</h4>
+<pre>public abstract&nbsp;boolean&nbsp;hasReadSideEffects()</pre>
+<div class="block">Returns <code>true</code> if reading of this value can have side-effects, else
+ <code>false</code>. Read has side-effects if it changes runtime state.</div>
+<dl>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>1.0</dd>
+</dl>
+</li>
+</ul>
+<a name="hasWriteSideEffects--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>hasWriteSideEffects</h4>
+<pre>public abstract&nbsp;boolean&nbsp;hasWriteSideEffects()</pre>
+<div class="block">Returns <code>true</code> if setting a new value can have side-effects, else
+ <code>false</code>. Write has side-effects if it changes runtime state besides this value.</div>
+<dl>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>1.0</dd>
 </dl>
 </li>
 </ul>
