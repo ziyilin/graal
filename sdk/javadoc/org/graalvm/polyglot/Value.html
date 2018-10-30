@@ -263,8 +263,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <tr id="i13" class="rowColor">
 <td class="colFirst"><code>static <a href="../../../org/graalvm/polyglot/Value.html" title="class in org.graalvm.polyglot">Value</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/Value.html#asValue-java.lang.Object-">asValue</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;o)</code>
-<div class="block">Converts a Java host value to a polyglot value representation using
- <a href="../../../org/graalvm/polyglot/Context.html#asValue-java.lang.Object-"><code>Context.asValue(Object)</code></a> with the <a href="../../../org/graalvm/polyglot/Context.html#getCurrent--"><code>current</code></a> context.</div>
+<div class="block">Converts a Java host value to a polyglot value.</div>
 </td>
 </tr>
 <tr id="i14" class="altColor">
@@ -1563,10 +1562,12 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
  <pre>
  static final TypeLiteral<List<String>> STRING_LIST = new TypeLiteral<List<String>>() {
  };
-
- Context context = Context.create();
- List<String> javaList = context.eval("js", "['foo', 'bar', 'bazz']").as(STRING_LIST);
- assert javaList.get(0).equals("foo");
+ 
+ public static void main(String[] args) {
+     Context context = Context.create();
+     List<String> javaList = context.eval("js", "['foo', 'bar', 'bazz']").as(STRING_LIST);
+     assert javaList.get(0).equals("foo");
+ }
  </pre></div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
@@ -1617,9 +1618,8 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li class="blockList">
 <h4>asValue</h4>
 <pre>public static&nbsp;<a href="../../../org/graalvm/polyglot/Value.html" title="class in org.graalvm.polyglot">Value</a>&nbsp;asValue(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;o)</pre>
-<div class="block">Converts a Java host value to a polyglot value representation using
- <a href="../../../org/graalvm/polyglot/Context.html#asValue-java.lang.Object-"><code>Context.asValue(Object)</code></a> with the <a href="../../../org/graalvm/polyglot/Context.html#getCurrent--"><code>current</code></a> context. This
- method is a short-cut for <code>Context.getCurrent().asValue(o)</code>.</div>
+<div class="block">Converts a Java host value to a polyglot value. Returns a value for any host or guest value.
+ If there is a context available use <a href="../../../org/graalvm/polyglot/Context.html#asValue-java.lang.Object-"><code>Context.asValue(Object)</code></a> for efficiency instead.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>o</code> - the object to convert</dd>
@@ -1628,8 +1628,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>1.0</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../org/graalvm/polyglot/Context.html#asValue-java.lang.Object-"><code>Conversion rules.</code></a>, 
-<a href="../../../org/graalvm/polyglot/Context.html#getCurrent--"><code>Looking up the current context.</code></a></dd>
+<dd><a href="../../../org/graalvm/polyglot/Context.html#asValue-java.lang.Object-"><code>Conversion rules.</code></a></dd>
 </dl>
 </li>
 </ul>
