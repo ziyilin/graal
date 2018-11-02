@@ -145,39 +145,40 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Enum.html?is
 <th class="colOne" scope="col">Enum Constant and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/graalvm/nativeimage/c/function/CEntryPoint.Builtin.html#ATTACH_THREAD">ATTACH_THREAD</a></span></code>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/graalvm/nativeimage/c/function/CEntryPoint.Builtin.html#AttachThread">AttachThread</a></span></code>
 <div class="block">The annotated method attaches the current thread to an isolate.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/graalvm/nativeimage/c/function/CEntryPoint.Builtin.html#CREATE_ISOLATE">CREATE_ISOLATE</a></span></code>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/graalvm/nativeimage/c/function/CEntryPoint.Builtin.html#CreateIsolate">CreateIsolate</a></span></code>
 <div class="block">The annotated method creates an isolate.</div>
 </td>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/graalvm/nativeimage/c/function/CEntryPoint.Builtin.html#DETACH_THREAD">DETACH_THREAD</a></span></code>
-<div class="block">The annotated method detaches the current thread, given as an <a href="../../../../../org/graalvm/nativeimage/IsolateThread.html" title="interface in org.graalvm.nativeimage"><code>IsolateThread</code></a>, from
- an isolate.</div>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/graalvm/nativeimage/c/function/CEntryPoint.Builtin.html#CurrentIsolate">CurrentIsolate</a></span></code>
+<div class="block">The annotated method returns the <a href="../../../../../org/graalvm/nativeimage/Isolate.html" title="interface in org.graalvm.nativeimage"><code>Isolate</code></a> for an <a href="../../../../../org/graalvm/nativeimage/IsolateThread.html" title="interface in org.graalvm.nativeimage"><code>IsolateThread</code></a> which
+ represents the current thread.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/graalvm/nativeimage/c/function/CEntryPoint.Builtin.html#GET_CURRENT_THREAD">GET_CURRENT_THREAD</a></span></code>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/graalvm/nativeimage/c/function/CEntryPoint.Builtin.html#CurrentThread">CurrentThread</a></span></code>
 <div class="block">The annotated method returns the <a href="../../../../../org/graalvm/nativeimage/IsolateThread.html" title="interface in org.graalvm.nativeimage"><code>IsolateThread</code></a> of the current thread in a
  specified <a href="../../../../../org/graalvm/nativeimage/Isolate.html" title="interface in org.graalvm.nativeimage"><code>Isolate</code></a>.</div>
 </td>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/graalvm/nativeimage/c/function/CEntryPoint.Builtin.html#GET_ISOLATE">GET_ISOLATE</a></span></code>
-<div class="block">The annotated method returns the <a href="../../../../../org/graalvm/nativeimage/Isolate.html" title="interface in org.graalvm.nativeimage"><code>Isolate</code></a> for an <a href="../../../../../org/graalvm/nativeimage/IsolateThread.html" title="interface in org.graalvm.nativeimage"><code>IsolateThread</code></a>.</div>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/graalvm/nativeimage/c/function/CEntryPoint.Builtin.html#DetachThread">DetachThread</a></span></code>
+<div class="block">The annotated method detaches the current thread, given as an <a href="../../../../../org/graalvm/nativeimage/IsolateThread.html" title="interface in org.graalvm.nativeimage"><code>IsolateThread</code></a>, from
+ an isolate.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/graalvm/nativeimage/c/function/CEntryPoint.Builtin.html#NO_BUILTIN">NO_BUILTIN</a></span></code>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/graalvm/nativeimage/c/function/CEntryPoint.Builtin.html#NoBuiltin">NoBuiltin</a></span></code>
 <div class="block">The annotated method is not an alias for a built-in method.</div>
 </td>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/graalvm/nativeimage/c/function/CEntryPoint.Builtin.html#TEAR_DOWN_ISOLATE">TEAR_DOWN_ISOLATE</a></span></code>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/graalvm/nativeimage/c/function/CEntryPoint.Builtin.html#TearDownIsolate">TearDownIsolate</a></span></code>
 <div class="block">The annotated method tears down the specified isolate.</div>
 </td>
 </tr>
@@ -238,13 +239,13 @@ the order they are declared.</div>
 <!--   -->
 </a>
 <h3>Enum Constant Detail</h3>
-<a name="NO_BUILTIN">
+<a name="NoBuiltin">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>NO_BUILTIN</h4>
-<pre>public static final&nbsp;<a href="../../../../../org/graalvm/nativeimage/c/function/CEntryPoint.Builtin.html" title="enum in org.graalvm.nativeimage.c.function">CEntryPoint.Builtin</a> NO_BUILTIN</pre>
+<h4>NoBuiltin</h4>
+<pre>public static final&nbsp;<a href="../../../../../org/graalvm/nativeimage/c/function/CEntryPoint.Builtin.html" title="enum in org.graalvm.nativeimage.c.function">CEntryPoint.Builtin</a> NoBuiltin</pre>
 <div class="block">The annotated method is not an alias for a built-in method.</div>
 <dl>
 <dt><span class="simpleTagLabel">Since:</span></dt>
@@ -252,15 +253,15 @@ the order they are declared.</div>
 </dl>
 </li>
 </ul>
-<a name="CREATE_ISOLATE">
+<a name="CreateIsolate">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>CREATE_ISOLATE</h4>
-<pre>public static final&nbsp;<a href="../../../../../org/graalvm/nativeimage/c/function/CEntryPoint.Builtin.html" title="enum in org.graalvm.nativeimage.c.function">CEntryPoint.Builtin</a> CREATE_ISOLATE</pre>
+<h4>CreateIsolate</h4>
+<pre>public static final&nbsp;<a href="../../../../../org/graalvm/nativeimage/c/function/CEntryPoint.Builtin.html" title="enum in org.graalvm.nativeimage.c.function">CEntryPoint.Builtin</a> CreateIsolate</pre>
 <div class="block">The annotated method creates an isolate. An alias for this built-in requires no
- arguments, and must have a return type of <a href="../../../../../org/graalvm/nativeimage/IsolateThread.html" title="interface in org.graalvm.nativeimage"><code>IsolateThread</code></a>. In case of an error,
+ arguments, and must have a return type of <a href="../../../../../org/graalvm/nativeimage/Isolate.html" title="interface in org.graalvm.nativeimage"><code>Isolate</code></a>. In case of an error,
  <a href="../../../../../org/graalvm/word/WordFactory.html#nullPointer--"><code>NULL</code></a> is returned.</div>
 <dl>
 <dt><span class="simpleTagLabel">Since:</span></dt>
@@ -268,13 +269,13 @@ the order they are declared.</div>
 </dl>
 </li>
 </ul>
-<a name="ATTACH_THREAD">
+<a name="AttachThread">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>ATTACH_THREAD</h4>
-<pre>public static final&nbsp;<a href="../../../../../org/graalvm/nativeimage/c/function/CEntryPoint.Builtin.html" title="enum in org.graalvm.nativeimage.c.function">CEntryPoint.Builtin</a> ATTACH_THREAD</pre>
+<h4>AttachThread</h4>
+<pre>public static final&nbsp;<a href="../../../../../org/graalvm/nativeimage/c/function/CEntryPoint.Builtin.html" title="enum in org.graalvm.nativeimage.c.function">CEntryPoint.Builtin</a> AttachThread</pre>
 <div class="block">The annotated method attaches the current thread to an isolate. It requires a parameter
  of type <a href="../../../../../org/graalvm/nativeimage/Isolate.html" title="interface in org.graalvm.nativeimage"><code>Isolate</code></a> with the isolate to attach to, and a return type of
  <a href="../../../../../org/graalvm/nativeimage/IsolateThread.html" title="interface in org.graalvm.nativeimage"><code>IsolateThread</code></a>. In case of an error, <a href="../../../../../org/graalvm/word/WordFactory.html#nullPointer--"><code>NULL</code></a> is
@@ -285,13 +286,13 @@ the order they are declared.</div>
 </dl>
 </li>
 </ul>
-<a name="GET_CURRENT_THREAD">
+<a name="CurrentThread">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>GET_CURRENT_THREAD</h4>
-<pre>public static final&nbsp;<a href="../../../../../org/graalvm/nativeimage/c/function/CEntryPoint.Builtin.html" title="enum in org.graalvm.nativeimage.c.function">CEntryPoint.Builtin</a> GET_CURRENT_THREAD</pre>
+<h4>CurrentThread</h4>
+<pre>public static final&nbsp;<a href="../../../../../org/graalvm/nativeimage/c/function/CEntryPoint.Builtin.html" title="enum in org.graalvm.nativeimage.c.function">CEntryPoint.Builtin</a> CurrentThread</pre>
 <div class="block">The annotated method returns the <a href="../../../../../org/graalvm/nativeimage/IsolateThread.html" title="interface in org.graalvm.nativeimage"><code>IsolateThread</code></a> of the current thread in a
  specified <a href="../../../../../org/graalvm/nativeimage/Isolate.html" title="interface in org.graalvm.nativeimage"><code>Isolate</code></a>. It requires a parameter of type <a href="../../../../../org/graalvm/nativeimage/Isolate.html" title="interface in org.graalvm.nativeimage"><code>Isolate</code></a> for the
  isolate in question, and a return type of <a href="../../../../../org/graalvm/nativeimage/IsolateThread.html" title="interface in org.graalvm.nativeimage"><code>IsolateThread</code></a>. In case of an error,
@@ -302,29 +303,29 @@ the order they are declared.</div>
 </dl>
 </li>
 </ul>
-<a name="GET_ISOLATE">
+<a name="CurrentIsolate">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>GET_ISOLATE</h4>
-<pre>public static final&nbsp;<a href="../../../../../org/graalvm/nativeimage/c/function/CEntryPoint.Builtin.html" title="enum in org.graalvm.nativeimage.c.function">CEntryPoint.Builtin</a> GET_ISOLATE</pre>
-<div class="block">The annotated method returns the <a href="../../../../../org/graalvm/nativeimage/Isolate.html" title="interface in org.graalvm.nativeimage"><code>Isolate</code></a> for an <a href="../../../../../org/graalvm/nativeimage/IsolateThread.html" title="interface in org.graalvm.nativeimage"><code>IsolateThread</code></a>. It
- requires a parameter of type <a href="../../../../../org/graalvm/nativeimage/IsolateThread.html" title="interface in org.graalvm.nativeimage"><code>IsolateThread</code></a>, and a return type of <a href="../../../../../org/graalvm/nativeimage/Isolate.html" title="interface in org.graalvm.nativeimage"><code>Isolate</code></a>.
- In case of an error, <a href="../../../../../org/graalvm/word/WordFactory.html#nullPointer--"><code>NULL</code></a> is returned.</div>
+<h4>CurrentIsolate</h4>
+<pre>public static final&nbsp;<a href="../../../../../org/graalvm/nativeimage/c/function/CEntryPoint.Builtin.html" title="enum in org.graalvm.nativeimage.c.function">CEntryPoint.Builtin</a> CurrentIsolate</pre>
+<div class="block">The annotated method returns the <a href="../../../../../org/graalvm/nativeimage/Isolate.html" title="interface in org.graalvm.nativeimage"><code>Isolate</code></a> for an <a href="../../../../../org/graalvm/nativeimage/IsolateThread.html" title="interface in org.graalvm.nativeimage"><code>IsolateThread</code></a> which
+ represents the current thread. It requires a parameter of type <a href="../../../../../org/graalvm/nativeimage/IsolateThread.html" title="interface in org.graalvm.nativeimage"><code>IsolateThread</code></a>, and
+ a return type of <a href="../../../../../org/graalvm/nativeimage/Isolate.html" title="interface in org.graalvm.nativeimage"><code>Isolate</code></a>. In case of an error, <a href="../../../../../org/graalvm/word/WordFactory.html#nullPointer--"><code>NULL</code></a> is returned.</div>
 <dl>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>1.0</dd>
 </dl>
 </li>
 </ul>
-<a name="DETACH_THREAD">
+<a name="DetachThread">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>DETACH_THREAD</h4>
-<pre>public static final&nbsp;<a href="../../../../../org/graalvm/nativeimage/c/function/CEntryPoint.Builtin.html" title="enum in org.graalvm.nativeimage.c.function">CEntryPoint.Builtin</a> DETACH_THREAD</pre>
+<h4>DetachThread</h4>
+<pre>public static final&nbsp;<a href="../../../../../org/graalvm/nativeimage/c/function/CEntryPoint.Builtin.html" title="enum in org.graalvm.nativeimage.c.function">CEntryPoint.Builtin</a> DetachThread</pre>
 <div class="block">The annotated method detaches the current thread, given as an <a href="../../../../../org/graalvm/nativeimage/IsolateThread.html" title="interface in org.graalvm.nativeimage"><code>IsolateThread</code></a>, from
  an isolate. It requires a parameter of type <a href="../../../../../org/graalvm/nativeimage/IsolateThread.html" title="interface in org.graalvm.nativeimage"><code>IsolateThread</code></a>, and a return type of
  <code>int</code> or <code>void</code>. With an <code>int</code> return type, zero is returned when
@@ -335,17 +336,16 @@ the order they are declared.</div>
 </dl>
 </li>
 </ul>
-<a name="TEAR_DOWN_ISOLATE">
+<a name="TearDownIsolate">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>TEAR_DOWN_ISOLATE</h4>
-<pre>public static final&nbsp;<a href="../../../../../org/graalvm/nativeimage/c/function/CEntryPoint.Builtin.html" title="enum in org.graalvm.nativeimage.c.function">CEntryPoint.Builtin</a> TEAR_DOWN_ISOLATE</pre>
+<h4>TearDownIsolate</h4>
+<pre>public static final&nbsp;<a href="../../../../../org/graalvm/nativeimage/c/function/CEntryPoint.Builtin.html" title="enum in org.graalvm.nativeimage.c.function">CEntryPoint.Builtin</a> TearDownIsolate</pre>
 <div class="block">The annotated method tears down the specified isolate. It requires a parameter of type
- <a href="../../../../../org/graalvm/nativeimage/IsolateThread.html" title="interface in org.graalvm.nativeimage"><code>IsolateThread</code></a>, and a return type of <code>int</code> or <code>void</code>. With an
- <code>int</code> return type, zero is returned when successful, or non-zero in case of an
- error.</div>
+ <a href="../../../../../org/graalvm/nativeimage/Isolate.html" title="interface in org.graalvm.nativeimage"><code>Isolate</code></a>, and a return type of <code>int</code> or <code>void</code>. With an <code>int</code>
+ return type, zero is returned when successful, or non-zero in case of an error.</div>
 <dl>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>1.0</dd>
