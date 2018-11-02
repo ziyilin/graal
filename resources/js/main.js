@@ -156,6 +156,39 @@ $(document).ready(function () {
     });
   }());
 
+  (function () {
+    $('.news-carousel').slick({
+      dots: false,
+      accessibility: true,
+      slidesToShow: 4,
+      arrows: true,
+      slidesToScroll: 1,
+      // autoplay: true,
+      // autoplaySpeed: 3000,
+      responsive: [
+        {
+          breakpoint: 1500,
+          settings: {
+            slidesToShow: 3
+          }
+        },
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 2,
+            adaptiveHeight: true,
+          }
+        },
+        {
+          breakpoint: 580,
+          settings: {
+            slidesToShow: 1
+          }
+        }
+      ]
+    });
+  }());
+
   var configProfile = {
     "profile": {"screenName": 'thomaswue'},
     "domId": 'tweets',
@@ -570,18 +603,33 @@ function initialize() {
         position: {lat: 50.449100, lng: 30.540826}
       }
     ],
+    oslo: [
+      {
+        meetup: 'Devoxx Ukraine',
+        date: 'November 26, 2018',
+        url: '#event-nine',
+        position: {lat: 59.923517, lng: 10.731775}
+      }
+    ],
+    helsinki: [
+      {
+        meetup: 'Helsinki Java User Group',
+        date: 'November 27, 2018',
+        url: '#event-ten',
+        position: {lat: 60.169422, lng: 24.928233}
+      }
+    ],
     bruhl: [
       {
         conference: 'JAVALAND',
         date: 'March 19-21, 2019',
-        url: '#event-nine',
+        url: '#event-eleven',
         position: {lat: 50.799537, lng: 6.879517}
       }
     ]
   };
 
-  let labels = '123456789';
-  let labelIndex = 0;
+  let labelIndex = 1;
   let markerDefault = '/resources/img/marker.svg';
   let markerActive = '/resources/img/marker-active.svg';
 
@@ -901,7 +949,7 @@ function initialize() {
         map: map,
         icon: markerDefault,
         label: {
-          text: labels[labelIndex++ % labels.length],
+          text: ""+(labelIndex++),
           color: "white",
           fontSize: '11px'
         },

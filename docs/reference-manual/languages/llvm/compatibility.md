@@ -1,6 +1,6 @@
 ## LLVM Compatibility
 
-GraalVM works with LLVM bitcode versions 3.8 to 6.0.
+GraalVM works with LLVM bitcode versions 3.8 to 7.0.
 
 ### Optimization flags
 
