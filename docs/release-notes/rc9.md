@@ -43,8 +43,8 @@ The project [changelog](https://github.com/oracle/graal/blob/master/sulong/CHANG
 * Primitives, host and `Proxy` values can now be shared between multiple context and engine instances. They no longer throw an `IllegalArgumentException` when shared.
 
 The major Truffle and Graal SDK changes between GraalVM versions are summarized in the project changelogs:
-[Graal SDK changelog](https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md)
-[Truffle changelog](https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md)
+- [Graal SDK changelog](https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md)
+- [Truffle changelog](https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md)
 
 ### Tools
 **Graal VisualVM**
