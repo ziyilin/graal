@@ -1,5 +1,5 @@
 ## 1.0-RC7
-
+(2018-10-03)
 ### GraalVM for Java developers (GraalVM + compiler)
 
 * Added the virtualization of `Unsafe` compare and swap calls, for more details see [GH-636](https://github.com/oracle/graal/pull/636).

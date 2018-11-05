@@ -1,5 +1,5 @@
-
 ## 1.0-RC5
+(2018-07-31)
 
 GraalVM 1.0-rc5 is the first release where we provide **pre-built binaries for GraalVM CE on macOS**. As always all binaries are available from the [downloads page](/downloads).
 

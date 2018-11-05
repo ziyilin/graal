@@ -1,5 +1,5 @@
 ## 1.0-RC2
-
+(2018-06-05)
 ### GraalVM for Java developers
 * Updated the underlying JDK version to “1.8.0_171” from “1.8.0_161”. You can find the JDK release notes at the [Oracle Technology Network](http://www.oracle.com/technetwork/java/javase/8u171-relnotes-4308888.html) website.
 * Improved support for the Java Microbenchmark harness. Since JMH 1.21, GraalVM is a [recognized and supported JVM](http://mail.openjdk.java.net/pipermail/jmh-dev/2018-May/002753.html).

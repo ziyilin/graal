@@ -1,5 +1,5 @@
 ## 1.0-RC8
-
+(2018-10-19)
 ### GraalVM for Java Developers (GraalVM + compiler)
 * Added the support for Intel bit manipulation instructions. For more details, see [#666](https://github.com/oracle/graal/pull/666).
 * Virtualize `unsafe` compare and swap calls on non-escaping objects. See [#636](https://github.com/oracle/graal/pull/636).

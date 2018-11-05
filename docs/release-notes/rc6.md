@@ -1,6 +1,5 @@
-
 ## 1.0-RC6
-
+(2018-08-31)
 ### GraalVM for Java developers (GraalVM + compiler)
 
 * New optimization to remove unnecessary allocation in some calls to `Enum.values()`.  See [calls to Enum.values() don't optimise away as expected](https://github.com/oracle/graal/issues/574) for the details.

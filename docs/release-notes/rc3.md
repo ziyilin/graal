@@ -1,6 +1,5 @@
-
 ## 1.0-RC3
-
+(2018-06-29)
 ### GraalVM for Java developers (GraalVM + compiler)
 
 * Updated the underlying JDK version to “1.8.0_172” from “1.8.0_171”. You can find the JDK release notes at the [Oracle Technology Network](http://www.oracle.com/technetwork/java/javase/8u172-relnotes-4308893.html) website.
