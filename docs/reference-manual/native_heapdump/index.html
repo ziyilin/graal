@@ -9,25 +9,27 @@
 
   <title>
     
-    Generate Heap Dumps from Native Images
+      Generate Heap Dumps from Native Images
     
   </title>
-  <meta name="GraalVM website: documentation, tutorials, news and general information." content="GraalVM is an ecosystem for programming languages and set of next generation tools for high performance applications.">
+  <meta
+    name="GraalVM website: documentation, tutorials, news and general information."
+    content="GraalVM is an ecosystem for programming languages and set of next generation tools for high performance applications."
+  >
 
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/resources/img/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/resources/img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/resources/img/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/resources/img/favicon/site.webmanifest">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
 
   <link rel="stylesheet" href="/assets/main.css">
   <link rel="stylesheet" href="/resources/styles/extra.css">
 
   <link rel="canonical" href="https://www.graalvm.org/docs/reference-manual/native_heapdump/">
-  <link rel="apple-touch-icon" sizes="180x180" href="/resources/img/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/resources/img/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/resources/img/favicon/favicon-16x16.png">
-  <link rel="manifest" href="/resources/img/favicon/site.webmanifest">
-  <link rel="mask-icon" href="/resources/img/favicon/safari-pinned-tab.svg" color="#5bbad5">
-  <meta name="msapplication-TileColor" content="#da532c">
-  <meta name="theme-color" content="#ffffff">
-
   <script src="/resources/lib/jquery/jquery-3.2.1.min.js"></script>
   <script src="/resources/lib/bootstrap/js/bootstrap.min.js"></script>
   <script src="/resources/lib/sticky-sidebar/resizeSensor.js"></script>
@@ -37,6 +39,7 @@
   <script src="/resources/lib/purl/purl.js"></script>
   <script async defer src="https://buttons.github.io/buttons.js"></script>
 </head>
+
 
   <body class="preload">
     <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -473,7 +476,7 @@ $(document).ready(function(){
             <div class="col-sm-9">
               <div id="content-wrapper" class="docs-content docs-content--with-sidebar">
                 <h3 id="generating-native-heap-dumps">Generating Native Heap Dumps</h3>
-<p>As described in chapter <a href="/docs/reference-manual/aot-compilation/">Creating Native Images</a> in GraalVM it is possible to create highly performing applications. It is also possible to monitor these apps using Agent and generate Java heap dumps from within the native image application. This functionality is available with <a href="http://www.oracle.com/technetwork/oracle-labs/program-languages/downloads/index.html">GraalVM Enterprise - OTN download</a>. It is <strong>not</strong> available in GraalVM open source version available on GitHub.</p>
+<p>As described in chapter <a href="/docs/reference-manual/aot-compilation/">Creating Native Images</a> in GraalVM it is possible to create highly performing applications. It is also possible to monitor these apps using Agent and generate Java heap dumps from within the native image application. The functionality is available only with <a href="http://www.oracle.com/technetwork/oracle-labs/program-languages/downloads/index.html">GraalVM Enterprise Edition</a>.</p>
 
 <p>GraalVM native images do not implement JVMTI agent and it is not possible to trigger heap dump creation using tools like <em>Visual VM</em> or <em>jmap</em>. But it is possible to build native image for your application to handle signals and then get a heap dump when the app receives SIGUSR1 signal. Another possibility is to add a special method to your application which will generate the heap dump at certain point in the lifetime of your application. E.g. when certain conditions are met when running native image application then your application code triggers heap dump creation. We will show both possibilities in this chapter.</p>
 
