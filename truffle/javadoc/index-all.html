@@ -437,12 +437,12 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Context.Builder.html#allowAllAccess-boolean-">allowAllAccess(boolean)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></dt>
 <dd>
-<div class="block">If <code>true</code> grants the context the same access privileges as the host virtual
+<div class="block">If <code>true</code>, grants the context the same access privileges as the host virtual
  machine.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Context.Builder.html#allowCreateThread-boolean-">allowCreateThread(boolean)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></dt>
 <dd>
-<div class="block">If <code>true</code> allows guest languages to create new threads.</div>
+<div class="block">If <code>true</code>, allows guest languages to create new threads.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Context.Builder.html#allowHostAccess-boolean-">allowHostAccess(boolean)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></dt>
 <dd>
@@ -450,12 +450,12 @@
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Context.Builder.html#allowHostClassLoading-boolean-">allowHostClassLoading(boolean)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></dt>
 <dd>
-<div class="block">If host class loading is enabled then the guest language is allowed to load new host
+<div class="block">If host class loading is enabled, then the guest language is allowed to load new host
  classes via jar or class files.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Context.Builder.html#allowIO-boolean-">allowIO(boolean)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></dt>
 <dd>
-<div class="block">If <code>true</code> allows guest language to perform unrestricted IO operations on host
+<div class="block">If <code>true</code>, allows guest language to perform unrestricted IO operations on host
  system.</div>
 </dd>
 <dt><a href="org/graalvm/nativeimage/c/struct/AllowNarrowingCast.html" title="annotation in org.graalvm.nativeimage.c.struct"><span class="typeNameLink">AllowNarrowingCast</span></a> - Annotation Type in <a href="org/graalvm/nativeimage/c/struct/package-summary.html">org.graalvm.nativeimage.c.struct</a></dt>
@@ -1250,7 +1250,7 @@
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Context.html#close-boolean-">close(boolean)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Context.html" title="class in org.graalvm.polyglot">Context</a></dt>
 <dd>
-<div class="block">Closes this context and frees up potentially allocated native resources.</div>
+<div class="block">Closes the context and frees up potentially allocated native resources.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Context.html#close--">close()</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Context.html" title="class in org.graalvm.polyglot">Context</a></dt>
 <dd>
@@ -2321,7 +2321,7 @@
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Context.html#enter--">enter()</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Context.html" title="class in org.graalvm.polyglot">Context</a></dt>
 <dd>
-<div class="block">Explicitly enters this context on the current thread.</div>
+<div class="block">Explicitly enters the context on the current thread.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/api/TruffleLogger.html#entering-java.lang.String-java.lang.String-">entering(String, String)</a></span> - Method in class com.oracle.truffle.api.<a href="com/oracle/truffle/api/TruffleLogger.html" title="class in com.oracle.truffle.api">TruffleLogger</a></dt>
 <dd>
@@ -2410,7 +2410,7 @@
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Context.Builder.html#err-java.io.OutputStream-">err(OutputStream)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></dt>
 <dd>
-<div class="block">Sets the error output stream to be used for this context.</div>
+<div class="block">Sets the error output stream to be used for the context.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Engine.Builder.html#err-java.io.OutputStream-">err(OutputStream)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Engine.Builder.html" title="class in org.graalvm.polyglot">Engine.Builder</a></dt>
 <dd>
@@ -2423,8 +2423,8 @@
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Context.html#eval-org.graalvm.polyglot.Source-">eval(Source)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Context.html" title="class in org.graalvm.polyglot">Context</a></dt>
 <dd>
-<div class="block">Evaluates a source by using the <a href="org/graalvm/polyglot/Source.html#getLanguage--">language</a> specified in the
- source.</div>
+<div class="block">Evaluates a source object by using the <a href="org/graalvm/polyglot/Source.html#getLanguage--">language</a> specified
+ in the source.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Context.html#eval-java.lang.String-java.lang.CharSequence-">eval(String, CharSequence)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Context.html" title="class in org.graalvm.polyglot">Context</a></dt>
 <dd>
@@ -5062,7 +5062,7 @@
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Context.Builder.html#in-java.io.InputStream-">in(InputStream)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></dt>
 <dd>
-<div class="block">Sets the input stream to be used for this context.</div>
+<div class="block">Sets the input stream to be used for the context.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Engine.Builder.html#in-java.io.InputStream-">in(InputStream)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Engine.Builder.html" title="class in org.graalvm.polyglot">Engine.Builder</a></dt>
 <dd>
@@ -6151,7 +6151,7 @@
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Context.html#leave--">leave()</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Context.html" title="class in org.graalvm.polyglot">Context</a></dt>
 <dd>
-<div class="block">Explicitly leaves this context on the current thread.</div>
+<div class="block">Explicitly leaves the context on the current thread.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/io/ByteSequence.html#length--">length()</a></span> - Method in interface org.graalvm.polyglot.io.<a href="org/graalvm/polyglot/io/ByteSequence.html" title="interface in org.graalvm.polyglot.io">ByteSequence</a></dt>
 <dd>
@@ -7170,7 +7170,7 @@
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Context.Builder.html#option-java.lang.String-java.lang.String-">option(String, String)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></dt>
 <dd>
-<div class="block">Set an option for this <a href="org/graalvm/polyglot/Context.html" title="class in org.graalvm.polyglot"><code>context</code></a>.</div>
+<div class="block">Sets an option for this <a href="org/graalvm/polyglot/Context.html" title="class in org.graalvm.polyglot"><code>context</code></a>.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Engine.Builder.html#option-java.lang.String-java.lang.String-">option(String, String)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Engine.Builder.html" title="class in org.graalvm.polyglot">Engine.Builder</a></dt>
 <dd>
@@ -7336,7 +7336,7 @@
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Context.Builder.html#out-java.io.OutputStream-">out(OutputStream)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></dt>
 <dd>
-<div class="block">Sets the standard output stream to be used for this context.</div>
+<div class="block">Sets the standard output stream to be used for the context.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Engine.Builder.html#out-java.io.OutputStream-">out(OutputStream)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Engine.Builder.html" title="class in org.graalvm.polyglot">Engine.Builder</a></dt>
 <dd>
@@ -8522,7 +8522,7 @@
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Context.Builder.html#serverTransport-org.graalvm.polyglot.io.MessageTransport-">serverTransport(MessageTransport)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></dt>
 <dd>
-<div class="block">Take over transport of message communication with a server peer.</div>
+<div class="block">Take over the transport of messages communication with a server peer.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Engine.Builder.html#serverTransport-org.graalvm.polyglot.io.MessageTransport-">serverTransport(MessageTransport)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Engine.Builder.html" title="class in org.graalvm.polyglot">Engine.Builder</a></dt>
 <dd>

@@ -142,14 +142,14 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <tr id="i0" class="altColor">
 <td class="colFirst"><code><a href="../../../org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/Context.Builder.html#allowAllAccess-boolean-">allowAllAccess</a></span>(boolean&nbsp;enabled)</code>
-<div class="block">If <code>true</code> grants the context the same access privileges as the host virtual
+<div class="block">If <code>true</code>, grants the context the same access privileges as the host virtual
  machine.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code><a href="../../../org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/Context.Builder.html#allowCreateThread-boolean-">allowCreateThread</a></span>(boolean&nbsp;enabled)</code>
-<div class="block">If <code>true</code> allows guest languages to create new threads.</div>
+<div class="block">If <code>true</code>, allows guest languages to create new threads.</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
@@ -161,14 +161,14 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code><a href="../../../org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/Context.Builder.html#allowHostClassLoading-boolean-">allowHostClassLoading</a></span>(boolean&nbsp;enabled)</code>
-<div class="block">If host class loading is enabled then the guest language is allowed to load new host
+<div class="block">If host class loading is enabled, then the guest language is allowed to load new host
  classes via jar or class files.</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code><a href="../../../org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/Context.Builder.html#allowIO-boolean-">allowIO</a></span>(boolean&nbsp;enabled)</code>
-<div class="block">If <code>true</code> allows guest language to perform unrestricted IO operations on host
+<div class="block">If <code>true</code>, allows guest language to perform unrestricted IO operations on host
  system.</div>
 </td>
 </tr>
@@ -200,7 +200,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code><a href="../../../org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/Context.Builder.html#err-java.io.OutputStream-">err</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io">OutputStream</a>&nbsp;err)</code>
-<div class="block">Sets the error output stream to be used for this context.</div>
+<div class="block">Sets the error output stream to be used for the context.</div>
 </td>
 </tr>
 <tr id="i10" class="altColor">
@@ -219,7 +219,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <tr id="i12" class="altColor">
 <td class="colFirst"><code><a href="../../../org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/Context.Builder.html#in-java.io.InputStream-">in</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io">InputStream</a>&nbsp;in)</code>
-<div class="block">Sets the input stream to be used for this context.</div>
+<div class="block">Sets the input stream to be used for the context.</div>
 </td>
 </tr>
 <tr id="i13" class="rowColor">
@@ -238,7 +238,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <td class="colFirst"><code><a href="../../../org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/Context.Builder.html#option-java.lang.String-java.lang.String-">option</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
       <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;value)</code>
-<div class="block">Set an option for this <a href="../../../org/graalvm/polyglot/Context.html" title="class in org.graalvm.polyglot"><code>context</code></a>.</div>
+<div class="block">Sets an option for this <a href="../../../org/graalvm/polyglot/Context.html" title="class in org.graalvm.polyglot"><code>context</code></a>.</div>
 </td>
 </tr>
 <tr id="i16" class="altColor">
@@ -250,13 +250,13 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <tr id="i17" class="rowColor">
 <td class="colFirst"><code><a href="../../../org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/Context.Builder.html#out-java.io.OutputStream-">out</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io">OutputStream</a>&nbsp;out)</code>
-<div class="block">Sets the standard output stream to be used for this context.</div>
+<div class="block">Sets the standard output stream to be used for the context.</div>
 </td>
 </tr>
 <tr id="i18" class="altColor">
 <td class="colFirst"><code><a href="../../../org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/Context.Builder.html#serverTransport-org.graalvm.polyglot.io.MessageTransport-">serverTransport</a></span>(<a href="../../../org/graalvm/polyglot/io/MessageTransport.html" title="interface in org.graalvm.polyglot.io">MessageTransport</a>&nbsp;serverTransport)</code>
-<div class="block">Take over transport of message communication with a server peer.</div>
+<div class="block">Take over the transport of messages communication with a server peer.</div>
 </td>
 </tr>
 </table>
@@ -288,10 +288,10 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li class="blockList">
 <h4>engine</h4>
 <pre>public&nbsp;<a href="../../../org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a>&nbsp;engine(<a href="../../../org/graalvm/polyglot/Engine.html" title="class in org.graalvm.polyglot">Engine</a>&nbsp;engine)</pre>
-<div class="block">Explicitly sets the underlying engine to use. By default every context has its own
+<div class="block">Explicitly sets the underlying engine to use. By default, every context has its own
  isolated engine. If multiple contexts are created from one engine, then they may
- share/cache certain system resources like ASTs, optimized code by specifying a single
- underlying engine; see <a href="../../../org/graalvm/polyglot/Engine.html" title="class in org.graalvm.polyglot"><code>Engine</code></a> for more details about system resource sharing.</div>
+ share/cache certain system resources like ASTs or optimized code by specifying a single
+ underlying engine. See <a href="../../../org/graalvm/polyglot/Engine.html" title="class in org.graalvm.polyglot"><code>Engine</code></a> for more details about system resource sharing.</div>
 <dl>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>1.0</dd>
@@ -305,9 +305,9 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li class="blockList">
 <h4>out</h4>
 <pre>public&nbsp;<a href="../../../org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a>&nbsp;out(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io">OutputStream</a>&nbsp;out)</pre>
-<div class="block">Sets the standard output stream to be used for this context. If not set then the standard
- output stream configured for the <a href="../../../org/graalvm/polyglot/Context.Builder.html#engine-org.graalvm.polyglot.Engine-"><code>engine</code></a> is used or standard error
- stream.</div>
+<div class="block">Sets the standard output stream to be used for the context. If not set, then the standard
+ output stream configured for the <a href="../../../org/graalvm/polyglot/Context.Builder.html#engine-org.graalvm.polyglot.Engine-"><code>engine</code></a> or standard error stream
+ is used.</div>
 <dl>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>1.0</dd>
@@ -321,9 +321,9 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li class="blockList">
 <h4>err</h4>
 <pre>public&nbsp;<a href="../../../org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a>&nbsp;err(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io">OutputStream</a>&nbsp;err)</pre>
-<div class="block">Sets the error output stream to be used for this context. If not set then either the
- error stream configured for the <a href="../../../org/graalvm/polyglot/Context.Builder.html#engine-org.graalvm.polyglot.Engine-"><code>engine</code></a> is used or standard error
- stream.</div>
+<div class="block">Sets the error output stream to be used for the context. If not set, then either the
+ error stream configured for the <a href="../../../org/graalvm/polyglot/Context.Builder.html#engine-org.graalvm.polyglot.Engine-"><code>engine</code></a> or standard error stream
+ is used.</div>
 <dl>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>1.0</dd>
@@ -337,8 +337,8 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li class="blockList">
 <h4>in</h4>
 <pre>public&nbsp;<a href="../../../org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a>&nbsp;in(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io">InputStream</a>&nbsp;in)</pre>
-<div class="block">Sets the input stream to be used for this context. If not set then either the input
- stream configured for the <a href="../../../org/graalvm/polyglot/Context.Builder.html#engine-org.graalvm.polyglot.Engine-"><code>engine</code></a> is used or standard in stream.</div>
+<div class="block">Sets the input stream to be used for the context. If not set, then either the input
+ stream configured for the <a href="../../../org/graalvm/polyglot/Context.Builder.html#engine-org.graalvm.polyglot.Engine-"><code>engine</code></a> or standard in stream is used.</div>
 <dl>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>1.0</dd>
@@ -354,7 +354,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <pre>public&nbsp;<a href="../../../org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a>&nbsp;allowHostAccess(boolean&nbsp;enabled)</pre>
 <div class="block">Allows guest languages to access the host language by loading new classes. Default is
  <code>false</code>. If <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowAllAccess-boolean-"><code>all access</code></a> is set to
- <code>true</code> then then host access is enabled if not allowed explicitly.</div>
+ <code>true</code>, then host access is enabled if not allowed explicitly.</div>
 <dl>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>1.0</dd>
@@ -382,10 +382,10 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li class="blockList">
 <h4>allowCreateThread</h4>
 <pre>public&nbsp;<a href="../../../org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a>&nbsp;allowCreateThread(boolean&nbsp;enabled)</pre>
-<div class="block">If <code>true</code> allows guest languages to create new threads. Default is
+<div class="block">If <code>true</code>, allows guest languages to create new threads. Default is
  <code>false</code>. If <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowAllAccess-boolean-"><code>all access</code></a> is set to
- <code>true</code> then the creation of threads is enabled if not allowed explicitly.
- Threads created by guest languages are closed when the context is <a href="../../../org/graalvm/polyglot/Context.html#close--"><code>closed</code></a>.</div>
+ <code>true</code>, then the creation of threads is enabled if not allowed explicitly.
+ Threads created by guest languages are closed, when the context is <a href="../../../org/graalvm/polyglot/Context.html#close--"><code>closed</code></a>.</div>
 <dl>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>1.0</dd>
@@ -399,15 +399,14 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li class="blockList">
 <h4>allowAllAccess</h4>
 <pre>public&nbsp;<a href="../../../org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a>&nbsp;allowAllAccess(boolean&nbsp;enabled)</pre>
-<div class="block">If <code>true</code> grants the context the same access privileges as the host virtual
- machine. If not explicitly specified then all access is <code>false</code>. If the host
+<div class="block">If <code>true</code>, grants the context the same access privileges as the host virtual
+ machine. If not explicitly specified, then all access is <code>false</code>. If the host
  VM runs without a <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/SecurityManager.html?is-external=true" title="class or interface in java.lang"><code>security manager</code></a> enabled, then enabling all
- access gives the guest languages full control over the host process. Otherwise, the Java
+ access gives the guest languages full control over the host process. Otherwise, Java
  <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/SecurityManager.html?is-external=true" title="class or interface in java.lang"><code>security manager</code></a> is in control of restricting the privileges of
- the polyglot context. If new privilege restrictions are added to the polyglot API then
- they will default to full access if all access is set to <code>true</code>. If all access
- is enabled then certain privileges may still be disabled by configuring it explicitly
- using this builder.
+ the polyglot context. If new privilege restrictions are added to the polyglot API, then
+ they will default to full access. If all access is enabled then certain privileges may
+ still be disabled by configuring it explicitly using the builder.
  <p>
  Grants full access to the following privileges by default:
  <ul>
@@ -433,10 +432,10 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li class="blockList">
 <h4>allowHostClassLoading</h4>
 <pre>public&nbsp;<a href="../../../org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a>&nbsp;allowHostClassLoading(boolean&nbsp;enabled)</pre>
-<div class="block">If host class loading is enabled then the guest language is allowed to load new host
+<div class="block">If host class loading is enabled, then the guest language is allowed to load new host
  classes via jar or class files. If <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowAllAccess-boolean-"><code>all access</code></a> is set to
- <code>true</code> then the host class loading is enabled if it is not disallowed
- explicitly. For host class loading to be useful <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowIO-boolean-"><code>IO</code></a> operations
+ <code>true</code>, then the host class loading is enabled if it is not disallowed
+ explicitly. For host class loading to be useful, <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowIO-boolean-"><code>IO</code></a> operations
  and <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowHostAccess-boolean-"><code>host access</code></a> need to be allowed as well.</div>
 <dl>
 <dt><span class="simpleTagLabel">Since:</span></dt>
@@ -452,9 +451,9 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <h4>hostClassFilter</h4>
 <pre>public&nbsp;<a href="../../../org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a>&nbsp;hostClassFilter(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/function/Predicate.html?is-external=true" title="class or interface in java.util.function">Predicate</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;classFilter)</pre>
 <div class="block">Sets a class filter that allows to limit the classes that are allowed to be loaded by
- guest languages. If the filter returns <code>true</code> then the class is accessible,
- else it is not accessible and throws an guest language error when accessed. In order to
- have an effect <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowHostAccess-boolean-"><code>Context.Builder.allowHostAccess(boolean)</code></a> or <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowAllAccess-boolean-"><code>Context.Builder.allowAllAccess(boolean)</code></a>
+ guest languages. If the filter returns <code>true</code>, then the class is accessible,
+ otherwise it is not accessible and throws a guest language error when accessed. In order
+ to have an effect, <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowHostAccess-boolean-"><code>Context.Builder.allowHostAccess(boolean)</code></a> or <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowAllAccess-boolean-"><code>Context.Builder.allowAllAccess(boolean)</code></a>
  needs to be set to <code>true</code>.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -473,15 +472,15 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <h4>option</h4>
 <pre>public&nbsp;<a href="../../../org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a>&nbsp;option(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
                               <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;value)</pre>
-<div class="block">Set an option for this <a href="../../../org/graalvm/polyglot/Context.html" title="class in org.graalvm.polyglot"><code>context</code></a>. By default any options for the
+<div class="block">Sets an option for this <a href="../../../org/graalvm/polyglot/Context.html" title="class in org.graalvm.polyglot"><code>context</code></a>. By default, any options for the
  <a href="../../../org/graalvm/polyglot/Engine.html#getOptions--"><code>engine</code></a>, <a href="../../../org/graalvm/polyglot/Language.html#getOptions--"><code>language</code></a> or
  <a href="../../../org/graalvm/polyglot/Instrument.html#getOptions--"><code>instrument</code></a> can be set for a context. If an
- <a href="../../../org/graalvm/polyglot/Context.Builder.html#engine-org.graalvm.polyglot.Engine-"><code>explicit engine</code></a> is set for this context then only language
+ <a href="../../../org/graalvm/polyglot/Context.Builder.html#engine-org.graalvm.polyglot.Engine-"><code>explicit engine</code></a> is set for the context, then only language
  options can be set. Instrument and engine options can be set exclusively on the explicit
- engine instance. If a language option was set for the context and the engine then the
+ engine instance. If a language option is set for the context and the engine, then the
  option of the context is going to take precedence.
  <p>
- If one of the set option keys or values is invalid then an
+ If one of the set option keys or values is invalid, then an
  <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalArgumentException.html?is-external=true" title="class or interface in java.lang"><code>IllegalArgumentException</code></a> is thrown when the context is <a href="../../../org/graalvm/polyglot/Context.Builder.html#build--"><code>built</code></a>.
  The given key and value must not be <code>null</code>.</div>
 <dl>
@@ -542,9 +541,9 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li class="blockList">
 <h4>allowIO</h4>
 <pre>public&nbsp;<a href="../../../org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a>&nbsp;allowIO(boolean&nbsp;enabled)</pre>
-<div class="block">If <code>true</code> allows guest language to perform unrestricted IO operations on host
+<div class="block">If <code>true</code>, allows guest language to perform unrestricted IO operations on host
  system. Default is <code>false</code>. If <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowAllAccess-boolean-"><code>all access</code></a> is
- set to <code>true</code> then IO is enabled if not allowed explicitly.</div>
+ set to <code>true</code>, then IO is enabled if not allowed explicitly.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>enabled</code> - <code>true</code> to enable Input/Output</dd>
@@ -580,7 +579,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li class="blockList">
 <h4>serverTransport</h4>
 <pre>public&nbsp;<a href="../../../org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a>&nbsp;serverTransport(<a href="../../../org/graalvm/polyglot/io/MessageTransport.html" title="interface in org.graalvm.polyglot.io">MessageTransport</a>&nbsp;serverTransport)</pre>
-<div class="block">Take over transport of message communication with a server peer. Provide an
+<div class="block">Take over the transport of messages communication with a server peer. Provide an
  implementation of <a href="../../../org/graalvm/polyglot/io/MessageTransport.html" title="interface in org.graalvm.polyglot.io"><code>MessageTransport</code></a> to virtualize a transport of messages to a
  server endpoint.
  <a href="../../../org/graalvm/polyglot/io/MessageTransport.html#open-java.net.URI-org.graalvm.polyglot.io.MessageEndpoint-"><code>MessageTransport.open(java.net.URI, org.graalvm.polyglot.io.MessageEndpoint)</code></a>
@@ -605,9 +604,9 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <div class="block">Installs a new logging <a href="http://docs.oracle.com/javase/8/docs/api/java/util/logging/Handler.html?is-external=true" title="class or interface in java.util.logging"><code>Handler</code></a>. The logger's <a href="http://docs.oracle.com/javase/8/docs/api/java/util/logging/Level.html?is-external=true" title="class or interface in java.util.logging"><code>Level</code></a> configuration is done
  using the <a href="../../../org/graalvm/polyglot/Context.Builder.html#options-java.util.Map-"><code>Context's options</code></a>. The level option key has the
  following format: <code>log.languageId.loggerName.level</code> or
- <code>log.instrumentId.loggerName.level</code>. The value is either the name of pre-defined
- <a href="http://docs.oracle.com/javase/8/docs/api/java/util/logging/Level.html?is-external=true" title="class or interface in java.util.logging"><code>Level</code></a> constant or a numeric <a href="http://docs.oracle.com/javase/8/docs/api/java/util/logging/Level.html?is-external=true" title="class or interface in java.util.logging"><code>Level</code></a> value. If not explicitly set in options
- the level is inherited from the parent logger.
+ <code>log.instrumentId.loggerName.level</code>. The value is either the name of a pre-defined
+ <a href="http://docs.oracle.com/javase/8/docs/api/java/util/logging/Level.html?is-external=true" title="class or interface in java.util.logging"><code>Level</code></a> constant or a numeric <a href="http://docs.oracle.com/javase/8/docs/api/java/util/logging/Level.html?is-external=true" title="class or interface in java.util.logging"><code>Level</code></a> value. If not explicitly set in
+ options, the level is inherited from the parent logger.
  <p>
  <b>Examples</b> of setting log level options:<br>
  <code>builder.option("log.level","FINE");</code> sets the <a href="http://docs.oracle.com/javase/8/docs/api/java/util/logging/Level.html?is-external=true#FINE" title="class or interface in java.util.logging"><code>FINE level</code></a> to all
@@ -618,7 +617,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
  sets the <a href="http://docs.oracle.com/javase/8/docs/api/java/util/logging/Level.html?is-external=true#FINE" title="class or interface in java.util.logging"><code>FINE level</code></a> to <code>TruffleLogger</code> for the
  <code>JavaScriptLanguage</code> class.<br>
  <p>
- If the <code>logHandler</code> is not set on <a href="../../../org/graalvm/polyglot/Engine.html" title="class in org.graalvm.polyglot"><code>Engine</code></a> nor on <a href="../../../org/graalvm/polyglot/Context.html" title="class in org.graalvm.polyglot"><code>Context</code></a> the log
+ If the <code>logHandler</code> is not set on <a href="../../../org/graalvm/polyglot/Engine.html" title="class in org.graalvm.polyglot"><code>Engine</code></a> nor on <a href="../../../org/graalvm/polyglot/Context.html" title="class in org.graalvm.polyglot"><code>Context</code></a>, the log
  messages are printed to <a href="../../../org/graalvm/polyglot/Context.Builder.html#err-java.io.OutputStream-"><code>Context's error output stream</code></a>.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>

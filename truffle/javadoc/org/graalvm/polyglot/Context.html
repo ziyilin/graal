@@ -117,13 +117,13 @@ implements <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoClose
 <div class="block">A polyglot context for Graal guest languages that allows to <a href="../../../org/graalvm/polyglot/Context.html#eval-org.graalvm.polyglot.Source-"><code>evaluate</code></a> code.
  A polyglot context represents the global runtime state of all <a href="../../../org/graalvm/polyglot/Engine.html#getLanguages--"><code>installed</code></a> and <a href="../../../org/graalvm/polyglot/Context.html#newBuilder-java.lang.String...-"><code>permitted</code></a> languages. Permitted languages are
  <a href="../../../org/graalvm/polyglot/Context.html#initialize-java.lang.String-"><code>initialized</code></a> lazily, when they are used for the first time. For many
- operations of the context, a <i>language identifier</i> needs to be specified. A language
- identifier is unique for each language.
+ context operations, a <i>language identifier</i> needs to be specified. A language identifier is
+ unique for each language.
 
  <h3>Evaluation</h3>
 
- A context allows to evaluate Guest language source code using <a href="../../../org/graalvm/polyglot/Context.html#eval-org.graalvm.polyglot.Source-"><code>Context.eval(Source)</code></a>. This is
- possible by evaluating <a href="../../../org/graalvm/polyglot/Source.html" title="class in org.graalvm.polyglot"><code>Source</code></a> objects or given a language identifier and code
+ A context allows to evaluate a guest language source code using <a href="../../../org/graalvm/polyglot/Context.html#eval-org.graalvm.polyglot.Source-"><code>Context.eval(Source)</code></a>. This is
+ possible by evaluating <a href="../../../org/graalvm/polyglot/Source.html" title="class in org.graalvm.polyglot"><code>Source</code></a> objects or a given language identifier and code
  <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang"><code>String</code></a>. The <a href="../../../org/graalvm/polyglot/Context.html#eval-org.graalvm.polyglot.Source-"><code>evaluation</code></a> returns either the result value or throws a
  <a href="../../../org/graalvm/polyglot/PolyglotException.html" title="class in org.graalvm.polyglot"><code>PolyglotException</code></a> if a guest language error occurs.
  <p>
@@ -138,10 +138,10 @@ implements <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoClose
 
  In this example:
  <ul>
- <li>We first first create a new context with all installed languages as permitted languages.
+ <li>First we create a new context with all permitted languages.
  <li>Next, we evaluate the expression "42" with language "js", which is the language identifier
  for JavaScript. Since this is the first time we access JavaScript, it automatically gets
- <a href="../../../org/graalvm/polyglot/Context.html#initialize-java.lang.String-"><code>initialized</code></a> first.
+ <a href="../../../org/graalvm/polyglot/Context.html#initialize-java.lang.String-"><code>initialized</code></a>.
  <li>Then, we assert the result value by converting the result value as primitive <code>int</code>
  .
  <li>Finally, if the context is no longer needed, it is necessary to close it to ensure that all
@@ -160,7 +160,7 @@ implements <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoClose
  <p>
  Options may be specified for <a href="../../../org/graalvm/polyglot/Engine.html#getLanguages--"><code>languages</code></a>,
  <a href="../../../org/graalvm/polyglot/Engine.html#getInstruments--"><code>instruments</code></a>, the <a href="../../../org/graalvm/polyglot/Engine.html#getOptions--"><code>engine</code></a> and the
- <a href="../../../org/graalvm/polyglot/Engine.html#getOptions--"><code>compiler</code></a>. For <a href="../../../org/graalvm/polyglot/Language.html#getOptions--"><code>language options</code></a> the
+ <a href="../../../org/graalvm/polyglot/Engine.html#getOptions--"><code>compiler</code></a>. For <a href="../../../org/graalvm/polyglot/Language.html#getOptions--"><code>language options</code></a>, the
  option key consists of the <a href="../../../org/graalvm/polyglot/Language.html#getId--"><code>language id</code></a> plus a dot followed by the option
  name (e.g. "js.Strict"). For most languages the option names start with an upper-case letter by
  convention. A list of available options may be received using <a href="../../../org/graalvm/polyglot/Language.html#getOptions--"><code>Language.getOptions()</code></a>.
@@ -170,7 +170,7 @@ implements <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoClose
  If system properties are <a href="../../../org/graalvm/polyglot/Engine.Builder.html#useSystemProperties-boolean-"><code>enabled</code></a>, which they
  are by default, then all polyglot options maybe specified with the prefix "polyglot." (e.g.
  "-Dpolyglot.js.Strict=true"). The system properties are read only once when the context or engine
- instance is created. After that changes to the system properties have no affect.
+ instance is created. After that, changes to the system properties have no affect.
  <p>
  Each Graal language performs an initialization step before it can be used to execute code, after
  which it remains initialized for the lifetime of the context. Initialization is by default lazy
@@ -193,15 +193,19 @@ implements <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoClose
 
  In this example:
  <ul>
- <li>We first first create a new context with all installed languages as permitted languages.
+ <li>At first, we create a new context and specify permitted languages as parameters.
+ <li>Secondly, we set the standard output stream to be used for the context.
+ <li>Then, we specify an option for JavaScript language only, by structuring the option key with
+ the language id followed by the option name;
+ <li>With <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowAllAccess-boolean-"><code>Context.Builder.allowAllAccess(boolean)</code></a> we grant a new context instance with the same
+ access privileges as the host virtual machine.
  <li>Next, we evaluate the expression "42" with language "js", which is the language identifier
  for JavaScript. Since this is the first time we access JavaScript, it first gets
  <a href="../../../org/graalvm/polyglot/Context.html#initialize-java.lang.String-"><code>initialized</code></a> as well.
- <li>Then, we assert the result value by converting the result value as primitive <code>int</code>
- .
- <li>Finally, if the context is no longer needed, it is necessary to close it to ensure that all
- resources are freed. Contexts are also <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoCloseable.html?is-external=true" title="class or interface in java.lang"><code>AutoCloseable</code></a> for use with the Java
- <code>try-with-resources</code> statement.
+ <li>Similarly to the previous line, the R language expression gets evaluated.
+ <li>Finally, we close the context, since it is no longer needed, to free all allocated resources.
+ Contexts are also <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoCloseable.html?is-external=true" title="class or interface in java.lang"><code>AutoCloseable</code></a> for use with the Java <code>try-with-resources</code>
+ statement.
  </ul>
 
  <h3>Bindings</h3>
@@ -251,8 +255,8 @@ implements <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoClose
 
  <h3>Host Interoperability</h3>
 
- It is often necessary to interact with values of the host runtime within Graal guest languages.
- Such objects are referred to as <i>host objects</i>. Every Java value that is passed to a Graal
+ It is often necessary to interact with values of the host runtime and Graal guest languages. Such
+ objects are referred to as <i>host objects</i>. Every Java value that is passed to a Graal
  language is interpreted according to the specification described in <a href="../../../org/graalvm/polyglot/Context.html#asValue-java.lang.Object-"><code>Context.asValue(Object)</code></a>.
  Also see <a href="../../../org/graalvm/polyglot/Value.html#as-java.lang.Class-"><code>Value.as(Class)</code></a> for further details.
 
@@ -280,52 +284,52 @@ implements <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoClose
 
  <h3>Error Handling</h3>
 
- Guest languages code may fail when executing guest language code or when accessing guest language
- object. So almost all methods in the <a href="../../../org/graalvm/polyglot/Context.html" title="class in org.graalvm.polyglot"><code>Context</code></a> and <a href="../../../org/graalvm/polyglot/Value.html" title="class in org.graalvm.polyglot"><code>Value</code></a> API throw a
+ Program execution may fail when executing a guest language code or when accessing guest language
+ object. Almost all methods in the <a href="../../../org/graalvm/polyglot/Context.html" title="class in org.graalvm.polyglot"><code>Context</code></a> and <a href="../../../org/graalvm/polyglot/Value.html" title="class in org.graalvm.polyglot"><code>Value</code></a> API throw a
  <a href="../../../org/graalvm/polyglot/PolyglotException.html" title="class in org.graalvm.polyglot"><code>PolyglotException</code></a> in case an error occurs. See <a href="../../../org/graalvm/polyglot/PolyglotException.html" title="class in org.graalvm.polyglot"><code>PolyglotException</code></a> for further
  details on error handling.
 
  <h3>Isolation</h3>
 
  Each context is by default isolated from all other instances with respect to both language
- evaluation semantics and resource consumption. By default a new context instance has no access to
- host resources, like threads, files or loading new host classes. To allow access to such
+ evaluation semantics and resource consumption. By default, a new context instance has no access
+ to host resources, like threads, files or loading new host classes. To allow access to such
  resources either the individual access right must be granted or
  <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowAllAccess-boolean-"><code>all access</code></a> must be set to <code>true</code>.
 
  <p>
  Contexts can be <a href="../../../org/graalvm/polyglot/Context.Builder.html#engine-org.graalvm.polyglot.Engine-">configured</a> to share certain system resources
- like ASTs, optimized code by specifying a single underlying engine; see <a href="../../../org/graalvm/polyglot/Engine.html" title="class in org.graalvm.polyglot"><code>Engine</code></a> for more
+ like ASTs or optimized code by specifying a single underlying engine. See <a href="../../../org/graalvm/polyglot/Engine.html" title="class in org.graalvm.polyglot"><code>Engine</code></a> for more
  details about code sharing.
 
  <h3>Proxies</h3>
 
  The <a href="../../../org/graalvm/polyglot/proxy/Proxy.html" title="interface in org.graalvm.polyglot.proxy"><code>proxy interfaces</code></a> allow to mimic guest language objects, arrays, executables,
- primitives and native objects in Graal languages. Every Graal language will treat instances of
- proxies like an object of that particular language. Multiple proxy interfaces can be implemented
- at the same time. For example, it is useful to provide proxy values that are objects with members
- and arrays at the same time.
+ primitives and native objects in Graal languages. Every Graal language will treat proxy instances
+ like objects of that particular language. Multiple proxy interfaces can be implemented at the
+ same time. For example, it is useful to provide proxy values that are objects with members and
+ arrays at the same time.
 
  <h3>Thread-Safety</h3>
 
  It is safe to use a context instance from a single thread. It is also safe to use it with
  multiple threads if they do not access the context at the same time. Whether a single context
  instance may be used from multiple threads at the same time depends on if all initialized
- languages support it. If only languages are initialized that support multi-threading then the
- context instance may be used from multiple threads at the same time. If a context is used from
- multiple threads and the language does not fit then an <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalStateException.html?is-external=true" title="class or interface in java.lang"><code>IllegalStateException</code></a> is thrown by
- the accessing method.
+ languages support it. If initialized languages support multi-threading, then the context instance
+ may be used from multiple threads at the same time. If a context is used from multiple threads
+ and the language does not fit, then an <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalStateException.html?is-external=true" title="class or interface in java.lang"><code>IllegalStateException</code></a> is thrown by the accessing
+ method.
  <p>
  Meta-data from the context's underlying <a href="../../../org/graalvm/polyglot/Context.html#getEngine--"><code>engine</code></a> can be retrieved safely by
  any thread at any time.
  <p>
  A context may be <a href="../../../org/graalvm/polyglot/Context.html#close--">closed</a> from any thread, but only if the context is not
- currently executing code. If a context is currently executing code, a different thread may kill
- the currently runnign execution and close the context using <a href="../../../org/graalvm/polyglot/Context.html#close-boolean-"><code>Context.close(boolean)</code></a>.
+ currently executing code. If the context is currently executing some code, a different thread may
+ kill the running execution and close the context using <a href="../../../org/graalvm/polyglot/Context.html#close-boolean-"><code>Context.close(boolean)</code></a>.
 
  <h3>Pre-Initialization</h3>
 
- The Context pre-initialization can be used to perform expensive builtin creation in the time of
+ The context pre-initialization can be used to perform expensive builtin creation in the time of
  native compilation.
  <p>
  The context pre-initialization is enabled by setting the system property
@@ -393,7 +397,7 @@ implements <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoClose
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/Context.html#close-boolean-">close</a></span>(boolean&nbsp;cancelIfExecuting)</code>
-<div class="block">Closes this context and frees up potentially allocated native resources.</div>
+<div class="block">Closes the context and frees up potentially allocated native resources.</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
@@ -405,14 +409,14 @@ implements <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoClose
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/Context.html#enter--">enter</a></span>()</code>
-<div class="block">Explicitly enters this context on the current thread.</div>
+<div class="block">Explicitly enters the context on the current thread.</div>
 </td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code><a href="../../../org/graalvm/polyglot/Value.html" title="class in org.graalvm.polyglot">Value</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/Context.html#eval-org.graalvm.polyglot.Source-">eval</a></span>(<a href="../../../org/graalvm/polyglot/Source.html" title="class in org.graalvm.polyglot">Source</a>&nbsp;source)</code>
-<div class="block">Evaluates a source by using the <a href="../../../org/graalvm/polyglot/Source.html#getLanguage--">language</a> specified in the
- source.</div>
+<div class="block">Evaluates a source object by using the <a href="../../../org/graalvm/polyglot/Source.html#getLanguage--">language</a> specified
+ in the source.</div>
 </td>
 </tr>
 <tr id="i6" class="altColor">
@@ -457,7 +461,7 @@ implements <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoClose
 <tr id="i12" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/Context.html#leave--">leave</a></span>()</code>
-<div class="block">Explicitly leaves this context on the current thread.</div>
+<div class="block">Explicitly leaves the context on the current thread.</div>
 </td>
 </tr>
 <tr id="i13" class="rowColor">
@@ -498,7 +502,7 @@ implements <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoClose
 <div class="block">Provides access to meta-data about the underlying Graal <a href="../../../org/graalvm/polyglot/Engine.html" title="class in org.graalvm.polyglot">engine</a>.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>the Graal <a href="../../../org/graalvm/polyglot/Engine.html" title="class in org.graalvm.polyglot"><code>Engine</code></a> being used by this context</dd>
+<dd>Graal <a href="../../../org/graalvm/polyglot/Engine.html" title="class in org.graalvm.polyglot"><code>Engine</code></a> being used by this context</dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>1.0</dd>
 </dl>
@@ -511,10 +515,10 @@ implements <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoClose
 <li class="blockList">
 <h4>eval</h4>
 <pre>public&nbsp;<a href="../../../org/graalvm/polyglot/Value.html" title="class in org.graalvm.polyglot">Value</a>&nbsp;eval(<a href="../../../org/graalvm/polyglot/Source.html" title="class in org.graalvm.polyglot">Source</a>&nbsp;source)</pre>
-<div class="block">Evaluates a source by using the <a href="../../../org/graalvm/polyglot/Source.html#getLanguage--">language</a> specified in the
- source. The result is accessible as <a href="../../../org/graalvm/polyglot/Value.html" title="class in org.graalvm.polyglot"><code>value</code></a> and never <code>null</code>. The
- first time a source is evaluated it will be parsed, consecutive invocations of eval with the
- same source will only execute the already parsed code.
+<div class="block">Evaluates a source object by using the <a href="../../../org/graalvm/polyglot/Source.html#getLanguage--">language</a> specified
+ in the source. The result is accessible as <a href="../../../org/graalvm/polyglot/Value.html" title="class in org.graalvm.polyglot"><code>value</code></a> and never returns
+ <code>null</code>. The first time a source is evaluated, it will be parsed. Consecutive
+ invocations of eval with the same source will only execute the already parsed code.
  <p>
  <b>Basic Example:</b>
 
@@ -529,12 +533,12 @@ implements <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoClose
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>source</code> - a source object to evaluate</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>result of the evaluation. The returned instance is is never <code>null</code>, but
-         the result might represent a <a href="../../../org/graalvm/polyglot/Value.html#isNull--"><code>null</code></a> value.</dd>
+<dd>the evaluation result. The returned instance is never <code>null</code>, but the
+         result might represent a <a href="../../../org/graalvm/polyglot/Value.html#isNull--"><code>null</code></a> value.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="../../../org/graalvm/polyglot/PolyglotException.html" title="class in org.graalvm.polyglot">PolyglotException</a></code> - in case parsing or evaluation of the guest language code failed.</dd>
-<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalStateException.html?is-external=true" title="class or interface in java.lang">IllegalStateException</a></code> - if the context is already closed, the current thread is not
-             allowed to access this context</dd>
+<dd><code><a href="../../../org/graalvm/polyglot/PolyglotException.html" title="class in org.graalvm.polyglot">PolyglotException</a></code> - in case the guest language code parsing or evaluation failed.</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalStateException.html?is-external=true" title="class or interface in java.lang">IllegalStateException</a></code> - if the context is already closed and the current thread is not
+             allowed to access it.</dd>
 <dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalArgumentException.html?is-external=true" title="class or interface in java.lang">IllegalArgumentException</a></code> - if the language of the given source is not installed or the
              <a href="../../../org/graalvm/polyglot/Source.html#getMimeType--"><code>MIME type</code></a> is not supported with the language.</dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
@@ -551,7 +555,7 @@ implements <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoClose
 <pre>public&nbsp;<a href="../../../org/graalvm/polyglot/Value.html" title="class in org.graalvm.polyglot">Value</a>&nbsp;eval(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;languageId,
                   <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/CharSequence.html?is-external=true" title="class or interface in java.lang">CharSequence</a>&nbsp;source)</pre>
 <div class="block">Evaluates a guest language code literal, using a provided <a href="../../../org/graalvm/polyglot/Language.html#getId--"><code>language
- id</code></a>. The result is accessible as <a href="../../../org/graalvm/polyglot/Value.html" title="class in org.graalvm.polyglot"><code>value</code></a> and never <code>null</code>. The
+ id</code></a>. The result is accessible as <a href="../../../org/graalvm/polyglot/Value.html" title="class in org.graalvm.polyglot"><code>value</code></a> and never returns <code>null</code>. The
  provided <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/CharSequence.html?is-external=true" title="class or interface in java.lang"><code>CharSequence</code></a> must represent an immutable String.
  <p>
  <b>Basic Example:</b>
@@ -564,13 +568,13 @@ implements <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoClose
  </pre></div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>result of the evaluation. The returned instance is is never <code>null</code>, but
-         the result might represent a <a href="../../../org/graalvm/polyglot/Value.html#isNull--"><code>null</code></a> value.</dd>
+<dd>the evaluation result. The returned instance is never <code>null</code>, but the
+         result might represent a <a href="../../../org/graalvm/polyglot/Value.html#isNull--"><code>null</code></a> value.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="../../../org/graalvm/polyglot/PolyglotException.html" title="class in org.graalvm.polyglot">PolyglotException</a></code> - in case parsing or evaluation of the guest language code failed.</dd>
+<dd><code><a href="../../../org/graalvm/polyglot/PolyglotException.html" title="class in org.graalvm.polyglot">PolyglotException</a></code> - in case the guest language code parsing or evaluation failed.</dd>
 <dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalArgumentException.html?is-external=true" title="class or interface in java.lang">IllegalArgumentException</a></code> - if the language does not exist or is not accessible.</dd>
-<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalStateException.html?is-external=true" title="class or interface in java.lang">IllegalStateException</a></code> - if the context is already closed, the current thread is not
-             allowed to access this context or if the given language is not installed.</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalStateException.html?is-external=true" title="class or interface in java.lang">IllegalStateException</a></code> - if the context is already closed and the current thread is not
+             allowed to access it, or if the given language is not installed.</dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>1.0</dd>
 </dl>
@@ -590,7 +594,7 @@ implements <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoClose
  and <a href="../../../org/graalvm/polyglot/Value.html#removeMember-java.lang.String-"><code>removable</code></a>.
  <p>
  Guest languages may put and get members through language specific APIs. For example, in
- JavaScript symbols of the polyglot bindings can be accessed using
+ JavaScript, symbols of the polyglot bindings can be accessed using
  <code>Polyglot.import("name")</code> and set using
  <code>Polyglot.export("name", value)</code>. Please see the individual language reference on
  how to access these symbols.</div>
@@ -610,10 +614,10 @@ implements <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoClose
 <h4>getBindings</h4>
 <pre>public&nbsp;<a href="../../../org/graalvm/polyglot/Value.html" title="class in org.graalvm.polyglot">Value</a>&nbsp;getBindings(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;languageId)</pre>
 <div class="block">Returns a value that represents the top-most bindings of a language. The top most bindings of
- the language returns a <a href="../../../org/graalvm/polyglot/Value.html#getMember-java.lang.String-"><code>member</code></a> for symbol in the scope.
+ the language returns a <a href="../../../org/graalvm/polyglot/Value.html#getMember-java.lang.String-"><code>member</code></a> for a symbol in the scope.
  Languages may allow modifications of members of the returned bindings object at the
- language's discretion. If the language was not yet <a href="../../../org/graalvm/polyglot/Context.html#initialize-java.lang.String-"><code>initialized</code></a> it
- will be initialized when the bindings are requested.</div>
+ language's discretion. If the language has not been <a href="../../../org/graalvm/polyglot/Context.html#initialize-java.lang.String-"><code>initialized</code></a>
+ yet, it will be initialized when the bindings are requested.</div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalArgumentException.html?is-external=true" title="class or interface in java.lang">IllegalArgumentException</a></code> - if the language does not exist or is not accessible.</dd>
@@ -668,29 +672,29 @@ implements <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoClose
  <p>
  When a host value is converted to a polyglot value the following rules apply:
  <ol>
- <li>If the <code>hostValue</code> is <code>null</code> then it will be interpreted as
+ <li>If the <code>hostValue</code> is <code>null</code>, then it will be interpreted as
  polyglot <a href="../../../org/graalvm/polyglot/Value.html#isNull--"><code>null</code></a>.
- <li>If the <code>hostValue</code> is already a <a href="../../../org/graalvm/polyglot/Value.html" title="class in org.graalvm.polyglot"><code>polyglot value</code></a> then it will be
+ <li>If the <code>hostValue</code> is already a <a href="../../../org/graalvm/polyglot/Value.html" title="class in org.graalvm.polyglot"><code>polyglot value</code></a>, then it will be
  cast to <a href="../../../org/graalvm/polyglot/Value.html" title="class in org.graalvm.polyglot"><code>Value</code></a>.
  <li>If the <code>hostValue</code> is an instance of <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Byte.html?is-external=true" title="class or interface in java.lang"><code>Byte</code></a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Short.html?is-external=true" title="class or interface in java.lang"><code>Short</code></a>,
- <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang"><code>Integer</code></a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang"><code>Long</code></a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Float.html?is-external=true" title="class or interface in java.lang"><code>Float</code></a> or <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Double.html?is-external=true" title="class or interface in java.lang"><code>Double</code></a> then it will be interpreted as
- polyglot <a href="../../../org/graalvm/polyglot/Value.html#isNumber--"><code>number</code></a>. Other subclasses of <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang"><code>Number</code></a> will be
+ <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang"><code>Integer</code></a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang"><code>Long</code></a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Float.html?is-external=true" title="class or interface in java.lang"><code>Float</code></a> or <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Double.html?is-external=true" title="class or interface in java.lang"><code>Double</code></a>, then it will be interpreted
+ as polyglot <a href="../../../org/graalvm/polyglot/Value.html#isNumber--"><code>number</code></a>. Other subclasses of <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang"><code>Number</code></a> will be
  interpreted as <a href="../../../org/graalvm/polyglot/Value.html#isHostObject--"><code>host object</code></a> (see later).
- <li>If the <code>hostValue</code> is an instance of <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Character.html?is-external=true" title="class or interface in java.lang"><code>Character</code></a> or <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang"><code>String</code></a> then
+ <li>If the <code>hostValue</code> is an instance of <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Character.html?is-external=true" title="class or interface in java.lang"><code>Character</code></a> or <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang"><code>String</code></a>, then
  it will be interpreted as polyglot <a href="../../../org/graalvm/polyglot/Value.html#isString--"><code>string</code></a>.
- <li>If the <code>hostValue</code> is an instance of <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang"><code>Boolean</code></a> then it will be
+ <li>If the <code>hostValue</code> is an instance of <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang"><code>Boolean</code></a>, then it will be
  interpreted as polyglot <a href="../../../org/graalvm/polyglot/Value.html#isBoolean--"><code>boolean</code></a>.
- <li>If the <code>hostValue</code> is a <a href="../../../org/graalvm/polyglot/proxy/Proxy.html" title="interface in org.graalvm.polyglot.proxy"><code>polyglot proxy</code></a> then it will be
+ <li>If the <code>hostValue</code> is a <a href="../../../org/graalvm/polyglot/proxy/Proxy.html" title="interface in org.graalvm.polyglot.proxy"><code>polyglot proxy</code></a>, then it will be
  interpreted according to the behavior specified by the proxy. See the javadoc of the proxy
  subclass for further details.
  <li>If the <code>hostValue</code> is a non-primitive <a href="../../../org/graalvm/polyglot/Value.html#as-java.lang.Class-"><code>mapped Java
- value</code></a> then the original value will be restored. For example if a guest language object was
- mapped to <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util"><code>Map</code></a> then the original object identity will be preserved when converting
+ value</code></a>, then the original value will be restored. For example, if a guest language object was
+ mapped to <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util"><code>Map</code></a>, then the original object identity will be preserved when converting
  back to a polyglot value.
  <li>Any other <code>hostValue</code> will be interpreted as <a href="../../../org/graalvm/polyglot/Value.html#isHostObject--"><code>host
  object</code></a>. Host objects expose all their public java fields and methods as
  <a href="../../../org/graalvm/polyglot/Value.html#getMember-java.lang.String-"><code>members</code></a>. In addition, Java arrays and subtypes of
- <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util"><code>List</code></a> will be interpreted as value with <a href="../../../org/graalvm/polyglot/Value.html#hasArrayElements--"><code>array
+ <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util"><code>List</code></a> will be interpreted as a value with <a href="../../../org/graalvm/polyglot/Value.html#hasArrayElements--"><code>array
  elements</code></a> and single method interfaces annotated with <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/FunctionalInterface.html?is-external=true" title="class or interface in java.lang"><code>FunctionalInterface</code></a> are
  <a href="../../../org/graalvm/polyglot/Value.html#execute-java.lang.Object...-"><code>executable</code></a> directly. Java <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang"><code>Class</code></a> instances are
  interpreted as <a href="../../../org/graalvm/polyglot/Value.html#canInstantiate--"><code>instantiable</code></a>, but they do not expose Class
@@ -719,18 +723,17 @@ implements <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoClose
  provided as <a href="../../../org/graalvm/polyglot/Value.html#getMember-java.lang.String-"><code>members</code></a>. Methods and fields are grouped by name,
  so only one member is exposed for each name.
  <p>
- When an argument value needs to be mapped to match a required Java method parameter type then
- the semantics of <a href="../../../org/graalvm/polyglot/Value.html#as-java.lang.Class-"><code>host value mapping</code></a> is used. The result of the
- mapping is equivalent of calling <a href="../../../org/graalvm/polyglot/Value.html#as-java.lang.Class-"><code>Value.as(Class)</code></a> with the parameter type. Therefore a
- <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/ClassCastException.html?is-external=true" title="class or interface in java.lang"><code>ClassCastException</code></a> or <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/NullPointerException.html?is-external=true" title="class or interface in java.lang"><code>NullPointerException</code></a> is thrown if a parameter value
+ When an argument value needs to be mapped to match a required Java method parameter type,
+ then the semantics of <a href="../../../org/graalvm/polyglot/Value.html#as-java.lang.Class-"><code>host value mapping</code></a> is used. The result of the
+ mapping is equivalent of calling <a href="../../../org/graalvm/polyglot/Value.html#as-java.lang.Class-"><code>Value.as(Class)</code></a> with the parameter type. Therefore,
+ a <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/ClassCastException.html?is-external=true" title="class or interface in java.lang"><code>ClassCastException</code></a> or <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/NullPointerException.html?is-external=true" title="class or interface in java.lang"><code>NullPointerException</code></a> is thrown if a parameter value
  cannot be cast to the required parameter type.
  <p>
- Overloaded java methods are selected based on the arguments that are provided. In case
- multiple mapped Java methods with the same name are applicable for
- <a href="../../../org/graalvm/polyglot/Value.html#execute-java.lang.Object...-"><code>executions</code></a> or <a href="../../../org/graalvm/polyglot/Value.html#newInstance-java.lang.Object...-"><code>instantiations</code></a> then the method with the most concrete method with applicable arguments will
- be used used.
+ Overloaded java methods are selected based on the provided arguments. In case multiple mapped
+ Java methods with the same name are applicable for <a href="../../../org/graalvm/polyglot/Value.html#execute-java.lang.Object...-"><code>executions</code></a> or <a href="../../../org/graalvm/polyglot/Value.html#newInstance-java.lang.Object...-"><code>instantiations</code></a>, then the method with the
+ most concrete method with applicable arguments will be called.
  <p>
- The following parameter type hierarchy is used for method resolution. Left-most parameter
+ The following parameter type hierarchy is used for a method resolution. Left-most parameter
  types are prioritized over types to their right.
  <ul>
  <li><a href="../../../org/graalvm/polyglot/Value.html#isBoolean--"><code>Boolean</code></a> values: boolean, Boolean, Object
@@ -739,13 +742,14 @@ implements <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoClose
  Double, Number, Object
  <li>Other values are resolved based on their Java type hierarchy.
  </ul>
- If there are multiple most concrete methods or too many arguments were provided then an
- illegal argument type error will be raised.
+ If there are multiple concrete methods or too many arguments provided, then an illegal
+ argument type error will be raised.
  <p>
  <b>Advanced Example:</b>
 
  This example first creates a new instance of the Java class <code>Record</code> and inspects
- it first using the polyglot value API and later using the JavaScript guest language.
+ it using the polyglot value API. Later, a host value is converted to a polyglot value using
+ JavaScript guest language.
  <p>
  In the following examples all assertions hold.
 
@@ -791,12 +795,12 @@ implements <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoClose
 <li class="blockList">
 <h4>enter</h4>
 <pre>public&nbsp;void&nbsp;enter()</pre>
-<div class="block">Explicitly enters this context on the current thread. A context needs to be entered for any
- operation to be performed. The context implicitly enters and leaves the context for every
- operation. For example, before and after invoking the <a href="../../../org/graalvm/polyglot/Value.html#execute-java.lang.Object...-"><code>execute</code></a> method. This can be inefficient if a very high number of simple operations needs to
- be performed. By <a href="../../../org/graalvm/polyglot/Context.html#enter--"><code>entering</code></a> and <a href="../../../org/graalvm/polyglot/Context.html#leave--"><code>leaving</code></a> once explicitly, the
- overhead for entering/leaving contexts for each operation can be eliminated. Contexts can be
- entered multiple times on the same thread.</div>
+<div class="block">Explicitly enters the context on the current thread. A context needs to be entered and left
+ for any operation to be performed. For example, before and after invoking the
+ <a href="../../../org/graalvm/polyglot/Value.html#execute-java.lang.Object...-"><code>execute</code></a> method. This can be inefficient if a very high
+ number of simple operations needs to be performed. By <a href="../../../org/graalvm/polyglot/Context.html#enter--"><code>entering</code></a> and
+ <a href="../../../org/graalvm/polyglot/Context.html#leave--"><code>leaving</code></a> once explicitly, the overhead for entering/leaving the context for
+ each operation can be eliminated. Contexts can be entered multiple times on the same thread.</div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalStateException.html?is-external=true" title="class or interface in java.lang">IllegalStateException</a></code> - if the context is already <a href="../../../org/graalvm/polyglot/Context.html#close--"><code>closed</code></a>.</dd>
@@ -804,7 +808,7 @@ implements <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoClose
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>1.0</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../org/graalvm/polyglot/Context.html#leave--"><code>to leave a context.</code></a></dd>
+<dd><a href="../../../org/graalvm/polyglot/Context.html#leave--"><code>leave a context.</code></a></dd>
 </dl>
 </li>
 </ul>
@@ -815,7 +819,7 @@ implements <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoClose
 <li class="blockList">
 <h4>leave</h4>
 <pre>public&nbsp;void&nbsp;leave()</pre>
-<div class="block">Explicitly leaves this context on the current thread. The context must be <a href="../../../org/graalvm/polyglot/Context.html#enter--"><code>entered</code></a> before calling this method.</div>
+<div class="block">Explicitly leaves the context on the current thread. The context must be <a href="../../../org/graalvm/polyglot/Context.html#enter--"><code>entered</code></a> before calling this method.</div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalStateException.html?is-external=true" title="class or interface in java.lang">IllegalStateException</a></code> - if the context is already closed or if the context was not
@@ -823,7 +827,7 @@ implements <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoClose
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>1.0</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../org/graalvm/polyglot/Context.html#enter--"><code>to enter a context.</code></a></dd>
+<dd><a href="../../../org/graalvm/polyglot/Context.html#enter--"><code>enter a context.</code></a></dd>
 </dl>
 </li>
 </ul>
@@ -834,18 +838,18 @@ implements <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoClose
 <li class="blockList">
 <h4>close</h4>
 <pre>public&nbsp;void&nbsp;close(boolean&nbsp;cancelIfExecuting)</pre>
-<div class="block">Closes this context and frees up potentially allocated native resources. A context cannot
- free all native resources allocated automatically. For this reason it is necessary to close
- contexts after use. If a context is cancelled then the currently executing thread will throw
- a <a href="../../../org/graalvm/polyglot/PolyglotException.html" title="class in org.graalvm.polyglot"><code>PolyglotException</code></a>. The exception indicates that it was
- <a href="../../../org/graalvm/polyglot/PolyglotException.html#isCancelled--"><code>cancelled</code></a>. Please note that canceling a single
- context can negatively affect the performance of other executing contexts constructed with
- the same engine.
+<div class="block">Closes the context and frees up potentially allocated native resources. A context cannot free
+ all native resources allocated automatically. For this reason it is necessary to close
+ contexts after use. If a context is cancelled, then the executing thread will throw a
+ <a href="../../../org/graalvm/polyglot/PolyglotException.html" title="class in org.graalvm.polyglot"><code>PolyglotException</code></a>. The exception indicates that it was
+ <a href="../../../org/graalvm/polyglot/PolyglotException.html#isCancelled--"><code>cancelled</code></a>. Please note, canceling a single context
+ can negatively affect the performance of other executing contexts constructed with the same
+ engine.
  <p>
- If internal errors occur during closing of the language then they are printed to the
- configured <a href="../../../org/graalvm/polyglot/Context.Builder.html#err-java.io.OutputStream-"><code>error output stream</code></a>. If a context was closed
- then all its methods will throw an <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalStateException.html?is-external=true" title="class or interface in java.lang"><code>IllegalStateException</code></a> when invoked. If an attempt
- to close a context was successful then consecutive calls to close have no effect.</div>
+ If internal errors occur during context closing, then they are printed to the configured
+ <a href="../../../org/graalvm/polyglot/Context.Builder.html#err-java.io.OutputStream-"><code>error output stream</code></a>. If a context was closed, then its
+ methods will throw an <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalStateException.html?is-external=true" title="class or interface in java.lang"><code>IllegalStateException</code></a> when invoked. If an attempt to close a
+ context was successful, then consecutive calls to close have no effect.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>cancelIfExecuting</code> - if <code>true</code> then currently executing contexts will be
@@ -858,7 +862,7 @@ implements <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoClose
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>1.0</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../org/graalvm/polyglot/Engine.html#close--"><code>To close an engine.</code></a></dd>
+<dd><a href="../../../org/graalvm/polyglot/Engine.html#close--"><code>close an engine.</code></a></dd>
 </dl>
 </li>
 </ul>
@@ -869,16 +873,16 @@ implements <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoClose
 <li class="blockList">
 <h4>close</h4>
 <pre>public&nbsp;void&nbsp;close()</pre>
-<div class="block">Closes this context and frees up potentially allocated native resources. Languages might not
- be able to free all native resources allocated by a context automatically. For this reason it
- is recommended to close contexts after use. If the context is currently being executed on
- another thread then an <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalStateException.html?is-external=true" title="class or interface in java.lang"><code>IllegalStateException</code></a> is thrown. To close concurrently
- executing contexts see <a href="../../../org/graalvm/polyglot/Context.html#close-boolean-"><code>Context.close(boolean)</code></a>.
+<div class="block">Closes this context and frees up potentially allocated native resources. A context may not
+ free all native resources allocated automatically. For this reason it is recommended to close
+ contexts after use. If the context is currently being executed on another thread, then an
+ <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalStateException.html?is-external=true" title="class or interface in java.lang"><code>IllegalStateException</code></a> is thrown. To close concurrently executing contexts see
+ <a href="../../../org/graalvm/polyglot/Context.html#close-boolean-"><code>Context.close(boolean)</code></a>.
  <p>
- If internal errors occur during closing of the language then they are printed to the
- configured <a href="../../../org/graalvm/polyglot/Context.Builder.html#err-java.io.OutputStream-"><code>error output stream</code></a>. If a context was closed
- then all its methods will throw an <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalStateException.html?is-external=true" title="class or interface in java.lang"><code>IllegalStateException</code></a> when invoked. If an attempt
- to close a context was successful then consecutive calls to close have no effect.</div>
+ If internal errors occur during the context closure, then they are printed to the configured
+ <a href="../../../org/graalvm/polyglot/Context.Builder.html#err-java.io.OutputStream-"><code>error output stream</code></a>. If a context was closed, then its
+ methods will throw an <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalStateException.html?is-external=true" title="class or interface in java.lang"><code>IllegalStateException</code></a>, when invoked. If an attempt to close a
+ context was successful, then consecutive calls to close have no effect.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoCloseable.html?is-external=true#close--" title="class or interface in java.lang">close</a></code>&nbsp;in interface&nbsp;<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoCloseable.html?is-external=true" title="class or interface in java.lang">AutoCloseable</a></code></dd>
@@ -888,7 +892,7 @@ implements <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoClose
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>1.0</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../org/graalvm/polyglot/Engine.html#close--"><code>To close an engine.</code></a></dd>
+<dd><a href="../../../org/graalvm/polyglot/Engine.html#close--"><code>close an engine.</code></a></dd>
 </dl>
 </li>
 </ul>
@@ -899,8 +903,8 @@ implements <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoClose
 <li class="blockList">
 <h4>getCurrent</h4>
 <pre>public static&nbsp;<a href="../../../org/graalvm/polyglot/Context.html" title="class in org.graalvm.polyglot">Context</a>&nbsp;getCurrent()</pre>
-<div class="block">Returns the currently entered polyglot context. A context is entered if the currently
- executing Java method was called by a Graal guest language or if a context was entered
+<div class="block">Returns the currently entered polyglot context. A context will be entered if the current
+ executing Java method is called by a Graal guest language or if a context is entered
  explicitly using <a href="../../../org/graalvm/polyglot/Context.html#enter--"><code>Context.enter()</code></a> on the current thread. The returned context may be
  used to:
  <ul>
@@ -918,9 +922,8 @@ implements <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoClose
  <a href="../../../org/graalvm/polyglot/Context.html#create-java.lang.String...-"><code>creator</code></a> of a context is allowed to enter, leave or close a
  context.
  <p>
- The currently entered context may change. It is therefore required to call
- <a href="../../../org/graalvm/polyglot/Context.html#getCurrent--"><code>getCurrent</code></a> every time a context is needed. The currently entered
- context should not be cached in static fields.</div>
+ The current entered context may change. It is therefore required to call <a href="../../../org/graalvm/polyglot/Context.html#getCurrent--"><code>getCurrent</code></a> every time a context is needed. The current entered context should not be cached
+ in static fields.</div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalStateException.html?is-external=true" title="class or interface in java.lang">IllegalStateException</a></code> - if no context is currently entered.</dd>
@@ -939,8 +942,8 @@ implements <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoClose
 <div class="block">Creates a context with default configuration.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>permittedLanguages</code> - names of languages permitted in this context, if no languages are
-            provided then all the use of languages will be permitted.</dd>
+<dd><code>permittedLanguages</code> - names of languages permitted in this context. If no languages are
+            provided, then all installed languages will be permitted.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>a new context</dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
@@ -958,8 +961,8 @@ implements <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoClose
 <div class="block">Creates a builder for constructing a context with custom configuration.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>permittedLanguages</code> - names of languages permitted in this context, if no languages are
-            provided then the use of all languages will be permitted.</dd>
+<dd><code>permittedLanguages</code> - names of languages permitted in the context. If no languages are
+            provided, then all installed languages will be permitted.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>a builder that can create a context</dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
