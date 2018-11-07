@@ -230,6 +230,7 @@ file paths. For example, `*program*.sl`. The default is &lowast;.
 matching mime-type. For example, `+`. The default is no filter.
 - `--cpusampler.FilterRootName=<Expression>`: applies a wildcard filter for
 program roots. For example, `Math.*`. The default is &lowast;.
+- `--cpusampler.GatherHitTimes`: saves a timestamp for each taken sample. The default is false.
 - `--cpusampler.Mode=<Mode>`:  describes level of sampling detail. Please note that increased detail can lead to reduced accuracy.
     - `exclude_inlined_roots` samples roots excluding inlined functions (enabled by default);
     - `roots`samples roots including inlined functions;
@@ -242,6 +243,7 @@ sample the stack.
 false.
 - `--cpusampler.StackLimit=<Integer>`: specifies the maximum number of stack
 elements.
+- `--cpusampler.SummariseThreads `: prints sampling output as a summary of all 'per thread' profiles. The default is false.
 
 ### CPU Tracer Command Options
 
@@ -252,6 +254,7 @@ file paths. For example, `*program*.sl`. The default is &lowast;.
 matching mime-type. For example, `+`. The default is no filter.
 - `--cputracer.FilterRootName=<Expression>`: applies a wildcard filter for
 program roots. For example, `Math.*`. The default is &lowast;.
+- `--cputracer.Output=<Output>` prints a `histogram` or `json` as output. The default is `histogram`.
 - `--cputracer.TraceCalls`: captures calls when tracing. The default is false.
 - `--cputracer.TraceInternal`: traces internal elements. The default is false.
 - `--cputracer.TraceRoots=<Boolean>`: captures roots when tracing.  The default

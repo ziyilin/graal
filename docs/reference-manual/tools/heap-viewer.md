@@ -9,14 +9,12 @@ GraalVM comes with **Graal VisualVM**, an enhanced version of the popular [Visua
 ### Starting Graal VisualVM
 To start Graal VisualVM execute `jvisualvm`. Immediately after the startup, the tool shows all locally running Java processes in the Applications area, including the VisualVM process itself.
 
-__NOTE:__ Substrate VM processes are only displayed in the Applications area if created by the `native-image` tool with the `-H:+AllowVMInspection` flag. Guest language REPL process must be started with the `--jvm` flag to monitor it using Graal VisualVM.
+__NOTE:__ GraalVM native images do not implement JVMTI agent, hence triggering heap dump creation from Applications area is impossible. Apply `-H:+AllowVMInspection` flag with the `native-image` tool for Substrate VM processes. This way your application will handle signals and get a heap dump when it receives SIGUSR1 signal. Guest language REPL process must be started also with the `--jvm` flag to monitor it using Graal VisualVM.This functionality is available with [GraalVM Enterprise Edition](http://www.oracle.com/technetwork/oracle-labs/program-languages/downloads/index.html). It is **not** available in GraalVM open source version available on GitHub. See the [Generating Native Heap Dumps]({{ "/docs/reference-manual/native_heapdump/" | relative_url }}) page for details on creating heap dumps from a Substrate VM process. 
 
 ### Getting Heap Dump
 Let's say you are trying to analyze a Ruby application. To get a heap dump, first start your application and let it run for a few seconds to warm up.
 
 Then right-click its process in VisualVM and invoke the Heap Dump action. A new heap viewer for the Ruby process opens.
-
-__NOTE:__ See the [Generating Native Heap Dumps]({{ "/docs/reference-manual/native_heapdump/" | relative_url }}) page for details on creating heap dumps from a Substrate VM process.
 
 ### Analyzing Objects
 Initially the Summary view for the Java heap is displayed. To analyze the Ruby heap, click the leftmost (Summary) dropdown in the heap viewer toolbar, choose the Ruby Heap scope and select the Objects view. Now the heap viewer displays all Ruby heap objects, aggregated by their type.

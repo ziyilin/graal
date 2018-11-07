@@ -19,11 +19,17 @@
 
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 
+  <link rel="apple-touch-icon" sizes="180x180" href="/resources/img/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/resources/img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/resources/img/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/resources/img/favicon/site.webmanifest">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+
   <link rel="stylesheet" href="/assets/main.css">
   <link rel="stylesheet" href="/resources/styles/extra.css">
 
   <link rel="canonical" href="https://www.graalvm.org/docs/reference-manual/tools/">
-  <link rel="alternate" type="application/rss+xml" title="GraalVM" href="/feed.xml">
   <script src="/resources/lib/jquery/jquery-3.2.1.min.js"></script>
   <script src="/resources/lib/bootstrap/js/bootstrap.min.js"></script>
   <script src="/resources/lib/sticky-sidebar/resizeSensor.js"></script>
@@ -36,7 +42,8 @@
 
 
   <body class="preload">
-    <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs>
     <symbol id="icon-social-network" viewBox="0 0 32 32">
       <title>social-network</title>
@@ -130,6 +137,43 @@
       <path d="M24.734 17.002c-0.042-4.055 3.306-5.996 3.455-6.093-1.88-2.747-4.806-3.125-5.852-3.167-2.488-0.255-4.86 1.465-6.125 1.465-1.261 0-3.213-1.431-5.279-1.393-2.717 0.042-5.219 1.581-6.619 4.011-2.822 4.897-0.723 12.149 2.026 16.125 1.345 1.943 2.949 4.125 5.052 4.048 2.026-0.081 2.791-1.312 5.242-1.312s3.139 1.312 5.282 1.273c2.182-0.042 3.561-1.982 4.894-3.93 1.544-2.256 2.179-4.442 2.219-4.551-0.051-0.028-4.25-1.635-4.294-6.476z"></path>
       <path d="M20.704 5.11c1.115-1.352 1.871-3.234 1.665-5.11-1.611 0.065-3.557 1.069-4.714 2.423-1.036 1.199-1.938 3.111-1.697 4.95 1.795 0.141 3.631-0.913 4.746-2.263z"></path>
     </symbol>
+
+    <symbol id="icon-icon" viewBox="0 0 32 32">
+      <title>icon</title>
+      <path d="M9.502 25.749c0 1.795-1.455 3.251-3.251 3.251s-3.251-1.455-3.251-3.251c0-1.795 1.455-3.251 3.251-3.251s3.251 1.455 3.251 3.251z"></path>
+      <path d="M7.894 19.253c2.689 0 4.875 2.186 4.875 4.878h3.252c0-4.482-3.646-8.131-8.126-8.131v3.253z"></path>
+      <path d="M7.872 12.75c6.272 0 11.376 5.107 11.376 11.381h3.252c0-8.068-6.561-14.631-14.628-14.631v3.25z"></path>
+      <path d="M7.872 6.25c9.858 0 17.878 8.020 17.878 17.881h3.25c0-11.654-9.476-21.131-21.127-21.131v3.25z"></path>
+    </symbol>
+    <symbol id="icon-customer-review" viewBox="0 0 32 32">
+      <title>customer-review</title>
+      <path d="M28.848 8.872c-1.942-1.409-4.504-2.184-7.214-2.184s-5.272 0.776-7.213 2.184c-2.032 1.474-3.151 3.46-3.151 5.593 0 1.99 1.003 3.884 2.825 5.332 1.681 1.336 3.926 2.179 6.345 2.386 2.611 1.899 6.441 2.97 6.727 3.048 0.141 0.040 0.288 0.060 0.435 0.060 0.597 0 1.145-0.325 1.428-0.843 0.364-0.66 0.229-1.479-0.333-1.991-0.712-0.647-1.092-1.154-1.294-1.518 1.269-0.631 2.338-1.467 3.12-2.444 0.966-1.207 1.477-2.6 1.477-4.030 0-2.132-1.119-4.118-3.152-5.593zM25.102 17.108h-6.935c-0.518 0-0.938-0.42-0.938-0.938s0.42-0.938 0.938-0.938h6.935c0.518 0 0.938 0.42 0.938 0.938s-0.42 0.938-0.938 0.938zM25.102 13.968h-6.935c-0.518 0-0.938-0.42-0.938-0.938s0.42-0.938 0.938-0.938h6.935c0.518 0 0.938 0.42 0.938 0.938s-0.42 0.938-0.938 0.938z"></path>
+      <path d="M9.402 14.319c0-1.488 0.42-2.922 1.217-4.227-0.67-0.125-1.362-0.19-2.065-0.19-2.228 0-4.335 0.639-5.934 1.799-1.689 1.226-2.62 2.882-2.62 4.664 0 1.194 0.425 2.357 1.228 3.363 0.613 0.767 1.437 1.428 2.411 1.939-0.17 0.26-0.45 0.602-0.913 1.023-0.513 0.469-0.638 1.22-0.305 1.824 0.262 0.48 0.765 0.778 1.313 0.778 0.136 0 0.271-0.019 0.401-0.055 0.261-0.072 3.326-0.934 5.45-2.461 1.453-0.13 2.811-0.534 3.967-1.164-0.162-0.117-0.322-0.236-0.477-0.36-2.368-1.883-3.673-4.345-3.673-6.933z"></path>
+    </symbol>
+    <symbol id="icon-newspaper" viewBox="0 0 32 32">
+      <title>newspaper</title>
+      <path d="M26.359 3.25h-17.531c-1.32 0-2.391 1.069-2.391 2.391v1.594h-0.797c-1.32 0-2.391 1.069-2.391 2.391v15.938c0 1.76 1.427 3.188 3.188 3.188h19.125c1.76 0 3.188-1.427 3.188-3.188v-19.922c0-1.321-1.071-2.391-2.391-2.391zM27.156 25.563c0 0.878-0.716 1.594-1.594 1.594h-19.125c-0.879 0-1.594-0.716-1.594-1.594v-15.938c0-0.44 0.357-0.797 0.797-0.797h0.797v15.938c0 0.441 0.356 0.797 0.797 0.797s0.797-0.356 0.797-0.797v-19.125c0-0.44 0.357-0.797 0.797-0.797h17.531c0.439 0 0.797 0.357 0.797 0.797v19.922z"></path>
+      <path d="M18.787 13.613h6.375c0.221 0 0.398-0.178 0.398-0.398s-0.178-0.398-0.398-0.398h-6.375c-0.219 0-0.398 0.178-0.398 0.398s0.179 0.398 0.398 0.398z"></path>
+      <path d="M18.787 11.223h6.375c0.221 0 0.398-0.178 0.398-0.398s-0.178-0.398-0.398-0.398h-6.375c-0.219 0-0.398 0.178-0.398 0.398s0.179 0.398 0.398 0.398z"></path>
+      <path d="M18.787 8.832h6.375c0.221 0 0.398-0.178 0.398-0.398s-0.178-0.398-0.398-0.398h-6.375c-0.219 0-0.398 0.178-0.398 0.398s0.179 0.398 0.398 0.398z"></path>
+      <path d="M16.398 24.769h-6.375c-0.22 0-0.398 0.179-0.398 0.398 0 0.221 0.178 0.398 0.398 0.398h6.375c0.219 0 0.398-0.178 0.398-0.398 0-0.219-0.178-0.398-0.398-0.398z"></path>
+      <path d="M16.398 22.378h-6.375c-0.22 0-0.398 0.179-0.398 0.398 0 0.221 0.178 0.398 0.398 0.398h6.375c0.219 0 0.398-0.178 0.398-0.398 0-0.219-0.178-0.398-0.398-0.398z"></path>
+      <path d="M16.398 19.988h-6.375c-0.22 0-0.398 0.179-0.398 0.398 0 0.221 0.178 0.398 0.398 0.398h6.375c0.219 0 0.398-0.178 0.398-0.398 0-0.219-0.178-0.398-0.398-0.398z"></path>
+      <path d="M25.164 24.769h-6.375c-0.221 0-0.398 0.179-0.398 0.398 0 0.221 0.178 0.398 0.398 0.398h6.375c0.219 0 0.398-0.178 0.398-0.398 0-0.219-0.179-0.398-0.398-0.398z"></path>
+      <path d="M25.164 22.378h-6.375c-0.221 0-0.398 0.179-0.398 0.398 0 0.221 0.178 0.398 0.398 0.398h6.375c0.219 0 0.398-0.178 0.398-0.398 0-0.219-0.179-0.398-0.398-0.398z"></path>
+      <path d="M25.164 19.988h-6.375c-0.221 0-0.398 0.179-0.398 0.398 0 0.221 0.178 0.398 0.398 0.398h6.375c0.219 0 0.398-0.178 0.398-0.398 0-0.219-0.179-0.398-0.398-0.398z"></path>
+      <path d="M25.164 15.206h-15.141c-0.22 0-0.398 0.178-0.398 0.398s0.178 0.398 0.398 0.398h15.141c0.219 0 0.398-0.178 0.398-0.398s-0.179-0.398-0.398-0.398z"></path>
+      <path d="M25.164 17.597h-15.141c-0.22 0-0.398 0.179-0.398 0.398 0 0.221 0.178 0.398 0.398 0.398h15.141c0.219 0 0.398-0.178 0.398-0.398 0-0.219-0.179-0.398-0.398-0.398z"></path>
+      <path d="M10.422 13.609h5.578c0.441 0 0.797-0.356 0.797-0.797v-5.575c0-0.441-0.356-0.797-0.797-0.797h-5.578c-0.441 0-0.797 0.356-0.797 0.797v5.575c0 0.44 0.356 0.797 0.797 0.797zM11.219 8.031h3.984v3.984h-3.984v-3.984z"></path>
+    </symbol>
+    <symbol id="icon-megaphone" viewBox="0 0 32 32">
+      <title>megaphone</title>
+      <path d="M3.535 12.756v4.826c-0.007 1.083 0.866 1.966 1.948 1.973h0.42v-8.788h-0.395c-1.091 0.001-1.974 0.885-1.974 1.976z"></path>
+      <path d="M12.064 20.552h-5.029l1.958 6.392c0.155 0.515 0.513 0.945 0.993 1.189 0.477 0.243 1.033 0.28 1.538 0.101 0.972-0.347 1.515-1.381 1.249-2.378-0.424-1.558-0.672-3.434-0.709-5.304z"></path>
+      <path d="M6.9 10.767h5.173v8.788h-5.173z"></path>
+      <path d="M13.071 10.751v8.836c3.054 0.129 6.003 1.412 7.964 2.497 0.998 0.554 1.961 1.17 2.881 1.846v-17.544c-0.959 0.682-1.958 1.306-2.991 1.871-2.85 1.553-5.486 2.391-7.854 2.495z"></path>
+      <path d="M26.689 3.659c-0.983 0.002-1.778 0.8-1.776 1.783v19.449c0 0.981 0.795 1.776 1.776 1.776s1.776-0.795 1.776-1.776v-19.446c0.004-0.983-0.79-1.783-1.773-1.787z"></path>
+    </symbol>
   </defs>
 </svg>
 
@@ -185,19 +229,19 @@
         </a>
       </li>
 
-      <li class="menu__item">
+      <li class="menu__item"  tabindex="0">
         <span class="github-widget">
           <!-- Place this tag where you want the button to render. -->
-          <a class="github-button" href="https://github.com/oracle/graal" data-icon="octicon-star" data-show-count="true" aria-label="Star oracle/graal on GitHub">Star</a>
+          <a tabindex="-1" class="github-button" href="https://github.com/oracle/graal" data-icon="octicon-star" data-show-count="true" aria-label="Star oracle/graal on GitHub">Star</a>
         </span>
       </li>
 
-      <li class="menu__item">
+      <li class="menu__item" tabindex="-1">
         <a href="/downloads/" class="btn btn-try btn-primary">Try graalvm</a>
       </li>
     </ul>
 
-    <div role="button" class="menu-btn menu-btn--menu js-show-menu" title="sweet hamburger">
+    <div role="button" class="menu-btn menu-btn--menu js-show-menu" tabindex="-1" title="sweet hamburger">
       <div class="hamburger"><div class="inner"></div></div>
     </div>
 
@@ -351,7 +395,7 @@ $(document).ready(function(){
         
           
           <a href="/docs/release-notes/">
-            Release notes
+            Release Notes
           </a>
         </li>
 
@@ -976,6 +1020,7 @@ file paths. For example, <code>*program*.sl</code>. The default is ∗.</li>
 matching mime-type. For example, <code>+</code>. The default is no filter.</li>
   <li><code>--cpusampler.FilterRootName=&lt;Expression&gt;</code>: applies a wildcard filter for
 program roots. For example, <code>Math.*</code>. The default is ∗.</li>
+  <li><code>--cpusampler.GatherHitTimes</code>: saves a timestamp for each taken sample. The default is false.</li>
   <li><code>--cpusampler.Mode=&lt;Mode&gt;</code>:  describes level of sampling detail. Please note that increased detail can lead to reduced accuracy.
     <ul>
       <li><code>exclude_inlined_roots</code> samples roots excluding inlined functions (enabled by default);</li>
@@ -991,6 +1036,7 @@ sample the stack.</li>
 false.</li>
   <li><code>--cpusampler.StackLimit=&lt;Integer&gt;</code>: specifies the maximum number of stack
 elements.</li>
+  <li><code>--cpusampler.SummariseThreads </code>: prints sampling output as a summary of all ‘per thread’ profiles. The default is false.</li>
 </ul>
 
 <h3 id="cpu-tracer-command-options">CPU Tracer Command Options</h3>
@@ -1003,6 +1049,7 @@ file paths. For example, <code>*program*.sl</code>. The default is ∗.</li>
 matching mime-type. For example, <code>+</code>. The default is no filter.</li>
   <li><code>--cputracer.FilterRootName=&lt;Expression&gt;</code>: applies a wildcard filter for
 program roots. For example, <code>Math.*</code>. The default is ∗.</li>
+  <li><code>--cputracer.Output=&lt;Output&gt;</code> prints a <code>histogram</code> or <code>json</code> as output. The default is <code>histogram</code>.</li>
   <li><code>--cputracer.TraceCalls</code>: captures calls when tracing. The default is false.</li>
   <li><code>--cputracer.TraceInternal</code>: traces internal elements. The default is false.</li>
   <li><code>--cputracer.TraceRoots=&lt;Boolean&gt;</code>: captures roots when tracing.  The default
@@ -1177,14 +1224,12 @@ statements:</p>
 <h3 id="starting-graal-visualvm">Starting Graal VisualVM</h3>
 <p>To start Graal VisualVM execute <code>jvisualvm</code>. Immediately after the startup, the tool shows all locally running Java processes in the Applications area, including the VisualVM process itself.</p>
 
-<p><strong>NOTE:</strong> Substrate VM processes are only displayed in the Applications area if created by the <code>native-image</code> tool with the <code>-H:+AllowVMInspection</code> flag. Guest language REPL process must be started with the <code>--jvm</code> flag to monitor it using Graal VisualVM.</p>
+<p><strong>NOTE:</strong> GraalVM native images do not implement JVMTI agent, hence triggering heap dump creation from Applications area is impossible. Apply <code>-H:+AllowVMInspection</code> flag with the <code>native-image</code> tool for Substrate VM processes. This way your application will handle signals and get a heap dump when it receives SIGUSR1 signal. Guest language REPL process must be started also with the <code>--jvm</code> flag to monitor it using Graal VisualVM.This functionality is available with <a href="http://www.oracle.com/technetwork/oracle-labs/program-languages/downloads/index.html">GraalVM Enterprise Edition</a>. It is <strong>not</strong> available in GraalVM open source version available on GitHub. See the <a href="/docs/reference-manual/native_heapdump/">Generating Native Heap Dumps</a> page for details on creating heap dumps from a Substrate VM process.</p>
 
 <h3 id="getting-heap-dump">Getting Heap Dump</h3>
 <p>Let’s say you are trying to analyze a Ruby application. To get a heap dump, first start your application and let it run for a few seconds to warm up.</p>
 
 <p>Then right-click its process in VisualVM and invoke the Heap Dump action. A new heap viewer for the Ruby process opens.</p>
-
-<p><strong>NOTE:</strong> See the <a href="/docs/reference-manual/native_heapdump/">Generating Native Heap Dumps</a> page for details on creating heap dumps from a Substrate VM process.</p>
 
 <h3 id="analyzing-objects">Analyzing Objects</h3>
 <p>Initially the Summary view for the Java heap is displayed. To analyze the Ruby heap, click the leftmost (Summary) dropdown in the heap viewer toolbar, choose the Ruby Heap scope and select the Objects view. Now the heap viewer displays all Ruby heap objects, aggregated by their type.</p>
@@ -1289,7 +1334,7 @@ statements:</p>
     </div>
     <div class="overlay"></div>
 
-    <script src="/resources/lib/twitter-fetcher.js"></script>
+    <script src='/resources/lib/twitter-fetcher.js'></script>
     <script src='/resources/lib/slick-slider/slick.min.js'></script>
     <script src='/resources/js/main.js'></script>
   </body>
