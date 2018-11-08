@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":18,"i2":6,"i3":18,"i4":18,"i5":6,"i6":18,"i7":6,"i8":6,"i9":6,"i10":6,"i11":6,"i12":18,"i13":18,"i14":6,"i15":6};
+var methods = {"i0":6,"i1":18,"i2":6,"i3":18,"i4":18,"i5":6,"i6":18,"i7":6,"i8":6,"i9":6,"i10":6,"i11":6,"i12":18,"i13":18,"i14":18,"i15":6,"i16":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],16:["t5","Default Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -226,12 +226,18 @@ var activeTableTab = "activeTableTab";
 </td>
 </tr>
 <tr id="i14" class="altColor">
+<td class="colFirst"><code>default void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/graalvm/polyglot/io/FileSystem.html#setCurrentWorkingDirectory-java.nio.file.Path-">setCurrentWorkingDirectory</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;currentWorkingDirectory)</code>
+<div class="block">Sets the current working directory.</div>
+</td>
+</tr>
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/graalvm/polyglot/io/FileSystem.html#toAbsolutePath-java.nio.file.Path-">toAbsolutePath</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;path)</code>
 <div class="block">Resolves given path to an absolute path.</div>
 </td>
 </tr>
-<tr id="i15" class="rowColor">
+<tr id="i16" class="altColor">
 <td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/graalvm/polyglot/io/FileSystem.html#toRealPath-java.nio.file.Path-java.nio.file.LinkOption...-">toRealPath</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;path,
           <a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/LinkOption.html?is-external=true" title="class or interface in java.nio.file">LinkOption</a>...&nbsp;linkOptions)</code>
@@ -653,7 +659,7 @@ var activeTableTab = "activeTableTab";
 <a name="readSymbolicLink-java.nio.file.Path-">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>readSymbolicLink</h4>
 <pre>default&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;readSymbolicLink(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;link)
@@ -669,6 +675,29 @@ var activeTableTab = "activeTableTab";
 <dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/NotLinkException.html?is-external=true" title="class or interface in java.nio.file">NotLinkException</a></code> - if the <code>link</code> does not denote a symbolic link</dd>
 <dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - in case of IO error</dd>
 <dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/SecurityException.html?is-external=true" title="class or interface in java.lang">SecurityException</a></code> - if this <a href="../../../../org/graalvm/polyglot/io/FileSystem.html" title="interface in org.graalvm.polyglot.io"><code>FileSystem</code></a> denied the operation</dd>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>1.0</dd>
+</dl>
+</li>
+</ul>
+<a name="setCurrentWorkingDirectory-java.nio.file.Path-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>setCurrentWorkingDirectory</h4>
+<pre>default&nbsp;void&nbsp;setCurrentWorkingDirectory(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;currentWorkingDirectory)</pre>
+<div class="block">Sets the current working directory. The current working directory is used to resolve non
+ absolute paths in <a href="../../../../org/graalvm/polyglot/io/FileSystem.html" title="interface in org.graalvm.polyglot.io"><code>FileSystem</code></a> operations.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>currentWorkingDirectory</code> - the new current working directory</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/UnsupportedOperationException.html?is-external=true" title="class or interface in java.lang">UnsupportedOperationException</a></code> - if setting of the current working directory is not
+             supported</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalArgumentException.html?is-external=true" title="class or interface in java.lang">IllegalArgumentException</a></code> - if the <code>currentWorkingDirectory</code> is not a valid
+             current working directory</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/SecurityException.html?is-external=true" title="class or interface in java.lang">SecurityException</a></code> - if <code>currentWorkingDirectory</code> is not readable</dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>1.0</dd>
 </dl>
