@@ -554,7 +554,6 @@ is available on GitHub.</p>
 
 <h3 id="api-changes-for-graalvm-integrators-sdk--truffle">API changes for GraalVM integrators (SDK + Truffle)</h3>
 <ul>
-  <li>Added <code>ArrayUtils</code> API providing additional array and/or string operations that may be intrinsified by the compiler.</li>
   <li>Added <code>SourceElement.ROOT</code> and <code>StepConfig.suspendAnchors()</code> to tune debugger stepping.</li>
   <li>Added <a href="http://www.graalvm.org/sdk/javadoc/org/graalvm/polyglot/Context.Builder.html#logHandler-java.io.OutputStream-">Context.Builder.logHandler</a> and <a href="http://www.graalvm.org/sdk/javadoc/org/graalvm/polyglot/Engine.Builder.html#logHandler-java.io.OutputStream-">Engine.Builder.logHandler</a> methods to install a logging handler writing into a given <code>OutputStream</code>.</li>
   <li>Primitives, host and <code>Proxy</code> values can now be shared between multiple context and engine instances. They no longer throw an <code>IllegalArgumentException</code> when shared.</li>

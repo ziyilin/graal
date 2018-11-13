@@ -605,7 +605,7 @@ function initialize() {
     ],
     oslo: [
       {
-        meetup: 'Devoxx Ukraine',
+        conference: 'javaBin Oslo',
         date: 'November 26, 2018',
         url: '#event-nine',
         position: {lat: 59.923517, lng: 10.731775}
@@ -613,7 +613,7 @@ function initialize() {
     ],
     helsinki: [
       {
-        meetup: 'Helsinki Java User Group',
+        conference: 'Helsinki Java User Group',
         date: 'November 27, 2018',
         url: '#event-ten',
         position: {lat: 60.169422, lng: 24.928233}

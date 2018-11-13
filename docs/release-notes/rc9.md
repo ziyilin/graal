@@ -37,7 +37,6 @@ A complete [changelog](https://github.com/graalvm/graaljs/blob/master/CHANGELOG.
 The project [changelog](https://github.com/oracle/graal/blob/master/sulong/CHANGELOG.md) is available on GitHub.
 
 ### API changes for GraalVM integrators (SDK + Truffle)
-* Added `ArrayUtils` API providing additional array and/or string operations that may be intrinsified by the compiler.
 * Added `SourceElement.ROOT` and `StepConfig.suspendAnchors()` to tune debugger stepping.
 * Added [Context.Builder.logHandler](http://www.graalvm.org/sdk/javadoc/org/graalvm/polyglot/Context.Builder.html#logHandler-java.io.OutputStream-) and [Engine.Builder.logHandler](http://www.graalvm.org/sdk/javadoc/org/graalvm/polyglot/Engine.Builder.html#logHandler-java.io.OutputStream-) methods to install a logging handler writing into a given `OutputStream`.
 * Primitives, host and `Proxy` values can now be shared between multiple context and engine instances. They no longer throw an `IllegalArgumentException` when shared.
