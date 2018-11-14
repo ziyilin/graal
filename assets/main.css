@@ -5850,7 +5850,7 @@ input[type='submit'] {
     .card--colored .card__title__text a {
       color: #ffffff; }
       .card--colored .card__title__text a:hover {
-        text-decoration: underline; }
+        color: #44505f; }
     .card--colored .icon {
       width: 25px;
       height: 35px;

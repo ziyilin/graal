@@ -897,6 +897,10 @@ libraries (<code>*.bc</code>). Files with a relative path are looked up relative
 <p><code>--llvm.enableLVI=&lt;true/false&gt;</code>: enable source-level symbol inspection in the
 debugger. This defaults to <code>false</code> as it can decrease run-time performance.</p>
 
+<p><code>--llvm.sandboxed</code> enables an experimental sandboxed mode, which means memory
+allocations from LLVM bitcode are done on the managed heap. <a href="https://medium.com/graalvm/safe-and-sandboxed-execution-of-native-code-f6096b35c360">This article</a>
+explains the sandboxed execution in every detail.</p>
+
 <p><code>--version</code> prints the version and exit.</p>
 
 <p><code>--version:graalvm</code> prints GraalVM version information and exit.</p>
