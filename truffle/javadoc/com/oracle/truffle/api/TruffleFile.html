@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":10,"i22":10,"i23":10,"i24":10,"i25":10,"i26":10,"i27":10,"i28":10,"i29":10,"i30":10,"i31":10,"i32":10,"i33":10,"i34":10,"i35":10,"i36":10,"i37":10,"i38":10,"i39":10,"i40":10,"i41":10,"i42":10,"i43":10,"i44":10,"i45":10,"i46":10,"i47":10,"i48":10,"i49":10,"i50":10,"i51":10,"i52":10,"i53":10,"i54":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":10,"i22":10,"i23":10,"i24":10,"i25":10,"i26":10,"i27":10,"i28":10,"i29":10,"i30":10,"i31":10,"i32":10,"i33":10,"i34":10,"i35":10,"i36":10,"i37":10,"i38":10,"i39":10,"i40":10,"i41":10,"i42":10,"i43":10,"i44":10,"i45":10,"i46":10,"i47":10,"i48":10,"i49":10,"i50":10,"i51":10,"i52":10,"i53":10,"i54":10,"i55":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -453,16 +453,22 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 </td>
 </tr>
 <tr id="i52" class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#toRelativeUri--">toRelativeUri</a></span>()</code>
+<div class="block">Returns a relative <a href="http://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net"><code>URI</code></a> representation of non absolute <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a>.</div>
+</td>
+</tr>
+<tr id="i53" class="rowColor">
 <td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#toString--">toString</a></span>()</code></td>
 </tr>
-<tr id="i53" class="rowColor">
+<tr id="i54" class="altColor">
 <td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#toUri--">toUri</a></span>()</code>
-<div class="block">Returns the <a href="http://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net"><code>URI</code></a> representation of this <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a>.</div>
+<div class="block">Returns the absolute <a href="http://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net"><code>URI</code></a> representation of this <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a>.</div>
 </td>
 </tr>
-<tr id="i54" class="altColor">
+<tr id="i55" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleFile.html#visit-java.nio.file.FileVisitor-int-java.nio.file.FileVisitOption...-">visit</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/FileVisitor.html?is-external=true" title="class or interface in java.nio.file">FileVisitor</a>&lt;<a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a>&gt;&nbsp;visitor,
      int&nbsp;maxDepth,
@@ -684,12 +690,30 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li class="blockList">
 <h4>toUri</h4>
 <pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a>&nbsp;toUri()</pre>
-<div class="block">Returns the <a href="http://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net"><code>URI</code></a> representation of this <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a>.</div>
+<div class="block">Returns the absolute <a href="http://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net"><code>URI</code></a> representation of this <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a>.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the absolute <a href="http://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net"><code>URI</code></a> representing the <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a></dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/SecurityException.html?is-external=true" title="class or interface in java.lang">SecurityException</a></code> - if the <a href="../../../../org/graalvm/polyglot/io/FileSystem.html" title="interface in org.graalvm.polyglot.io"><code>FileSystem</code></a> denied a resolution of an absolute path</dd>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>1.0</dd>
+</dl>
+</li>
+</ul>
+<a name="toRelativeUri--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>toRelativeUri</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a>&nbsp;toRelativeUri()</pre>
+<div class="block">Returns a relative <a href="http://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net"><code>URI</code></a> representation of non absolute <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a>. If this
+ <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> is relative it returns a relative <a href="http://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net"><code>URI</code></a>. For an
+ <a href="../../../../com/oracle/truffle/api/TruffleFile.html#isAbsolute--"><code>absolute</code></a> <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> it returns an absolute <a href="http://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net"><code>URI</code></a>.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the <a href="http://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net"><code>URI</code></a> representing the <a href="../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a></dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>1.0</dd>
 </dl>
