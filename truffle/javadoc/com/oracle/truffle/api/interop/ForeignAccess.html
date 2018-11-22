@@ -178,8 +178,8 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>static <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html" title="class in com.oracle.truffle.api.interop">ForeignAccess</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html#create-com.oracle.truffle.api.interop.ForeignAccess.StandardFactory-com.oracle.truffle.api.nodes.RootNode-">create</a></span>(<a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.StandardFactory.html" title="interface in com.oracle.truffle.api.interop">ForeignAccess.StandardFactory</a>&nbsp;factory,
-      <a href="../../../../../com/oracle/truffle/api/nodes/RootNode.html" title="class in com.oracle.truffle.api.nodes">RootNode</a>&nbsp;languageCheck)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html#createAccess-com.oracle.truffle.api.interop.ForeignAccess.StandardFactory-java.util.function.Supplier-">createAccess</a></span>(<a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.StandardFactory.html" title="interface in com.oracle.truffle.api.interop">ForeignAccess.StandardFactory</a>&nbsp;factory,
+            <a href="http://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;? extends <a href="../../../../../com/oracle/truffle/api/nodes/RootNode.html" title="class in com.oracle.truffle.api.nodes">RootNode</a>&gt;&nbsp;languageCheckSupplier)</code>
 <div class="block">Creates new instance of <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html" title="class in com.oracle.truffle.api.interop"><code>ForeignAccess</code></a> that delegates to provided factory.</div>
 </td>
 </tr>
@@ -420,25 +420,25 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 </dl>
 </li>
 </ul>
-<a name="create-com.oracle.truffle.api.interop.ForeignAccess.StandardFactory-com.oracle.truffle.api.nodes.RootNode-">
+<a name="createAccess-com.oracle.truffle.api.interop.ForeignAccess.StandardFactory-java.util.function.Supplier-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>create</h4>
-<pre>public static&nbsp;<a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html" title="class in com.oracle.truffle.api.interop">ForeignAccess</a>&nbsp;create(<a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.StandardFactory.html" title="interface in com.oracle.truffle.api.interop">ForeignAccess.StandardFactory</a>&nbsp;factory,
-                                   <a href="../../../../../com/oracle/truffle/api/nodes/RootNode.html" title="class in com.oracle.truffle.api.nodes">RootNode</a>&nbsp;languageCheck)</pre>
+<h4>createAccess</h4>
+<pre>public static&nbsp;<a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html" title="class in com.oracle.truffle.api.interop">ForeignAccess</a>&nbsp;createAccess(<a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.StandardFactory.html" title="interface in com.oracle.truffle.api.interop">ForeignAccess.StandardFactory</a>&nbsp;factory,
+                                         <a href="http://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;? extends <a href="../../../../../com/oracle/truffle/api/nodes/RootNode.html" title="class in com.oracle.truffle.api.nodes">RootNode</a>&gt;&nbsp;languageCheckSupplier)</pre>
 <div class="block">Creates new instance of <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html" title="class in com.oracle.truffle.api.interop"><code>ForeignAccess</code></a> that delegates to provided factory.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>factory</code> - the factory that handles access requests to <a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop"><code>Message</code></a>s</dd>
-<dd><code>languageCheck</code> - a <a href="../../../../../com/oracle/truffle/api/nodes/RootNode.html" title="class in com.oracle.truffle.api.nodes"><code>RootNode</code></a> that performs the language check on receiver objects,
-            can be <code>null</code>, but then the factory must also implement <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.Factory.html" title="interface in com.oracle.truffle.api.interop"><code>ForeignAccess.Factory</code></a>
-            interface</dd>
+<dd><code>languageCheckSupplier</code> - a <a href="http://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function"><code>Supplier</code></a> of <a href="../../../../../com/oracle/truffle/api/nodes/RootNode.html" title="class in com.oracle.truffle.api.nodes"><code>RootNode</code></a> that performs the
+            language check on receiver objects, can be <code>null</code>, but then the factory
+            must also implement <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.Factory.html" title="interface in com.oracle.truffle.api.interop"><code>ForeignAccess.Factory</code></a> interface</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>new instance wrapping <code>factory</code></dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
-<dd>0.30</dd>
+<dd>1.0</dd>
 </dl>
 </li>
 </ul>
