@@ -139,8 +139,8 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
  elements of an object. For example, the members of a Java object are all public methods and
  fields. Members are accessible using <a href="../../../org/graalvm/polyglot/Value.html#getMember-java.lang.String-"><code>Value.getMember(String)</code></a>.
  <li><a href="../../../org/graalvm/polyglot/Value.html#canExecute--"><code>Executable</code></a>: This value can be <a href="../../../org/graalvm/polyglot/Value.html#execute-java.lang.Object...-"><code>executed</code></a>.
- This indicates that the value represents that can be executed. Guest language examples for
- executable elements are functions, methods, closures or promises.
+ This indicates that the value represents an element that can be executed. Guest language examples
+ for executable elements are functions, methods, closures or promises.
  <li><a href="../../../org/graalvm/polyglot/Value.html#canInstantiate--"><code>Instantiable</code></a>: This value can be <a href="../../../org/graalvm/polyglot/Value.html#newInstance-java.lang.Object...-"><code>instantiated</code></a>. For example, Java classes are instantiable.
  </ul>
  <p>
@@ -152,7 +152,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
  <a href="../../../org/graalvm/polyglot/Value.html#toString--"><code>string</code></a> for debugging, formatted by the original language.
  <p>
  Polyglot values may be converted to host objects using <a href="../../../org/graalvm/polyglot/Value.html#as-java.lang.Class-"><code>Value.as(Class)</code></a>. In addition values may
- be created form Java values using <a href="../../../org/graalvm/polyglot/Context.html#asValue-java.lang.Object-"><code>Context.asValue(Object)</code></a>.</div>
+ be created from Java values using <a href="../../../org/graalvm/polyglot/Context.html#asValue-java.lang.Object-"><code>Context.asValue(Object)</code></a>.</div>
 <dl>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>1.0</dd>
@@ -194,26 +194,27 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/Value.html#asBoolean--">asBoolean</a></span>()</code>
-<div class="block">Returns an <code>boolean</code> representation if this value if it is <a href="../../../org/graalvm/polyglot/Value.html#isBoolean--"><code>boolean</code></a>.</div>
+<div class="block">Returns a <code>boolean</code> representation of this value if it is <a href="../../../org/graalvm/polyglot/Value.html#isBoolean--"><code>boolean</code></a>.</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>byte</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/Value.html#asByte--">asByte</a></span>()</code>
-<div class="block">Returns an <code>byte</code> representation if this value if it is <a href="../../../org/graalvm/polyglot/Value.html#isNumber--"><code>number</code></a>
+<div class="block">Returns a <code>byte</code> representation of this value if it is <a href="../../../org/graalvm/polyglot/Value.html#isNumber--"><code>number</code></a>
  and the value <a href="../../../org/graalvm/polyglot/Value.html#fitsInByte--"><code>fits</code></a>.</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>double</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/Value.html#asDouble--">asDouble</a></span>()</code>
-<div class="block">Returns an <code>double</code> representation if this value if it is <a href="../../../org/graalvm/polyglot/Value.html#isNumber--"><code>number</code></a> and the value <a href="../../../org/graalvm/polyglot/Value.html#fitsInDouble--"><code>fits</code></a>.</div>
+<div class="block">Returns a <code>double</code> representation of this value if it is <a href="../../../org/graalvm/polyglot/Value.html#isNumber--"><code>number</code></a> and the value <a href="../../../org/graalvm/polyglot/Value.html#fitsInDouble--"><code>fits</code></a>.</div>
 </td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>float</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/Value.html#asFloat--">asFloat</a></span>()</code>
-<div class="block">Returns an <code>float</code> representation if this value if it is <a href="../../../org/graalvm/polyglot/Value.html#isNumber--"><code>number</code></a> and the value <a href="../../../org/graalvm/polyglot/Value.html#fitsInFloat--"><code>fits</code></a>.</div>
+<div class="block">Returns a <code>float</code> representation of this value if it is <a href="../../../org/graalvm/polyglot/Value.html#isNumber--"><code>number</code></a>
+ and the value <a href="../../../org/graalvm/polyglot/Value.html#fitsInFloat--"><code>fits</code></a>.</div>
 </td>
 </tr>
 <tr id="i6" class="altColor">
@@ -225,14 +226,14 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/Value.html#asInt--">asInt</a></span>()</code>
-<div class="block">Returns an <code>int</code> representation if this value if it is <a href="../../../org/graalvm/polyglot/Value.html#isNumber--"><code>number</code></a>
+<div class="block">Returns an <code>int</code> representation of this value if it is <a href="../../../org/graalvm/polyglot/Value.html#isNumber--"><code>number</code></a>
  and the value <a href="../../../org/graalvm/polyglot/Value.html#fitsInInt--"><code>fits</code></a>.</div>
 </td>
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code>long</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/Value.html#asLong--">asLong</a></span>()</code>
-<div class="block">Returns an <code>long</code> representation if this value if it is <a href="../../../org/graalvm/polyglot/Value.html#isNumber--"><code>number</code></a>
+<div class="block">Returns a <code>long</code> representation of this value if it is <a href="../../../org/graalvm/polyglot/Value.html#isNumber--"><code>number</code></a>
  and the value <a href="../../../org/graalvm/polyglot/Value.html#fitsInLong--"><code>fits</code></a>.</div>
 </td>
 </tr>
@@ -251,7 +252,8 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <tr id="i11" class="rowColor">
 <td class="colFirst"><code>short</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/Value.html#asShort--">asShort</a></span>()</code>
-<div class="block">Returns an <code>short</code> representation if this value if it is <a href="../../../org/graalvm/polyglot/Value.html#isNumber--"><code>number</code></a> and the value <a href="../../../org/graalvm/polyglot/Value.html#fitsInShort--"><code>fits</code></a>.</div>
+<div class="block">Returns a <code>short</code> representation of this value if it is <a href="../../../org/graalvm/polyglot/Value.html#isNumber--"><code>number</code></a>
+ and the value <a href="../../../org/graalvm/polyglot/Value.html#fitsInShort--"><code>fits</code></a>.</div>
 </td>
 </tr>
 <tr id="i12" class="altColor">
@@ -434,7 +436,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <tr id="i40" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/Value.html#isProxyObject--">isProxyObject</a></span>()</code>
-<div class="block">Returns <code>true</code> whether this value represents a <a href="../../../org/graalvm/polyglot/proxy/Proxy.html" title="interface in org.graalvm.polyglot.proxy"><code>Proxy</code></a>.</div>
+<div class="block">Returns <code>true</code> if this value represents a <a href="../../../org/graalvm/polyglot/proxy/Proxy.html" title="interface in org.graalvm.polyglot.proxy"><code>Proxy</code></a>.</div>
 </td>
 </tr>
 <tr id="i41" class="rowColor">
@@ -550,7 +552,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <h4>getArrayElement</h4>
 <pre>public&nbsp;<a href="../../../org/graalvm/polyglot/Value.html" title="class in org.graalvm.polyglot">Value</a>&nbsp;getArrayElement(long&nbsp;index)</pre>
 <div class="block">Returns the array element of a given index. Polyglot arrays start with index <code>0</code>,
- independent of the guest language. The given array index must be greater or equal 0.</div>
+ independent of the guest language. The given array index must be greater or equal to 0.</div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/ArrayIndexOutOfBoundsException.html?is-external=true" title="class or interface in java.lang">ArrayIndexOutOfBoundsException</a></code> - if the array index does not exist.</dd>
@@ -572,7 +574,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <h4>setArrayElement</h4>
 <pre>public&nbsp;void&nbsp;setArrayElement(long&nbsp;index,
                             <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;value)</pre>
-<div class="block">Sets the value at a given index. Polyglot array start with index <code>0</code>, independent
+<div class="block">Sets the value at a given index. Polyglot arrays start with index <code>0</code>, independent
  of the guest language. The array element value is subject to polyglot value mapping rules as
  described in <a href="../../../org/graalvm/polyglot/Context.html#asValue-java.lang.Object-"><code>Context.asValue(Object)</code></a>.</div>
 <dl>
@@ -703,12 +705,12 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <h4>getMemberKeys</h4>
 <pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;getMemberKeys()</pre>
 <div class="block">Returns a set of all member keys. Calling <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true#contains-java.lang.Object-" title="class or interface in java.util"><code>Set.contains(Object)</code></a> with a string key is
- equivalent of calling <a href="../../../org/graalvm/polyglot/Value.html#hasMember-java.lang.String-"><code>Value.hasMember(String)</code></a>. Removing an element from the returned set
+ equivalent to calling <a href="../../../org/graalvm/polyglot/Value.html#hasMember-java.lang.String-"><code>Value.hasMember(String)</code></a>. Removing an element from the returned set
  is equivalent to calling <a href="../../../org/graalvm/polyglot/Value.html#removeMember-java.lang.String-"><code>Value.removeMember(String)</code></a>. Adding an element to the set is
  equivalent to calling <a href="../../../org/graalvm/polyglot/Value.html#putMember-java.lang.String-java.lang.Object-">putMember(key, null)</a>. If the
  value does not support <a href="../../../org/graalvm/polyglot/Value.html#hasMembers--"><code>members</code></a> then an empty unmodifiable set is
  returned. If the context gets closed while the returned set is still alive, then the set will
- throw an <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalStateException.html?is-external=true" title="class or interface in java.lang"><code>IllegalStateException</code></a> if any method except Object methods is invoked.</div>
+ throw an <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalStateException.html?is-external=true" title="class or interface in java.lang"><code>IllegalStateException</code></a> if any methods except Object methods are invoked.</div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalStateException.html?is-external=true" title="class or interface in java.lang">IllegalStateException</a></code> - if the context is already <a href="../../../org/graalvm/polyglot/Context.html#close--"><code>closed</code></a>.</dd>
@@ -899,7 +901,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
                           <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>...&nbsp;arguments)</pre>
 <div class="block">Invokes the given member of this value. Unlike <a href="../../../org/graalvm/polyglot/Value.html#execute-java.lang.Object...-"><code>Value.execute(Object...)</code></a>, this is an object
  oriented execution of a member of an object. To test whether invocation is supported, call
- <a href="../../../org/graalvm/polyglot/Value.html#canInvokeMember-java.lang.String-"><code>Value.canInvokeMember(String)</code></a>. When object oriented semantics is not supported, use
+ <a href="../../../org/graalvm/polyglot/Value.html#canInvokeMember-java.lang.String-"><code>Value.canInvokeMember(String)</code></a>. When object oriented semantics are not supported, use
  <code><a href="../../../org/graalvm/polyglot/Value.html#getMember-java.lang.String-"><code>Value.getMember(String)</code></a>.<a href="../../../org/graalvm/polyglot/Value.html#execute-java.lang.Object...-"><code>execute(Object...)</code></a></code>
  instead.</div>
 <dl>
@@ -980,7 +982,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li class="blockList">
 <h4>asInt</h4>
 <pre>public&nbsp;int&nbsp;asInt()</pre>
-<div class="block">Returns an <code>int</code> representation if this value if it is <a href="../../../org/graalvm/polyglot/Value.html#isNumber--"><code>number</code></a>
+<div class="block">Returns an <code>int</code> representation of this value if it is <a href="../../../org/graalvm/polyglot/Value.html#isNumber--"><code>number</code></a>
  and the value <a href="../../../org/graalvm/polyglot/Value.html#fitsInInt--"><code>fits</code></a>.</div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
@@ -1019,7 +1021,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li class="blockList">
 <h4>asBoolean</h4>
 <pre>public&nbsp;boolean&nbsp;asBoolean()</pre>
-<div class="block">Returns an <code>boolean</code> representation if this value if it is <a href="../../../org/graalvm/polyglot/Value.html#isBoolean--"><code>boolean</code></a>.</div>
+<div class="block">Returns a <code>boolean</code> representation of this value if it is <a href="../../../org/graalvm/polyglot/Value.html#isBoolean--"><code>boolean</code></a>.</div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/NullPointerException.html?is-external=true" title="class or interface in java.lang">NullPointerException</a></code> - if this value represents <a href="../../../org/graalvm/polyglot/Value.html#isNull--"><code>null</code></a></dd>
@@ -1077,7 +1079,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li class="blockList">
 <h4>asLong</h4>
 <pre>public&nbsp;long&nbsp;asLong()</pre>
-<div class="block">Returns an <code>long</code> representation if this value if it is <a href="../../../org/graalvm/polyglot/Value.html#isNumber--"><code>number</code></a>
+<div class="block">Returns a <code>long</code> representation of this value if it is <a href="../../../org/graalvm/polyglot/Value.html#isNumber--"><code>number</code></a>
  and the value <a href="../../../org/graalvm/polyglot/Value.html#fitsInLong--"><code>fits</code></a>.</div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
@@ -1117,7 +1119,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li class="blockList">
 <h4>asDouble</h4>
 <pre>public&nbsp;double&nbsp;asDouble()</pre>
-<div class="block">Returns an <code>double</code> representation if this value if it is <a href="../../../org/graalvm/polyglot/Value.html#isNumber--"><code>number</code></a> and the value <a href="../../../org/graalvm/polyglot/Value.html#fitsInDouble--"><code>fits</code></a>.</div>
+<div class="block">Returns a <code>double</code> representation of this value if it is <a href="../../../org/graalvm/polyglot/Value.html#isNumber--"><code>number</code></a> and the value <a href="../../../org/graalvm/polyglot/Value.html#fitsInDouble--"><code>fits</code></a>.</div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/NullPointerException.html?is-external=true" title="class or interface in java.lang">NullPointerException</a></code> - if this value represents <a href="../../../org/graalvm/polyglot/Value.html#isNull--"><code>null</code></a>.</dd>
@@ -1156,7 +1158,8 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li class="blockList">
 <h4>asFloat</h4>
 <pre>public&nbsp;float&nbsp;asFloat()</pre>
-<div class="block">Returns an <code>float</code> representation if this value if it is <a href="../../../org/graalvm/polyglot/Value.html#isNumber--"><code>number</code></a> and the value <a href="../../../org/graalvm/polyglot/Value.html#fitsInFloat--"><code>fits</code></a>.</div>
+<div class="block">Returns a <code>float</code> representation of this value if it is <a href="../../../org/graalvm/polyglot/Value.html#isNumber--"><code>number</code></a>
+ and the value <a href="../../../org/graalvm/polyglot/Value.html#fitsInFloat--"><code>fits</code></a>.</div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/NullPointerException.html?is-external=true" title="class or interface in java.lang">NullPointerException</a></code> - if this value represents <a href="../../../org/graalvm/polyglot/Value.html#isNull--"><code>null</code></a>.</dd>
@@ -1195,7 +1198,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li class="blockList">
 <h4>asByte</h4>
 <pre>public&nbsp;byte&nbsp;asByte()</pre>
-<div class="block">Returns an <code>byte</code> representation if this value if it is <a href="../../../org/graalvm/polyglot/Value.html#isNumber--"><code>number</code></a>
+<div class="block">Returns a <code>byte</code> representation of this value if it is <a href="../../../org/graalvm/polyglot/Value.html#isNumber--"><code>number</code></a>
  and the value <a href="../../../org/graalvm/polyglot/Value.html#fitsInByte--"><code>fits</code></a>.</div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
@@ -1235,7 +1238,8 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li class="blockList">
 <h4>asShort</h4>
 <pre>public&nbsp;short&nbsp;asShort()</pre>
-<div class="block">Returns an <code>short</code> representation if this value if it is <a href="../../../org/graalvm/polyglot/Value.html#isNumber--"><code>number</code></a> and the value <a href="../../../org/graalvm/polyglot/Value.html#fitsInShort--"><code>fits</code></a>.</div>
+<div class="block">Returns a <code>short</code> representation of this value if it is <a href="../../../org/graalvm/polyglot/Value.html#isNumber--"><code>number</code></a>
+ and the value <a href="../../../org/graalvm/polyglot/Value.html#fitsInShort--"><code>fits</code></a>.</div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/NullPointerException.html?is-external=true" title="class or interface in java.lang">NullPointerException</a></code> - if this value represents <a href="../../../org/graalvm/polyglot/Value.html#isNull--"><code>null</code></a>.</dd>
@@ -1343,8 +1347,8 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li class="blockList">
 <h4>isProxyObject</h4>
 <pre>public&nbsp;boolean&nbsp;isProxyObject()</pre>
-<div class="block">Returns <code>true</code> whether this value represents a <a href="../../../org/graalvm/polyglot/proxy/Proxy.html" title="interface in org.graalvm.polyglot.proxy"><code>Proxy</code></a>. The proxy instance
- can be unboxed using <a href="../../../org/graalvm/polyglot/Value.html#asProxyObject--"><code>Value.asProxyObject()</code></a>.</div>
+<div class="block">Returns <code>true</code> if this value represents a <a href="../../../org/graalvm/polyglot/proxy/Proxy.html" title="interface in org.graalvm.polyglot.proxy"><code>Proxy</code></a>. The proxy instance can be
+ unboxed using <a href="../../../org/graalvm/polyglot/Value.html#asProxyObject--"><code>Value.asProxyObject()</code></a>.</div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="../../../org/graalvm/polyglot/PolyglotException.html" title="class in org.graalvm.polyglot">PolyglotException</a></code> - if a guest language error occurred during execution.</dd>
@@ -1426,7 +1430,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
  be executed and instantiated then the returned implementation of the interface will be
  <a href="../../../org/graalvm/polyglot/Value.html#execute-java.lang.Object...-"><code>executed</code></a>. The coercion to the parameter types of functional
  interface method is converted using the semantics of <a href="../../../org/graalvm/polyglot/Value.html#as-java.lang.Class-"><code>Value.as(Class)</code></a>. If a standard
- functional interface like <a href="http://docs.oracle.com/javase/8/docs/api/java/util/function/Function.html?is-external=true" title="class or interface in java.util.function"><code>Function</code></a> are used, is recommended to use
+ functional interface like <a href="http://docs.oracle.com/javase/8/docs/api/java/util/function/Function.html?is-external=true" title="class or interface in java.util.function"><code>Function</code></a> is used, it is recommended to use
  <a href="../../../org/graalvm/polyglot/Value.html#as-org.graalvm.polyglot.TypeLiteral-"><code>type literals</code></a> to specify the expected generic method parameter and
  return type.
  <li>Any interface if the value <a href="../../../org/graalvm/polyglot/Value.html#hasMembers--"><code>Value.hasMembers()</code></a>. Each method or field name maps to one
@@ -1489,8 +1493,8 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
  can be <a href="../../../org/graalvm/polyglot/Value.html#canExecute--"><code>executed</code></a> or <a href="../../../org/graalvm/polyglot/Value.html#canInstantiate--"><code>instantiated</code></a>.
  <li>If the value can be <a href="../../../org/graalvm/polyglot/Value.html#canExecute--"><code>executed</code></a> or <a href="../../../org/graalvm/polyglot/Value.html#canInstantiate--"><code>instantiated</code></a> then the result value implements <a href="http://docs.oracle.com/javase/8/docs/api/java/util/function/Function.html?is-external=true" title="class or interface in java.util.function"><code>Function</code></a>. By default the
  argument of the function will be used as single argument to the function when executed. If a
- value of type <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang"><code>Object[]</code></a> is provided then the function will executed with those
- arguments. The returned function may also implement <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util"><code>Map</code></a> if the value has
+ value of type <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang"><code>Object[]</code></a> is provided then the function will be executed with
+ those arguments. The returned function may also implement <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util"><code>Map</code></a> if the value has
  <a href="../../../org/graalvm/polyglot/Value.html#hasArrayElements--"><code>array elements</code></a> or <a href="../../../org/graalvm/polyglot/Value.html#hasMembers--"><code>members</code></a>.
  <li>If none of the above rules apply then this <a href="../../../org/graalvm/polyglot/Value.html" title="class in org.graalvm.polyglot"><code>Value</code></a> instance is returned.
  </ol>
