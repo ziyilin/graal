@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":9,"i6":9,"i7":9,"i8":9,"i9":9,"i10":6,"i11":6,"i12":10,"i13":10,"i14":6,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":6,"i21":6,"i22":6,"i23":10,"i24":10,"i25":6,"i26":6,"i27":6,"i28":10,"i29":6,"i30":6,"i31":6,"i32":9,"i33":9,"i34":9,"i35":9,"i36":9,"i37":10,"i38":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":9,"i7":9,"i8":9,"i9":9,"i10":9,"i11":6,"i12":6,"i13":10,"i14":10,"i15":6,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":6,"i22":6,"i23":6,"i24":10,"i25":10,"i26":6,"i27":6,"i28":6,"i29":10,"i30":6,"i31":6,"i32":6,"i33":9,"i34":9,"i35":9,"i36":9,"i37":9,"i38":10,"i39":10};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -73,13 +73,13 @@ var activeTableTab = "activeTableTab";
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li><a href="#nested.class.summary">Nested</a>&nbsp;|&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li>Constr&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
 <li>Constr&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -236,6 +236,28 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 </table>
 </li>
 </ul>
+<!-- =========== FIELD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field.summary">
+<!--   -->
+</a>
+<h3>Field Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
+<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Field and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/CharSequence.html?is-external=true" title="class or interface in java.lang">CharSequence</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/Source.html#CONTENT_NONE">CONTENT_NONE</a></span></code>
+<div class="block">Constant to be used as an argument to <a href="../../../../../com/oracle/truffle/api/source/Source.SourceBuilder.html#content-java.lang.CharSequence-"><code>Source.SourceBuilder.content(CharSequence)</code></a> to set no
+ content to the Source built.</div>
+</td>
+</tr>
+</table>
+</li>
+</ul>
 <!-- ========== METHOD SUMMARY =========== -->
 <ul class="blockList">
 <li class="blockList"><a name="method.summary">
@@ -272,185 +294,195 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../com/oracle/truffle/api/source/SourceSection.html" title="class in com.oracle.truffle.api.source">SourceSection</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/Source.html#createSection-int-int-int-int-">createSection</a></span>(int&nbsp;startLine,
+             int&nbsp;startColumn,
+             int&nbsp;endLine,
+             int&nbsp;endColumn)</code>
+<div class="block">Create representation of a contiguous region in the source that does not have the character
+ content available.</div>
+</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code><a href="../../../../../com/oracle/truffle/api/source/SourceSection.html" title="class in com.oracle.truffle.api.source">SourceSection</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/Source.html#createUnavailableSection--">createUnavailableSection</a></span>()</code>
 <div class="block">Returns an unavailable source section indicating that the source location is not available.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/Source.html#equals-java.lang.Object-">equals</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;obj)</code></td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/Source.html#findLanguage-java.lang.String-">findLanguage</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;mimeType)</code>
 <div class="block">Returns the first installed language that supports evaluating sources for a given MIME type.</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/Source.html#findLanguage-com.oracle.truffle.api.TruffleFile-">findLanguage</a></span>(<a href="../../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a>&nbsp;file)</code>
 <div class="block">Returns the first language that supports evaluating the probed mime type of a given
  <a href="http://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io"><code>file</code></a>.</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/Source.html#findLanguage-java.net.URL-">findLanguage</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/net/URL.html?is-external=true" title="class or interface in java.net">URL</a>&nbsp;url)</code>
 <div class="block">Returns the first language that supports evaluating the probed mime type of a given
  <a href="http://docs.oracle.com/javase/8/docs/api/java/net/URL.html?is-external=true" title="class or interface in java.net"><code>URL</code></a>.</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/Source.html#findMimeType-com.oracle.truffle.api.TruffleFile-">findMimeType</a></span>(<a href="../../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a>&nbsp;file)</code>
 <div class="block">Returns the probed MIME type for a given file, or <code>null</code> if no MIME type could be
  resolved.</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/Source.html#findMimeType-java.net.URL-">findMimeType</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/net/URL.html?is-external=true" title="class or interface in java.net">URL</a>&nbsp;url)</code>
 <div class="block">Returns the probed MIME type for a given url, or <code>null</code> if no MIME type could be
  resolved.</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>abstract <a href="../../../../../org/graalvm/polyglot/io/ByteSequence.html" title="interface in org.graalvm.polyglot.io">ByteSequence</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/Source.html#getBytes--">getBytes</a></span>()</code>
 <div class="block">Returns the bytes of the source if it is a <a href="../../../../../com/oracle/truffle/api/source/Source.html#hasBytes--"><code>byte based source</code></a>.</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>abstract <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/CharSequence.html?is-external=true" title="class or interface in java.lang">CharSequence</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/Source.html#getCharacters--">getCharacters</a></span>()</code>
 <div class="block">Returns all characters of the source.</div>
 </td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/CharSequence.html?is-external=true" title="class or interface in java.lang">CharSequence</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/Source.html#getCharacters-int-">getCharacters</a></span>(int&nbsp;lineNumber)</code>
 <div class="block">Gets the text (not including a possible terminating newline) in a (1-based) numbered line.</div>
 </td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i14" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/Source.html#getColumnNumber-int-">getColumnNumber</a></span>(int&nbsp;offset)</code>
 <div class="block">Given a 0-based character offset, return the 1-based number of the column at the position.</div>
 </td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code>abstract <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/Source.html#getLanguage--">getLanguage</a></span>()</code>
 <div class="block">Returns the language this source was created with.</div>
 </td>
 </tr>
-<tr id="i15" class="rowColor">
+<tr id="i16" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/Source.html#getLength--">getLength</a></span>()</code>
 <div class="block">Gets the number of characters or bytes of the source.</div>
 </td>
 </tr>
-<tr id="i16" class="altColor">
+<tr id="i17" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/Source.html#getLineCount--">getLineCount</a></span>()</code>
 <div class="block">The number of text lines in the source, including empty lines; characters at the end of the
  source without a terminating newline count as a line.</div>
 </td>
 </tr>
-<tr id="i17" class="rowColor">
+<tr id="i18" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/Source.html#getLineLength-int-">getLineLength</a></span>(int&nbsp;lineNumber)</code>
 <div class="block">The number of characters (not counting a possible terminating newline) in a (1-based)
  numbered line.</div>
 </td>
 </tr>
-<tr id="i18" class="altColor">
+<tr id="i19" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/Source.html#getLineNumber-int-">getLineNumber</a></span>(int&nbsp;offset)</code>
 <div class="block">Given a 0-based character offset, return the 1-based number of the line that includes the
  position.</div>
 </td>
 </tr>
-<tr id="i19" class="rowColor">
+<tr id="i20" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/Source.html#getLineStartOffset-int-">getLineStartOffset</a></span>(int&nbsp;lineNumber)</code>
 <div class="block">Given a 1-based line number, return the 0-based offset of the first character in the line.</div>
 </td>
 </tr>
-<tr id="i20" class="altColor">
+<tr id="i21" class="rowColor">
 <td class="colFirst"><code>abstract <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/Source.html#getMimeType--">getMimeType</a></span>()</code>
 <div class="block">Returns the MIME type that is associated with this source.</div>
 </td>
 </tr>
-<tr id="i21" class="rowColor">
+<tr id="i22" class="altColor">
 <td class="colFirst"><code>abstract <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/Source.html#getName--">getName</a></span>()</code>
 <div class="block">Returns the name of this resource holding a guest language program.</div>
 </td>
 </tr>
-<tr id="i22" class="altColor">
+<tr id="i23" class="rowColor">
 <td class="colFirst"><code>abstract <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/Source.html#getPath--">getPath</a></span>()</code>
 <div class="block">The fully qualified name of the source.</div>
 </td>
 </tr>
-<tr id="i23" class="rowColor">
+<tr id="i24" class="altColor">
 <td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/Reader.html?is-external=true" title="class or interface in java.io">Reader</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/Source.html#getReader--">getReader</a></span>()</code>
 <div class="block">Access to the source contents.</div>
 </td>
 </tr>
-<tr id="i24" class="altColor">
+<tr id="i25" class="rowColor">
 <td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/Source.html#getURI--">getURI</a></span>()</code>
 <div class="block">Get URI of the source.</div>
 </td>
 </tr>
-<tr id="i25" class="rowColor">
+<tr id="i26" class="altColor">
 <td class="colFirst"><code>abstract <a href="http://docs.oracle.com/javase/8/docs/api/java/net/URL.html?is-external=true" title="class or interface in java.net">URL</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/Source.html#getURL--">getURL</a></span>()</code>
 <div class="block">The URL if the source is retrieved via URL.</div>
 </td>
 </tr>
-<tr id="i26" class="altColor">
+<tr id="i27" class="rowColor">
 <td class="colFirst"><code>abstract boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/Source.html#hasBytes--">hasBytes</a></span>()</code>
 <div class="block">Returns <code>true</code> if this source represents a byte based source, else
  <code>false</code>.</div>
 </td>
 </tr>
-<tr id="i27" class="rowColor">
+<tr id="i28" class="altColor">
 <td class="colFirst"><code>abstract boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/Source.html#hasCharacters--">hasCharacters</a></span>()</code>
 <div class="block">Returns <code>true</code> if this source represents a character based source, else
  <code>false</code>.</div>
 </td>
 </tr>
-<tr id="i28" class="altColor">
+<tr id="i29" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/Source.html#hashCode--">hashCode</a></span>()</code></td>
 </tr>
-<tr id="i29" class="rowColor">
+<tr id="i30" class="altColor">
 <td class="colFirst"><code>abstract boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/Source.html#isCached--">isCached</a></span>()</code>
 <div class="block">Returns <code>true</code> if code caching is enabled for this source.</div>
 </td>
 </tr>
-<tr id="i30" class="altColor">
+<tr id="i31" class="rowColor">
 <td class="colFirst"><code>abstract boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/Source.html#isInteractive--">isInteractive</a></span>()</code>
 <div class="block">Check whether this source has been marked as <em>interactive</em>.</div>
 </td>
 </tr>
-<tr id="i31" class="rowColor">
+<tr id="i32" class="altColor">
 <td class="colFirst"><code>abstract boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/Source.html#isInternal--">isInternal</a></span>()</code>
 <div class="block">Check whether this source has been marked as <em>internal</em>, meaning that it has been
  provided by the infrastructure, language implementation, or system library.</div>
 </td>
 </tr>
-<tr id="i32" class="altColor">
+<tr id="i33" class="rowColor">
 <td class="colFirst"><code>static <a href="../../../../../com/oracle/truffle/api/source/Source.LiteralBuilder.html" title="class in com.oracle.truffle.api.source">Source.LiteralBuilder</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/Source.html#newBuilder-java.lang.String-org.graalvm.polyglot.io.ByteSequence-java.lang.String-">newBuilder</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;language,
           <a href="../../../../../org/graalvm/polyglot/io/ByteSequence.html" title="interface in org.graalvm.polyglot.io">ByteSequence</a>&nbsp;bytes,
@@ -458,7 +490,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <div class="block">Creates a new byte based source from a byte sequence.</div>
 </td>
 </tr>
-<tr id="i33" class="rowColor">
+<tr id="i34" class="altColor">
 <td class="colFirst"><code>static <a href="../../../../../com/oracle/truffle/api/source/Source.LiteralBuilder.html" title="class in com.oracle.truffle.api.source">Source.LiteralBuilder</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/Source.html#newBuilder-java.lang.String-java.lang.CharSequence-java.lang.String-">newBuilder</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;language,
           <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/CharSequence.html?is-external=true" title="class or interface in java.lang">CharSequence</a>&nbsp;characters,
@@ -466,7 +498,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <div class="block">Creates a new character based source from a character sequence.</div>
 </td>
 </tr>
-<tr id="i34" class="altColor">
+<tr id="i35" class="rowColor">
 <td class="colFirst"><code>static <a href="../../../../../com/oracle/truffle/api/source/Source.SourceBuilder.html" title="class in com.oracle.truffle.api.source">Source.SourceBuilder</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/Source.html#newBuilder-java.lang.String-java.io.Reader-java.lang.String-">newBuilder</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;language,
           <a href="http://docs.oracle.com/javase/8/docs/api/java/io/Reader.html?is-external=true" title="class or interface in java.io">Reader</a>&nbsp;source,
@@ -474,21 +506,21 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <div class="block">Creates new character based source from a reader.</div>
 </td>
 </tr>
-<tr id="i35" class="rowColor">
+<tr id="i36" class="altColor">
 <td class="colFirst"><code>static <a href="../../../../../com/oracle/truffle/api/source/Source.SourceBuilder.html" title="class in com.oracle.truffle.api.source">Source.SourceBuilder</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/Source.html#newBuilder-java.lang.String-com.oracle.truffle.api.TruffleFile-">newBuilder</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;language,
           <a href="../../../../../com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a>&nbsp;file)</code>
 <div class="block">Creates a new file based source builder from a given file.</div>
 </td>
 </tr>
-<tr id="i36" class="altColor">
+<tr id="i37" class="rowColor">
 <td class="colFirst"><code>static <a href="../../../../../com/oracle/truffle/api/source/Source.SourceBuilder.html" title="class in com.oracle.truffle.api.source">Source.SourceBuilder</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/Source.html#newBuilder-java.lang.String-java.net.URL-">newBuilder</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;language,
           <a href="http://docs.oracle.com/javase/8/docs/api/java/net/URL.html?is-external=true" title="class or interface in java.net">URL</a>&nbsp;url)</code>
 <div class="block">Creates a new URL based source builder from a given URL.</div>
 </td>
 </tr>
-<tr id="i37" class="rowColor">
+<tr id="i38" class="altColor">
 <td class="colFirst"><code><a href="../../../../../com/oracle/truffle/api/source/Source.html" title="class in com.oracle.truffle.api.source">Source</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/Source.html#subSource-int-int-">subSource</a></span>(int&nbsp;baseCharIndex,
          int&nbsp;length)</code>
@@ -496,7 +528,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
  an <code>this</code> <a href="../../../../../com/oracle/truffle/api/source/Source.html" title="class in com.oracle.truffle.api.source"><code>Source</code></a>.</div>
 </td>
 </tr>
-<tr id="i38" class="altColor">
+<tr id="i39" class="rowColor">
 <td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/Source.html#toString--">toString</a></span>()</code></td>
 </tr>
@@ -516,6 +548,29 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
+<!-- ============ FIELD DETAIL =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field.detail">
+<!--   -->
+</a>
+<h3>Field Detail</h3>
+<a name="CONTENT_NONE">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>CONTENT_NONE</h4>
+<pre>public static final&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/CharSequence.html?is-external=true" title="class or interface in java.lang">CharSequence</a> CONTENT_NONE</pre>
+<div class="block">Constant to be used as an argument to <a href="../../../../../com/oracle/truffle/api/source/Source.SourceBuilder.html#content-java.lang.CharSequence-"><code>Source.SourceBuilder.content(CharSequence)</code></a> to set no
+ content to the Source built.</div>
+<dl>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>1.0</dd>
+</dl>
+</li>
+</ul>
+</li>
+</ul>
 <!-- ============ METHOD DETAIL ========== -->
 <ul class="blockList">
 <li class="blockList"><a name="method.detail">
@@ -872,6 +927,8 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <pre>public final&nbsp;int&nbsp;getLength()</pre>
 <div class="block">Gets the number of characters or bytes of the source.</div>
 <dl>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/UnsupportedOperationException.html?is-external=true" title="class or interface in java.lang">UnsupportedOperationException</a></code> - if this source does not contain <a href="../../../../../com/oracle/truffle/api/source/Source.html#hasCharacters--"><code>characters</code></a>, nor <a href="../../../../../com/oracle/truffle/api/source/Source.html#hasBytes--"><code>bytes</code></a>.</dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>0.8</dd>
 </dl>
@@ -997,13 +1054,40 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <div class="block">Returns an unavailable source section indicating that the source location is not available.
  Unavailable source sections have the same characteristics as empty source sections with
  character index <code>0</code>, but returns <code>false</code> for
- <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#isAvailable--"><code>SourceSection.isAvailable()</code></a>. Unavailable source sections may be creatd for character
+ <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#isAvailable--"><code>SourceSection.isAvailable()</code></a>. Unavailable source sections may be created for character
  and byte based sources.</div>
 <dl>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>0.18</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#isAvailable--"><code>SourceSection.isAvailable()</code></a></dd>
+</dl>
+</li>
+</ul>
+<a name="createSection-int-int-int-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createSection</h4>
+<pre>public final&nbsp;<a href="../../../../../com/oracle/truffle/api/source/SourceSection.html" title="class in com.oracle.truffle.api.source">SourceSection</a>&nbsp;createSection(int&nbsp;startLine,
+                                         int&nbsp;startColumn,
+                                         int&nbsp;endLine,
+                                         int&nbsp;endColumn)</pre>
+<div class="block">Create representation of a contiguous region in the source that does not have the character
+ content available.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>startLine</code> - 1-based line number of the first character in the section</dd>
+<dd><code>startColumn</code> - 1-based column number of the first character in the section, or
+            <code>-1</code> when the column is not defined</dd>
+<dd><code>endLine</code> - 1-based line number of the last character in the section</dd>
+<dd><code>endColumn</code> - 1-based column number of the last character in the section, or
+            <code>-1</code> when the column is not defined</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/UnsupportedOperationException.html?is-external=true" title="class or interface in java.lang">UnsupportedOperationException</a></code> - if this source has <a href="../../../../../com/oracle/truffle/api/source/Source.html#hasBytes--"><code>bytes</code></a>.</dd>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>1.0</dd>
 </dl>
 </li>
 </ul>
@@ -1016,14 +1100,18 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <pre>public final&nbsp;<a href="../../../../../com/oracle/truffle/api/source/SourceSection.html" title="class in com.oracle.truffle.api.source">SourceSection</a>&nbsp;createSection(int&nbsp;lineNumber)</pre>
 <div class="block">Creates a representation of a line of text in the source identified only by line number, from
  which the character information will be computed. Please note that calling this method does
- cause the <a href="../../../../../com/oracle/truffle/api/source/Source.html#getCharacters--"><code>code</code></a> of this source to be loaded.</div>
+ cause the <a href="../../../../../com/oracle/truffle/api/source/Source.html#getCharacters--"><code>code</code></a> of this source to be loaded, if there is any.
+ If no <a href="../../../../../com/oracle/truffle/api/source/Source.html#getCharacters--"><code>code</code></a> is <a href="../../../../../com/oracle/truffle/api/source/Source.html#hasCharacters--"><code>available</code></a>, a
+ SourceSection without <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#getCharacters--"><code>character content</code></a> is created with
+ the <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#getStartLine--"><code>start line</code></a> and the same
+ <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#getEndLine--"><code>end line</code></a> defined only.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>lineNumber</code> - 1-based line number of the first character in the section</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>newly created object representing the specified line</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/UnsupportedOperationException.html?is-external=true" title="class or interface in java.lang">UnsupportedOperationException</a></code> - if this source cannot contain <a href="../../../../../com/oracle/truffle/api/source/Source.html#hasCharacters--"><code>characters</code></a>.</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/UnsupportedOperationException.html?is-external=true" title="class or interface in java.lang">UnsupportedOperationException</a></code> - if this source contains <a href="../../../../../com/oracle/truffle/api/source/Source.html#hasBytes--"><code>bytes</code></a>.</dd>
 <dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalArgumentException.html?is-external=true" title="class or interface in java.lang">IllegalArgumentException</a></code> - if the given lineNumber does not exist the source</dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>0.17</dd>
@@ -1067,10 +1155,12 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <pre>public final&nbsp;<a href="../../../../../com/oracle/truffle/api/source/SourceSection.html" title="class in com.oracle.truffle.api.source">SourceSection</a>&nbsp;createSection(int&nbsp;startLine,
                                          int&nbsp;startColumn,
                                          int&nbsp;length)</pre>
-<div class="block">Creates a representation of a contiguous region of text in the source. Computes the
- <code>charIndex</code> value by building a text map of lines in the source. Please note that
- calling this method does cause the <a href="../../../../../com/oracle/truffle/api/source/Source.html#getCharacters--"><code>code</code></a> of this source to be
- loaded.</div>
+<div class="block">Creates a representation of a contiguous region of text in the source. When character content
+ is available, computes the <code>charIndex</code> value by building a text map of lines in the
+ source. Please note that calling this method does cause the <a href="../../../../../com/oracle/truffle/api/source/Source.html#getCharacters--"><code>code</code></a> of this source to be loaded, if there is any. If no <a href="../../../../../com/oracle/truffle/api/source/Source.html#getCharacters--"><code>code</code></a>
+ is <a href="../../../../../com/oracle/truffle/api/source/Source.html#hasCharacters--"><code>available</code></a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/UnsupportedOperationException.html?is-external=true" title="class or interface in java.lang"><code>UnsupportedOperationException</code></a> is thrown.
+ Use <a href="../../../../../com/oracle/truffle/api/source/Source.html#createSection-int-int-int-int-"><code>Source.createSection(int, int, int, int)</code></a> to create a SourceSection without character
+ content.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>startLine</code> - 1-based line number of the first character in the section</dd>
@@ -1079,12 +1169,13 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>newly created object representing the specified region</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/UnsupportedOperationException.html?is-external=true" title="class or interface in java.lang">UnsupportedOperationException</a></code> - if this source cannot contain <a href="../../../../../com/oracle/truffle/api/source/Source.html#hasCharacters--"><code>characters</code></a>.</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/UnsupportedOperationException.html?is-external=true" title="class or interface in java.lang">UnsupportedOperationException</a></code> - if this source does not contain <a href="../../../../../com/oracle/truffle/api/source/Source.html#hasCharacters--"><code>characters</code></a>.</dd>
 <dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalArgumentException.html?is-external=true" title="class or interface in java.lang">IllegalArgumentException</a></code> - if arguments are outside the text of the source bounds</dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>0.17</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../../com/oracle/truffle/api/source/Source.html#createSection-int-int-"><code>Source.createSection(int, int)</code></a></dd>
+<dd><a href="../../../../../com/oracle/truffle/api/source/Source.html#createSection-int-int-"><code>Source.createSection(int, int)</code></a>, 
+<a href="../../../../../com/oracle/truffle/api/source/Source.html#createSection-int-int-int-int-"><code>Source.createSection(int, int, int, int)</code></a></dd>
 </dl>
 </li>
 </ul>
@@ -1422,13 +1513,13 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li><a href="#nested.class.summary">Nested</a>&nbsp;|&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li>Constr&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
 <li>Constr&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>

@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -197,17 +197,38 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 </td>
 </tr>
 <tr id="i10" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/SourceSection.html#hasCharIndex--">hasCharIndex</a></span>()</code>
+<div class="block">Returns <code>true</code> if this section has a character index information,
+ <code>false</code> otherwise.</div>
+</td>
+</tr>
+<tr id="i11" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/SourceSection.html#hasColumns--">hasColumns</a></span>()</code>
+<div class="block">Returns <code>true</code> if this section has a column number information, <code>false</code>
+ otherwise.</div>
+</td>
+</tr>
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/SourceSection.html#hashCode--">hashCode</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i13" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/SourceSection.html#hasLines--">hasLines</a></span>()</code>
+<div class="block">Returns <code>true</code> if this section has a line number information, <code>false</code>
+ otherwise.</div>
+</td>
+</tr>
+<tr id="i14" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/SourceSection.html#isAvailable--">isAvailable</a></span>()</code>
 <div class="block">Returns whether this is a special instance that signifies that source information is
  available.</div>
 </td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/SourceSection.html#toString--">toString</a></span>()</code>
 <div class="block">Returns an implementation-defined string representation of this source section to be used for
@@ -253,6 +274,59 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 </dl>
 </li>
 </ul>
+<a name="hasLines--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>hasLines</h4>
+<pre>public&nbsp;boolean&nbsp;hasLines()</pre>
+<div class="block">Returns <code>true</code> if this section has a line number information, <code>false</code>
+ otherwise. When <code>true</code>, <a href="../../../org/graalvm/polyglot/SourceSection.html#getStartLine--"><code>SourceSection.getStartLine()</code></a> and <a href="../../../org/graalvm/polyglot/SourceSection.html#getEndLine--"><code>SourceSection.getEndLine()</code></a> return
+ valid line numbers, when <code>false</code>, <a href="../../../org/graalvm/polyglot/SourceSection.html#getStartLine--"><code>SourceSection.getStartLine()</code></a> and
+ <a href="../../../org/graalvm/polyglot/SourceSection.html#getEndLine--"><code>SourceSection.getEndLine()</code></a> return <code>1</code>.</div>
+<dl>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>1.0</dd>
+</dl>
+</li>
+</ul>
+<a name="hasColumns--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>hasColumns</h4>
+<pre>public&nbsp;boolean&nbsp;hasColumns()</pre>
+<div class="block">Returns <code>true</code> if this section has a column number information, <code>false</code>
+ otherwise. When <code>true</code>, <a href="../../../org/graalvm/polyglot/SourceSection.html#hasLines--"><code>SourceSection.hasLines()</code></a> is <code>true</code> as well,
+ <a href="../../../org/graalvm/polyglot/SourceSection.html#getStartColumn--"><code>SourceSection.getStartColumn()</code></a> and <a href="../../../org/graalvm/polyglot/SourceSection.html#getEndColumn--"><code>SourceSection.getEndColumn()</code></a> return valid column numbers. When
+ <code>false</code>, <a href="../../../org/graalvm/polyglot/SourceSection.html#getStartColumn--"><code>SourceSection.getStartColumn()</code></a> and <a href="../../../org/graalvm/polyglot/SourceSection.html#getEndColumn--"><code>SourceSection.getEndColumn()</code></a> return
+ <code>1</code>.</div>
+<dl>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>1.0</dd>
+</dl>
+</li>
+</ul>
+<a name="hasCharIndex--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>hasCharIndex</h4>
+<pre>public&nbsp;boolean&nbsp;hasCharIndex()</pre>
+<div class="block">Returns <code>true</code> if this section has a character index information,
+ <code>false</code> otherwise. When <code>true</code>, <a href="../../../org/graalvm/polyglot/SourceSection.html#getCharIndex--"><code>SourceSection.getCharIndex()</code></a>,
+ <a href="../../../org/graalvm/polyglot/SourceSection.html#getCharEndIndex--"><code>SourceSection.getCharEndIndex()</code></a> and <a href="../../../org/graalvm/polyglot/SourceSection.html#getCharLength--"><code>SourceSection.getCharLength()</code></a> return valid character indices, when
+ <code>false</code>, <a href="../../../org/graalvm/polyglot/SourceSection.html#getCharIndex--"><code>SourceSection.getCharIndex()</code></a>, <a href="../../../org/graalvm/polyglot/SourceSection.html#getCharEndIndex--"><code>SourceSection.getCharEndIndex()</code></a> and
+ <a href="../../../org/graalvm/polyglot/SourceSection.html#getCharLength--"><code>SourceSection.getCharLength()</code></a> return <code>0</code>.</div>
+<dl>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>1.0</dd>
+</dl>
+</li>
+</ul>
 <a name="getSource--">
 <!--   -->
 </a>
@@ -277,14 +351,15 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <h4>getStartLine</h4>
 <pre>public&nbsp;int&nbsp;getStartLine()</pre>
 <div class="block">Returns 1-based line number of the first character in this section (inclusive). Returns
- <code>1</code> for out of bounds or <a href="../../../org/graalvm/polyglot/SourceSection.html#isAvailable--"><code>unavailable</code></a> source sections. Note
- that calling this method causes the <a href="../../../org/graalvm/polyglot/Source.html#getCharacters--"><code>code</code></a> of the
- <a href="../../../org/graalvm/polyglot/SourceSection.html#getSource--"><code>source</code></a> to be loaded if it was not yet loaded.</div>
+ <code>1</code> for out of bounds or <a href="../../../org/graalvm/polyglot/SourceSection.html#isAvailable--"><code>unavailable</code></a> source sections, or
+ source sections not <a href="../../../org/graalvm/polyglot/SourceSection.html#hasLines--"><code>having lines</code></a>.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the starting line number.</dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>1.0</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../org/graalvm/polyglot/SourceSection.html#hasLines--"><code>SourceSection.hasLines()</code></a></dd>
 </dl>
 </li>
 </ul>
@@ -296,14 +371,15 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <h4>getStartColumn</h4>
 <pre>public&nbsp;int&nbsp;getStartColumn()</pre>
 <div class="block">Returns the 1-based column number of the first character in this section (inclusive). Returns
- <code>1</code> for out of bounds or <a href="../../../org/graalvm/polyglot/SourceSection.html#isAvailable--"><code>unavailable</code></a> source sections. Note
- that calling this method causes the <a href="../../../org/graalvm/polyglot/Source.html#getCharacters--"><code>code</code></a> of the
- <a href="../../../org/graalvm/polyglot/SourceSection.html#getSource--"><code>source</code></a> to be loaded if it was not yet loaded.</div>
+ <code>1</code> for out of bounds or <a href="../../../org/graalvm/polyglot/SourceSection.html#isAvailable--"><code>unavailable</code></a> source sections, or
+ source sections not <a href="../../../org/graalvm/polyglot/SourceSection.html#hasColumns--"><code>having columns</code></a>.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the starting column number.</dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>1.0</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../org/graalvm/polyglot/SourceSection.html#hasColumns--"><code>SourceSection.hasColumns()</code></a></dd>
 </dl>
 </li>
 </ul>
@@ -315,14 +391,15 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <h4>getEndLine</h4>
 <pre>public&nbsp;int&nbsp;getEndLine()</pre>
 <div class="block">Returns 1-based line number of the last character in this section (inclusive). Returns
- <code>1</code> for out of bounds or <a href="../../../org/graalvm/polyglot/SourceSection.html#isAvailable--"><code>unavailable</code></a> source sections. Note
- that calling this method causes the <a href="../../../org/graalvm/polyglot/Source.html#getCharacters--"><code>code</code></a> of the
- <a href="../../../org/graalvm/polyglot/SourceSection.html#getSource--"><code>source</code></a> to be loaded if it was not yet loaded.</div>
+ <code>1</code> for out of bounds or <a href="../../../org/graalvm/polyglot/SourceSection.html#isAvailable--"><code>unavailable</code></a> source sections, or
+ source sections not <a href="../../../org/graalvm/polyglot/SourceSection.html#hasLines--"><code>having lines</code></a>.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the starting line number.</dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>1.0</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../org/graalvm/polyglot/SourceSection.html#hasLines--"><code>SourceSection.hasLines()</code></a></dd>
 </dl>
 </li>
 </ul>
@@ -334,14 +411,15 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <h4>getEndColumn</h4>
 <pre>public&nbsp;int&nbsp;getEndColumn()</pre>
 <div class="block">Returns the 1-based column number of the last character in this section (inclusive). Returns
- <code>1</code> for out of bounds or <a href="../../../org/graalvm/polyglot/SourceSection.html#isAvailable--"><code>unavailable</code></a> source sections. Note
- that calling this method causes the <a href="../../../org/graalvm/polyglot/Source.html#getCharacters--"><code>code</code></a> of the
- <a href="../../../org/graalvm/polyglot/SourceSection.html#getSource--"><code>source</code></a> to be loaded if it was not yet loaded.</div>
+ <code>1</code> for out of bounds or <a href="../../../org/graalvm/polyglot/SourceSection.html#isAvailable--"><code>unavailable</code></a> source sections, or
+ source sections not <a href="../../../org/graalvm/polyglot/SourceSection.html#hasColumns--"><code>having columns</code></a>.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the starting column number.</dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>1.0</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../org/graalvm/polyglot/SourceSection.html#hasColumns--"><code>SourceSection.hasColumns()</code></a></dd>
 </dl>
 </li>
 </ul>
@@ -353,15 +431,15 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <h4>getCharIndex</h4>
 <pre>public&nbsp;int&nbsp;getCharIndex()</pre>
 <div class="block">Returns the 0-based index of the first character in this section. Returns <code>0</code> for
- <a href="../../../org/graalvm/polyglot/SourceSection.html#isAvailable--"><code>unavailable</code></a> source sections. Note that calling this method does not
- cause the <a href="../../../org/graalvm/polyglot/Source.html#getCharacters--"><code>code</code></a> of the <a href="../../../org/graalvm/polyglot/SourceSection.html#getSource--"><code>source</code></a> to be
- loaded. The returned index might be out of bounds of the source code if assertions (-ea) are
- not enabled.</div>
+ <a href="../../../org/graalvm/polyglot/SourceSection.html#isAvailable--"><code>unavailable</code></a> source sections, or sections not <a href="../../../org/graalvm/polyglot/SourceSection.html#hasCharIndex--"><code>having character index</code></a>. The returned index might be out of bounds of the source code if
+ assertions (-ea) are not enabled.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the starting character index.</dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>1.0</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../org/graalvm/polyglot/SourceSection.html#hasCharIndex--"><code>SourceSection.hasCharIndex()</code></a></dd>
 </dl>
 </li>
 </ul>
@@ -373,15 +451,15 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <h4>getCharLength</h4>
 <pre>public&nbsp;int&nbsp;getCharLength()</pre>
 <div class="block">Returns the length of this section in characters. Returns <code>0</code> for
- <a href="../../../org/graalvm/polyglot/SourceSection.html#isAvailable--"><code>unavailable</code></a> source sections. Note that calling this method does not
- cause the <a href="../../../org/graalvm/polyglot/Source.html#getCharacters--"><code>code</code></a> of the <a href="../../../org/graalvm/polyglot/SourceSection.html#getSource--"><code>source</code></a> to be
- loaded. The returned length might be out of bounds of the source code if assertions (-ea) are
- not enabled.</div>
+ <a href="../../../org/graalvm/polyglot/SourceSection.html#isAvailable--"><code>unavailable</code></a> source sections, or sections not <a href="../../../org/graalvm/polyglot/SourceSection.html#hasCharIndex--"><code>having character index</code></a>. The returned length might be out of bounds of the source code if
+ assertions (-ea) are not enabled.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the number of characters in the section.</dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>1.0</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../org/graalvm/polyglot/SourceSection.html#hasCharIndex--"><code>SourceSection.hasCharIndex()</code></a></dd>
 </dl>
 </li>
 </ul>
@@ -393,15 +471,16 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <h4>getCharEndIndex</h4>
 <pre>public&nbsp;int&nbsp;getCharEndIndex()</pre>
 <div class="block">Returns the index of the text position immediately following the last character in the
- section. Returns <code>0</code> for <a href="../../../org/graalvm/polyglot/SourceSection.html#isAvailable--"><code>unavailable</code></a> source sections. Note
- that calling this method does not cause the <a href="../../../org/graalvm/polyglot/Source.html#getCharacters--"><code>code</code></a> of the
- <a href="../../../org/graalvm/polyglot/SourceSection.html#getSource--"><code>source</code></a> to be loaded. The returned index might be out of bounds of the
- source code if assertions (-ea) are not enabled.</div>
+ section. Returns <code>0</code> for <a href="../../../org/graalvm/polyglot/SourceSection.html#isAvailable--"><code>unavailable</code></a> source sections, or
+ sections not <a href="../../../org/graalvm/polyglot/SourceSection.html#hasCharIndex--"><code>having character index</code></a>. The returned index might be out
+ of bounds of the source code if assertions (-ea) are not enabled.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the end position of the section.</dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
-<dd>0.8 or earlier</dd>
+<dd>1.0</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../org/graalvm/polyglot/SourceSection.html#hasCharIndex--"><code>SourceSection.hasCharIndex()</code></a></dd>
 </dl>
 </li>
 </ul>

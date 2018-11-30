@@ -297,8 +297,9 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <pre>public&nbsp;<a href="../../../../../com/oracle/truffle/api/source/Source.LiteralBuilder.html" title="class in com.oracle.truffle.api.source">Source.LiteralBuilder</a>&nbsp;content(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/CharSequence.html?is-external=true" title="class or interface in java.lang">CharSequence</a>&nbsp;characters)</pre>
 <div class="block">Specifies character based content of <a href="../../../../../com/oracle/truffle/api/source/Source.SourceBuilder.html#build--"><code>to-be-built</code></a> <a href="../../../../../com/oracle/truffle/api/source/Source.html" title="class in com.oracle.truffle.api.source"><code>Source</code></a>. Using
  this method one can ignore the real content of a file or URL and use already read one, or
- completely different one. The given characters must not mutate after they were accessed
- for the first time. Example:
+ completely different one. Use <a href="../../../../../com/oracle/truffle/api/source/Source.html#CONTENT_NONE"><code>Source.CONTENT_NONE</code></a> to set no content,
+ <a href="../../../../../com/oracle/truffle/api/source/Source.html#hasCharacters--"><code>Source.hasCharacters()</code></a> will be <code>false</code> then. The given characters must
+ not mutate after they were accessed for the first time. Example:
 
  <pre><a href="http://docs.oracle.com/javase/8/docs/api/java/net/URL.html?is-external=true" title="class or interface in java.net"><code>URL</code></a> resource = relativeClass.getResource(<em>"sample.js"</em>);
 <a href="../../../../../com/oracle/truffle/api/source/Source.html" title="class in com.oracle.truffle.api.source"><code>Source</code></a> source = <a href="../../../../../com/oracle/truffle/api/source/Source.html" title="class in com.oracle.truffle.api.source"><code>Source</code></a>.newBuilder(<em>"js"</em>, resource)
@@ -311,7 +312,8 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 </pre></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>characters</code> - the code to be available via <a href="../../../../../com/oracle/truffle/api/source/Source.html#getCharacters--"><code>Source.getCharacters()</code></a></dd>
+<dd><code>characters</code> - the code to be available via <a href="../../../../../com/oracle/truffle/api/source/Source.html#getCharacters--"><code>Source.getCharacters()</code></a>, or
+            <a href="../../../../../com/oracle/truffle/api/source/Source.html#CONTENT_NONE"><code>Source.CONTENT_NONE</code></a></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>instance of this builder - which's <a href="../../../../../com/oracle/truffle/api/source/Source.SourceBuilder.html#build--"><code>Source.SourceBuilder.build()</code></a> method no longer throws an
          <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io"><code>IOException</code></a></dd>

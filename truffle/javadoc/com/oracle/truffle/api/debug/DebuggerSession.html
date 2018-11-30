@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -270,19 +270,25 @@ implements <a href="http://docs.oracle.com/javase/8/docs/api/java/io/Closeable.h
 </td>
 </tr>
 <tr id="i7" class="rowColor">
+<td class="colFirst"><code><a href="../../../../../com/oracle/truffle/api/source/Source.html" title="class in com.oracle.truffle.api.source">Source</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/debug/DebuggerSession.html#resolveSource-com.oracle.truffle.api.source.Source-">resolveSource</a></span>(<a href="../../../../../com/oracle/truffle/api/source/Source.html" title="class in com.oracle.truffle.api.source">Source</a>&nbsp;source)</code>
+<div class="block">Resolve the source with respect to the actual <a href="../../../../../com/oracle/truffle/api/debug/DebuggerSession.html#setSourcePath-java.lang.Iterable-"><code>source path</code></a>.</div>
+</td>
+</tr>
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/debug/DebuggerSession.html#resumeAll--">resumeAll</a></span>()</code>
 <div class="block">Resumes all suspended executions that have not yet been notified.</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/debug/DebuggerSession.html#setBreakpointsActive-com.oracle.truffle.api.debug.Breakpoint.Kind-boolean-">setBreakpointsActive</a></span>(<a href="../../../../../com/oracle/truffle/api/debug/Breakpoint.Kind.html" title="enum in com.oracle.truffle.api.debug">Breakpoint.Kind</a>&nbsp;breakpointKind,
                     boolean&nbsp;active)</code>
 <div class="block">Set whether breakpoints of the given kind are active in this session.</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/debug/DebuggerSession.html#setContextsListener-com.oracle.truffle.api.debug.DebugContextsListener-boolean-">setContextsListener</a></span>(<a href="../../../../../com/oracle/truffle/api/debug/DebugContextsListener.html" title="interface in com.oracle.truffle.api.debug">DebugContextsListener</a>&nbsp;listener,
                    boolean&nbsp;includeActiveContexts)</code>
@@ -290,13 +296,19 @@ implements <a href="http://docs.oracle.com/javase/8/docs/api/java/io/Closeable.h
  guest language application.</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i11" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/debug/DebuggerSession.html#setSourcePath-java.lang.Iterable-">setSourcePath</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a>&gt;&nbsp;uris)</code>
+<div class="block">Set a list of source path roots that are used to resolve relative <a href="../../../../../com/oracle/truffle/api/source/Source.html#getURI--"><code>source URIs</code></a>.</div>
+</td>
+</tr>
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/debug/DebuggerSession.html#setSteppingFilter-com.oracle.truffle.api.debug.SuspensionFilter-">setSteppingFilter</a></span>(<a href="../../../../../com/oracle/truffle/api/debug/SuspensionFilter.html" title="class in com.oracle.truffle.api.debug">SuspensionFilter</a>&nbsp;steppingFilter)</code>
 <div class="block">Set a stepping suspension filter.</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/debug/DebuggerSession.html#setThreadsListener-com.oracle.truffle.api.debug.DebugThreadsListener-boolean-">setThreadsListener</a></span>(<a href="../../../../../com/oracle/truffle/api/debug/DebugThreadsListener.html" title="interface in com.oracle.truffle.api.debug">DebugThreadsListener</a>&nbsp;listener,
                   boolean&nbsp;includeInitializedThreads)</code>
@@ -304,13 +316,13 @@ implements <a href="http://docs.oracle.com/javase/8/docs/api/java/io/Closeable.h
  language application.</div>
 </td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i14" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/debug/DebuggerSession.html#suspendNextExecution--">suspendNextExecution</a></span>()</code>
 <div class="block">Suspends the next execution on the first thread that is encountered.</div>
 </td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/debug/DebuggerSession.html#toString--">toString</a></span>()</code></td>
 </tr>
@@ -568,7 +580,7 @@ implements <a href="http://docs.oracle.com/javase/8/docs/api/java/io/Closeable.h
 <a name="setThreadsListener-com.oracle.truffle.api.debug.DebugThreadsListener-boolean-">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>setThreadsListener</h4>
 <pre>public&nbsp;void&nbsp;setThreadsListener(<a href="../../../../../com/oracle/truffle/api/debug/DebugThreadsListener.html" title="interface in com.oracle.truffle.api.debug">DebugThreadsListener</a>&nbsp;listener,
@@ -583,6 +595,50 @@ implements <a href="http://docs.oracle.com/javase/8/docs/api/java/io/Closeable.h
             initialized threads</dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>0.30</dd>
+</dl>
+</li>
+</ul>
+<a name="setSourcePath-java.lang.Iterable-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setSourcePath</h4>
+<pre>public&nbsp;void&nbsp;setSourcePath(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a>&gt;&nbsp;uris)</pre>
+<div class="block">Set a list of source path roots that are used to resolve relative <a href="../../../../../com/oracle/truffle/api/source/Source.html#getURI--"><code>source URIs</code></a>. All debugger methods that provide <a href="../../../../../com/oracle/truffle/api/source/Source.html" title="class in com.oracle.truffle.api.source"><code>Source</code></a> object, resolve relative
+ sources with respect to this source-path. When the resolution does not succeed (the relative
+ path does not exist under any of the supplied source-path elements), the original relative
+ <a href="../../../../../com/oracle/truffle/api/source/Source.html" title="class in com.oracle.truffle.api.source"><code>Source</code></a> is provided.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>uris</code> - a list of absolute URIs</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalArgumentException.html?is-external=true" title="class or interface in java.lang">IllegalArgumentException</a></code> - when an URI is not absolute</dd>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>1.0</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../../com/oracle/truffle/api/debug/DebuggerSession.html#resolveSource-com.oracle.truffle.api.source.Source-"><code>DebuggerSession.resolveSource(Source)</code></a></dd>
+</dl>
+</li>
+</ul>
+<a name="resolveSource-com.oracle.truffle.api.source.Source-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>resolveSource</h4>
+<pre>public&nbsp;<a href="../../../../../com/oracle/truffle/api/source/Source.html" title="class in com.oracle.truffle.api.source">Source</a>&nbsp;resolveSource(<a href="../../../../../com/oracle/truffle/api/source/Source.html" title="class in com.oracle.truffle.api.source">Source</a>&nbsp;source)</pre>
+<div class="block">Resolve the source with respect to the actual <a href="../../../../../com/oracle/truffle/api/debug/DebuggerSession.html#setSourcePath-java.lang.Iterable-"><code>source path</code></a>.
+ Sources with relative <a href="../../../../../com/oracle/truffle/api/source/Source.html#getURI--"><code>URI</code></a> are subject to resolution to an existing
+ absolute location. The first source-path URI that resolves to an existing location is used.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>source</code> - the source to resolve</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the provided source if no resolution is necessary, or the resolved source, or
+         <code>null</code> when it's not possible to resolve the provided source</dd>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>1.0</dd>
 </dl>
 </li>
 </ul>

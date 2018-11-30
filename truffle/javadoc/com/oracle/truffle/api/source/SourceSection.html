@@ -17,8 +17,8 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10};
-var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
+var methods = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":10,"i8":6,"i9":6,"i10":6,"i11":6,"i12":6,"i13":6,"i14":6,"i15":10};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -107,7 +107,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <hr>
 <br>
-<pre>public final class <span class="typeNameLabel">SourceSection</span>
+<pre>public abstract class <span class="typeNameLabel">SourceSection</span>
 extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></pre>
 <div class="block">Description of contiguous section of text within a <a href="../../../../../com/oracle/truffle/api/source/Source.html" title="class in com.oracle.truffle.api.source"><code>Source</code></a> of program code.; supports
  multiple modes of access to the text and its location.
@@ -122,6 +122,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <dd><a href="../../../../../com/oracle/truffle/api/source/Source.html#createSection-int-"><code>Source.createSection(int)</code></a>, 
 <a href="../../../../../com/oracle/truffle/api/source/Source.html#createSection-int-int-"><code>Source.createSection(int, int)</code></a>, 
 <a href="../../../../../com/oracle/truffle/api/source/Source.html#createSection-int-int-int-"><code>Source.createSection(int, int, int)</code></a>, 
+<a href="../../../../../com/oracle/truffle/api/source/Source.html#createSection-int-int-int-int-"><code>Source.createSection(int, int, int, int)</code></a>, 
 <a href="../../../../../com/oracle/truffle/api/source/Source.html#createUnavailableSection--"><code>Source.createUnavailableSection()</code></a></dd>
 </dl>
 </li>
@@ -137,48 +138,48 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>boolean</code></td>
+<td class="colFirst"><code>abstract boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#equals-java.lang.Object-">equals</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;obj)</code>&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/CharSequence.html?is-external=true" title="class or interface in java.lang">CharSequence</a></code></td>
+<td class="colFirst"><code>abstract <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/CharSequence.html?is-external=true" title="class or interface in java.lang">CharSequence</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#getCharacters--">getCharacters</a></span>()</code>
 <div class="block">Returns the source code fragment described by this section.</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code>int</code></td>
+<td class="colFirst"><code>abstract int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#getCharEndIndex--">getCharEndIndex</a></span>()</code>
 <div class="block">Returns the index of the text position immediately following the last character in the
  section.</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
-<td class="colFirst"><code>int</code></td>
+<td class="colFirst"><code>abstract int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#getCharIndex--">getCharIndex</a></span>()</code>
 <div class="block">Returns the 0-based index of the first character in this section.</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
-<td class="colFirst"><code>int</code></td>
+<td class="colFirst"><code>abstract int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#getCharLength--">getCharLength</a></span>()</code>
 <div class="block">Returns the length of this section in characters.</div>
 </td>
 </tr>
 <tr id="i5" class="rowColor">
-<td class="colFirst"><code>int</code></td>
+<td class="colFirst"><code>abstract int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#getEndColumn--">getEndColumn</a></span>()</code>
 <div class="block">Returns the 1-based column number of the last character in this section (inclusive).</div>
 </td>
 </tr>
 <tr id="i6" class="altColor">
-<td class="colFirst"><code>int</code></td>
+<td class="colFirst"><code>abstract int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#getEndLine--">getEndLine</a></span>()</code>
 <div class="block">Returns 1-based line number of the last character in this section (inclusive).</div>
 </td>
@@ -190,29 +191,50 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 </td>
 </tr>
 <tr id="i8" class="altColor">
-<td class="colFirst"><code>int</code></td>
+<td class="colFirst"><code>abstract int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#getStartColumn--">getStartColumn</a></span>()</code>
 <div class="block">Returns the 1-based column number of the first character in this section (inclusive).</div>
 </td>
 </tr>
 <tr id="i9" class="rowColor">
-<td class="colFirst"><code>int</code></td>
+<td class="colFirst"><code>abstract int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#getStartLine--">getStartLine</a></span>()</code>
 <div class="block">Returns 1-based line number of the first character in this section (inclusive).</div>
 </td>
 </tr>
 <tr id="i10" class="altColor">
-<td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#hashCode--">hashCode</a></span>()</code>&nbsp;</td>
+<td class="colFirst"><code>abstract boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#hasCharIndex--">hasCharIndex</a></span>()</code>
+<div class="block">Returns <code>true</code> if this section has a character index information,
+ <code>false</code> otherwise.</div>
+</td>
 </tr>
 <tr id="i11" class="rowColor">
-<td class="colFirst"><code>boolean</code></td>
+<td class="colFirst"><code>abstract boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#hasColumns--">hasColumns</a></span>()</code>
+<div class="block">Returns <code>true</code> if this section has a column number information, <code>false</code>
+ otherwise.</div>
+</td>
+</tr>
+<tr id="i12" class="altColor">
+<td class="colFirst"><code>abstract int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#hashCode--">hashCode</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i13" class="rowColor">
+<td class="colFirst"><code>abstract boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#hasLines--">hasLines</a></span>()</code>
+<div class="block">Returns <code>true</code> if this section has a line number information, <code>false</code>
+ otherwise.</div>
+</td>
+</tr>
+<tr id="i14" class="altColor">
+<td class="colFirst"><code>abstract boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#isAvailable--">isAvailable</a></span>()</code>
 <div class="block">Returns whether this is a special instance that signifies that source information is
  available.</div>
 </td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#toString--">toString</a></span>()</code>
 <div class="block">Returns an implementation-defined string representation of this source section to be used for
@@ -247,7 +269,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <ul class="blockList">
 <li class="blockList">
 <h4>isAvailable</h4>
-<pre>public&nbsp;boolean&nbsp;isAvailable()</pre>
+<pre>public abstract&nbsp;boolean&nbsp;isAvailable()</pre>
 <div class="block">Returns whether this is a special instance that signifies that source information is
  available. Unavailable source sections can be created using
  <a href="../../../../../com/oracle/truffle/api/source/Source.html#createUnavailableSection--"><code>Source.createUnavailableSection()</code></a>. Available source sections are never equal to
@@ -261,13 +283,66 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 </dl>
 </li>
 </ul>
+<a name="hasLines--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>hasLines</h4>
+<pre>public abstract&nbsp;boolean&nbsp;hasLines()</pre>
+<div class="block">Returns <code>true</code> if this section has a line number information, <code>false</code>
+ otherwise. When <code>true</code>, <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#getStartLine--"><code>SourceSection.getStartLine()</code></a> and <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#getEndLine--"><code>SourceSection.getEndLine()</code></a> return
+ valid line numbers, when <code>false</code>, <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#getStartLine--"><code>SourceSection.getStartLine()</code></a> and
+ <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#getEndLine--"><code>SourceSection.getEndLine()</code></a> return <code>1</code>.</div>
+<dl>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>1.0</dd>
+</dl>
+</li>
+</ul>
+<a name="hasColumns--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>hasColumns</h4>
+<pre>public abstract&nbsp;boolean&nbsp;hasColumns()</pre>
+<div class="block">Returns <code>true</code> if this section has a column number information, <code>false</code>
+ otherwise. When <code>true</code>, <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#hasLines--"><code>SourceSection.hasLines()</code></a> is <code>true</code> as well,
+ <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#getStartColumn--"><code>SourceSection.getStartColumn()</code></a> and <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#getEndColumn--"><code>SourceSection.getEndColumn()</code></a> return valid column numbers. When
+ <code>false</code>, <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#getStartColumn--"><code>SourceSection.getStartColumn()</code></a> and <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#getEndColumn--"><code>SourceSection.getEndColumn()</code></a> return
+ <code>1</code>.</div>
+<dl>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>1.0</dd>
+</dl>
+</li>
+</ul>
+<a name="hasCharIndex--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>hasCharIndex</h4>
+<pre>public abstract&nbsp;boolean&nbsp;hasCharIndex()</pre>
+<div class="block">Returns <code>true</code> if this section has a character index information,
+ <code>false</code> otherwise. When <code>true</code>, <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#getCharIndex--"><code>SourceSection.getCharIndex()</code></a>,
+ <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#getCharEndIndex--"><code>SourceSection.getCharEndIndex()</code></a> and <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#getCharLength--"><code>SourceSection.getCharLength()</code></a> return valid character indices, when
+ <code>false</code>, <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#getCharIndex--"><code>SourceSection.getCharIndex()</code></a>, <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#getCharEndIndex--"><code>SourceSection.getCharEndIndex()</code></a> and
+ <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#getCharLength--"><code>SourceSection.getCharLength()</code></a> return <code>0</code>.</div>
+<dl>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>1.0</dd>
+</dl>
+</li>
+</ul>
 <a name="getSource--">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>getSource</h4>
-<pre>public&nbsp;<a href="../../../../../com/oracle/truffle/api/source/Source.html" title="class in com.oracle.truffle.api.source">Source</a>&nbsp;getSource()</pre>
+<pre>public final&nbsp;<a href="../../../../../com/oracle/truffle/api/source/Source.html" title="class in com.oracle.truffle.api.source">Source</a>&nbsp;getSource()</pre>
 <div class="block">Representation of the source program that contains this section.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -283,16 +358,17 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <ul class="blockList">
 <li class="blockList">
 <h4>getStartLine</h4>
-<pre>public&nbsp;int&nbsp;getStartLine()</pre>
+<pre>public abstract&nbsp;int&nbsp;getStartLine()</pre>
 <div class="block">Returns 1-based line number of the first character in this section (inclusive). Returns
- <code>1</code> for out of bounds or <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#isAvailable--"><code>unavailable</code></a> source sections.
- Please note that calling this method causes the <a href="../../../../../com/oracle/truffle/api/source/Source.html#getCharacters--"><code>code</code></a> of the
- <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#getSource--"><code>source</code></a> to be loaded if it was not yet loaded.</div>
+ <code>1</code> for out of bounds or <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#isAvailable--"><code>unavailable</code></a> source sections, or
+ source sections not <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#hasLines--"><code>having lines</code></a>.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the starting line number</dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>0.8 or earlier</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#hasLines--"><code>SourceSection.hasLines()</code></a></dd>
 </dl>
 </li>
 </ul>
@@ -302,16 +378,17 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <ul class="blockList">
 <li class="blockList">
 <h4>getStartColumn</h4>
-<pre>public&nbsp;int&nbsp;getStartColumn()</pre>
+<pre>public abstract&nbsp;int&nbsp;getStartColumn()</pre>
 <div class="block">Returns the 1-based column number of the first character in this section (inclusive). Returns
- <code>1</code> for out of bounds or <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#isAvailable--"><code>unavailable</code></a> source sections.
- Please note that calling this method causes the <a href="../../../../../com/oracle/truffle/api/source/Source.html#getCharacters--"><code>code</code></a> of the
- <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#getSource--"><code>source</code></a> to be loaded if it was not yet loaded.</div>
+ <code>1</code> for out of bounds or <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#isAvailable--"><code>unavailable</code></a> source sections, or
+ source sections not <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#hasColumns--"><code>having columns</code></a>.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the starting column number</dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>0.8 or earlier</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#hasColumns--"><code>SourceSection.hasColumns()</code></a></dd>
 </dl>
 </li>
 </ul>
@@ -321,16 +398,17 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <ul class="blockList">
 <li class="blockList">
 <h4>getEndLine</h4>
-<pre>public&nbsp;int&nbsp;getEndLine()</pre>
+<pre>public abstract&nbsp;int&nbsp;getEndLine()</pre>
 <div class="block">Returns 1-based line number of the last character in this section (inclusive). Returns
- <code>1</code> for out of bounds or <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#isAvailable--"><code>unavailable</code></a> source sections.
- Please note that calling this method causes the <a href="../../../../../com/oracle/truffle/api/source/Source.html#getCharacters--"><code>code</code></a> of the
- <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#getSource--"><code>source</code></a> to be loaded if it was not yet loaded.</div>
+ <code>1</code> for out of bounds or <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#isAvailable--"><code>unavailable</code></a> source sections, or
+ source sections not <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#hasLines--"><code>having lines</code></a>.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the starting line number</dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>0.8 or earlier</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#hasLines--"><code>SourceSection.hasLines()</code></a></dd>
 </dl>
 </li>
 </ul>
@@ -340,16 +418,17 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <ul class="blockList">
 <li class="blockList">
 <h4>getEndColumn</h4>
-<pre>public&nbsp;int&nbsp;getEndColumn()</pre>
+<pre>public abstract&nbsp;int&nbsp;getEndColumn()</pre>
 <div class="block">Returns the 1-based column number of the last character in this section (inclusive). Returns
- <code>1</code> for out of bounds or <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#isAvailable--"><code>unavailable</code></a> source sections.
- Please note that calling this method causes the <a href="../../../../../com/oracle/truffle/api/source/Source.html#getCharacters--"><code>code</code></a> of the
- <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#getSource--"><code>source</code></a> to be loaded if it was not yet loaded.</div>
+ <code>1</code> for out of bounds or <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#isAvailable--"><code>unavailable</code></a> source sections, or
+ source sections not <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#hasColumns--"><code>having columns</code></a>.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the starting column number</dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>0.8 or earlier</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#hasColumns--"><code>SourceSection.hasColumns()</code></a></dd>
 </dl>
 </li>
 </ul>
@@ -359,17 +438,17 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <ul class="blockList">
 <li class="blockList">
 <h4>getCharIndex</h4>
-<pre>public&nbsp;int&nbsp;getCharIndex()</pre>
+<pre>public abstract&nbsp;int&nbsp;getCharIndex()</pre>
 <div class="block">Returns the 0-based index of the first character in this section. Returns <code>0</code> for
- <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#isAvailable--"><code>unavailable</code></a> source sections. Please note that calling this method does
- not cause the <a href="../../../../../com/oracle/truffle/api/source/Source.html#getCharacters--"><code>code</code></a> of the <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#getSource--"><code>source</code></a> to be
- loaded. The returned index might be out of bounds of the source code if assertions (-ea) are
- not enabled.</div>
+ <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#isAvailable--"><code>unavailable</code></a> source sections, or sections not <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#hasCharIndex--"><code>having character index</code></a>. The returned index might be out of bounds of the source code if
+ assertions (-ea) are not enabled.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the starting character index</dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>0.8 or earlier</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#hasCharIndex--"><code>SourceSection.hasCharIndex()</code></a></dd>
 </dl>
 </li>
 </ul>
@@ -379,17 +458,17 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <ul class="blockList">
 <li class="blockList">
 <h4>getCharLength</h4>
-<pre>public&nbsp;int&nbsp;getCharLength()</pre>
+<pre>public abstract&nbsp;int&nbsp;getCharLength()</pre>
 <div class="block">Returns the length of this section in characters. Returns <code>0</code> for
- <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#isAvailable--"><code>unavailable</code></a> source sections. Please note that calling this method does
- not cause the <a href="../../../../../com/oracle/truffle/api/source/Source.html#getCharacters--"><code>code</code></a> of the <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#getSource--"><code>source</code></a> to be
- loaded. The returned length might be out of bounds of the source code if assertions (-ea) are
- not enabled.</div>
+ <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#isAvailable--"><code>unavailable</code></a> source sections, or sections not <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#hasCharIndex--"><code>having character index</code></a>. The returned length might be out of bounds of the source code if
+ assertions (-ea) are not enabled.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the number of characters in the section</dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>0.8 or earlier</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#hasCharIndex--"><code>SourceSection.hasCharIndex()</code></a></dd>
 </dl>
 </li>
 </ul>
@@ -399,17 +478,18 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <ul class="blockList">
 <li class="blockList">
 <h4>getCharEndIndex</h4>
-<pre>public&nbsp;int&nbsp;getCharEndIndex()</pre>
+<pre>public abstract&nbsp;int&nbsp;getCharEndIndex()</pre>
 <div class="block">Returns the index of the text position immediately following the last character in the
- section. Returns <code>0</code> for <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#isAvailable--"><code>unavailable</code></a> source sections.
- Please note that calling this method does not cause the <a href="../../../../../com/oracle/truffle/api/source/Source.html#getCharacters--"><code>code</code></a>
- of the <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#getSource--"><code>source</code></a> to be loaded. The returned index might be out of bounds of
- the source code if assertions (-ea) are not enabled.</div>
+ section. Returns <code>0</code> for <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#isAvailable--"><code>unavailable</code></a> source sections, or
+ sections not <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#hasCharIndex--"><code>having character index</code></a>. The returned index might be out
+ of bounds of the source code if assertions (-ea) are not enabled.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the end position of the section</dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>0.8 or earlier</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#hasCharIndex--"><code>SourceSection.hasCharIndex()</code></a></dd>
 </dl>
 </li>
 </ul>
@@ -419,16 +499,17 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <ul class="blockList">
 <li class="blockList">
 <h4>getCharacters</h4>
-<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/CharSequence.html?is-external=true" title="class or interface in java.lang">CharSequence</a>&nbsp;getCharacters()</pre>
+<pre>public abstract&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/CharSequence.html?is-external=true" title="class or interface in java.lang">CharSequence</a>&nbsp;getCharacters()</pre>
 <div class="block">Returns the source code fragment described by this section. Returns an empty character
- sequence for out of bounds or <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#isAvailable--"><code>unavailable</code></a> source sections. Please note
- that calling this method causes the <a href="../../../../../com/oracle/truffle/api/source/Source.html#getCharacters--"><code>code</code></a> of the
- <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#getSource--"><code>source</code></a> to be loaded if it was not yet loaded.</div>
+ sequence for out of bounds or <a href="../../../../../com/oracle/truffle/api/source/SourceSection.html#isAvailable--"><code>unavailable</code></a> source sections, or sections
+ whose source does not <a href="../../../../../com/oracle/truffle/api/source/Source.html#hasCharacters--"><code>have characters</code></a>.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the code as a CharSequence</dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>0.28</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../../com/oracle/truffle/api/source/Source.html#hasCharacters--"><code>Source.hasCharacters()</code></a></dd>
 </dl>
 </li>
 </ul>
@@ -438,7 +519,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <ul class="blockList">
 <li class="blockList">
 <h4>toString</h4>
-<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;toString()</pre>
+<pre>public final&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;toString()</pre>
 <div class="block">Returns an implementation-defined string representation of this source section to be used for
  debugging purposes only.</div>
 <dl>
@@ -457,7 +538,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <ul class="blockList">
 <li class="blockList">
 <h4>hashCode</h4>
-<pre>public&nbsp;int&nbsp;hashCode()</pre>
+<pre>public abstract&nbsp;int&nbsp;hashCode()</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a></code>&nbsp;in class&nbsp;<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></code></dd>
@@ -472,7 +553,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <ul class="blockListLast">
 <li class="blockList">
 <h4>equals</h4>
-<pre>public&nbsp;boolean&nbsp;equals(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;obj)</pre>
+<pre>public abstract&nbsp;boolean&nbsp;equals(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;obj)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a></code>&nbsp;in class&nbsp;<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></code></dd>

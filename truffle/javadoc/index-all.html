@@ -1520,6 +1520,11 @@
 <dd>
 <div class="block">Specifies byte based content of <a href="org/graalvm/polyglot/Source.Builder.html#build--"><code>to-be-built</code></a> <a href="org/graalvm/polyglot/Source.html" title="class in org.graalvm.polyglot"><code>Source</code></a>.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/source/Source.html#CONTENT_NONE">CONTENT_NONE</a></span> - Static variable in class com.oracle.truffle.api.source.<a href="com/oracle/truffle/api/source/Source.html" title="class in com.oracle.truffle.api.source">Source</a></dt>
+<dd>
+<div class="block">Constant to be used as an argument to <a href="com/oracle/truffle/api/source/Source.SourceBuilder.html#content-java.lang.CharSequence-"><code>Source.SourceBuilder.content(CharSequence)</code></a> to set no
+ content to the Source built.</div>
+</dd>
 <dt><a href="org/graalvm/polyglot/Context.html" title="class in org.graalvm.polyglot"><span class="typeNameLink">Context</span></a> - Class in <a href="org/graalvm/polyglot/package-summary.html">org.graalvm.polyglot</a></dt>
 <dd>
 <div class="block">A polyglot context for Graal guest languages that allows to <a href="org/graalvm/polyglot/Context.html#eval-org.graalvm.polyglot.Source-"><code>evaluate</code></a> code.</div>
@@ -1940,6 +1945,11 @@
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/tck/LanguageProvider.html#createScripts-org.graalvm.polyglot.Context-">createScripts(Context)</a></span> - Method in interface org.graalvm.polyglot.tck.<a href="org/graalvm/polyglot/tck/LanguageProvider.html" title="interface in org.graalvm.polyglot.tck">LanguageProvider</a></dt>
 <dd>
 <div class="block">Creates a collection of simple scripts used for instrumentation testing.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/source/Source.html#createSection-int-int-int-int-">createSection(int, int, int, int)</a></span> - Method in class com.oracle.truffle.api.source.<a href="com/oracle/truffle/api/source/Source.html" title="class in com.oracle.truffle.api.source">Source</a></dt>
+<dd>
+<div class="block">Create representation of a contiguous region in the source that does not have the character
+ content available.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/api/source/Source.html#createSection-int-">createSection(int)</a></span> - Method in class com.oracle.truffle.api.source.<a href="com/oracle/truffle/api/source/Source.html" title="class in com.oracle.truffle.api.source">Source</a></dt>
 <dd>
@@ -4902,6 +4912,26 @@
 <div class="block">Returns <code>true</code> if this source represents a character based source, else
  <code>false</code>.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/source/SourceSection.html#hasCharIndex--">hasCharIndex()</a></span> - Method in class com.oracle.truffle.api.source.<a href="com/oracle/truffle/api/source/SourceSection.html" title="class in com.oracle.truffle.api.source">SourceSection</a></dt>
+<dd>
+<div class="block">Returns <code>true</code> if this section has a character index information,
+ <code>false</code> otherwise.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/graalvm/polyglot/SourceSection.html#hasCharIndex--">hasCharIndex()</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/SourceSection.html" title="class in org.graalvm.polyglot">SourceSection</a></dt>
+<dd>
+<div class="block">Returns <code>true</code> if this section has a character index information,
+ <code>false</code> otherwise.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/source/SourceSection.html#hasColumns--">hasColumns()</a></span> - Method in class com.oracle.truffle.api.source.<a href="com/oracle/truffle/api/source/SourceSection.html" title="class in com.oracle.truffle.api.source">SourceSection</a></dt>
+<dd>
+<div class="block">Returns <code>true</code> if this section has a column number information, <code>false</code>
+ otherwise.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/graalvm/polyglot/SourceSection.html#hasColumns--">hasColumns()</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/SourceSection.html" title="class in org.graalvm.polyglot">SourceSection</a></dt>
+<dd>
+<div class="block">Returns <code>true</code> if this section has a column number information, <code>false</code>
+ otherwise.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/api/debug/DebugStackFrame.html#hashCode--">hashCode()</a></span> - Method in class com.oracle.truffle.api.debug.<a href="com/oracle/truffle/api/debug/DebugStackFrame.html" title="class in com.oracle.truffle.api.debug">DebugStackFrame</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/api/interop/Message.html#hashCode--">hashCode()</a></span> - Method in class com.oracle.truffle.api.interop.<a href="com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a></dt>
@@ -4936,6 +4966,16 @@
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/tck/TypeDescriptor.html#hashCode--">hashCode()</a></span> - Method in class org.graalvm.polyglot.tck.<a href="org/graalvm/polyglot/tck/TypeDescriptor.html" title="class in org.graalvm.polyglot.tck">TypeDescriptor</a></dt>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/TypeLiteral.html#hashCode--">hashCode()</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/TypeLiteral.html" title="class in org.graalvm.polyglot">TypeLiteral</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/source/SourceSection.html#hasLines--">hasLines()</a></span> - Method in class com.oracle.truffle.api.source.<a href="com/oracle/truffle/api/source/SourceSection.html" title="class in com.oracle.truffle.api.source">SourceSection</a></dt>
+<dd>
+<div class="block">Returns <code>true</code> if this section has a line number information, <code>false</code>
+ otherwise.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/graalvm/polyglot/SourceSection.html#hasLines--">hasLines()</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/SourceSection.html" title="class in org.graalvm.polyglot">SourceSection</a></dt>
+<dd>
+<div class="block">Returns <code>true</code> if this section has a line number information, <code>false</code>
+ otherwise.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/proxy/ProxyObject.html#hasMember-java.lang.String-">hasMember(String)</a></span> - Method in interface org.graalvm.polyglot.proxy.<a href="org/graalvm/polyglot/proxy/ProxyObject.html" title="interface in org.graalvm.polyglot.proxy">ProxyObject</a></dt>
 <dd>
 <div class="block">Returns <code>true</code> if the proxy object contains a member with the given key, or else
@@ -8305,6 +8345,10 @@
 <dd>
 <div class="block">Resolves given string path representation against the parent of this <a href="com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a>.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/debug/DebuggerSession.html#resolveSource-com.oracle.truffle.api.source.Source-">resolveSource(Source)</a></span> - Method in class com.oracle.truffle.api.debug.<a href="com/oracle/truffle/api/debug/DebuggerSession.html" title="class in com.oracle.truffle.api.debug">DebuggerSession</a></dt>
+<dd>
+<div class="block">Resolve the source with respect to the actual <a href="com/oracle/truffle/api/debug/DebuggerSession.html#setSourcePath-java.lang.Iterable-"><code>source path</code></a>.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/tck/InlineSnippet.Builder.html#resultVerifier-org.graalvm.polyglot.tck.ResultVerifier-">resultVerifier(ResultVerifier)</a></span> - Method in class org.graalvm.polyglot.tck.<a href="org/graalvm/polyglot/tck/InlineSnippet.Builder.html" title="class in org.graalvm.polyglot.tck">InlineSnippet.Builder</a></dt>
 <dd>
 <div class="block">Sets a custom verifier of a result of the <a href="org/graalvm/polyglot/tck/InlineSnippet.html#getCode--"><code>inline source</code></a>
@@ -8761,6 +8805,10 @@
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/api/object/DynamicObject.html#setShapeAndResize-com.oracle.truffle.api.object.Shape-com.oracle.truffle.api.object.Shape-">setShapeAndResize(Shape, Shape)</a></span> - Method in class com.oracle.truffle.api.object.<a href="com/oracle/truffle/api/object/DynamicObject.html" title="class in com.oracle.truffle.api.object">DynamicObject</a></dt>
 <dd>
 <div class="block">Set object shape and resize storage if necessary.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/debug/DebuggerSession.html#setSourcePath-java.lang.Iterable-">setSourcePath(Iterable&lt;URI&gt;)</a></span> - Method in class com.oracle.truffle.api.debug.<a href="com/oracle/truffle/api/debug/DebuggerSession.html" title="class in com.oracle.truffle.api.debug">DebuggerSession</a></dt>
+<dd>
+<div class="block">Set a list of source path roots that are used to resolve relative <a href="com/oracle/truffle/api/source/Source.html#getURI--"><code>source URIs</code></a>.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/api/debug/DebugException.html#setStackTrace-java.lang.StackTraceElement:A-">setStackTrace(StackTraceElement[])</a></span> - Method in exception com.oracle.truffle.api.debug.<a href="com/oracle/truffle/api/debug/DebugException.html" title="class in com.oracle.truffle.api.debug">DebugException</a></dt>
 <dd>
