@@ -496,14 +496,12 @@ $(document).ready(function(){
                 <p><strong>KNOWN ISSUES</strong></p>
 
 <ul>
-  <li>
-    <p>Support for isolates in native-image is still experimental. A problem with garbage collection that can lead to stability issues has been identified and will be fixed in an upcoming release.</p>
-  </li>
   <li>The GraalVM CE image for MacOS currently depends on some libraries that are not installed by default on current MacOS versions.
 This might cause issues with UI-related functionality:
     <pre><code>Library not loaded: /usr/X11/lib/libfreetype.6.dylib
 </code></pre>
-    <p>The necessary components can be added, e.g., by installing <a href="https://www.xquartz.org">https://www.xquartz.org</a>. We will remove this dependency in upcoming versions of GraalVM CE for MacOS.</p>
+    <p>The necessary components can be added, e.g., by installing <a href="https://www.xquartz.org">https://www.xquartz.org</a>.
+We will remove this dependency in upcoming versions of GraalVM CE for MacOS.</p>
   </li>
   <li>Due do the issue with the underlying platform Java Mission control freezes at startup on MacOS. Because of that we removed the <code>jmc</code> utility from the distribution. For more information and workarounds please see the <a href="https://www.oracle.com/technetwork/java/javase/jmc55-release-notes-2412446.html#known-iss">JMC known issues page</a>.</li>
 </ul>

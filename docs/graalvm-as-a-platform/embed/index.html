@@ -995,7 +995,7 @@ values.</p>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
 <span class="c1">// BEGIN-SNIPPET</span>
 <span class="n">Context</span> <span class="n">context</span> <span class="o">=</span> <span class="n">Context</span><span class="o">.</span><span class="na">create</span><span class="o">();</span>
-<span class="n">Value</span> <span class="n">function</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="na">eval</span><span class="o">(</span><span class="s">"js"</span><span class="o">,</span> <span class="s">"function(x) x + 1"</span><span class="o">);</span>
+<span class="n">Value</span> <span class="n">function</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="na">eval</span><span class="o">(</span><span class="s">"js"</span><span class="o">,</span> <span class="s">"x =&gt; x+1"</span><span class="o">);</span>
 <span class="k">assert</span> <span class="n">function</span><span class="o">.</span><span class="na">canExecute</span><span class="o">();</span>
 <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="mi">41</span><span class="o">).</span><span class="na">asInt</span><span class="o">();</span>
 <span class="k">assert</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">42</span><span class="o">;</span>

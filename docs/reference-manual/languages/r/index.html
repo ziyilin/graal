@@ -689,6 +689,10 @@ This behavior can be overridden by explicitly setting the <code>repos</code> arg
 This functionality does not interfere with the <code>checkpoint</code> package. If you are behind a proxy server, make
 sure to configure the proxy either with environment variables or using the JVM options, e.g., <code>--jvm.Djava.net.useSystemProxies=true</code>.</p>
 
+<p>Versions of some packages specifically patched for GraalVM implementation of R can be installed using the <code>install.fastr.packages</code>
+function that downloads them from the <a href="https://github.com/oracle/fastr/tree/master/com.oracle.truffle.r.pkgs">GitHub repository</a>.
+Currently, those are <code>rJava</code> and <code>data.table</code>.</p>
+
 <p>Known limitations of GraalVM implementation of R compared to GNU R:</p>
 <ul>
   <li>Only small parts of the low-level <code>graphics</code> package are functional. However, the <code>grid</code> package is supported and R can install and run packages based on it like <code>ggplot2</code>.
@@ -934,7 +938,7 @@ openJavaWindow()
 <p>GraalVM implementation of R provides its own rJava compatible replacement package available at <a href="https://github.com/oracle/fastr/tree/master/com.oracle.truffle.r.pkgs/rJava">GitHub</a>,
 which can be installed using:</p>
 
-<pre><code class="language-shell">$ R --jvm CMD INSTALL /path/to/fastr/com.oracle.truffle.r.pkgs/rJava
+<pre><code class="language-shell">$ R -e "install.fastr.packages('rJava')"
 </code></pre>
 
 <h2 id="graalvm-r-engine-additional-features">GraalVM R Engine Additional Features</h2>
@@ -958,8 +962,6 @@ cat(svgCode)
 </code></pre>
 
 <h5 id="in-process-parallel-execution">In-Process Parallel Execution</h5>
-
-<p>Note: this feature does not work properly with version RC5 and will be fixed in the following version.</p>
 
 <p>GraalVM execution of R adds a new cluster type <code>SHARED</code> for the <code>parallel</code> package. This cluster starts new jobs as new threads inside the same process. Example:</p>
 

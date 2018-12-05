@@ -636,7 +636,7 @@ Running <code>mvn package</code> in the simplelanguage folder also builds a
 This file is the SimpleLanguage component for GraalVM and can be installed by
 running:</p>
 
-<pre><code class="language-shell">$ /path/to/graalvm/bin/gu -F install /path/to/sl-component.jar
+<pre><code class="language-shell">$ /path/to/graalvm/bin/gu -L install /path/to/sl-component.jar
 </code></pre>
 <h2 id="the-simplelanguage-native-image">The SimpleLanguage native image</h2>
 
@@ -713,7 +713,7 @@ version of Graal compiler, please follow these instructions:</p>
 
 <ol>
   <li>Download the latest JVMCI JDK 8 from <a href="http://www.oracle.com/technetwork/oracle-labs/program-languages/downloads/index.html">Oracle Technology Network Downloads</a> and point JAVA_HOME at it:
-    <pre><code class="language-shell">$ export JAVA_HOME=/path/to/labsjdk1.8.0_172-jvmci-0.48
+    <pre><code class="language-shell">$ export JAVA_HOME=/path/to/labsjdk1.8.0_192-jvmci-0.52
 </code></pre>
   </li>
   <li>Clone the Graal repository from SimpleLanguage folder:
@@ -738,7 +738,7 @@ $ git clone https://github.com/oracle/graal.git
 </code></pre>
   </li>
   <li>Run SimpleLanguage using the mx command:
-    <pre><code class="language-shell">$ mx -v --jdk=jvmci vm -cp /path/to/simplelanguage/launcher/target/sl-launcher-1.0-SNAPSHOT.jar:/path/to/simplelanguage/language/target/simplelanguage-1.0-SNAPSHOT.jar com.oracle.truffle.sl.launcher.SLMain  /path/to/simplelanguage/language/tests/SlScript.sl
+    <pre><code class="language-shell">$ mx -v --jdk=jvmci vm -cp /path/to/simplelanguage/launcher/target/launcher-1.0.0-rc10-SNAPSHOT.jar:/path/to/simplelanguage/language/target/simplelanguage.jar com.oracle.truffle.sl.launcher.SLMain  /path/to/simplelanguage/language/tests/SlScript.sl
 </code></pre>
   </li>
 </ol>

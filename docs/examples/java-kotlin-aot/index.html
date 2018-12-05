@@ -621,7 +621,7 @@ to the path, using a command-line shell for Linux:</p>
 The <code>native-image</code> utility is a part of GraalVM. It is used to compile
 applications ahead-of-time for faster starup and lower general overhead at runtime.</p>
 
-<pre><code>$GRAALVM_HOME/bin/native-image -cp ./target/mixed-code-hello-world-1.0-SNAPSHOT.jar -H:Name=helloworld -H:Class=hello.JavaHello -H:+ReportUnsupportedElementsAtRuntime
+<pre><code>$GRAALVM_HOME/bin/native-image -cp ./target/mixed-code-hello-world-1.0-SNAPSHOT.jar -H:Name=helloworld -H:Class=hello.JavaHello -H:+ReportUnsupportedElementsAtRuntime --allow-incomplete-classpath
 </code></pre>
 
 <p>It takes a couple of parameters, the classpath, the main class of the application with
