@@ -42,6 +42,7 @@
 
 
   <body class="preload">
+
     <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg"
   xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs>
@@ -557,6 +558,23 @@ $(document).ready(function(){
           
           <a href="/docs/graalvm-as-a-platform/">
             GraalVM as a Platform
+          </a>
+        </li>
+
+
+        
+
+
+        
+      
+    
+      
+        
+          <li class="toc-bullets-main">
+        
+          
+          <a href="/docs/support/">
+            Support
           </a>
         </li>
 
@@ -1098,7 +1116,7 @@ the GraalVM development team or third party developers.</p>
 
 <ol>
   <li>
-    <p>Save the following code snippet as <code>HellWorld.js</code>:</p>
+    <p>Save the following code snippet as <code>HelloWorld.js</code>:</p>
 
     <pre><code> var http = require('http');
 
@@ -1138,7 +1156,7 @@ the GraalVM development team or third party developers.</p>
     <p>Note: To run the server on a different port, use the <code>--port &lt;port_number&gt;</code> option.</p>
   </li>
   <li>
-    <p>Launch GraalVM <code>node</code> to monitor <code>HellWorld.js</code> using this command:</p>
+    <p>Launch GraalVM <code>node</code> to monitor <code>HelloWorld.js</code> using this command:</p>
 
     <pre><code> node --agent HelloWorld.js
  Server running at http://localhost:8000/
@@ -1209,6 +1227,50 @@ available in <code>--jvm</code> mode only for the GraalVM launchers.</p>
 statements:</p>
 
 <p><img src="/docs/img/SpecializationInstrument.png" alt=" " title="Specialization Instrument" /></p>
+
+<h3 id="monitoring-agent-history-for-short-living-graalvms">Monitoring Agent History for Short Living GraalVMs</h3>
+
+<p>The above described usage scenario with the online monitoring of a running GraalVM
+cannot be applied in the situations when the GraalVM runs for a short period
+of time only (typically, the GraalVM running as part of a FaaS environment).
+There is simply not enough time for a user to attach the Monitoring Agent UI,
+enable selected instruments, collect and view the monitoring data.</p>
+
+<p>To cover such usecase, the GraalVM can be started with a list of Agent Instruments
+that should be enabled automatically at the VM startup and send thier data actively
+to the Monitoring Agent Server. The server can persist the history of received data
+and provide them later on to its users.</p>
+
+<p>Get familiar with using the GraalVM Agent history with the following example.</p>
+
+<ol>
+  <li>
+    <p>Start the Graal Enterprise Monitoring Agent Server with the history enabled using
+the following command:</p>
+
+    <pre><code> gemasrv --store
+</code></pre>
+    <p>The Monitoring Agent Server gets started persisting the received monitoring data to
+ the <code>data.store</code> file located in the current working directory. To choose different
+ storage location, use the <code>--store &lt;storage_file_URL&gt;</code> option (e.g. <code>--store file:///tmp/data.store</code>).</p>
+  </li>
+  <li>
+    <p>Launch the short living GraalVM with the <strong>Agent CPU Tracer</strong> enabled at the VM startup.</p>
+
+    <pre><code> js --agent --agent.Instruments=agentCPUTracer run.js
+</code></pre>
+  </li>
+  <li>In the Agent window, select the <strong>History</strong> from the navigation list that appears by
+clicking the hamburger icon positioned at the top-left corner.</li>
+  <li>Select the GraalVM launched in step 2 on the time line using the executable name and
+timestamps for its identification.</li>
+  <li>Open the source that you are interested in form the <strong>FileSystem</strong> tree.</li>
+  <li>Select <strong>Agent CPU Tracer</strong> from the drop-down box next to the filename tab.</li>
+</ol>
+
+<p>Now you can browse the collected data. The Agent History page should display as follows:</p>
+
+<p><img src="/docs/img/AgentHistory.png" alt=" " title="Monitoring Agent History" /></p>
 
 <h2 id="heap-viewer">Heap Viewer</h2>
 <p>GraalVM comes with <strong>Graal VisualVM</strong>, an enhanced version of the popular <a href="https://visualvm.github.io">VisualVM</a> tool which includes special heap analysis features for the supported guest languages. These languages and features are currently available:</p>
@@ -1312,8 +1374,8 @@ statements:</p>
             <h6 class="title-footer">Useful Links</h6>
             <ul class="footer-list">
               <li class="footer-list__item"><a href="https://github.com/oracle/graal/issues">Report a Bug</a></li>
-              <li class="footer-list__item"><a href="https://github.com/oracle/graal/blob/master/compiler/CONTRIBUTING.md">How to Contribute</a></li>
               <li class="footer-list__item"><a href="/docs/reference-manual/compatibility/">Compatibility</a></li>
+              <li class="footer-list__item"><a href="/docs/release-notes/">Release Notes</a></li>
               <li class="footer-list__item"><a href="/downloads">Downloads</a></li>
             </ul>
           </div>

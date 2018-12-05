@@ -20,7 +20,7 @@ the GraalVM development team or third party developers.
 ### Running an Example for Agent Monitoring
 Get familiar with using the GraalVM Agent with this Hello World example.
 
-1. Save the following code snippet as `HellWorld.js`:
+1. Save the following code snippet as `HelloWorld.js`:
 
     ```
     var http = require('http');
@@ -61,7 +61,7 @@ Get familiar with using the GraalVM Agent with this Hello World example.
     Note: To run the server on a different port, use the `--port <port_number>` option.
 
 
-3. Launch GraalVM `node` to monitor `HellWorld.js` using this command:
+3. Launch GraalVM `node` to monitor `HelloWorld.js` using this command:
 
     ```
     node --agent HelloWorld.js
@@ -127,3 +127,45 @@ Data such as the following displays specializations of various JavaScript
 statements:
 
 ![ ](/docs/img/SpecializationInstrument.png  "Specialization Instrument")
+
+### Monitoring Agent History for Short Living GraalVMs
+
+The above described usage scenario with the online monitoring of a running GraalVM
+cannot be applied in the situations when the GraalVM runs for a short period
+of time only (typically, the GraalVM running as part of a FaaS environment).
+There is simply not enough time for a user to attach the Monitoring Agent UI,
+enable selected instruments, collect and view the monitoring data.
+
+To cover such usecase, the GraalVM can be started with a list of Agent Instruments
+that should be enabled automatically at the VM startup and send thier data actively
+to the Monitoring Agent Server. The server can persist the history of received data
+and provide them later on to its users.
+
+Get familiar with using the GraalVM Agent history with the following example.
+
+1. Start the Graal Enterprise Monitoring Agent Server with the history enabled using
+the following command:
+
+    ```
+    gemasrv --store
+    ```
+    The Monitoring Agent Server gets started persisting the received monitoring data to
+    the `data.store` file located in the current working directory. To choose different
+    storage location, use the `--store <storage_file_URL>` option (e.g. `--store file:///tmp/data.store`).
+
+2. Launch the short living GraalVM with the **Agent CPU Tracer** enabled at the VM startup.
+
+    ```
+    js --agent --agent.Instruments=agentCPUTracer run.js
+    ```
+
+3. In the Agent window, select the **History** from the navigation list that appears by
+clicking the hamburger icon positioned at the top-left corner.
+4. Select the GraalVM launched in step 2 on the time line using the executable name and
+timestamps for its identification.
+5. Open the source that you are interested in form the **FileSystem** tree.
+6. Select **Agent CPU Tracer** from the drop-down box next to the filename tab.
+
+Now you can browse the collected data. The Agent History page should display as follows:
+
+![ ](/docs/img/AgentHistory.png  "Monitoring Agent History")

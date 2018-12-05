@@ -619,11 +619,19 @@ function initialize() {
         position: {lat: 60.169422, lng: 24.928233}
       }
     ],
+    washington_dc: [
+      {
+        conference: 'CGO & Graal Workshop',
+        date: 'February 16-20, 2019',
+        url: '#event-eleven',
+        position: {lat: 38.904722, lng: -77.016389}
+      }
+    ],
     bruhl: [
       {
         conference: 'JAVALAND',
         date: 'March 19-21, 2019',
-        url: '#event-eleven',
+        url: '#event-twelve',
         position: {lat: 50.799537, lng: 6.879517}
       }
     ]

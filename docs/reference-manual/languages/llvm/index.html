@@ -42,6 +42,7 @@
 
 
   <body class="preload">
+
     <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg"
   xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs>
@@ -572,6 +573,23 @@ $(document).ready(function(){
           <li class="toc-bullets-main">
         
           
+          <a href="/docs/support/">
+            Support
+          </a>
+        </li>
+
+
+        
+
+
+        
+      
+    
+      
+        
+          <li class="toc-bullets-main">
+        
+          
           <a href="/docs/faq/">
             FAQ
           </a>
@@ -752,7 +770,7 @@ void printPoint(struct Point *p) {
 }
 </code></pre>
 
-<p>Make sure <code>GRAALVM_HOME</code> resolves to the GraalVM installation directory, then compile <em>cpart.c</em> file with:</p>
+<p>Make sure <code>GRAALVM_HOME</code> resolves to the GraalVM installation directory, then compile the <em>cpart.c</em> file with:</p>
 <pre><code class="language-shell">$ clang -g -O1 -c -emit-llvm -I$GRAALVM_HOME/jre/languages/llvm cpart.c
 </code></pre>
 
@@ -800,34 +818,47 @@ Point&lt;3.000000,6.000000&gt;
 Point&lt;17.000000,42.000000&gt;
 </code></pre>
 
-<h2 id="interoperability-with-java">Interoperability with Java</h2>
-<p><em>Polyglot interoperability protocol</em>, that comes with GraalVM, offers bi-directional
-access between guest languages and host languages.
-As a result, you can call a precompiled source file in LLVM bitcode format directly from Java code.</p>
+<h2 id="polyglot-c-api">Polyglot C API</h2>
 
-<p>Put this C code into a file named <em>polyglot.c</em> :</p>
+<p>There are also lower level API functions for directly accessing polyglot values
+from C. See the <a href="/docs/reference-manual/polyglot/">Polyglot Reference</a>
+and the documentation comments in <code>polyglot.h</code> for more details.</p>
 
-<pre><code>#include &lt;stdio.h&gt;
+<p>For example, this program allocates and accesses a Java array from C:</p>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 #include &lt;polyglot.h&gt;
 
 int main() {
     void *arrayType = polyglot_java_type("int[]");
     void *array = polyglot_new_instance(arrayType, 4);
-    polyglot_set_array_element(array, 2, 24, 42);
+    polyglot_set_array_element(array, 2, 24);
     int element = polyglot_as_i32(polyglot_get_array_element(array, 2));
     printf("%d\n", element);
     return element;
 }
 </code></pre>
 
-<p>This example requires GraalVM home directory to be exported as $GRAALVM_HOME.
-See <a href="https://www.graalvm.org/docs/getting-started/">Get Started</a>. Pre-compile <em>polyglot.c</em> to LLVM bitcode with:</p>
+<p>Compile it to LLVM bitcode:</p>
 
-<pre><code class="language-shell">clang -g -O1 -c -emit-llvm -I$GRAALVM_HOME/jre/languages/llvm polyglot.c
+<pre><code class="language-shell">$ clang -g -O1 -c -emit-llvm -I$GRAALVM_HOME/jre/languages/llvm polyglot.c
 </code></pre>
 
-<p>Then compile the Polyglot class below to Java bytecode and run it on GraalVM:</p>
-<pre><code>import java.io.*;
+<p>And run it, using the <code>--jvm</code> argument to run GraalVM in JVM mode, since we are
+using a Java type:</p>
+
+<pre><code class="language-shell">$ lli --jvm polyglot.bc
+24
+</code></pre>
+
+<h2 id="embedding-in-java">Embedding in Java</h2>
+
+<p>GraalVM can also be used to embed LLVM bitcode in Java host programs.</p>
+
+<p>For example, let’s write a Java class <code>Polyglot.java</code> that embeds GraalVM to
+run the previous example:</p>
+
+<pre><code class="language-java">import java.io.*;
 import org.graalvm.polyglot.*;
 
 class Polyglot {
@@ -837,17 +868,19 @@ class Polyglot {
         File file = new File("polyglot.bc");
         Source source = Source.newBuilder("llvm", file).build();
         Value cpart = polyglot.eval(source);
-        cpart.getMember("main").execute();
+        cpart.execute();
     }
 }
 </code></pre>
+
+<p>Compiling and running it:</p>
 <pre><code class="language-shell">$ javac Polyglot.java
-$ java HelloWorld
+$ java Polyglot
+24
 </code></pre>
 
-<p>See the <a href="/docs/reference-manual/polyglot/">Polyglot Reference</a> and the
-<a href="/docs/graalvm-as-a-platform/embed/">Embedding documentation</a>
-for more information about interoperability with other programming languages.</p>
+<p>See the <a href="/docs/graalvm-as-a-platform/embed/">Embedding documentation</a>
+for more information.</p>
 
 <h2 id="source-level-debugging">Source-Level Debugging</h2>
 
@@ -972,8 +1005,8 @@ explains the sandboxed execution in every detail.</p>
             <h6 class="title-footer">Useful Links</h6>
             <ul class="footer-list">
               <li class="footer-list__item"><a href="https://github.com/oracle/graal/issues">Report a Bug</a></li>
-              <li class="footer-list__item"><a href="https://github.com/oracle/graal/blob/master/compiler/CONTRIBUTING.md">How to Contribute</a></li>
               <li class="footer-list__item"><a href="/docs/reference-manual/compatibility/">Compatibility</a></li>
+              <li class="footer-list__item"><a href="/docs/release-notes/">Release Notes</a></li>
               <li class="footer-list__item"><a href="/downloads">Downloads</a></li>
             </ul>
           </div>

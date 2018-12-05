@@ -6305,6 +6305,7 @@ table {
   .events-table__detail {
     width: 50%;
     padding-left: 0;
+    padding-right: 0.3em;
     margin-bottom: 20px; }
     .events-table__detail:before {
       display: none; }
