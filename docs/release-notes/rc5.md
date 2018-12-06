@@ -27,10 +27,10 @@ The necessary components can be added, e.g., by installing [https://www.xquartz.
 * Added support for `Symbol.prototype.description`.
 * Added support for `String.prototype.matchAll`.
 
-More details can be found in the [project changelog on GitHub](https://github.com/graalvm/graaljs/blob/master/CHANGELOG.md).
+More details can be found in the [project changelog on GitHub](https://github.com/graalvm/graaljs/blob/master/CHANGELOG.md#version-100-rc5).
 
 ### Ruby
-The full [changelog is available](https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md) in the GitHub repository, but here are some of the most notable changes.
+The full [changelog is available](https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md#10-rc-5-3-august-2018) in the GitHub repository, but here are some of the most notable changes.
 
 * Simpler installation on macOS: it is no longer needed to add LLVM (`/usr/local/opt/llvm@4/bin`) to PATH on macOS.
 * `--log.ruby.level=` can be used to set the log level from any language launcher.
@@ -46,15 +46,15 @@ The full [changelog is available](https://github.com/oracle/truffleruby/blob/mas
 * C-API improvements to support simple Cython modules.
 * Support recognition of Python source files with the polyglot launcher, so that now `--language python` is not necessary when starting Python scripts with the polyglot launcher (note that the polyglot launcher still needs to be rebuilt using `bin/gu rebuild-images polyglot` after installing Python).
 
-Full changelog is available on GitHub [CHANGELOG.md](https://github.com/graalvm/graalpython/blob/master/CHANGELOG.md)
+Full changelog is available on GitHub [CHANGELOG.md](https://github.com/graalvm/graalpython/blob/master/CHANGELOG.md#version-100-rc5).
 
 ### R
 
-See [CHANGELOG](https://github.com/oracle/fastr/blob/master/CHANGELOG.md) for the list of changes.
+See [CHANGELOG](https://github.com/oracle/fastr/blob/master/CHANGELOG.md#10-rc-5) for the list of changes.
 
 ### LLVM interpreter for C/C++ & other native languages
 
-Changelog: [https://github.com/graalvm/sulong/blob/master/CHANGELOG.md](https://github.com/graalvm/sulong/blob/master/CHANGELOG.md)
+The project [changelog](https://github.com/oracle/graal/blob/master/sulong/CHANGELOG.md#version-100-rc5) is available on GitHub.
 
 * Support the `__builtin_debugtrap` function based on LLVM's `@llvmn.debugtrap` intrinsic, which can be used to drop into the debugger (e.g., Chrome Inspector).
 * Support "zero-length array at end of struct" pattern when accessing polyglot values as structs.
@@ -68,8 +68,8 @@ Changelog: [https://github.com/graalvm/sulong/blob/master/CHANGELOG.md](https://
 
 To see the full list of changes to the APIs please refer to the project changelogs:
 
-* [Graal SDK changelog](https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md)
-* [Truffle changelog](https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md)
+* [Graal SDK changelog](https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md#version-10-rc5)
+* [Truffle changelog](https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md#version-100-rc5)
 
 ### Tools
 **VisualVM**

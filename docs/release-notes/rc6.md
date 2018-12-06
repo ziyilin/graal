@@ -12,7 +12,7 @@
 
 ### LLVM interpreter (Sulong)
 
-The full [changelog](https://github.com/graalvm/sulong/blob/master/CHANGELOG.md)
+The full [changelog](https://github.com/oracle/graal/blob/master/sulong/CHANGELOG.md#version-100-rc6)
 is available on GitHub.
 
 * Support for LLVM IR-level debugging, i.e., debugging at the level of `*.ll` instead of `*.c` files.
@@ -20,7 +20,7 @@ is available on GitHub.
 * Support for function pointer members in `polyglot_as_typed`, which allows objects from other languages to be used in expressions like `obj->func(args)`.
 
 ### Ruby
-The complete [changelog](https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md) is available on GitHub. Here is a short list of most notable changes.
+The complete [changelog](https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md#10-rc-6-3-september-2018) is available on GitHub. Here is a short list of most notable changes.
 
 * TruffleRuby is now usable as a JSR 223 (`javax.script`) language;
 * A [migration guide from JRuby](https://github.com/oracle/truffleruby/blob/master/doc/user/jruby-migration.md) is now included.
@@ -32,7 +32,7 @@ The complete [changelog](https://github.com/oracle/truffleruby/blob/master/CHANG
 
 ### Python
 
-The full [changelog](https://github.com/graalvm/graalpython/blob/master/CHANGELOG.md) is available on GitHub.
+The full [changelog](https://github.com/graalvm/graalpython/blob/master/CHANGELOG.md#version-100-rc6) is available on GitHub.
 
 * Improved compatibility with regular expressions by including CPython's sre module as a fallback engine (in addition to Truffle's regular expression engine).
 * C extension modules can now be compiled with LLVM 5+, which was prevented by internal incompatibilities before.
@@ -44,7 +44,7 @@ The full [changelog](https://github.com/graalvm/graalpython/blob/master/CHANGELO
 
 ### R
 
-The full [changelog](https://github.com/oracle/fastr/blob/master/CHANGELOG.md)
+The full [changelog](https://github.com/oracle/fastr/blob/master/CHANGELOG.md#10-rc-6)
 is available on GitHub.
 
 * Support for reading/writing graphical parameters via `par`.
@@ -56,5 +56,5 @@ is available on GitHub.
 
 To see the list of changes to the APIs please refer to the project changelogs:
 
-* [Graal SDK changelog](https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md)
-* [Truffle changelog](https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md)
+* [Graal SDK changelog](https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md#version-10-rc6)
+* [Truffle changelog](https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md#version-100-rc6)

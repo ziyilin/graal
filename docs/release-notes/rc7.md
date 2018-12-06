@@ -14,10 +14,10 @@
 * Improved support for sharing of shapes between Contexts with the same Engine, which allows to reuse ASTs and objects across different manually created contexts.
 * Support for `BigInteger` typed TypedArrays.
 
-More details can be found in the [project changelog on GitHub](https://github.com/graalvm/graaljs/blob/master/CHANGELOG.md ).
+More details can be found in the [project changelog on GitHub](https://github.com/graalvm/graaljs/blob/master/CHANGELOG.md#version-100-rc7).
 
 ### LLVM interpreter (Sulong)
-The full [changelog](https://github.com/oracle/graal/blob/master/sulong/CHANGELOG.md) is available on GitHub.
+The full [changelog](https://github.com/oracle/graal/blob/master/sulong/CHANGELOG.md#version-100-rc7) is available on GitHub.
 
 * New polyglot builtin `polyglot_has_member`.
 * Removed support for implicit polyglot types for local variables as the availability of type information is not guaranteed. Explicit polyglot casts are now strictly required (`polyglot_as_typed`). See [docs/INTEROP.md](https://ol-bitbucket.us.oracle.com/projects/G/repos/graal/browse/sulong/docs/INTEROP.md) and [polyglot.h](https://ol-bitbucket.us.oracle.com/projects/G/repos/graal/browse/sulong/projects/com.oracle.truffle.llvm.libraries.bitcode/include/polyglot.h) for more details.
@@ -25,7 +25,7 @@ The full [changelog](https://github.com/oracle/graal/blob/master/sulong/CHANGELO
 * Preliminary support for LLVM 7.
 
 ### Ruby
-The complete [changelog](https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md) is available on GitHub. Here is a short list of most notable changes.
+The complete [changelog](https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md#10-rc-7-3-october-2018) is available on GitHub. Here is a short list of most notable changes.
 
 * Useful `inspect` strings have been added for more foreign objects.
 * Added the `rbconfig/sizeof` native extension for better MRI compatibility.
@@ -44,7 +44,7 @@ The complete [changelog](https://github.com/oracle/truffleruby/blob/master/CHANG
 * Enhanced the `java` interop builtin module with introspection utility methods.
 * Changes in C extension interface to reduce overhead.
 
-The [changelog](https://github.com/graalvm/graalpython/blob/master/CHANGELOG.md)
+The [changelog](https://github.com/graalvm/graalpython/blob/master/CHANGELOG.md#version-100-rc7)
 is available on GitHub.
 
 ### R
@@ -55,7 +55,7 @@ is available on GitHub.
 * Paths in `eval.polyglot` are resolved relative to the current working directory.
 * Various fixes necessary to pass _dplyr_ tests (GitHub version of _dplyr_).
 
-More details can be found in the project [changelog](https://github.com/oracle/fastr/blob/master/CHANGELOG.md) on GitHub.
+More details can be found in the project [changelog](https://github.com/oracle/fastr/blob/master/CHANGELOG.md#10-rc-7) on GitHub.
 
 ### Tools
 **Ideal Graph Visualizer**
@@ -68,5 +68,5 @@ More details can be found in the project [changelog](https://github.com/oracle/f
 * Truffle and GraalSDK license changes from GPL2 with Class Path Exception to the Universal Permissive License (UPL). Please refer to the license files for more information: [Truffle license](https://github.com/oracle/graal/blob/master/truffle/LICENSE.md), [Graal-SDK license](https://github.com/oracle/graal/blob/master/sdk/LICENSE.md).
 
 To see the list of changes to the APIs, please refer to the project changelogs:
-- [Graal SDK changelog](https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md)
-- [Truffle changelog](https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md)
+- [Graal SDK changelog](https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md#version-10-rc7)
+- [Truffle changelog](https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md#version-100-rc7)

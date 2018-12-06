@@ -48,10 +48,10 @@ All service implementation classes, listed in the `META-INF` directory, are avai
 ### JavaScript
 * Updated Node.js to version 10.9.0.
 
-A complete [changelog](https://github.com/graalvm/graaljs/blob/master/CHANGELOG.md) is available on GitHub.
+A complete [changelog](https://github.com/graalvm/graaljs/blob/master/CHANGELOG.md#version-100-rc8) is available on GitHub.
 
 ### LLVM Interpreter (Sulong)
-The project [changelog](https://github.com/oracle/graal/blob/master/sulong/CHANGELOG.md) is available on GitHub.
+The project [changelog](https://github.com/oracle/graal/blob/master/sulong/CHANGELOG.md#version-100-rc8) is available on GitHub.
 
 ### Ruby
 * Ubuntu 18.04 LTS, Fedora 28, and macOS 10.14 (Mojave) now supported.
@@ -59,13 +59,15 @@ The project [changelog](https://github.com/oracle/graal/blob/master/sulong/CHANG
 * Added a `TruffleRuby::AtomicReference` class.
 * Performance of setting the last exception on a thread has now been improved.
 
+A complete project [changelog](https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md#10-rc-8-19-october-2018) is available on GitHub.
+
 ### Python
 * Python now supports the allocation profiler (`--memtracer`) to analyze the heap usage of applications.
 
-The [changelog](https://github.com/graalvm/graalpython/blob/master/CHANGELOG.md) is available on GitHub.
+The [changelog](https://github.com/graalvm/graalpython/blob/master/CHANGELOG.md#version-100-rc8) is available on GitHub.
 
 ### R
-GraalVM 1.0-rc8 implementation of R came up with multiple bug fixes which can be found in the project [changelog](https://github.com/oracle/fastr/blob/master/CHANGELOG.md) on GitHub.
+GraalVM 1.0-rc8 implementation of R came up with multiple bug fixes which can be found in the project [changelog](https://github.com/oracle/fastr/blob/master/CHANGELOG.md#10-rc-8) on GitHub.
 
 ### Tools
 **Graal VisualVM**
@@ -74,5 +76,5 @@ GraalVM 1.0-rc8 implementation of R came up with multiple bug fixes which can be
 
 ### API Changes for GraalVM Integrators (SDK + Truffle)
 The major Truffle and Graal SDK changes between GraalVM versions are summarized in the project changelogs:
-- [Graal SDK changelog](https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md)
-- [Truffle changelog](https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md)
+- [Graal SDK changelog](https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md#version-10-rc8)
+- [Truffle changelog](https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md#version-100-rc8)

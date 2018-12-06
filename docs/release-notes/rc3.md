@@ -19,11 +19,11 @@
 * Added a flag for the Nashorn compatibility mode `--js.nashorn-compat`, for the details and migration from Nashorn please [refer to the documentation](https://github.com/graalvm/graaljs/blob/master/docs/user/NashornMigrationGuide.md).
 * Rename the flag for the V8 compatibility mode to `js.v8-compat`.
 
-More details can be found in the [project changelog on GitHub](https://github.com/graalvm/graaljs/blob/master/CHANGELOG.md).
+More details can be found in the [project changelog on GitHub](https://github.com/graalvm/graaljs/blob/master/CHANGELOG.md#version-100-rc3).
 
 ### Ruby
 
-The full [changelog is available](https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md) in the GitHub repository, but here are some of the most notable changes.
+The full [changelog is available](https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md#10-rc-3-2-july-2018) in the GitHub repository, but here are some of the most notable changes.
 
 * Added ability to call `is_a?` on foreign objects.
 * Fixed: Qnil/Qtrue/Qfalse/Qundef can now be used as initial value for global variables in C extensions.
@@ -42,11 +42,11 @@ GraalVM Python implementation is still in the early stages, but we’re making p
 * The random module substitute was removed and we now run the standard library random module to be fully compatible.
 * Improved thread-safety in the embedded scenarios when using Python contexts from multiple threads.
 
-More details are available in [the project’s changelog](https://github.com/graalvm/graalpython/blob/master/CHANGELOG.md) on GitHub.
+More details are available in [the project’s changelog](https://github.com/graalvm/graalpython/blob/master/CHANGELOG.md#version-100-rc3) on GitHub.
 
 ### R
 
-* Added more missing R builtins and C API functions, see [CHANGELOG](https://github.com/oracle/fastr/blob/master/CHANGELOG.md) for a complete list.
+* Added more missing R builtins and C API functions, see [CHANGELOG](https://github.com/oracle/fastr/blob/master/CHANGELOG.md#10-rc-3) for a complete list.
 * Simplified installation, the script that configures FastR for the current system  `jre/languages/R/bin/configure_fastr` does not require Autotools anymore.
 * Added configuration files to allow users to build a native image of the FastR runtime, which reduces the startup time. Run `jre/languages/R/bin/install_r_native_image` to build the image.
 * Fixed an issue with the plotting window not displaying anything after it was closed and reopened.
@@ -65,8 +65,8 @@ More details are available in [the project changelog](https://github.com/graalvm
 
 To see the list of changes to the APIs please refer to the project changelogs:
 
-* [Graal SDK changelog](https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md)
-* [Truffle changelog](https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md)
+* [Graal SDK changelog](https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md#version-10-rc3)
+* [Truffle changelog](https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md#version-100-rc3)
 
 ### Tools
 

@@ -534,12 +534,12 @@ $(document).ready(function(){
 <p>Added a new option <code>--allow-incomplete-classpath</code> with GraalVM 1.0-rc10. By default (without specifying this option), classes that are reachable, but missing on the class path, are reported at native image generation time. When specifying this new option, missing classes are only reported at run time. The option provides support for, e.g., libraries that probe the existence of classes, catch the class loading error, and then fall back to a different behavior. This should result in more applications being able to compile to a GraalVM native image.</p>
 
 <h3 id="javascript">JavaScript</h3>
-<p>The project <a href="https://github.com/graalvm/graaljs/blob/master/CHANGELOG.md">changelog</a> is available on GitHub.</p>
+<p>The project <a href="https://github.com/graalvm/graaljs/blob/master/CHANGELOG.md#version-100-rc10">changelog</a> is available on GitHub.</p>
 
 <ul>
   <li>Added the ability to construct the Java classpath programmatically. If you know at runtime where the classes and jar files are located – you can add them to the classpath and use Java code from them.</li>
   <li>Compatibility: added support for several proposals which might become parts of ECMAScript 2019: <a href="https://github.com/tc39/proposal-flatMap">Array.prototype.{flat,flatMap}</a>, <a href="https://github.com/tc39/proposal-well-formed-stringify">well-formed JSON.stringify</a>, <a href="https://github.com/tc39/proposal-global">globalThis</a>.</li>
-  <li>Compatibility: moved several non-standard builtins behind flags (see the  <a href="https://github.com/graalvm/graaljs/blob/master/CHANGELOG.md">changelog</a>).</li>
+  <li>Compatibility: moved several non-standard builtins behind flags (see the  <a href="https://github.com/graalvm/graaljs/blob/master/CHANGELOG.md#version-100-rc10">changelog</a>).</li>
 </ul>
 
 <h3 id="llvm-interpreter-sulong">LLVM interpreter (Sulong)</h3>
@@ -547,11 +547,11 @@ $(document).ready(function(){
   <li>Improved the debugging experience: internal functions (originating from the GraalVM LLVM interpreter implementation) are now hidden in the stack traces by default and can be debugged with <code>--inspect.Internal</code>; and unhandled exceptions are now output to <code>stderr</code> instead of <code>stdout</code>.</li>
 </ul>
 
-<p>More details can be found in the <a href="https://github.com/oracle/graal/blob/master/sulong/CHANGELOG.md">project changelog on GitHub</a>.</p>
+<p>More details can be found in the <a href="https://github.com/oracle/graal/blob/master/sulong/CHANGELOG.md#version-100-rc10">project changelog on GitHub</a>.</p>
 
 <h3 id="ruby">Ruby</h3>
 <p>GraalVM 1.0-rc10 implementation of Ruby comes with several new features and multiple bug fixes
-which can be found in the project <a href="https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md">changelog</a> on GitHub.</p>
+which can be found in the project <a href="https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md#10-rc-10">changelog</a> on GitHub.</p>
 
 <ul>
   <li>Compatibility: implemented the following API and added libraries:
@@ -569,11 +569,10 @@ which can be found in the project <a href="https://github.com/oracle/truffleruby
 <h3 id="python">Python</h3>
 <ul>
   <li>Several users-facing improvements were made to the embedding interfaces: getting/setting the current working directory in Python now uses the appropriate Truffle APIs, Python will report side effects in the KEY_INFO message, and the KEYS message now responds with attributes and methods (not with dict keys).</li>
-  <li>The interactive <code>help()</code> builtin now works, including asking about language and syntax syntax.</li>
+  <li>The interactive <code>help()</code> builtin now works, including asking about language and syntax.</li>
 </ul>
 
-<p>A complete project <a href="https://github.com/graalvm/graalpython/blob/master/CHANGELOG.md">changelog</a>
-is available on GitHub.</p>
+<p>A complete project <a href="https://github.com/graalvm/graalpython/blob/master/CHANGELOG.md#version-100-rc10">changelog</a> is available on GitHub.</p>
 
 <h3 id="r">R</h3>
 <p>Made important steps for compatibility with the R ecosystem:</p>
@@ -585,14 +584,15 @@ and FastR provides its own version of <code>data.table</code> (work in progress)
   <li>Fixed linking problems on MacOS when installing R packages and using Fortran code.</li>
 </ul>
 
-<p>The full <a href="https://github.com/oracle/fastr/blob/master/CHANGELOG.md">changelog</a>
+<p>The full <a href="https://github.com/oracle/fastr/blob/master/CHANGELOG.md#10-rc-10">changelog</a>
 is available on GitHub.</p>
 
 <h3 id="api-changes-for-graalvm-integrators-sdk--truffle">API changes for GraalVM integrators (SDK + Truffle)</h3>
 <p>To see the list of changes to the APIs please refer to the project changelogs:</p>
-
-<p><a href="https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md">Graal SDK changelog</a>
-<a href="https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md">Truffle changelog</a></p>
+<ul>
+  <li><a href="https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md#version-10-rc10">Graal SDK changelog</a></li>
+  <li><a href="https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md#version-100-rc10">Truffle changelog</a></li>
+</ul>
 
 <h3 id="tools">Tools</h3>
 <p><strong>Graal VisualVM</strong></p>
@@ -620,7 +620,7 @@ is available on GitHub.</p>
 
 <h3 id="ruby-1">Ruby</h3>
 <p>GraalVM 1.0-rc9 implementation of Ruby features security updates and multiple bug fixes
-which can be found in the project <a href="https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md">changelog</a> on GitHub.  Here is a short list of most notable changes:</p>
+which can be found in the project <a href="https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md#10-rc-9-5-november-2018">changelog</a> on GitHub.  Here is a short list of most notable changes:</p>
 
 <ul>
   <li>LLVM for Oracle Linux 7 can now be installed without building from source.</li>
@@ -639,8 +639,7 @@ which can be found in the project <a href="https://github.com/oracle/truffleruby
   <li>Started the initial support for the <code>binascii</code> module.</li>
 </ul>
 
-<p>A complete project <a href="https://github.com/graalvm/graalpython/blob/master/CHANGELOG.md">changelog</a>
-is available on GitHub.</p>
+<p>A complete project <a href="https://github.com/graalvm/graalpython/blob/master/CHANGELOG.md#version-100-rc9">changelog</a> is available on GitHub.</p>
 
 <h3 id="r-1">R</h3>
 <ul>
@@ -648,7 +647,7 @@ is available on GitHub.</p>
   <li>Added missing R builtins and C API: <code>eapply builtin</code> and <code>rapply builtin</code>.</li>
 </ul>
 
-<p>More details can be found in the project <a href="https://github.com/oracle/fastr/blob/master/CHANGELOG.md">changelog</a> on GitHub.</p>
+<p>More details can be found in the project <a href="https://github.com/oracle/fastr/blob/master/CHANGELOG.md#10-rc-9">changelog</a> on GitHub.</p>
 
 <h3 id="javascript-1">JavaScript</h3>
 <p>A complete <a href="https://github.com/graalvm/graaljs/blob/master/CHANGELOG.md">changelog</a> is available on GitHub.</p>
@@ -665,8 +664,8 @@ is available on GitHub.</p>
 
 <p>The major Truffle and Graal SDK changes between GraalVM versions are summarized in the project changelogs:</p>
 <ul>
-  <li><a href="https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md">Graal SDK changelog</a></li>
-  <li><a href="https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md">Truffle changelog</a></li>
+  <li><a href="https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md#version-10-rc9">Graal SDK changelog</a></li>
+  <li><a href="https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md#version-100-rc9">Truffle changelog</a></li>
 </ul>
 
 <h3 id="tools-1">Tools</h3>
@@ -740,10 +739,10 @@ All service implementation classes, listed in the <code>META-INF</code> director
   <li>Updated Node.js to version 10.9.0.</li>
 </ul>
 
-<p>A complete <a href="https://github.com/graalvm/graaljs/blob/master/CHANGELOG.md">changelog</a> is available on GitHub.</p>
+<p>A complete <a href="https://github.com/graalvm/graaljs/blob/master/CHANGELOG.md#version-100-rc8">changelog</a> is available on GitHub.</p>
 
 <h3 id="llvm-interpreter-sulong-2">LLVM Interpreter (Sulong)</h3>
-<p>The project <a href="https://github.com/oracle/graal/blob/master/sulong/CHANGELOG.md">changelog</a> is available on GitHub.</p>
+<p>The project <a href="https://github.com/oracle/graal/blob/master/sulong/CHANGELOG.md#version-100-rc8">changelog</a> is available on GitHub.</p>
 
 <h3 id="ruby-2">Ruby</h3>
 <ul>
@@ -753,15 +752,17 @@ All service implementation classes, listed in the <code>META-INF</code> director
   <li>Performance of setting the last exception on a thread has now been improved.</li>
 </ul>
 
+<p>A complete project <a href="https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md#10-rc-8-19-october-2018">changelog</a> is available on GitHub.</p>
+
 <h3 id="python-2">Python</h3>
 <ul>
   <li>Python now supports the allocation profiler (<code>--memtracer</code>) to analyze the heap usage of applications.</li>
 </ul>
 
-<p>The <a href="https://github.com/graalvm/graalpython/blob/master/CHANGELOG.md">changelog</a> is available on GitHub.</p>
+<p>The <a href="https://github.com/graalvm/graalpython/blob/master/CHANGELOG.md#version-100-rc8">changelog</a> is available on GitHub.</p>
 
 <h3 id="r-2">R</h3>
-<p>GraalVM 1.0-rc8 implementation of R came up with multiple bug fixes which can be found in the project <a href="https://github.com/oracle/fastr/blob/master/CHANGELOG.md">changelog</a> on GitHub.</p>
+<p>GraalVM 1.0-rc8 implementation of R came up with multiple bug fixes which can be found in the project <a href="https://github.com/oracle/fastr/blob/master/CHANGELOG.md#10-rc-8">changelog</a> on GitHub.</p>
 
 <h3 id="tools-2">Tools</h3>
 <p><strong>Graal VisualVM</strong></p>
@@ -773,8 +774,8 @@ All service implementation classes, listed in the <code>META-INF</code> director
 <h3 id="api-changes-for-graalvm-integrators-sdk--truffle-2">API Changes for GraalVM Integrators (SDK + Truffle)</h3>
 <p>The major Truffle and Graal SDK changes between GraalVM versions are summarized in the project changelogs:</p>
 <ul>
-  <li><a href="https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md">Graal SDK changelog</a></li>
-  <li><a href="https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md">Truffle changelog</a></li>
+  <li><a href="https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md#version-10-rc8">Graal SDK changelog</a></li>
+  <li><a href="https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md#version-100-rc8">Truffle changelog</a></li>
 </ul>
 
 <h2 id="10-rc7">1.0-RC7</h2>
@@ -799,10 +800,10 @@ All service implementation classes, listed in the <code>META-INF</code> director
   <li>Support for <code>BigInteger</code> typed TypedArrays.</li>
 </ul>
 
-<p>More details can be found in the <a href="https://github.com/graalvm/graaljs/blob/master/CHANGELOG.md">project changelog on GitHub</a>.</p>
+<p>More details can be found in the <a href="https://github.com/graalvm/graaljs/blob/master/CHANGELOG.md#version-100-rc7">project changelog on GitHub</a>.</p>
 
 <h3 id="llvm-interpreter-sulong-3">LLVM interpreter (Sulong)</h3>
-<p>The full <a href="https://github.com/oracle/graal/blob/master/sulong/CHANGELOG.md">changelog</a> is available on GitHub.</p>
+<p>The full <a href="https://github.com/oracle/graal/blob/master/sulong/CHANGELOG.md#version-100-rc7">changelog</a> is available on GitHub.</p>
 
 <ul>
   <li>New polyglot builtin <code>polyglot_has_member</code>.</li>
@@ -812,7 +813,7 @@ All service implementation classes, listed in the <code>META-INF</code> director
 </ul>
 
 <h3 id="ruby-3">Ruby</h3>
-<p>The complete <a href="https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md">changelog</a> is available on GitHub. Here is a short list of most notable changes.</p>
+<p>The complete <a href="https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md#10-rc-7-3-october-2018">changelog</a> is available on GitHub. Here is a short list of most notable changes.</p>
 
 <ul>
   <li>Useful <code>inspect</code> strings have been added for more foreign objects.</li>
@@ -835,7 +836,7 @@ All service implementation classes, listed in the <code>META-INF</code> director
   <li>Changes in C extension interface to reduce overhead.</li>
 </ul>
 
-<p>The <a href="https://github.com/graalvm/graalpython/blob/master/CHANGELOG.md">changelog</a>
+<p>The <a href="https://github.com/graalvm/graalpython/blob/master/CHANGELOG.md#version-100-rc7">changelog</a>
 is available on GitHub.</p>
 
 <h3 id="r-3">R</h3>
@@ -848,7 +849,7 @@ is available on GitHub.</p>
   <li>Various fixes necessary to pass <em>dplyr</em> tests (GitHub version of <em>dplyr</em>).</li>
 </ul>
 
-<p>More details can be found in the project <a href="https://github.com/oracle/fastr/blob/master/CHANGELOG.md">changelog</a> on GitHub.</p>
+<p>More details can be found in the project <a href="https://github.com/oracle/fastr/blob/master/CHANGELOG.md#10-rc-7">changelog</a> on GitHub.</p>
 
 <h3 id="tools-3">Tools</h3>
 <p><strong>Ideal Graph Visualizer</strong></p>
@@ -866,8 +867,8 @@ is available on GitHub.</p>
 
 <p>To see the list of changes to the APIs, please refer to the project changelogs:</p>
 <ul>
-  <li><a href="https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md">Graal SDK changelog</a></li>
-  <li><a href="https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md">Truffle changelog</a></li>
+  <li><a href="https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md#version-10-rc7">Graal SDK changelog</a></li>
+  <li><a href="https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md#version-100-rc7">Truffle changelog</a></li>
 </ul>
 
 <h2 id="10-rc6">1.0-RC6</h2>
@@ -888,7 +889,7 @@ is available on GitHub.</p>
 
 <h3 id="llvm-interpreter-sulong-4">LLVM interpreter (Sulong)</h3>
 
-<p>The full <a href="https://github.com/graalvm/sulong/blob/master/CHANGELOG.md">changelog</a>
+<p>The full <a href="https://github.com/oracle/graal/blob/master/sulong/CHANGELOG.md#version-100-rc6">changelog</a>
 is available on GitHub.</p>
 
 <ul>
@@ -898,7 +899,7 @@ is available on GitHub.</p>
 </ul>
 
 <h3 id="ruby-4">Ruby</h3>
-<p>The complete <a href="https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md">changelog</a> is available on GitHub. Here is a short list of most notable changes.</p>
+<p>The complete <a href="https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md#10-rc-6-3-september-2018">changelog</a> is available on GitHub. Here is a short list of most notable changes.</p>
 
 <ul>
   <li>TruffleRuby is now usable as a JSR 223 (<code>javax.script</code>) language;</li>
@@ -912,7 +913,7 @@ is available on GitHub.</p>
 
 <h3 id="python-4">Python</h3>
 
-<p>The full <a href="https://github.com/graalvm/graalpython/blob/master/CHANGELOG.md">changelog</a> is available on GitHub.</p>
+<p>The full <a href="https://github.com/graalvm/graalpython/blob/master/CHANGELOG.md#version-100-rc6">changelog</a> is available on GitHub.</p>
 
 <ul>
   <li>Improved compatibility with regular expressions by including CPython’s sre module as a fallback engine (in addition to Truffle’s regular expression engine).</li>
@@ -926,7 +927,7 @@ is available on GitHub.</p>
 
 <h3 id="r-4">R</h3>
 
-<p>The full <a href="https://github.com/oracle/fastr/blob/master/CHANGELOG.md">changelog</a>
+<p>The full <a href="https://github.com/oracle/fastr/blob/master/CHANGELOG.md#10-rc-6">changelog</a>
 is available on GitHub.</p>
 
 <ul>
@@ -941,8 +942,8 @@ is available on GitHub.</p>
 <p>To see the list of changes to the APIs please refer to the project changelogs:</p>
 
 <ul>
-  <li><a href="https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md">Graal SDK changelog</a></li>
-  <li><a href="https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md">Truffle changelog</a></li>
+  <li><a href="https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md#version-10-rc6">Graal SDK changelog</a></li>
+  <li><a href="https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md#version-100-rc6">Truffle changelog</a></li>
 </ul>
 
 <h2 id="10-rc5">1.0-RC5</h2>
@@ -981,10 +982,10 @@ This might cause issues with UI-related functionality:
   <li>Added support for <code>String.prototype.matchAll</code>.</li>
 </ul>
 
-<p>More details can be found in the <a href="https://github.com/graalvm/graaljs/blob/master/CHANGELOG.md">project changelog on GitHub</a>.</p>
+<p>More details can be found in the <a href="https://github.com/graalvm/graaljs/blob/master/CHANGELOG.md#version-100-rc5">project changelog on GitHub</a>.</p>
 
 <h3 id="ruby-5">Ruby</h3>
-<p>The full <a href="https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md">changelog is available</a> in the GitHub repository, but here are some of the most notable changes.</p>
+<p>The full <a href="https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md#10-rc-5-3-august-2018">changelog is available</a> in the GitHub repository, but here are some of the most notable changes.</p>
 
 <ul>
   <li>Simpler installation on macOS: it is no longer needed to add LLVM (<code>/usr/local/opt/llvm@4/bin</code>) to PATH on macOS.</li>
@@ -1004,15 +1005,15 @@ This might cause issues with UI-related functionality:
   <li>Support recognition of Python source files with the polyglot launcher, so that now <code>--language python</code> is not necessary when starting Python scripts with the polyglot launcher (note that the polyglot launcher still needs to be rebuilt using <code>bin/gu rebuild-images polyglot</code> after installing Python).</li>
 </ul>
 
-<p>Full changelog is available on GitHub <a href="https://github.com/graalvm/graalpython/blob/master/CHANGELOG.md">CHANGELOG.md</a></p>
+<p>Full changelog is available on GitHub <a href="https://github.com/graalvm/graalpython/blob/master/CHANGELOG.md#version-100-rc5">CHANGELOG.md</a>.</p>
 
 <h3 id="r-5">R</h3>
 
-<p>See <a href="https://github.com/oracle/fastr/blob/master/CHANGELOG.md">CHANGELOG</a> for the list of changes.</p>
+<p>See <a href="https://github.com/oracle/fastr/blob/master/CHANGELOG.md#10-rc-5">CHANGELOG</a> for the list of changes.</p>
 
 <h3 id="llvm-interpreter-for-cc--other-native-languages">LLVM interpreter for C/C++ &amp; other native languages</h3>
 
-<p>Changelog: <a href="https://github.com/graalvm/sulong/blob/master/CHANGELOG.md">https://github.com/graalvm/sulong/blob/master/CHANGELOG.md</a></p>
+<p>The project <a href="https://github.com/oracle/graal/blob/master/sulong/CHANGELOG.md#version-100-rc5">changelog</a> is available on GitHub.</p>
 
 <ul>
   <li>Support the <code>__builtin_debugtrap</code> function based on LLVM’s <code>@llvmn.debugtrap</code> intrinsic, which can be used to drop into the debugger (e.g., Chrome Inspector).</li>
@@ -1031,8 +1032,8 @@ This might cause issues with UI-related functionality:
 <p>To see the full list of changes to the APIs please refer to the project changelogs:</p>
 
 <ul>
-  <li><a href="https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md">Graal SDK changelog</a></li>
-  <li><a href="https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md">Truffle changelog</a></li>
+  <li><a href="https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md#version-10-rc5">Graal SDK changelog</a></li>
+  <li><a href="https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md#version-100-rc5">Truffle changelog</a></li>
 </ul>
 
 <h3 id="tools-4">Tools</h3>
@@ -1095,11 +1096,11 @@ This might cause issues with UI-related functionality:
   <li>Rename the flag for the V8 compatibility mode to <code>js.v8-compat</code>.</li>
 </ul>
 
-<p>More details can be found in the <a href="https://github.com/graalvm/graaljs/blob/master/CHANGELOG.md">project changelog on GitHub</a>.</p>
+<p>More details can be found in the <a href="https://github.com/graalvm/graaljs/blob/master/CHANGELOG.md#version-100-rc3">project changelog on GitHub</a>.</p>
 
 <h3 id="ruby-6">Ruby</h3>
 
-<p>The full <a href="https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md">changelog is available</a> in the GitHub repository, but here are some of the most notable changes.</p>
+<p>The full <a href="https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md#10-rc-3-2-july-2018">changelog is available</a> in the GitHub repository, but here are some of the most notable changes.</p>
 
 <ul>
   <li>Added ability to call <code>is_a?</code> on foreign objects.</li>
@@ -1122,12 +1123,12 @@ This might cause issues with UI-related functionality:
   <li>Improved thread-safety in the embedded scenarios when using Python contexts from multiple threads.</li>
 </ul>
 
-<p>More details are available in <a href="https://github.com/graalvm/graalpython/blob/master/CHANGELOG.md">the project’s changelog</a> on GitHub.</p>
+<p>More details are available in <a href="https://github.com/graalvm/graalpython/blob/master/CHANGELOG.md#version-100-rc3">the project’s changelog</a> on GitHub.</p>
 
 <h3 id="r-6">R</h3>
 
 <ul>
-  <li>Added more missing R builtins and C API functions, see <a href="https://github.com/oracle/fastr/blob/master/CHANGELOG.md">CHANGELOG</a> for a complete list.</li>
+  <li>Added more missing R builtins and C API functions, see <a href="https://github.com/oracle/fastr/blob/master/CHANGELOG.md#10-rc-3">CHANGELOG</a> for a complete list.</li>
   <li>Simplified installation, the script that configures FastR for the current system  <code>jre/languages/R/bin/configure_fastr</code> does not require Autotools anymore.</li>
   <li>Added configuration files to allow users to build a native image of the FastR runtime, which reduces the startup time. Run <code>jre/languages/R/bin/install_r_native_image</code> to build the image.</li>
   <li>Fixed an issue with the plotting window not displaying anything after it was closed and reopened.</li>
@@ -1152,8 +1153,8 @@ This might cause issues with UI-related functionality:
 <p>To see the list of changes to the APIs please refer to the project changelogs:</p>
 
 <ul>
-  <li><a href="https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md">Graal SDK changelog</a></li>
-  <li><a href="https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md">Truffle changelog</a></li>
+  <li><a href="https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md#version-10-rc3">Graal SDK changelog</a></li>
+  <li><a href="https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md#version-100-rc3">Truffle changelog</a></li>
 </ul>
 
 <h3 id="tools-5">Tools</h3>
@@ -1236,7 +1237,7 @@ int main() {
 115792089237316195423570985008687907853269984665640564039457584007913129639936
 </code></pre>
 
-<p>A more detailed list of changes to the LLVM interpreter can be found in the <a href="https://github.com/graalvm/sulong/blob/master/CHANGELOG.md">full changelog</a>.</p>
+<p>A more detailed list of changes to the LLVM interpreter can be found in the <a href="https://github.com/oracle/graal/blob/master/sulong/CHANGELOG.md#version-100-rc2">full changelog</a>.</p>
 
 <h3 id="ruby-7">Ruby</h3>
 
@@ -1248,7 +1249,7 @@ int main() {
   <li><code>to_str</code> will try to UNBOX and then re-try <code>to_str</code>, in order to provoke the unboxing of foreign strings.</li>
 </ul>
 
-<p>Much more details can be found in the full <a href="https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md">changelog</a>.</p>
+<p>Much more details can be found in the full <a href="https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md#10-rc-2-6-june-2018">changelog</a>.</p>
 
 <h3 id="r-7">R</h3>
 
@@ -1277,8 +1278,8 @@ int main() {
 <p>To see the list of changes to the APIs please refer to the project changelogs:</p>
 
 <ul>
-  <li><a href="https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md">Graal SDK changelog</a></li>
-  <li><a href="https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md">Truffle changelog</a></li>
+  <li><a href="https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md#version-10-rc2">Graal SDK changelog</a></li>
+  <li><a href="https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md#version-100-rc2">Truffle changelog</a></li>
 </ul>
 
 <h3 id="tools-6">Tools</h3>
