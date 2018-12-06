@@ -537,8 +537,8 @@ $(document).ready(function(){
 <p>The project <a href="https://github.com/graalvm/graaljs/blob/master/CHANGELOG.md">changelog</a> is available on GitHub.</p>
 
 <ul>
-  <li>Added ability to construct the Java classpath programmatically. If you know at runtime where the classes and jar files are located – you can add them to the classpath and use Java code from them.</li>
-  <li>Compatibility: added support for several proposals which might become parts of ECMAScript 2019: <a href="https://github.com/tc39/proposal-flatMap">Array.prototype.{flat,flatMap}</a>, <a href="https://github.com/tc39/proposal-well-formed-stringify">Well-formed JSON.stringify</a>, <a href="https://github.com/tc39/proposal-global">globalThis</a>.</li>
+  <li>Added the ability to construct the Java classpath programmatically. If you know at runtime where the classes and jar files are located – you can add them to the classpath and use Java code from them.</li>
+  <li>Compatibility: added support for several proposals which might become parts of ECMAScript 2019: <a href="https://github.com/tc39/proposal-flatMap">Array.prototype.{flat,flatMap}</a>, <a href="https://github.com/tc39/proposal-well-formed-stringify">well-formed JSON.stringify</a>, <a href="https://github.com/tc39/proposal-global">globalThis</a>.</li>
   <li>Compatibility: moved several non-standard builtins behind flags (see the  <a href="https://github.com/graalvm/graaljs/blob/master/CHANGELOG.md">changelog</a>).</li>
 </ul>
 
@@ -579,7 +579,7 @@ is available on GitHub.</p>
 <p>Made important steps for compatibility with the R ecosystem:</p>
 
 <ul>
-  <li>Improved support for popular packages: Rcpp modules, <code>dplyr</code> now mostly works,
+  <li>Improved the support for popular packages: Rcpp modules, <code>dplyr</code> now mostly works,
 and FastR provides its own version of <code>data.table</code> (work in progress).</li>
   <li>A new builtin function <code>install.fastr.packages(pkgs)</code> can be used to install FastR-specific versions of the <code>rJava</code> and <code>data.table</code> packages.</li>
   <li>Fixed linking problems on MacOS when installing R packages and using Fortran code.</li>
@@ -595,8 +595,9 @@ is available on GitHub.</p>
 <a href="https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md">Truffle changelog</a></p>
 
 <h3 id="tools">Tools</h3>
-<p><strong>Graal VisualVM</strong>
-Several quality of life improvements:</p>
+<p><strong>Graal VisualVM</strong></p>
+
+<p>Several quality of life improvements:</p>
 <ul>
   <li>Added the display of system properties for SVM heap dumps.</li>
   <li>Added support for the fields histogram and merged references for guest languages: JavaScript, Ruby, and so on.</li>
