@@ -20,7 +20,7 @@ More details can be found in the [project changelog on GitHub](https://github.co
 The full [changelog](https://github.com/oracle/graal/blob/master/sulong/CHANGELOG.md#version-100-rc7) is available on GitHub.
 
 * New polyglot builtin `polyglot_has_member`.
-* Removed support for implicit polyglot types for local variables as the availability of type information is not guaranteed. Explicit polyglot casts are now strictly required (`polyglot_as_typed`). See [docs/INTEROP.md](https://ol-bitbucket.us.oracle.com/projects/G/repos/graal/browse/sulong/docs/INTEROP.md) and [polyglot.h](https://ol-bitbucket.us.oracle.com/projects/G/repos/graal/browse/sulong/projects/com.oracle.truffle.llvm.libraries.bitcode/include/polyglot.h) for more details.
+* Removed support for implicit polyglot types for local variables as the availability of type information is not guaranteed. Explicit polyglot casts are now strictly required (`polyglot_as_typed`). See [docs/INTEROP.md](https://github.com/oracle/graal/blob/master/sulong/docs/INTEROP.md) and [polyglot.h](https://github.com/oracle/graal/blob/master/sulong/projects/com.oracle.truffle.llvm.libraries.bitcode/include/polyglot.h) for more details.
 * Support for IR-level (textual representation of bitcode files) tracing, i.e., creating an execution log of all bitcodes that were executed, for debugging purposes.
 * Preliminary support for LLVM 7.
 

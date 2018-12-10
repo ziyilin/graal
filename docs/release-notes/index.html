@@ -807,7 +807,7 @@ All service implementation classes, listed in the <code>META-INF</code> director
 
 <ul>
   <li>New polyglot builtin <code>polyglot_has_member</code>.</li>
-  <li>Removed support for implicit polyglot types for local variables as the availability of type information is not guaranteed. Explicit polyglot casts are now strictly required (<code>polyglot_as_typed</code>). See <a href="https://ol-bitbucket.us.oracle.com/projects/G/repos/graal/browse/sulong/docs/INTEROP.md">docs/INTEROP.md</a> and <a href="https://ol-bitbucket.us.oracle.com/projects/G/repos/graal/browse/sulong/projects/com.oracle.truffle.llvm.libraries.bitcode/include/polyglot.h">polyglot.h</a> for more details.</li>
+  <li>Removed support for implicit polyglot types for local variables as the availability of type information is not guaranteed. Explicit polyglot casts are now strictly required (<code>polyglot_as_typed</code>). See <a href="https://github.com/oracle/graal/blob/master/sulong/docs/INTEROP.md">docs/INTEROP.md</a> and <a href="https://github.com/oracle/graal/blob/master/sulong/projects/com.oracle.truffle.llvm.libraries.bitcode/include/polyglot.h">polyglot.h</a> for more details.</li>
   <li>Support for IR-level (textual representation of bitcode files) tracing, i.e., creating an execution log of all bitcodes that were executed, for debugging purposes.</li>
   <li>Preliminary support for LLVM 7.</li>
 </ul>

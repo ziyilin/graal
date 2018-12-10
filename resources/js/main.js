@@ -619,19 +619,35 @@ function initialize() {
         position: {lat: 60.169422, lng: 24.928233}
       }
     ],
+    london: [
+      {
+        conference: 'Oracle OpenWorld Europe',
+        date: 'January 16-17, 2019',
+        url: '#event-eleven',
+        position: {lat: 51.508633, lng: 0.029889}
+      }
+    ],
     washington_dc: [
       {
         conference: 'CGO & Graal Workshop',
         date: 'February 16-20, 2019',
-        url: '#event-eleven',
+        url: '#event-twelve',
         position: {lat: 38.904722, lng: -77.016389}
+      }
+    ],
+    atlanta: [
+      {
+        conference: 'DevNexus 2019',
+        date: 'March 6-9, 2019',
+        url: '#event-thirteen',
+        position: {lat: 33.883619, lng: -84.4665739}
       }
     ],
     bruhl: [
       {
         conference: 'JAVALAND',
         date: 'March 19-21, 2019',
-        url: '#event-twelve',
+        url: '#event-fourteen',
         position: {lat: 50.799537, lng: 6.879517}
       }
     ]
