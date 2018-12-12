@@ -581,8 +581,7 @@ It aims to use most of the available Truffle features and documents their use ex
 <p>The SimpleLanguage demonstration language is licensed under the <a href="https://opensource.org/licenses/UPL">Universal Permissive License</a> (UPL).</p>
 
 <h2 id="ide-setup">IDE Setup</h2>
-<p>The Truffle language implementation framework provides language-agnostic infrastructure to realize standard IDE features by providing additional APIs.  If you would like to experiment with your language and get the benefits of an IDE, consider the import of SimpleLanguage
-as an example.</p>
+<p>The Truffle language implementation framework provides language-agnostic infrastructure to realize standard IDE features by providing additional APIs.  If you would like to experiment with your language and get the benefits of an IDE, consider the import of SimpleLanguage as an example.</p>
 
 <h3 id="eclipse">Eclipse</h3>
 <p>The SimpleLanguage teaching project has been tested with Eclipse Neon.2 Release 4.6.2 and Eclipse Oxygen.3A. To import the project folder to the desirable Eclipse environment:</p>
@@ -607,15 +606,18 @@ as an example.</p>
 </code></pre>
 
 <h2 id="igv">IGV</h2>
-<p>To investigate SimpleLanguage performance issues, you need IGV. It is also known as the <a href="https://wiki.openjdk.java.net/display/HotSpot/IdealGraphVisualizer">Ideal Graph Visualizer</a> and is currently maintained as part of the Graal compiler.</p>
+
+<p>To investigate SimpleLanguage performance issues, we recommend the
+Ideal Graph Visualizer developer tool, or IGV, currently maintained as part of the Graal compiler.
+The tool is essential for any language implementers on top of GraalVM and is
+available as a part of <strong>GraalVM Enterprise Edition</strong> on <a href="https://www.oracle.com/technetwork/oracle-labs/program-languages/downloads/index.html">Oracle Technology Network</a> download.</p>
+
 <ol>
-  <li>Download the <a href="https://lafo.ssw.uni-linz.ac.at/pub/idealgraphvisualizer/">Ideal Graph Visualizer</a>
- and unpack the downloaded archive in the <code>simplelanguage</code> folder;</li>
-  <li>Launch IGV with from <code>simplelanguage</code> folder:
-    <pre><code class="language-shell">$ idealgraphvsiualizer/bin/idealgraphvsiualizer --jdkhome /path/to/graalvm
+  <li>Ensure <code>PATH</code> environment points to <code>GRAALVM_HOME/bin</code> directory and launch IGV:
+    <pre><code class="language-shell">$ idealgraphvsiualizer
 </code></pre>
   </li>
-  <li>Execute the following to dump graphs to IGV:
+  <li>Execute the following to dump graphs to IGV from the second console window:
     <pre><code class="language-shell">$ ./sl -dump language/tests/SumPrint.sl
 </code></pre>
   </li>
