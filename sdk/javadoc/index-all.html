@@ -2009,6 +2009,10 @@
 <dd>
 <div class="block">Location only allowed to be used for writes.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="org/graalvm/nativeimage/VMRuntime.html#initialize--">initialize()</a></span> - Static method in class org.graalvm.nativeimage.<a href="org/graalvm/nativeimage/VMRuntime.html" title="class in org.graalvm.nativeimage">VMRuntime</a></dt>
+<dd>
+<div class="block">Initializes the VM: Runs all startup hooks that were registered during image building.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Context.html#initialize-java.lang.String-">initialize(String)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Context.html" title="class in org.graalvm.polyglot">Context</a></dt>
 <dd>
 <div class="block">Forces the initialization of a language.</div>
@@ -3316,10 +3320,6 @@
 <dd>
 <div class="block">Method that is called recurringly when the callback handler is installed.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="org/graalvm/nativeimage/RuntimeOptions.html#runStartupHooks--">runStartupHooks()</a></span> - Static method in class org.graalvm.nativeimage.<a href="org/graalvm/nativeimage/RuntimeOptions.html" title="class in org.graalvm.nativeimage">RuntimeOptions</a></dt>
-<dd>
-<div class="block">Runs all startup hooks that were registered during image building.</div>
-</dd>
 <dt><a href="org/graalvm/nativeimage/RuntimeClassInitialization.html" title="class in org.graalvm.nativeimage"><span class="typeNameLink">RuntimeClassInitialization</span></a> - Class in <a href="org/graalvm/nativeimage/package-summary.html">org.graalvm.nativeimage</a></dt>
 <dd>
 <div class="block">This class provides methods that can be called during native image building to configure class
@@ -3416,6 +3416,10 @@
 <dt><span class="memberNameLink"><a href="org/graalvm/word/UnsignedWord.html#shiftLeft-int-">shiftLeft(int)</a></span> - Method in interface org.graalvm.word.<a href="org/graalvm/word/UnsignedWord.html" title="interface in org.graalvm.word">UnsignedWord</a></dt>
 <dd>
 <div class="block">Returns a Unsigned whose value is <code>(this &lt;&lt; n)</code>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/graalvm/nativeimage/VMRuntime.html#shutdown--">shutdown()</a></span> - Static method in class org.graalvm.nativeimage.<a href="org/graalvm/nativeimage/VMRuntime.html" title="class in org.graalvm.nativeimage">VMRuntime</a></dt>
+<dd>
+<div class="block">Shuts down the VM: Runs all shutdown hooks and waits for all finalization to complete.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/word/WordFactory.html#signed-long-">signed(long)</a></span> - Static method in class org.graalvm.word.<a href="org/graalvm/word/WordFactory.html" title="class in org.graalvm.word">WordFactory</a></dt>
 <dd>
@@ -3772,6 +3776,10 @@ the order they are declared.</div>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/io/MessageTransport.VetoException.html#VetoException-java.lang.String-">VetoException(String)</a></span> - Constructor for exception org.graalvm.polyglot.io.<a href="org/graalvm/polyglot/io/MessageTransport.VetoException.html" title="class in org.graalvm.polyglot.io">MessageTransport.VetoException</a></dt>
 <dd>
 <div class="block">Create a new VetoException.</div>
+</dd>
+<dt><a href="org/graalvm/nativeimage/VMRuntime.html" title="class in org.graalvm.nativeimage"><span class="typeNameLink">VMRuntime</span></a> - Class in <a href="org/graalvm/nativeimage/package-summary.html">org.graalvm.nativeimage</a></dt>
+<dd>
+<div class="block">Used for doing VM runtime operations.</div>
 </dd>
 <dt><a href="org/graalvm/nativeimage/c/type/VoidPointer.html" title="interface in org.graalvm.nativeimage.c.type"><span class="typeNameLink">VoidPointer</span></a> - Interface in <a href="org/graalvm/nativeimage/c/type/package-summary.html">org.graalvm.nativeimage.c.type</a></dt>
 <dd>
