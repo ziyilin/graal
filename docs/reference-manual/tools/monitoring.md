@@ -78,7 +78,7 @@ Get familiar with using the GraalVM Agent with this Hello World example.
 box at the top. You should see the sources loaded in the Polyglot Engine
 and the available instruments as shown in the following image:
 
-![](/docs/img/AgentOpened.png)
+![](/docs/img/Agent_opened.png)
 
 The Agent window shows loaded sources on the left where the `HelloWorld.js` source
 can be found under the **FileSystem** node . The area in the middle provides
@@ -98,13 +98,13 @@ gather the data.
 
 The Agent page refreshes and results should display as follows:
 
-![ ](/docs/img/CPUSampler.png  "Agent and CPU Sampler data")
+![ ](/docs/img/Agent_CPUSampler.png  "Agent and CPU Sampler data")
 
 It is also possible to see detailed data in the source code. To do this, open
 the `HelloWorld.js` file in the Agent tab and the select **Agent CPU Sampler**
 from the drop-down box. Sources should display with data available as follows:
 
-![](/docs/img/CPUSamplerDetail.png)
+![](/docs/img/Agent_CPUSampler_detailed.png)
 
 ### JVM Mode Only Instruments
 
@@ -126,7 +126,7 @@ Then do the following:
 Data such as the following displays specializations of various JavaScript
 statements:
 
-![ ](/docs/img/SpecializationInstrument.png  "Specialization Instrument")
+![ ](/docs/img/Agent_Specialization_instrument.png  "Specialization Instrument")
 
 ### Monitoring Agent History for Short Living GraalVMs
 

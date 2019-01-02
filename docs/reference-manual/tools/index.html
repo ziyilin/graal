@@ -1093,6 +1093,92 @@ is false.</li>
   <li><code>--memtracer.TraceStatements</code>: captures statements when tracing. The default is false.</li>
 </ul>
 
+<h2 id="ideal-graph-visualizer">Ideal Graph Visualizer</h2>
+<p>Ideal Graph Visualizer or IGV is a developer tool, currently maintained as part of the Graal compiler, recommended for performance issues investigation.
+ The tool is essential for any language implementers on top of GraalVM and is available as a part of <strong>GraalVM Enterprise Edition</strong> on <a href="https://www.oracle.com/technetwork/oracle-labs/program-languages/downloads/index.html">Oracle Technology Network</a> download.</p>
+
+<p>Ideal Graph Visualizer is developed to view and inspect interim graph representations from Graal and Truffle compilations.</p>
+
+<p>1.Having set your PATH environment variable to <code>GraalVM/bin</code> folder, launch IGV:</p>
+
+<pre><code class="language-shell">$ idealgraphvsiualizer
+</code></pre>
+
+<p>2.Save the following code snippet as  <code>Test.rb</code>:</p>
+
+<pre><code>require 'json'
+
+obj = {
+  time: Time.now,
+  msg: 'Hello World',
+  payload: (1..10).to_a
+}
+
+encoded = JSON.dump(obj)
+
+js_obj = Polyglot.eval('js', 'JSON.parse').call(encoded)
+
+puts js_obj[:time]
+puts js_obj[:msg]
+puts js_obj[:payload].join(' ')
+</code></pre>
+
+<p>3.From another console window, make sure <code>ruby</code> component is installed in GraalVM,
+connect <code>Test.rb</code> script to the running IGV and dump the diagnostic information:</p>
+
+<pre><code class="language-shell">$ gu list
+$ ruby --jvm --jvm.Dgraal.Dump=:1 test.rb
+</code></pre>
+
+<p>After the connection, you are able to locate the compilation graphs in the Outline window.
+Find e.g. <code>java.lang.String.char(int)</code> folder and open its <em>After parsing</em> graph by double-clicking.
+If the node has <code>sourceNodePosition</code> property, then the Processing Window will attempt to display its location and the entire stacktrace.</p>
+
+<h3 id="graphs-manipulation">Graphs Manipulation</h3>
+<p>Once the diagnostic information is opened, you can search for nodes by name, ID, or by <code>property=value</code> data, and all matching results will be offered within a graph.
+Another cool feature of this tool is the ability to navigate to the original guest language source code!
+Select a node in graph and press ‘go to source’ button in the Stack View window.</p>
+
+<p><img src="/docs/img/IGV_navigate_to_source.png" alt="" /></p>
+
+<p>Graphs navigation is available also from the context menu, enabled by focusing
+and right-clicking a specific graph node. Extract nodes option will re-render
+a graph and display just selected nodes and their neighbours.</p>
+
+<p><img src="/docs/img/IGV_context_menu.png" alt="" /></p>
+
+<p>If the graph is larger than the screen, manipulate with the ‘satellite’ view button
+in the main toolbar to move the viewport rectangle.</p>
+
+<p><img src="/docs/img/IGV_satellite_view.png" alt="" /></p>
+
+<p>For user preference, the graph color scheme is adjustable by editing
+the Coloring filter, enabled by default in the left sidebar.</p>
+
+<h3 id="adding-projects-source">Adding Projects Source</h3>
+
+<p>Projects source can be added in manual and assisted modes. Once you select a node in the graph view, Processing View will open. If IGV knows where the source for the current frame is,
+the green ‘go to source’ arrow is enabled. If IGV does not know where the source is,
+the line is grayed out and a ‘looking glass’ button appears.</p>
+
+<p><img src="/docs/img/IGV_add_source.png" alt="" /></p>
+
+<p>Press it and select “Locate in Java project” to locate the correct project in the dialog.
+IGV hides projects which do not contain the required source file.
+The “Source Collections” serves to display the stand alone roots added by “Add root of sources” general action. If the source is located using the preferred method (from java project), its project can be later managed on Project tab. That one is initially hidden, but a user can display the list of opened projects using Window - Projects.</p>
+
+<h3 id="dumping-information">Dumping Information</h3>
+
+<p>To dump the diagnostic information, you need to add options to Graal based processes.
+Depending on the language/VM used, you may need to e.g. to prefix the options by <code>--jvm</code>.
+To dump the diagnostic information of embedded Java application to IGV, use
+ <code>-XX:+UnlockExperimentalVMOptions -Dgraal.Dump=:1</code>. See the particular language’s
+ documentation for the details.</p>
+
+<p>In the case some older GraalVM is used, you may need to specifically enable Graal to dump the <code>nodeSourcePosition</code> property, again using JVM options as <code>-XX:+UnlockDiagnosticVMOptions -XX:+DebugNonSafepoints</code>.
+Graal will connect to the running tool, IGV will receive the dump and display it in its UI.
+If IGV is not running, Graal dumps will be stored in a subdirectory in binary format, or at the place specified by <code>-Dgraal.DumpPath</code> JVM property. Note that the dumps from Truffle compilations will not be written to the disk, Truffle only connects to the IGV.</p>
+
 <h2 id="monitoring-agent">Monitoring Agent</h2>
 <p>GraalVM gives you a dedicated <strong>Agent application</strong> that comes with rich
 monitoring features to allow developers, integrators, and IT staff to monitor
@@ -1177,7 +1263,7 @@ and the available instruments as shown in the following image:</p>
   </li>
 </ol>
 
-<p><img src="/docs/img/AgentOpened.png" alt="" /></p>
+<p><img src="/docs/img/Agent_opened.png" alt="" /></p>
 
 <p>The Agent window shows loaded sources on the left where the <code>HelloWorld.js</code> source
 can be found under the <strong>FileSystem</strong> node . The area in the middle provides
@@ -1199,13 +1285,13 @@ gather the data.</li>
 
 <p>The Agent page refreshes and results should display as follows:</p>
 
-<p><img src="/docs/img/CPUSampler.png" alt=" " title="Agent and CPU Sampler data" /></p>
+<p><img src="/docs/img/Agent_CPUSampler.png" alt=" " title="Agent and CPU Sampler data" /></p>
 
 <p>It is also possible to see detailed data in the source code. To do this, open
 the <code>HelloWorld.js</code> file in the Agent tab and the select <strong>Agent CPU Sampler</strong>
 from the drop-down box. Sources should display with data available as follows:</p>
 
-<p><img src="/docs/img/CPUSamplerDetail.png" alt="" /></p>
+<p><img src="/docs/img/Agent_CPUSampler_detailed.png" alt="" /></p>
 
 <h3 id="jvm-mode-only-instruments">JVM Mode Only Instruments</h3>
 
@@ -1228,7 +1314,7 @@ available in <code>--jvm</code> mode only for the GraalVM launchers.</p>
 <p>Data such as the following displays specializations of various JavaScript
 statements:</p>
 
-<p><img src="/docs/img/SpecializationInstrument.png" alt=" " title="Specialization Instrument" /></p>
+<p><img src="/docs/img/Agent_Specialization_instrument.png" alt=" " title="Specialization Instrument" /></p>
 
 <h3 id="monitoring-agent-history-for-short-living-graalvms">Monitoring Agent History for Short Living GraalVMs</h3>
 

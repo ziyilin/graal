@@ -687,39 +687,35 @@ language extensions implemented in native code. This approach is cumbersome and
 error-prone. TruffleRuby on the GraalVM is able to optimize Ruby code. More
 importantly, it can optimize idiomatic Ruby code.</p>
 
-<p>The following example is taken from the <a href="https://github.com/ruby/ruby/blob/trunk/benchmark/bm_erb_render.rb">MRI benchmark suite</a> to
-catch performance regressions in their implementation. It has been slightly
-modified to work with the <code>benchmark-ips</code> benchmarking harness, rather than
-MRI’s custom build tool. It exercises the ERB template engine, which is part of
-Ruby’s standard library and frequently used as a mean of rendering templated
-documents.</p>
+<p>The following example template rendering benchmark is taken from the
+<a href="https://github.com/ruby/ruby/blob/6f91160fa9413e501239ab883dacc5064d0a26
+61/benchmark/erb_render.yml">MRI benchmark suite</a>.
+It has been modified to work with the <code>benchmark-ips</code> benchmarking harness,
+and to write the result of the render to a file in order to include IO.</p>
 
 <pre><code class="language-ruby">require 'benchmark/ips'
 require 'erb'
 
-template = &lt;&lt;TEMPLATE
+data = &lt;&lt;erb
 &lt;html&gt;
-  &lt;head&gt; &lt;%= title %&gt; &lt;/head&gt;
-  &lt;body&gt;
-    &lt;h1&gt; &lt;%= title %&gt; &lt;/h1&gt;
-    &lt;p&gt;
-      &lt;%= content %&gt;
-    &lt;/p&gt;
-  &lt;/body&gt;
-
+&lt;head&gt; &lt;%= title %&gt; &lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt; &lt;%= title %&gt; &lt;/h1&gt;
+  &lt;p&gt;
+    &lt;%= content %&gt;
+  &lt;/p&gt;
+&lt;/body&gt;
 &lt;/html&gt;
-TEMPLATE
+erb
 
-title = "hello world!"
+title = 'hello world!'
 content = "hello world!\n" * 10
-
-src = "def self.render(title, content); #{ERB.new(template).src}; end"
-mod = Module.new
-mod.instance_eval(src, "(ERB)")
+erb = ERB.new(data)
+out = File.open('test.out', 'w')
 
 Benchmark.ips do |x|
   x.iterations = 3
-  x.report("erb") { mod.render(title, content).bytes }
+  x.report("erb") { out.write(erb.result(binding)) }
 end
 </code></pre>
 
@@ -749,16 +745,18 @@ $ ruby benchmark.rb
 <table>
   <thead>
     <tr>
-      <th>MRI 2.4.4</th>
-      <th>JRuby 9.2.2.0</th>
-      <th>TruffleRuby</th>
+      <th>MRI 2.5.3</th>
+      <th>JRuby 9.2.5.0</th>
+      <th>TruffleRuby <br /> CE native</th>
+      <th>TruffleRuby <br /> EE JVM</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>231 K renders/s</td>
-      <td>709 K renders/s</td>
-      <td>978 K renders/s</td>
+      <td>34 K renders/s</td>
+      <td>29 K renders/s</td>
+      <td>542 K renders/s <br /> (16x faster)</td>
+      <td>1 M renders/s <br /> (31x faster)</td>
     </tr>
   </tbody>
 </table>
