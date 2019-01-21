@@ -556,10 +556,10 @@ $(document).ready(function(){
 <p>A complete project <a href="https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md#10-rc-11">changelog</a> is available on GitHub. Here is a short list of most notable changes:</p>
 
 <ul>
-  <li>Allow signal <code>0</code> to be used with <code>Process.kill</code> (#1474).</li>
+  <li>Allowed signal <code>0</code> to be used with <code>Process.kill</code> (see <a href="https://github.com/oracle/truffleruby/issues/1474">#1474</a>).</li>
   <li>Implemented <code>Dir.each_child</code>.</li>
-  <li>Adding missing support for the <code>close_others</code> option to <code>exec</code> and <code>spawn</code>.</li>
-  <li>Implemented the missing <code>MatchData#named_captures</code> method (#1512).</li>
+  <li>Added missing support for the <code>close_others</code> option to <code>exec</code> and <code>spawn</code>.</li>
+  <li>Implemented the missing <code>MatchData#named_captures</code> method (see <a href="https://github.com/oracle/truffleruby/issues/1512">#1512</a>).</li>
   <li><code>Process::CLOCK_</code> constants have been given the same value as in standard Ruby.</li>
   <li>All core files now make use of frozen <code>String</code> literals, reducing the number of <code>String</code> allocations for core methods.</li>
 </ul>
@@ -569,13 +569,13 @@ $(document).ready(function(){
 <p>The <a href="https://github.com/graalvm/graalpython/blob/master/CHANGELOG.md#version-100-rc11">changelog</a> is available on GitHub.</p>
 
 <ul>
-  <li>Add the <code>ginstall</code> custom module to install known packages such as NumPy and setup tools using <code>graalpython -m ginstall</code>.</li>
-  <li>Add support for the <code>yield from</code> syntax.</li>
-  <li>Add more built-in methods to the <code>time</code> module.</li>
-  <li>Add support for the standard <code>zipfile</code> module.</li>
-  <li>Add the built-in <code>_cvs</code> module.</li>
+  <li>Added the <code>ginstall</code> custom module to install known packages such as NumPy and setup tools using <code>graalpython -m ginstall</code>.</li>
+  <li>Added support for the <code>yield from</code> syntax.</li>
+  <li>Added more built-in methods to the <code>time</code> module.</li>
+  <li>Added support for the standard <code>zipfile</code> module.</li>
+  <li>Added the built-in <code>_cvs</code> module.</li>
   <li>Various bug fixes and performance improvements.</li>
-  <li>Remove exposure of internal languages through <code>polyglot.eval</code>.</li>
+  <li>Removed the exposure of internal languages through <code>polyglot.eval</code>.</li>
 </ul>
 
 <h3 id="r">R</h3>

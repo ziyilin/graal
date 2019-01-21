@@ -683,7 +683,7 @@ GraalVM.</p>
 <p>For more information on the <code>native-image</code> tool consider reading the <a href="/docs/reference-manual/aot-compilation/">reference
 manual</a>.</p>
 
-<h3 id="disabling-the-simplelanguage-native-image-build">Disabling the SimpleLanguage native image build</h3>
+<h3 id="disabling-the-simplelanguage-native-image-build">Disabling the SimpleLanguage Native Image Build</h3>
 
 <p>Building the native image through maven is attached to the maven <code>package</code>
 phase. Since the native image build can take a bit of time, we provide the
@@ -750,13 +750,13 @@ $ git clone https://github.com/oracle/graal.git
 <h2 id="running-simplelanguage-using-command-line">Running SimpleLanguage Using Command Line</h2>
 
 <p>Executing SimpleLanguage code is normally done with the <code>sl</code> script which sets
-up the necessary command line depending on whether <code>JAVA_HOME</code> points to a
+up the necessary command line depending on whether <code>JAVA_HOME</code> points to the
 GraalVM or another JVM installation. The following subsections describe the
 command line for both cases.</p>
 
 <h3 id="graalvm">GraalVM</h3>
 
-<p>Assuming <code>JAVA_HOME</code> points to a GraalVM installation and that the current
+<p>Assuming <code>JAVA_HOME</code> points to the GraalVM installation and that the current
 working directory is the <code>simplelanguage</code> directory, to run SimpleLanguage one
 should execute the following command:</p>
 
@@ -773,9 +773,9 @@ language jar. Having the language on a separate class path ensures a strong
 separation between the language implementation and its embedding context (in
 this case, the launcher).</p>
 
-<h4 id="disabling-classpath-separation">Disabling Classpath Separation</h4>
+<h4 id="disabling-class-path-separation">Disabling Class Path Separation</h4>
 
-<p><em>NOTE! This should only be used during developement.</em></p>
+<p><em>NOTE! This should only be used during development.</em></p>
 
 <p>If it is required to disable the class path separation and enable having the
 language implementation on the application class path (for example, for testing
@@ -793,7 +793,7 @@ then look like the following.</p>
 <h3 id="other-jvm-implementations">Other JVM Implementations</h3>
 
 <p>Unlike GraalVM, which includes all the dependencies needed to run a Truffle
-language, other JVM implementations need additional jars need to be present on
+language, other JVM implementations need additional jars to be present on
 the class path. These are the Truffle API and Graal SDK jars available from
 Maven central.</p>
 
