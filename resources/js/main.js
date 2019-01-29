@@ -539,107 +539,43 @@ if ($('#map').length) {
 function initialize() {
   let defaultView = {lat: 46.214484, lng: -21.114842};
   const locations = {
-    prague: [
-      {
-        conference: 'GeeCon',
-        date: 'October 18-19, 2018',
-        url: '#event-one',
-        position: {lat: 50.109042, lng: 14.585350}
-      }
-    ],
-    saintpetersburg: [
-      {
-        conference: 'JokerConf',
-        date: 'October 20-21, 2018',
-        url: '#event-two',
-        position: {lat: 59.762016, lng: 30.356999}
-      }
-    ],
-    sanfrancisco: [
-      {
-        conference: 'Oracle Code One',
-        date: 'October 22-25, 2018',
-        url: '#event-three',
-        position: {lat: 37.783638, lng: -122.400888}
-      }
-    ],
-    berlin: [
-      {
-        conference: 'GOTO Berlin',
-        date: 'November 2, 2018',
-        url: '#event-four',
-        position: {lat: 52.520782, lng: 13.416515}
-      }
-    ],
-    haarlem: [
-      {
-        conference: 'JFall',
-        date: 'November 8, 2018',
-        url: '#event-five',
-        position: {lat: 52.015803, lng: 5.648064}
-      }
-    ],
-    antwerpen: [
-      {
-        conference: 'Devoxx Belgium',
-        date: 'November 12-16, 2018',
-        url: '#event-six',
-        position: {lat: 51.246048, lng: 4.416641}
-      }
-    ],
-    copenhagen: [
-      {
-        conference: 'GOTO Copenhagen',
-        date: 'November 19-23, 2018',
-        url: '#event-seven',
-        position: {lat: 55.637904, lng: 12.576342}
-      }
-    ],
-    kyiv: [
-      {
-        conference: 'Devoxx Ukraine',
-        date: 'November 23-24, 2018',
-        url: '#event-eight',
-        position: {lat: 50.449100, lng: 30.540826}
-      }
-    ],
-    oslo: [
-      {
-        conference: 'javaBin Oslo',
-        date: 'November 26, 2018',
-        url: '#event-nine',
-        position: {lat: 59.923517, lng: 10.731775}
-      }
-    ],
-    helsinki: [
-      {
-        conference: 'Helsinki Java User Group',
-        date: 'November 27, 2018',
-        url: '#event-ten',
-        position: {lat: 60.169422, lng: 24.928233}
-      }
-    ],
     london: [
       {
         conference: 'Oracle OpenWorld Europe',
         date: 'January 16-17, 2019',
-        url: '#event-eleven',
+        url: '#event-one',
         position: {lat: 51.508633, lng: 0.029889}
+      }
+    ],
+    stockholm: [
+      {
+        conference: 'JFokus VM Summit',
+        date: 'February 4-6, 2019',
+        url: '#event-two',
+        position: {lat: 59.330278, lng: 18.055894}
       }
     ],
     washington_dc: [
       {
         conference: 'CGO & Graal Workshop',
         date: 'February 16-20, 2019',
-        url: '#event-twelve',
+        url: '#event-three',
         position: {lat: 38.904722, lng: -77.016389}
+      }
+    ],
+    lviv: [
+      {
+        conference: 'JavaDay Lviv',
+        date: 'February 23, 2019',
+        url: '#event-four',
+        position: {lat: 49.81794, lng: 24.022687}
       }
     ],
     atlanta: [
       {
         conference: 'DevNexus 2019',
         date: 'March 6-9, 2019',
-        url: '#event-thirteen',
+        url: '#event-five',
         position: {lat: 33.883619, lng: -84.4665739}
       }
     ],
@@ -647,8 +583,16 @@ function initialize() {
       {
         conference: 'JAVALAND',
         date: 'March 19-21, 2019',
-        url: '#event-fourteen',
+        url: '#event-six',
         position: {lat: 50.799537, lng: 6.879517}
+      }
+    ],
+    wroclaw: [
+      {
+        conference: 'Wroclove.rb',
+        date: 'March 22-24, 2019',
+        url: '#event-seven',
+        position: {lat: 51.110939, lng: 17.053061}
       }
     ]
   };
