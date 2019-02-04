@@ -742,7 +742,7 @@ $ git clone https://github.com/oracle/graal.git
 </code></pre>
   </li>
   <li>Run SimpleLanguage using the mx command:
-    <pre><code class="language-shell">$ mx -v --jdk=jvmci vm -cp /path/to/simplelanguage/launcher/target/launcher-1.0.0-rc11-SNAPSHOT.jar:/path/to/simplelanguage/language/target/simplelanguage.jar com.oracle.truffle.sl.launcher.SLMain  /path/to/simplelanguage/language/tests/SlScript.sl
+    <pre><code class="language-shell">$ mx -v --jdk=jvmci vm -cp /path/to/simplelanguage/launcher/target/launcher-1.0.0-rc12-SNAPSHOT.jar:/path/to/simplelanguage/language/target/simplelanguage.jar com.oracle.truffle.sl.launcher.SLMain  /path/to/simplelanguage/language/tests/SlScript.sl
 </code></pre>
   </li>
 </ol>
@@ -761,7 +761,7 @@ working directory is the <code>simplelanguage</code> directory, to run SimpleLan
 should execute the following command:</p>
 
 <pre><code class="language-shell">$JAVA_HOME/bin/java \
-    -cp launcher/target/launcher-1.0.0-rc11-SNAPSHOT.jar \
+    -cp launcher/target/launcher-1.0.0-rc12-SNAPSHOT.jar \
     -Dtruffle.class.path.append=language/target/simplelanguage.jar \
     com.oracle.truffle.sl.launcher.SLMain language/tests/Add.sl
 </code></pre>
@@ -786,7 +786,7 @@ then look like the following.</p>
 
 <pre><code class="language-shell">$JAVA_HOME/bin/java \
     -XX:-UseJVMCIClassLoader \
-    -cp launcher/target/launcher-1.0.0-rc11-SNAPSHOT.jar:language/target/simplelanguage.jar \
+    -cp launcher/target/launcher-1.0.0-rc12-SNAPSHOT.jar:language/target/simplelanguage.jar \
     com.oracle.truffle.sl.launcher.SLMain language/tests/Add.sl
 </code></pre>
 
@@ -803,7 +803,7 @@ Graal SDK jars are present in that directory, one can execute SimpleLanguage
 with the following command:</p>
 
 <pre><code class="language-shell">$JAVA_HOME/bin/java \
-    -cp graal-sdk-1.0.0-rc11.jar:truffle-api-1.0.0-rc11.jar:launcher/target/launcher-1.0.0-rc11-SNAPSHOT.jar:language/target/simplelanguage.jar \
+    -cp graal-sdk-1.0.0-rc12.jar:truffle-api-1.0.0-rc12.jar:launcher/target/launcher-1.0.0-rc12-SNAPSHOT.jar:language/target/simplelanguage.jar \
     com.oracle.truffle.sl.launcher.SLMain language/tests/Add.sl
 </code></pre>
 
