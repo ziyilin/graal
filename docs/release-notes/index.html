@@ -529,6 +529,16 @@ $(document).ready(function(){
 <h2 id="10-rc12">1.0-RC12</h2>
 <p>(2019-02-04)</p>
 
+<h3 id="native-image-generation">Native Image Generation</h3>
+<p>Native images now check the remaining available stack size on every method call,
+and throw a <code>StackOverflowError</code> on stack overflows.</p>
+
+<p>We continued the work on the support of incomplete classpaths. There were no big changes,
+but only small bugfixes based on users feedback. The support for incomplete classpaths
+now allows to run the native image generator with bytecode verification,
+i.e., the option <code>--no-verify</code> is no longer passed to the Java HotSpot VM
+when running the native image generator.</p>
+
 <h3 id="r">R</h3>
 <p>An extensive list of changes to GraalVM implementation of R is available <a href="https://github.com/oracle/fastr/blob/master/CHANGELOG.md#10-rc-12">on GitHub</a>. Here is a short list of most notable ones:</p>
 
@@ -591,7 +601,7 @@ $(document).ready(function(){
 <h2 id="10-rc11">1.0-RC11</h2>
 <p>(2019-01-14)</p>
 
-<h3 id="native-image-generation">Native Image Generation</h3>
+<h3 id="native-image-generation-1">Native Image Generation</h3>
 
 <p>We improved the handling of incomplete classpaths, i.e., code that references classes that are not provided on the classpath. The approach we took for RC10 caused problems in corner cases that would have been difficult to fix, therefore we implemented a different approach. Thanks to everyone who tried our initial approach and reported problems on GitHub. We attempted to verify that all reported problems are solved with the new approach.</p>
 
@@ -674,7 +684,7 @@ $(document).ready(function(){
 
 <p>Bug fixes and performance improvements across all GraalVM components.</p>
 
-<h3 id="native-image-generation-1">Native image generation</h3>
+<h3 id="native-image-generation-2">Native image generation</h3>
 
 <p>Added a new option <code>--allow-incomplete-classpath</code> with GraalVM 1.0-rc10. By default (without specifying this option), classes that are reachable, but missing on the class path, are reported at native image generation time. When specifying this new option, missing classes are only reported at run time. The option provides support for, e.g., libraries that probe the existence of classes, catch the class loading error, and then fall back to a different behavior. This should result in more applications being able to compile to a GraalVM native image.</p>
 
@@ -861,7 +871,7 @@ which can be found in the project <a href="https://github.com/oracle/truffleruby
   <li>The <code>compiler</code> artifact provides the <strong><code>jdk.internal.vm.compiler</code></strong> module and can be used to upgrade that module in JDK 11. Unlike the module present in the JDK, this version contains the optimizing Truffle runtime.</li>
 </ul>
 
-<h3 id="native-image-generation-2">Native Image Generation</h3>
+<h3 id="native-image-generation-3">Native Image Generation</h3>
 
 <ul>
   <li>The native image generator now has automatic support for services loaded using ServiceLoader.
@@ -931,7 +941,7 @@ All service implementation classes, listed in the <code>META-INF</code> director
   <li>Added the virtualization of <code>Unsafe</code> compare and swap calls, for more details see <a href="https://github.com/oracle/graal/pull/636">GH-636</a>.</li>
 </ul>
 
-<h3 id="native-image-generation-3">Native image generation</h3>
+<h3 id="native-image-generation-4">Native image generation</h3>
 
 <ul>
   <li>Support for the Java security framework, see <a href="https://github.com/oracle/graal/blob/master/substratevm/JCA-SECURITY-SERVICES.md">JCA-SECURITY-SERVICES.md</a> for the details.</li>
@@ -1024,7 +1034,7 @@ is available on GitHub.</p>
   <li>New optimization to remove unnecessary allocation in some calls to <code>Enum.values()</code>.  See <a href="https://github.com/oracle/graal/issues/574">calls to Enum.values() don’t optimise away as expected</a> for the details.</li>
 </ul>
 
-<h3 id="native-image-generation-4">Native image generation</h3>
+<h3 id="native-image-generation-5">Native image generation</h3>
 
 <ul>
   <li>Delay class initialization to runtime: By default, all classes that are seen as reachable for a native image are initialized during image building, i.e., the class initialization method is executed during image building and is not seen as a reachable method at runtime. But for some classes, it is necessary to execute the class initialization method at runtime. This is now possible using the new option <code>--delay-class-initialization-to-runtime=&lt;comma separate list of class names&gt;</code> or using the new API class <a href="http://www.graalvm.org/sdk/javadoc/org/graalvm/nativeimage/RuntimeClassInitialization.html">RuntimeClassInitialization</a>.</li>
@@ -1113,7 +1123,7 @@ This might cause issues with UI-related functionality:
   <li>1.0-RC5 includes JVMCI changes necessary to support compiling Graal ahead of time and deploying as a shared library alongside <code>libjvm.so</code> (i.e., libgraal). Note that the implementation of <em>libgraal</em> itself is not a part of this release as it is still under development.</li>
 </ul>
 
-<h3 id="native-image-generation-5">Native image generation</h3>
+<h3 id="native-image-generation-6">Native image generation</h3>
 
 <ul>
   <li>Added API that allows an application to distinguish between native image building, native image runtime, and regular Java execution. For more information and documentation, look at the class  <a href="https://github.com/oracle/graal/blob/master/sdk/src/org.graalvm.nativeimage/src/org/graalvm/nativeimage/ImageInfo.java">ImageInfo</a>.</li>
@@ -1223,7 +1233,7 @@ This might cause issues with UI-related functionality:
   <li>Fixed a rare NullPointerException during JVMCI initialization.</li>
 </ul>
 
-<h3 id="native-image-generation-6">Native image generation</h3>
+<h3 id="native-image-generation-7">Native image generation</h3>
 
 <ul>
   <li>Added support for java.lang.reflect.Proxy supporting both automatic detection and manual configuration. Please refer to <a href="https://github.com/oracle/graal/blob/master/substratevm/DYNAMIC_PROXY.md">the documentation on GitHub</a> for the details.</li>
@@ -1330,7 +1340,7 @@ This might cause issues with UI-related functionality:
   <li>Fixed a <a href="https://github.com/oracle/graal/issues/423">compiler error</a> causing incorrect code generation while building the scalac compiler.</li>
 </ul>
 
-<h3 id="native-image-generation-7">Native image generation</h3>
+<h3 id="native-image-generation-8">Native image generation</h3>
 
 <ul>
   <li>Added support for building statically linked native images. Now you can pass <code>--static</code>, and if you have static libc and zlib installed, it generates a standalone executable that will not require libc for running.</li>
