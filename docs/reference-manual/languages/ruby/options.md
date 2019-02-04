@@ -1,6 +1,6 @@
 ## Options
 
-TruffleRuby has the same command line interface as MRI 2.3.7.
+TruffleRuby has the same command line interface as MRI 2.4.4.
 
 ```
 Usage: truffleruby [switches] [--] [programfile] [arguments]
@@ -33,6 +33,7 @@ Usage: truffleruby [switches] [--] [programfile] [arguments]
                   specify the default external or internal character encoding
   --version       print the version
   --help          show this message, -h for short message
+
 Features:
   gems            rubygems (default: enabled)
   did_you_mean    did_you_mean (default: enabled)
@@ -41,15 +42,19 @@ Features:
                   freeze all string literals (default: disabled)
 ```
 
-TruffleRuby also reads the `RUBYOPT` environment variable.
+TruffleRuby also reads the `RUBYOPT` environment variable, if run from the Ruby
+launcher.
 
 ### Unlisted Ruby switches
 
-MRI has some extra Ruby switches which are aren't normally listed.
+MRI has some extra Ruby switches which are aren't normally listed in help output
+but are documented in the Ruby manual page.
 
 ```
   -U              set the internal encoding to UTF-8
   -KEeSsUuNnAa    sets the source and external encoding
+  --encoding=external[:internal]
+                  the same as --external-encoding=external and optionally --internal-encoding=internal
   -y, --ydebug    debug the parser
   -Xdirectory     the same as -Cdirectory
   --dump=insns    print disassembled instructions
@@ -61,20 +66,21 @@ Beyond the standard Ruby command line switches we support some additional
 switches specific to TruffleRuby.
 
 ```
-TruffleRuby switches:
-  -Xlog=severe,warning,performance,info,config,fine,finer,finest
+TruffleRuby:
+  -Xlog=SEVERE,WARNING,INFO,CONFIG,FINE,FINER,FINEST
                   set the TruffleRuby logging level
   -Xoptions       print available TruffleRuby options
   -Xname=value    set a TruffleRuby option (omit value to set to true)
+  -J-option=value Translates to --jvm.option=value
 ```
 
 As well as being set at the command line, options, except for `log`,
-can be set using `--ruby.option=` in any GraalVM launcher.
-For example `--ruby.inline_js=true`. They can also be set as JVM system
+can be set using `--ruby.option=`.
+For example `--ruby.cexts.remap=true`. They can also be set as JVM system
 properties, where they have a prefix `polyglot.ruby.`. For example
-`-J-Dpolyglot.ruby.inline_js=true`, or via any other way of setting JVM system
-properties. Finally, options can be set as Graal-SDK polyglot API configuration
-options.
+`--jvm.Dpolyglot.ruby.cexts.remap=true`, or via any other way of setting JVM
+system properties. Finally, options can be set as Graal-SDK polyglot API
+configuration options.
 
 The priority for options is the command line first, then the Graal-SDK polyglot
 API configuration, then system properties last.
@@ -85,7 +91,8 @@ rather than once per TruffleRuby instance, and is used to report problems
 loading the TruffleRuby instance before options are loaded.
 
 TruffleRuby-specific options, as well as conventional Ruby options, can also
-bet set in the `TRUFFLERUBYOPT` environment variable.
+bet set in the `TRUFFLERUBYOPT` environment variable, if run from the Ruby
+launcher.
 
 `--` or the first non-option argument both stop processing of Truffle-specific
 arguments in the same way it stops processing of Ruby arguments.
@@ -94,15 +101,13 @@ arguments in the same way it stops processing of Ruby arguments.
 
 If you are running TruffleRuby on a JVM or the GraalVM, we additionally support
 passing options to the JVM using either a `-J-` or `--jvm.` prefix.
-For example `-J-ea`. `-J-classpath` and `-J-cp`
+For example `-J-ea`. `-J-classpath` and `-J-cp` 
 also implicitly take the following argument to be passed to the JVM.
 `-J-cmd` print the Java command that will be executed, for
-debugging.
+debugging. 
 
 ```
-JVM switches:
-  --jvm.arg,         -J-arg           pass arg to the JVM
-  --jvm.Dname=value, -J-Dname=value   set a system property
+  --jvm.[option]  Pass options to the JVM; for example, '--jvm.classpath=myapp.jar'. To see available options. use '--jvm.help'.
 ```
 
 `--` or the first non-option argument both stop processing of JVM-specific
@@ -113,19 +118,27 @@ variables when running on a JVM (except for `JAVACMD` on the GraalVM).
 
 ### SVM-specific switches
 
-The SVM supports `--native.D` for setting system properties and
-`--native.XX:arg` for SVM options.
+The SVM supports `--native.D` for setting system properties and 
+`--native.XX:arg` for SVM options. 
 
 ```
-Native switches:
-  --native.XX:arg       pass arg to the SVM
-  --native.Dname=value  set a system property
+  --native.[option]  Pass options to the native image. To see available options, use '--native.help'.
 ```
 
 ### Determining the TruffleRuby home
 
 TruffleRuby needs to know where to locate files such as the standard library.
-These are stored in the TruffleRuby home directory. The TruffleRuby option
-`home` has priority for setting the home directory. Otherwise it is set
-automatically to the directory containing the TruffleRuby JAR file, if
-TruffleRuby is running on a JVM.
+These are stored in the TruffleRuby home directory.
+
+The search priority for finding Ruby home is:
+
+* The value of the TruffleRuby `home` option (i.e., `-Xhome=path/to/truffleruby_home`).
+* The home that the Truffle framework reports.
+* The parent of the directory containing the Ruby launcher executable.
+
+If the `home` option is set, it's used even if it doesn't appear to be a correct
+home location. Other options are tried until one is found that appears to be a
+correct home location. If none appears to be correct a warning will be given but
+the program will continue and you will not be able to require standard
+libraries. You can tell TruffleRuby not to try to find a home at all using the
+`no_home_provided` option.

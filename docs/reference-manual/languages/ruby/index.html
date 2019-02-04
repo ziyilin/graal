@@ -631,8 +631,8 @@ $(document).ready(function(){
   <li>Run Ruby code in parallel</li>
   <li>Boot Ruby applications in less time</li>
   <li>Execute C extensions in a managed environment</li>
+  <li>Add fast and low-overhead interoperability with languages like Java, JavaScript, Python and R</li>
   <li>Provide new tooling such as debuggers and monitoring</li>
-  <li>Add fast and low-overhead interoperability with languages like JavaScript, Python 3 and R</li>
   <li>All while maintaining very high compatibility with the standard implementation of Ruby</li>
 </ul>
 
@@ -667,14 +667,6 @@ and <code>ri</code>.</p>
 <pre><code>$ gem install chunky_png
 $ ruby -r chunky_png -e "puts ChunkyPNG::Color.to_hex(ChunkyPNG::Color('mintcream @ 0.5'))"
 #f5fffa80
-</code></pre>
-
-<h3 id="using-bundler">Using Bundler</h3>
-
-<p>The only supported version of Bundler at the moment is <code>1.16.x</code>.</p>
-
-<pre><code>$ gem install bundler -v 1.16.3
-$ bundle exec ...
 </code></pre>
 
 <h2 id="what-does-truffleruby-do">What does TruffleRuby do?</h2>
@@ -800,9 +792,9 @@ GraalVM.</p>
 
 <h4 id="high-compatibility-with-the-standard-implementation-of-ruby">High compatibility with the standard implementation of Ruby</h4>
 
-<p>TruffleRuby aims to be highly compatible with the standard implementation of
-Ruby, MRI, version 2.3.7, revision 63024. We test extensively using the MRI test
-suite and the Ruby Spec project.</p>
+<p>TruffleRuby aims to be fully compatible with the standard implementation of
+Ruby, MRI, version 2.4.4, revision 63013. We test extensively using the MRI
+test suite and the Ruby Spec project.</p>
 
 <h2 id="interoperability">Interoperability</h2>
 
@@ -842,20 +834,23 @@ Hello World
 
 <h2 id="compatibility">Compatibility</h2>
 
-<p>TruffleRuby aims to be highly compatible with the standard implementation of
-Ruby, MRI, version 2.3.7, revision 63024.</p>
+<p>TruffleRuby aims to be fully compatible with the standard implementation of
+Ruby, MRI, version 2.4.4, revision 63013.</p>
+
+<p>Any incompatibility with MRI is considered a bug, except for rare cases detailed below.
+If you find an incompatibility with MRI, please <a href="https://github.com/oracle/truffleruby/issues">report</a> it to us.</p>
 
 <p>Our policy is to match the behaviour of MRI, except where we do not know how to
 do so with good performance for typical Ruby programs. Some features work but
 will have very low performance whenever they are used and we advise against
 using them on TruffleRuby if you can. Some features are missing entirely and may
-never be implemented. In a few limited cases we are deliberately incompatible
+never be implemented. In a few limited cases, we are deliberately incompatible
 with MRI in order to provide a greater capability.</p>
 
 <p>In general, we are not looking to debate whether Ruby features are good, bad, or
 if we could design the language better. If we can support a feature, we will do.</p>
 
-<p>In the future we aim to provide compatibility with extra functionality provided
+<p>In the future, we aim to provide compatibility with extra functionality provided
 by JRuby, but at the moment we do not.</p>
 
 <h3 id="identification">Identification</h3>
@@ -871,35 +866,49 @@ by JRuby, but at the moment we do not.</p>
   <li><code>RUBY_ENGINE_VERSION</code> is the GraalVM version, or <code>0.0-</code> and the Git commit hash if your build is not part of a GraalVM release.</li>
 </ul>
 
-<p>Additionally, TruffleRuby defines</p>
+<p>Additionally, TruffleRuby defines:</p>
 
 <ul>
-  <li><code>Truffle.revision</code> which is the Git commit hash</li>
+  <li><code>TruffleRuby.revision</code> which is the Git commit hash</li>
 </ul>
+
+<p>In the C API, we define a preprocessor macro <code>TRUFFLERUBY</code>.</p>
 
 <h3 id="features-entirely-missing">Features entirely missing</h3>
 
-<p><em>Continuations and <code>callcc</code></em></p>
+<h4 id="continuations-and-callcc">Continuations and <code>callcc</code></h4>
 
 <p>Continuations and <code>callcc</code> are unlikely to ever be implemented in TruffleRuby,
 as their semantics fundamentally do not match the technology that we are using.</p>
 
-<p><em>Fork</em></p>
+<h4 id="fork">Fork</h4>
 
 <p>You cannot <code>fork</code> the TruffleRuby interpreter. The feature is unlikely to ever
-be supported when running on the JVM, but could be supported in the future on
-the SVM.</p>
+be supported when running on the JVM but could be supported in the future on
+the SVM. The correct and portable way to test if <code>fork</code> is available is:</p>
+<pre><code class="language-ruby">Process.respond_to?(:fork)
+</code></pre>
 
-<p><em>Standard libraries</em></p>
+<h4 id="standard-libraries">Standard libraries</h4>
 
-<p>Quite a few of the less commonly used  standard libraries are currently not
+<p><code>win32ole</code> is unsupported.</p>
+
+<p>Quite a few of the less commonly used standard libraries are currently not
 supported, such as <code>fiddle</code>, <code>sdbm</code>, <code>gdbm</code>, <code>tk</code>. It’s quite hard to get an
 understanding of all the standard libraries that should be available, so it’s
 hard to give a definitive list of those that are missing.</p>
 
+<h4 id="safe-levels">Safe levels</h4>
+
+<p><code>$SAFE</code> and <code>Thread#safe_level</code> are <code>0</code> and no other levels are implemented.
+Trying to use level <code>1</code> will raise a <code>SecurityError</code>. Other levels will raise
+<code>ArgumentError</code> as in standard Ruby.</p>
+
+<p><code>$SAFE</code> level 1 can be allowed, but ignored, with the <code>-Xsafe</code> option.</p>
+
 <h3 id="features-with-major-differences">Features with major differences</h3>
 
-<p><em>Threads run in parallel</em></p>
+<h4 id="threads-run-in-parallel">Threads run in parallel</h4>
 
 <p>In MRI, threads are scheduled concurrently but not in parallel. In TruffleRuby
 threads are scheduled in parallel. As in JRuby and Rubinius, you are responsible
@@ -907,7 +916,7 @@ for correctly synchronising access to your own shared mutable data structures,
 and we will be responsible for correctly synchronising the state of the
 interpreter.</p>
 
-<p><em>Fibers do not have the same performance characteristics as in MRI</em></p>
+<h4 id="fibers-do-not-have-the-same-performance-characteristics-as-in-mri">Fibers do not have the same performance characteristics as in MRI</h4>
 
 <p>Most use cases of fibers rely on them being easy and cheap to start up and
 having low memory overheads. In TruffleRuby we implement fibers using operating
@@ -916,55 +925,75 @@ threads. As with coroutines and continuations, a conventional implementation
 of fibers fundamentally isn’t compatible with the execution model we are
 currently using.</p>
 
-<p><em>Some classes marked as internal will be different</em></p>
+<h4 id="some-classes-marked-as-internal-will-be-different">Some classes marked as internal will be different</h4>
 
 <p>MRI provides some classes that are described in the documentation as being only
-available on C Ruby (MRI). We implement these classes if it’s practical to do
+available on MRI (C Ruby). We implement these classes if it’s practical to do
 so, but this isn’t always the case. For example <code>RubyVM</code> is not available.</p>
 
 <h3 id="features-with-subtle-differences">Features with subtle differences</h3>
 
-<p><em>Different range of <code>Fixnum</code></em></p>
-
-<p>The range of <code>Fixnum</code> is slightly larger than it is in MRI. This won’t be an
-issue when we support Ruby 2.4, as <code>Integer</code> is unified there.</p>
-
-<p><em>Command line switches</em></p>
+<h4 id="command-line-switches">Command line switches</h4>
 
 <p><code>-y</code>, <code>--yydebug</code>, <code>--dump=</code> are ignored with a warning as they are internal
 development tools.</p>
 
 <p><code>-X</code> is an undocumented synonym for <code>-C</code> and we (and other alternative
 implementations of Ruby) have repurposed it for extended options. We warn if
-your <code>-X</code> option looks like it was actually intended to be as in MRI.</p>
+your <code>-X</code> options look like they are actually intended to be as in MRI.</p>
 
-<p><em>Setting the process title doesn’t always work</em></p>
+<p>Programs passed in <code>-e</code> arguments with magic-comments must have an encoding that
+is UTF-8 or a subset of UTF-8, as the JVM has already decoded arguments by the
+time we get them.</p>
+
+<h4 id="setting-the-process-title-doesnt-always-work">Setting the process title doesn’t always work</h4>
 
 <p>Setting the process title (via <code>$0</code> or <code>Process.setproctitle</code> in Ruby) is done
 as best-effort. It may not work, or the title you try to set may be truncated.</p>
 
+<h4 id="line-numbers-other-than-1-work-differently">Line numbers other than 1 work differently</h4>
+
+<p>In an <code>eval</code> where a custom line number can be specified, line numbers below 1
+are treated as 1, and line numbers above 1 are implemented by inserting blank
+lines in front of the source before parsing it.</p>
+
+<p>The <code>erb</code> standard library has been modified to not use negative line numbers.</p>
+
+<h4 id="polyglot-standard-io-streams">Polyglot standard IO streams</h4>
+
+<p>If you use standard IO streams provided by the Polyglot engine, via the
+<code>-Xpolyglot.stdio</code> option, reads and writes to file descriptors 1, 2 and 3 will
+be redirected to these streams. That means that other IO operations on these
+file descriptors, such as <code>isatty</code> may not be relevant for where these streams
+actually end up, and operations like <code>dup</code> may lose the connection to the
+polyglot stream. For example, if you <code>$stdout.reopen</code>, as some logging frameworks
+do, you will get the native standard-out, not the polyglot out.</p>
+
+<p>Also, IO buffer drains, writes on IO objects with <code>sync</code> set, and
+<code>write_nonblock</code>, will not retry the write on <code>EAGAIN</code> and <code>EWOULDBLOCK</code>, as the
+streams do not provide a way to detect this.</p>
+
+<h4 id="error-messages">Error messages</h4>
+
+<p>Error message strings will sometimes differ from MRI, as these are not generally
+covered by the Ruby Specification suite or tests.</p>
+
 <h3 id="features-with-very-low-performance">Features with very low performance</h3>
 
-<p><em>Keyword arguments</em></p>
-
-<p>Keyword arguments don’t have <em>very</em> low performance, but they are not optimised
-as other language features are. You don’t need to avoid keyword arguments, but
-performance with them may not be what you would hope for.</p>
-
-<p><em><code>ObjectSpace</code></em></p>
+<h4 id="objectspace"><code>ObjectSpace</code></h4>
 
 <p>Using most methods on <code>ObjectSpace</code> will temporarily lower the performance of
 your program. Using them in test cases and other similar ‘offline’ operations is
 fine, but you probably don’t want to use them in the inner loop of your
 production application.</p>
 
-<p><em><code>set_trace_func</code></em></p>
+<h4 id="set_trace_func"><code>set_trace_func</code></h4>
 
 <p>Using <code>set_trace_func</code> will temporarily lower the performance of your program.
 As with <code>ObjectSpace</code>, we would recommend that you do not use this in the inner
 loop of your production application.</p>
 
-<p><em>Backtraces</em></p>
+<h4 id="backtraces">Backtraces</h4>
 
 <p>Throwing exceptions, and other operations which need to create a backtrace, are
 slower than on MRI. This is because we have to undo optimizations that we have
@@ -978,91 +1007,52 @@ disabled where we dynamically detect that they probably won’t be used. See the
 
 <h3 id="c-extension-compatibility">C Extension Compatibility</h3>
 
-<h5 id="identifiers-may-be-macros-or-functions">Identifiers may be macros or functions</h5>
+<h4 id="value-is-a-pointer"><code>VALUE</code> is a pointer</h4>
+
+<p>In TruffleRuby <code>VALUE</code> is a pointer type (<code>void *</code>) rather than a
+integer type (<code>long</code>). This means that <code>switch</code> statements cannot be
+done using a raw <code>VALUE</code> as they can with MRI. You can normally
+replace any <code>switch</code> statement with <code>if</code> statements with little
+difficulty if required.</p>
+
+<h4 id="identifiers-may-be-macros-or-functions">Identifiers may be macros or functions</h4>
 
 <p>Identifiers which are normally macros may be functions, functions may be macros,
-and global variables may be macros. This causes problems where they are used in
-a context which relies on a particular implementation, for example a global
-variable assigned to an initial value which was a macro, like <code>Qnil</code>, which is
-a macro that evaluates to a function call in TruffleRuby.</p>
+and global variables may be macros. This may cause problems where they are used
+in a context which relies on a particular implementation (e.g., taking the
+address of it, assigning to a function pointer variable and using defined() to
+check if a macro exists). These issues should all be considered bugs and be
+fixed, please report these cases.</p>
 
-<p>For example, this global variable definition does not work because <code>Qnil</code> expands
-to be a function call in TruffleRuby:</p>
-
-<pre><code class="language-c">static VALUE foo = Qnil;
-</code></pre>
-
-<p>A workaround is to assign <code>foo</code> in your C extension <code>Init_</code> function, or inside
-some other function.</p>
-
-<h5 id="storing-ruby-objects-in-native-structures-and-arrays">Storing Ruby objects in native structures and arrays</h5>
-
-<p>You cannot store a Ruby object in a structure or array that has been natively
-allocated, such as on the stack, or in a heap allocated structure or array.</p>
-
-<p>Simple local variables of type <code>VALUE</code>, and locals arrays that are defined such
-as <code>VALUE array[n]</code> are an exception and are supported, provided their address
-is not taken and passed to a function that is not inlined.</p>
-
-<p><code>void *rb_tr_handle_for_managed(VALUE managed)</code> may help you work around this
-limitation, or <code>VALUE rb_tr_managed_from_handle(void *native)</code>.
-Use <code>void* rb_tr_handle_for_managed_leaking(VALUE managed)</code> if you
-don’t yet know where to put a corresponding call to <code>void
-*rb_tr_release_handle(void *native)</code>. Use <code>VALUE
-rb_tr_managed_from_handle_or_null(void *native)</code> if the handle may be <code>NULL</code>.</p>
-
-<h5 id="mixing-native-and-managed-in-c-global-variables">Mixing native and managed in C global variables</h5>
-
-<p>C global variables can contain native data or they can contain managed data,
-but they cannot contain both in the same program run. If you have a global you
-assign <code>NULL</code> to (<code>NULL</code> being just <code>0</code> and so a native address) you cannot
-then assign managed data to this variable.</p>
-
-<h5 id="variadic-functions">Variadic functions</h5>
-
-<p>Variadic arguments of type <code>VALUE</code> that hold Ruby objects can be used, but they
-cannot be accessed with <code>va_start</code> etc. You can use
-<code>void *polyglot_get_arg(int i)</code> instead.</p>
-
-<h5 id="pointers-to-value-locals-and-variadic-functions">Pointers to <code>VALUE</code> locals and variadic functions</h5>
-
-<p>Pointers to local variables that have the type <code>VALUE</code> and hold Ruby objects can
-only be passed as function arguments if the function is inlined. LLVM will never
-inline variadic functions, so pointers to local variables that hold Ruby objects
-cannot be passed as variadic arguments.</p>
-
-<p><code>rb_scan_args</code> is an exception and is supported.</p>
-
-<h5 id="rb_scan_args"><code>rb_scan_args</code></h5>
+<h4 id="rb_scan_args"><code>rb_scan_args</code></h4>
 
 <p><code>rb_scan_args</code> only supports up to ten pointers.</p>
 
-<h5 id="rdata"><code>RDATA</code></h5>
+<h4 id="rdata"><code>RDATA</code></h4>
 
-<p>The <code>mark</code> function of <code>RDATA</code> and <code>RTYPEDDATA</code> is never called.</p>
-
-<h5 id="ruby-objects-and-truthiness-in-c">Ruby objects and truthiness in C</h5>
-
-<p>All Ruby objects are truthy in C, except for <code>Qfalse</code>, the <code>Fixnum</code> value <code>0</code>,
-and the <code>Float</code> value <code>0.0</code>. The last two are incompatible with MRI, which would
-also see these values as truthy.</p>
+<p>The <code>mark</code> function of <code>RDATA</code> and <code>RTYPEDDATA</code> is not called during
+garbage collection. Instead we simulate this by caching information
+about objects as they are assigned to structs, and periodically run
+all mark functions when the cache has become full to represent those
+object relationships in a way that the our garbage collector will
+understand. The process should behave identically to MRI.</p>
 
 <h3 id="compatibility-with-jruby">Compatibility with JRuby</h3>
 
-<h5 id="ruby-to-java-interop">Ruby to Java interop</h5>
+<h4 id="ruby-to-java-interop">Ruby to Java interop</h4>
 
-<p>Calling Java code from Ruby (normal Java code, not JRuby’s Java extensions which
-are covered below) is in development but not ready for use yet. We aim to
-provide the same interface as JRuby does for this functionality.</p>
+<p>JRuby’s Java interop API is not implemented far enough to be used. We provide an
+alternate polyglot API for interoperating with multiple languages, including
+Java, instead.</p>
 
-<h5 id="java-to-ruby-interop">Java to Ruby interop</h5>
+<h4 id="java-to-ruby-interop">Java to Ruby interop</h4>
 
 <p>Calling Ruby code from Java is supported by the
 <a href="http://www.graalvm.org/truffle/javadoc/org/graalvm/polyglot/package-summary.html">Graal-SDK polyglot API</a>.</p>
 
-<h5 id="java-extensions">Java extensions</h5>
+<h4 id="java-extensions">Java extensions</h4>
 
-<p>Using Java extensions written for JRuby is not supported. We could apply the same
+<p>Use Java extensions written for JRuby is not supported. We could apply the same
 techniques as we have developed to run C extensions to this problem, but it’s
 not clear if this will ever be a priority.</p>
 
@@ -1073,7 +1063,9 @@ extensions to Ruby.</p>
 
 <h3 id="features-not-yet-supported-in-native-configuration">Features not yet supported in native configuration</h3>
 
-<p><em>Java interop</em></p>
+<ul>
+  <li>Java interop</li>
+</ul>
 
 <p>Running TruffleRuby in the native configuration is mostly the same as running on
 the JVM. There are differences in resource management, as both VMs use different
@@ -1105,7 +1097,7 @@ limited so may be misleading.</p>
 
 <h2 id="options">Options</h2>
 
-<p>TruffleRuby has the same command line interface as MRI 2.3.7.</p>
+<p>TruffleRuby has the same command line interface as MRI 2.4.4.</p>
 
 <pre><code>Usage: truffleruby [switches] [--] [programfile] [arguments]
   -0[octal]       specify record separator (\0, if no argument)
@@ -1137,6 +1129,7 @@ limited so may be misleading.</p>
                   specify the default external or internal character encoding
   --version       print the version
   --help          show this message, -h for short message
+
 Features:
   gems            rubygems (default: enabled)
   did_you_mean    did_you_mean (default: enabled)
@@ -1145,14 +1138,18 @@ Features:
                   freeze all string literals (default: disabled)
 </code></pre>
 
-<p>TruffleRuby also reads the <code>RUBYOPT</code> environment variable.</p>
+<p>TruffleRuby also reads the <code>RUBYOPT</code> environment variable, if run from the Ruby
+launcher.</p>
 
 <h3 id="unlisted-ruby-switches">Unlisted Ruby switches</h3>
 
-<p>MRI has some extra Ruby switches which are aren’t normally listed.</p>
+<p>MRI has some extra Ruby switches which are aren’t normally listed in help output
+but are documented in the Ruby manual page.</p>
 
 <pre><code>  -U              set the internal encoding to UTF-8
   -KEeSsUuNnAa    sets the source and external encoding
+  --encoding=external[:internal]
+                  the same as --external-encoding=external and optionally --internal-encoding=internal
   -y, --ydebug    debug the parser
   -Xdirectory     the same as -Cdirectory
   --dump=insns    print disassembled instructions
@@ -1163,20 +1160,21 @@ Features:
 <p>Beyond the standard Ruby command line switches we support some additional
 switches specific to TruffleRuby.</p>
 
-<pre><code>TruffleRuby switches:
-  -Xlog=severe,warning,performance,info,config,fine,finer,finest
+<pre><code>TruffleRuby:
+  -Xlog=SEVERE,WARNING,INFO,CONFIG,FINE,FINER,FINEST
                   set the TruffleRuby logging level
   -Xoptions       print available TruffleRuby options
   -Xname=value    set a TruffleRuby option (omit value to set to true)
+  -J-option=value Translates to --jvm.option=value
 </code></pre>
 
 <p>As well as being set at the command line, options, except for <code>log</code>,
-can be set using <code>--ruby.option=</code> in any GraalVM launcher.
-For example <code>--ruby.inline_js=true</code>. They can also be set as JVM system
+can be set using <code>--ruby.option=</code>.
+For example <code>--ruby.cexts.remap=true</code>. They can also be set as JVM system
 properties, where they have a prefix <code>polyglot.ruby.</code>. For example
-<code>-J-Dpolyglot.ruby.inline_js=true</code>, or via any other way of setting JVM system
-properties. Finally, options can be set as Graal-SDK polyglot API configuration
-options.</p>
+<code>--jvm.Dpolyglot.ruby.cexts.remap=true</code>, or via any other way of setting JVM
+system properties. Finally, options can be set as Graal-SDK polyglot API
+configuration options.</p>
 
 <p>The priority for options is the command line first, then the Graal-SDK polyglot
 API configuration, then system properties last.</p>
@@ -1187,7 +1185,8 @@ rather than once per TruffleRuby instance, and is used to report problems
 loading the TruffleRuby instance before options are loaded.</p>
 
 <p>TruffleRuby-specific options, as well as conventional Ruby options, can also
-bet set in the <code>TRUFFLERUBYOPT</code> environment variable.</p>
+bet set in the <code>TRUFFLERUBYOPT</code> environment variable, if run from the Ruby
+launcher.</p>
 
 <p><code>--</code> or the first non-option argument both stop processing of Truffle-specific
 arguments in the same way it stops processing of Ruby arguments.</p>
@@ -1196,14 +1195,12 @@ arguments in the same way it stops processing of Ruby arguments.</p>
 
 <p>If you are running TruffleRuby on a JVM or the GraalVM, we additionally support
 passing options to the JVM using either a <code>-J-</code> or <code>--jvm.</code> prefix.
-For example <code>-J-ea</code>. <code>-J-classpath</code> and <code>-J-cp</code>
+For example <code>-J-ea</code>. <code>-J-classpath</code> and <code>-J-cp</code> 
 also implicitly take the following argument to be passed to the JVM.
 <code>-J-cmd</code> print the Java command that will be executed, for
 debugging.</p>
 
-<pre><code>JVM switches:
-  --jvm.arg,         -J-arg           pass arg to the JVM
-  --jvm.Dname=value, -J-Dname=value   set a system property
+<pre><code>  --jvm.[option]  Pass options to the JVM; for example, '--jvm.classpath=myapp.jar'. To see available options. use '--jvm.help'.
 </code></pre>
 
 <p><code>--</code> or the first non-option argument both stop processing of JVM-specific
@@ -1214,27 +1211,37 @@ variables when running on a JVM (except for <code>JAVACMD</code> on the GraalVM)
 
 <h3 id="svm-specific-switches">SVM-specific switches</h3>
 
-<p>The SVM supports <code>--native.D</code> for setting system properties and
+<p>The SVM supports <code>--native.D</code> for setting system properties and 
 <code>--native.XX:arg</code> for SVM options.</p>
 
-<pre><code>Native switches:
-  --native.XX:arg       pass arg to the SVM
-  --native.Dname=value  set a system property
+<pre><code>  --native.[option]  Pass options to the native image. To see available options, use '--native.help'.
 </code></pre>
 
 <h3 id="determining-the-truffleruby-home">Determining the TruffleRuby home</h3>
 
 <p>TruffleRuby needs to know where to locate files such as the standard library.
-These are stored in the TruffleRuby home directory. The TruffleRuby option
-<code>home</code> has priority for setting the home directory. Otherwise it is set
-automatically to the directory containing the TruffleRuby JAR file, if
-TruffleRuby is running on a JVM.</p>
+These are stored in the TruffleRuby home directory.</p>
+
+<p>The search priority for finding Ruby home is:</p>
+
+<ul>
+  <li>The value of the TruffleRuby <code>home</code> option (i.e., <code>-Xhome=path/to/truffleruby_home</code>).</li>
+  <li>The home that the Truffle framework reports.</li>
+  <li>The parent of the directory containing the Ruby launcher executable.</li>
+</ul>
+
+<p>If the <code>home</code> option is set, it’s used even if it doesn’t appear to be a correct
+home location. Other options are tried until one is found that appears to be a
+correct home location. If none appears to be correct a warning will be given but
+the program will continue and you will not be able to require standard
+libraries. You can tell TruffleRuby not to try to find a home at all using the
+<code>no_home_provided</code> option.</p>
 
 <h2 id="operations-manual">Operations Manual</h2>
 
-<p>If you are attempting to experiment with deploying TruffleRuby to production we
-would encourage you to contact us so we can help you understand what is possible
-at the moment and to help solve any issues for you.</p>
+<p>If you’re attempting to experiment with deploying TruffleRuby to production we’d
+encourage you to contact us so we can help you understand what is possible at
+the moment and to help solve any issues for you.</p>
 
 <h3 id="truffleruby-configurations">TruffleRuby configurations</h3>
 
@@ -1247,21 +1254,20 @@ execution mode that is appropriate for your application.</p>
 configuration. In this configuration, TruffleRuby is ahead-of-time compiled to a
 standalone native executable. This means that you don’t need a JVM installed on
 your system to use it. The advantage of the native configuration is that it
-starts about as fast as MRI, it may use less memory, and it becomes fast in less
-time than the <em>JVM</em> configuration. The disadvantage of the native configuration
-is that you can’t use Java tools like VisualVM, you can’t use Java
-interoperability, and <em>peak performance may be lower than on the JVM</em>. The
-native configuration is used by default, but you can also request it using
-<code>--native</code>. To use polyglot programming with the <em>native</em> configuration, you
-need to use the <code>--polyglot</code> flag.</p>
+<a href="https://github.com/oracle/truffleruby/blob/master/doc/contributor/svm.md">starts about as fast as MRI</a>,
+it may use less memory, and it becomes fast in less time than the <em>JVM</em> configuration. The disadvantage
+of the native configuration is that you can’t use Java tools like VisualVM, you
+can’t use Java interoperability, and <em>peak performance may be lower than on the
+JVM</em>. The native configuration is used by default, but you can also request it
+using <code>--native</code>. To use polyglot programming with the <em>native</em> configuration,
+you need to use the <code>--polyglot</code> flag.</p>
 
 <p>TruffleRuby can also be used in the <em>JVM</em> configuration, where it runs as a
 normal Java application on the JVM, as any other Java application would. The
-advantage of the JVM configuration is that you can use Java interoperability,
-and <em>peak performance may be higher than the native configuration</em>. The
-disadvantage of the JVM configuration is that it takes much longer to start and
-to get fast, and may use more memory. The JVM configuration is requested using
-<code>--jvm</code>.</p>
+advantage of the JVM configuration is that you can use Java interoperability, and
+<em>peak performance may be higher than the native configuration</em>. The disadvantage
+of the JVM configuration is that it takes much longer to start and to get fast,
+and may use more memory. The JVM configuration is requested using <code>--jvm</code>.</p>
 
 <p>If you are running a short-running program you probably want the default,
 <em>native</em>, configuration. If you are running a long-running program and want the
@@ -1307,18 +1313,9 @@ flag.</p>
 Ruby.</p>
 
 <p>For logging of TruffleRuby internals, standard Java logging is used. The logging
-level can be set with <code>-Xlog=info</code>, <code>=finest</code>, or so on. An additional logging
-level, <code>-Xlog=performance</code> includes warnings about operations that may be slow.</p>
+level can be set with <code>-Xlog=INFO</code>, <code>=FINEST</code>, or so on.</p>
 
-<p>For advanced configuration, write a Java logging configuration file and load it
-using <code>-J-Djava.util.logging.config.file=logging.properties</code>. You can use this
-to log to a file and to set the level.</p>
-
-<pre><code>org.truffleruby.handlers=java.util.logging.FileHandler
-java.util.logging.FileHandler.pattern=ruby.log
-org.truffleruby.level=CONFIG
-</code></pre>
-<h2 id="troubleshooting-truffleruby">Troubleshooting TruffleRuby</h2>
+<h3 id="troubleshooting-truffleruby">Troubleshooting TruffleRuby</h3>
 <p>The GraalVM implementation of Ruby is experimental and we can not guarantee it to be bug free.
 TruffleRuby uses sophisticated techniques to optimise a Ruby program and its users are strongly encouraged to submit useful bug reports to <a href="https://github.com/oracle/truffleruby/issues">Truffleruby issues</a>.
  If you encounter a performance problem, please  consider the recommendations in <a href="https://github.com/oracle/truffleruby/blob/master/doc/user/reporting-performance-problems.md">Reporting Performance Problems</a> document  .</p>
