@@ -594,6 +594,14 @@ function initialize() {
         url: '#event-seven',
         position: {lat: 51.110939, lng: 17.053061}
       }
+    ],
+    brussels: [
+      {
+        conference: 'EuroLLVM 2019',
+        date: 'April 8-9, 2019',
+        url: '#event-eight',
+        position: {lat: 50.854455, lng: 4.356530}
+      }
     ]
   };
 
