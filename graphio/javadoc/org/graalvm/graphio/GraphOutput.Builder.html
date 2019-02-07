@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -172,12 +172,18 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code><a href="../../../org/graalvm/graphio/GraphOutput.Builder.html" title="class in org.graalvm.graphio">GraphOutput.Builder</a>&lt;<a href="../../../org/graalvm/graphio/GraphOutput.Builder.html" title="type parameter in GraphOutput.Builder">G</a>,<a href="../../../org/graalvm/graphio/GraphOutput.Builder.html" title="type parameter in GraphOutput.Builder">N</a>,<a href="../../../org/graalvm/graphio/GraphOutput.Builder.html" title="type parameter in GraphOutput.Builder">M</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/graphio/GraphOutput.Builder.html#embedded-boolean-">embedded</a></span>(boolean&nbsp;embedded)</code>
+<div class="block">Sets <a href="../../../org/graalvm/graphio/GraphOutput.html" title="class in org.graalvm.graphio"><code>GraphOutput</code></a> as embedded.</div>
+</td>
+</tr>
+<tr id="i6" class="altColor">
+<td class="colFirst"><code><a href="../../../org/graalvm/graphio/GraphOutput.Builder.html" title="class in org.graalvm.graphio">GraphOutput.Builder</a>&lt;<a href="../../../org/graalvm/graphio/GraphOutput.Builder.html" title="type parameter in GraphOutput.Builder">G</a>,<a href="../../../org/graalvm/graphio/GraphOutput.Builder.html" title="type parameter in GraphOutput.Builder">N</a>,<a href="../../../org/graalvm/graphio/GraphOutput.Builder.html" title="type parameter in GraphOutput.Builder">M</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/graphio/GraphOutput.Builder.html#protocolVersion-int-int-">protocolVersion</a></span>(int&nbsp;majorVersion,
                int&nbsp;minorVersion)</code>
 <div class="block">Chooses which version of the protocol to use.</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code><a href="../../../org/graalvm/graphio/GraphOutput.Builder.html" title="class in org.graalvm.graphio">GraphOutput.Builder</a>&lt;<a href="../../../org/graalvm/graphio/GraphOutput.Builder.html" title="type parameter in GraphOutput.Builder">G</a>,<a href="../../../org/graalvm/graphio/GraphOutput.Builder.html" title="type parameter in GraphOutput.Builder">N</a>,<a href="../../../org/graalvm/graphio/GraphOutput.Builder.html" title="type parameter in GraphOutput.Builder">M</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/graphio/GraphOutput.Builder.html#types-org.graalvm.graphio.GraphTypes-">types</a></span>(<a href="../../../org/graalvm/graphio/GraphTypes.html" title="interface in org.graalvm.graphio">GraphTypes</a>&nbsp;graphTypes)</code>
 <div class="block">Associates different implementation of types.</div>
@@ -224,6 +230,28 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <dd>this builder</dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>0.28</dd>
+</dl>
+</li>
+</ul>
+<a name="embedded-boolean-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>embedded</h4>
+<pre>public&nbsp;<a href="../../../org/graalvm/graphio/GraphOutput.Builder.html" title="class in org.graalvm.graphio">GraphOutput.Builder</a>&lt;<a href="../../../org/graalvm/graphio/GraphOutput.Builder.html" title="type parameter in GraphOutput.Builder">G</a>,<a href="../../../org/graalvm/graphio/GraphOutput.Builder.html" title="type parameter in GraphOutput.Builder">N</a>,<a href="../../../org/graalvm/graphio/GraphOutput.Builder.html" title="type parameter in GraphOutput.Builder">M</a>&gt;&nbsp;embedded(boolean&nbsp;embedded)</pre>
+<div class="block">Sets <a href="../../../org/graalvm/graphio/GraphOutput.html" title="class in org.graalvm.graphio"><code>GraphOutput</code></a> as embedded. The embedded <a href="../../../org/graalvm/graphio/GraphOutput.html" title="class in org.graalvm.graphio"><code>GraphOutput</code></a> shares
+ <a href="http://docs.oracle.com/javase/8/docs/api/java/nio/channels/WritableByteChannel.html?is-external=true" title="class or interface in java.nio.channels"><code>channel</code></a> with another already open non parent
+ <a href="../../../org/graalvm/graphio/GraphOutput.html" title="class in org.graalvm.graphio"><code>GraphOutput</code></a>. The embedded <a href="../../../org/graalvm/graphio/GraphOutput.html" title="class in org.graalvm.graphio"><code>GraphOutput</code></a> flushes data after each
+ <a href="../../../org/graalvm/graphio/GraphOutput.html#print-G-java.util.Map-int-java.lang.String-java.lang.Object...-"><code>print</code></a>, <a href="../../../org/graalvm/graphio/GraphOutput.html#beginGroup-G-java.lang.String-java.lang.String-M-int-java.util.Map-"><code>beginGroup</code></a> and
+ <a href="../../../org/graalvm/graphio/GraphOutput.html#endGroup--"><code>endGroup</code></a> call.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>embedded</code> - if <code>true</code> the builder creates an embedded <a href="../../../org/graalvm/graphio/GraphOutput.html" title="class in org.graalvm.graphio"><code>GraphOutput</code></a></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>this builder</dd>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>1.0</dd>
 </dl>
 </li>
 </ul>
