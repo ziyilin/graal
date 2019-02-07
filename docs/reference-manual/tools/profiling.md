@@ -264,6 +264,9 @@ is false.
 
 ### Memory Tracer Command Options
 
+**Disclaimer**: The memory tracer tool is experimental at the moment and likely
+its options are subject to change without notice.
+
 - `--memtracer`: enables the memory tracer. Disabled by default.
 - `--memtracer.FilterFile=<Expression>`: applies a wildcard filter for source file paths. For example, `*program*.sl`. The default is &lowast;.
 - `--memtracer.FilterLanguage=<String>`: profiles languages only with the matching mime-type. For example, `+`. The default is no filter.

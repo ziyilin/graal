@@ -429,7 +429,7 @@ $(document).ready(function(){
           
             
             <a href="/docs/reference-manual/graal-updater/">
-              Graal updater
+              Graal Updater
             </a>
           </li>
 
@@ -716,7 +716,7 @@ the optional port number. This applies to the <code>node</code> launcher only.</
 
 <h3 id="other-language-launchers">Other Language Launchers</h3>
 
-<p>Other guest language launchers such as <code>js</code>, <code>python</code>, <code>Rscript</code> and <code>ruby</code>
+<p>Other guest language launchers such as <code>js</code>, <code>python</code>, <code>Rscript</code>, <code>ruby</code>, <code>lli</code> and <code>polyglot</code>
 accept the <code>--inspect[=[host:]&lt;port number&gt;]</code> option, but suspend on the first line of
 the application code by default.</p>
 
@@ -731,21 +731,18 @@ the application code by default.</p>
 <pre><code>--inspect.Path=&lt;path&gt;
 </code></pre>
 
-<p>allows to specify a fixed path that generates a predictable connection URL. By
+<p>Allows to specify a fixed path that generates a predictable connection URL. By
 default, the path is randomly generated.</p>
 
-<pre><code>--inspect.Remote=(true|false)
+<pre><code>--inspect.SourcePath=&lt;source path&gt;
 </code></pre>
-
-<p>when true, the local host address is used instead of the loopback address. That
-allows remote connection of the inspector client. By default, the loopback
-address is used. This option became obsolete after being able to specify the host
-name in <code>--inspect</code> option and may be removed in future versions.</p>
+<p>This option specifies a list of directories or ZIP/JAR files representing the source path. When the inspected application contains relative references to source files, their content is loaded from locations resolved with respect to this source path. It is useful during LLVM debugging, for instance.
+The paths are delimited by <code>:</code> on UNIX systems and by <code>;</code> on MS Windows.</p>
 
 <pre><code>--inspect.Secure=(true|false)
 </code></pre>
 
-<p>when true, use TLS/SSL to secure the debugging protocol. Besides changing the WS
+<p>When true, use TLS/SSL to secure the debugging protocol. Besides changing the WS
 (web socket) protocol to WSS, the HTTP endpoint that serves metadata about the debuggee
 is also changed to HTTPS. This is not compatible e.g. with
 <a href="chrome://inspect">chrome://inspect</a> page, which is not able to provide the debuggee
@@ -763,7 +760,7 @@ keystore with the TLS/SSL encryption keys, or following options:</p>
 <pre><code>--inspect.WaitAttached=(true|false)
 </code></pre>
 
-<p>when true, no guest language source code is executed until the inspector client
+<p>When true, no guest language source code is executed until the inspector client
 is attached. Unlike <code>--inspect.Suspend=true</code>, the execution is resumed right
 after the client is attached. That assures that no execution is missed by the
 inspector client. It is <code>false</code> by default.</p>
@@ -774,14 +771,14 @@ inspector client. It is <code>false</code> by default.</p>
 <pre><code>--inspect.Initialization=(true|false)
 </code></pre>
 
-<p>when true, inspect the language initialization phase. When initial suspension is
-active, suspends at the begining of language initialization and not necessarily
-at the begining of the application code. It’s <code>false</code> by default.</p>
+<p>When true, inspect the language initialization phase. When initial suspension is
+active, suspends at the beginning of language initialization and not necessarily
+at the beginning of the application code. It’s <code>false</code> by default.</p>
 
 <pre><code>--inspect.Internal=(true|false)
 </code></pre>
 
-<p>when true, internal sources are inspected as well. Internal sources may provide
+<p>When true, internal sources are inspected as well. Internal sources may provide
 language implementation details. It’s <code>false</code> by default.</p>
 
 <h3 id="programmatic-launch-of-inspector-backend">Programmatic Launch of Inspector Backend</h3>
@@ -1079,6 +1076,9 @@ is false.</li>
 </ul>
 
 <h3 id="memory-tracer-command-options">Memory Tracer Command Options</h3>
+
+<p><strong>Disclaimer</strong>: The memory tracer tool is experimental at the moment and likely
+its options are subject to change without notice.</p>
 
 <ul>
   <li><code>--memtracer</code>: enables the memory tracer. Disabled by default.</li>

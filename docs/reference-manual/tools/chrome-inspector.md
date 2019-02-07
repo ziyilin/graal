@@ -78,7 +78,7 @@ the optional port number. This applies to the `node` launcher only.
 
 ### Other Language Launchers
 
-Other guest language launchers such as `js`, `python`, `Rscript` and `ruby`
+Other guest language launchers such as `js`, `python`, `Rscript`, `ruby`, `lli` and `polyglot`
 accept the `--inspect[=[host:]<port number>]` option, but suspend on the first line of
 the application code by default.
 
@@ -95,23 +95,20 @@ All launchers accept also following additional options:
 --inspect.Path=<path>
 ```
 
-allows to specify a fixed path that generates a predictable connection URL. By
+Allows to specify a fixed path that generates a predictable connection URL. By
 default, the path is randomly generated.
 
 ```
---inspect.Remote=(true|false)
+--inspect.SourcePath=<source path>
 ```
-
-when true, the local host address is used instead of the loopback address. That
-allows remote connection of the inspector client. By default, the loopback
-address is used. This option became obsolete after being able to specify the host
-name in `--inspect` option and may be removed in future versions.
+This option specifies a list of directories or ZIP/JAR files representing the source path. When the inspected application contains relative references to source files, their content is loaded from locations resolved with respect to this source path. It is useful during LLVM debugging, for instance.
+The paths are delimited by `:` on UNIX systems and by `;` on MS Windows.
 
 ```
 --inspect.Secure=(true|false)
 ```
 
-when true, use TLS/SSL to secure the debugging protocol. Besides changing the WS
+When true, use TLS/SSL to secure the debugging protocol. Besides changing the WS
 (web socket) protocol to WSS, the HTTP endpoint that serves metadata about the debuggee
 is also changed to HTTPS. This is not compatible e.g. with
 [chrome://inspect](chrome://inspect) page, which is not able to provide the debuggee
@@ -128,7 +125,7 @@ keystore with the TLS/SSL encryption keys, or following options:
 --inspect.WaitAttached=(true|false)
 ```
 
-when true, no guest language source code is executed until the inspector client
+When true, no guest language source code is executed until the inspector client
 is attached. Unlike `--inspect.Suspend=true`, the execution is resumed right
 after the client is attached. That assures that no execution is missed by the
 inspector client. It is `false` by default.
@@ -140,15 +137,15 @@ Following options are for language experts and language developers:
 --inspect.Initialization=(true|false)
 ```
 
-when true, inspect the language initialization phase. When initial suspension is
-active, suspends at the begining of language initialization and not necessarily
-at the begining of the application code. It's `false` by default.
+When true, inspect the language initialization phase. When initial suspension is
+active, suspends at the beginning of language initialization and not necessarily
+at the beginning of the application code. It's `false` by default.
 
 ```
 --inspect.Internal=(true|false)
 ```
 
-when true, internal sources are inspected as well. Internal sources may provide
+When true, internal sources are inspected as well. Internal sources may provide
 language implementation details. It's `false` by default.
 
 ### Programmatic Launch of Inspector Backend
