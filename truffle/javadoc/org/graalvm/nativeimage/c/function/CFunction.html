@@ -38,7 +38,7 @@
 <li><a href="../../../../../index-all.html">Index</a></li>
 <li><a href="../../../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc13-dev</b><br>34322f422d69d44c278ea4c0ec54179a9c59dbf4</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc13-dev</b><br>f23d5b118f739110acaffed03a5b6d4dd97b6757</div>
 </div>
 <div class="subNav">
 <ul class="navList">
@@ -100,9 +100,13 @@ public @interface <span class="memberNameLabel">CFunction</span></pre>
  environment passed, and no marshaling or processing of arguments (such as creating handles for
  objects) is performed. If the method is non-static, the receiver will be ignored.
  <p>
- Parameter and return types must not be Java reference types; only primitive Java values and Word
- values are allowed. If a Word value is passed that points to a Java object, no guarantees are
- taken regarding its integrity as a pointer.
+ Parameter types and return types must not be Java reference types, only
+ <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true#isPrimitive--" title="class or interface in java.lang">primitive</a> Java types, <a href="../../../../../org/graalvm/word/WordBase.html" title="interface in org.graalvm.word">word types</a> and
+ <a href="../../../../../org/graalvm/nativeimage/c/constant/CEnum.html" title="annotation in org.graalvm.nativeimage.c.constant"><code>CEnum</code></a> types are allowed. The representation of passed primitive values matches exactly
+ how they are specified in the Java language, for example, <code>int</code> as a 32-bit signed integer
+ or <code>char</code> as a 16-bit unsigned integer. <code>boolean</code> is specified as a single byte that
+ corresponds to <code>true</code> if non-zero, and to <code>false</code> if zero. If a Word value is passed
+ that points to a Java object, no guarantees are taken regarding its integrity as a pointer.
  <p>
  The class containing the annotated method must be annotated with <a href="../../../../../org/graalvm/nativeimage/c/CContext.html" title="annotation in org.graalvm.nativeimage.c"><code>CContext</code></a>.</div>
 <dl>
@@ -218,7 +222,7 @@ public @interface <span class="memberNameLabel">CFunction</span></pre>
 <li><a href="../../../../../index-all.html">Index</a></li>
 <li><a href="../../../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc13-dev</b><br>34322f422d69d44c278ea4c0ec54179a9c59dbf4</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc13-dev</b><br>f23d5b118f739110acaffed03a5b6d4dd97b6757</div>
 </div>
 <div class="subNav">
 <ul class="navList">
