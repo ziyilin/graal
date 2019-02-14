@@ -1729,10 +1729,6 @@ host languages. As a result, you can pass Java objects to Graal languages.</p>
 Graal languages can access primitive Java values, objects, arrays, and
 functional interfaces.</p>
 
-<p><strong>Note:</strong> This code example is supported when running on the Java Virtual
-Machine (JVM) only. Running in native image executables is not currently
-supported.</p>
-
 <div class="tabs-below">
 
 <div class="tab-content">
@@ -2146,6 +2142,28 @@ and compares the result to the number value <code>42</code>.</li>
   <li>After the Graal language script executes, validation takes place to ensure
 that the script returns a <code>boolean</code> value of <code>true</code> as a result.</li>
 </ul>
+
+<p>This code example is also supported when running in native image executables,
+and requires a <a href="https://github.com/oracle/graal/blob/master/substratevm/REFLECTION.md">reflection configuration file</a>:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="o">[</span>
+  <span class="o">{</span> <span class="s">"name"</span><span class="o">:</span> <span class="s">"access_java_from_ruby$MyClass"</span><span class="o">,</span> <span class="s">"allPublicFields"</span><span class="o">:</span> <span class="kc">true</span> <span class="o">},</span>
+  <span class="o">{</span> <span class="s">"name"</span><span class="o">:</span> <span class="s">"java.util.concurrent.Callable"</span><span class="o">,</span> <span class="s">"allPublicMethods"</span><span class="o">:</span> <span class="kc">true</span> <span class="o">}</span>
+<span class="o">]</span></code></pre></figure>
+
+<p>Which is then passed on the command-line with (using Ruby as an example):</p>
+
+<pre><code class="language-shell">$ javac access_java_from_ruby.java
+$ native-image --language:ruby -H:+RuntimeAssertions -H:ReflectionConfigurationFiles=reflect.json -cp . access_java_from_ruby
+$ ./access_java_from_ruby
+</code></pre>
+
+<p>Note that <code>-H:+RuntimeAssertions</code> is passed so <code>assert</code> statements are included
+in the image, since the example uses <code>assert</code>.</p>
+
+<h3 id="accessing-java-directly-from-other-languages">Accessing Java directly from other languages</h3>
+<p>See the <a href="/docs/reference-manual/polyglot/">Polyglot Reference</a>
+for more details on how to access Java from other Graal languages.</p>
 
 <h2 id="computed-arrays-using-polyglot-proxies">Computed Arrays Using Polyglot Proxies</h2>
 <p>The Polyglot API includes polyglot proxy interfaces that let you

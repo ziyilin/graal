@@ -640,12 +640,24 @@ Most of the time there is no additional cost for crossing a language boundary at
 <p>With GraalVM we aim to allow developers to freely choose the right language for the task at hand without making compromises.
 Throughout this section you learn how to combine multiple languages using our polyglot APIs.</p>
 
-<h2 id="how-to-build-polyglot-applications">How to Build Polyglot Applications</h2>
+<h2 id="running-polyglot-applications">Running Polyglot Applications</h2>
 
 <p>The following examples are designed to get you started with a basic polyglot application.
 Select a section for your <em>Start Language</em> and then select a tab for the <em>Target Language</em>.</p>
 
 <p>Ensure you set up GraalVM and export the GraalVM home directory as the $GRAALVM_HOME before you begin. See <a href="/docs/getting-started/">Get Started</a>.</p>
+
+<p>Note that these examples work in all scenarios:</p>
+<ul>
+  <li>On JVM, by passing <code>--polyglot --jvm</code>.</li>
+  <li>On native launchers with <code>--polyglot</code> (e.g., <code>js --polyglot</code>).
+Note that it might be required to <a href="/docs/reference-manual/graal-updater/#rebuilding-images">rebuild images</a> to access languages installed with <code>gu</code>.</li>
+  <li>With native image executables (e.g., <code>native-image --language:js</code>).</li>
+</ul>
+
+<p>For native launchers and native image executables using Java as the Target Language
+and accessing other classes than Java arrays, it is required to recompile the image and provide
+a <a href="https://github.com/oracle/graal/blob/master/substratevm/REFLECTION.md">reflection configuration file</a>.</p>
 
 <p><strong>Requirement:</strong> to start an application with LLVM as a Target Language, make sure to precompile polyglot.c file provided below.</p>
 
@@ -2958,7 +2970,7 @@ We plan to gradually improve the protocol to support more and more features over
 In <em>Proceedings of the 11th Dynamic Language Symposium (DLS)</em>.</li>
 </ul>
 
-<h3 id="running-polyglot-applications">Running Polyglot Applications</h3>
+<h3 id="running-polyglot-applications-1">Running Polyglot Applications</h3>
 
 <p>With polyglot applications it is often impossible to decide what the primary language of an application is.
 Therefore, we have added an experimental new launcher called <code>polyglot</code> to GraalVM.

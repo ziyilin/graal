@@ -622,7 +622,7 @@ $(document).ready(function(){
     
             <div class="col-sm-9">
               <div id="content-wrapper" class="docs-content docs-content--with-sidebar">
-                <h3 id="component-installation">Component installation</h3>
+                <h2 id="component-installation">Component installation</h2>
 
 <p>Some languages are not part of the GraalVM core download package and must be downloaded and installed separately. To assist you with this installation, languages are pre-packaged as <strong>Components</strong>.
 The GraalVM installation contains the <strong>Graal Updater</strong> utility, <code>gu</code>,
@@ -653,7 +653,7 @@ The following pre-built language packages are at your disposal:</p>
 from which you can install a component just by name.
 The Graal Updater will download the component package for you. This is the default mode of operation.</p>
 
-<h3 id="installation-from-catalog">Installation from Catalog</h3>
+<h2 id="installation-from-catalog">Installation from Catalog</h2>
 <p>The Graal Updater first downloads the list of components,
 then uses the information in the list to download the actual component package for you and install it.
 To see which components are available in the catalog, use</p>
@@ -668,13 +668,13 @@ the <code>ComponentId</code> (for example <code>ruby</code>) can be used as</p>
 <p>If you want to see more verbose messages during installation, you may use the <code>-v</code>
 switch to see the download progress bar and verbose messages.</p>
 
-<h3 id="manual-installation">Manual installation</h3>
+<h2 id="manual-installation">Manual installation</h2>
 <p>With the already downloaded component package archive,  <code>component.jar</code>,
 the component can be installed as</p>
 <pre><code class="language-bash">gu -L install component.jar
 </code></pre>
 
-<h3 id="components-list">Components list</h3>
+<h2 id="components-list">Components list</h2>
 <p>Installed components can be printed by</p>
 <pre><code class="language-bash">gu list
 </code></pre>
@@ -682,7 +682,7 @@ the component can be installed as</p>
 <pre><code class="language-bash">gu available
 </code></pre>
 
-<h3 id="rebuilding-images">Rebuilding images</h3>
+<h2 id="rebuilding-images">Rebuilding images</h2>
 <p>A set of Graal VM components that provide language implementations may change.
 Polyglot native image and polyglot native C library may be out of sync, particularly:</p>
 <ul>
@@ -694,7 +694,7 @@ Polyglot native image and polyglot native C library may be out of sync, particul
 <pre><code class="language-bash">gu rebuild-images [--verbose] polyglot libpolyglot js llvm python ruby
 </code></pre>
 
-<h3 id="uninstallation">Uninstallation</h3>
+<h2 id="uninstallation">Uninstallation</h2>
 <p>Components may be uninstalled from the GraalVM installation when you no longer need them.
 To uninstall a specific component you need to know its <code>ComponentId</code>, which can be <code>ruby</code>, or <code>r</code> or <code>python</code>.
 The command to uninstall the component is:</p>
@@ -703,10 +703,10 @@ The command to uninstall the component is:</p>
 <p>If more components end with, for example, <code>ruby</code>, the installer will print an error message that you need to use component’s full names (<code>org.graalvm.ruby</code>).
 The uninstallation removes the files created during the installation. If a file belongs to multiple components, it will be removed when the last component using it is removed.</p>
 
-<h3 id="proxies">Proxies</h3>
+<h2 id="proxies">Proxies</h2>
 <p>If the <em>Graal Updater</em> needs to reach the component catalog, or download a component package, it may need to pass through your HTTP proxy, if your network uses one. On <em>MacOS X</em>, the proxy settings are automatically obtained from the OS. On <em>Linux</em>, you must ensure that the <code>http_proxy</code> and <code>https_proxy</code> environment variables are set appropriately <strong>before</strong> you launch <code>gu</code>. Please refer to your distribution and/or desktop environment documentation for the details.</p>
 
-<h3 id="replacing-components-and-files">Replacing Components and Files</h3>
+<h2 id="replacing-components-and-files">Replacing Components and Files</h2>
 <p>A component may be only installed once. The Graal Updater refuses to install a component if a component with the same ID is already installed. But the installed component may be <strong>replaced</strong>. Graal Updater first <em>uninstalls</em> the component and then installs the new package. To replace component, use <code>-r</code> option:</p>
 <pre><code class="language-bash">gu install -L -r component.jar
 gu install -r ruby
