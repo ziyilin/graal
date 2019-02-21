@@ -44,7 +44,7 @@ var activeTableTab = "activeTableTab";
 <li><a href="../../../../index-all.html">Index</a></li>
 <li><a href="../../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc13-dev</b><br>b1515afc12f2233fda0002ad5ff17c6bb4470bc1</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc13-dev</b><br>9aac4cd5721c366e6bf494676dc0c7bbe3f8b50c</div>
 </div>
 <div class="subNav">
 <ul class="navList">
@@ -630,6 +630,10 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
  for instrumentation, the instruments cannot receive any meta data about code executed during
  context creation. Should there be a need to perform complex initialization, do it by
  overriding the <a href="../../../../com/oracle/truffle/api/TruffleLanguage.html#initializeContext-C-"><code>TruffleLanguage.initializeContext(java.lang.Object)</code></a> method.
+ <p>
+ Additional services provided by the language must be
+ <a href="../../../../com/oracle/truffle/api/TruffleLanguage.Env.html#registerService-java.lang.Object-"><code>registered</code></a> by this method otherwise
+ <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalStateException.html?is-external=true" title="class or interface in java.lang"><code>IllegalStateException</code></a> is thrown.
  <p>
  May return <code>null</code> if the language does not need any per-<a href="../../../../org/graalvm/polyglot/Context.html" title="class in org.graalvm.polyglot">context</a>
  state. Otherwise it should return a new object instance every time it is called.</div>
@@ -1539,7 +1543,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li><a href="../../../../index-all.html">Index</a></li>
 <li><a href="../../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc13-dev</b><br>b1515afc12f2233fda0002ad5ff17c6bb4470bc1</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc13-dev</b><br>9aac4cd5721c366e6bf494676dc0c7bbe3f8b50c</div>
 </div>
 <div class="subNav">
 <ul class="navList">
