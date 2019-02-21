@@ -38,7 +38,7 @@
 <li class="navBarCell1Rev">Index</li>
 <li><a href="help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc13-dev</b><br>4c36087a6f70502ecfc42d81f0e95661a5a571c6</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc13-dev</b><br>97622e333df1a0b285c20febe1b6b67f1ef44b38</div>
 </div>
 <div class="subNav">
 <ul class="navList">
@@ -2687,7 +2687,7 @@
 <dd>
 <div class="block">Service-provider for <code>Truffle</code> files.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/TruffleStackTraceElement.html#fillIn-java.lang.Throwable-">fillIn(Throwable)</a></span> - Static method in class com.oracle.truffle.api.<a href="com/oracle/truffle/api/TruffleStackTraceElement.html" title="class in com.oracle.truffle.api">TruffleStackTraceElement</a></dt>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/TruffleStackTrace.html#fillIn-java.lang.Throwable-">fillIn(Throwable)</a></span> - Static method in exception com.oracle.truffle.api.<a href="com/oracle/truffle/api/TruffleStackTrace.html" title="class in com.oracle.truffle.api">TruffleStackTrace</a></dt>
 <dd>
 <div class="block">Fills in the guest language stack frames from the current frames on the stack.</div>
 </dd>
@@ -2700,6 +2700,8 @@
 <dd>
 <div class="block">For performance reasons, this exception does not record any stack trace information.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/TruffleStackTrace.html#fillInStackTrace--">fillInStackTrace()</a></span> - Method in exception com.oracle.truffle.api.<a href="com/oracle/truffle/api/TruffleStackTrace.html" title="class in com.oracle.truffle.api">TruffleStackTrace</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/PolyglotException.html#fillInStackTrace--">fillInStackTrace()</a></span> - Method in exception org.graalvm.polyglot.<a href="org/graalvm/polyglot/PolyglotException.html" title="class in org.graalvm.polyglot">PolyglotException</a></dt>
 <dd>
 <div class="block">Unsupported, <a href="org/graalvm/polyglot/PolyglotException.html" title="class in org.graalvm.polyglot"><code>PolyglotException</code></a> instances are not writable therefore filling the stack
@@ -4661,10 +4663,10 @@
 <dd>
 <div class="block">Gets stack trace elements of guest languages.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/TruffleStackTraceElement.html#getStackTrace-java.lang.Throwable-">getStackTrace(Throwable)</a></span> - Static method in class com.oracle.truffle.api.<a href="com/oracle/truffle/api/TruffleStackTraceElement.html" title="class in com.oracle.truffle.api">TruffleStackTraceElement</a></dt>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/TruffleStackTrace.html#getStacktrace-java.lang.Throwable-">getStacktrace(Throwable)</a></span> - Static method in exception com.oracle.truffle.api.<a href="com/oracle/truffle/api/TruffleStackTrace.html" title="class in com.oracle.truffle.api">TruffleStackTrace</a></dt>
 <dd>
 <div class="block">Returns the guest language frames that are stored in this throwable or <code>null</code> if
- no guest language frames are available.</div>
+ no guest language frames can ever be stored in this throwable.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/PolyglotException.html#getStackTrace--">getStackTrace()</a></span> - Method in exception org.graalvm.polyglot.<a href="org/graalvm/polyglot/PolyglotException.html" title="class in org.graalvm.polyglot">PolyglotException</a></dt>
 <dd>
@@ -9512,6 +9514,8 @@
 <dd>
 <div class="block">Generates language specific textual representation of a value.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/TruffleStackTrace.html#toString--">toString()</a></span> - Method in exception com.oracle.truffle.api.<a href="com/oracle/truffle/api/TruffleStackTrace.html" title="class in com.oracle.truffle.api">TruffleStackTrace</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/api/utilities/JSONHelper.JSONStringBuilder.html#toString--">toString()</a></span> - Method in class com.oracle.truffle.api.utilities.<a href="com/oracle/truffle/api/utilities/JSONHelper.JSONStringBuilder.html" title="class in com.oracle.truffle.api.utilities">JSONHelper.JSONStringBuilder</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/collections/Pair.html#toString--">toString()</a></span> - Method in class org.graalvm.collections.<a href="org/graalvm/collections/Pair.html" title="class in org.graalvm.collections">Pair</a></dt>
@@ -9661,6 +9665,10 @@
 <dt><a href="com/oracle/truffle/api/TruffleRuntimeAccess.html" title="interface in com.oracle.truffle.api"><span class="typeNameLink">TruffleRuntimeAccess</span></a> - Interface in <a href="com/oracle/truffle/api/package-summary.html">com.oracle.truffle.api</a></dt>
 <dd>
 <div class="block">A service that provides access to a <a href="com/oracle/truffle/api/TruffleRuntime.html" title="interface in com.oracle.truffle.api"><code>TruffleRuntime</code></a> implementation.</div>
+</dd>
+<dt><a href="com/oracle/truffle/api/TruffleStackTrace.html" title="class in com.oracle.truffle.api"><span class="typeNameLink">TruffleStackTrace</span></a> - Exception in <a href="com/oracle/truffle/api/package-summary.html">com.oracle.truffle.api</a></dt>
+<dd>
+<div class="block">Represents a guest language stack trace.</div>
 </dd>
 <dt><a href="com/oracle/truffle/api/TruffleStackTraceElement.html" title="class in com.oracle.truffle.api"><span class="typeNameLink">TruffleStackTraceElement</span></a> - Class in <a href="com/oracle/truffle/api/package-summary.html">com.oracle.truffle.api</a></dt>
 <dd>
@@ -10434,7 +10442,7 @@ the order they are declared.</div>
 <li class="navBarCell1Rev">Index</li>
 <li><a href="help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc13-dev</b><br>4c36087a6f70502ecfc42d81f0e95661a5a571c6</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc13-dev</b><br>97622e333df1a0b285c20febe1b6b67f1ef44b38</div>
 </div>
 <div class="subNav">
 <ul class="navList">

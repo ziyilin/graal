@@ -17,8 +17,8 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":9,"i1":10,"i2":10,"i3":9,"i4":10};
-var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
+var methods = {"i0":10,"i1":10,"i2":10};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -44,11 +44,11 @@ var activeTableTab = "activeTableTab";
 <li><a href="../../../../index-all.html">Index</a></li>
 <li><a href="../../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc13-dev</b><br>4c36087a6f70502ecfc42d81f0e95661a5a571c6</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc13-dev</b><br>97622e333df1a0b285c20febe1b6b67f1ef44b38</div>
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../com/oracle/truffle/api/TruffleRuntimeAccess.html" title="interface in com.oracle.truffle.api"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../com/oracle/truffle/api/TruffleStackTrace.html" title="class in com.oracle.truffle.api"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li><a href="../../../../com/oracle/truffle/api/TypedObject.html" title="interface in com.oracle.truffle.api"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
@@ -128,37 +128,24 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t1" class="tableTab"><span><a href="javascript:show(1);">Static Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>static void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleStackTraceElement.html#fillIn-java.lang.Throwable-">fillIn</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html?is-external=true" title="class or interface in java.lang">Throwable</a>&nbsp;throwable)</code>
-<div class="block">Fills in the guest language stack frames from the current frames on the stack.</div>
-</td>
-</tr>
-<tr id="i1" class="rowColor">
 <td class="colFirst"><code><a href="../../../../com/oracle/truffle/api/frame/Frame.html" title="interface in com.oracle.truffle.api.frame">Frame</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleStackTraceElement.html#getFrame--">getFrame</a></span>()</code>
 <div class="block">Returns the materialized frame.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i1" class="rowColor">
 <td class="colFirst"><code><a href="../../../../com/oracle/truffle/api/nodes/Node.html" title="class in com.oracle.truffle.api.nodes">Node</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleStackTraceElement.html#getLocation--">getLocation</a></span>()</code>
 <div class="block">Returns a node representing the callsite on the stack.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../com/oracle/truffle/api/TruffleStackTraceElement.html" title="class in com.oracle.truffle.api">TruffleStackTraceElement</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleStackTraceElement.html#getStackTrace-java.lang.Throwable-">getStackTrace</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html?is-external=true" title="class or interface in java.lang">Throwable</a>&nbsp;throwable)</code>
-<div class="block">Returns the guest language frames that are stored in this throwable or <code>null</code> if
- no guest language frames are available.</div>
-</td>
-</tr>
-<tr id="i4" class="altColor">
+<tr id="i2" class="altColor">
 <td class="colFirst"><code><a href="../../../../com/oracle/truffle/api/RootCallTarget.html" title="interface in com.oracle.truffle.api">RootCallTarget</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/oracle/truffle/api/TruffleStackTraceElement.html#getTarget--">getTarget</a></span>()</code>
 <div class="block">Returns the call target on the stack.</div>
@@ -226,7 +213,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <a name="getFrame--">
 <!--   -->
 </a>
-<ul class="blockList">
+<ul class="blockListLast">
 <li class="blockList">
 <h4>getFrame</h4>
 <pre>public&nbsp;<a href="../../../../com/oracle/truffle/api/frame/Frame.html" title="interface in com.oracle.truffle.api.frame">Frame</a>&nbsp;getFrame()</pre>
@@ -236,50 +223,6 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <dl>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>0.31</dd>
-</dl>
-</li>
-</ul>
-<a name="getStackTrace-java.lang.Throwable-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getStackTrace</h4>
-<pre>public static&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../com/oracle/truffle/api/TruffleStackTraceElement.html" title="class in com.oracle.truffle.api">TruffleStackTraceElement</a>&gt;&nbsp;getStackTrace(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html?is-external=true" title="class or interface in java.lang">Throwable</a>&nbsp;throwable)</pre>
-<div class="block">Returns the guest language frames that are stored in this throwable or <code>null</code> if
- no guest language frames are available. Guest language frames are automatically added by the
- Truffle runtime the first time the exception is passed through a <a href="../../../../com/oracle/truffle/api/CallTarget.html" title="interface in com.oracle.truffle.api"><code>call
- target</code></a> and the frames are not yet set. Therefore no guest language frames are available
- immediately after the exception was constructed. The returned list is not modifiable. The
- number stack trace elements that are filled in can be customized by implementing
- <a href="../../../../com/oracle/truffle/api/TruffleException.html#getStackTraceElementLimit--"><code>TruffleException.getStackTraceElementLimit()</code></a> .</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>throwable</code> - the throwable instance to look for guest language frames</dd>
-<dt><span class="simpleTagLabel">Since:</span></dt>
-<dd>0.27</dd>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../com/oracle/truffle/api/TruffleStackTraceElement.html#fillIn-java.lang.Throwable-"><code>To force early filling of guest language stack frames.</code></a></dd>
-</dl>
-</li>
-</ul>
-<a name="fillIn-java.lang.Throwable-">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>fillIn</h4>
-<pre>public static&nbsp;void&nbsp;fillIn(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html?is-external=true" title="class or interface in java.lang">Throwable</a>&nbsp;throwable)</pre>
-<div class="block">Fills in the guest language stack frames from the current frames on the stack. If the stack
- was already filled before then this method has no effect. The implementation attaches a
- lightweight exception object to the last location in the <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html?is-external=true#getCause--" title="class or interface in java.lang"><code>cause</code></a>
- chain of the exception. The number stack trace elements that are filled in can be customized
- by implementing <a href="../../../../com/oracle/truffle/api/TruffleException.html#getStackTraceElementLimit--"><code>TruffleException.getStackTraceElementLimit()</code></a> .</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>throwable</code> - the throwable to fill</dd>
-<dt><span class="simpleTagLabel">Since:</span></dt>
-<dd>0.27</dd>
 </dl>
 </li>
 </ul>
@@ -307,11 +250,11 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li><a href="../../../../index-all.html">Index</a></li>
 <li><a href="../../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc13-dev</b><br>4c36087a6f70502ecfc42d81f0e95661a5a571c6</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc13-dev</b><br>97622e333df1a0b285c20febe1b6b67f1ef44b38</div>
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../com/oracle/truffle/api/TruffleRuntimeAccess.html" title="interface in com.oracle.truffle.api"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../com/oracle/truffle/api/TruffleStackTrace.html" title="class in com.oracle.truffle.api"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li><a href="../../../../com/oracle/truffle/api/TypedObject.html" title="interface in com.oracle.truffle.api"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
