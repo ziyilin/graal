@@ -32,7 +32,7 @@ can be used to configure Graal. A selection of interesting ones is shown below.
 To see the complete list, use the `-XX:+JVMCIPrintProperties` option.
 
 * `ShowConfiguration`: Prints various information about the compiler configuration in use.
-This option is best used as follows: `java -XX:EagerJVMCI -Dgraal.ShowConfiguration=info -version`.
+This option is best used as follows: `java -XX:+EagerJVMCI -Dgraal.ShowConfiguration=info -version`.
 Since Graal is only initialized upon the first top tier JIT compilation
 request, without `-XX:+EagerJVMCI` Graal may not be initialized at all
 in which case `-Dgraal.ShowConfiguration` will be ignored. Adding `-version`

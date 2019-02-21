@@ -682,7 +682,7 @@ To see the complete list, use the <code>-XX:+JVMCIPrintProperties</code> option.
 
 <ul>
   <li><code>ShowConfiguration</code>: Prints various information about the compiler configuration in use.
-This option is best used as follows: <code>java -XX:EagerJVMCI -Dgraal.ShowConfiguration=info -version</code>.
+This option is best used as follows: <code>java -XX:+EagerJVMCI -Dgraal.ShowConfiguration=info -version</code>.
 Since Graal is only initialized upon the first top tier JIT compilation
 request, without <code>-XX:+EagerJVMCI</code> Graal may not be initialized at all
 in which case <code>-Dgraal.ShowConfiguration</code> will be ignored. Adding <code>-version</code>
