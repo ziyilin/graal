@@ -1729,10 +1729,6 @@ host languages. As a result, you can pass Java objects to Graal languages.</p>
 Graal languages can access primitive Java values, objects, arrays, and
 functional interfaces.</p>
 
-<p><strong>Note:</strong> This code example is supported when running on the Java Virtual
-Machine (JVM) only. Running in native image executables is not currently
-supported.</p>
-
 <div class="tabs-below">
 
 <div class="tab-content">
@@ -1774,9 +1770,9 @@ supported.</p>
     <span class="n">context</span><span class="o">.</span><span class="na">getPolyglotBindings</span><span class="o">().</span><span class="na">putMember</span><span class="o">(</span><span class="s">"javaObj"</span><span class="o">,</span> <span class="k">new</span> <span class="n">MyClass</span><span class="o">());</span>
     <span class="kt">boolean</span> <span class="n">valid</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="na">eval</span><span class="o">(</span><span class="s">"js"</span><span class="o">,</span>
            <span class="s">"javaObj = Polyglot.import('javaObj');"</span> <span class="o">+</span>
-           <span class="s">"    javaObj.id         == 42"</span>         <span class="o">+</span>
-           <span class="s">" &amp;&amp; javaObj.text       == '42'"</span>       <span class="o">+</span>
-           <span class="s">" &amp;&amp; javaObj.arr[1]     == 42"</span>         <span class="o">+</span>
+           <span class="s">"    javaObj.id         == 42"</span>          <span class="o">+</span>
+           <span class="s">" &amp;&amp; javaObj.text       == '42'"</span>        <span class="o">+</span>
+           <span class="s">" &amp;&amp; javaObj.arr[1]     == 42"</span>          <span class="o">+</span>
            <span class="s">" &amp;&amp; javaObj.ret42()    == 42"</span><span class="o">)</span>
        <span class="o">.</span><span class="na">asBoolean</span><span class="o">();</span>
     <span class="k">assert</span> <span class="n">valid</span> <span class="o">==</span> <span class="kc">true</span><span class="o">;</span>
@@ -1953,11 +1949,11 @@ supported.</p>
     <span class="n">Context</span> <span class="n">context</span> <span class="o">=</span> <span class="n">Context</span><span class="o">.</span><span class="na">newBuilder</span><span class="o">().</span><span class="na">allowAllAccess</span><span class="o">(</span><span class="kc">true</span><span class="o">).</span><span class="na">build</span><span class="o">();</span>
     <span class="n">context</span><span class="o">.</span><span class="na">getPolyglotBindings</span><span class="o">().</span><span class="na">putMember</span><span class="o">(</span><span class="s">"javaObj"</span><span class="o">,</span> <span class="k">new</span> <span class="n">MyClass</span><span class="o">());</span>
     <span class="kt">boolean</span> <span class="n">valid</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="na">eval</span><span class="o">(</span><span class="s">"ruby"</span><span class="o">,</span>
-           <span class="s">"javaObj =  Polyglot.import('javaObj')\n"</span> <span class="o">+</span>
-           <span class="s">"    javaObj[:id]          == 42"</span>                    <span class="o">+</span>
-           <span class="s">" &amp;&amp; javaObj[:text]        == '42'"</span>                  <span class="o">+</span>
-           <span class="s">" &amp;&amp; javaObj[:arr][1]      == 42"</span>                    <span class="o">+</span>
-           <span class="s">" &amp;&amp; javaObj[:ret42].call  == 42"</span><span class="o">)</span>
+           <span class="s">"javaObj = Polyglot.import('javaObj')\n"</span> <span class="o">+</span>
+           <span class="s">"    javaObj[:id]         == 42"</span>         <span class="o">+</span>
+           <span class="s">" &amp;&amp; javaObj[:text]       == '42'"</span>       <span class="o">+</span>
+           <span class="s">" &amp;&amp; javaObj[:arr][1]     == 42"</span>         <span class="o">+</span>
+           <span class="s">" &amp;&amp; javaObj[:ret42].call == 42"</span><span class="o">)</span>
        <span class="o">.</span><span class="na">asBoolean</span><span class="o">();</span>
     <span class="k">assert</span> <span class="n">valid</span> <span class="o">==</span> <span class="kc">true</span><span class="o">;</span>
 <span class="o">}</span>
@@ -2007,6 +2003,96 @@ supported.</p>
   </div>
   
   
+  <div id="Access_Java_from_Python" class="tab-pane fade">
+    
+<div class="snippet-container">
+  <div>
+    <span href="" class="copy-button" onclick="copySnippet(this);">
+      <img src="/resources/img/copy.svg" title="Copy" />
+    </span>
+  </div>
+
+  <!--
+  java
+  embed/access_java_from_python.java
+  -->
+
+  
+
+  
+<figure class="highlight"><pre><code class="language-java" data-lang="java">  <span class="c1">// COMPILE-CMD: javac {file}</span>
+<span class="c1">// RUN-CMD: java -ea {file}</span>
+<span class="kn">import</span> <span class="nn">java.util.concurrent.Callable</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.graalvm.polyglot.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">access_java_from_python</span> <span class="o">{</span>
+
+<span class="c1">// BEGIN-SNIPPET</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">MyClass</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span>               <span class="n">id</span>    <span class="o">=</span> <span class="mi">42</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">String</span>            <span class="n">text</span>  <span class="o">=</span> <span class="s">"42"</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span>             <span class="n">arr</span>   <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">42</span><span class="o">,</span> <span class="mi">3</span><span class="o">};</span>
+    <span class="kd">public</span> <span class="n">Callable</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">ret42</span> <span class="o">=</span> <span class="o">()</span> <span class="o">-&gt;</span> <span class="mi">42</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">Context</span> <span class="n">context</span> <span class="o">=</span> <span class="n">Context</span><span class="o">.</span><span class="na">newBuilder</span><span class="o">().</span><span class="na">allowAllAccess</span><span class="o">(</span><span class="kc">true</span><span class="o">).</span><span class="na">build</span><span class="o">();</span>
+    <span class="n">context</span><span class="o">.</span><span class="na">getPolyglotBindings</span><span class="o">().</span><span class="na">putMember</span><span class="o">(</span><span class="s">"javaObj"</span><span class="o">,</span> <span class="k">new</span> <span class="n">MyClass</span><span class="o">());</span>
+    <span class="kt">boolean</span> <span class="n">valid</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="na">eval</span><span class="o">(</span><span class="s">"python"</span><span class="o">,</span>
+           <span class="s">"import polyglot\n"</span>                             <span class="o">+</span>
+           <span class="s">"javaObj =  polyglot.import_value('javaObj')\n"</span> <span class="o">+</span>
+           <span class="s">"javaObj['id']                == 42"</span>            <span class="o">+</span>
+           <span class="s">" and javaObj['text']         == '42'"</span>          <span class="o">+</span>
+           <span class="s">" and javaObj['arr'][1]       == 42"</span>            <span class="o">+</span>
+           <span class="s">" and javaObj['ret42'].call() == 42"</span><span class="o">)</span>
+       <span class="o">.</span><span class="na">asBoolean</span><span class="o">();</span>
+    <span class="k">assert</span> <span class="n">valid</span> <span class="o">==</span> <span class="kc">true</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="c1">// END-SNIPPET</span>
+<span class="o">}</span>
+
+  </code></pre></figure>
+
+
+  
+
+  <script>
+  var beginPattern = "BEGIN-SNIPPET";
+  var endPattern = "END-SNIPPET";
+  var parent = document.currentScript.parentElement;
+  var dropMode = true;
+  function cleanWhitespace(element) {
+    textNodes = element.contents().filter(
+      function() { return (this.nodeType == 3 && /\s+\n\s+\n\s+/.test(this.nodeValue)); }
+    ).replaceWith("\n\n");
+    return element;
+  }
+  $(parent).find("figure > pre > code > span").each(function() {
+    var span = $(this);
+    if (dropMode) {
+      this.parentElement.removeChild(this);
+      if (span.text().includes(beginPattern)) {
+        dropMode = false;
+      }
+    } else {
+      if (span.text().includes(endPattern)) {
+        dropMode = true;
+      }
+      if (dropMode) {
+        this.parentElement.removeChild(this);
+      }
+    }
+  });
+  $(parent).find("figure > pre > code").each(function() {
+    $(this).html($(this).html().trim());
+    cleanWhitespace($(this));
+  });
+  </script>
+
+</div>
+
+  </div>
+  
   
 </div>
 
@@ -2020,6 +2106,8 @@ supported.</p>
   
   <li><a data-toggle="tab" href="#Access_Java_from_Ruby">Ruby</a></li>
   
+  
+  <li><a data-toggle="tab" href="#Access_Java_from_Python">Python</a></li>
   
   
   
@@ -2054,6 +2142,28 @@ and compares the result to the number value <code>42</code>.</li>
   <li>After the Graal language script executes, validation takes place to ensure
 that the script returns a <code>boolean</code> value of <code>true</code> as a result.</li>
 </ul>
+
+<p>This code example is also supported when running in native image executables,
+and requires a <a href="https://github.com/oracle/graal/blob/master/substratevm/REFLECTION.md">reflection configuration file</a>:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="o">[</span>
+  <span class="o">{</span> <span class="s">"name"</span><span class="o">:</span> <span class="s">"access_java_from_ruby$MyClass"</span><span class="o">,</span> <span class="s">"allPublicFields"</span><span class="o">:</span> <span class="kc">true</span> <span class="o">},</span>
+  <span class="o">{</span> <span class="s">"name"</span><span class="o">:</span> <span class="s">"java.util.concurrent.Callable"</span><span class="o">,</span> <span class="s">"allPublicMethods"</span><span class="o">:</span> <span class="kc">true</span> <span class="o">}</span>
+<span class="o">]</span></code></pre></figure>
+
+<p>Which is then passed on the command-line with (using Ruby as an example):</p>
+
+<pre><code class="language-shell">$ javac access_java_from_ruby.java
+$ native-image --language:ruby -H:+RuntimeAssertions -H:ReflectionConfigurationFiles=reflect.json -cp . access_java_from_ruby
+$ ./access_java_from_ruby
+</code></pre>
+
+<p>Note that <code>-H:+RuntimeAssertions</code> is passed so <code>assert</code> statements are included
+in the image, since the example uses <code>assert</code>.</p>
+
+<h3 id="accessing-java-directly-from-other-languages">Accessing Java directly from other languages</h3>
+<p>See the <a href="/docs/reference-manual/polyglot/">Polyglot Reference</a>
+for more details on how to access Java from other Graal languages.</p>
 
 <h2 id="computed-arrays-using-polyglot-proxies">Computed Arrays Using Polyglot Proxies</h2>
 <p>The Polyglot API includes polyglot proxy interfaces that let you
@@ -2346,6 +2456,98 @@ in a native image executable.</p>
   </div>
   
   
+  <div id="Proxy_Python" class="tab-pane fade">
+    
+<div class="snippet-container">
+  <div>
+    <span href="" class="copy-button" onclick="copySnippet(this);">
+      <img src="/resources/img/copy.svg" title="Copy" />
+    </span>
+  </div>
+
+  <!--
+  java
+  embed/proxy_python.java
+  -->
+
+  
+
+  
+<figure class="highlight"><pre><code class="language-java" data-lang="java">  <span class="c1">// COMPILE-CMD: javac {file}</span>
+<span class="c1">// RUN-CMD: java -ea {file}</span>
+<span class="kn">import</span> <span class="nn">org.graalvm.polyglot.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.graalvm.polyglot.proxy.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">proxy_python</span> <span class="o">{</span>
+
+<span class="c1">// BEGIN-SNIPPET</span>
+<span class="kd">static</span> <span class="kd">class</span> <span class="nc">ComputedArray</span> <span class="kd">implements</span> <span class="n">ProxyArray</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">Object</span> <span class="nf">get</span><span class="o">(</span><span class="kt">long</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">index</span> <span class="o">*</span> <span class="mi">2</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">set</span><span class="o">(</span><span class="kt">long</span> <span class="n">index</span><span class="o">,</span> <span class="n">Value</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">UnsupportedOperationException</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">long</span> <span class="nf">getSize</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">Long</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">Context</span> <span class="n">context</span> <span class="o">=</span> <span class="n">Context</span><span class="o">.</span><span class="na">newBuilder</span><span class="o">().</span><span class="na">allowAllAccess</span><span class="o">(</span><span class="kc">true</span><span class="o">).</span><span class="na">build</span><span class="o">();</span>
+    <span class="n">context</span><span class="o">.</span><span class="na">getPolyglotBindings</span><span class="o">().</span><span class="na">putMember</span><span class="o">(</span><span class="s">"arr"</span><span class="o">,</span> <span class="k">new</span> <span class="n">ComputedArray</span><span class="o">());</span>
+    <span class="kt">long</span> <span class="n">result</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="na">eval</span><span class="o">(</span><span class="s">"python"</span><span class="o">,</span>
+           <span class="s">"import polyglot\n"</span> <span class="o">+</span>
+           <span class="s">"arr = polyglot.import_value('arr') \n"</span> <span class="o">+</span>
+           <span class="s">"arr[1] + arr[1000000000]"</span><span class="o">)</span>
+       <span class="o">.</span><span class="na">asLong</span><span class="o">();</span>
+    <span class="k">assert</span> <span class="n">result</span> <span class="o">==</span> <span class="mi">2000000002L</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="c1">// END-SNIPPET</span>
+<span class="o">}</span>
+
+  </code></pre></figure>
+
+
+  
+
+  <script>
+  var beginPattern = "BEGIN-SNIPPET";
+  var endPattern = "END-SNIPPET";
+  var parent = document.currentScript.parentElement;
+  var dropMode = true;
+  function cleanWhitespace(element) {
+    textNodes = element.contents().filter(
+      function() { return (this.nodeType == 3 && /\s+\n\s+\n\s+/.test(this.nodeValue)); }
+    ).replaceWith("\n\n");
+    return element;
+  }
+  $(parent).find("figure > pre > code > span").each(function() {
+    var span = $(this);
+    if (dropMode) {
+      this.parentElement.removeChild(this);
+      if (span.text().includes(beginPattern)) {
+        dropMode = false;
+      }
+    } else {
+      if (span.text().includes(endPattern)) {
+        dropMode = true;
+      }
+      if (dropMode) {
+        this.parentElement.removeChild(this);
+      }
+    }
+  });
+  $(parent).find("figure > pre > code").each(function() {
+    $(this).html($(this).html().trim());
+    cleanWhitespace($(this));
+  });
+  </script>
+
+</div>
+
+  </div>
+  
   
 </div>
 
@@ -2359,6 +2561,8 @@ in a native image executable.</p>
   
   <li><a data-toggle="tab" href="#Proxy_Ruby">Ruby</a></li>
   
+  
+  <li><a data-toggle="tab" href="#Proxy_Python">Python</a></li>
   
   
   
@@ -2686,6 +2890,99 @@ malicious code can be reliably cancelled.</p>
   </div>
   
   
+  <div id="Timeout_Python" class="tab-pane fade">
+    
+<div class="snippet-container">
+  <div>
+    <span href="" class="copy-button" onclick="copySnippet(this);">
+      <img src="/resources/img/copy.svg" title="Copy" />
+    </span>
+  </div>
+
+  <!--
+  java
+  embed/timeout_python.java
+  -->
+
+  
+
+  
+<figure class="highlight"><pre><code class="language-java" data-lang="java">  <span class="c1">// COMPILE-CMD: javac {file}</span>
+<span class="c1">// RUN-CMD: java -ea {file}</span>
+<span class="kn">import</span> <span class="nn">java.util.Timer</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.TimerTask</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.concurrent.Callable</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.graalvm.polyglot.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">timeout_python</span> <span class="o">{</span>
+
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+<span class="c1">// BEGIN-SNIPPET</span>
+<span class="n">Context</span> <span class="n">context</span> <span class="o">=</span> <span class="n">Context</span><span class="o">.</span><span class="na">newBuilder</span><span class="o">().</span><span class="na">allowAllAccess</span><span class="o">(</span><span class="kc">true</span><span class="o">).</span><span class="na">build</span><span class="o">();</span>
+<span class="n">context</span><span class="o">.</span><span class="na">initialize</span><span class="o">(</span><span class="s">"python"</span><span class="o">);</span>
+
+<span class="n">Timer</span> <span class="n">timer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Timer</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+<span class="n">timer</span><span class="o">.</span><span class="na">schedule</span><span class="o">(</span><span class="k">new</span> <span class="n">TimerTask</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">context</span><span class="o">.</span><span class="na">close</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">},</span> <span class="mi">1000</span><span class="o">);</span>
+
+<span class="k">try</span> <span class="o">{</span>
+    <span class="n">String</span> <span class="n">maliciousCode</span> <span class="o">=</span> <span class="s">"while True:\n  pass"</span><span class="o">;</span>
+    <span class="n">context</span><span class="o">.</span><span class="na">eval</span><span class="o">(</span><span class="s">"python"</span><span class="o">,</span> <span class="n">maliciousCode</span><span class="o">);</span>
+    <span class="k">assert</span> <span class="kc">false</span><span class="o">;</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">PolyglotException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">assert</span> <span class="n">e</span><span class="o">.</span><span class="na">isCancelled</span><span class="o">();</span>
+<span class="o">}</span>
+<span class="c1">// END-SNIPPET</span>
+<span class="o">}</span>
+
+<span class="o">}</span>
+
+  </code></pre></figure>
+
+
+  
+
+  <script>
+  var beginPattern = "BEGIN-SNIPPET";
+  var endPattern = "END-SNIPPET";
+  var parent = document.currentScript.parentElement;
+  var dropMode = true;
+  function cleanWhitespace(element) {
+    textNodes = element.contents().filter(
+      function() { return (this.nodeType == 3 && /\s+\n\s+\n\s+/.test(this.nodeValue)); }
+    ).replaceWith("\n\n");
+    return element;
+  }
+  $(parent).find("figure > pre > code > span").each(function() {
+    var span = $(this);
+    if (dropMode) {
+      this.parentElement.removeChild(this);
+      if (span.text().includes(beginPattern)) {
+        dropMode = false;
+      }
+    } else {
+      if (span.text().includes(endPattern)) {
+        dropMode = true;
+      }
+      if (dropMode) {
+        this.parentElement.removeChild(this);
+      }
+    }
+  });
+  $(parent).find("figure > pre > code").each(function() {
+    $(this).html($(this).html().trim());
+    cleanWhitespace($(this));
+  });
+  </script>
+
+</div>
+
+  </div>
+  
   
 </div>
 
@@ -2699,6 +2996,8 @@ malicious code can be reliably cancelled.</p>
   
   <li><a data-toggle="tab" href="#Timeout_Ruby">Ruby</a></li>
   
+  
+  <li><a data-toggle="tab" href="#Timeout_Python">Python</a></li>
   
   
   
