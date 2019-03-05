@@ -2,7 +2,7 @@
 
 GraalVM is [ECMAScript 2018](http://www.ecma-international.org/ecma-262/9.0/index.html) compliant and fully compatible with a diverse range of active Node.js (npm) modules.
 More than 90,000 npm packages are regularly tested and compatible with GraalVM, including modules like express, react, async, request, browserify, grunt, mocha, and underscore.
-This release of GraalVM is based on Node.js version 10.15.0.
+This release of GraalVM is based on Node.js version 10.15.2.
 
 ### Is GraalVM compatible with the JavaScript language?
 

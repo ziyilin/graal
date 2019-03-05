@@ -30,19 +30,19 @@ puts js_obj[:payload].join(' ')
 ```
 
 3.From another console window, make sure `ruby` component is installed in GraalVM,
-connect `Test.rb` script to the running IGV and dump the diagnostic information:
+and connect `Test.rb` script to the running IGV:
 
 ```shell
 $ gu list
-$ ruby --jvm --jvm.Dgraal.Dump=:1 test.rb
+$ ruby --jvm --jvm.Dgraal.Dump=:1 --jvm.Dgraal.PrintGraph=Network Test.rb
 ```
-
-After the connection, you are able to locate the compilation graphs in the Outline window.
+This causes GraalVM to dump Graal compiler graphs in IGV format over the network to an IGV process listening
+on `127.0.0.1:4445`. Once the connection is made, you are able to see the graphs in the Outline window.
 Find e.g. `java.lang.String.char(int)` folder and open its _After parsing_ graph by double-clicking.
 If the node has `sourceNodePosition` property, then the Processing Window will attempt to display its location and the entire stacktrace.
 
-### Graphs Manipulation
-Once the diagnostic information is opened, you can search for nodes by name, ID, or by `property=value` data, and all matching results will be offered within a graph.
+### Browsing Graphs
+Once a specific graph is opened, you can search for nodes by name, ID, or by `property=value` data, and all matching results will be shown.
 Another cool feature of this tool is the ability to navigate to the original guest language source code!
 Select a node in graph and press 'go to source' button in the Stack View window.
 
@@ -62,26 +62,35 @@ in the main toolbar to move the viewport rectangle.
 For user preference, the graph color scheme is adjustable by editing
 the Coloring filter, enabled by default in the left sidebar.
 
-### Adding Projects Source
+### Viewing Source Code
 
-Projects source can be added in manual and assisted modes. Once you select a node in the graph view, Processing View will open. If IGV knows where the source for the current frame is,
-the green 'go to source' arrow is enabled. If IGV does not know where the source is,
-the line is grayed out and a 'looking glass' button appears.
+Source code views can be opened in manual and assisted modes. Once you select a node
+in the graph view, the Processing View will open. If IGV knows where the source code
+for the current frame is, the green 'go to source' arrow is enabled. If IGV does not
+know where the source is, the line is grayed out and a 'looking glass' button appears.
 
 ![](/docs/img/IGV_add_source.png)
 
 Press it and select "Locate in Java project" to locate the correct project in the dialog.
 IGV hides projects which do not contain the required source file.
-The "Source Collections" serves to display the stand alone roots added by "Add root of sources" general action. If the source is located using the preferred method (from java project), its project can be later managed on Project tab. That one is initially hidden, but a user can display the list of opened projects using Window - Projects.
+The "Source Collections" serves to display the stand alone roots added by "Add root of sources" general action.
+If the source is located using the preferred method (i.e., from a Java project),
+its project can be later managed on the Project tab. That one is initially hidden,
+but you can display the list of opened projects using Window - Projects.
 
-### Dumping Information
+### Dumping Graphs
 
-To dump the diagnostic information, you need to add options to Graal based processes.
-Depending on the language/VM used, you may need to e.g. to prefix the options by `--jvm`.
-To dump the diagnostic information of embedded Java application to IGV, use
- `-XX:+UnlockExperimentalVMOptions -Dgraal.Dump=:1`. See the particular language's
- documentation for the details.
+ To dump Graal compiler graphs from an embedded Java application to IGV,
+you need to add options to GraalVM based processes. Depending on the language/VM
+used, you may need to prefix the options by `--jvm`.
+See the particular language's documentation for the details. The main option to
+add is `-Dgraal.Dump=:1`. This will dump graphs in an IGV readable format to the local file system.
+To send the dumps directly to IGV over the network, add `-Dgraal.PrintGraph=Network`.
+If there is not an IGV instance listening on `127.0.0.1` or it cannot be connected to,
+the dumps will be redirected to the local file system. The file system location is
+`graal_dumps/` under the current working directory of the process and can be changed
+with the `-Dgraal.DumpPath` option.
 
- In the case some older GraalVM is used, you may need to specifically enable Graal to dump the `nodeSourcePosition` property, again using JVM options as `-XX:+UnlockDiagnosticVMOptions -XX:+DebugNonSafepoints`.
-Graal will connect to the running tool, IGV will receive the dump and display it in its UI.
-If IGV is not running, Graal dumps will be stored in a subdirectory in binary format, or at the place specified by `-Dgraal.DumpPath` JVM property. Note that the dumps from Truffle compilations will not be written to the disk, Truffle only connects to the IGV.
+ In case an older GraalVM is used, you may need to explicitly request that dumps
+include the `nodeSourcePosition` property. This is done by adding the
+`-XX:+UnlockDiagnosticVMOptions -XX:+DebugNonSafepoints` options.
