@@ -38,7 +38,7 @@
 <li class="navBarCell1Rev">Index</li>
 <li><a href="help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc14-dev</b><br>fba16962a49c55422f05a34a4b95de36910cb210</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc14-dev</b><br>cbe1718db74e3859d8eeefe1128416164b9a7955</div>
 </div>
 <div class="subNav">
 <ul class="navList">
@@ -440,12 +440,19 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Context.Builder.html#allowAllAccess-boolean-">allowAllAccess(boolean)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></dt>
 <dd>
-<div class="block">If <code>true</code>, grants the context the same access privileges as the host virtual
- machine.</div>
+<div class="block">Sets the default value for all privileges.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Context.Builder.html#allowCreateThread-boolean-">allowCreateThread(boolean)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></dt>
 <dd>
 <div class="block">If <code>true</code>, allows guest languages to create new threads.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Context.Builder.html#allowExperimentalOptions-boolean-">allowExperimentalOptions(boolean)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></dt>
+<dd>
+<div class="block">Allow experimental options to be used for language options.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Engine.Builder.html#allowExperimentalOptions-boolean-">allowExperimentalOptions(boolean)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Engine.Builder.html" title="class in org.graalvm.polyglot">Engine.Builder</a></dt>
+<dd>
+<div class="block">Allow experimental options to be used for instruments and engine options.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Context.Builder.html#allowHostAccess-boolean-">allowHostAccess(boolean)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></dt>
 <dd>
@@ -917,7 +924,9 @@
 <div class="block">Creates a new context instance from the configuration provided in the builder.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Engine.Builder.html#build--">build()</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Engine.Builder.html" title="class in org.graalvm.polyglot">Engine.Builder</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Creates a new engine instance from the configuration provided in the builder.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Source.Builder.html#build--">build()</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Source.Builder.html" title="class in org.graalvm.polyglot">Source.Builder</a></dt>
 <dd>
 <div class="block">Uses configuration of this builder to create new <a href="org/graalvm/polyglot/Source.html" title="class in org.graalvm.polyglot"><code>Source</code></a> object.</div>
@@ -10448,7 +10457,7 @@ the order they are declared.</div>
 <li class="navBarCell1Rev">Index</li>
 <li><a href="help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc14-dev</b><br>fba16962a49c55422f05a34a4b95de36910cb210</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc14-dev</b><br>cbe1718db74e3859d8eeefe1128416164b9a7955</div>
 </div>
 <div class="subNav">
 <ul class="navList">
