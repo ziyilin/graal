@@ -541,7 +541,8 @@ If a network connection cannot be opened, dumping falls back to file system dump
 
 <p><strong>Graal VisualVM</strong></p>
 
-<p>Another developer tool, Graal VisualVM, now allows Heap monitoring of native-image processes.</p>
+<p>Another developer tool, Graal VisualVM, now allows Heap monitoring of native-image processes.
+This functionality is available with GraalVM Enterprise Edition.</p>
 
 <h3 id="r">R</h3>
 <ul>
@@ -613,9 +614,10 @@ is still vulnerable to CVE-2018-16395. This will be fixed in the next release.</
 <p>New feature:</p>
 
 <ul>
-  <li>Allow installation of NumPy in a <code>venv</code>. Just run e.g. <code>bin/graalpython -m venv numpy_env; source numpy_env/bin/activate; graalpython -m ginstall install numpy</code>. Note that not all NumPy features work at the moment.
-To see a complete list of changes, please refer to the project <a href="https://github.com/graalvm/graalpython/blob/master/CHANGELOG.md#version-100-rc13">changelog</a>.</li>
+  <li>Allow installation of NumPy in a <code>venv</code>. Just run e.g. <code>bin/graalpython -m venv numpy_env; source numpy_env/bin/activate; graalpython -m ginstall install numpy</code>. Note that not all NumPy features work at the moment.</li>
 </ul>
+
+<p>To see a complete list of changes, please refer to the project <a href="https://github.com/graalvm/graalpython/blob/master/CHANGELOG.md#version-100-rc13">changelog</a>.</p>
 
 <h3 id="api-changes-for-graalvm-integrators-sdk--truffle">API changes for GraalVM integrators (SDK + Truffle)</h3>
 

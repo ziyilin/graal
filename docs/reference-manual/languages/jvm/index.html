@@ -787,7 +787,7 @@ property.</p>
 with extra diagnostics enabled. Just before the VM exits, all diagnostic output
 captured during retried compilations is written to a .zip file and output such
 as the following is printed to the console:</p>
-<pre><code>Graal diagnostic output saved in /Users/demo/dumps/1499768882600/graal_diagnostics_64565.zip
+<pre><code>Graal diagnostic output saved in /Users/demo/graal-dumps/1499768882600/graal_diagnostics_64565.zip
 </code></pre>
 
 <p>You can then attach the .zip file to an issue on <a href="https://github.com/oracle/graal">GitHub</a>.</p>
@@ -881,16 +881,16 @@ and run again.</p>
 archives the Graal diagnostic output or delete the directory it was written to.
 This must be done manually after the crash.</p>
 
-<p>By default, the directory is <code>$PWD/dumps/&lt;timestamp&gt;</code>; for example, <code>./dumps/1499938817387</code>.
+<p>By default, the directory is <code>$PWD/graal-dumps/&lt;timestamp&gt;</code>; for example, <code>./graal-dumps/1499938817387</code>.
 However, you can set the directory with <code>-Dgraal.DumpPath=&lt;path&gt;</code>.</p>
 
 <p>A message, such as the following, is printed to the console when this
 directory is first used by the Graal compiler:</p>
-<pre><code>Dumping debug output in /Users/demo/dumps/1499768882600
+<pre><code>Dumping debug output in /Users/demo/graal-dumps/1499768882600
 </code></pre>
 
 <p>This directory should contain content related to the crashing method, such as:</p>
-<pre><code>$ ls -l /Users/demo/dumps/1499768882600
+<pre><code>$ ls -l /Users/demo/graal-dumps/1499768882600
 -rw-r--r--  1 demo  staff    144384 Jul 13 11:46 HotSpotCompilation-1162[AMD64HotSpotLIRGenerator.getResult()].bgv
 -rw-r--r--  1 demo  staff     96925 Jul 13 11:46 HotSpotCompilation-1162[AMD64HotSpotLIRGenerator.getResult()].cfg
 -rw-r--r--  1 demo  staff  12600725 Jul 13 11:46 HotSpotCompilation-791[NodeLIRBuilder.matchComplexExpressions(List)].bgv
