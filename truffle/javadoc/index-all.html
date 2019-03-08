@@ -38,7 +38,7 @@
 <li class="navBarCell1Rev">Index</li>
 <li><a href="help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc14-dev</b><br>c4bb8ed4ab9708486745b69ccb3f9f68a1bbf488</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc14-dev</b><br>db79f81716886b7883370cd6ea1bbf5c42966fa5</div>
 </div>
 <div class="subNav">
 <ul class="navList">
@@ -4458,9 +4458,21 @@
 <div class="block">Returns a new reader that reads from the <a href="org/graalvm/polyglot/Source.html#getCharacters--"><code>characters</code></a> provided by this
  source.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/debug/DebugScope.html#getReceiver--">getReceiver()</a></span> - Method in class com.oracle.truffle.api.debug.<a href="com/oracle/truffle/api/debug/DebugScope.html" title="class in com.oracle.truffle.api.debug">DebugScope</a></dt>
+<dd>
+<div class="block">Get value that represents the receiver object of this scope.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/api/interop/ForeignAccess.html#getReceiver-com.oracle.truffle.api.frame.Frame-">getReceiver(Frame)</a></span> - Static method in class com.oracle.truffle.api.interop.<a href="com/oracle/truffle/api/interop/ForeignAccess.html" title="class in com.oracle.truffle.api.interop">ForeignAccess</a></dt>
 <dd>
 <div class="block">The foreign receiver in the frame.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/Scope.html#getReceiver--">getReceiver()</a></span> - Method in class com.oracle.truffle.api.<a href="com/oracle/truffle/api/Scope.html" title="class in com.oracle.truffle.api">Scope</a></dt>
+<dd>
+<div class="block">Get a receiver object of this scope.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/Scope.html#getReceiverName--">getReceiverName()</a></span> - Method in class com.oracle.truffle.api.<a href="com/oracle/truffle/api/Scope.html" title="class in com.oracle.truffle.api">Scope</a></dt>
+<dd>
+<div class="block">Get code name of the receiver object, if there is any.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/api/nodes/LoopNode.html#getRepeatingNode--">getRepeatingNode()</a></span> - Method in class com.oracle.truffle.api.nodes.<a href="com/oracle/truffle/api/nodes/LoopNode.html" title="class in com.oracle.truffle.api.nodes">LoopNode</a></dt>
 <dd>
@@ -8210,6 +8222,10 @@
 <dd>
 <div class="block">Changes the size of the provided unmanaged memory to <code>size</code> bytes of unmanaged memory.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/Scope.Builder.html#receiver-java.lang.String-java.lang.Object-">receiver(String, Object)</a></span> - Method in class com.oracle.truffle.api.<a href="com/oracle/truffle/api/Scope.Builder.html" title="class in com.oracle.truffle.api">Scope.Builder</a></dt>
+<dd>
+<div class="block">Set a receiver object of this scope.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/nativeimage/RuntimeReflection.html#register-java.lang.Class...-">register(Class&lt;?&gt;...)</a></span> - Static method in class org.graalvm.nativeimage.<a href="org/graalvm/nativeimage/RuntimeReflection.html" title="class in org.graalvm.nativeimage">RuntimeReflection</a></dt>
 <dd>
 <div class="block">Makes the provided classes available for reflection at run time.</div>
@@ -10474,7 +10490,7 @@ the order they are declared.</div>
 <li class="navBarCell1Rev">Index</li>
 <li><a href="help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc14-dev</b><br>c4bb8ed4ab9708486745b69ccb3f9f68a1bbf488</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc14-dev</b><br>db79f81716886b7883370cd6ea1bbf5c42966fa5</div>
 </div>
 <div class="subNav">
 <ul class="navList">
