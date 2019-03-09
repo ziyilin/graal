@@ -17,8 +17,8 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":6,"i2":6,"i3":9,"i4":9};
-var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"]};
+var methods = {"i0":38,"i1":38,"i2":41};
+var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"],32:["t6","Deprecated Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -44,11 +44,11 @@ var activeTableTab = "activeTableTab";
 <li><a href="../../../../../index-all.html">Index</a></li>
 <li><a href="../../../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc14-dev</b><br>091a0df5f13c1b43ea860e403ff94140b782a58b</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc14-dev</b><br>fdb8fc404f0cd18e56d868b88b02ef032ed39256</div>
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../../com/oracle/truffle/api/interop/KeyInfo.Builder.html" title="class in com.oracle.truffle.api.interop"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../../com/oracle/truffle/api/interop/KeyInfo.html" title="class in com.oracle.truffle.api.interop"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li><a href="../../../../../com/oracle/truffle/api/interop/MessageResolution.html" title="annotation in com.oracle.truffle.api.interop"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
@@ -74,13 +74,13 @@ var activeTableTab = "activeTableTab";
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -107,12 +107,15 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <hr>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">message is no longer needed to send interop messages. See <a href="../../../../../com/oracle/truffle/api/interop/InteropLibrary.html" title="class in com.oracle.truffle.api.interop"><code>InteropLibrary</code></a> for
+             details. For a reflective message representation see
+             <a href="../../../../../com/oracle/truffle/api/library/Message.html" title="class in com.oracle.truffle.api.library"><code>Message</code></a> instead.</span></div>
+</div>
 <br>
-<pre>public abstract class <span class="typeNameLabel">Message</span>
+<pre><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Deprecated.html?is-external=true" title="class or interface in java.lang">@Deprecated</a>
+public abstract class <span class="typeNameLabel">Message</span>
 extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></pre>
-<div class="block">Inter-operability is based on sending messages. Standard messages are defined as as constants
- like <a href="../../../../../com/oracle/truffle/api/interop/Message.html#IS_NULL"><code>Message.IS_NULL</code></a> or factory methods in this class, but one can always define their own,
- specialized messages.</div>
 <dl>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>0.8 or earlier</dd>
@@ -123,138 +126,6 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
-<!-- =========== FIELD SUMMARY =========== -->
-<ul class="blockList">
-<li class="blockList"><a name="field.summary">
-<!--   -->
-</a>
-<h3>Field Summary</h3>
-<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
-<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colLast" scope="col">Field and Description</th>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static <a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/Message.html#AS_POINTER">AS_POINTER</a></span></code>
-<div class="block">Converts <a href="../../../../../com/oracle/truffle/api/interop/TruffleObject.html" title="interface in com.oracle.truffle.api.interop"><code>truffle value</code></a> to a raw 64bit pointer value.</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static <a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/Message.html#EXECUTE">EXECUTE</a></span></code>
-<div class="block">The non-object oriented execution message.</div>
-</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static <a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/Message.html#GET_SIZE">GET_SIZE</a></span></code>
-<div class="block">Getter of the size.</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static <a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/Message.html#HAS_KEYS">HAS_KEYS</a></span></code>
-<div class="block">Message to check for having properties.</div>
-</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static <a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/Message.html#HAS_SIZE">HAS_SIZE</a></span></code>
-<div class="block">Message to check for having a size.</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static <a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/Message.html#INVOKE">INVOKE</a></span></code>
-<div class="block">The object oriented execute message.</div>
-</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static <a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/Message.html#IS_BOXED">IS_BOXED</a></span></code>
-<div class="block">Check for value being boxed.</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static <a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/Message.html#IS_EXECUTABLE">IS_EXECUTABLE</a></span></code>
-<div class="block">Message to check executability of a
- <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html#getReceiver-com.oracle.truffle.api.frame.Frame-"><code>foreign object</code></a>.</div>
-</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static <a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/Message.html#IS_INSTANTIABLE">IS_INSTANTIABLE</a></span></code>
-<div class="block">Message to check the ability to create new instances of a
- <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html#getReceiver-com.oracle.truffle.api.frame.Frame-"><code>foreign object</code></a>.</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static <a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/Message.html#IS_NULL">IS_NULL</a></span></code>
-<div class="block">Check for <code>null</code> message.</div>
-</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static <a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/Message.html#IS_POINTER">IS_POINTER</a></span></code>
-<div class="block">Check for a value being a native pointer.</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static <a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/Message.html#KEY_INFO">KEY_INFO</a></span></code>
-<div class="block">Message to retrieve flags about a particular key (a property name).</div>
-</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static <a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/Message.html#KEYS">KEYS</a></span></code>
-<div class="block">Obtains list of property names.</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static <a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/Message.html#NEW">NEW</a></span></code>
-<div class="block">The allocation message.</div>
-</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static <a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/Message.html#READ">READ</a></span></code>
-<div class="block">Message to read an object field.</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static <a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/Message.html#REMOVE">REMOVE</a></span></code>
-<div class="block">Message to remove a field.</div>
-</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static <a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/Message.html#TO_NATIVE">TO_NATIVE</a></span></code>
-<div class="block">Transforms a <a href="../../../../../com/oracle/truffle/api/interop/TruffleObject.html" title="interface in com.oracle.truffle.api.interop"><code>truffle value</code></a> a new <a href="../../../../../com/oracle/truffle/api/interop/TruffleObject.html" title="interface in com.oracle.truffle.api.interop"><code>truffle native
- value</code></a> that represents a raw native pointer.</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static <a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/Message.html#UNBOX">UNBOX</a></span></code>
-<div class="block">Converts <a href="../../../../../com/oracle/truffle/api/interop/TruffleObject.html" title="interface in com.oracle.truffle.api.interop"><code>truffle value</code></a> to Java primitive type.</div>
-</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static <a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/Message.html#WRITE">WRITE</a></span></code>
-<div class="block">Message to write a field.</div>
-</td>
-</tr>
-</table>
-</li>
-</ul>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.summary">
@@ -270,8 +141,8 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <tr class="altColor">
 <td class="colFirst"><code>protected </code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/Message.html#Message--">Message</a></span>()</code>
-<div class="block">One can define their own extended message by subclassing.</div>
-</td>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -283,41 +154,30 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t1" class="tableTab"><span><a href="javascript:show(1);">Static Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t1" class="tableTab"><span><a href="javascript:show(1);">Static Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t6" class="tableTab"><span><a href="javascript:show(32);">Deprecated Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code><a href="../../../../../com/oracle/truffle/api/nodes/Node.html" title="class in com.oracle.truffle.api.nodes">Node</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/Message.html#createNode--">createNode</a></span>()</code>
-<div class="block">Creates an AST node for this message.</div>
-</td>
-</tr>
-<tr id="i1" class="rowColor">
 <td class="colFirst"><code>abstract boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/Message.html#equals-java.lang.Object-">equals</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;message)</code>
-<div class="block">Compares types of two messages.</div>
-</td>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+&nbsp;</td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i1" class="rowColor">
 <td class="colFirst"><code>abstract int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/Message.html#hashCode--">hashCode</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">When re-implementing <a href="../../../../../com/oracle/truffle/api/interop/Message.html#equals-java.lang.Object-"><code>Message.equals(java.lang.Object)</code></a>, it is generally recommended to also
  implement <code>hashCode()</code>.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/Message.html#toString-com.oracle.truffle.api.interop.Message-">toString</a></span>(<a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a>&nbsp;message)</code>
-<div class="block">Converts the message into canonical string representation.</div>
-</td>
-</tr>
-<tr id="i4" class="altColor">
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>static <a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/Message.html#valueOf-java.lang.String-">valueOf</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;messageId)</code>
-<div class="block">Converts string representation into real message.</div>
-</td>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+&nbsp;</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -335,705 +195,6 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
-<!-- ============ FIELD DETAIL =========== -->
-<ul class="blockList">
-<li class="blockList"><a name="field.detail">
-<!--   -->
-</a>
-<h3>Field Detail</h3>
-<a name="READ">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>READ</h4>
-<pre>public static final&nbsp;<a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a> READ</pre>
-<div class="block">Message to read an object field. The
- <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.Factory.html#accessMessage-com.oracle.truffle.api.interop.Message-"><code>target</code></a> created for this
- message accepts (in addition to a
- <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html#getReceiver-com.oracle.truffle.api.frame.Frame-"><code>receiver</code></a>) a single
- <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html#getArguments-com.oracle.truffle.api.frame.Frame-"><code>argument</code></a> identifying a
- field to read - e.g. either <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang"><code>String</code></a> or a <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang"><code>Number</code></a> - if access to an array at
- particular index is requested.
- <p>
- If the object does not support the <a href="../../../../../com/oracle/truffle/api/interop/Message.html#READ"><code>Message.READ</code></a> message, an
- <a href="../../../../../com/oracle/truffle/api/interop/UnsupportedMessageException.html" title="class in com.oracle.truffle.api.interop"><code>UnsupportedMessageException</code></a> has to be thrown.
-
- If the object does not allow reading a property for a given identifier, an
- <a href="../../../../../com/oracle/truffle/api/interop/UnknownIdentifierException.html" title="class in com.oracle.truffle.api.interop"><code>UnknownIdentifierException</code></a> has to be thrown.
- <p>
- The code that wants to send this message should use:
-
- <pre>
- <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html" title="class in com.oracle.truffle.api.interop"><code>ForeignAccess</code></a>.<a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html#sendRead-com.oracle.truffle.api.nodes.Node-com.oracle.truffle.api.interop.TruffleObject-java.lang.Object-"><code>sendRead</code></a>(
-   <a href="../../../../../com/oracle/truffle/api/interop/Message.html#READ"><code>Message.READ</code></a>.<a href="../../../../../com/oracle/truffle/api/interop/Message.html#createNode--"><code>createNode()</code></a>, receiver, nameOfTheField
- );
- </pre>
-
- Where <code>receiver</code> is the <a href="../../../../../com/oracle/truffle/api/interop/TruffleObject.html" title="interface in com.oracle.truffle.api.interop"><code>foreign object</code></a> to access and
- <code>nameOfTheField</code> is the name (or index) of its field.
- <p>
- To achieve good performance it is essential to cache/keep reference to the
- <a href="../../../../../com/oracle/truffle/api/interop/Message.html#createNode--"><code>created node</code></a>.</div>
-<dl>
-<dt><span class="simpleTagLabel">Since:</span></dt>
-<dd>0.8 or earlier</dd>
-</dl>
-</li>
-</ul>
-<a name="UNBOX">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>UNBOX</h4>
-<pre>public static final&nbsp;<a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a> UNBOX</pre>
-<div class="block">Converts <a href="../../../../../com/oracle/truffle/api/interop/TruffleObject.html" title="interface in com.oracle.truffle.api.interop"><code>truffle value</code></a> to Java primitive type. Primitive types are
- subclasses of <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang"><code>Number</code></a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang"><code>Boolean</code></a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Character.html?is-external=true" title="class or interface in java.lang"><code>Character</code></a> and <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang"><code>String</code></a>. Before
- sending the <a href="../../../../../com/oracle/truffle/api/interop/Message.html#UNBOX"><code>Message.UNBOX</code></a> message, it is desirable to send the <a href="../../../../../com/oracle/truffle/api/interop/Message.html#IS_BOXED"><code>Message.IS_BOXED</code></a> one and
- verify that the object can really be unboxed.
- <p>
- If the object does not support the <a href="../../../../../com/oracle/truffle/api/interop/Message.html#UNBOX"><code>Message.UNBOX</code></a> message, an
- <a href="../../../../../com/oracle/truffle/api/interop/UnsupportedMessageException.html" title="class in com.oracle.truffle.api.interop"><code>UnsupportedMessageException</code></a> has to be thrown.
- <p>
- To unbox an object, use:
-
- <pre>
- <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html" title="class in com.oracle.truffle.api.interop"><code>ForeignAccess</code></a>.<a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html#sendUnbox-com.oracle.truffle.api.nodes.Node-com.oracle.truffle.api.interop.TruffleObject-"><code>sendUnbox</code></a>(
-   <a href="../../../../../com/oracle/truffle/api/interop/Message.html#UNBOX"><code>Message.UNBOX</code></a>.<a href="../../../../../com/oracle/truffle/api/interop/Message.html#createNode--"><code>createNode()</code></a>, objectToUnbox
- );
- </pre>
-
- The returned value should be subclass of <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang"><code>Number</code></a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang"><code>Boolean</code></a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Character.html?is-external=true" title="class or interface in java.lang"><code>Character</code></a>
- or <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang"><code>String</code></a>.
- <p>
- To achieve good performance it is essential to cache/keep reference to the
- <a href="../../../../../com/oracle/truffle/api/interop/Message.html#createNode--"><code>created node</code></a>.</div>
-<dl>
-<dt><span class="simpleTagLabel">Since:</span></dt>
-<dd>0.8 or earlier</dd>
-</dl>
-</li>
-</ul>
-<a name="WRITE">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>WRITE</h4>
-<pre>public static final&nbsp;<a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a> WRITE</pre>
-<div class="block">Message to write a field. The
- <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.Factory.html#accessMessage-com.oracle.truffle.api.interop.Message-"><code>target</code></a> created for this
- message accepts the object to modify as a
- <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html#getReceiver-com.oracle.truffle.api.frame.Frame-"><code>receiver</code></a> and two
- <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html#getArguments-com.oracle.truffle.api.frame.Frame-"><code>arguments</code></a>. The first
- one identifies a field to read - e.g. either <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang"><code>String</code></a> or an <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang"><code>Integer</code></a> - if access
- to an array at particular index is requested. The second one is the value to assign to such
- field.
- <p>
- If the object does not support the <a href="../../../../../com/oracle/truffle/api/interop/Message.html#WRITE"><code>Message.WRITE</code></a> message, an
- <a href="../../../../../com/oracle/truffle/api/interop/UnsupportedMessageException.html" title="class in com.oracle.truffle.api.interop"><code>UnsupportedMessageException</code></a> has to be thrown.
-
- If the object does not allow writing a property for a given identifier, an
- <a href="../../../../../com/oracle/truffle/api/interop/UnknownIdentifierException.html" title="class in com.oracle.truffle.api.interop"><code>UnknownIdentifierException</code></a> has to be thrown.
-
- If the provided value has an unsupported type and cannot be written, an
- <a href="../../../../../com/oracle/truffle/api/interop/UnsupportedTypeException.html" title="class in com.oracle.truffle.api.interop"><code>UnsupportedTypeException</code></a> has to be thrown.
- <p>
- Use following style to construct field modification message:
-
- <pre>
- <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html" title="class in com.oracle.truffle.api.interop"><code>ForeignAccess</code></a>.<a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html#sendWrite-com.oracle.truffle.api.nodes.Node-com.oracle.truffle.api.interop.TruffleObject-java.lang.Object-java.lang.Object-"><code>sendWrite</code></a>(
-   <a href="../../../../../com/oracle/truffle/api/interop/Message.html#WRITE"><code>Message.WRITE</code></a>.<a href="../../../../../com/oracle/truffle/api/interop/Message.html#createNode--"><code>createNode()</code></a>, receiver, nameOfTheField, newValue
- );
- </pre>
-
- Where <code>receiver</code> is the <a href="../../../../../com/oracle/truffle/api/interop/TruffleObject.html" title="interface in com.oracle.truffle.api.interop"><code>foreign object</code></a> to access,
- <code>nameOfTheField</code> is the name (or index) of its field and <code>newValue</code> is
- the value to assign to the receiver's field.
- <p>
- To achieve good performance it is essential to cache/keep reference to the
- <a href="../../../../../com/oracle/truffle/api/interop/Message.html#createNode--"><code>created node</code></a>.</div>
-<dl>
-<dt><span class="simpleTagLabel">Since:</span></dt>
-<dd>0.8 or earlier</dd>
-</dl>
-</li>
-</ul>
-<a name="REMOVE">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>REMOVE</h4>
-<pre>public static final&nbsp;<a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a> REMOVE</pre>
-<div class="block">Message to remove a field. The
- <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.Factory.html#accessMessage-com.oracle.truffle.api.interop.Message-"><code>target</code></a> created for this
- message accepts the object to modify as a
- <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html#getReceiver-com.oracle.truffle.api.frame.Frame-"><code>receiver</code></a> and one
- <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html#getArguments-com.oracle.truffle.api.frame.Frame-"><code>argument</code></a> identifying a
- field to remove - e.g. either <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang"><code>String</code></a> or a <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang"><code>Number</code></a> - if removal of an array
- element at particular index is requested.
- <p>
- If the object does not support the <a href="../../../../../com/oracle/truffle/api/interop/Message.html#REMOVE"><code>Message.REMOVE</code></a> message, an
- <a href="../../../../../com/oracle/truffle/api/interop/UnsupportedMessageException.html" title="class in com.oracle.truffle.api.interop"><code>UnsupportedMessageException</code></a> has to be thrown.
-
- If the object does not contain a property for a given identifier, an
- <a href="../../../../../com/oracle/truffle/api/interop/UnknownIdentifierException.html" title="class in com.oracle.truffle.api.interop"><code>UnknownIdentifierException</code></a> has to be thrown.
- <p>
- Use following style to construct field removal message:
-
- <pre>
- <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html" title="class in com.oracle.truffle.api.interop"><code>ForeignAccess</code></a>.<a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html#sendRemove-com.oracle.truffle.api.nodes.Node-com.oracle.truffle.api.interop.TruffleObject-java.lang.Object-"><code>sendRemove</code></a>(
-   <a href="../../../../../com/oracle/truffle/api/interop/Message.html#WRITE"><code>Message.WRITE</code></a>.<a href="../../../../../com/oracle/truffle/api/interop/Message.html#createNode--"><code>createNode()</code></a>, receiver, nameOfTheField);
- </pre>
-
- Where <code>receiver</code> is the <a href="../../../../../com/oracle/truffle/api/interop/TruffleObject.html" title="interface in com.oracle.truffle.api.interop"><code>foreign object</code></a> to access and
- <code>nameOfTheField</code> is the name (or index) of its field.
- <p>
- To achieve good performance it is essential to cache/keep reference to the
- <a href="../../../../../com/oracle/truffle/api/interop/Message.html#createNode--"><code>created node</code></a>.</div>
-<dl>
-<dt><span class="simpleTagLabel">Since:</span></dt>
-<dd>0.32</dd>
-</dl>
-</li>
-</ul>
-<a name="EXECUTE">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>EXECUTE</h4>
-<pre>public static final&nbsp;<a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a> EXECUTE</pre>
-<div class="block">The non-object oriented execution message. In contrast to the <a href="../../../../../com/oracle/truffle/api/interop/Message.html#INVOKE"><code>Message.INVOKE</code></a> message, which
- is more suitable for dealing with object oriented style of programming, the <a href="../../../../../com/oracle/truffle/api/interop/Message.html#EXECUTE"><code>Message.EXECUTE</code></a>
- message is more suitable for execution where one can explicitly control all passed in
- arguments.
- <p>
- To inter-operate with a non-OOP language like <em>C</em> - for example to execute its
- function:
-
- <pre>
- <b>double</b> add(<b>double</b> a, <b>double</b> b) {
-   <b>return</b> a + b;
- }
- </pre>
-
- One can obtain reference to the <em>add</em> function (for example by
- <a href="../../../../../com/oracle/truffle/api/TruffleLanguage.Env.html#importSymbol-java.lang.String-"><code>importing it as a global symbol</code></a>) and store it into
- variable <code>addFunction</code>. Then it's time to check the object is executable by
- sending it the <a href="../../../../../com/oracle/truffle/api/interop/Message.html#IS_EXECUTABLE"><code>Message.IS_EXECUTABLE</code></a> message.
- <p>
- If the object does not support the <code>EXECUTE</code> message, an
- <a href="../../../../../com/oracle/truffle/api/interop/UnsupportedMessageException.html" title="class in com.oracle.truffle.api.interop"><code>UnsupportedMessageException</code></a> has to be thrown.
-
- If the caller provides a wrong number of arguments, an <a href="../../../../../com/oracle/truffle/api/interop/ArityException.html" title="class in com.oracle.truffle.api.interop"><code>ArityException</code></a> has to be
- thrown.
-
- If one of the provided argument values has an unsupported type, an
- <a href="../../../../../com/oracle/truffle/api/interop/UnsupportedTypeException.html" title="class in com.oracle.truffle.api.interop"><code>UnsupportedTypeException</code></a> has to be thrown.
- <p>
- Use following style to construct execution message:
-
- <pre>
- <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html" title="class in com.oracle.truffle.api.interop"><code>ForeignAccess</code></a>.<a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html#sendExecute-com.oracle.truffle.api.nodes.Node-com.oracle.truffle.api.interop.TruffleObject-java.lang.Object...-"><code>sendExecute</code></a>(
-   <a href="../../../../../com/oracle/truffle/api/interop/Message.html#EXECUTE"><code>Message.EXECUTE</code></a>.<a href="../../../../../com/oracle/truffle/api/interop/Message.html#createNode--"><code>createNode()</code></a>, addFunction, valueOfA, valueOfB
- );
- </pre>
-
- The <code>valueOfA</code> and <code>valueOfB</code> should be <code>double</code> or
- <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Double.html?is-external=true" title="class or interface in java.lang"><code>Double</code></a> or at least be <a href="../../../../../com/oracle/truffle/api/interop/Message.html#UNBOX"><code>unboxable</code></a> to such type.
- <p>
- One can use this method to talk to object oriented language as well, however one needs to pay
- attention to provide all necessary arguments manually - usually an OOP language requires the
- first argument to represent <code>this</code> or <code>self</code> and only then pass in the
- additional arguments. It may be easier to use the <a href="../../../../../com/oracle/truffle/api/interop/Message.html#INVOKE"><code>Message.INVOKE</code></a> message which is more
- suitable for object oriented languages and handles (if supported) the arguments manipulation
- automatically.
- <p></div>
-<dl>
-<dt><span class="simpleTagLabel">Since:</span></dt>
-<dd>1.0</dd>
-</dl>
-</li>
-</ul>
-<a name="IS_EXECUTABLE">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>IS_EXECUTABLE</h4>
-<pre>public static final&nbsp;<a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a> IS_EXECUTABLE</pre>
-<div class="block">Message to check executability of a
- <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html#getReceiver-com.oracle.truffle.api.frame.Frame-"><code>foreign object</code></a>.
- <p>
- Calling <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.Factory.html#accessMessage-com.oracle.truffle.api.interop.Message-"><code>the target</code></a>
- created for this message accepts
- <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html#getArguments-com.oracle.truffle.api.frame.Frame-"><code>no arguments</code></a> and a
- single non-null <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html#getReceiver-com.oracle.truffle.api.frame.Frame-"><code>receiver</code></a>. The call should yield value of <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang"><code>Boolean</code></a>. Either <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true#TRUE" title="class or interface in java.lang"><code>Boolean.TRUE</code></a> if the
- receiver can be executed (i.e. accepts the <a href="../../../../../com/oracle/truffle/api/interop/Message.html#EXECUTE"><code>Message.EXECUTE</code></a> message, or <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true#FALSE" title="class or interface in java.lang"><code>Boolean.FALSE</code></a>
- otherwise. This is the way to send the <code>IS_EXECUTABLE</code> message:
-
- <pre>
- <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang"><code>Boolean</code></a> canBeExecuted = (<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang"><code>Boolean</code></a>) <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html" title="class in com.oracle.truffle.api.interop"><code>ForeignAccess</code></a>.sendIsExecutable(
-   <a href="../../../../../com/oracle/truffle/api/interop/Message.html#IS_EXECUTABLE"><code>Message.IS_EXECUTABLE</code></a>.<a href="../../../../../com/oracle/truffle/api/interop/Message.html#createNode--"><code>createNode()</code></a>, receiver
- );
- </pre>
- <p>
- To achieve good performance it is essential to cache/keep reference to the
- <a href="../../../../../com/oracle/truffle/api/interop/Message.html#createNode--"><code>created node</code></a>.</div>
-<dl>
-<dt><span class="simpleTagLabel">Since:</span></dt>
-<dd>0.8 or earlier</dd>
-</dl>
-</li>
-</ul>
-<a name="IS_INSTANTIABLE">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>IS_INSTANTIABLE</h4>
-<pre>public static final&nbsp;<a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a> IS_INSTANTIABLE</pre>
-<div class="block">Message to check the ability to create new instances of a
- <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html#getReceiver-com.oracle.truffle.api.frame.Frame-"><code>foreign object</code></a>.
- <p>
- Calling <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.Factory.html#accessMessage-com.oracle.truffle.api.interop.Message-"><code>the target</code></a>
- created for this message accepts
- <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html#getArguments-com.oracle.truffle.api.frame.Frame-"><code>no arguments</code></a> and a
- single non-null <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html#getReceiver-com.oracle.truffle.api.frame.Frame-"><code>receiver</code></a>. The call should yield value of <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang"><code>Boolean</code></a>. Either <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true#TRUE" title="class or interface in java.lang"><code>Boolean.TRUE</code></a> if the
- receiver can be instantiated (i.e. accepts the <a href="../../../../../com/oracle/truffle/api/interop/Message.html#NEW"><code>Message.NEW</code></a> message, or <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true#FALSE" title="class or interface in java.lang"><code>Boolean.FALSE</code></a>
- otherwise. This is the way to send the <code>IS_INSTANTIABLE</code> message:
-
- <pre>
- <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang"><code>Boolean</code></a> canBeinstantiated = (<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang"><code>Boolean</code></a>) <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html" title="class in com.oracle.truffle.api.interop"><code>ForeignAccess</code></a>.sendIsInstantiable(
-   <a href="../../../../../com/oracle/truffle/api/interop/Message.html#IS_INSTANTIABLE"><code>Message.IS_INSTANTIABLE</code></a>.<a href="../../../../../com/oracle/truffle/api/interop/Message.html#createNode--"><code>createNode()</code></a>, receiver
- );
- </pre>
- <p>
- To achieve good performance it is essential to cache/keep reference to the
- <a href="../../../../../com/oracle/truffle/api/interop/Message.html#createNode--"><code>created node</code></a>.</div>
-<dl>
-<dt><span class="simpleTagLabel">Since:</span></dt>
-<dd>0.30</dd>
-</dl>
-</li>
-</ul>
-<a name="INVOKE">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>INVOKE</h4>
-<pre>public static final&nbsp;<a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a> INVOKE</pre>
-<div class="block">The object oriented execute message. Unlike <a href="../../../../../com/oracle/truffle/api/interop/Message.html#EXECUTE"><code>Message.EXECUTE</code></a> the receiver of the message
- isn't the actual function to invoke, but an object. The object has the function as a field,
- or as a field of its class, or whatever is appropriate for an object oriented language.
- <p>
- Languages that don't support object oriented semantics do not and should not implement this
- message. When the invoke message isn't supported, the caller is expected to fall back into
- following basic operations:
- <ul>
- <li>sending <a href="../../../../../com/oracle/truffle/api/interop/Message.html#READ"><code>Message.READ</code></a> message to access the field</li>
- <li>verify the result <a href="../../../../../com/oracle/truffle/api/interop/Message.html#IS_EXECUTABLE"><code>Message.IS_EXECUTABLE</code></a>, if so continue by</li>
- <li>sending <a href="../../../../../com/oracle/truffle/api/interop/Message.html#EXECUTE"><code>execute message</code></a></li>
- </ul>
- <p>
- The last step is problematic, as it is not clear whether to pass just the execution
- arguments, or prefix them with the original receiver (aka <code>this</code> or
- <code>self</code>). Object oriented languages would in general welcome obtaining the
- receiving object as first argument, non-object languages like <em>C</em> would get confused
- by doing so. However it is not possible for the caller to find out what language one is
- sending message to - only the set of supported messages is known. As a result it is
- recommended for object oriented languages to support the <a href="../../../../../com/oracle/truffle/api/interop/Message.html#INVOKE"><code>Message.INVOKE</code></a> message and handle
- the semantics the way it is natural to them. Languages like <em>C</em> shouldn't implement
- <a href="../../../../../com/oracle/truffle/api/interop/Message.html#INVOKE"><code>Message.INVOKE</code></a> and just support primitive operations like <a href="../../../../../com/oracle/truffle/api/interop/Message.html#EXECUTE"><code>Message.EXECUTE</code></a> and <a href="../../../../../com/oracle/truffle/api/interop/Message.html#READ"><code>Message.READ</code></a>
- .
- <p>
- When accessing a method of an object in an object oriented manner, one is supposed to send
- the <a href="../../../../../com/oracle/truffle/api/interop/Message.html#INVOKE"><code>Message.INVOKE</code></a> message first. Only when that fails, fallback to non-object oriented
- workflow with <a href="../../../../../com/oracle/truffle/api/interop/Message.html#EXECUTE"><code>Message.EXECUTE</code></a>. Imagine there is a <em>Java</em> class with <code>add</code>
- method and its instance:
-
- <pre>
- <b>public class</b> Arith {
-    <b>public double</b> add(double a, double b) {
-      <b>return</b> a + b;
-    }
- }
- Arith obj = <b>new</b> Arith();
- </pre>
- <p>
- If the object does not support the <code>INVOKE</code> message, an
- <a href="../../../../../com/oracle/truffle/api/interop/UnsupportedMessageException.html" title="class in com.oracle.truffle.api.interop"><code>UnsupportedMessageException</code></a> has to be thrown.
-
- If the object does not allow invoking a member with the given identifier, an
- <a href="../../../../../com/oracle/truffle/api/interop/UnknownIdentifierException.html" title="class in com.oracle.truffle.api.interop"><code>UnknownIdentifierException</code></a> has to be thrown.
-
- If the caller provides a wrong number of arguments, an <a href="../../../../../com/oracle/truffle/api/interop/ArityException.html" title="class in com.oracle.truffle.api.interop"><code>ArityException</code></a> has to be
- thrown.
-
- If one of the provided argument values has an unsupported type, an
- <a href="../../../../../com/oracle/truffle/api/interop/UnsupportedTypeException.html" title="class in com.oracle.truffle.api.interop"><code>UnsupportedTypeException</code></a> has to be thrown.
- <p>
-
- To access <code>obj</code>'s <code>add</code> method one should use:
-
- <pre>
- <b>try</b> {
-   <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html" title="class in com.oracle.truffle.api.interop"><code>ForeignAccess</code></a>.<a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html#sendInvoke-com.oracle.truffle.api.nodes.Node-com.oracle.truffle.api.interop.TruffleObject-java.lang.String-java.lang.Object...-"><code>sendInvoke</code></a>(
-     <a href="../../../../../com/oracle/truffle/api/interop/Message.html#INVOKE"><code>Message.INVOKE</code></a>.<a href="../../../../../com/oracle/truffle/api/interop/Message.html#createNode--"><code>createNode()</code></a>, obj, "add", valueOfA, valueOfB
-   );
- } <b>catch</b> (<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalArgumentException.html?is-external=true" title="class or interface in java.lang"><code>IllegalArgumentException</code></a> ex) {
-   // access the language via <a href="../../../../../com/oracle/truffle/api/interop/Message.html#EXECUTE"><code>Message.EXECUTE</code></a>
- }
- </pre>
-
- The <code>valueOfA</code> and <code>valueOfB</code> should be <code>double</code> or
- <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Double.html?is-external=true" title="class or interface in java.lang"><code>Double</code></a> or at least be <a href="../../../../../com/oracle/truffle/api/interop/Message.html#UNBOX"><code>unboxable</code></a> to such type.
- <p>
- The expected behavior of this message is to perform <a href="../../../../../com/oracle/truffle/api/interop/Message.html#READ"><code>Message.READ</code></a> first and then
- <a href="../../../../../com/oracle/truffle/api/interop/Message.html#EXECUTE"><code>Message.EXECUTE</code></a> the result.</div>
-<dl>
-<dt><span class="simpleTagLabel">Since:</span></dt>
-<dd>1.0</dd>
-</dl>
-</li>
-</ul>
-<a name="NEW">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>NEW</h4>
-<pre>public static final&nbsp;<a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a> NEW</pre>
-<div class="block">The allocation message. The expected behavior of this message is to allocate a new instance
- of the <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html#getReceiver-com.oracle.truffle.api.frame.Frame-"><code>receiver</code></a> and
- then perform its constructor with appropriate number of arguments. To check if an object
- supports allocation of new instances, use the <a href="../../../../../com/oracle/truffle/api/interop/Message.html#IS_INSTANTIABLE"><code>Message.IS_INSTANTIABLE</code></a> message.
- <p>
- If the object does not support the <code>NEW</code> message, an
- <a href="../../../../../com/oracle/truffle/api/interop/UnsupportedMessageException.html" title="class in com.oracle.truffle.api.interop"><code>UnsupportedMessageException</code></a> has to be thrown.
-
- If the caller provides a wrong number of arguments, an <a href="../../../../../com/oracle/truffle/api/interop/ArityException.html" title="class in com.oracle.truffle.api.interop"><code>ArityException</code></a> has to be
- thrown.
-
- If one of the provided argument values has an unsupported type, an
- <a href="../../../../../com/oracle/truffle/api/interop/UnsupportedTypeException.html" title="class in com.oracle.truffle.api.interop"><code>UnsupportedTypeException</code></a> has to be thrown.
- <p></div>
-<dl>
-<dt><span class="simpleTagLabel">Since:</span></dt>
-<dd>1.0</dd>
-</dl>
-</li>
-</ul>
-<a name="IS_NULL">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>IS_NULL</h4>
-<pre>public static final&nbsp;<a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a> IS_NULL</pre>
-<div class="block">Check for <code>null</code> message. The Truffle languages are suggested to have their own
- object representing <code>null</code> like values in their languages. For purposes of
- inter-operability it is essential to canonicalize such values from time to time - sending
- this message is a way to recognize such <code>null</code> representing values:
-
- <pre>
- <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang"><code>Boolean</code></a> isNull = (<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang"><code>Boolean</code></a>) <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html" title="class in com.oracle.truffle.api.interop"><code>ForeignAccess</code></a>.sendIsNull(
-   <a href="../../../../../com/oracle/truffle/api/interop/Message.html#IS_NULL"><code>Message.IS_NULL</code></a>.<a href="../../../../../com/oracle/truffle/api/interop/Message.html#createNode--"><code>createNode()</code></a>, objectToCheckForNull
- );
- </pre>
-
- <p>
- Calling <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.Factory.html#accessMessage-com.oracle.truffle.api.interop.Message-"><code>the target</code></a>
- created for this message should yield value of <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang"><code>Boolean</code></a>.
- <p>
- To achieve good performance it is essential to cache/keep reference to the
- <a href="../../../../../com/oracle/truffle/api/interop/Message.html#createNode--"><code>created node</code></a>.</div>
-<dl>
-<dt><span class="simpleTagLabel">Since:</span></dt>
-<dd>0.8 or earlier</dd>
-</dl>
-</li>
-</ul>
-<a name="HAS_SIZE">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>HAS_SIZE</h4>
-<pre>public static final&nbsp;<a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a> HAS_SIZE</pre>
-<div class="block">Message to check for having a size. If a <a href="../../../../../com/oracle/truffle/api/interop/TruffleObject.html" title="interface in com.oracle.truffle.api.interop"><code>TruffleObject</code></a> indicates it <em>has a
- size</em>, it is expected it represents array-like structure and it also properly responds to
- <a href="../../../../../com/oracle/truffle/api/interop/Message.html#GET_SIZE"><code>Message.GET_SIZE</code></a> message. When <code>HAS_SIZE</code> returns <code>false</code>, it
- indicates that <a href="../../../../../com/oracle/truffle/api/interop/Message.html#GET_SIZE"><code>Message.GET_SIZE</code></a> message is not supported.
- <p>
- Calling <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.Factory.html#accessMessage-com.oracle.truffle.api.interop.Message-"><code>the target</code></a>
- created for this message should yield value of <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang"><code>Boolean</code></a>.</div>
-<dl>
-<dt><span class="simpleTagLabel">Since:</span></dt>
-<dd>0.8 or earlier</dd>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html#sendHasSize-com.oracle.truffle.api.nodes.Node-com.oracle.truffle.api.interop.TruffleObject-"><code>ForeignAccess.sendHasSize(com.oracle.truffle.api.nodes.Node,
-      com.oracle.truffle.api.interop.TruffleObject)</code></a></dd>
-</dl>
-</li>
-</ul>
-<a name="GET_SIZE">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>GET_SIZE</h4>
-<pre>public static final&nbsp;<a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a> GET_SIZE</pre>
-<div class="block">Getter of the size. If <a href="../../../../../com/oracle/truffle/api/interop/Message.html#HAS_SIZE"><code>supported</code></a>, this message has to return size of
- receiver's array like structure as an <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang"><code>Integer</code></a>. If the <a href="../../../../../com/oracle/truffle/api/interop/Message.html#HAS_SIZE"><code>Message.HAS_SIZE</code></a> message
- returns <code>true</code> implementations for <a href="../../../../../com/oracle/truffle/api/interop/Message.html#READ"><code>Message.READ</code></a> and <a href="../../../../../com/oracle/truffle/api/interop/Message.html#WRITE"><code>Message.WRITE</code></a> messages with
- <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang"><code>Integer</code></a> parameters from range <code>0</code> to <code>GET_SIZE - 1</code> are
- required.
- <p>
- Calling <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.Factory.html#accessMessage-com.oracle.truffle.api.interop.Message-"><code>the target</code></a>
- created for this message should yield value of <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang"><code>Integer</code></a>.
- <p>
- If the object does not support the <a href="../../../../../com/oracle/truffle/api/interop/Message.html#GET_SIZE"><code>Message.GET_SIZE</code></a> message, an
- <a href="../../../../../com/oracle/truffle/api/interop/UnsupportedMessageException.html" title="class in com.oracle.truffle.api.interop"><code>UnsupportedMessageException</code></a> has to be thrown.
- <p></div>
-<dl>
-<dt><span class="simpleTagLabel">Since:</span></dt>
-<dd>0.8 or earlier</dd>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html#sendGetSize-com.oracle.truffle.api.nodes.Node-com.oracle.truffle.api.interop.TruffleObject-"><code>ForeignAccess.sendGetSize(com.oracle.truffle.api.nodes.Node,
-      com.oracle.truffle.api.interop.TruffleObject)</code></a></dd>
-</dl>
-</li>
-</ul>
-<a name="IS_BOXED">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>IS_BOXED</h4>
-<pre>public static final&nbsp;<a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a> IS_BOXED</pre>
-<div class="block">Check for value being boxed. Can the <a href="../../../../../com/oracle/truffle/api/interop/TruffleObject.html" title="interface in com.oracle.truffle.api.interop"><code>foreign object</code></a> be converted to one
- of the basic Java types? Many languages have a special representation for types like number,
- string, etc. To ensure inter-operability, these types should support unboxing - if they do,
- they should handle this message and return <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true#TRUE" title="class or interface in java.lang"><code>Boolean.TRUE</code></a>. The way to check whether an
- object is boxed is:
-
- <pre>
- <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang"><code>Boolean</code></a> isBoxed = (<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang"><code>Boolean</code></a>) <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html" title="class in com.oracle.truffle.api.interop"><code>ForeignAccess</code></a>.sendIsBoxed(
-   <a href="../../../../../com/oracle/truffle/api/interop/Message.html#IS_BOXED"><code>Message.IS_BOXED</code></a>.<a href="../../../../../com/oracle/truffle/api/interop/Message.html#createNode--"><code>createNode()</code></a>, objectToCheck
- );
- </pre>
-
- Calling <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.Factory.html#accessMessage-com.oracle.truffle.api.interop.Message-"><code>the target</code></a>
- created for this message should yield value of <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang"><code>Boolean</code></a>. If the object responds with
- <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true#TRUE" title="class or interface in java.lang"><code>Boolean.TRUE</code></a>, it is safe to continue by sending it <a href="../../../../../com/oracle/truffle/api/interop/Message.html#UNBOX"><code>Message.UNBOX</code></a> message.</div>
-<dl>
-<dt><span class="simpleTagLabel">Since:</span></dt>
-<dd>0.8 or earlier</dd>
-</dl>
-</li>
-</ul>
-<a name="KEY_INFO">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>KEY_INFO</h4>
-<pre>public static final&nbsp;<a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a> KEY_INFO</pre>
-<div class="block">Message to retrieve flags about a particular key (a property name). The returned value is an
- integer containing bit flags. See <a href="../../../../../com/oracle/truffle/api/interop/KeyInfo.html" title="class in com.oracle.truffle.api.interop"><code>KeyInfo</code></a> for possible flags. This message also
- allows a fast check of existence of a property among <a href="../../../../../com/oracle/truffle/api/interop/Message.html#KEYS"><code>Message.KEYS</code></a>, the returned value is
- <code>0</code> iff the key does not exist. The
- <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.Factory.html#accessMessage-com.oracle.truffle.api.interop.Message-"><code>target</code></a> created for this
- message accepts (in addition to a
- <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html#getReceiver-com.oracle.truffle.api.frame.Frame-"><code>receiver</code></a>) a single
- <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html#getArguments-com.oracle.truffle.api.frame.Frame-"><code>argument</code></a> identifying a
- property to get the info of - e.g. either <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang"><code>String</code></a> or a <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang"><code>Number</code></a> - if test of an
- array at a particular index is requested.
- <p>
- The default implementation requests <a href="../../../../../com/oracle/truffle/api/interop/Message.html#KEYS"><code>Message.KEYS</code></a> and test if they contain the requested key.
- If they do, a default bit mask <code>0b111</code> is returned.
- <p>
- The code that wants to send this message should use:
-
- <pre>
- <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html" title="class in com.oracle.truffle.api.interop"><code>ForeignAccess</code></a>.<a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html#sendKeyInfo-com.oracle.truffle.api.nodes.Node-com.oracle.truffle.api.interop.TruffleObject-java.lang.Object-"><code>sendKeyInfo</code></a>(
-   <a href="../../../../../com/oracle/truffle/api/interop/Message.html#KEY_INFO"><code>Message.KEY_INFO</code></a>.<a href="../../../../../com/oracle/truffle/api/interop/Message.html#createNode--"><code>createNode()</code></a>, receiver, nameOfTheField
- );
- </pre>
-
- Where <code>receiver</code> is the <a href="../../../../../com/oracle/truffle/api/interop/TruffleObject.html" title="interface in com.oracle.truffle.api.interop"><code>foreign object</code></a> to access and
- <code>nameOfTheField</code> is the name (or index) of its field.
- <p>
- To achieve good performance it is essential to cache/keep reference to the
- <a href="../../../../../com/oracle/truffle/api/interop/Message.html#createNode--"><code>created node</code></a>.</div>
-<dl>
-<dt><span class="simpleTagLabel">Since:</span></dt>
-<dd>0.26</dd>
-</dl>
-</li>
-</ul>
-<a name="HAS_KEYS">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>HAS_KEYS</h4>
-<pre>public static final&nbsp;<a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a> HAS_KEYS</pre>
-<div class="block">Message to check for having properties. If a <a href="../../../../../com/oracle/truffle/api/interop/TruffleObject.html" title="interface in com.oracle.truffle.api.interop"><code>TruffleObject</code></a> indicates it <em>has
- keys</em>, it is expected it represents an object structure with properties and it also
- properly responds to <a href="../../../../../com/oracle/truffle/api/interop/Message.html#KEYS"><code>Message.KEYS</code></a> message. When <code>HAS_KEYS</code> returns
- <code>false</code>, it indicates that <a href="../../../../../com/oracle/truffle/api/interop/Message.html#KEYS"><code>Message.KEYS</code></a> message is not supported.
- <p>
- The default implementation requests <a href="../../../../../com/oracle/truffle/api/interop/Message.html#KEYS"><code>Message.KEYS</code></a> and returns <code>true</code> if the
- request was successful and <code>false</code> otherwise.
- <p>
- Calling <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.Factory.html#accessMessage-com.oracle.truffle.api.interop.Message-"><code>the target</code></a>
- created for this message should yield value of type <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang"><code>Boolean</code></a>.</div>
-<dl>
-<dt><span class="simpleTagLabel">Since:</span></dt>
-<dd>0.30</dd>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html#sendHasKeys-com.oracle.truffle.api.nodes.Node-com.oracle.truffle.api.interop.TruffleObject-"><code>ForeignAccess.sendHasKeys(com.oracle.truffle.api.nodes.Node,
-      com.oracle.truffle.api.interop.TruffleObject)</code></a></dd>
-</dl>
-</li>
-</ul>
-<a name="KEYS">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>KEYS</h4>
-<pre>public static final&nbsp;<a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a> KEYS</pre>
-<div class="block">Obtains list of property names. Checks the properties of a <a href="../../../../../com/oracle/truffle/api/interop/TruffleObject.html" title="interface in com.oracle.truffle.api.interop"><code>foreign
- objects</code></a> and obtains list of its property names. Those names can then be used in
- <a href="../../../../../com/oracle/truffle/api/interop/Message.html#READ"><code>Message.READ</code></a> and <a href="../../../../../com/oracle/truffle/api/interop/Message.html#WRITE"><code>Message.WRITE</code></a> messages to obtain/assign real values. To check if an object
- supports properties, use the <a href="../../../../../com/oracle/truffle/api/interop/Message.html#HAS_KEYS"><code>Message.HAS_KEYS</code></a> message.
- <p>
- Since version 0.26 the <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.Factory.html#accessMessage-com.oracle.truffle.api.interop.Message-"><code>target</code></a> created for this message accepts a boolean argument specifying whether internal keys
- should be included. Internal keys are extra property keys that are a part of the object, but
- are not provided among ordinary keys. They may even not correspond to anything what is an
- explicit part of the guest language representation. An example of such internal values are
- internal slots in ECMAScript.
- <p>
- The return value from using this message is another <a href="../../../../../com/oracle/truffle/api/interop/TruffleObject.html" title="interface in com.oracle.truffle.api.interop"><code>TruffleObject</code></a> that responds to
- <a href="../../../../../com/oracle/truffle/api/interop/Message.html#HAS_SIZE"><code>Message.HAS_SIZE</code></a> message and its indexes 0 to <a href="../../../../../com/oracle/truffle/api/interop/Message.html#GET_SIZE"><code>Message.GET_SIZE</code></a> - 1 contain <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang"><code>String</code></a>
- names of individual properties. The properties should be provided in deterministic order.</div>
-<dl>
-<dt><span class="simpleTagLabel">Since:</span></dt>
-<dd>0.18</dd>
-</dl>
-</li>
-</ul>
-<a name="IS_POINTER">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>IS_POINTER</h4>
-<pre>public static final&nbsp;<a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a> IS_POINTER</pre>
-<div class="block">Check for a value being a native pointer. Can the <a href="../../../../../com/oracle/truffle/api/interop/TruffleObject.html" title="interface in com.oracle.truffle.api.interop"><code>foreign object</code></a> be
- converted to a 64bit pointer value? The way to check whether an object is a pointer is:
-
- <pre>
- <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang"><code>Boolean</code></a> isPointer = (<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang"><code>Boolean</code></a>) <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html" title="class in com.oracle.truffle.api.interop"><code>ForeignAccess</code></a>.sendIsPointer(
-   <a href="../../../../../com/oracle/truffle/api/interop/Message.html#IS_POINTER"><code>Message.IS_POINTER</code></a>.<a href="../../../../../com/oracle/truffle/api/interop/Message.html#createNode--"><code>createNode()</code></a>, objectToCheck
- );
- </pre>
-
- Calling <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.Factory.html#accessMessage-com.oracle.truffle.api.interop.Message-"><code>the target</code></a>
- created for this message should yield a <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang"><code>Boolean</code></a>. If the object responds with
- <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true#TRUE" title="class or interface in java.lang"><code>Boolean.TRUE</code></a>, the object can be accessed by the <a href="../../../../../com/oracle/truffle/api/interop/Message.html#AS_POINTER"><code>Message.AS_POINTER</code></a> message. An
- object that responds with <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true#TRUE" title="class or interface in java.lang"><code>Boolean.TRUE</code></a> to <a href="../../../../../com/oracle/truffle/api/interop/Message.html#IS_POINTER"><code>Message.IS_POINTER</code></a> <b>MUST</b> also
- implement <a href="../../../../../com/oracle/truffle/api/interop/Message.html#TO_NATIVE"><code>Message.TO_NATIVE</code></a>, which should just return the receiver.
-
- <p>
- It is expected that objects should only return <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true#TRUE" title="class or interface in java.lang"><code>Boolean.TRUE</code></a> here if the native
- pointer value corresponding to this object already exists, and obtaining it is a cheap
- operation. If an object can be transformed to a pointer representation, but this hasn't
- happened yet, the object is expected to return <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true#FALSE" title="class or interface in java.lang"><code>Boolean.FALSE</code></a> to <a href="../../../../../com/oracle/truffle/api/interop/Message.html#IS_POINTER"><code>Message.IS_POINTER</code></a>,
- and wait for the <a href="../../../../../com/oracle/truffle/api/interop/Message.html#TO_NATIVE"><code>Message.TO_NATIVE</code></a> message to trigger the transformation.</div>
-<dl>
-<dt><span class="simpleTagLabel">Since:</span></dt>
-<dd>0.26 or earlier</dd>
-</dl>
-</li>
-</ul>
-<a name="AS_POINTER">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>AS_POINTER</h4>
-<pre>public static final&nbsp;<a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a> AS_POINTER</pre>
-<div class="block">Converts <a href="../../../../../com/oracle/truffle/api/interop/TruffleObject.html" title="interface in com.oracle.truffle.api.interop"><code>truffle value</code></a> to a raw 64bit pointer value. Before sending the
- <a href="../../../../../com/oracle/truffle/api/interop/Message.html#AS_POINTER"><code>Message.AS_POINTER</code></a> message, it is desirable to send the <a href="../../../../../com/oracle/truffle/api/interop/Message.html#IS_POINTER"><code>Message.IS_POINTER</code></a> one and verify
- that the object can really be unwrapped to a raw pointer value.
- <p>
- If the object does not support the <a href="../../../../../com/oracle/truffle/api/interop/Message.html#AS_POINTER"><code>Message.AS_POINTER</code></a> message, an
- <a href="../../../../../com/oracle/truffle/api/interop/UnsupportedMessageException.html" title="class in com.oracle.truffle.api.interop"><code>UnsupportedMessageException</code></a> has to be thrown.
- <p>
- To unwrap a pointer value, use:
-
- <pre>
- <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html" title="class in com.oracle.truffle.api.interop"><code>ForeignAccess</code></a>.<a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html#sendAsPointer-com.oracle.truffle.api.nodes.Node-com.oracle.truffle.api.interop.TruffleObject-"><code>sendAsPointer</code></a>(
-   <a href="../../../../../com/oracle/truffle/api/interop/Message.html#AS_POINTER"><code>Message.AS_POINTER</code></a>.<a href="../../../../../com/oracle/truffle/api/interop/Message.html#createNode--"><code>createNode()</code></a>, objectAsPointer
- );
- </pre>
-
- The returned value is a <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang"><code>Long</code></a> value.
- <p>
- To achieve good performance it is essential to cache/keep reference to the
- <a href="../../../../../com/oracle/truffle/api/interop/Message.html#createNode--"><code>created node</code></a>.</div>
-<dl>
-<dt><span class="simpleTagLabel">Since:</span></dt>
-<dd>0.26 or earlier</dd>
-</dl>
-</li>
-</ul>
-<a name="TO_NATIVE">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>TO_NATIVE</h4>
-<pre>public static final&nbsp;<a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a> TO_NATIVE</pre>
-<div class="block">Transforms a <a href="../../../../../com/oracle/truffle/api/interop/TruffleObject.html" title="interface in com.oracle.truffle.api.interop"><code>truffle value</code></a> a new <a href="../../../../../com/oracle/truffle/api/interop/TruffleObject.html" title="interface in com.oracle.truffle.api.interop"><code>truffle native
- value</code></a> that represents a raw native pointer. This resulting <a href="../../../../../com/oracle/truffle/api/interop/TruffleObject.html" title="interface in com.oracle.truffle.api.interop"><code>truffle
- native value</code></a> returns true for <a href="../../../../../com/oracle/truffle/api/interop/Message.html#IS_POINTER"><code>Message.IS_POINTER</code></a> and can be unwrapped using the
- <a href="../../../../../com/oracle/truffle/api/interop/Message.html#AS_POINTER"><code>Message.AS_POINTER</code></a> message.
- <p>
- If an object returns true for <a href="../../../../../com/oracle/truffle/api/interop/Message.html#IS_POINTER"><code>Message.IS_POINTER</code></a>, it is still expected that this object
- supports the <a href="../../../../../com/oracle/truffle/api/interop/Message.html#TO_NATIVE"><code>Message.TO_NATIVE</code></a> message. It can just return a reference to itself in that
- case.
- <p>
- If the object does not support the <a href="../../../../../com/oracle/truffle/api/interop/Message.html#TO_NATIVE"><code>Message.TO_NATIVE</code></a> message, an
- <a href="../../../../../com/oracle/truffle/api/interop/UnsupportedMessageException.html" title="class in com.oracle.truffle.api.interop"><code>UnsupportedMessageException</code></a> has to be thrown.
- <p>
- To transform an object to a native value, use:
-
- <pre>
- <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html" title="class in com.oracle.truffle.api.interop"><code>ForeignAccess</code></a>.<a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html#sendToNative-com.oracle.truffle.api.nodes.Node-com.oracle.truffle.api.interop.TruffleObject-"><code>sendToNative</code></a>(
-   <a href="../../../../../com/oracle/truffle/api/interop/Message.html#TO_NATIVE"><code>Message.TO_NATIVE</code></a>.<a href="../../../../../com/oracle/truffle/api/interop/Message.html#createNode--"><code>createNode()</code></a>, objectToNative
- );
- </pre>
-
- <p>
- To achieve good performance it is essential to cache/keep reference to the
- <a href="../../../../../com/oracle/truffle/api/interop/Message.html#createNode--"><code>created node</code></a>.</div>
-<dl>
-<dt><span class="simpleTagLabel">Since:</span></dt>
-<dd>0.26 or earlier</dd>
-</dl>
-</li>
-</ul>
-</li>
-</ul>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.detail">
@@ -1047,11 +208,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li class="blockList">
 <h4>Message</h4>
 <pre>protected&nbsp;Message()</pre>
-<div class="block">One can define their own extended message by subclassing. The expectation is that the
- subclass will have public constructor and its <a href="../../../../../com/oracle/truffle/api/interop/Message.html#equals-java.lang.Object-"><code>Message.equals(java.lang.Object)</code></a> and
- <a href="../../../../../com/oracle/truffle/api/interop/Message.html#hashCode--"><code>Message.hashCode()</code></a> methods will operate on the class equivalence. Only then the subclass
- will work properly with <a href="../../../../../com/oracle/truffle/api/interop/Message.html#valueOf-java.lang.String-"><code>Message.valueOf(java.lang.String)</code></a> and
- <a href="../../../../../com/oracle/truffle/api/interop/Message.html#toString-com.oracle.truffle.api.interop.Message-"><code>Message.toString(com.oracle.truffle.api.interop.Message)</code></a> methods.</div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <dl>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>0.8 or earlier</dd>
@@ -1073,16 +230,10 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li class="blockList">
 <h4>equals</h4>
 <pre>public abstract&nbsp;boolean&nbsp;equals(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;message)</pre>
-<div class="block">Compares types of two messages. Messages are encouraged to implement this method. All
- standard ones (<a href="../../../../../com/oracle/truffle/api/interop/Message.html#IS_NULL"><code>Message.IS_NULL</code></a>, <a href="../../../../../com/oracle/truffle/api/interop/Message.html#READ"><code>Message.READ</code></a>, etc.) do so. Messages obtained by different
- methods or fields are not equal.</div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a></code>&nbsp;in class&nbsp;<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></code></dd>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>message</code> - the object to compare to</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>true, if the structure of the message is that same as of <code>this</code> one.</dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>0.8 or earlier</dd>
 </dl>
@@ -1095,6 +246,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li class="blockList">
 <h4>hashCode</h4>
 <pre>public abstract&nbsp;int&nbsp;hashCode()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">When re-implementing <a href="../../../../../com/oracle/truffle/api/interop/Message.html#equals-java.lang.Object-"><code>Message.equals(java.lang.Object)</code></a>, it is generally recommended to also
  implement <code>hashCode()</code>.</div>
 <dl>
@@ -1107,45 +259,6 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 </dl>
 </li>
 </ul>
-<a name="createNode--">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>createNode</h4>
-<pre>public final&nbsp;<a href="../../../../../com/oracle/truffle/api/nodes/Node.html" title="class in com.oracle.truffle.api.nodes">Node</a>&nbsp;createNode()</pre>
-<div class="block">Creates an AST node for this message. The node can be inserted into AST of your language and
- will handle communication with the foreign language.</div>
-<dl>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>node to be inserted into your AST and passed back to
-         <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html#send-com.oracle.truffle.api.nodes.Node-com.oracle.truffle.api.interop.TruffleObject-java.lang.Object...-"><code>ForeignAccess.send(com.oracle.truffle.api.nodes.Node, com.oracle.truffle.api.interop.TruffleObject, java.lang.Object...)</code></a>
-         method.</dd>
-<dt><span class="simpleTagLabel">Since:</span></dt>
-<dd>0.8 or earlier</dd>
-</dl>
-</li>
-</ul>
-<a name="toString-com.oracle.truffle.api.interop.Message-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>toString</h4>
-<pre>public static&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;toString(<a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a>&nbsp;message)</pre>
-<div class="block">Converts the message into canonical string representation. The converted string can be
- stored, persisted, transfered and later passed to <a href="../../../../../com/oracle/truffle/api/interop/Message.html#valueOf-java.lang.String-"><code>Message.valueOf(java.lang.String)</code></a> to
- construct the message again.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>message</code> - the message to convert</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>canonical string representation</dd>
-<dt><span class="simpleTagLabel">Since:</span></dt>
-<dd>0.9</dd>
-</dl>
-</li>
-</ul>
 <a name="valueOf-java.lang.String-">
 <!--   -->
 </a>
@@ -1153,9 +266,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li class="blockList">
 <h4>valueOf</h4>
 <pre>public static&nbsp;<a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop">Message</a>&nbsp;valueOf(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;messageId)</pre>
-<div class="block">Converts string representation into real message. If the string was obtained by
- <a href="../../../../../com/oracle/truffle/api/interop/Message.html#toString-com.oracle.truffle.api.interop.Message-"><code>Message.toString(com.oracle.truffle.api.interop.Message)</code></a> method, it is guaranteed to be
- successfully recognized (if the classpath of the system remains the same).</div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>messageId</code> - canonical string representation of a message</dd>
@@ -1192,11 +303,11 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li><a href="../../../../../index-all.html">Index</a></li>
 <li><a href="../../../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc14-dev</b><br>091a0df5f13c1b43ea860e403ff94140b782a58b</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc14-dev</b><br>fdb8fc404f0cd18e56d868b88b02ef032ed39256</div>
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../../com/oracle/truffle/api/interop/KeyInfo.Builder.html" title="class in com.oracle.truffle.api.interop"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../../com/oracle/truffle/api/interop/KeyInfo.html" title="class in com.oracle.truffle.api.interop"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li><a href="../../../../../com/oracle/truffle/api/interop/MessageResolution.html" title="annotation in com.oracle.truffle.api.interop"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
@@ -1222,13 +333,13 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
