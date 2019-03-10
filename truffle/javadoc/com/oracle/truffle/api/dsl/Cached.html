@@ -38,12 +38,12 @@
 <li><a href="../../../../../index-all.html">Index</a></li>
 <li><a href="../../../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc14-dev</b><br>fdb8fc404f0cd18e56d868b88b02ef032ed39256</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc14-dev</b><br>315f5dcf69c2e73fd13a5f83a669689de27a4584</div>
 </div>
 <div class="subNav">
 <ul class="navList">
 <li>Prev&nbsp;Class</li>
-<li><a href="../../../../../com/oracle/truffle/api/dsl/Cached.Exclusive.html" title="annotation in com.oracle.truffle.api.dsl"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../com/oracle/truffle/api/dsl/CreateCast.html" title="annotation in com.oracle.truffle.api.dsl"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?com/oracle/truffle/api/dsl/Cached.html" target="_top">Frames</a></li>
@@ -68,7 +68,7 @@
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
-<li>Required&nbsp;|&nbsp;</li>
+<li><a href="#annotation.type.required.element.summary">Required</a>&nbsp;|&nbsp;</li>
 <li><a href="#annotation.type.optional.element.summary">Optional</a></li>
 </ul>
 <ul class="subNavList">
@@ -282,9 +282,7 @@ public @interface <span class="memberNameLabel">Cached</span></pre>
 <dd><a href="../../../../../com/oracle/truffle/api/dsl/Specialization.html#guards--"><code>Specialization.guards()</code></a>, 
 <a href="../../../../../com/oracle/truffle/api/dsl/Specialization.html#replaces--"><code>Specialization.replaces()</code></a>, 
 <a href="../../../../../com/oracle/truffle/api/dsl/Specialization.html#limit--"><code>Specialization.limit()</code></a>, 
-<a href="../../../../../com/oracle/truffle/api/dsl/ImportStatic.html" title="annotation in com.oracle.truffle.api.dsl"><code>ImportStatic</code></a>, 
-<a href="../../../../../com/oracle/truffle/api/dsl/CachedContext.html" title="annotation in com.oracle.truffle.api.dsl"><code>@CachedContext to access the current context.</code></a>, 
-<a href="../../../../../com/oracle/truffle/api/dsl/CachedLanguage.html" title="annotation in com.oracle.truffle.api.dsl"><code>@CachedLanguage to access the current Truffle language.</code></a></dd>
+<a href="../../../../../com/oracle/truffle/api/dsl/ImportStatic.html" title="annotation in com.oracle.truffle.api.dsl"><code>ImportStatic</code></a></dd>
 </dl>
 </li>
 </ul>
@@ -292,6 +290,27 @@ public @interface <span class="memberNameLabel">Cached</span></pre>
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
+<!-- =========== ANNOTATION TYPE REQUIRED MEMBER SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="annotation.type.required.element.summary">
+<!--   -->
+</a>
+<h3>Required Element Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Required Element Summary table, listing required elements, and an explanation">
+<caption><span>Required Elements</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Required Element and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/dsl/Cached.html#value--">value</a></span></code>
+<div class="block">Defines the initializer expression of the cached parameter value.</div>
+</td>
+</tr>
+</table>
+</li>
+</ul>
 <!-- =========== ANNOTATION TYPE OPTIONAL MEMBER SUMMARY =========== -->
 <ul class="blockList">
 <li class="blockList"><a name="annotation.type.optional.element.summary">
@@ -305,32 +324,10 @@ public @interface <span class="memberNameLabel">Cached</span></pre>
 <th class="colLast" scope="col">Optional Element and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/dsl/Cached.html#allowUncached--">allowUncached</a></span></code>
-<div class="block">Allows the <a href="../../../../../com/oracle/truffle/api/dsl/Cached.html#value--"><code>Cached.value()</code></a> to be used for <a href="../../../../../com/oracle/truffle/api/dsl/Cached.html#uncached--"><code>Cached.uncached()</code></a>.</div>
-</td>
-</tr>
-<tr class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/dsl/Cached.html#dimensions--">dimensions</a></span></code>
 <div class="block">Specifies the number of array dimensions to be marked as <a href="../../../../../com/oracle/truffle/api/CompilerDirectives.CompilationFinal.html" title="annotation in com.oracle.truffle.api"><code>compilation
  final</code></a>.</div>
-</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>[]</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/dsl/Cached.html#parameters--">parameters</a></span></code>
-<div class="block">Specifies the bindings used for the $parameters variable in cached or uncached initializers.</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/dsl/Cached.html#uncached--">uncached</a></span></code>&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/dsl/Cached.html#value--">value</a></span></code>
-<div class="block">Defines the initializer expression of the cached parameter value.</div>
 </td>
 </tr>
 </table>
@@ -351,7 +348,7 @@ public @interface <span class="memberNameLabel">Cached</span></pre>
 <a name="value--">
 <!--   -->
 </a>
-<ul class="blockList">
+<ul class="blockListLast">
 <li class="blockList">
 <h4>value</h4>
 <pre>public abstract&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;value</pre>
@@ -362,39 +359,16 @@ public @interface <span class="memberNameLabel">Cached</span></pre>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../../../com/oracle/truffle/api/dsl/Cached.html" title="annotation in com.oracle.truffle.api.dsl"><code>Cached</code></a></dd>
 </dl>
-<dl>
-<dt>Default:</dt>
-<dd>"create($parameters)"</dd>
-</dl>
 </li>
 </ul>
 </li>
 </ul>
-<ul class="blockList">
-<li class="blockList"><a name="uncached--">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>uncached</h4>
-<pre>public abstract&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;uncached</pre>
-<dl>
-<dt><span class="simpleTagLabel">Since:</span></dt>
-<dd>1.0</dd>
-</dl>
-<dl>
-<dt>Default:</dt>
-<dd>"getUncached($parameters)"</dd>
-</dl>
-</li>
-</ul>
-</li>
-</ul>
+<!-- ============ ANNOTATION TYPE MEMBER DETAIL =========== -->
 <ul class="blockList">
 <li class="blockList"><a name="dimensions--">
 <!--   -->
 </a>
-<ul class="blockList">
+<ul class="blockListLast">
 <li class="blockList">
 <h4>dimensions</h4>
 <pre>public abstract&nbsp;int&nbsp;dimensions</pre>
@@ -422,52 +396,6 @@ public @interface <span class="memberNameLabel">Cached</span></pre>
 </ul>
 </li>
 </ul>
-<ul class="blockList">
-<li class="blockList"><a name="allowUncached--">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>allowUncached</h4>
-<pre>public abstract&nbsp;boolean&nbsp;allowUncached</pre>
-<div class="block">Allows the <a href="../../../../../com/oracle/truffle/api/dsl/Cached.html#value--"><code>Cached.value()</code></a> to be used for <a href="../../../../../com/oracle/truffle/api/dsl/Cached.html#uncached--"><code>Cached.uncached()</code></a>. This is useful if the
- expression is the same for <a href="../../../../../com/oracle/truffle/api/dsl/Cached.html#value--"><code>Cached.value()</code></a> and <a href="../../../../../com/oracle/truffle/api/dsl/Cached.html#uncached--"><code>Cached.uncached()</code></a>. By setting
- <a href="../../../../../com/oracle/truffle/api/dsl/Cached.html#allowUncached--"><code>Cached.allowUncached()</code></a> to <code>true</code> it is not necessary to repeat the
- <a href="../../../../../com/oracle/truffle/api/dsl/Cached.html#value--"><code>Cached.value()</code></a> expression in the <a href="../../../../../com/oracle/truffle/api/dsl/Cached.html#uncached--"><code>Cached.uncached()</code></a> expression. This flag cannot be set in
- combination with <a href="../../../../../com/oracle/truffle/api/dsl/Cached.html#uncached--"><code>Cached.uncached()</code></a>.</div>
-<dl>
-<dt><span class="simpleTagLabel">Since:</span></dt>
-<dd>1.0</dd>
-</dl>
-<dl>
-<dt>Default:</dt>
-<dd>false</dd>
-</dl>
-</li>
-</ul>
-</li>
-</ul>
-<ul class="blockList">
-<li class="blockList"><a name="parameters--">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>parameters</h4>
-<pre>public abstract&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>[]&nbsp;parameters</pre>
-<div class="block">Specifies the bindings used for the $parameters variable in cached or uncached initializers.</div>
-<dl>
-<dt><span class="simpleTagLabel">Since:</span></dt>
-<dd>1.0</dd>
-</dl>
-<dl>
-<dt>Default:</dt>
-<dd>{}</dd>
-</dl>
-</li>
-</ul>
-</li>
-</ul>
 </li>
 </ul>
 </div>
@@ -490,12 +418,12 @@ public @interface <span class="memberNameLabel">Cached</span></pre>
 <li><a href="../../../../../index-all.html">Index</a></li>
 <li><a href="../../../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc14-dev</b><br>fdb8fc404f0cd18e56d868b88b02ef032ed39256</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc14-dev</b><br>315f5dcf69c2e73fd13a5f83a669689de27a4584</div>
 </div>
 <div class="subNav">
 <ul class="navList">
 <li>Prev&nbsp;Class</li>
-<li><a href="../../../../../com/oracle/truffle/api/dsl/Cached.Exclusive.html" title="annotation in com.oracle.truffle.api.dsl"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../com/oracle/truffle/api/dsl/CreateCast.html" title="annotation in com.oracle.truffle.api.dsl"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?com/oracle/truffle/api/dsl/Cached.html" target="_top">Frames</a></li>
@@ -520,7 +448,7 @@ public @interface <span class="memberNameLabel">Cached</span></pre>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
-<li>Required&nbsp;|&nbsp;</li>
+<li><a href="#annotation.type.required.element.summary">Required</a>&nbsp;|&nbsp;</li>
 <li><a href="#annotation.type.optional.element.summary">Optional</a></li>
 </ul>
 <ul class="subNavList">

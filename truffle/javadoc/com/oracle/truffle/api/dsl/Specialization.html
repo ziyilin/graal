@@ -38,7 +38,7 @@
 <li><a href="../../../../../index-all.html">Index</a></li>
 <li><a href="../../../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc14-dev</b><br>fdb8fc404f0cd18e56d868b88b02ef032ed39256</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc14-dev</b><br>315f5dcf69c2e73fd13a5f83a669689de27a4584</div>
 </div>
 <div class="subNav">
 <ul class="navList">
@@ -488,7 +488,7 @@ public @interface <span class="memberNameLabel">Specialization</span></pre>
  <b>Example usage:</b>
 
  <pre>
- abstract static class DynamicObject() { abstract Shape getShape(); ... } static
+ static abstract class DynamicObject() { abstract Shape getShape(); ... } static
  abstract class Shape() { abstract Assumption getUnmodifiedAssuption(); ... }
  &#064;Specialization(guards = "operand.getShape() == cachedShape", assumptions =
  "cachedShape.getUnmodifiedAssumption()") void doAssumeUnmodifiedShape(DynamicObject
@@ -594,7 +594,7 @@ public @interface <span class="memberNameLabel">Specialization</span></pre>
 <li><a href="../../../../../index-all.html">Index</a></li>
 <li><a href="../../../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc14-dev</b><br>fdb8fc404f0cd18e56d868b88b02ef032ed39256</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc14-dev</b><br>315f5dcf69c2e73fd13a5f83a669689de27a4584</div>
 </div>
 <div class="subNav">
 <ul class="navList">

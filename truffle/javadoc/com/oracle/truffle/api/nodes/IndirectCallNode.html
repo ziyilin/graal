@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":9,"i2":9};
+var methods = {"i0":6,"i1":9};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -44,7 +44,7 @@ var activeTableTab = "activeTableTab";
 <li><a href="../../../../../index-all.html">Index</a></li>
 <li><a href="../../../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc14-dev</b><br>fdb8fc404f0cd18e56d868b88b02ef032ed39256</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc14-dev</b><br>315f5dcf69c2e73fd13a5f83a669689de27a4584</div>
 </div>
 <div class="subNav">
 <ul class="navList">
@@ -195,19 +195,13 @@ extends <a href="../../../../../com/oracle/truffle/api/nodes/Node.html" title="c
 <td class="colFirst"><code>static <a href="../../../../../com/oracle/truffle/api/nodes/IndirectCallNode.html" title="class in com.oracle.truffle.api.nodes">IndirectCallNode</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/nodes/IndirectCallNode.html#create--">create</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i2" class="altColor">
-<td class="colFirst"><code>static <a href="../../../../../com/oracle/truffle/api/nodes/IndirectCallNode.html" title="class in com.oracle.truffle.api.nodes">IndirectCallNode</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/nodes/IndirectCallNode.html#getUncached--">getUncached</a></span>()</code>
-<div class="block">Returns an uncached version of an indirect call node.</div>
-</td>
-</tr>
 </table>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.com.oracle.truffle.api.nodes.Node">
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;com.oracle.truffle.api.nodes.<a href="../../../../../com/oracle/truffle/api/nodes/Node.html" title="class in com.oracle.truffle.api.nodes">Node</a></h3>
-<code><a href="../../../../../com/oracle/truffle/api/nodes/Node.html#accept-com.oracle.truffle.api.nodes.NodeVisitor-">accept</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#adoptChildren--">adoptChildren</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#atomic-java.util.concurrent.Callable-">atomic</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#atomic-java.lang.Runnable-">atomic</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#copy--">copy</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#deepCopy--">deepCopy</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#getChildren--">getChildren</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#getContextSupplier-java.lang.Class-">getContextSupplier</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#getCost--">getCost</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#getDebugProperties--">getDebugProperties</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#getDescription--">getDescription</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#getEncapsulatingSourceSection--">getEncapsulatingSourceSection</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#getLanguageSupplier-java.lang.Class-">getLanguageSupplier</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#getLock--">getLock</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#getParent--">getParent</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#getRootNode--">getRootNode</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#getSourceSection--">getSourceSection</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#insert-T-">insert</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#insert-T:A-">insert</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#isAdoptable--">isAdoptable</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#isSafelyReplaceableBy-com.oracle.truffle.api.nodes.Node-">isSafelyReplaceableBy</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#notifyInserted-com.oracle.truffle.api.nodes.Node-">notifyInserted</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#onReplace-com.oracle.truffle.api.nodes.Node-java.lang.CharSequence-">onReplace</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#replace-T-">replace</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#replace-T-java.lang.CharSequence-">replace</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#reportPolymorphicSpecialize--">reportPolymorphicSpecialize</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#toString--">toString</a></code></li>
+<code><a href="../../../../../com/oracle/truffle/api/nodes/Node.html#accept-com.oracle.truffle.api.nodes.NodeVisitor-">accept</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#adoptChildren--">adoptChildren</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#atomic-java.util.concurrent.Callable-">atomic</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#atomic-java.lang.Runnable-">atomic</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#copy--">copy</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#deepCopy--">deepCopy</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#getChildren--">getChildren</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#getCost--">getCost</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#getDebugProperties--">getDebugProperties</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#getDescription--">getDescription</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#getEncapsulatingSourceSection--">getEncapsulatingSourceSection</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#getLock--">getLock</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#getParent--">getParent</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#getRootNode--">getRootNode</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#getSourceSection--">getSourceSection</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#insert-T-">insert</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#insert-T:A-">insert</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#isSafelyReplaceableBy-com.oracle.truffle.api.nodes.Node-">isSafelyReplaceableBy</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#notifyInserted-com.oracle.truffle.api.nodes.Node-">notifyInserted</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#onReplace-com.oracle.truffle.api.nodes.Node-java.lang.CharSequence-">onReplace</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#replace-T-">replace</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#replace-T-java.lang.CharSequence-">replace</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#reportPolymorphicSpecialize--">reportPolymorphicSpecialize</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#toString--">toString</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
@@ -275,29 +269,13 @@ extends <a href="../../../../../com/oracle/truffle/api/nodes/Node.html" title="c
 <a name="create--">
 <!--   -->
 </a>
-<ul class="blockList">
+<ul class="blockListLast">
 <li class="blockList">
 <h4>create</h4>
 <pre>public static&nbsp;<a href="../../../../../com/oracle/truffle/api/nodes/IndirectCallNode.html" title="class in com.oracle.truffle.api.nodes">IndirectCallNode</a>&nbsp;create()</pre>
 <dl>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>0.8 or earlier</dd>
-</dl>
-</li>
-</ul>
-<a name="getUncached--">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>getUncached</h4>
-<pre>public static&nbsp;<a href="../../../../../com/oracle/truffle/api/nodes/IndirectCallNode.html" title="class in com.oracle.truffle.api.nodes">IndirectCallNode</a>&nbsp;getUncached()</pre>
-<div class="block">Returns an uncached version of an indirect call node. Uncached versions of an indirect call
- node use the <a href="../../../../../com/oracle/truffle/api/nodes/NodeUtil.html#getCurrentEncapsulatingNode--"><code>current encapsulating node</code></a> as
- source location.</div>
-<dl>
-<dt><span class="simpleTagLabel">Since:</span></dt>
-<dd>1.0</dd>
 </dl>
 </li>
 </ul>
@@ -325,7 +303,7 @@ extends <a href="../../../../../com/oracle/truffle/api/nodes/Node.html" title="c
 <li><a href="../../../../../index-all.html">Index</a></li>
 <li><a href="../../../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc14-dev</b><br>fdb8fc404f0cd18e56d868b88b02ef032ed39256</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc14-dev</b><br>315f5dcf69c2e73fd13a5f83a669689de27a4584</div>
 </div>
 <div class="subNav">
 <ul class="navList">

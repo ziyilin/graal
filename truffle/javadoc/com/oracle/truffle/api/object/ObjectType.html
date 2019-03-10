@@ -44,7 +44,7 @@ var activeTableTab = "activeTableTab";
 <li><a href="../../../../../index-all.html">Index</a></li>
 <li><a href="../../../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc14-dev</b><br>fdb8fc404f0cd18e56d868b88b02ef032ed39256</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc14-dev</b><br>315f5dcf69c2e73fd13a5f83a669689de27a4584</div>
 </div>
 <div class="subNav">
 <ul class="navList">
@@ -153,17 +153,16 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/object/ObjectType.html#dispatch--">dispatch</a></span>()</code>
-<div class="block">Returns the exports class that this object type is dispatched to using
- <a href="../../../../../com/oracle/truffle/api/library/DynamicDispatchLibrary.html" title="class in com.oracle.truffle.api.library"><code>dynamic dispatch</code></a>.</div>
-</td>
-</tr>
-<tr id="i1" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/object/ObjectType.html#equals-com.oracle.truffle.api.object.DynamicObject-java.lang.Object-">equals</a></span>(<a href="../../../../../com/oracle/truffle/api/object/DynamicObject.html" title="class in com.oracle.truffle.api.object">DynamicObject</a>&nbsp;object,
       <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;other)</code>
 <div class="block">Delegate method for <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang"><code>Object.equals(Object)</code></a>.</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code><a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html" title="class in com.oracle.truffle.api.interop">ForeignAccess</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/object/ObjectType.html#getForeignAccessFactory-com.oracle.truffle.api.object.DynamicObject-">getForeignAccessFactory</a></span>(<a href="../../../../../com/oracle/truffle/api/object/DynamicObject.html" title="class in com.oracle.truffle.api.object">DynamicObject</a>&nbsp;object)</code>
+<div class="block">Create a <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html" title="class in com.oracle.truffle.api.interop"><code>ForeignAccess</code></a> to access a specific <a href="../../../../../com/oracle/truffle/api/object/DynamicObject.html" title="class in com.oracle.truffle.api.object"><code>DynamicObject</code></a>.</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
@@ -265,18 +264,19 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 </dl>
 </li>
 </ul>
-<a name="dispatch--">
+<a name="getForeignAccessFactory-com.oracle.truffle.api.object.DynamicObject-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>dispatch</h4>
-<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;&nbsp;dispatch()</pre>
-<div class="block">Returns the exports class that this object type is dispatched to using
- <a href="../../../../../com/oracle/truffle/api/library/DynamicDispatchLibrary.html" title="class in com.oracle.truffle.api.library"><code>dynamic dispatch</code></a>.</div>
+<h4>getForeignAccessFactory</h4>
+<pre>public&nbsp;<a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html" title="class in com.oracle.truffle.api.interop">ForeignAccess</a>&nbsp;getForeignAccessFactory(<a href="../../../../../com/oracle/truffle/api/object/DynamicObject.html" title="class in com.oracle.truffle.api.object">DynamicObject</a>&nbsp;object)</pre>
+<div class="block">Create a <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html" title="class in com.oracle.truffle.api.interop"><code>ForeignAccess</code></a> to access a specific <a href="../../../../../com/oracle/truffle/api/object/DynamicObject.html" title="class in com.oracle.truffle.api.object"><code>DynamicObject</code></a>.</div>
 <dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>object</code> - the object to be accessed</dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
-<dd>1.0</dd>
+<dd>0.8 or earlier</dd>
 </dl>
 </li>
 </ul>
@@ -304,7 +304,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li><a href="../../../../../index-all.html">Index</a></li>
 <li><a href="../../../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc14-dev</b><br>fdb8fc404f0cd18e56d868b88b02ef032ed39256</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc14-dev</b><br>315f5dcf69c2e73fd13a5f83a669689de27a4584</div>
 </div>
 <div class="subNav">
 <ul class="navList">

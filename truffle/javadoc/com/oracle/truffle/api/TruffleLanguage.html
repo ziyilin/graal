@@ -44,7 +44,7 @@ var activeTableTab = "activeTableTab";
 <li><a href="../../../../index-all.html">Index</a></li>
 <li><a href="../../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc14-dev</b><br>fdb8fc404f0cd18e56d868b88b02ef032ed39256</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc14-dev</b><br>315f5dcf69c2e73fd13a5f83a669689de27a4584</div>
 </div>
 <div class="subNav">
 <ul class="navList">
@@ -1461,10 +1461,11 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li class="blockList">
 <h4>getCurrentLanguage</h4>
 <pre>protected static&nbsp;&lt;T extends <a href="../../../../com/oracle/truffle/api/TruffleLanguage.html" title="class in com.oracle.truffle.api">TruffleLanguage</a>&lt;?&gt;&gt;&nbsp;T&nbsp;getCurrentLanguage(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;T&gt;&nbsp;languageClass)</pre>
-<div class="block">Returns the current language instance for the current <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Thread.html?is-external=true" title="class or interface in java.lang"><code>thread</code></a>. If a <a href="../../../../com/oracle/truffle/api/nodes/Node.html" title="class in com.oracle.truffle.api.nodes"><code>node</code></a> is accessible then <a href="../../../../com/oracle/truffle/api/nodes/Node.html#getContextSupplier-java.lang.Class-"><code>Node.getContextSupplier(Class)</code></a> should be used instead.
- Throws an <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalStateException.html?is-external=true" title="class or interface in java.lang"><code>IllegalStateException</code></a> if the language is not yet initialized or not
- executing on this thread. If invoked on the fast-path then <code>languageClass</code> must be
- a compilation final value.</div>
+<div class="block">Returns the current language instance for the current <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Thread.html?is-external=true" title="class or interface in java.lang"><code>thread</code></a>. If a root node
+ is accessible then <a href="../../../../com/oracle/truffle/api/nodes/ExecutableNode.html#getLanguage-java.lang.Class-"><code>ExecutableNode.getLanguage(Class)</code></a> should be used instead. Throws an
+ <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalStateException.html?is-external=true" title="class or interface in java.lang"><code>IllegalStateException</code></a> if the language is not yet initialized or not executing on this
+ thread. If invoked on the fast-path then <code>languageClass</code> must be a compilation
+ final value.</div>
 <dl>
 <dt><span class="paramLabel">Type Parameters:</span></dt>
 <dd><code>T</code> - the language type</dd>
@@ -1472,9 +1473,6 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <dd><code>languageClass</code> - the exact language class needs to be provided for the lookup.</dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>0.27</dd>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../com/oracle/truffle/api/nodes/Node.html#getLanguageSupplier-java.lang.Class-"><code>Node.getLanguageSupplier(Class)</code></a>, 
-<a href="../../../../com/oracle/truffle/api/dsl/CachedLanguage.html" title="annotation in com.oracle.truffle.api.dsl"><code>CachedLanguage</code></a></dd>
 </dl>
 </li>
 </ul>
@@ -1485,11 +1483,12 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li class="blockList">
 <h4>getCurrentContext</h4>
 <pre>protected static&nbsp;&lt;C,T extends <a href="../../../../com/oracle/truffle/api/TruffleLanguage.html" title="class in com.oracle.truffle.api">TruffleLanguage</a>&lt;C&gt;&gt;&nbsp;C&nbsp;getCurrentContext(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;T&gt;&nbsp;languageClass)</pre>
-<div class="block">Returns the current language context entered on the current thread. If a <a href="../../../../com/oracle/truffle/api/nodes/Node.html" title="class in com.oracle.truffle.api.nodes"><code>node</code></a> is
- accessible then <a href="../../../../com/oracle/truffle/api/nodes/Node.html#getLanguageSupplier-java.lang.Class-"><code>Node.getLanguageSupplier(Class)</code></a> should be used instead. An
- <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalStateException.html?is-external=true" title="class or interface in java.lang"><code>IllegalStateException</code></a> is thrown if the language is not yet initialized or not
- executing on this thread. If invoked on the fast-path then <code>languageClass</code> must be
- a compilation final value.</div>
+<div class="block">Returns the current language context entered on the current thread. If a
+ <a href="../../../../com/oracle/truffle/api/TruffleLanguage.html" title="class in com.oracle.truffle.api"><code>language</code></a> instance is available, a
+ <a href="../../../../com/oracle/truffle/api/TruffleLanguage.html#getContextReference--"><code>context reference</code></a> should be used instead for
+ performance reasons. An <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalStateException.html?is-external=true" title="class or interface in java.lang"><code>IllegalStateException</code></a> is thrown if the language is not yet
+ initialized or not executing on this thread. If invoked on the fast-path then
+ <code>languageClass</code> must be a compilation final value.</div>
 <dl>
 <dt><span class="paramLabel">Type Parameters:</span></dt>
 <dd><code>C</code> - the context type</dd>
@@ -1499,8 +1498,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>0.27</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../com/oracle/truffle/api/nodes/Node.html#getContextSupplier-java.lang.Class-"><code>Node.getContextSupplier(Class)</code></a>, 
-<a href="../../../../com/oracle/truffle/api/dsl/CachedContext.html" title="annotation in com.oracle.truffle.api.dsl"><code>CachedContext</code></a></dd>
+<dd><a href="../../../../com/oracle/truffle/api/TruffleLanguage.html#getContextReference--"><code>TruffleLanguage.getContextReference()</code></a></dd>
 </dl>
 </li>
 </ul>
@@ -1545,7 +1543,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li><a href="../../../../index-all.html">Index</a></li>
 <li><a href="../../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc14-dev</b><br>fdb8fc404f0cd18e56d868b88b02ef032ed39256</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc14-dev</b><br>315f5dcf69c2e73fd13a5f83a669689de27a4584</div>
 </div>
 <div class="subNav">
 <ul class="navList">
