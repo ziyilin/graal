@@ -44,7 +44,7 @@ var activeTableTab = "activeTableTab";
 <li><a href="../../../index-all.html">Index</a></li>
 <li><a href="../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc15-dev</b><br>54916ad3305e00fa2ccfcc37e82fa53ac40a4864</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc14-dev</b><br>f82872a59303f47e3d84a51f9732929367d65954</div>
 </div>
 <div class="subNav">
 <ul class="navList">
@@ -160,8 +160,8 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code><a href="../../../org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/Context.Builder.html#allowHostAccess-boolean-">allowHostAccess</a></span>(boolean&nbsp;enabled)</code>
-<div class="block">Allows guest languages to access the host language by loading new classes.</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/Context.Builder.html#allowHostAccess-org.graalvm.polyglot.HostAccess-">allowHostAccess</a></span>(<a href="../../../org/graalvm/polyglot/HostAccess.html" title="class in org.graalvm.polyglot">HostAccess</a>&nbsp;config)</code>
+<div class="block">Configures host access.</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
@@ -351,19 +351,21 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 </dl>
 </li>
 </ul>
-<a name="allowHostAccess-boolean-">
+<a name="allowHostAccess-org.graalvm.polyglot.HostAccess-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>allowHostAccess</h4>
-<pre>public&nbsp;<a href="../../../org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a>&nbsp;allowHostAccess(boolean&nbsp;enabled)</pre>
-<div class="block">Allows guest languages to access the host language by loading new classes. Default is
- <code>false</code>. If <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowAllAccess-boolean-"><code>all access</code></a> is set to
- <code>true</code>, then host access is enabled if not allowed explicitly.</div>
+<pre>public&nbsp;<a href="../../../org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a>&nbsp;allowHostAccess(<a href="../../../org/graalvm/polyglot/HostAccess.html" title="class in org.graalvm.polyglot">HostAccess</a>&nbsp;config)</pre>
+<div class="block">Configures host access. Use <a href="../../../org/graalvm/polyglot/HostAccess.html#EXPLICIT"><code>HostAccess.EXPLICIT</code></a> or <a href="../../../org/graalvm/polyglot/HostAccess.html#PUBLIC"><code>HostAccess.PUBLIC</code></a>.</div>
 <dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>config</code> - configuration of host access</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd><code>this</code> builder</dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
-<dd>1.0</dd>
+<dd>1.0 RC14</dd>
 </dl>
 </li>
 </ul>
@@ -420,7 +422,8 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
  Grants full access to the following privileges by default:
  <ul>
  <li>The <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowCreateThread-boolean-"><code>creation</code></a> and use of new threads.
- <li>The access to public <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowHostAccess-boolean-"><code>host classes</code></a>.
+ <li>The access to public <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowHostAccess-org.graalvm.polyglot.HostAccess-"><code>host
+ classes</code></a>.
  <li>The loading of new <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowHostClassLoading-boolean-"><code>host classes</code></a> by adding
  entries to the class path.
  <li>Exporting new members into the polyglot <a href="../../../org/graalvm/polyglot/Context.html#getPolyglotBindings--"><code>bindings</code></a>.
@@ -446,7 +449,8 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
  classes via jar or class files. If <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowAllAccess-boolean-"><code>all access</code></a> is set to
  <code>true</code>, then the host class loading is enabled if it is not disallowed
  explicitly. For host class loading to be useful, <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowIO-boolean-"><code>IO</code></a> operations
- and <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowHostAccess-boolean-"><code>host access</code></a> need to be allowed as well.</div>
+ and <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowHostAccess-org.graalvm.polyglot.HostAccess-"><code>host access</code></a> need to be
+ allowed as well.</div>
 <dl>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>1.0</dd>
@@ -480,8 +484,8 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <div class="block">Sets a class filter that allows to limit the classes that are allowed to be loaded by
  guest languages. If the filter returns <code>true</code>, then the class is accessible,
  otherwise it is not accessible and throws a guest language error when accessed. In order
- to have an effect, <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowHostAccess-boolean-"><code>Context.Builder.allowHostAccess(boolean)</code></a> or <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowAllAccess-boolean-"><code>Context.Builder.allowAllAccess(boolean)</code></a>
- needs to be set to <code>true</code>.</div>
+ to have an effect, <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowHostAccess-org.graalvm.polyglot.HostAccess-"><code>Context.Builder.allowHostAccess(org.graalvm.polyglot.HostAccess)</code></a> or
+ <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowAllAccess-boolean-"><code>Context.Builder.allowAllAccess(boolean)</code></a> needs to be set to <code>true</code>.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>classFilter</code> - a predicate that returns <code>true</code> or <code>false</code> for a
@@ -734,7 +738,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li><a href="../../../index-all.html">Index</a></li>
 <li><a href="../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc15-dev</b><br>54916ad3305e00fa2ccfcc37e82fa53ac40a4864</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc14-dev</b><br>f82872a59303f47e3d84a51f9732929367d65954</div>
 </div>
 <div class="subNav">
 <ul class="navList">
