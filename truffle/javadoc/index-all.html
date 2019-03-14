@@ -38,7 +38,7 @@
 <li class="navBarCell1Rev">Index</li>
 <li><a href="help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc14-dev</b><br>f82872a59303f47e3d84a51f9732929367d65954</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc15-dev</b><br>8a21782e7616894f392879bd7edd956c898c265c</div>
 </div>
 <div class="subNav">
 <ul class="navList">
@@ -438,18 +438,6 @@
 </dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/api/object/Shape.Allocator.html#Allocator--">Allocator()</a></span> - Constructor for class com.oracle.truffle.api.object.<a href="com/oracle/truffle/api/object/Shape.Allocator.html" title="class in com.oracle.truffle.api.object">Shape.Allocator</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="org/graalvm/polyglot/HostAccess.Builder.html#allowAccess-java.lang.reflect.Executable-">allowAccess(Executable)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/HostAccess.Builder.html" title="class in org.graalvm.polyglot">HostAccess.Builder</a></dt>
-<dd>
-<div class="block">Add an element to the access list.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="org/graalvm/polyglot/HostAccess.Builder.html#allowAccess-java.lang.reflect.Field-">allowAccess(Field)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/HostAccess.Builder.html" title="class in org.graalvm.polyglot">HostAccess.Builder</a></dt>
-<dd>
-<div class="block">Add an element to the access list.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="org/graalvm/polyglot/HostAccess.Builder.html#allowAccessAnnotatedBy-java.lang.Class-">allowAccessAnnotatedBy(Class&lt;? extends Annotation&gt;)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/HostAccess.Builder.html" title="class in org.graalvm.polyglot">HostAccess.Builder</a></dt>
-<dd>
-<div class="block">Elements annotated by this annotation can be accessed.</div>
-</dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Context.Builder.html#allowAllAccess-boolean-">allowAllAccess(boolean)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></dt>
 <dd>
 <div class="block">Sets the default value for all privileges.</div>
@@ -466,9 +454,9 @@
 <dd>
 <div class="block">Allow experimental options to be used for instruments and engine options.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Context.Builder.html#allowHostAccess-org.graalvm.polyglot.HostAccess-">allowHostAccess(HostAccess)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></dt>
+<dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Context.Builder.html#allowHostAccess-boolean-">allowHostAccess(boolean)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></dt>
 <dd>
-<div class="block">Configures host access.</div>
+<div class="block">Allows guest languages to access the host language by loading new classes.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Context.Builder.html#allowHostClassLoading-boolean-">allowHostClassLoading(boolean)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></dt>
 <dd>
@@ -488,10 +476,6 @@
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Context.Builder.html#allowNativeAccess-boolean-">allowNativeAccess(boolean)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></dt>
 <dd>
 <div class="block">Allows guest languages to access the native interface.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="org/graalvm/polyglot/HostAccess.Builder.html#allowPublicAccess--">allowPublicAccess()</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/HostAccess.Builder.html" title="class in org.graalvm.polyglot">HostAccess.Builder</a></dt>
-<dd>
-<div class="block">Public elements can be accessed.</div>
 </dd>
 <dt><a href="org/graalvm/nativeimage/c/struct/AllowWideningCast.html" title="annotation in org.graalvm.nativeimage.c.struct"><span class="typeNameLink">AllowWideningCast</span></a> - Annotation Type in <a href="org/graalvm/nativeimage/c/struct/package-summary.html">org.graalvm.nativeimage.c.struct</a></dt>
 <dd>
@@ -942,10 +926,6 @@
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Engine.Builder.html#build--">build()</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Engine.Builder.html" title="class in org.graalvm.polyglot">Engine.Builder</a></dt>
 <dd>
 <div class="block">Creates a new engine instance from the configuration provided in the builder.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="org/graalvm/polyglot/HostAccess.Builder.html#build--">build()</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/HostAccess.Builder.html" title="class in org.graalvm.polyglot">HostAccess.Builder</a></dt>
-<dd>
-<div class="block">Creates an instance of host access configuration.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Source.Builder.html#build--">build()</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Source.Builder.html" title="class in org.graalvm.polyglot">Source.Builder</a></dt>
 <dd>
@@ -2609,10 +2589,6 @@
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/api/TruffleLogger.html#exiting-java.lang.String-java.lang.String-java.lang.Object-">exiting(String, String, Object)</a></span> - Method in class com.oracle.truffle.api.<a href="com/oracle/truffle/api/TruffleLogger.html" title="class in com.oracle.truffle.api">TruffleLogger</a></dt>
 <dd>
 <div class="block">Logs a return from method with result.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="org/graalvm/polyglot/HostAccess.html#EXPLICIT">EXPLICIT</a></span> - Static variable in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/HostAccess.html" title="class in org.graalvm.polyglot">HostAccess</a></dt>
-<dd>
-<div class="block">Configuration via <a href="org/graalvm/polyglot/HostAccess.Export.html" title="annotation in org.graalvm.polyglot"><code>HostAccess.Export</code></a>.</div>
 </dd>
 <dt><a href="com/oracle/truffle/api/nodes/ExplodeLoop.html" title="annotation in com.oracle.truffle.api.nodes"><span class="typeNameLink">ExplodeLoop</span></a> - Annotation Type in <a href="com/oracle/truffle/api/nodes/package-summary.html">com.oracle.truffle.api.nodes</a></dt>
 <dd>
@@ -5129,18 +5105,6 @@
 <dd>
 <div class="block">Represents a host object.</div>
 </dd>
-<dt><a href="org/graalvm/polyglot/HostAccess.html" title="class in org.graalvm.polyglot"><span class="typeNameLink">HostAccess</span></a> - Class in <a href="org/graalvm/polyglot/package-summary.html">org.graalvm.polyglot</a></dt>
-<dd>
-<div class="block">Configuration of host access.</div>
-</dd>
-<dt><a href="org/graalvm/polyglot/HostAccess.Builder.html" title="class in org.graalvm.polyglot"><span class="typeNameLink">HostAccess.Builder</span></a> - Class in <a href="org/graalvm/polyglot/package-summary.html">org.graalvm.polyglot</a></dt>
-<dd>
-<div class="block">Builder to create own <a href="org/graalvm/polyglot/HostAccess.html" title="class in org.graalvm.polyglot"><code>HostAccess</code></a>.</div>
-</dd>
-<dt><a href="org/graalvm/polyglot/HostAccess.Export.html" title="annotation in org.graalvm.polyglot"><span class="typeNameLink">HostAccess.Export</span></a> - Annotation Type in <a href="org/graalvm/polyglot/package-summary.html">org.graalvm.polyglot</a></dt>
-<dd>
-<div class="block">Annotation to export public methods or fields.</div>
-</dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Context.Builder.html#hostClassFilter-java.util.function.Predicate-">hostClassFilter(Predicate&lt;String&gt;)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></dt>
 <dd>
 <div class="block">Sets a class filter that allows to limit the classes that are allowed to be loaded by
@@ -6875,10 +6839,6 @@
 <dd>
 <div class="block">Creates a new context builder that allows to configure an engine instance.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="org/graalvm/polyglot/HostAccess.html#newBuilder--">newBuilder()</a></span> - Static method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/HostAccess.html" title="class in org.graalvm.polyglot">HostAccess</a></dt>
-<dd>
-<div class="block">Configure your own access configuration.</div>
-</dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/management/ExecutionListener.html#newBuilder--">newBuilder()</a></span> - Static method in class org.graalvm.polyglot.management.<a href="org/graalvm/polyglot/management/ExecutionListener.html" title="class in org.graalvm.polyglot.management">ExecutionListener</a></dt>
 <dd>
 <div class="block">Creates a builder that can be used to attach execution listeners.</div>
@@ -7722,18 +7682,6 @@
 <dd>
 <div class="block">Prepare to unwind a frame.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="org/graalvm/polyglot/HostAccess.Builder.html#preventAccess-java.lang.reflect.Executable-">preventAccess(Executable)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/HostAccess.Builder.html" title="class in org.graalvm.polyglot">HostAccess.Builder</a></dt>
-<dd>
-<div class="block">Prevents access to given method or constructor.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="org/graalvm/polyglot/HostAccess.Builder.html#preventAccess-java.lang.reflect.Field-">preventAccess(Field)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/HostAccess.Builder.html" title="class in org.graalvm.polyglot">HostAccess.Builder</a></dt>
-<dd>
-<div class="block">Prevents access to given field.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="org/graalvm/polyglot/HostAccess.Builder.html#preventAccess-java.lang.Class-">preventAccess(Class&lt;?&gt;)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/HostAccess.Builder.html" title="class in org.graalvm.polyglot">HostAccess.Builder</a></dt>
-<dd>
-<div class="block">Prevents access to all members of given class.</div>
-</dd>
 <dt><a href="com/oracle/truffle/api/profiles/PrimitiveValueProfile.html" title="class in com.oracle.truffle.api.profiles"><span class="typeNameLink">PrimitiveValueProfile</span></a> - Class in <a href="com/oracle/truffle/api/profiles/package-summary.html">com.oracle.truffle.api.profiles</a></dt>
 <dd>
 <div class="block">
@@ -7898,10 +7846,6 @@
 <dt><a href="org/graalvm/polyglot/proxy/ProxyObject.html" title="interface in org.graalvm.polyglot.proxy"><span class="typeNameLink">ProxyObject</span></a> - Interface in <a href="org/graalvm/polyglot/proxy/package-summary.html">org.graalvm.polyglot.proxy</a></dt>
 <dd>
 <div class="block">Interface to be implemented to mimic guest language objects that contain members.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="org/graalvm/polyglot/HostAccess.html#PUBLIC">PUBLIC</a></span> - Static variable in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/HostAccess.html" title="class in org.graalvm.polyglot">HostAccess</a></dt>
-<dd>
-<div class="block">All public access, but no reflection access.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/collections/EconomicMap.html#put-K-V-">put(K, V)</a></span> - Method in interface org.graalvm.collections.<a href="org/graalvm/collections/EconomicMap.html" title="interface in org.graalvm.collections">EconomicMap</a></dt>
 <dd>
@@ -9625,10 +9569,6 @@
 <dt><span class="memberNameLink"><a href="org/graalvm/options/OptionDescriptor.html#toString--">toString()</a></span> - Method in class org.graalvm.options.<a href="org/graalvm/options/OptionDescriptor.html" title="class in org.graalvm.options">OptionDescriptor</a></dt>
 <dt><span class="memberNameLink"><a href="org/graalvm/options/OptionType.html#toString--">toString()</a></span> - Method in class org.graalvm.options.<a href="org/graalvm/options/OptionType.html" title="class in org.graalvm.options">OptionType</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="org/graalvm/polyglot/HostAccess.html#toString--">toString()</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/HostAccess.html" title="class in org.graalvm.polyglot">HostAccess</a></dt>
-<dd>
-<div class="block">Textual indentification of the instance.</div>
-</dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/management/ExecutionEvent.html#toString--">toString()</a></span> - Method in class org.graalvm.polyglot.management.<a href="org/graalvm/polyglot/management/ExecutionEvent.html" title="class in org.graalvm.polyglot.management">ExecutionEvent</a></dt>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/PolyglotException.StackFrame.html#toString--">toString()</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/PolyglotException.StackFrame.html" title="class in org.graalvm.polyglot">PolyglotException.StackFrame</a></dt>
 <dd>
@@ -10558,7 +10498,7 @@ the order they are declared.</div>
 <li class="navBarCell1Rev">Index</li>
 <li><a href="help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc14-dev</b><br>f82872a59303f47e3d84a51f9732929367d65954</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc15-dev</b><br>8a21782e7616894f392879bd7edd956c898c265c</div>
 </div>
 <div class="subNav">
 <ul class="navList">
