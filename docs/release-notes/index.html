@@ -542,14 +542,13 @@ This applies to all languages.</p>
 
 <h3 id="native-images">Native Images</h3>
 <h5 id="new-features">New Features</h5>
-<ul>
-  <li>
-    <p>Improved Native Image generation of various applications by fixing a number of issues occurring both at generation and run time.</p>
-  </li>
-  <li>
-    <p>Implemented the <code>Class.getSimpleName</code> method for the native images (see <a href="https://github.com/oracle/graal/issues/1020">1020</a>).</p>
-  </li>
-</ul>
+<p>We introduced a tracing agent for the Java HotSpot VM that records usages of reflection and JNI that can then be converted to configuration files for the native image generator. This simplifies the process of getting new applications working as native images. For details, please look at the <a href="https://github.com/oracle/graal/blob/master/substratevm/CONFIGURE.md">documentation</a>.</p>
+
+<p>We improved support for the <code>java.util.logging</code> API. See the <a href="https://github.com/oracle/graal/blob/master/substratevm/LOGGING.md">GitHub docs</a> for details.</p>
+
+<p>The <code>javax.script.ScriptEngine</code> API is now supported. Please note that the Nashorn JavaScript engine does not work in native images and is therefore always excluded. However, Truffle based language implementations such as the GraalVM JavaScript engine are available when, e.g., the native image is built with the option <code>--language:js</code>.</p>
+
+<p>Implemented the <code>Class.getSimpleName</code> method for the native images (see <a href="https://github.com/oracle/graal/issues/1020">1020</a>).</p>
 
 <h5 id="bugfixes">Bugfixes</h5>
 <ul>
