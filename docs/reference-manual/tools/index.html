@@ -1127,7 +1127,7 @@ puts js_obj[:payload].join(' ')
 and connect <code>Test.rb</code> script to the running IGV:</p>
 
 <pre><code class="language-shell">$ gu list
-$ ruby --jvm --jvm.Dgraal.Dump=:1 --jvm.Dgraal.PrintGraph=Network Test.rb
+$ ruby --jvm --vm.Dgraal.Dump=:1 --vm.Dgraal.PrintGraph=Network Test.rb
 </code></pre>
 <p>This causes GraalVM to dump Graal compiler graphs in IGV format over the network to an IGV process listening
 on <code>127.0.0.1:4445</code>. Once the connection is made, you are able to see the graphs in the Outline window.
@@ -1175,7 +1175,7 @@ but you can display the list of opened projects using Window - Projects.</p>
 
 <p>To dump Graal compiler graphs from an embedded Java application to IGV,
 you need to add options to GraalVM based processes. Depending on the language/VM
-used, you may need to prefix the options by <code>--jvm</code>.
+used, you may need to prefix the options by <code>--vm</code>.
 See the particular language’s documentation for the details. The main option to
 add is <code>-Dgraal.Dump=:1</code>. This will dump graphs in an IGV readable format to the local file system.
 To send the dumps directly to IGV over the network, add <code>-Dgraal.PrintGraph=Network</code>.

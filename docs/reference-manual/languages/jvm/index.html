@@ -665,7 +665,7 @@ from application code. This is useful if you want to
 <a href="https://github.com/oracle/graal/blob/eda70d0f1cfdfb0baa9abca534e2c36184bc1546/compiler/src/org.graalvm.compiler.core.test/src/org/graalvm/compiler/core/test/tutorial/InvokeGraal.java#L56-L58">programmatically invoke Graal</a>.</li>
   <li><code>-XX:+BootstrapJVMCI</code>: Causes Graal to be compiled before running the Java main method.
 By default, Graal is compiled by the C1 compiler to mitigate warmup costs. To force Graal
-to compile itself, add either <code>Dgraal.CompileGraalWithC1Only=false</code> or <code>-XX:-TieredCompilation</code>
+to compile itself, add either <code>-Dgraal.CompileGraalWithC1Only=false</code> or <code>-XX:-TieredCompilation</code>
 to the command line.</li>
   <li><code>-XX:+EagerJVMCI</code>: By default, Graal is only initialized upon the first top tier compilation
 request. Use this flag to force eager initialization which can be useful for <a href="https://bugs.openjdk.java.net/browse/JDK-8195632">testing</a>.</li>
@@ -714,15 +714,15 @@ option whose complete help description can be seen with <code>-XX:+JVMCIPrintPro
 <code>node</code>, <code>js</code> and <code>lli</code>. The prefix for specifying the properties is slightly different.
 For example:</p>
 
-<pre><code>$ java -Dgraal.ShowConfiguration=info
+<pre><code>$ java -XX:+EagerJVMCI -Dgraal.ShowConfiguration=info -version
 </code></pre>
 
 <p>Becomes:</p>
 
-<pre><code>$ js --jvm.Dgraal.ShowConfiguration=info
+<pre><code>$ js --jvm --vm.Dgraal.ShowConfiguration=info -version
 </code></pre>
 
-<p>Note the <code>-D</code> prefix is replaced by <code>--jvm.D</code>.</p>
+<p>Note the <code>-D</code> prefix is replaced by <code>--vm.D</code>.</p>
 
 <h2 id="jvm-operations-manual">JVM Operations Manual</h2>
 

@@ -55,17 +55,17 @@ applications we would in most cases recommend the JVM configuration with
 `--jvm`.
 
 However to reach this peak performance you need to *warm-up* TruffleRuby, as you
-do with most heavily optimising virtual machines. This is done by running the
+do with most heavily optimizing virtual machines. This is done by running the
 application under load for a period of time. If you monitor the performance (by
 measuring operation time, or response time) you will see it reduce over time and
-then probably stabilise.
+then probably stabilize.
 
 ### Tuning TruffleRuby
 
 To tune TruffleRuby you will need to consider the options of either your JVM or
 the SubstrateVM, and then Truffle, and Graal.
 
-TruffleRuby has a large set of options, which you can see with the `-Xoptions`
+TruffleRuby has a large set of options, which you can see with the `--help:languages`
 flag.
 
 ### Logging
@@ -74,7 +74,7 @@ Ruby application logging and warning works as in the standard implementation of
 Ruby.
 
 For logging of TruffleRuby internals, standard Java logging is used. The logging
-level can be set with `-Xlog=INFO`, `=FINEST`, or so on.
+level can be set with `--log.level=INFO`, `=FINEST`, or so on.
 
 ### Troubleshooting TruffleRuby
 The GraalVM implementation of Ruby is experimental and we can not guarantee it to be bug free.

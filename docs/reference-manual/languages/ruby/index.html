@@ -823,10 +823,10 @@ puts js_obj[:payload].join(' ')
 </code></pre>
 
 <p>We use the <code>--jvm --polyglot</code> option to say we want to run a polyglot program, and
-<code>-Xsingle_threaded</code> because JavaScript is only compatible with single threaded
+<code>--single_threaded</code> because JavaScript is only compatible with single threaded
 programs.</p>
 
-<pre><code class="language-shell">$ ruby --jvm --polyglot -Xsingle_threaded test.rb
+<pre><code class="language-shell">$ ruby --jvm --polyglot --single_threaded test.rb
 2018-04-11 15:25:08 -0700
 Hello World
 1 2 3 4 5 6 7 8 9 10
@@ -835,7 +835,7 @@ Hello World
 <h2 id="compatibility">Compatibility</h2>
 
 <p>TruffleRuby aims to be fully compatible with the standard implementation of
-Ruby, MRI, version 2.4.4, revision 63013.</p>
+Ruby, MRI, version 2.6.2, revision 67232.</p>
 
 <p>Any incompatibility with MRI is considered a bug, except for rare cases detailed below.
 If you find an incompatibility with MRI, please <a href="https://github.com/oracle/truffleruby/issues">report</a> it to us.</p>
@@ -891,20 +891,41 @@ the SVM. The correct and portable way to test if <code>fork</code> is available 
 
 <h4 id="standard-libraries">Standard libraries</h4>
 
-<p><code>win32ole</code> is unsupported.</p>
+<p>The following standard libraries are unsupported.</p>
 
-<p>Quite a few of the less commonly used standard libraries are currently not
-supported, such as <code>fiddle</code>, <code>sdbm</code>, <code>gdbm</code>, <code>tk</code>. It’s quite hard to get an
-understanding of all the standard libraries that should be available, so it’s
-hard to give a definitive list of those that are missing.</p>
+<ul>
+  <li><code>continuation</code></li>
+  <li><code>dbm</code></li>
+  <li><code>gdbm</code></li>
+  <li><code>sdbm</code></li>
+  <li><code>debug</code> (could be implemented in the future) <!-- TODO CS 26 Feb 19 document alternatives --></li>
+  <li><code>profile</code> (could be implemented in the future)</li>
+  <li><code>profiler</code> (could be implemented in the future)</li>
+  <li><code>io/console</code> (partially implemented, could be implemented in the future)</li>
+  <li><code>io/wait</code> (partially implemented, could be implemented in the future)</li>
+  <li><code>pty</code> (could be implemented in the future)</li>
+  <li><code>ripper</code> (has a no-op implementation, and could be implemented in the future)</li>
+  <li><code>shell</code> (could be implemented in the future) <!-- TODO CS 26 Feb 19 probably due to simple bug --></li>
+  <li><code>win32</code></li>
+  <li><code>win32ole</code></li>
+</ul>
+
+<p><code>fiddle</code> is not yet implemented - the module and some methods are there
+but not enough to run anything serious.</p>
+
+<p>We provide our own included implementation of the interface of the <code>ffi</code> gem,
+like JRuby and Rubinius, but the implemention of this is limited at the
+moment.</p>
 
 <h4 id="safe-levels">Safe levels</h4>
 
 <p><code>$SAFE</code> and <code>Thread#safe_level</code> are <code>0</code> and no other levels are implemented.
 Trying to use level <code>1</code> will raise a <code>SecurityError</code>. Other levels will raise
-<code>ArgumentError</code> as in standard Ruby.</p>
+<code>ArgumentError</code> as in standard Ruby. See our <a href="https://github.com/oracle/truffleruby/blob/master/doc/user/security.md">security notes</a> for more explanation on this.</p>
 
-<p><code>$SAFE</code> level 1 can be allowed, but ignored, with the <code>-Xsafe</code> option.</p>
+<h4 id="internal-mri-functionality">Internal MRI functionality</h4>
+
+<p><code>RubyVM</code> is not intended for users and is not implemented.</p>
 
 <h3 id="features-with-major-differences">Features with major differences</h3>
 
@@ -915,6 +936,15 @@ threads are scheduled in parallel. As in JRuby and Rubinius, you are responsible
 for correctly synchronising access to your own shared mutable data structures,
 and we will be responsible for correctly synchronising the state of the
 interpreter.</p>
+
+<h4 id="threads-detect-interrupts-at-different-points">Threads detect interrupts at different points</h4>
+
+<p>TruffleRuby threads may detect that they have been interrupted at different
+points in the program to where it would on MRI. In general, TruffleRuby seems
+to detect an interrupt sooner than MRI. JRuby and Rubinius are also different
+to MRI, the behaviour isn’t documented in MRI, and it’s likely to change
+between MRI versions, so we would not recommend depending on interrupt points
+at all.</p>
 
 <h4 id="fibers-do-not-have-the-same-performance-characteristics-as-in-mri">Fibers do not have the same performance characteristics as in MRI</h4>
 
@@ -935,16 +965,15 @@ so, but this isn’t always the case. For example <code>RubyVM</code> is not ava
 
 <h4 id="command-line-switches">Command line switches</h4>
 
-<p><code>-y</code>, <code>--yydebug</code>, <code>--dump=</code> are ignored with a warning as they are internal
-development tools.</p>
-
-<p><code>-X</code> is an undocumented synonym for <code>-C</code> and we (and other alternative
-implementations of Ruby) have repurposed it for extended options. We warn if
-your <code>-X</code> options look like they are actually intended to be as in MRI.</p>
+<p><code>-y</code>, <code>--yydebug</code>, <code>--dump=</code>, <code>--debug-frozen-string-literal</code> are ignored with
+a warning as they are unsupported development tools.</p>
 
 <p>Programs passed in <code>-e</code> arguments with magic-comments must have an encoding that
 is UTF-8 or a subset of UTF-8, as the JVM has already decoded arguments by the
 time we get them.</p>
+
+<p><code>--jit</code> options and the <code>jit</code> feature are not supported because TruffleRuby
+uses Graal as a JIT.</p>
 
 <h4 id="setting-the-process-title-doesnt-always-work">Setting the process title doesn’t always work</h4>
 
@@ -962,12 +991,13 @@ lines in front of the source before parsing it.</p>
 <h4 id="polyglot-standard-io-streams">Polyglot standard IO streams</h4>
 
 <p>If you use standard IO streams provided by the Polyglot engine, via the
-<code>-Xpolyglot.stdio</code> option, reads and writes to file descriptors 1, 2 and 3 will
-be redirected to these streams. That means that other IO operations on these
-file descriptors, such as <code>isatty</code> may not be relevant for where these streams
-actually end up, and operations like <code>dup</code> may lose the connection to the
-polyglot stream. For example, if you <code>$stdout.reopen</code>, as some logging frameworks
-do, you will get the native standard-out, not the polyglot out.</p>
+experimental <code>--polyglot.stdio</code> option, reads and writes to file descriptors 1,
+2 and 3 will be redirected to these streams. That means that other IO
+operations on these file descriptors, such as <code>isatty</code> may not be relevant for
+where these streams actually end up, and operations like <code>dup</code> may lose the
+connection to the polyglot stream. For example, if you <code>$stdout.reopen</code>, as
+some logging frameworks do, you will get the native standard-out, not the
+polyglot out.</p>
 
 <p>Also, IO buffer drains, writes on IO objects with <code>sync</code> set, and
 <code>write_nonblock</code>, will not retry the write on <code>EAGAIN</code> and <code>EWOULDBLOCK</code>, as the
@@ -1003,7 +1033,7 @@ Ruby anyway.</p>
 
 <p>To help alleviate this problem in some cases backtraces are automatically
 disabled where we dynamically detect that they probably won’t be used. See the
-<code>-Xbacktraces.omit_unused</code> option.</p>
+experimental <code>--backtraces.omit_unused</code> option.</p>
 
 <h3 id="c-extension-compatibility">C Extension Compatibility</h3>
 
@@ -1097,7 +1127,7 @@ limited so may be misleading.</p>
 
 <h2 id="options">Options</h2>
 
-<p>TruffleRuby has the same command line interface as MRI 2.4.4.</p>
+<p>TruffleRuby has the same command line interface as our compatible MRI version.</p>
 
 <pre><code>Usage: truffleruby [switches] [--] [programfile] [arguments]
   -0[octal]       specify record separator (\0, if no argument)
@@ -1118,16 +1148,17 @@ limited so may be misleading.</p>
   -s              enable some switch parsing for switches after script name
   -S              look for the script using PATH environment variable
   -T[level=1]     turn on tainting checks
-  -v, --verbose   print version number, then turn on verbose mode
+  -v              print the version number, then turn on verbose mode
   -w              turn warnings on for your script
   -W[level=2]     set warning level; 0=silence, 1=medium, 2=verbose
   -x[directory]   strip off text before #!ruby line and perhaps cd to directory
   --copyright     print the copyright
-  --enable=feature[,...], --disable=feature[,...]
-                  enable or disable features
+  --enable={gems|rubyopt|...}[,...], --disable={gems|rubyopt|...}[,...]
+                  enable or disable features. see below for available features
   --external-encoding=encoding, --internal-encoding=encoding
                   specify the default external or internal character encoding
-  --version       print the version
+  --verbose       turn on verbose mode and disable script from stdin
+  --version       print the version number, then exit
   --help          show this message, -h for short message
 
 Features:
@@ -1138,84 +1169,59 @@ Features:
                   freeze all string literals (default: disabled)
 </code></pre>
 
-<p>TruffleRuby also reads the <code>RUBYOPT</code> environment variable, if run from the Ruby
-launcher.</p>
+<p>TruffleRuby also reads the <code>RUBYOPT</code> environment variable, as in standard
+Ruby, if run from the Ruby launcher.</p>
 
 <h3 id="unlisted-ruby-switches">Unlisted Ruby switches</h3>
 
 <p>MRI has some extra Ruby switches which are aren’t normally listed in help output
 but are documented in the Ruby manual page.</p>
 
-<pre><code>  -U              set the internal encoding to UTF-8
-  -KEeSsUuNnAa    sets the source and external encoding
+<pre><code>  -Xdirectory     cd to directory before executing your script (same as -C)
+  -U              set the internal encoding to UTF-8
+  -K[EeSsUuNnAa]  sets the source and external encoding
   --encoding=external[:internal]
                   the same as --external-encoding=external and optionally --internal-encoding=internal
-  -y, --ydebug    debug the parser
-  -Xdirectory     the same as -Cdirectory
-  --dump=insns    print disassembled instructions
 </code></pre>
 
-<h3 id="truffleruby-specific-switches">TruffleRuby-specific switches</h3>
+<h3 id="truffleruby-options">TruffleRuby options</h3>
 
-<p>Beyond the standard Ruby command line switches we support some additional
-switches specific to TruffleRuby.</p>
+<p>TruffleRuby options are set via <code>--option=value</code>, or you can use
+<code>--ruby.option=value</code> from any launcher. You can omit <code>=value</code> to set to <code>true</code>.</p>
 
-<pre><code>TruffleRuby:
-  -Xlog=SEVERE,WARNING,INFO,CONFIG,FINE,FINER,FINEST
-                  set the TruffleRuby logging level
-  -Xoptions       print available TruffleRuby options
-  -Xname=value    set a TruffleRuby option (omit value to set to true)
-  -J-option=value Translates to --jvm.option=value
-</code></pre>
+<p>Available options and documentation can be seen with <code>--help:languages</code>.
+Additionally set <code>--help:expert</code> and <code>--help:internal</code> to see those categories of
+options. All options all experimental and subject to change at any time.</p>
 
-<p>As well as being set at the command line, options, except for <code>log</code>,
-can be set using <code>--ruby.option=</code>.
-For example <code>--ruby.cexts.remap=true</code>. They can also be set as JVM system
-properties, where they have a prefix <code>polyglot.ruby.</code>. For example
-<code>--jvm.Dpolyglot.ruby.cexts.remap=true</code>, or via any other way of setting JVM
-system properties. Finally, options can be set as Graal-SDK polyglot API
-configuration options.</p>
+<p>Options can also be set as JVM system properties, where they have a prefix
+<code>polyglot.ruby.</code>. For example <code>--vm.Dpolyglot.ruby.cexts.remap=true</code>, or via
+any other way of setting JVM system properties. Finally, options can be set as
+Graal-SDK polyglot API configuration options.</p>
 
 <p>The priority for options is the command line first, then the Graal-SDK polyglot
 API configuration, then system properties last.</p>
 
-<p>The logging level is not a TruffleRuby option like the others and so cannot be
-set with a JVM system property. This is because the logger is once per VM,
-rather than once per TruffleRuby instance, and is used to report problems
-loading the TruffleRuby instance before options are loaded.</p>
+<p>TruffleRuby options, as well as conventional Ruby options and VM options, can
+also bet set in the <code>TRUFFLERUBYOPT</code> and <code>RUBYOPT</code> environment variables, if
+run from the Ruby launcher.</p>
 
-<p>TruffleRuby-specific options, as well as conventional Ruby options, can also
-bet set in the <code>TRUFFLERUBYOPT</code> environment variable, if run from the Ruby
-launcher.</p>
+<p><code>--</code> or the first non-option argument stops processing of TrufflRuby and VM
+options in the same way it stops processing of Ruby arguments.</p>
 
-<p><code>--</code> or the first non-option argument both stop processing of Truffle-specific
-arguments in the same way it stops processing of Ruby arguments.</p>
+<h3 id="vm-options">VM options</h3>
 
-<h3 id="jvm--and-svm-specific-switches">JVM- and SVM-specific switches</h3>
+<p>To set options in the underlying VM, use <code>--vm.</code>, valid for both the native
+configuration and the JVM configuration.</p>
 
-<p>If you are running TruffleRuby on a JVM or the GraalVM, we additionally support
-passing options to the JVM using either a <code>-J-</code> or <code>--jvm.</code> prefix.
-For example <code>-J-ea</code>. <code>-J-classpath</code> and <code>-J-cp</code> 
-also implicitly take the following argument to be passed to the JVM.
-<code>-J-cmd</code> print the Java command that will be executed, for
-debugging.</p>
+<p>For example <code>--vm.Dsystem_property=value</code> or <code>--vm.ea</code>.</p>
 
-<pre><code>  --jvm.[option]  Pass options to the JVM; for example, '--jvm.classpath=myapp.jar'. To see available options. use '--jvm.help'.
-</code></pre>
+<p>To set the classpath, use the <code>=</code> notation, rather than two separate arguments.
+For example <code>--vm.cp=lib.jar</code> or <code>--vm.classpath=lib.jar</code>.</p>
 
-<p><code>--</code> or the first non-option argument both stop processing of JVM-specific
-arguments in the same way it stops processing of Ruby arguments.</p>
+<h3 id="other-binary-switches">Other binary switches</h3>
 
-<p>TruffleRuby also supports the <code>JAVA_HOME</code>, <code>JAVACMD</code> and <code>JAVA_OPTS</code> environment
-variables when running on a JVM (except for <code>JAVACMD</code> on the GraalVM).</p>
-
-<h3 id="svm-specific-switches">SVM-specific switches</h3>
-
-<p>The SVM supports <code>--native.D</code> for setting system properties and 
-<code>--native.XX:arg</code> for SVM options.</p>
-
-<pre><code>  --native.[option]  Pass options to the native image. To see available options, use '--native.help'.
-</code></pre>
+<p>Other binaries, such as <code>irb</code>, <code>gem</code>, and so on, support exactly the same
+switches as in standard Ruby.</p>
 
 <h3 id="determining-the-truffleruby-home">Determining the TruffleRuby home</h3>
 
@@ -1225,7 +1231,7 @@ These are stored in the TruffleRuby home directory.</p>
 <p>The search priority for finding Ruby home is:</p>
 
 <ul>
-  <li>The value of the TruffleRuby <code>home</code> option (i.e., <code>-Xhome=path/to/truffleruby_home</code>).</li>
+  <li>The value of the TruffleRuby <code>home</code> option (i.e., <code>--home=path/to/truffleruby_home</code>).</li>
   <li>The home that the Truffle framework reports.</li>
   <li>The parent of the directory containing the Ruby launcher executable.</li>
 </ul>
@@ -1294,17 +1300,17 @@ applications we would in most cases recommend the JVM configuration with
 <code>--jvm</code>.</p>
 
 <p>However to reach this peak performance you need to <em>warm-up</em> TruffleRuby, as you
-do with most heavily optimising virtual machines. This is done by running the
+do with most heavily optimizing virtual machines. This is done by running the
 application under load for a period of time. If you monitor the performance (by
 measuring operation time, or response time) you will see it reduce over time and
-then probably stabilise.</p>
+then probably stabilize.</p>
 
 <h3 id="tuning-truffleruby">Tuning TruffleRuby</h3>
 
 <p>To tune TruffleRuby you will need to consider the options of either your JVM or
 the SubstrateVM, and then Truffle, and Graal.</p>
 
-<p>TruffleRuby has a large set of options, which you can see with the <code>-Xoptions</code>
+<p>TruffleRuby has a large set of options, which you can see with the <code>--help:languages</code>
 flag.</p>
 
 <h3 id="logging">Logging</h3>
@@ -1313,7 +1319,7 @@ flag.</p>
 Ruby.</p>
 
 <p>For logging of TruffleRuby internals, standard Java logging is used. The logging
-level can be set with <code>-Xlog=INFO</code>, <code>=FINEST</code>, or so on.</p>
+level can be set with <code>--log.level=INFO</code>, <code>=FINEST</code>, or so on.</p>
 
 <h3 id="troubleshooting-truffleruby">Troubleshooting TruffleRuby</h3>
 <p>The GraalVM implementation of Ruby is experimental and we can not guarantee it to be bug free.

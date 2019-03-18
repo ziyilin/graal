@@ -854,14 +854,13 @@ Use <code>--help:languages</code> to see the full list of available options.</li
 
 <p><code>--jvm</code> executes the application on the JVM instead of the native image.</p>
 
-<p><code>--jvm.&lt;option&gt;</code> passes JVM options to GraalVM (e.g. <code>--jvm.Xmx&lt;size&gt;</code>).
-List available JVM options with <code>--jvm.help</code>.</p>
+<p><code>--vm.&lt;option&gt;</code> passes VM options and system properties to the native image.
+To pass JVM options to GraalVM you need to provide <code>--jvm</code> before,
+i.e., <code>--jvm --vm.&lt;option&gt;</code>. List all available system properties to the native image,
+JVM and VM options and with <code>--vm.help</code>.</p>
 
-<p>System properties can be set as follows: <code>--jvm.D&lt;name&gt;=&lt;value&gt;</code>.
-For example, <code>--jvm.Dgraal.TraceTruffleCompilation=true</code> will print finished compilations.</p>
-
-<p>Likewise, <code>--native.&lt;option&gt;</code> passes VM options and system properties to the native image.
-List available VM options with <code>--native.help</code>.</p>
+<p>System properties can be set as follows: <code>--vm.D&lt;name&gt;=&lt;value&gt;</code>.
+For example, <code>--vm.Dgraal.TraceTruffleCompilation=true</code> will print finished compilations.</p>
 
 <p><code>--compiler.&lt;property&gt;=&lt;value&gt;</code> passes settings to the compiler.
 For example, <code>--compiler.CompilationThreshold=&lt;Integer&gt;</code> sets the minimum number of invocations or loop iterations before a function is compiled.</p>
@@ -892,7 +891,7 @@ Most significantly, this means that the JavaScript-to-Java interoperability feat
 Here are a few tips and tricks you can follow to analyse and improve peak performance:</p>
 
 <ul>
-  <li>When measuring, ensure you have given Graal enough time to compile all hot methods before starting to measure peak performance. A useful command line option for that is <code>--jvm.Dgraal.TraceTruffleCompilation=true</code> – this outputs a message whenever a (JavaScript) method is compiled. As long as this still prints frequently, measurement should not yet start.</li>
+  <li>When measuring, ensure you have given Graal enough time to compile all hot methods before starting to measure peak performance. A useful command line option for that is <code>--vm.Dgraal.TraceTruffleCompilation=true</code> – this outputs a message whenever a (JavaScript) method is compiled. As long as this still prints frequently, measurement should not yet start.</li>
   <li>Compare the performance between the native image and the JVM mode if possible. Depending on the characteristics of your application, one or the other might show better peak performance.</li>
   <li>The Polyglot API comes with several tools and options to inspect the performance of your application:
     <ul>

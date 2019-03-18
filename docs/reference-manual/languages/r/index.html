@@ -647,7 +647,7 @@ Use <code>--help</code> to print the list of supported options. The most importa
 <ul>
   <li><code>--jvm</code> to enable Java interoperability</li>
   <li><code>--polyglot</code> to enable interoperability with other GraalVM languages</li>
-  <li><code>--jvm.Djava.net.useSystemProxies=true</code> to pass any options to the JVM, this will be translated to <code>-Djava.net.useSystemProxies=true</code>.</li>
+  <li><code>--vm.Djava.net.useSystemProxies=true</code> to pass any options to the JVM, this will be translated to <code>-Djava.net.useSystemProxies=true</code>.</li>
 </ul>
 
 <p>Note: unlike other GraalVM languages, R does not yet ship with a
@@ -689,7 +689,8 @@ By default, R uses fixed snapshot of the CRAN repository<a href="#note-1"><sup>1
 that is updated with every new release of R (once a month).
 This behavior can be overridden by explicitly setting the <code>repos</code> argument of the <code>install.packages</code> function.
 This functionality does not interfere with the <code>checkpoint</code> package. If you are behind a proxy server, make
-sure to configure the proxy either with environment variables or using the JVM options, e.g., <code>--jvm.Djava.net.useSystemProxies=true</code>.</p>
+sure to configure the proxy either with environment variables or using the JVM options,
+e.g., <code>--vm.Djava.net.useSystemProxies=true</code>.</p>
 
 <p>Versions of some packages specifically patched for GraalVM implementation of R can be installed using the <code>install.fastr.packages</code>
 function that downloads them from the <a href="https://github.com/oracle/fastr/tree/master/com.oracle.truffle.r.pkgs">GitHub repository</a>.

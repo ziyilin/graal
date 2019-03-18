@@ -1,7 +1,7 @@
 ## Compatibility
 
 TruffleRuby aims to be fully compatible with the standard implementation of
-Ruby, MRI, version 2.4.4, revision 63013.
+Ruby, MRI, version 2.6.2, revision 67232.
 
 Any incompatibility with MRI is considered a bug, except for rare cases detailed below.
 If you find an incompatibility with MRI, please [report](https://github.com/oracle/truffleruby/issues) it to us.
@@ -54,20 +54,39 @@ Process.respond_to?(:fork)
 
 #### Standard libraries
 
-`win32ole` is unsupported.
+The following standard libraries are unsupported.
 
-Quite a few of the less commonly used standard libraries are currently not
-supported, such as `fiddle`, `sdbm`, `gdbm`, `tk`. It's quite hard to get an
-understanding of all the standard libraries that should be available, so it's
-hard to give a definitive list of those that are missing.
+* `continuation`
+* `dbm`
+* `gdbm`
+* `sdbm`
+* `debug` (could be implemented in the future) <!-- TODO CS 26 Feb 19 document alternatives -->
+* `profile` (could be implemented in the future)
+* `profiler` (could be implemented in the future)
+* `io/console` (partially implemented, could be implemented in the future)
+* `io/wait` (partially implemented, could be implemented in the future)
+* `pty` (could be implemented in the future)
+* `ripper` (has a no-op implementation, and could be implemented in the future)
+* `shell` (could be implemented in the future) <!-- TODO CS 26 Feb 19 probably due to simple bug -->
+* `win32`
+* `win32ole`
+
+`fiddle` is not yet implemented - the module and some methods are there
+but not enough to run anything serious.
+
+We provide our own included implementation of the interface of the `ffi` gem,
+like JRuby and Rubinius, but the implemention of this is limited at the
+moment.
 
 #### Safe levels
 
 `$SAFE` and `Thread#safe_level` are `0` and no other levels are implemented.
 Trying to use level `1` will raise a `SecurityError`. Other levels will raise
-`ArgumentError` as in standard Ruby.
+`ArgumentError` as in standard Ruby. See our [security notes](https://github.com/oracle/truffleruby/blob/master/doc/user/security.md) for more explanation on this.
 
-`$SAFE` level 1 can be allowed, but ignored, with the `-Xsafe` option.
+#### Internal MRI functionality
+
+`RubyVM` is not intended for users and is not implemented.
 
 ### Features with major differences
 
@@ -78,6 +97,15 @@ threads are scheduled in parallel. As in JRuby and Rubinius, you are responsible
 for correctly synchronising access to your own shared mutable data structures,
 and we will be responsible for correctly synchronising the state of the
 interpreter.
+
+#### Threads detect interrupts at different points
+
+TruffleRuby threads may detect that they have been interrupted at different
+points in the program to where it would on MRI. In general, TruffleRuby seems
+to detect an interrupt sooner than MRI. JRuby and Rubinius are also different
+to MRI, the behaviour isn't documented in MRI, and it's likely to change
+between MRI versions, so we would not recommend depending on interrupt points
+at all.
 
 #### Fibers do not have the same performance characteristics as in MRI
 
@@ -98,16 +126,15 @@ so, but this isn't always the case. For example `RubyVM` is not available.
 
 #### Command line switches
 
-`-y`, `--yydebug`, `--dump=` are ignored with a warning as they are internal
-development tools.
-
-`-X` is an undocumented synonym for `-C` and we (and other alternative
-implementations of Ruby) have repurposed it for extended options. We warn if
-your `-X` options look like they are actually intended to be as in MRI.
+`-y`, `--yydebug`, `--dump=`, `--debug-frozen-string-literal` are ignored with
+a warning as they are unsupported development tools.
 
 Programs passed in `-e` arguments with magic-comments must have an encoding that
 is UTF-8 or a subset of UTF-8, as the JVM has already decoded arguments by the
 time we get them.
+
+`--jit` options and the `jit` feature are not supported because TruffleRuby
+uses Graal as a JIT.
 
 #### Setting the process title doesn't always work
 
@@ -125,12 +152,13 @@ The `erb` standard library has been modified to not use negative line numbers.
 #### Polyglot standard IO streams
 
 If you use standard IO streams provided by the Polyglot engine, via the
-`-Xpolyglot.stdio` option, reads and writes to file descriptors 1, 2 and 3 will
-be redirected to these streams. That means that other IO operations on these
-file descriptors, such as `isatty` may not be relevant for where these streams
-actually end up, and operations like `dup` may lose the connection to the
-polyglot stream. For example, if you `$stdout.reopen`, as some logging frameworks
-do, you will get the native standard-out, not the polyglot out.
+experimental `--polyglot.stdio` option, reads and writes to file descriptors 1,
+2 and 3 will be redirected to these streams. That means that other IO
+operations on these file descriptors, such as `isatty` may not be relevant for
+where these streams actually end up, and operations like `dup` may lose the
+connection to the polyglot stream. For example, if you `$stdout.reopen`, as
+some logging frameworks do, you will get the native standard-out, not the
+polyglot out.
 
 Also, IO buffer drains, writes on IO objects with `sync` set, and
 `write_nonblock`, will not retry the write on `EAGAIN` and `EWOULDBLOCK`, as the
@@ -166,7 +194,7 @@ Ruby anyway.
 
 To help alleviate this problem in some cases backtraces are automatically
 disabled where we dynamically detect that they probably won't be used. See the
-`-Xbacktraces.omit_unused` option.
+experimental `--backtraces.omit_unused` option.
 
 ### C Extension Compatibility
 
