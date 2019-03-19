@@ -17,12 +17,6 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10};
-var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
-var altColor = "altColor";
-var rowColor = "rowColor";
-var tableTab = "tableTab";
-var activeTableTab = "activeTableTab";
 </script>
 <noscript>
 <div>JavaScript is disabled on your browser.</div>
@@ -44,12 +38,12 @@ var activeTableTab = "activeTableTab";
 <li><a href="../../../../../index-all.html">Index</a></li>
 <li><a href="../../../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc15-dev</b><br>86d3a1c69f80c5b28e97fb9f2fb40325f35a6326</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc15-dev</b><br>64f1da79b595095722950e88bfa942971b7a226e</div>
 </div>
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.StandardFactory.html" title="interface in com.oracle.truffle.api.interop"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../com/oracle/truffle/api/interop/KeyInfo.html" title="class in com.oracle.truffle.api.interop"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../com/oracle/truffle/api/interop/InteropLibrary.html" title="class in com.oracle.truffle.api.interop"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?com/oracle/truffle/api/interop/InteropException.html" target="_top">Frames</a></li>
@@ -76,13 +70,13 @@ var activeTableTab = "activeTableTab";
 <li>Nested&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li>Constr&nbsp;|&nbsp;</li>
-<li><a href="#method.summary">Method</a></li>
+<li><a href="#methods.inherited.from.class.java.lang.Throwable">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li>Constr&nbsp;|&nbsp;</li>
-<li><a href="#method.detail">Method</a></li>
+<li>Method</li>
 </ul>
 </div>
 <a name="skip.navbar.top">
@@ -122,19 +116,20 @@ var activeTableTab = "activeTableTab";
 </dl>
 <dl>
 <dt>Direct Known Subclasses:</dt>
-<dd><a href="../../../../../com/oracle/truffle/api/interop/ArityException.html" title="class in com.oracle.truffle.api.interop">ArityException</a>, <a href="../../../../../com/oracle/truffle/api/interop/UnknownIdentifierException.html" title="class in com.oracle.truffle.api.interop">UnknownIdentifierException</a>, <a href="../../../../../com/oracle/truffle/api/interop/UnsupportedMessageException.html" title="class in com.oracle.truffle.api.interop">UnsupportedMessageException</a>, <a href="../../../../../com/oracle/truffle/api/interop/UnsupportedTypeException.html" title="class in com.oracle.truffle.api.interop">UnsupportedTypeException</a></dd>
+<dd><a href="../../../../../com/oracle/truffle/api/interop/ArityException.html" title="class in com.oracle.truffle.api.interop">ArityException</a>, <a href="../../../../../com/oracle/truffle/api/interop/InvalidArrayIndexException.html" title="class in com.oracle.truffle.api.interop">InvalidArrayIndexException</a>, <a href="../../../../../com/oracle/truffle/api/interop/UnknownIdentifierException.html" title="class in com.oracle.truffle.api.interop">UnknownIdentifierException</a>, <a href="../../../../../com/oracle/truffle/api/interop/UnsupportedMessageException.html" title="class in com.oracle.truffle.api.interop">UnsupportedMessageException</a>, <a href="../../../../../com/oracle/truffle/api/interop/UnsupportedTypeException.html" title="class in com.oracle.truffle.api.interop">UnsupportedTypeException</a></dd>
 </dl>
 <hr>
 <br>
 <pre>public abstract class <span class="typeNameLabel">InteropException</span>
 extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></pre>
-<div class="block">Common super class for exceptions that can occur when sending <a href="../../../../../com/oracle/truffle/api/interop/Message.html" title="class in com.oracle.truffle.api.interop"><code>interop messages</code></a>.
- This super class is used to catch any kind of these exceptions.</div>
+<div class="block">Common super class for exceptions that can occur when sending <a href="../../../../../com/oracle/truffle/api/interop/InteropLibrary.html" title="class in com.oracle.truffle.api.interop"><code>interop
+ messages</code></a>. This super class is used to catch any kind of these exceptions.</div>
 <dl>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>0.11</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../../serialized-form.html#com.oracle.truffle.api.interop.InteropException">Serialized Form</a></dd>
+<dd><a href="../../../../../com/oracle/truffle/api/interop/InteropLibrary.html" title="class in com.oracle.truffle.api.interop"><code>InteropLibrary</code></a>, 
+<a href="../../../../../serialized-form.html#com.oracle.truffle.api.interop.InteropException">Serialized Form</a></dd>
 </dl>
 </li>
 </ul>
@@ -148,20 +143,6 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Exception.ht
 <!--   -->
 </a>
 <h3>Method Summary</h3>
-<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colLast" scope="col">Method and Description</th>
-</tr>
-<tr id="i0" class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/RuntimeException.html?is-external=true" title="class or interface in java.lang">RuntimeException</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/interop/InteropException.html#raise--">raise</a></span>()</code>
-<div class="block">Re-throw an <a href="../../../../../com/oracle/truffle/api/interop/InteropException.html" title="class in com.oracle.truffle.api.interop"><code>InteropException</code></a> as a <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/RuntimeException.html?is-external=true" title="class or interface in java.lang"><code>RuntimeException</code></a>, which allows throwing it
- without an explicit throws declaration.</div>
-</td>
-</tr>
-</table>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Throwable">
 <!--   -->
@@ -175,46 +156,6 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Exception.ht
 </a>
 <h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
 <code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="details">
-<ul class="blockList">
-<li class="blockList">
-<!-- ============ METHOD DETAIL ========== -->
-<ul class="blockList">
-<li class="blockList"><a name="method.detail">
-<!--   -->
-</a>
-<h3>Method Detail</h3>
-<a name="raise--">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>raise</h4>
-<pre>public final&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/RuntimeException.html?is-external=true" title="class or interface in java.lang">RuntimeException</a>&nbsp;raise()</pre>
-<div class="block">Re-throw an <a href="../../../../../com/oracle/truffle/api/interop/InteropException.html" title="class in com.oracle.truffle.api.interop"><code>InteropException</code></a> as a <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/RuntimeException.html?is-external=true" title="class or interface in java.lang"><code>RuntimeException</code></a>, which allows throwing it
- without an explicit throws declaration.
-
- The method returns <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/RuntimeException.html?is-external=true" title="class or interface in java.lang"><code>RuntimeException</code></a> so it can be used as
- <pre><b>try</b> {
-    <a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.html" title="class in com.oracle.truffle.api.interop"><code>ForeignAccess</code></a>.sendRead(readNode, receiver, identifier);
-} <b>catch</b> (<a href="../../../../../com/oracle/truffle/api/interop/InteropException.html" title="class in com.oracle.truffle.api.interop"><code>InteropException</code></a> ex) {
-    <b>throw</b> ex.raise();
-}
-</pre> but the method never
- returns. It throws this exception internally rather than returning any value.</div>
-<dl>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>the exception</dd>
-<dt><span class="simpleTagLabel">Since:</span></dt>
-<dd>0.14</dd>
-</dl>
-</li>
 </ul>
 </li>
 </ul>
@@ -240,12 +181,12 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Exception.ht
 <li><a href="../../../../../index-all.html">Index</a></li>
 <li><a href="../../../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc15-dev</b><br>86d3a1c69f80c5b28e97fb9f2fb40325f35a6326</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc15-dev</b><br>64f1da79b595095722950e88bfa942971b7a226e</div>
 </div>
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../../com/oracle/truffle/api/interop/ForeignAccess.StandardFactory.html" title="interface in com.oracle.truffle.api.interop"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../com/oracle/truffle/api/interop/KeyInfo.html" title="class in com.oracle.truffle.api.interop"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../com/oracle/truffle/api/interop/InteropLibrary.html" title="class in com.oracle.truffle.api.interop"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?com/oracle/truffle/api/interop/InteropException.html" target="_top">Frames</a></li>
@@ -272,13 +213,13 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Exception.ht
 <li>Nested&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li>Constr&nbsp;|&nbsp;</li>
-<li><a href="#method.summary">Method</a></li>
+<li><a href="#methods.inherited.from.class.java.lang.Throwable">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li>Constr&nbsp;|&nbsp;</li>
-<li><a href="#method.detail">Method</a></li>
+<li>Method</li>
 </ul>
 </div>
 <a name="skip.navbar.bottom">

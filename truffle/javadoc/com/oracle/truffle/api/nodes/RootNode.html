@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":9,"i3":6,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10};
+var methods = {"i0":10,"i1":10,"i2":9,"i3":6,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -44,7 +44,7 @@ var activeTableTab = "activeTableTab";
 <li><a href="../../../../../index-all.html">Index</a></li>
 <li><a href="../../../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc15-dev</b><br>86d3a1c69f80c5b28e97fb9f2fb40325f35a6326</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc15-dev</b><br>64f1da79b595095722950e88bfa942971b7a226e</div>
 </div>
 <div class="subNav">
 <ul class="navList">
@@ -137,8 +137,8 @@ extends <a href="../../../../../com/oracle/truffle/api/nodes/ExecutableNode.html
  available. The language implementation instance is obtainable while
  <a href="../../../../../com/oracle/truffle/api/TruffleLanguage.html#createContext-com.oracle.truffle.api.TruffleLanguage.Env-"><code>TruffleLanguage.createContext(Env)</code></a> or <a href="../../../../../com/oracle/truffle/api/TruffleLanguage.html#parse-com.oracle.truffle.api.TruffleLanguage.ParsingRequest-"><code>TruffleLanguage.parse(ParsingRequest)</code></a> is
  executed. If no language environment is available, then <code>null</code> can be passed. Please
- note that root nodes with <code>null</code> language are considered not instrumentable and have
- no access to the <a href="../../../../../com/oracle/truffle/api/nodes/ExecutableNode.html#getLanguage-java.lang.Class-"><code>language</code></a> or its public <a href="../../../../../com/oracle/truffle/api/nodes/ExecutableNode.html#getLanguageInfo--"><code>information</code></a>.
+ note that root nodes with <code>null</code> language are considered not instrumentable and don't
+ have access to its public <a href="../../../../../com/oracle/truffle/api/nodes/ExecutableNode.html#getLanguageInfo--"><code>language information</code></a>.
 
  <h4>Execution</h4>
 
@@ -279,16 +279,10 @@ extends <a href="../../../../../com/oracle/truffle/api/nodes/ExecutableNode.html
 </td>
 </tr>
 <tr id="i6" class="altColor">
-<td class="colFirst"><code>&lt;C,T extends <a href="../../../../../com/oracle/truffle/api/TruffleLanguage.html" title="class in com.oracle.truffle.api">TruffleLanguage</a>&lt;C&gt;&gt;<br>C</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/nodes/RootNode.html#getCurrentContext-java.lang.Class-">getCurrentContext</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;T&gt;&nbsp;languageClass)</code>
-<div class="block">Returns the current context associated with the root node <a href="../../../../../com/oracle/truffle/api/nodes/ExecutableNode.html#getLanguage-java.lang.Class-"><code>language</code></a> and <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Thread.html?is-external=true" title="class or interface in java.lang"><code>thread</code></a>.</div>
-</td>
-</tr>
-<tr id="i7" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../com/oracle/truffle/api/frame/FrameDescriptor.html" title="class in com.oracle.truffle.api.frame">FrameDescriptor</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/nodes/RootNode.html#getFrameDescriptor--">getFrameDescriptor</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/nodes/RootNode.html#getName--">getName</a></span>()</code>
 <div class="block">A description of the AST (expected to be a method or procedure name in most languages) that
@@ -297,40 +291,40 @@ extends <a href="../../../../../com/oracle/truffle/api/nodes/ExecutableNode.html
  often.</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/nodes/RootNode.html#isCaptureFramesForTrace--">isCaptureFramesForTrace</a></span>()</code>
 <div class="block">Returns <code>true</code> if a TruffleException leaving this node should capture
  <a href="../../../../../com/oracle/truffle/api/frame/Frame.html" title="interface in com.oracle.truffle.api.frame"><code>Frame</code></a> objects in its stack trace in addition to the default information.</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>protected boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/nodes/RootNode.html#isCloneUninitializedSupported--">isCloneUninitializedSupported</a></span>()</code>
 <div class="block">Returns <code>true</code> if <a href="../../../../../com/oracle/truffle/api/nodes/RootNode.html#cloneUninitialized--"><code>RootNode.cloneUninitialized()</code></a> can be used to create
  uninitialized copies of an already initialized / executed root node.</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/nodes/RootNode.html#isCloningAllowed--">isCloningAllowed</a></span>()</code>
 <div class="block">Returns <code>true</code> if this <a href="../../../../../com/oracle/truffle/api/nodes/RootNode.html" title="class in com.oracle.truffle.api.nodes"><code>RootNode</code></a> is allowed to be cloned.</div>
 </td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>protected boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/nodes/RootNode.html#isInstrumentable--">isInstrumentable</a></span>()</code>
 <div class="block">Does this contain AST content that it is possible to instrument.</div>
 </td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/nodes/RootNode.html#isInternal--">isInternal</a></span>()</code>
 <div class="block">Returns <code>true</code> if this root node should be considered internal and not be shown to
  a guest language programmer.</div>
 </td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/oracle/truffle/api/nodes/RootNode.html#setCallTarget-com.oracle.truffle.api.RootCallTarget-">setCallTarget</a></span>(<a href="../../../../../com/oracle/truffle/api/RootCallTarget.html" title="interface in com.oracle.truffle.api">RootCallTarget</a>&nbsp;callTarget)</code>&nbsp;</td>
 </tr>
@@ -340,14 +334,14 @@ extends <a href="../../../../../com/oracle/truffle/api/nodes/ExecutableNode.html
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;com.oracle.truffle.api.nodes.<a href="../../../../../com/oracle/truffle/api/nodes/ExecutableNode.html" title="class in com.oracle.truffle.api.nodes">ExecutableNode</a></h3>
-<code><a href="../../../../../com/oracle/truffle/api/nodes/ExecutableNode.html#getLanguage-java.lang.Class-">getLanguage</a>, <a href="../../../../../com/oracle/truffle/api/nodes/ExecutableNode.html#getLanguageInfo--">getLanguageInfo</a></code></li>
+<code><a href="../../../../../com/oracle/truffle/api/nodes/ExecutableNode.html#getLanguageInfo--">getLanguageInfo</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.com.oracle.truffle.api.nodes.Node">
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;com.oracle.truffle.api.nodes.<a href="../../../../../com/oracle/truffle/api/nodes/Node.html" title="class in com.oracle.truffle.api.nodes">Node</a></h3>
-<code><a href="../../../../../com/oracle/truffle/api/nodes/Node.html#accept-com.oracle.truffle.api.nodes.NodeVisitor-">accept</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#adoptChildren--">adoptChildren</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#atomic-java.util.concurrent.Callable-">atomic</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#atomic-java.lang.Runnable-">atomic</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#deepCopy--">deepCopy</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#getChildren--">getChildren</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#getCost--">getCost</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#getDebugProperties--">getDebugProperties</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#getDescription--">getDescription</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#getEncapsulatingSourceSection--">getEncapsulatingSourceSection</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#getLock--">getLock</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#getParent--">getParent</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#getRootNode--">getRootNode</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#getSourceSection--">getSourceSection</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#insert-T-">insert</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#insert-T:A-">insert</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#isSafelyReplaceableBy-com.oracle.truffle.api.nodes.Node-">isSafelyReplaceableBy</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#notifyInserted-com.oracle.truffle.api.nodes.Node-">notifyInserted</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#onReplace-com.oracle.truffle.api.nodes.Node-java.lang.CharSequence-">onReplace</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#replace-T-">replace</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#replace-T-java.lang.CharSequence-">replace</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#reportPolymorphicSpecialize--">reportPolymorphicSpecialize</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#toString--">toString</a></code></li>
+<code><a href="../../../../../com/oracle/truffle/api/nodes/Node.html#accept-com.oracle.truffle.api.nodes.NodeVisitor-">accept</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#adoptChildren--">adoptChildren</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#atomic-java.util.concurrent.Callable-">atomic</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#atomic-java.lang.Runnable-">atomic</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#deepCopy--">deepCopy</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#getChildren--">getChildren</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#getCost--">getCost</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#getDebugProperties--">getDebugProperties</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#getDescription--">getDescription</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#getEncapsulatingSourceSection--">getEncapsulatingSourceSection</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#getLock--">getLock</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#getParent--">getParent</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#getRootNode--">getRootNode</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#getSourceSection--">getSourceSection</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#insert-T-">insert</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#insert-T:A-">insert</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#isAdoptable--">isAdoptable</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#isSafelyReplaceableBy-com.oracle.truffle.api.nodes.Node-">isSafelyReplaceableBy</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#lookupContextReference-java.lang.Class-">lookupContextReference</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#lookupLanguageReference-java.lang.Class-">lookupLanguageReference</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#notifyInserted-com.oracle.truffle.api.nodes.Node-">notifyInserted</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#onReplace-com.oracle.truffle.api.nodes.Node-java.lang.CharSequence-">onReplace</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#replace-T-">replace</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#replace-T-java.lang.CharSequence-">replace</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#reportPolymorphicSpecialize--">reportPolymorphicSpecialize</a>, <a href="../../../../../com/oracle/truffle/api/nodes/Node.html#toString--">toString</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
@@ -381,8 +375,8 @@ extends <a href="../../../../../com/oracle/truffle/api/nodes/ExecutableNode.html
  while <a href="../../../../../com/oracle/truffle/api/TruffleLanguage.html#createContext-com.oracle.truffle.api.TruffleLanguage.Env-"><code>TruffleLanguage.createContext(Env)</code></a> or
  <a href="../../../../../com/oracle/truffle/api/TruffleLanguage.html#parse-com.oracle.truffle.api.TruffleLanguage.ParsingRequest-"><code>TruffleLanguage.parse(ParsingRequest)</code></a> is executed. If no language environment is
  available, then <code>null</code> can be passed. Please note that root nodes with
- <code>null</code> language are considered not instrumentable and have no access to the
- <a href="../../../../../com/oracle/truffle/api/nodes/ExecutableNode.html#getLanguage-java.lang.Class-"><code>language</code></a> or its public <a href="../../../../../com/oracle/truffle/api/nodes/ExecutableNode.html#getLanguageInfo--"><code>information</code></a>.</div>
+ <code>null</code> language are considered not instrumentable and don't have access to its
+ public <a href="../../../../../com/oracle/truffle/api/nodes/ExecutableNode.html#getLanguageInfo--"><code>language information</code></a>.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>language</code> - the language this root node is associated with</dd>
@@ -403,8 +397,8 @@ extends <a href="../../../../../com/oracle/truffle/api/nodes/ExecutableNode.html
  instance is obtainable while <a href="../../../../../com/oracle/truffle/api/TruffleLanguage.html#createContext-com.oracle.truffle.api.TruffleLanguage.Env-"><code>TruffleLanguage.createContext(Env)</code></a> or
  <a href="../../../../../com/oracle/truffle/api/TruffleLanguage.html#parse-com.oracle.truffle.api.TruffleLanguage.ParsingRequest-"><code>TruffleLanguage.parse(ParsingRequest)</code></a> is executed. If no language environment is
  available, then <code>null</code> can be passed. Please note that root nodes with
- <code>null</code> language are considered not instrumentable and have no access to the
- <a href="../../../../../com/oracle/truffle/api/nodes/ExecutableNode.html#getLanguage-java.lang.Class-"><code>language</code></a> or its public <a href="../../../../../com/oracle/truffle/api/nodes/ExecutableNode.html#getLanguageInfo--"><code>information</code></a>.</div>
+ <code>null</code> language are considered not instrumentable and don't have access to its
+ public <a href="../../../../../com/oracle/truffle/api/nodes/ExecutableNode.html#getLanguageInfo--"><code>language information</code></a>.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>language</code> - the language this root node is associated with</dd>
@@ -421,28 +415,6 @@ extends <a href="../../../../../com/oracle/truffle/api/nodes/ExecutableNode.html
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="getCurrentContext-java.lang.Class-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getCurrentContext</h4>
-<pre>public final&nbsp;&lt;C,T extends <a href="../../../../../com/oracle/truffle/api/TruffleLanguage.html" title="class in com.oracle.truffle.api">TruffleLanguage</a>&lt;C&gt;&gt;&nbsp;C&nbsp;getCurrentContext(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;T&gt;&nbsp;languageClass)</pre>
-<div class="block">Returns the current context associated with the root node <a href="../../../../../com/oracle/truffle/api/nodes/ExecutableNode.html#getLanguage-java.lang.Class-"><code>language</code></a> and <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Thread.html?is-external=true" title="class or interface in java.lang"><code>thread</code></a>. The current context is <code>null</code> if the root
- node is associated with a <code>null</code> language. This is a short-cut for
- <code>this</code>. <a href="../../../../../com/oracle/truffle/api/nodes/ExecutableNode.html#getLanguage-java.lang.Class-"><code>getLanguage(languageClass)</code></a>.
- <a href="../../../../../com/oracle/truffle/api/TruffleLanguage.html#getContextReference--"><code>getContextReference()</code></a>.
- <a href="../../../../../com/oracle/truffle/api/TruffleLanguage.ContextReference.html#get--"><code>get()</code></a>. If invoked on the fast-path then
- <code>languageClass</code> must be a compilation final value.</div>
-<dl>
-<dt><span class="simpleTagLabel">Since:</span></dt>
-<dd>0.27</dd>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../../com/oracle/truffle/api/nodes/ExecutableNode.html#getLanguage-java.lang.Class-"><code>ExecutableNode.getLanguage(Class)</code></a>, 
-<a href="../../../../../com/oracle/truffle/api/TruffleLanguage.html#getContextReference--"><code>TruffleLanguage.getContextReference()</code></a></dd>
-</dl>
-</li>
-</ul>
 <a name="copy--">
 <!--   -->
 </a>
@@ -746,7 +718,7 @@ extends <a href="../../../../../com/oracle/truffle/api/nodes/ExecutableNode.html
 <li><a href="../../../../../index-all.html">Index</a></li>
 <li><a href="../../../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc15-dev</b><br>86d3a1c69f80c5b28e97fb9f2fb40325f35a6326</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc15-dev</b><br>64f1da79b595095722950e88bfa942971b7a226e</div>
 </div>
 <div class="subNav">
 <ul class="navList">
