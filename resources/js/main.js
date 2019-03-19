@@ -156,39 +156,6 @@ $(document).ready(function () {
     });
   }());
 
-  (function () {
-    $('.news-carousel').slick({
-      dots: false,
-      accessibility: true,
-      slidesToShow: 4,
-      arrows: true,
-      slidesToScroll: 1,
-      // autoplay: true,
-      // autoplaySpeed: 3000,
-      responsive: [
-        {
-          breakpoint: 1500,
-          settings: {
-            slidesToShow: 3
-          }
-        },
-        {
-          breakpoint: 768,
-          settings: {
-            slidesToShow: 2,
-            adaptiveHeight: true,
-          }
-        },
-        {
-          breakpoint: 580,
-          settings: {
-            slidesToShow: 1
-          }
-        }
-      ]
-    });
-  }());
-
   var configProfile = {
     "profile": {"screenName": 'thomaswue'},
     "domId": 'tweets',
@@ -539,73 +506,82 @@ if ($('#map').length) {
 function initialize() {
   let defaultView = {lat: 46.214484, lng: -21.114842};
   const locations = {
-    london: [
+    prague: [
       {
-        conference: 'Oracle OpenWorld Europe',
-        date: 'January 16-17, 2019',
+        conference: 'GeeCon',
+        date: 'October 18-19, 2018',
         url: '#event-one',
-        position: {lat: 51.508633, lng: 0.029889}
+        position: {lat: 50.109042, lng: 14.585350}
       }
     ],
-    stockholm: [
+    saintpetersburg: [
       {
-        conference: 'JFokus VM Summit',
-        date: 'February 4-6, 2019',
+        conference: 'JokerConf',
+        date: 'October 20-21, 2018',
         url: '#event-two',
-        position: {lat: 59.330278, lng: 18.055894}
+        position: {lat: 59.762016, lng: 30.356999}
       }
     ],
-    washington_dc: [
+    sanfrancisco: [
       {
-        conference: 'CGO & Graal Workshop',
-        date: 'February 16-20, 2019',
+        conference: 'Oracle Code One',
+        date: 'October 22-25, 2018',
         url: '#event-three',
-        position: {lat: 38.904722, lng: -77.016389}
+        position: {lat: 37.783638, lng: -122.400888}
       }
     ],
-    lviv: [
+    berlin: [
       {
-        conference: 'JavaDay Lviv',
-        date: 'February 23, 2019',
+        conference: 'GOTO Berlin',
+        date: 'November 2, 2018',
         url: '#event-four',
-        position: {lat: 49.81794, lng: 24.022687}
+        position: {lat: 52.520782, lng: 13.416515}
       }
     ],
-    atlanta: [
+    haarlem: [
       {
-        conference: 'DevNexus 2019',
-        date: 'March 6-9, 2019',
+        conference: 'JFall',
+        date: 'November 8, 2018',
         url: '#event-five',
-        position: {lat: 33.883619, lng: -84.4665739}
+        position: {lat: 52.015803, lng: 5.648064}
+      }
+    ],
+    antwerpen: [
+      {
+        conference: 'Devoxx Belgium',
+        date: 'November 12-16, 2018',
+        url: '#event-six',
+        position: {lat: 51.246048, lng: 4.416641}
+      }
+    ],
+    copenhagen: [
+      {
+        conference: 'GOTO Copenhagen',
+        date: 'November 19-23, 2018',
+        url: '#event-seven',
+        position: {lat: 55.637904, lng: 12.576342}
+      }
+    ],
+    kyiv: [
+      {
+        conference: 'Devoxx Ukraine',
+        date: 'November 23-24, 2018',
+        url: '#event-eight',
+        position: {lat: 50.449100, lng: 30.540826}
       }
     ],
     bruhl: [
       {
         conference: 'JAVALAND',
         date: 'March 19-21, 2019',
-        url: '#event-six',
+        url: '#event-nine',
         position: {lat: 50.799537, lng: 6.879517}
-      }
-    ],
-    wroclaw: [
-      {
-        conference: 'Wroclove.rb',
-        date: 'March 22-24, 2019',
-        url: '#event-seven',
-        position: {lat: 51.110939, lng: 17.053061}
-      }
-    ],
-    brussels: [
-      {
-        conference: 'EuroLLVM 2019',
-        date: 'April 8-9, 2019',
-        url: '#event-eight',
-        position: {lat: 50.854455, lng: 4.356530}
       }
     ]
   };
 
-  let labelIndex = 1;
+  let labels = '123456789';
+  let labelIndex = 0;
   let markerDefault = '/resources/img/marker.svg';
   let markerActive = '/resources/img/marker-active.svg';
 
@@ -925,7 +901,7 @@ function initialize() {
         map: map,
         icon: markerDefault,
         label: {
-          text: ""+(labelIndex++),
+          text: labels[labelIndex++ % labels.length],
           color: "white",
           fontSize: '11px'
         },

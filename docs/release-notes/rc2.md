@@ -1,5 +1,5 @@
 ## 1.0-RC2
-(2018-06-05)
+
 ### GraalVM for Java developers
 * Updated the underlying JDK version to “1.8.0_171” from “1.8.0_161”. You can find the JDK release notes at the [Oracle Technology Network](http://www.oracle.com/technetwork/java/javase/8u171-relnotes-4308888.html) website.
 * Improved support for the Java Microbenchmark harness. Since JMH 1.21, GraalVM is a [recognized and supported JVM](http://mail.openjdk.java.net/pipermail/jmh-dev/2018-May/002753.html).
@@ -54,7 +54,7 @@ If we compile it to the LLVM bitcode, we can execute it with GraalVM. You can se
 115792089237316195423570985008687907853269984665640564039457584007913129639936
 ```
 
-A more detailed list of changes to the LLVM interpreter can be found in the [full changelog](https://github.com/oracle/graal/blob/master/sulong/CHANGELOG.md#version-100-rc2).
+A more detailed list of changes to the LLVM interpreter can be found in the [full changelog](https://github.com/graalvm/sulong/blob/master/CHANGELOG.md).
 
 ### Ruby
 
@@ -64,7 +64,7 @@ A more detailed list of changes to the LLVM interpreter can be found in the [ful
 * `to_s` works on all foreign objects and calls the Java `toString`.
 * `to_str` will try to UNBOX and then re-try `to_str`, in order to provoke the unboxing of foreign strings.
 
-Much more details can be found in the full [changelog](https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md#10-rc-2-6-june-2018).
+Much more details can be found in the full [changelog](https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md).
 
 ### R
 
@@ -86,8 +86,8 @@ Both Graal SDK and Truffle are offering API for developers trying to build thing
 
 To see the list of changes to the APIs please refer to the project changelogs:
 
-* [Graal SDK changelog](https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md#version-10-rc2)
-* [Truffle changelog](https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md#version-100-rc2)
+* [Graal SDK changelog](https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md)
+* [Truffle changelog](https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md)
 
 ### Tools
 

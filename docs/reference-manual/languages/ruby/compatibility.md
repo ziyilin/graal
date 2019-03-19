@@ -1,22 +1,19 @@
 ## Compatibility
 
-TruffleRuby aims to be fully compatible with the standard implementation of
-Ruby, MRI, version 2.6.2, revision 67232.
-
-Any incompatibility with MRI is considered a bug, except for rare cases detailed below.
-If you find an incompatibility with MRI, please [report](https://github.com/oracle/truffleruby/issues) it to us.
+TruffleRuby aims to be highly compatible with the standard implementation of
+Ruby, MRI, version 2.3.7, revision 63024.
 
 Our policy is to match the behaviour of MRI, except where we do not know how to
 do so with good performance for typical Ruby programs. Some features work but
 will have very low performance whenever they are used and we advise against
 using them on TruffleRuby if you can. Some features are missing entirely and may
-never be implemented. In a few limited cases, we are deliberately incompatible
+never be implemented. In a few limited cases we are deliberately incompatible
 with MRI in order to provide a greater capability.
 
 In general, we are not looking to debate whether Ruby features are good, bad, or
 if we could design the language better. If we can support a feature, we will do.
 
-In the future, we aim to provide compatibility with extra functionality provided
+In the future we aim to provide compatibility with extra functionality provided
 by JRuby, but at the moment we do not.
 
 ### Identification
@@ -30,67 +27,33 @@ TruffleReport defines these constants for identification:
 - `RUBY_RELEASE_DATE` is the Git commit date
 - `RUBY_ENGINE_VERSION` is the GraalVM version, or `0.0-` and the Git commit hash if your build is not part of a GraalVM release.
 
-Additionally, TruffleRuby defines:
+Additionally, TruffleRuby defines
 
-- `TruffleRuby.revision` which is the Git commit hash
-
-In the C API, we define a preprocessor macro `TRUFFLERUBY`.
+- `Truffle.revision` which is the Git commit hash
 
 ### Features entirely missing
 
-#### Continuations and `callcc`
+*Continuations and `callcc`*
 
 Continuations and `callcc` are unlikely to ever be implemented in TruffleRuby,
 as their semantics fundamentally do not match the technology that we are using.
 
-#### Fork
+*Fork*
 
 You cannot `fork` the TruffleRuby interpreter. The feature is unlikely to ever
-be supported when running on the JVM but could be supported in the future on
-the SVM. The correct and portable way to test if `fork` is available is:
-```ruby
-Process.respond_to?(:fork)
-```
+be supported when running on the JVM, but could be supported in the future on
+the SVM.
 
-#### Standard libraries
+*Standard libraries*
 
-The following standard libraries are unsupported.
-
-* `continuation`
-* `dbm`
-* `gdbm`
-* `sdbm`
-* `debug` (could be implemented in the future) <!-- TODO CS 26 Feb 19 document alternatives -->
-* `profile` (could be implemented in the future)
-* `profiler` (could be implemented in the future)
-* `io/console` (partially implemented, could be implemented in the future)
-* `io/wait` (partially implemented, could be implemented in the future)
-* `pty` (could be implemented in the future)
-* `ripper` (has a no-op implementation, and could be implemented in the future)
-* `shell` (could be implemented in the future) <!-- TODO CS 26 Feb 19 probably due to simple bug -->
-* `win32`
-* `win32ole`
-
-`fiddle` is not yet implemented - the module and some methods are there
-but not enough to run anything serious.
-
-We provide our own included implementation of the interface of the `ffi` gem,
-like JRuby and Rubinius, but the implemention of this is limited at the
-moment.
-
-#### Safe levels
-
-`$SAFE` and `Thread#safe_level` are `0` and no other levels are implemented.
-Trying to use level `1` will raise a `SecurityError`. Other levels will raise
-`ArgumentError` as in standard Ruby. See our [security notes](https://github.com/oracle/truffleruby/blob/master/doc/user/security.md) for more explanation on this.
-
-#### Internal MRI functionality
-
-`RubyVM` is not intended for users and is not implemented.
+Quite a few of the less commonly used  standard libraries are currently not
+supported, such as `fiddle`, `sdbm`, `gdbm`, `tk`. It's quite hard to get an
+understanding of all the standard libraries that should be available, so it's
+hard to give a definitive list of those that are missing.
 
 ### Features with major differences
 
-#### Threads run in parallel
+*Threads run in parallel*
 
 In MRI, threads are scheduled concurrently but not in parallel. In TruffleRuby
 threads are scheduled in parallel. As in JRuby and Rubinius, you are responsible
@@ -98,16 +61,7 @@ for correctly synchronising access to your own shared mutable data structures,
 and we will be responsible for correctly synchronising the state of the
 interpreter.
 
-#### Threads detect interrupts at different points
-
-TruffleRuby threads may detect that they have been interrupted at different
-points in the program to where it would on MRI. In general, TruffleRuby seems
-to detect an interrupt sooner than MRI. JRuby and Rubinius are also different
-to MRI, the behaviour isn't documented in MRI, and it's likely to change
-between MRI versions, so we would not recommend depending on interrupt points
-at all.
-
-#### Fibers do not have the same performance characteristics as in MRI
+*Fibers do not have the same performance characteristics as in MRI*
 
 Most use cases of fibers rely on them being easy and cheap to start up and
 having low memory overheads. In TruffleRuby we implement fibers using operating
@@ -116,75 +70,55 @@ threads. As with coroutines and continuations, a conventional implementation
 of fibers fundamentally isn't compatible with the execution model we are
 currently using.
 
-#### Some classes marked as internal will be different
+*Some classes marked as internal will be different*
 
 MRI provides some classes that are described in the documentation as being only
-available on MRI (C Ruby). We implement these classes if it's practical to do
+available on C Ruby (MRI). We implement these classes if it's practical to do
 so, but this isn't always the case. For example `RubyVM` is not available.
 
 ### Features with subtle differences
 
-#### Command line switches
+*Different range of `Fixnum`*
 
-`-y`, `--yydebug`, `--dump=`, `--debug-frozen-string-literal` are ignored with
-a warning as they are unsupported development tools.
+The range of `Fixnum` is slightly larger than it is in MRI. This won't be an
+issue when we support Ruby 2.4, as `Integer` is unified there.
 
-Programs passed in `-e` arguments with magic-comments must have an encoding that
-is UTF-8 or a subset of UTF-8, as the JVM has already decoded arguments by the
-time we get them.
+*Command line switches*
 
-`--jit` options and the `jit` feature are not supported because TruffleRuby
-uses Graal as a JIT.
+`-y`, `--yydebug`, `--dump=` are ignored with a warning as they are internal
+development tools.
 
-#### Setting the process title doesn't always work
+`-X` is an undocumented synonym for `-C` and we (and other alternative
+implementations of Ruby) have repurposed it for extended options. We warn if
+your `-X` option looks like it was actually intended to be as in MRI.
+
+*Setting the process title doesn't always work*
 
 Setting the process title (via `$0` or `Process.setproctitle` in Ruby) is done
 as best-effort. It may not work, or the title you try to set may be truncated.
 
-#### Line numbers other than 1 work differently
-
-In an `eval` where a custom line number can be specified, line numbers below 1
-are treated as 1, and line numbers above 1 are implemented by inserting blank
-lines in front of the source before parsing it.
-
-The `erb` standard library has been modified to not use negative line numbers.
-
-#### Polyglot standard IO streams
-
-If you use standard IO streams provided by the Polyglot engine, via the
-experimental `--polyglot.stdio` option, reads and writes to file descriptors 1,
-2 and 3 will be redirected to these streams. That means that other IO
-operations on these file descriptors, such as `isatty` may not be relevant for
-where these streams actually end up, and operations like `dup` may lose the
-connection to the polyglot stream. For example, if you `$stdout.reopen`, as
-some logging frameworks do, you will get the native standard-out, not the
-polyglot out.
-
-Also, IO buffer drains, writes on IO objects with `sync` set, and
-`write_nonblock`, will not retry the write on `EAGAIN` and `EWOULDBLOCK`, as the
-streams do not provide a way to detect this.
-
-#### Error messages
-
-Error message strings will sometimes differ from MRI, as these are not generally
-covered by the Ruby Specification suite or tests.
-
 ### Features with very low performance
 
-#### `ObjectSpace`
+*Keyword arguments*
+
+Keyword arguments don't have *very* low performance, but they are not optimised
+as other language features are. You don't need to avoid keyword arguments, but
+performance with them may not be what you would hope for.
+
+*`ObjectSpace`*
 
 Using most methods on `ObjectSpace` will temporarily lower the performance of
 your program. Using them in test cases and other similar 'offline' operations is
 fine, but you probably don't want to use them in the inner loop of your
 production application.
 
-#### `set_trace_func`
+*`set_trace_func`*
 
 Using `set_trace_func` will temporarily lower the performance of your program.
 As with `ObjectSpace`, we would recommend that you do not use this in the inner
 loop of your production application.
 
-#### Backtraces
+*Backtraces*
 
 Throwing exceptions, and other operations which need to create a backtrace, are
 slower than on MRI. This is because we have to undo optimizations that we have
@@ -194,56 +128,96 @@ Ruby anyway.
 
 To help alleviate this problem in some cases backtraces are automatically
 disabled where we dynamically detect that they probably won't be used. See the
-experimental `--backtraces.omit_unused` option.
+`-Xbacktraces.omit_unused` option.
 
 ### C Extension Compatibility
 
-#### `VALUE` is a pointer
-
-In TruffleRuby `VALUE` is a pointer type (`void *`) rather than a
-integer type (`long`). This means that `switch` statements cannot be
-done using a raw `VALUE` as they can with MRI. You can normally
-replace any `switch` statement with `if` statements with little
-difficulty if required.
-
-#### Identifiers may be macros or functions
+##### Identifiers may be macros or functions
 
 Identifiers which are normally macros may be functions, functions may be macros,
-and global variables may be macros. This may cause problems where they are used
-in a context which relies on a particular implementation (e.g., taking the
-address of it, assigning to a function pointer variable and using defined() to
-check if a macro exists). These issues should all be considered bugs and be
-fixed, please report these cases.
+and global variables may be macros. This causes problems where they are used in
+a context which relies on a particular implementation, for example a global
+variable assigned to an initial value which was a macro, like `Qnil`, which is
+a macro that evaluates to a function call in TruffleRuby.
 
-#### `rb_scan_args`
+For example, this global variable definition does not work because `Qnil` expands
+to be a function call in TruffleRuby:
+
+```c
+static VALUE foo = Qnil;
+```
+
+A workaround is to assign `foo` in your C extension `Init_` function, or inside
+some other function.
+
+##### Storing Ruby objects in native structures and arrays
+
+You cannot store a Ruby object in a structure or array that has been natively
+allocated, such as on the stack, or in a heap allocated structure or array.
+
+Simple local variables of type `VALUE`, and locals arrays that are defined such
+as `VALUE array[n]` are an exception and are supported, provided their address
+is not taken and passed to a function that is not inlined.
+
+`void *rb_tr_handle_for_managed(VALUE managed)` may help you work around this
+limitation, or `VALUE rb_tr_managed_from_handle(void *native)`.
+Use `void* rb_tr_handle_for_managed_leaking(VALUE managed)` if you
+don't yet know where to put a corresponding call to `void
+*rb_tr_release_handle(void *native)`. Use `VALUE
+rb_tr_managed_from_handle_or_null(void *native)` if the handle may be `NULL`.
+
+##### Mixing native and managed in C global variables
+
+C global variables can contain native data or they can contain managed data,
+but they cannot contain both in the same program run. If you have a global you
+assign `NULL` to (`NULL` being just `0` and so a native address) you cannot
+then assign managed data to this variable.
+
+##### Variadic functions
+
+Variadic arguments of type `VALUE` that hold Ruby objects can be used, but they
+cannot be accessed with `va_start` etc. You can use
+`void *polyglot_get_arg(int i)` instead.
+
+##### Pointers to `VALUE` locals and variadic functions
+
+Pointers to local variables that have the type `VALUE` and hold Ruby objects can
+only be passed as function arguments if the function is inlined. LLVM will never
+inline variadic functions, so pointers to local variables that hold Ruby objects
+cannot be passed as variadic arguments.
+
+`rb_scan_args` is an exception and is supported.
+
+##### `rb_scan_args`
 
 `rb_scan_args` only supports up to ten pointers.
 
-#### `RDATA`
+##### `RDATA`
 
-The `mark` function of `RDATA` and `RTYPEDDATA` is not called during
-garbage collection. Instead we simulate this by caching information
-about objects as they are assigned to structs, and periodically run
-all mark functions when the cache has become full to represent those
-object relationships in a way that the our garbage collector will
-understand. The process should behave identically to MRI.
+The `mark` function of `RDATA` and `RTYPEDDATA` is never called.
+
+##### Ruby objects and truthiness in C
+
+All Ruby objects are truthy in C, except for `Qfalse`, the `Fixnum` value `0`,
+and the `Float` value `0.0`. The last two are incompatible with MRI, which would
+also see these values as truthy.
 
 ### Compatibility with JRuby
 
-#### Ruby to Java interop
+##### Ruby to Java interop
 
-JRuby's Java interop API is not implemented far enough to be used. We provide an
-alternate polyglot API for interoperating with multiple languages, including
-Java, instead.
+Calling Java code from Ruby (normal Java code, not JRuby's Java extensions which
+are covered below) is in development but not ready for use yet. We aim to
+provide the same interface as JRuby does for this functionality.
 
-#### Java to Ruby interop
+##### Java to Ruby interop
 
 Calling Ruby code from Java is supported by the
 [Graal-SDK polyglot API](http://www.graalvm.org/truffle/javadoc/org/graalvm/polyglot/package-summary.html).
 
-#### Java extensions
+##### Java extensions
 
-Use Java extensions written for JRuby is not supported. We could apply the same
+Using Java extensions written for JRuby is not supported. We could apply the same
 techniques as we have developed to run C extensions to this problem, but it's
 not clear if this will ever be a priority.
 
@@ -254,7 +228,7 @@ extensions to Ruby.
 
 ### Features not yet supported in native configuration
 
-* Java interop
+*Java interop*
 
 Running TruffleRuby in the native configuration is mostly the same as running on
 the JVM. There are differences in resource management, as both VMs use different

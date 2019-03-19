@@ -1,8 +1,18 @@
 ## 1.0-RC7
-(2018-10-03)
+
+**KNOWN ISSUES**
+* The GraalVM CE image for MacOS currently depends on some libraries that are not installed by default on current MacOS versions.
+This might cause issues with UI-related functionality:
+```
+Library not loaded: /usr/X11/lib/libfreetype.6.dylib
+```
+The necessary components can be added, e.g., by installing [https://www.xquartz.org](https://www.xquartz.org). We will remove this dependency in upcoming versions of GraalVM CE for MacOS.
+
 ### GraalVM for Java developers (GraalVM + compiler)
 
-* Added the virtualization of `Unsafe` compare and swap calls, for more details see [GH-636](https://github.com/oracle/graal/pull/636).
+Added the virtualization of `Unsafe` compare and swap calls, for more details see [GH-636](https://github.com/oracle/graal/pull/636).
+
+Note that due do the issue with the underlying platform Java Mission control freezes at startup on MacOS. Because of that we removed the `jmc` utility from the distribution. For more information and workarounds please see the [JMC known issues page](https://www.oracle.com/technetwork/java/javase/jmc55-release-notes-2412446.html#known-iss).
 
 ### Native image generation
 
@@ -14,18 +24,18 @@
 * Improved support for sharing of shapes between Contexts with the same Engine, which allows to reuse ASTs and objects across different manually created contexts.
 * Support for `BigInteger` typed TypedArrays.
 
-More details can be found in the [project changelog on GitHub](https://github.com/graalvm/graaljs/blob/master/CHANGELOG.md#version-100-rc7).
+More details can be found in the [project changelog on GitHub](https://github.com/graalvm/graaljs/blob/master/CHANGELOG.md ).
 
 ### LLVM interpreter (Sulong)
-The full [changelog](https://github.com/oracle/graal/blob/master/sulong/CHANGELOG.md#version-100-rc7) is available on GitHub.
+The full [changelog](https://github.com/oracle/graal/blob/master/sulong/CHANGELOG.md) is available on GitHub.
 
 * New polyglot builtin `polyglot_has_member`.
-* Removed support for implicit polyglot types for local variables as the availability of type information is not guaranteed. Explicit polyglot casts are now strictly required (`polyglot_as_typed`). See [docs/INTEROP.md](https://github.com/oracle/graal/blob/master/sulong/docs/INTEROP.md) and [polyglot.h](https://github.com/oracle/graal/blob/master/sulong/projects/com.oracle.truffle.llvm.libraries.bitcode/include/polyglot.h) for more details.
+* Removed support for implicit polyglot types for local variables as the availability of type information is not guaranteed. Explicit polyglot casts are now strictly required (`polyglot_as_typed`). See [docs/INTEROP.md](https://ol-bitbucket.us.oracle.com/projects/G/repos/graal/browse/sulong/docs/INTEROP.md) and [polyglot.h](https://ol-bitbucket.us.oracle.com/projects/G/repos/graal/browse/sulong/projects/com.oracle.truffle.llvm.libraries.bitcode/include/polyglot.h) for more details.
 * Support for IR-level (textual representation of bitcode files) tracing, i.e., creating an execution log of all bitcodes that were executed, for debugging purposes.
 * Preliminary support for LLVM 7.
 
 ### Ruby
-The complete [changelog](https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md#10-rc-7-3-october-2018) is available on GitHub. Here is a short list of most notable changes.
+The complete [changelog](https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md) is available on GitHub. Here is a short list of most notable changes.
 
 * Useful `inspect` strings have been added for more foreign objects.
 * Added the `rbconfig/sizeof` native extension for better MRI compatibility.
@@ -44,7 +54,7 @@ The complete [changelog](https://github.com/oracle/truffleruby/blob/master/CHANG
 * Enhanced the `java` interop builtin module with introspection utility methods.
 * Changes in C extension interface to reduce overhead.
 
-The [changelog](https://github.com/graalvm/graalpython/blob/master/CHANGELOG.md#version-100-rc7)
+The [changelog](https://github.com/graalvm/graalpython/blob/master/CHANGELOG.md)
 is available on GitHub.
 
 ### R
@@ -55,7 +65,7 @@ is available on GitHub.
 * Paths in `eval.polyglot` are resolved relative to the current working directory.
 * Various fixes necessary to pass _dplyr_ tests (GitHub version of _dplyr_).
 
-More details can be found in the project [changelog](https://github.com/oracle/fastr/blob/master/CHANGELOG.md#10-rc-7) on GitHub.
+More details can be found in the project [changelog](https://github.com/oracle/fastr/blob/master/CHANGELOG.md) on GitHub.
 
 ### Tools
 **Ideal Graph Visualizer**
@@ -68,5 +78,5 @@ More details can be found in the project [changelog](https://github.com/oracle/f
 * Truffle and GraalSDK license changes from GPL2 with Class Path Exception to the Universal Permissive License (UPL). Please refer to the license files for more information: [Truffle license](https://github.com/oracle/graal/blob/master/truffle/LICENSE.md), [Graal-SDK license](https://github.com/oracle/graal/blob/master/sdk/LICENSE.md).
 
 To see the list of changes to the APIs, please refer to the project changelogs:
-- [Graal SDK changelog](https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md#version-10-rc7)
-- [Truffle changelog](https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md#version-100-rc7)
+- [Graal SDK changelog](https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md)
+- [Truffle changelog](https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md)
