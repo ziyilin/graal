@@ -21,14 +21,13 @@ See the [Polyglot Reference]({{ "/docs/reference-manual/polyglot/" | relative_ur
 
 `--jvm` executes the application on the JVM instead of the native image.
 
-`--jvm.<option>` passes JVM options to GraalVM (e.g. `--jvm.Xmx<size>`).
-List available JVM options with `--jvm.help`.
+`--vm.<option>` passes VM options and system properties to the native image.
+To pass JVM options to GraalVM you need to provide `--jvm` before,
+i.e., `--jvm --vm.<option>`. List all available system properties to the native image,
+JVM and VM options and with `--vm.help`.
 
-System properties can be set as follows: `--jvm.D<name>=<value>`.
-For example, `--jvm.Dgraal.TraceTruffleCompilation=true` will print finished compilations.
-
-Likewise, `--native.<option>` passes VM options and system properties to the native image.
-List available VM options with `--native.help`.
+System properties can be set as follows: `--vm.D<name>=<value>`.
+For example, `--vm.Dgraal.TraceTruffleCompilation=true` will print finished compilations.
 
 `--compiler.<property>=<value>` passes settings to the compiler.
 For example, `--compiler.CompilationThreshold=<Integer>` sets the minimum number of invocations or loop iterations before a function is compiled.

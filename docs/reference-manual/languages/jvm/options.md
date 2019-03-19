@@ -17,7 +17,7 @@ from application code. This is useful if you want to
 [programmatically invoke Graal](https://github.com/oracle/graal/blob/eda70d0f1cfdfb0baa9abca534e2c36184bc1546/compiler/src/org.graalvm.compiler.core.test/src/org/graalvm/compiler/core/test/tutorial/InvokeGraal.java#L56-L58).
 * `-XX:+BootstrapJVMCI`: Causes Graal to be compiled before running the Java main method.
 By default, Graal is compiled by the C1 compiler to mitigate warmup costs. To force Graal
-to compile itself, add either `Dgraal.CompileGraalWithC1Only=false` or `-XX:-TieredCompilation`
+to compile itself, add either `-Dgraal.CompileGraalWithC1Only=false` or `-XX:-TieredCompilation`
 to the command line.
 * `-XX:+EagerJVMCI`: By default, Graal is only initialized upon the first top tier compilation
 request. Use this flag to force eager initialization which can be useful for [testing](https://bugs.openjdk.java.net/browse/JDK-8195632).
@@ -32,7 +32,7 @@ can be used to configure Graal. A selection of interesting ones is shown below.
 To see the complete list, use the `-XX:+JVMCIPrintProperties` option.
 
 * `ShowConfiguration`: Prints various information about the compiler configuration in use.
-This option is best used as follows: `java -XX:EagerJVMCI -Dgraal.ShowConfiguration=info -version`.
+This option is best used as follows: `java -XX:+EagerJVMCI -Dgraal.ShowConfiguration=info -version`.
 Since Graal is only initialized upon the first top tier JIT compilation
 request, without `-XX:+EagerJVMCI` Graal may not be initialized at all
 in which case `-Dgraal.ShowConfiguration` will be ignored. Adding `-version`
@@ -64,13 +64,13 @@ These Graal properties above are usable with some other GraalVM launchers such a
 For example:
 
 ```
-$ java -Dgraal.ShowConfiguration=info
+$ java -XX:+EagerJVMCI -Dgraal.ShowConfiguration=info -version
 ```
 
 Becomes:
 
 ```
-$ js --jvm.Dgraal.ShowConfiguration=info
+$ js --jvm --vm.Dgraal.ShowConfiguration=info -version
 ```
 
-Note the `-D` prefix is replaced by `--jvm.D`.
+Note the `-D` prefix is replaced by `--vm.D`.
