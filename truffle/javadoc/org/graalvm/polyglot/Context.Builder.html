@@ -44,7 +44,7 @@ var activeTableTab = "activeTableTab";
 <li><a href="../../../index-all.html">Index</a></li>
 <li><a href="../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc15-dev</b><br>dab657b214eaabb8e44029c97b4397d1addd0689</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc15-dev</b><br>93943ad5974f14c946e14360a7e720c9a77d6f43</div>
 </div>
 <div class="subNav">
 <ul class="navList">
@@ -160,8 +160,9 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code><a href="../../../org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/Context.Builder.html#allowHostAccess-boolean-">allowHostAccess</a></span>(boolean&nbsp;enabled)</code>
-<div class="block">Allows guest languages to access the host language by loading new classes.</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/Context.Builder.html#allowHostAccess-org.graalvm.polyglot.HostAccess-">allowHostAccess</a></span>(<a href="../../../org/graalvm/polyglot/HostAccess.html" title="class in org.graalvm.polyglot">HostAccess</a>&nbsp;config)</code>
+<div class="block">Configures which public constructors, methods or fields of public classes are accessible
+ by guest applications.</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
@@ -173,53 +174,53 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code><a href="../../../org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/Context.Builder.html#allowHostClassLookup-java.util.function.Predicate-">allowHostClassLookup</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/function/Predicate.html?is-external=true" title="class or interface in java.util.function">Predicate</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;classFilter)</code>
+<div class="block">Sets a filter that specifies the Java host classes that can be looked up by the guest
+ application.</div>
+</td>
+</tr>
+<tr id="i6" class="altColor">
+<td class="colFirst"><code><a href="../../../org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/Context.Builder.html#allowIO-boolean-">allowIO</a></span>(boolean&nbsp;enabled)</code>
 <div class="block">If <code>true</code>, allows guest language to perform unrestricted IO operations on host
  system.</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code><a href="../../../org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/Context.Builder.html#allowNativeAccess-boolean-">allowNativeAccess</a></span>(boolean&nbsp;enabled)</code>
 <div class="block">Allows guest languages to access the native interface.</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code><a href="../../../org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/Context.Builder.html#arguments-java.lang.String-java.lang.String:A-">arguments</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;language,
          <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>[]&nbsp;args)</code>
 <div class="block">Sets the guest language application arguments for a language <a href="../../../org/graalvm/polyglot/Context.html" title="class in org.graalvm.polyglot"><code>context</code></a>.</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code><a href="../../../org/graalvm/polyglot/Context.html" title="class in org.graalvm.polyglot">Context</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/Context.Builder.html#build--">build</a></span>()</code>
 <div class="block">Creates a new context instance from the configuration provided in the builder.</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code><a href="../../../org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/Context.Builder.html#engine-org.graalvm.polyglot.Engine-">engine</a></span>(<a href="../../../org/graalvm/polyglot/Engine.html" title="class in org.graalvm.polyglot">Engine</a>&nbsp;engine)</code>
 <div class="block">Explicitly sets the underlying engine to use.</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code><a href="../../../org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/Context.Builder.html#err-java.io.OutputStream-">err</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io">OutputStream</a>&nbsp;err)</code>
 <div class="block">Sets the error output stream to be used for the context.</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code><a href="../../../org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/Context.Builder.html#fileSystem-org.graalvm.polyglot.io.FileSystem-">fileSystem</a></span>(<a href="../../../org/graalvm/polyglot/io/FileSystem.html" title="interface in org.graalvm.polyglot.io">FileSystem</a>&nbsp;fileSystem)</code>
 <div class="block">Installs a new <a href="../../../org/graalvm/polyglot/io/FileSystem.html" title="interface in org.graalvm.polyglot.io"><code>FileSystem</code></a>.</div>
-</td>
-</tr>
-<tr id="i12" class="altColor">
-<td class="colFirst"><code><a href="../../../org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/graalvm/polyglot/Context.Builder.html#hostClassFilter-java.util.function.Predicate-">hostClassFilter</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/function/Predicate.html?is-external=true" title="class or interface in java.util.function">Predicate</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;classFilter)</code>
-<div class="block">Sets a class filter that allows to limit the classes that are allowed to be loaded by
- guest languages.</div>
 </td>
 </tr>
 <tr id="i13" class="rowColor">
@@ -351,19 +352,27 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 </dl>
 </li>
 </ul>
-<a name="allowHostAccess-boolean-">
+<a name="allowHostAccess-org.graalvm.polyglot.HostAccess-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>allowHostAccess</h4>
-<pre>public&nbsp;<a href="../../../org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a>&nbsp;allowHostAccess(boolean&nbsp;enabled)</pre>
-<div class="block">Allows guest languages to access the host language by loading new classes. Default is
- <code>false</code>. If <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowAllAccess-boolean-"><code>all access</code></a> is set to
- <code>true</code>, then host access is enabled if not allowed explicitly.</div>
+<pre>public&nbsp;<a href="../../../org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a>&nbsp;allowHostAccess(<a href="../../../org/graalvm/polyglot/HostAccess.html" title="class in org.graalvm.polyglot">HostAccess</a>&nbsp;config)</pre>
+<div class="block">Configures which public constructors, methods or fields of public classes are accessible
+ by guest applications. By default if <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowAllAccess-boolean-"><code>Context.Builder.allowAllAccess(boolean)</code></a> is
+ <code>false</code> the <a href="../../../org/graalvm/polyglot/HostAccess.html#EXPLICIT"><code>HostAccess.EXPLICIT</code></a> policy will be used, otherwise
+ <a href="../../../org/graalvm/polyglot/HostAccess.html#ALL"><code>HostAccess.ALL</code></a>.</div>
 <dl>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>1.0</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../org/graalvm/polyglot/HostAccess.html#EXPLICIT"><code>EXPLICIT - to allow explicitly annotated constructors, methods
+      or fields.</code></a>, 
+<a href="../../../org/graalvm/polyglot/HostAccess.html#ALL"><code>ALL - to allow unrestricted access (use only for trusted guest
+      applications)</code></a>, 
+<a href="../../../org/graalvm/polyglot/HostAccess.html#NONE"><code>NONE - to not allow any access</code></a>, 
+<a href="../../../org/graalvm/polyglot/HostAccess.html#newBuilder--"><code>newBuilder() - to create a custom configuration.</code></a></dd>
 </dl>
 </li>
 </ul>
@@ -408,7 +417,8 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <div class="block">Sets the default value for all privileges. If not explicitly specified, then all access
  is <code>false</code>. If all access is enabled then certain privileges may still be
  disabled by configuring it explicitly using the builder (either before or after the call
- to <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowAllAccess-boolean-"><code>allowAllAccess()</code></a>).
+ to <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowAllAccess-boolean-"><code>allowAllAccess()</code></a>). Allowing all access should only be
+ set if the guest application is fully trusted.
  <p>
  If <code>true</code>, grants the context the same access privileges as the host virtual
  machine. If the host VM runs without a <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/SecurityManager.html?is-external=true" title="class or interface in java.lang"><code>security manager</code></a> enabled,
@@ -420,7 +430,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
  Grants full access to the following privileges by default:
  <ul>
  <li>The <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowCreateThread-boolean-"><code>creation</code></a> and use of new threads.
- <li>The access to public <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowHostAccess-boolean-"><code>host classes</code></a>.
+ <li>The access to public <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowHostAccess-org.graalvm.polyglot.HostAccess-"><code>host classes</code></a>.
  <li>The loading of new <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowHostClassLoading-boolean-"><code>host classes</code></a> by adding
  entries to the class path.
  <li>Exporting new members into the polyglot <a href="../../../org/graalvm/polyglot/Context.html#getPolyglotBindings--"><code>bindings</code></a>.
@@ -446,10 +456,90 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
  classes via jar or class files. If <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowAllAccess-boolean-"><code>all access</code></a> is set to
  <code>true</code>, then the host class loading is enabled if it is not disallowed
  explicitly. For host class loading to be useful, <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowIO-boolean-"><code>IO</code></a> operations
- and <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowHostAccess-boolean-"><code>host access</code></a> need to be allowed as well.</div>
+ <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowHostClassLookup-java.util.function.Predicate-"><code>host class lookup</code></a>, and the
+ <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowHostAccess-org.graalvm.polyglot.HostAccess-"><code>host access policy</code></a> needs to be
+ configured as well.</div>
 <dl>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>1.0</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../org/graalvm/polyglot/Context.Builder.html#allowHostAccess-org.graalvm.polyglot.HostAccess-"><code>Context.Builder.allowHostAccess(HostAccess)</code></a>, 
+<a href="../../../org/graalvm/polyglot/Context.Builder.html#allowHostClassLookup-java.util.function.Predicate-"><code>Context.Builder.allowHostClassLookup(Predicate)</code></a></dd>
+</dl>
+</li>
+</ul>
+<a name="allowHostClassLookup-java.util.function.Predicate-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>allowHostClassLookup</h4>
+<pre>public&nbsp;<a href="../../../org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a>&nbsp;allowHostClassLookup(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/function/Predicate.html?is-external=true" title="class or interface in java.util.function">Predicate</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;classFilter)</pre>
+<div class="block">Sets a filter that specifies the Java host classes that can be looked up by the guest
+ application. If set to <code>null</code> then no class lookup is allowed and relevant
+ language builtins are not available (e.g. <code>Java.type</code> in JavaScript). If the
+ <code>classFilter</code> parameter is set to a filter predicate, then language builtins
+ are available and classes can be looked up if the filter predicate returns
+ <code>true</code> for the fully qualified class name. If the filter returns
+ <code>false</code>, then the class cannot be looked up and as a result throws a guest
+ language error when accessed. By default and if <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowAllAccess-boolean-"><code>all
+ access</code></a> is <code>false</code>, host class lookup is disabled. By default and if
+ <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowAllAccess-boolean-"><code>all access</code></a> is <code>true</code>, then all classes may be
+ looked up by the guest application.
+ <p>
+ In order to access class members looked up by the guest application a
+ <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowHostAccess-org.graalvm.polyglot.HostAccess-"><code>host access policy</code></a> needs to be
+ set or <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowAllAccess-boolean-"><code>all access</code></a> needs to be set to <code>true</code>.
+ <p>
+ <h3>Example usage with JavaScript:</h3>
+
+ <pre>
+ public class MyClass {
+     &#64;HostAccess.Export
+     public int accessibleMethod() {
+         return 42;
+     }
+
+     public static void main(String[] args) {
+         try (Context context = Context.newBuilder() //
+                         .allowHostClassLookup(c -> c.equals("myPackage.MyClass")) //
+                         .build()) {
+             int result = context.eval("js", "" +
+                             "var MyClass = Java.type('myPackage.MyClass');" +
+                             "new MyClass().accessibleMethod()").asInt();
+             assert result == 42;
+         }
+     }
+ }
+ </pre>
+
+ <h4>In this example:</h4>
+ <ul>
+ <li>We create a new context with the <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowHostClassLookup-java.util.function.Predicate-"><code>permission</code></a> to look up the class <code>myPackage.MyClass</code> in the guest language
+ application.
+ <li>We evaluate a JavaScript code snippet that accesses the Java class
+ <code>myPackage.MyClass</code> using the <code>Java.type</code> builtin provided by the
+ JavaScript language implementation. Other classes can only be looked up if the provided
+ class filter returns <code>true</code> for their name.
+ <li>We create a new instance of the Java class <code>MyClass</code> by using the
+ JavaScript <code>new</code> keyword.
+ <li>We call the method <code>accessibleMethod</code> which returns <code>42</code>. The
+ method is accessible to the guest language because because the enclosing class and the
+ declared method are public, as well as annotated with the
+ <a href="../../../org/graalvm/polyglot/HostAccess.Export.html" title="annotation in org.graalvm.polyglot"><code>@HostAccess.Export</code></a> annotation. Which Java members of classes
+ are accessible can be configured using the <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowHostAccess-org.graalvm.polyglot.HostAccess-"><code>host
+ access policy</code></a>.
+ </ul></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>classFilter</code> - a predicate that returns <code>true</code> or <code>false</code> for a
+            qualified Java class name or <code>null</code> to disable host class lookup.</dd>
+<dt><span class="simpleTagLabel">Since:</span></dt>
+<dd>1.0</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../org/graalvm/polyglot/Context.Builder.html#allowHostClassLoading-boolean-"><code>allowHostClassLoading - to allow loading of classes.</code></a>, 
+<a href="../../../org/graalvm/polyglot/Context.Builder.html#allowHostAccess-org.graalvm.polyglot.HostAccess-"><code>allowHostAccess - to configure the access policy of
+      host values for guest languages.</code></a></dd>
 </dl>
 </li>
 </ul>
@@ -465,27 +555,6 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
  an experimental option results in an <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalArgumentException.html?is-external=true" title="class or interface in java.lang"><code>IllegalArgumentException</code></a> when the context is
  built.</div>
 <dl>
-<dt><span class="simpleTagLabel">Since:</span></dt>
-<dd>1.0</dd>
-</dl>
-</li>
-</ul>
-<a name="hostClassFilter-java.util.function.Predicate-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>hostClassFilter</h4>
-<pre>public&nbsp;<a href="../../../org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a>&nbsp;hostClassFilter(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/function/Predicate.html?is-external=true" title="class or interface in java.util.function">Predicate</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;classFilter)</pre>
-<div class="block">Sets a class filter that allows to limit the classes that are allowed to be loaded by
- guest languages. If the filter returns <code>true</code>, then the class is accessible,
- otherwise it is not accessible and throws a guest language error when accessed. In order
- to have an effect, <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowHostAccess-boolean-"><code>Context.Builder.allowHostAccess(boolean)</code></a> or <a href="../../../org/graalvm/polyglot/Context.Builder.html#allowAllAccess-boolean-"><code>Context.Builder.allowAllAccess(boolean)</code></a>
- needs to be set to <code>true</code>.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>classFilter</code> - a predicate that returns <code>true</code> or <code>false</code> for a
-            java qualified class name.</dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>1.0</dd>
 </dl>
@@ -734,7 +803,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li><a href="../../../index-all.html">Index</a></li>
 <li><a href="../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc15-dev</b><br>dab657b214eaabb8e44029c97b4397d1addd0689</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc15-dev</b><br>93943ad5974f14c946e14360a7e720c9a77d6f43</div>
 </div>
 <div class="subNav">
 <ul class="navList">
