@@ -38,7 +38,7 @@
 <li class="navBarCell1Rev">Index</li>
 <li><a href="help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc15-dev</b><br>a5c46769dfdf13330ac95d3c49888fd8d53456f7</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc15-dev</b><br>907f5386fe26b5f626adb5e908f761848ac46653</div>
 </div>
 <div class="subNav">
 <ul class="navList">
@@ -692,6 +692,10 @@
 <dd>
 <div class="block">Returns a <code>short</code> representation of this value if it is <a href="org/graalvm/polyglot/Value.html#isNumber--"><code>number</code></a>
  and the value <a href="org/graalvm/polyglot/Value.html#fitsInShort--"><code>fits</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/debug/DebugValue.html#asString--">asString()</a></span> - Method in class com.oracle.truffle.api.debug.<a href="com/oracle/truffle/api/debug/DebugValue.html" title="class in com.oracle.truffle.api.debug">DebugValue</a></dt>
+<dd>
+<div class="block">Returns the <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang"><code>String</code></a> value if this value represents a string.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/api/interop/InteropLibrary.html#asString-java.lang.Object-">asString(Object)</a></span> - Method in class com.oracle.truffle.api.interop.<a href="com/oracle/truffle/api/interop/InteropLibrary.html" title="class in com.oracle.truffle.api.interop">InteropLibrary</a></dt>
 <dd>
@@ -2620,6 +2624,10 @@
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/api/nodes/ExecutableNode.html#ExecutableNode-com.oracle.truffle.api.TruffleLanguage-">ExecutableNode(TruffleLanguage&lt;?&gt;)</a></span> - Constructor for class com.oracle.truffle.api.nodes.<a href="com/oracle/truffle/api/nodes/ExecutableNode.html" title="class in com.oracle.truffle.api.nodes">ExecutableNode</a></dt>
 <dd>
 <div class="block">Creates new executable node with a given language instance.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/debug/DebugValue.html#execute-com.oracle.truffle.api.debug.DebugValue...-">execute(DebugValue...)</a></span> - Method in class com.oracle.truffle.api.debug.<a href="com/oracle/truffle/api/debug/DebugValue.html" title="class in com.oracle.truffle.api.debug">DebugValue</a></dt>
+<dd>
+<div class="block">Executes the executable represented by this value.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/api/interop/InteropLibrary.html#execute-java.lang.Object-java.lang.Object...-">execute(Object, Object...)</a></span> - Method in class com.oracle.truffle.api.interop.<a href="com/oracle/truffle/api/interop/InteropLibrary.html" title="class in com.oracle.truffle.api.interop">InteropLibrary</a></dt>
 <dd>
@@ -6322,6 +6330,10 @@
 <dt><span class="memberNameLink"><a href="org/graalvm/word/PointerBase.html#isNonNull--">isNonNull()</a></span> - Method in interface org.graalvm.word.<a href="org/graalvm/word/PointerBase.html" title="interface in org.graalvm.word">PointerBase</a></dt>
 <dd>
 <div class="block">Returns true if this pointer is not the <a href="org/graalvm/word/WordFactory.html#nullPointer--"><code>null pointer</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/debug/DebugValue.html#isNull--">isNull()</a></span> - Method in class com.oracle.truffle.api.debug.<a href="com/oracle/truffle/api/debug/DebugValue.html" title="class in com.oracle.truffle.api.debug">DebugValue</a></dt>
+<dd>
+<div class="block">Test if the value represents 'null'.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/api/interop/InteropLibrary.html#isNull-java.lang.Object-">isNull(Object)</a></span> - Method in class com.oracle.truffle.api.interop.<a href="com/oracle/truffle/api/interop/InteropLibrary.html" title="class in com.oracle.truffle.api.interop">InteropLibrary</a></dt>
 <dd>
@@ -10794,7 +10806,7 @@ the order they are declared.</div>
 <li class="navBarCell1Rev">Index</li>
 <li><a href="help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc15-dev</b><br>a5c46769dfdf13330ac95d3c49888fd8d53456f7</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc15-dev</b><br>907f5386fe26b5f626adb5e908f761848ac46653</div>
 </div>
 <div class="subNav">
 <ul class="navList">
