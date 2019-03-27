@@ -38,7 +38,7 @@
 <li class="navBarCell1Rev">Index</li>
 <li><a href="help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc15-dev</b><br>d24c8b7b9cfcb35b1d50f26619cf5acc30df6f4f</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc15-dev</b><br>a5c46769dfdf13330ac95d3c49888fd8d53456f7</div>
 </div>
 <div class="subNav">
 <ul class="navList">
@@ -338,6 +338,10 @@
 <div class="block">Predefined host access policy that allows full unrestricted access to public methods or
  fields of public host classes.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="org/graalvm/polyglot/PolyglotAccess.html#ALL">ALL</a></span> - Static variable in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/PolyglotAccess.html" title="class in org.graalvm.polyglot">PolyglotAccess</a></dt>
+<dd>
+<div class="block">Provides guest languages full access to other languages using polyglot builtins.</div>
+</dd>
 <dt><a href="com/oracle/truffle/api/instrumentation/AllocationEvent.html" title="class in com.oracle.truffle.api.instrumentation"><span class="typeNameLink">AllocationEvent</span></a> - Class in <a href="com/oracle/truffle/api/instrumentation/package-summary.html">com.oracle.truffle.api.instrumentation</a></dt>
 <dd>
 <div class="block">An event representing an allocation of a guest language value.</div>
@@ -431,6 +435,10 @@
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Context.Builder.html#allowNativeAccess-boolean-">allowNativeAccess(boolean)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></dt>
 <dd>
 <div class="block">Allows guest languages to access the native interface.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Context.Builder.html#allowPolyglotAccess-org.graalvm.polyglot.PolyglotAccess-">allowPolyglotAccess(PolyglotAccess)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Context.Builder.html" title="class in org.graalvm.polyglot">Context.Builder</a></dt>
+<dd>
+<div class="block">Allow polyglot access using the provided policy.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/HostAccess.Builder.html#allowPublicAccess-boolean-">allowPublicAccess(boolean)</a></span> - Method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/HostAccess.Builder.html" title="class in org.graalvm.polyglot">HostAccess.Builder</a></dt>
 <dd>
@@ -6385,6 +6393,10 @@
 <dd>
 <div class="block">Returns <code>true</code> if the receiver value represents a native pointer.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/TruffleLanguage.Env.html#isPolyglotAccessAllowed--">isPolyglotAccessAllowed()</a></span> - Method in class com.oracle.truffle.api.<a href="com/oracle/truffle/api/TruffleLanguage.Env.html" title="class in com.oracle.truffle.api">TruffleLanguage.Env</a></dt>
+<dd>
+<div class="block">Returns <code>true</code> if polyglot access is allowed, else <code>false</code>.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/api/TruffleLanguage.Env.html#isPreInitialization--">isPreInitialization()</a></span> - Method in class com.oracle.truffle.api.<a href="com/oracle/truffle/api/TruffleLanguage.Env.html" title="class in com.oracle.truffle.api">TruffleLanguage.Env</a></dt>
 <dd>
 <div class="block">Returns <code>true</code> if this <a href="org/graalvm/polyglot/Context.html" title="class in org.graalvm.polyglot"><code>Context</code></a> is being
@@ -7391,6 +7403,10 @@
 <dd>
 <div class="block">Predefined host access policy that disallows any access to public host methods or fields.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="org/graalvm/polyglot/PolyglotAccess.html#NONE">NONE</a></span> - Static variable in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/PolyglotAccess.html" title="class in org.graalvm.polyglot">PolyglotAccess</a></dt>
+<dd>
+<div class="block">Provides guest languages no access to other languages using polyglot builtins.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/api/TruffleFile.html#normalize--">normalize()</a></span> - Method in class com.oracle.truffle.api.<a href="com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api">TruffleFile</a></dt>
 <dd>
 <div class="block">Returns a <a href="com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> with removed redundant name elements in it's path.</div>
@@ -8013,6 +8029,10 @@
 <dd>
 <div class="block">Marker interface for all <a href="org/graalvm/word/WordBase.html" title="interface in org.graalvm.word"><code>word types</code></a> that have the semantic of a pointer (but not
  necessarily all the memory access methods defined in <a href="org/graalvm/word/Pointer.html" title="interface in org.graalvm.word"><code>Pointer</code></a>).</div>
+</dd>
+<dt><a href="org/graalvm/polyglot/PolyglotAccess.html" title="class in org.graalvm.polyglot"><span class="typeNameLink">PolyglotAccess</span></a> - Class in <a href="org/graalvm/polyglot/package-summary.html">org.graalvm.polyglot</a></dt>
+<dd>
+<div class="block">Represents an access policy for polyglot builtins in the guest languages.</div>
 </dd>
 <dt><a href="org/graalvm/polyglot/PolyglotException.html" title="class in org.graalvm.polyglot"><span class="typeNameLink">PolyglotException</span></a> - Exception in <a href="org/graalvm/polyglot/package-summary.html">org.graalvm.polyglot</a></dt>
 <dd>
@@ -10774,7 +10794,7 @@ the order they are declared.</div>
 <li class="navBarCell1Rev">Index</li>
 <li><a href="help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc15-dev</b><br>d24c8b7b9cfcb35b1d50f26619cf5acc30df6f4f</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc15-dev</b><br>a5c46769dfdf13330ac95d3c49888fd8d53456f7</div>
 </div>
 <div class="subNav">
 <ul class="navList">
