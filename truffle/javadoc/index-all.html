@@ -38,7 +38,7 @@
 <li class="navBarCell1Rev">Index</li>
 <li><a href="help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc15-dev</b><br>982c4186d869613d1e4fd00040b5bad86338ce2a</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc15-dev</b><br>b34fc1796ec9071345fa821acbe58a8c6736592d</div>
 </div>
 <div class="subNav">
 <ul class="navList">
@@ -3709,10 +3709,6 @@
 <dt><span class="memberNameLink"><a href="org/graalvm/options/OptionKey.html#getDefaultValue--">getDefaultValue()</a></span> - Method in class org.graalvm.options.<a href="org/graalvm/options/OptionKey.html" title="class in org.graalvm.options">OptionKey</a></dt>
 <dd>
 <div class="block">Returns the default value for this option.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="org/graalvm/options/OptionType.html#getDefaultValue--">getDefaultValue()</a></span> - Method in class org.graalvm.options.<a href="org/graalvm/options/OptionType.html" title="class in org.graalvm.options">OptionType</a></dt>
-<dd>
-<div class="block">Returns the default value of this type.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/api/instrumentation/InstrumentableNode.WrapperNode.html#getDelegateNode--">getDelegateNode()</a></span> - Method in interface com.oracle.truffle.api.instrumentation.<a href="com/oracle/truffle/api/instrumentation/InstrumentableNode.WrapperNode.html" title="interface in com.oracle.truffle.api.instrumentation">InstrumentableNode.WrapperNode</a></dt>
 <dd>
@@ -7761,15 +7757,15 @@
 <dd>
 <div class="block">Represents a type of an option that allows to convert string values to Java values.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="org/graalvm/options/OptionType.html#OptionType-java.lang.String-T-java.util.function.Function-java.util.function.Consumer-">OptionType(String, T, Function&lt;String, T&gt;, Consumer&lt;T&gt;)</a></span> - Constructor for class org.graalvm.options.<a href="org/graalvm/options/OptionType.html" title="class in org.graalvm.options">OptionType</a></dt>
+<dt><span class="memberNameLink"><a href="org/graalvm/options/OptionType.html#OptionType-java.lang.String-java.util.function.Function-java.util.function.Consumer-">OptionType(String, Function&lt;String, T&gt;, Consumer&lt;T&gt;)</a></span> - Constructor for class org.graalvm.options.<a href="org/graalvm/options/OptionType.html" title="class in org.graalvm.options">OptionType</a></dt>
 <dd>
-<div class="block">Constructs a new option type with name, defaultValue, and function that allows to convert a
- string to the option type.</div>
+<div class="block">Constructs a new option type with name and function that allows to convert a string to the
+ option type and validator of the option values.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="org/graalvm/options/OptionType.html#OptionType-java.lang.String-T-java.util.function.Function-">OptionType(String, T, Function&lt;String, T&gt;)</a></span> - Constructor for class org.graalvm.options.<a href="org/graalvm/options/OptionType.html" title="class in org.graalvm.options">OptionType</a></dt>
+<dt><span class="memberNameLink"><a href="org/graalvm/options/OptionType.html#OptionType-java.lang.String-java.util.function.Function-">OptionType(String, Function&lt;String, T&gt;)</a></span> - Constructor for class org.graalvm.options.<a href="org/graalvm/options/OptionType.html" title="class in org.graalvm.options">OptionType</a></dt>
 <dd>
-<div class="block">Constructs a new option type with name, defaultValue, and function that allows to convert a
- string to the option type.</div>
+<div class="block">Constructs a new option type with name and function that allows to convert a string to the
+ option type.</div>
 </dd>
 <dt><a href="org/graalvm/options/OptionValues.html" title="interface in org.graalvm.options"><span class="typeNameLink">OptionValues</span></a> - Interface in <a href="org/graalvm/options/package-summary.html">org.graalvm.options</a></dt>
 <dd>
@@ -10806,7 +10802,7 @@ the order they are declared.</div>
 <li class="navBarCell1Rev">Index</li>
 <li><a href="help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc15-dev</b><br>982c4186d869613d1e4fd00040b5bad86338ce2a</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc15-dev</b><br>b34fc1796ec9071345fa821acbe58a8c6736592d</div>
 </div>
 <div class="subNav">
 <ul class="navList">
