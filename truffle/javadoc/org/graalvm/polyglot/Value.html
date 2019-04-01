@@ -44,7 +44,7 @@ var activeTableTab = "activeTableTab";
 <li><a href="../../../index-all.html">Index</a></li>
 <li><a href="../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc15-dev</b><br>bf44f901acaf8b71e9f1f380cfe4b88e0e2c2aa7</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc15-dev</b><br>9c5dcedcb2dff32967d23d34019aae1a34ba684b</div>
 </div>
 <div class="subNav">
 <ul class="navList">
@@ -1394,24 +1394,21 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
  <p>
  The following target types are supported and interpreted in the following order:
  <ul>
+ <li>Custom
+ <a href="../../../org/graalvm/polyglot/HostAccess.Builder.html#targetTypeMapping-java.lang.Class-java.lang.Class-java.util.function.Predicate-java.util.function.Function-"><code>target type mappings</code></a> specified in the <a href="../../../org/graalvm/polyglot/HostAccess.html" title="class in org.graalvm.polyglot"><code>HostAccess</code></a> configuration when the context is
+ constructed. Custom target type mappings may override all the type mappings below. This
+ allows for customization if one of the below type mappings is not suitable.
  <li><code><a href="../../../org/graalvm/polyglot/Value.html" title="class in org.graalvm.polyglot"><code>Value</code></a>.class</code> is always supported and returns this instance.
  <li>If the value represents a <a href="../../../org/graalvm/polyglot/Value.html#isHostObject--"><code>host object</code></a> then all classes
  implemented or extended by the host object can be used as target type.
- <li><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang"><code>String</code></a>.class</code> is supported if the value is a <a href="../../../org/graalvm/polyglot/Value.html#isString--"><code>string</code></a>, a <a href="../../../org/graalvm/polyglot/Value.html#isNumber--"><code>number</code></a>, or a <a href="../../../org/graalvm/polyglot/Value.html#isBoolean--"><code>boolean</code></a>. Conversions are
- done using the <code>toString</code> method of the respective Java type, and in the case of
- floating-point numbers, may result in a slight loss of precision.
- <li><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Character.html?is-external=true" title="class or interface in java.lang"><code>Character</code></a>.class</code> is supported if the value is a <a href="../../../org/graalvm/polyglot/Value.html#isString--"><code>string</code></a> of length one.
+ <li><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang"><code>String</code></a>.class</code> is supported if the value is a <a href="../../../org/graalvm/polyglot/Value.html#isString--"><code>string</code></a>.
+ <li><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Character.html?is-external=true" title="class or interface in java.lang"><code>Character</code></a>.class</code> is supported if the value is a <a href="../../../org/graalvm/polyglot/Value.html#isString--"><code>string</code></a> of length one or if a number can be safely be converted to a character.
  <li><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang"><code>Number</code></a>.class</code> is supported if the value is a <a href="../../../org/graalvm/polyglot/Value.html#isNumber--"><code>number</code></a>. <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Byte.html?is-external=true" title="class or interface in java.lang"><code>Byte</code></a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Short.html?is-external=true" title="class or interface in java.lang"><code>Short</code></a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang"><code>Integer</code></a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang"><code>Long</code></a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Float.html?is-external=true" title="class or interface in java.lang"><code>Float</code></a> and
  <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Double.html?is-external=true" title="class or interface in java.lang"><code>Double</code></a> are allowed if they fit without conversion. If a conversion is necessary then
  a <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/ClassCastException.html?is-external=true" title="class or interface in java.lang"><code>ClassCastException</code></a> is thrown. Primitive class literals throw a
- <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/NullPointerException.html?is-external=true" title="class or interface in java.lang"><code>NullPointerException</code></a> if the value represents <a href="../../../org/graalvm/polyglot/Value.html#isNull--"><code>null</code></a>. If the target
- type is a (boxed) primitive number class and the value is a <a href="../../../org/graalvm/polyglot/Value.html#isString--"><code>string</code></a>, an
- attempt will be made to parse the string using the class's <code>parse</code> method (e.g.
- <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true#parseInt-java.lang.String-" title="class or interface in java.lang"><code>Integer.parseInt(String)</code></a>), which may be lossy in the case of floating-point types; no
- white space or type suffix is permitted in the string.
+ <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/NullPointerException.html?is-external=true" title="class or interface in java.lang"><code>NullPointerException</code></a> if the value represents <a href="../../../org/graalvm/polyglot/Value.html#isNull--"><code>null</code></a>.
  <li><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang"><code>Boolean</code></a>.class</code> is supported if the value is a <a href="../../../org/graalvm/polyglot/Value.html#isBoolean--"><code>boolean</code></a>. Primitive <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang"><code>boolean.class</code></a> literal is also supported. The primitive
- class literal throws a <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/NullPointerException.html?is-external=true" title="class or interface in java.lang"><code>NullPointerException</code></a> if the value represents <a href="../../../org/graalvm/polyglot/Value.html#isNull--"><code>null</code></a>. If the value is a <a href="../../../org/graalvm/polyglot/Value.html#isString--"><code>string</code></a> it will be converted if it equals either
- <code>"true"</code> or <code>"false"</code>.
+ class literal throws a <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/NullPointerException.html?is-external=true" title="class or interface in java.lang"><code>NullPointerException</code></a> if the value represents <a href="../../../org/graalvm/polyglot/Value.html#isNull--"><code>null</code></a>.
  <li>Any Java type in the type hierarchy of a <a href="../../../org/graalvm/polyglot/Value.html#isHostObject--"><code>host object</code></a>.
  <li><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang"><code>Object</code></a>.class</code> is always supported. See section Object mapping rules.
  <li><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util"><code>Map</code></a>.class</code> is supported if the value has <a href="../../../org/graalvm/polyglot/Value.html#hasMembers--"><code>members</code></a> or <a href="../../../org/graalvm/polyglot/Value.html#hasArrayElements--"><code>array elements</code></a>. The returned map can be safely cast
@@ -1668,7 +1665,7 @@ extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?
 <li><a href="../../../index-all.html">Index</a></li>
 <li><a href="../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc15-dev</b><br>bf44f901acaf8b71e9f1f380cfe4b88e0e2c2aa7</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc15-dev</b><br>9c5dcedcb2dff32967d23d34019aae1a34ba684b</div>
 </div>
 <div class="subNav">
 <ul class="navList">
