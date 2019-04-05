@@ -1766,7 +1766,7 @@ functional interfaces.</p>
 <span class="o">}</span>
 
 <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">Context</span> <span class="n">context</span> <span class="o">=</span> <span class="n">Context</span><span class="o">.</span><span class="na">newBuilder</span><span class="o">().</span><span class="na">allowAllAccess</span><span class="o">(</span><span class="kc">true</span><span class="o">).</span><span class="na">build</span><span class="o">();</span>
+    <span class="n">Context</span> <span class="n">context</span> <span class="o">=</span> <span class="n">Context</span><span class="o">.</span><span class="na">create</span><span class="o">();</span>
     <span class="n">context</span><span class="o">.</span><span class="na">getPolyglotBindings</span><span class="o">().</span><span class="na">putMember</span><span class="o">(</span><span class="s">"javaObj"</span><span class="o">,</span> <span class="k">new</span> <span class="n">MyClass</span><span class="o">());</span>
     <span class="kt">boolean</span> <span class="n">valid</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="na">eval</span><span class="o">(</span><span class="s">"js"</span><span class="o">,</span>
            <span class="s">"javaObj = Polyglot.import('javaObj');"</span> <span class="o">+</span>
@@ -2218,7 +2218,7 @@ in a native image executable.</p>
 <span class="o">}</span>
 
 <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">Context</span> <span class="n">context</span> <span class="o">=</span> <span class="n">Context</span><span class="o">.</span><span class="na">newBuilder</span><span class="o">().</span><span class="na">allowAllAccess</span><span class="o">(</span><span class="kc">true</span><span class="o">).</span><span class="na">build</span><span class="o">();</span>
+    <span class="n">Context</span> <span class="n">context</span> <span class="o">=</span> <span class="n">Context</span><span class="o">.</span><span class="na">create</span><span class="o">();</span>
     <span class="n">context</span><span class="o">.</span><span class="na">getPolyglotBindings</span><span class="o">().</span><span class="na">putMember</span><span class="o">(</span><span class="s">"arr"</span><span class="o">,</span> <span class="k">new</span> <span class="n">ComputedArray</span><span class="o">());</span>
     <span class="kt">long</span> <span class="n">result</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="na">eval</span><span class="o">(</span><span class="s">"js"</span><span class="o">,</span>
            <span class="s">"arr = Polyglot.import('arr');"</span> <span class="o">+</span>

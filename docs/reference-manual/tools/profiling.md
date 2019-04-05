@@ -184,13 +184,12 @@ to collect execution counts for all statements in methods ending with `accept`.
 
     Lastly, let's look at the memory tracer tool for capturing allocations, for
     which GraalVM currently provides experimental support.
-    Node, `--memtracer` as an experimental tool must be preceded by the `--experimental-options` command line option.
 
-6. Run `js primes.js --experimental-options --memtracer` to display source code locations and
+6. Run `js primes.js --memtracer` to display source code locations and
 counts of reported allocations.
 
     ```
-    $ js primes.js --experimental-options --memtracer
+    $ js primes.js --memtracer
     Computed 5000 prime numbers. The last 5 are 48563,48571,48589,48593,48611.
     ------------------------------------------------------------
      Location Histogram with Allocation Counts. Recorded a total of 5013 allocations.
@@ -267,9 +266,8 @@ is false.
 
 **Disclaimer**: The memory tracer tool is experimental at the moment and likely
 its options are subject to change without notice.
-Make sure to prepend  `--experimental-options` flag to enable `--memtracer`.
 
-- `--experimental-options --memtracer`: enables the memory tracer. Disabled by default.
+- `--memtracer`: enables the memory tracer. Disabled by default.
 - `--memtracer.FilterFile=<Expression>`: applies a wildcard filter for source file paths. For example, `*program*.sl`. The default is &lowast;.
 - `--memtracer.FilterLanguage=<String>`: profiles languages only with the matching mime-type. For example, `+`. The default is no filter.
 - `--memtracer.FilterRootName=<Expression>`: applies a wildcard filter for program roots. For example, `Math.*`. The default is &lowast;.

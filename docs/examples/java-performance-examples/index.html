@@ -578,7 +578,7 @@ $(document).ready(function(){
     
             <div class="col-sm-9">
               <div id="content-wrapper" class="docs-content docs-content--with-sidebar">
-                <h3 id="graalvm-demos-graal-performance-examples-for-java">GraalVM demos: Graal Performance Examples for Java</h3>
+                <h3 id="graalvm-demos-performance-examples-for-java">GraalVM demos: Performance Examples for Java</h3>
 
 <p>The Graal compiler achieves excellent performance for modern workloads
 such as Scala or usage of the Java Streams API. The examples below
@@ -678,53 +678,46 @@ to demonstrate performance of the Graal compiler. This example counts the number
 
 <p>2. Compile it and run as follows:</p>
 <pre><code>$ javac CountUppercase.java
-$ java CountUppercase In 2017 I would like to run ALL languages in one VM.
-1 (2078 ms)
-2 (633 ms)
-3 (394 ms)
-4 (346 ms)
-5 (218 ms)
-6 (108 ms)
-7 (106 ms)
-8 (94 ms)
-9 (96 ms)
-total: 69999993 (4179 ms)
+$ java CountUppercase In 2019 I would like to run ALL languages in one VM.
+1 (389 ms)
+2 (235 ms)
+3 (216 ms)
+4 (77 ms)
+5 (81 ms)
+6 (79 ms)
+7 (85 ms)
+8 (80 ms)
+9 (78 ms)
+total: 69999993 (1408 ms)
 </code></pre>
 
-<p>Since Graal itself is executed by the VM, it will first be interpreted
-and only JIT compiled once it is hot. This is reflected in the first times shown
-above. This <em>warmup</em> time depends on numerous factors including how multi-threaded
-the application code is and how many compiler threads are used by the VM. On a
-machine with fewer cores, the warmup can take longer. If the performance profile
+<p>The <em>warmup</em> time depends on numerous factors including how multi-threaded
+the application code is, how many cores a machine has. If the performance profile
 of <code>CountUppercase</code> on your machine does not match the above, run it for more
 iterations by adding <code>-Diterations=N</code> just after <code>java</code> for some <code>N</code> greater than 1.</p>
 
-<p>Note: We are currently developing a solution in which Graal is compiled ahead of time
-using SubstrateVM into a native library. In this mode, Graal will have no
-noticeable warmup time.</p>
-
 <p>3. Add the <code>-Dgraal.PrintCompilation=true</code> option to see statistics for
 Graal compilations:</p>
-<pre><code>$ java -Dgraal.PrintCompilation=true CountUppercase In 2017 I would like to run ALL languages in one VM.
+<pre><code>$ java -Dgraal.PrintCompilation=true CountUppercase In 2019 I would like to run ALL languages in one VM.
 </code></pre>
 
-<p>This option prints a line after each Graal compilation that shows the method
+<p>This option prints a line after each compilation that shows the method
 compiled, time taken, bytecodes processed (including inlined methods), size
 of machine code produced, and amount of memory allocated during compilation.</p>
 
 <p>4. Use the <code>-XX:-UseJVMCICompiler</code> option to disable the Graal compiler and
 use the native top tier compiler in the VM to compare performance, as follows:</p>
-<pre><code>$ java -XX:-UseJVMCICompiler CountUppercase In 2017 I would like to run ALL languages in one VM.
-1 (754 ms)
-2 (627 ms)
-3 (604 ms)
-4 (609 ms)
-5 (611 ms)
-6 (622 ms)
-7 (607 ms)
-8 (610 ms)
-9 (610 ms)
-total: 69999993 (5018  ms)
+<pre><code>$ java -XX:-UseJVMCICompiler CountUppercase In 2019 I would like to run ALL languages in one VM.
+1 (602 ms)
+2 (443 ms)
+3 (429 ms)
+4 (423 ms)
+5 (418 ms)
+6 (432 ms)
+7 (454 ms)
+8 (415 ms)
+9 (407 ms)
+total: 69999993 (4443 ms)
 </code></pre>
 
 <p>The preceding example demonstrates the benefits of partial escape analysis (PEA)
@@ -883,7 +876,7 @@ $ java Blender
 554 ms
 </code></pre>
 
-<p>3. Once again, use the <code>-XX:-UseJVMCICompiler</code> option to disable Graal:</p>
+<p>3. Once again, use the <code>-XX:-UseJVMCICompiler</code> option to disable the Graal compiler:</p>
 <pre><code>$ java -XX:-UseJVMCICompiler Blender
 1194 ms
 916 ms

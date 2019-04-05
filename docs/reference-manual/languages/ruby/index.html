@@ -822,11 +822,9 @@ puts js_obj[:msg]
 puts js_obj[:payload].join(' ')
 </code></pre>
 
-<p>We use the <code>--jvm --polyglot</code> option to say we want to run a polyglot program, and
-<code>--single_threaded</code> because JavaScript is only compatible with single threaded
-programs.</p>
+<p>We use the <code>--jvm --polyglot</code> option to say we want to run a polyglot program.</p>
 
-<pre><code class="language-shell">$ ruby --jvm --polyglot --single_threaded test.rb
+<pre><code class="language-shell">$ ruby --jvm --polyglot test.rb
 2018-04-11 15:25:08 -0700
 Hello World
 1 2 3 4 5 6 7 8 9 10
