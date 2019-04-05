@@ -1,33 +1,35 @@
 ## JVM Operations Manual
 
-### Difference between running Graal in the native image vs on the JVM
+### Difference between running the Graal compiler in a Native Image vs on the JVM
 
-When running Graal on the JVM, it goes through the same warmup phase that the
-rest of the Java application does. That is, it is first interpreted before
+When running the Graal compiler on the JVM, it goes through the same warmup phase that the
+rest of Java application does. That is, it is first interpreted before
 its hot methods are compiled. This can translate into slightly longer times
 until the application reaches peak performance when compared to the native compilers
 in the JVM such as C1 and C2.
 
-Currently, this is the only way Graal can be used with the JVM. We are
-developing a mode whereby Graal itself is compiled ahead of time into a native shared
-library using SubstrateVM. This will provide startup times on par with the
-native compilers. It will also remove any impact Graal's use of the Java heap
-may have on the application as Graal will have its own heap and memory manager.
+To address the issue of taking longer to reach to peak performance,
+both GraalVM Enterprise and Community images now include **libgraal** --
+a shared library, produced using [Native Image](https://github.com/oracle/graal/blob/master/substratevm/README.md) framework to ahead-of-time compile the compiler itself.
+That means the Graal compiler can now be deployed as a native shared library.
+In this mode, the compiler uses memory separate from the HotSpot heap and it runs compiled from the start.
+That is, it has execution properties similar to other native HotSpot compilers such as C1 and C2.
+Currently, this is the **default mode** of operation. It can be disabled with `-XX:-UseJVMCINativeLibrary`.
 
 ## Measuring Performance
 
-The first thing to be sure of when measuring the performance of Graal is to ensure
-the JVM is using Graal. In a GraalVM binary, the JVM is configured to use Graal
+The first thing to be sure of when measuring the performance is to ensure the JVM is using the Graal compiler.
+In the GraalVM binary, the JVM is configured to use the Graal compiler
 as the top tier compiler by default. You can confirm this by adding `-Dgraal.ShowConfiguration=info`
 to the command line. It will produce a line of output similar to the one below
-when Graal is initialized:
+when the Graal compiler is initialized:
 ```
 Using Graal compiler configuration 'community' provided by org.graalvm.compiler.hotspot.CommunityCompilerConfigurationFactory loaded from jar:file:/Users/dsimon/graal/graal/compiler/mxbuild/dists/graal.jar!/org/graalvm/compiler/hotspot/CommunityCompilerConfigurationFactory.class
 ```
-Note that Graal is only initialized on the first top tier JIT compilation request
+Note that the Graal compiler is only initialized on the first top tier JIT compilation request
 so if your application is short lived, you may not see this output.
 
-Optimizing JVM-based applications is a science in itself. Compilation may not
+Optimizing JVM-based applications is a science in itself. The compilation may not
 even be a factor in the case of poor performance as the problem may
 lie in any other part of the VM (I/O, garbage collection, threading etc) or in
 poorly written application or 3rd party library code. For this reason, it's
@@ -37,7 +39,7 @@ diagnose application behavior.
 You can also compare performance against the native top tier compiler in the JVM by
 adding `-XX:-UseJVMCICompiler` to the command line.
 
-If you observe a significant performance regression when using Graal, please
+If you observe a significant performance regression when using the Graal compiler, please
 open an issue on GitHub. Attaching a Java Flight Recorder log and instructions
 to reproduce the issue makes investigation easier and thus
 chances of a fix higher. Even better is if you can submit a [JMH](http://openjdk.java.net/projects/code-tools/jmh/)
@@ -46,34 +48,32 @@ by a profiler). This allows us to very quickly pinpoint missing optimization
 opportunities or to offer suggestions on how to restructure the code to
 avoid or reduce performance bottlenecks.
 
-## Troubleshooting Graal
+## Troubleshooting the Graal Compiler
 
-Like all software, Graal is not guaranteed to be bug free so it is useful to
+Like all software, the Graal compiler is not guaranteed to be bug free so it is useful to
 know how to diagnose and submit useful bug reports if you encounter issues.
 
 ### Compilation Exceptions
 
-One advantage of Graal being written in Java is that runtime exceptions during
+One advantage of the compiler being written in Java is that runtime exceptions during
 compilation are not fatal VM errors. Instead, each compilation has an exception
 handler that takes an action based on the `graal.CompilationFailureAction`
 property.
 
-The default value is `Diagnose` and causes failing compilations to be retried
+The default value is `Silent`. Specifying `Diagnose` causes failing compilations to be retried
 with extra diagnostics enabled. Just before the VM exits, all diagnostic output
-captured during retried compilations is written to a .zip file and output such
-as the following is printed to the console:
+captured during retried compilations is written to a `.zip` file and its location
+is printed on the console:
 ```
 Graal diagnostic output saved in /Users/demo/graal-dumps/1499768882600/graal_diagnostics_64565.zip
 ```
 
 You can then attach the .zip file to an issue on [GitHub](https://github.com/{{ site.github_username }}).
 
-You can also set the following values for the `graal.CompilationFailureAction`
-property:
-* `Silent`: prints nothing to the console.
-* `Print`: prints a message to the console but does not do re-compilation.
-* `ExitVM`: does the same thing as `Diagnose` but the VM process exits after
-re-compilation.
+Apart from `Silent` and `Diagnose` the following values for `graal.CompilationFailureAction`
+are supported:
+* `Print`: Prints a message and stack trace to the console but does not do the re-compilation.
+* `ExitVM`: Same as `Diagnose` but the VM process exits after the re-compilation.
 
 ### Code Generation Errors
 
@@ -107,7 +107,7 @@ something like this:
 # J 761 JVMCI org.graalvm.compiler.core.gen.NodeLIRBuilder.matchComplexExpressions(Ljava/util/List;)V (299 bytes) @ 0x0000000108a2fc01 [0x0000000108a2fac0+0x141] (null)
 ```
 
-In this example, there is likely an error in the code produced by Graal for `NodeLIRBuilder.matchComplexExpressions`.
+In this example, there is likely an error in the code produced by the Graal compiler for `NodeLIRBuilder.matchComplexExpressions`.
 
 When filing an issue on [GitHub](https://github.com/{{ site.github_username }})
 for such a crash, you should first attempt to reproduce the crash with extra
@@ -118,7 +118,7 @@ In this example, you would add the following to your command line:
 ```
 
 These options are described in more detail [here](https://github.com/oracle/graal/blob/master/compiler/docs/Debugging.md).
-In brief, these options tell Graal to capture snapshots of the compiler state at
+In brief, these options tell the Graal compiler to capture snapshots of the compiler state at
 verbosity level 2 while compiling any method named `matchComplexExpressions` in
 a class with a simple name of `NodeLIRBuilder`. The complete format of the
 `MethodFilter` option is described in the output of `java -XX:+JVMCIPrintProperties`.
@@ -157,7 +157,7 @@ NodeLIRBuilder.matchComplexExpressions,AMD64HotSpotLIRGenerator.getResult`
 and run again.
 
 When the VM crashes in this way, it does not execute the shutdown code that
-archives the Graal diagnostic output or delete the directory it was written to.
+archives the Graal compiler diagnostic output or delete the directory it was written to.
 This must be done manually after the crash.
 
 By default, the directory is `$PWD/graal-dumps/<timestamp>`; for example, `./graal-dumps/1499938817387`.
