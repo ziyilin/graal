@@ -576,7 +576,7 @@ Here is a short list of the most notable ones:</p>
 
 <h5 id="changes">Changes</h5>
 <ul>
-  <li>Our experimental JRuby-compatible Java interop has been removed - use <code>Polyglot</code> and <code>Java</code> instead.</li>
+  <li>Our experimental JRuby-compatible Java interop has been removed – use <code>Polyglot</code> and <code>Java</code> instead.</li>
   <li><code>Process.clock_getres</code> has been implemented.</li>
   <li><code>debug</code>, <code>profile</code>, <code>profiler</code>, which were already marked as unsupported, have been removed.</li>
 </ul>
@@ -589,7 +589,7 @@ Here is a short list of the most notable ones:</p>
 
 <h5 id="compatibility">Compatibility</h5>
 <ul>
-  <li>Improved compatibility with MRI’s Float#to_s formatting <a href="https://github.com/oracle/truffleruby/issues/1626">#1626</a>.</li>
+  <li>Improved compatibility with MRI’s <code>Float#to_s</code> formatting <a href="https://github.com/oracle/truffleruby/issues/1626">#1626</a>.</li>
   <li>Added support for the base keyword argument to <code>Dir.{[], glob}</code>.</li>
 </ul>
 
@@ -649,10 +649,10 @@ For example, to diagnose the memory allocations of a JavaScript application with
 you should prepend <code>--experimental-options</code> option:
 <code>js --experimental-options --memtracer program.js</code>.</li>
   <li>Added a possibility to set <a href="https://www.graalvm.org/sdk/javadoc/org/graalvm/polyglot/Source.Builder.html#encoding-java.nio.charset.Charset-">an encoding in Source builder</a>.</li>
-  <li>Added new API for target type mappings using the new HostAccess API.</li>
+  <li>Added a new API for target type mappings using the new HostAccess API.</li>
 </ul>
 
-<p>We summarized all Truffle and Graal SDK changes between GraalVM versions in the separate changelogs:</p>
+<p>We summarized all Truffle and Graal SDK changes between GraalVM versions in separate changelogs:</p>
 
 <ul>
   <li><a href="https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md#version-100-rc15">GraalVM SDK changelog</a></li>

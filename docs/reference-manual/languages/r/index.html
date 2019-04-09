@@ -622,14 +622,12 @@ $(document).ready(function(){
     
             <div class="col-sm-9">
               <div id="content-wrapper" class="docs-content docs-content--with-sidebar">
-                <h3 id="r-language">R Language</h3>
-
-<p>GraalVM implementation of R is <a href="#graalvm-r-engine-compatibility">compatible with GNU R</a>,
+                <p>GraalVM implementation of R, also known as <strong>FastR</strong>, is <a href="#graalvm-r-engine-compatibility">compatible with GNU R</a>,
 can run R code at <a href="#high-performance">unparalleled performance</a>,
 <a href="#graalvm-integration">integrates with the GraalVM</a>
 ecosystem and provides <a href="#graalvm-r-engine-additional-features">additional R level features</a>.</p>
 
-<h2 id="installing">Installing</h2>
+<h2 id="installing-r">Installing R</h2>
 
 <p>The R language can be installed to a GraalVM build with the <code>gu</code> command.
 See <code>graalvm/bin/gu --help</code> for more information.</p>
@@ -676,13 +674,17 @@ Experienced users can also edit the <code>Makeconf</code> file manually.</p>
 
 <h2 id="graalvm-r-engine-compatibility">GraalVM R Engine Compatibility</h2>
 
-<p>GraalVM implementation of R is based on GNU R and reuses the base packages.
-It is currently based on R 3.5.1, and moves to new major versions of R as they become available and stable.
-The FastR project maintains an extensive set of unit tests for all aspects of the R language and the builtin functionality, and these tests are available as part
-of the R source code.
-GraalVM execution of R aims to be fully compatible with GNU R, including its native interface as used by R packages.
-It can install and run unmodified complex R packages like <code>ggplot2</code>, <code>Shiny</code>, or <code>Rcpp</code>.
-As some packages rely on unspecified behavior or implementation details of GNU R, support for packages is work in progress, and some packages might not install successfully or work as expected.</p>
+<p>GraalVM implementation of R, known as <strong>FastR</strong>, is based on GNU R and reuses
+the base packages. It is currently based on R 3.5.1, and moves to new major
+versions of R as they become available and stable. The <a href="https://github.com/oracle/fastr">FastR
+project</a>, maintains an extensive set of unit
+tests for all aspects of the R language and the builtin functionality, and these
+tests are available as part of the R source code. GraalVM R engine aims to be
+fully compatible with GNU R, including its native interface as used by R
+packages. It can install and run unmodified complex R packages like <code>ggplot2</code>,
+<code>Shiny</code>, or <code>Rcpp</code>. As some packages rely on unspecified behavior or
+implementation details of GNU R, support for packages is work in progress, and
+some packages might not install successfully or work as expected.</p>
 
 <p>Packages can be installed using the <code>install.packages</code> function or the <code>R CMD INSTALL</code> shell command.
 By default, R uses fixed snapshot of the CRAN repository<a href="#note-1"><sup>1</sup></a>
