@@ -38,7 +38,7 @@
 <li class="navBarCell1Rev">Index</li>
 <li><a href="help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc16-dev</b><br>26f742802da8b0fd8308ad01254dfaed792a06bd</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc16-dev</b><br>32df1a7718df4b2f76c8cbfed505177f46165f4e</div>
 </div>
 <div class="subNav">
 <ul class="navList">
@@ -5056,6 +5056,14 @@
 <dd>
 <div class="block">Returns the topmost stack frame returned by <a href="com/oracle/truffle/api/debug/SuspendedEvent.html#getStackFrames--"><code>SuspendedEvent.getStackFrames()</code></a>.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/instrumentation/TruffleInstrument.Env.html#getTruffleFile-java.lang.String-">getTruffleFile(String)</a></span> - Method in class com.oracle.truffle.api.instrumentation.<a href="com/oracle/truffle/api/instrumentation/TruffleInstrument.Env.html" title="class in com.oracle.truffle.api.instrumentation">TruffleInstrument.Env</a></dt>
+<dd>
+<div class="block">Returns a <a href="com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> for given path.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/oracle/truffle/api/instrumentation/TruffleInstrument.Env.html#getTruffleFile-java.net.URI-">getTruffleFile(URI)</a></span> - Method in class com.oracle.truffle.api.instrumentation.<a href="com/oracle/truffle/api/instrumentation/TruffleInstrument.Env.html" title="class in com.oracle.truffle.api.instrumentation">TruffleInstrument.Env</a></dt>
+<dd>
+<div class="block">Returns a <a href="com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> for given <a href="http://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net"><code>URI</code></a>.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/api/TruffleLanguage.Env.html#getTruffleFile-java.lang.String-">getTruffleFile(String)</a></span> - Method in class com.oracle.truffle.api.<a href="com/oracle/truffle/api/TruffleLanguage.Env.html" title="class in com.oracle.truffle.api">TruffleLanguage.Env</a></dt>
 <dd>
 <div class="block">Returns a <a href="com/oracle/truffle/api/TruffleFile.html" title="class in com.oracle.truffle.api"><code>TruffleFile</code></a> for given path.</div>
@@ -7249,11 +7257,11 @@
 </dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/api/source/Source.html#newBuilder-java.lang.String-java.lang.CharSequence-java.lang.String-">newBuilder(String, CharSequence, String)</a></span> - Static method in class com.oracle.truffle.api.source.<a href="com/oracle/truffle/api/source/Source.html" title="class in com.oracle.truffle.api.source">Source</a></dt>
 <dd>
-<div class="block">Creates a new character based source from a character sequence.</div>
+<div class="block">Creates a new character based literal source from a character sequence.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/api/source/Source.html#newBuilder-java.lang.String-org.graalvm.polyglot.io.ByteSequence-java.lang.String-">newBuilder(String, ByteSequence, String)</a></span> - Static method in class com.oracle.truffle.api.source.<a href="com/oracle/truffle/api/source/Source.html" title="class in com.oracle.truffle.api.source">Source</a></dt>
 <dd>
-<div class="block">Creates a new byte based source from a byte sequence.</div>
+<div class="block">Creates a new byte based literal source from a byte sequence.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/api/source/Source.html#newBuilder-java.lang.String-com.oracle.truffle.api.TruffleFile-">newBuilder(String, TruffleFile)</a></span> - Static method in class com.oracle.truffle.api.source.<a href="com/oracle/truffle/api/source/Source.html" title="class in com.oracle.truffle.api.source">Source</a></dt>
 <dd>
@@ -7265,7 +7273,7 @@
 </dd>
 <dt><span class="memberNameLink"><a href="com/oracle/truffle/api/source/Source.html#newBuilder-java.lang.String-java.io.Reader-java.lang.String-">newBuilder(String, Reader, String)</a></span> - Static method in class com.oracle.truffle.api.source.<a href="com/oracle/truffle/api/source/Source.html" title="class in com.oracle.truffle.api.source">Source</a></dt>
 <dd>
-<div class="block">Creates new character based source from a reader.</div>
+<div class="block">Creates new character based literal source from a reader.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/options/OptionDescriptor.html#newBuilder-org.graalvm.options.OptionKey-java.lang.String-">newBuilder(OptionKey&lt;T&gt;, String)</a></span> - Static method in class org.graalvm.options.<a href="org/graalvm/options/OptionDescriptor.html" title="class in org.graalvm.options">OptionDescriptor</a></dt>
 <dd>
@@ -7289,11 +7297,11 @@
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Source.html#newBuilder-java.lang.String-java.lang.CharSequence-java.lang.String-">newBuilder(String, CharSequence, String)</a></span> - Static method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Source.html" title="class in org.graalvm.polyglot">Source</a></dt>
 <dd>
-<div class="block">Creates a new character based source from a character sequence.</div>
+<div class="block">Creates a new character based literal source from a character sequence.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Source.html#newBuilder-java.lang.String-org.graalvm.polyglot.io.ByteSequence-java.lang.String-">newBuilder(String, ByteSequence, String)</a></span> - Static method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Source.html" title="class in org.graalvm.polyglot">Source</a></dt>
 <dd>
-<div class="block">Creates a new byte based source from a byte sequence.</div>
+<div class="block">Creates a new byte based literal source from a byte sequence.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Source.html#newBuilder-java.lang.String-java.io.File-">newBuilder(String, File)</a></span> - Static method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Source.html" title="class in org.graalvm.polyglot">Source</a></dt>
 <dd>
@@ -7305,7 +7313,7 @@
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/Source.html#newBuilder-java.lang.String-java.io.Reader-java.lang.String-">newBuilder(String, Reader, String)</a></span> - Static method in class org.graalvm.polyglot.<a href="org/graalvm/polyglot/Source.html" title="class in org.graalvm.polyglot">Source</a></dt>
 <dd>
-<div class="block">Creates new character based source from a reader.</div>
+<div class="block">Creates new character based literal source from a reader.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/graalvm/polyglot/tck/InlineSnippet.html#newBuilder-org.graalvm.polyglot.tck.Snippet-java.lang.CharSequence-">newBuilder(Snippet, CharSequence)</a></span> - Static method in class org.graalvm.polyglot.tck.<a href="org/graalvm/polyglot/tck/InlineSnippet.html" title="class in org.graalvm.polyglot.tck">InlineSnippet</a></dt>
 <dd>
@@ -10914,7 +10922,7 @@ the order they are declared.</div>
 <li class="navBarCell1Rev">Index</li>
 <li><a href="help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc16-dev</b><br>26f742802da8b0fd8308ad01254dfaed792a06bd</div>
+<div class="aboutLanguage"><b>GraalVM Truffle Java API Reference<br>1.0.0-rc16-dev</b><br>32df1a7718df4b2f76c8cbfed505177f46165f4e</div>
 </div>
 <div class="subNav">
 <ul class="navList">
