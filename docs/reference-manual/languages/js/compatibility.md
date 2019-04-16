@@ -1,20 +1,21 @@
 ## GraalVM JavaScript Compatibility
 
 GraalVM is [ECMAScript 2018](http://www.ecma-international.org/ecma-262/9.0/index.html) compliant and fully compatible with a diverse range of active Node.js (npm) modules.
-More than 90,000 npm packages are regularly tested and compatible with GraalVM, including modules like express, react, async, request, browserify, grunt, mocha, and underscore.
-This release of GraalVM is based on Node.js version 10.15.2.
+It will also be compliant to ECMAScript 2019 once this updated specification is published ([draft spec](https://tc39.github.io/ecma262/)).
+More than 95,000 npm packages are regularly tested and are compatible with GraalVM, including modules like express, react, async, request, browserify, grunt, mocha, and underscore.
+The latest release of GraalVM is based on Node.js version 10.15.2.
 
 ### Is GraalVM compatible with the JavaScript language?
 
 _What version of ECMAScript do we support?_
 
-GraalVM is compatible to the ECMAScript 2018 specification.
-Most features of ECMAScript 2019 and some proposed features and extensions are available as well, but might not be fully implemented or compliant, yet.
+GraalVM is compatible to the ECMAScript 2019 specification.
+Some features of ECMAScript 2020 including some proposed features and extensions are available as well, but might not be fully implemented, compliant, or stable, yet.
 
 _How do we know it?_
 
 GraalVM is tested against the official test suite of ECMAScript, [test262](https://github.com/tc39/test262).
-Even though this test set includes some draft features, GraalVM compliance is around 95% and rising.
+On the current stable feature set of ECMAScript 2019, GraalVM compliance is above 99%.
 
 In our internal CI system, we test against test262, tests published by Nashorn and V8, Node unit tests, as well as GraalVM's own unit tests.
 
@@ -34,7 +35,7 @@ For a reference of the JavaScript APIs that GraalVM supports, see [GRAAL.JS-API]
 ### Is GraalVM compatible with the original node implementation?
 
 Node.js based on GraalVM is largely compatible with the original Node.js (based on the V8 engine).
-This leads to a high number of npm-based modules being compatible with GraalVM (out of the 50k modules we test, 95% of them pass all tests).
+This leads to a high number of npm-based modules being compatible with GraalVM (out of the 95k modules we test, more than 90% of them pass all tests).
 Several sources of differences have to be considered.
 
 - **Setup**
@@ -48,11 +49,11 @@ Due to GraalVM being implemented on top of a JVM, performance characteristics va
 
 _How do we determine GraalVM's JavaScript compatibility?_
 
-GraalVM is compatible to ECMAScript 2018, guaranteeing compatibility on the language level.
+GraalVM is compatible to ECMAScript 2019, guaranteeing compatibility on the language level.
 In addition, GraalVM uses the following approaches to check and retain compatibility to Node.js code:
 
 * node-compat-table: GraalVM is compared against other engines using the _node-compat-table_ module, highlighting incompatibilities that might break Node.js code.
-* automated mass-testing of modules using _mocha_: In order to test a large set of modules, GraalVM is tested against 50k modules that use the mocha test framework. Using mocha allows automating the process of executing the test and comprehending the test result.
+* automated mass-testing of modules using _mocha_: In order to test a large set of modules, GraalVM is tested against 95k modules that use the mocha test framework. Using mocha allows automating the process of executing the test and comprehending the test result.
 * manual testing of popular modules: A select list of npm modules is tested in a manual test setup. These highly-relevant modules are tested in a more sophisticated manner.
 
 If you want your module to be tested by GraalVM in the future, ensure the module provides some mocha tests (and send us an email so we can ensure it's on the list of tested modules).
