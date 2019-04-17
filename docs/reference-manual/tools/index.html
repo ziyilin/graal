@@ -661,7 +661,7 @@ console.log("Server running at http://localhost:8000/");
 <pre><code>$ node --inspect --jvm HelloWorld.js
 Debugger listening on port 9229.
 To start debugging, open the following URL in Chrome:
-    chrome-devtools://devtools/bundled/inspector.html?experiments=true&amp;v8only=true&amp;ws=127.0.1.1:9229/76fcb6dd-35267eb09c3
+    chrome-devtools://devtools/bundled/js_app.html?ws=127.0.1.1:9229/76fcb6dd-35267eb09c3
 Server running at http://localhost:8000/
 </code></pre>
 
@@ -797,7 +797,7 @@ Context context = Context.newBuilder("js")
             .build();
 String hostAdress = "localhost";
 String url = String.format(
-            "chrome-devtools://devtools/bundled/inspector.html?ws=%s:%s/%s",
+            "chrome-devtools://devtools/bundled/js_app.html?ws=%s:%s/%s",
             hostAdress, port, path);
 // Chrome Inspector client can be attached by opening the above url in Chrome
 </code></pre>
