@@ -529,90 +529,74 @@ $(document).ready(function(){
 <h2 id="10-rc16">1.0-RC16</h2>
 <p>(2019-04-23)</p>
 
-<h3 id="graalvm-for-java-developers">GraalVM for Java Developers</h3>
+<h3 id="java">Java</h3>
 
-<p>We addressed several benchmarks that had slower performance on the GraalVM compiler built as a native library, also known as <a href="https://github.com/oracle/graal/tree/master/compiler#libgraal">libgraal</a>  than non-libgraal (disabled with <code>-XX:-UseJVMCINativeLibrary</code>), i.e. <em>JavaGraal</em> benchmark. We added support for complex
-intrinsics to libgraal, closing remaining peak performance gaps with <em>JavaGraal</em>,
-and fixed libgraal specific issue causing delay in shutting down the VM for
-short executions (see <a href="https://github.com/oracle/graal/issues/1140">#1140</a>).</p>
+<p>We addressed several benchmarks that had slower performance when running with the GraalVM compiler built as a native library, also known as <a href="https://github.com/oracle/graal/tree/master/compiler#libgraal">libgraal</a>, a mode selected as the default in the last release candidate. We fixed an issue causing a delay when shutting down the virtual machine process at the end of the execution of an application
+(see <a href="https://github.com/oracle/graal/issues/1140">#1140</a>).</p>
 
 <h3 id="native-image">Native Image</h3>
 <p>We improved the structure of the <code>org.graalvm.nativeimage</code> API: classes that can
 only be used during image generation are now in the package
 <code>org.graalvm.nativeimage.hosted</code>, to clearly separate them from the classes that
-can be used at image run time. In order to not make this a breaking change, the
+can be used at image run time. In order to stay backwards compatible, the
 original classes are still present, but marked as deprecated. They will be
 deleted in the next release candidate, so please update to the new classes.</p>
 
-<h5 id="bug-fixes">Bug Fixes</h5>
-<p>As always, we fixed several bugs that were reported on GitHub, including the
-issue with the logging framework which materialized as <code>No instances are allowed
-in the image heap for a class that is initialized or reinitialized at image
-runtime: java.util.logging.SimpleFormatter</code> error.</p>
+<p>We fixed several bugs that were reported on GitHub, including an
+issue with the logging framework which materialized as an error that no instances of <code>java.util.logging.SimpleFormatter</code> are allowed in the image heap.</p>
 
-<p>As a result in RC16 native images work for example with <strong>Helidon</strong>, a Java
+<p>As a result, native images work now correctly with <strong>Helidon</strong>, a Java
 framework designed for writing microservices which recently announced their
 support for GraalVM native images:
 <a href="https://medium.com/oracledevs/helidon-flies-faster-with-graalvm-eea85287d2dc">Helidon flies faster with GraalVM</a>.</p>
 
 <h3 id="ruby">Ruby</h3>
-<p>Ruby language component received updates in terms of compatibility improvements,
-new functionalities, bug fixes. A complete
-<a href="https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md#10-rc-16">changelog</a>
-is available on GitHub.  The highlights include:</p>
+<p>A complete <a href="https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md#10-rc-16">changelog</a>
+ for the Ruby component is available on GitHub. The highlights include:</p>
 
-<h5 id="new-features">New Features</h5>
-<p>Rounding modes have been implemented or improved for <code>Float</code>, <code>Rational</code>, <code>BigDecimal</code> classes (see <a href="https://github.com/oracle/truffleruby/issues/1509">#1509</a>).
-Added a pure-Ruby implementation of Foreign Function Interface (FFI) which passes almost all Ruby FFI specs (see <a href="https://github.com/oracle/truffleruby/issues/1529">#1529</a>).</p>
-
-<h5 id="compatibility">Compatibility</h5>
-<p>The <code>KeyError</code> raised from <code>ENV#fetch</code> and <code>Hash#fetch</code> now matches MRI’s message formatting (see <a href="https://github.com/oracle/truffleruby/issues/1633">#1633</a>).
-<code>String#unicode_normalize</code> has been moved to the core library like in MRI.
-<code>Module#define_method</code> is now public like in MRI.</p>
-
-<h5 id="bug-fixes-1">Bug Fixes</h5>
 <ul>
-  <li>Fixed <code>rb_scan_args</code> to correctly handle keyword arguments in combination with optional args.</li>
-  <li>Many fixes for <code>FFI::Pointer</code> to be more compatible with the <code>ffi</code> gem.</li>
+  <li>Rounding modes have been implemented or improved for <code>Float</code>, <code>Rational</code>, <code>BigDecimal</code> classes (see <a href="https://github.com/oracle/truffleruby/issues/1509">#1509</a>).</li>
+  <li>Added a pure-Ruby implementation of Foreign Function Interface (FFI) which passes almost all Ruby FFI specs (see <a href="https://github.com/oracle/truffleruby/issues/1529">#1529</a>).</li>
+  <li>The <code>KeyError</code> raised from <code>ENV#fetch</code> and <code>Hash#fetch</code> now matches MRI’s message formatting (see <a href="https://github.com/oracle/truffleruby/issues/1633">#1633</a>).</li>
 </ul>
-
-<h5 id="changes">Changes</h5>
-<p>Support for the Darkfish theme for RDoc generation has been removed.</p>
 
 <h3 id="javascript">JavaScript</h3>
 
-<h5 id="changes-1">Changes</h5>
-<p><a href="https://github.com/graalvm/graaljs/blob/master/docs/user/JavaScriptCompatibility.md#loadsource">Loading JavaScript source code</a> from URLs is now guarded by the
-<code>js.load-from-url</code> command line option and prohibited by default.</p>
+<p>A complete <a href="https://github.com/graalvm/graaljs/blob/master/CHANGELOG.md#version-100-rc16">changelog</a>
+ for the JavaScript component is available on GitHub. The highlights include:</p>
 
-<p>Project’s
-<a href="https://github.com/graalvm/graaljs/blob/master/CHANGELOG.md#version-100-rc16">changelog</a>
-is available on GitHub.</p>
+<ul>
+  <li><a href="https://github.com/graalvm/graaljs/blob/master/docs/user/JavaScriptCompatibility.md#loadsource">Loading JavaScript source code</a> from URLs is now guarded by the
+<code>js.load-from-url</code> command line option and prohibited by default.</li>
+</ul>
 
 <h3 id="r">R</h3>
 
-<h5 id="compatibility-1">Compatibility</h5>
-<p>GraalVM implementation of <strong>R</strong> allows parsing any letter in identifiers
-including, e.g., Japanese, with <code>lexer</code> starting from 1.0-RC16, which matches
-GNU-R behavior.</p>
+<p>A complete <a href="https://github.com/oracle/fastr/blob/master/CHANGELOG.md#10-rc-16">changelog</a>
+ for the R component is available on GitHub. The highlights include:</p>
 
-<p>To see a complete list of bug fixes, please refer to the project
-<a href="https://github.com/oracle/fastr/blob/master/CHANGELOG.md#10-rc-16">changelog</a>.</p>
+<ul>
+  <li>Allow parsing any letter in identifiers
+including, e.g., Japanese, with <code>lexer</code> starting from 1.0-RC16, which matches
+GNU-R behavior.</li>
+</ul>
 
 <h3 id="python">Python</h3>
 
-<h5 id="performance">Performance</h5>
-<p>Improved startup time of the <code>graalpython</code> native launcher.</p>
+<ul>
+  <li>Improved startup time of the <code>graalpython</code> native launcher.</li>
+</ul>
 
 <h3 id="llvm-runtime">LLVM Runtime</h3>
 
-<h5 id="changes-2">Changes</h5>
-<p>The <code>lli</code> launcher now starts with the locale set to <code>C</code>.</p>
+<ul>
+  <li>The <code>lli</code> launcher now starts with the locale set to <code>C</code>.</li>
+</ul>
 
 <h2 id="10-rc15">1.0-RC15</h2>
 <p>(2019-04-05)</p>
 
-<h3 id="java">Java</h3>
+<h3 id="java-1">Java</h3>
 
 <p>By default,
 <a href="https://github.com/oracle/graal/tree/master/compiler#libgraal">libgraal</a> is now
@@ -639,20 +623,20 @@ arr1 = [...arr1, ...arr2]; // arr1 is now [0, 1, 2, 3, 4, 5]
 
 <h3 id="r-1">R</h3>
 
-<h5 id="new-features-1">New Features</h5>
+<h5 id="new-features">New Features</h5>
 
 <ul>
   <li>Implemented <code>gzcon</code> builtin for URL connections.</li>
 </ul>
 
-<h5 id="changes-3">Changes</h5>
+<h5 id="changes">Changes</h5>
 <ul>
   <li>Truffle interoperability API converts <code>double</code> values to <code>int</code> values if they
 fit in the integer range. See the changes in the <a href="https://github.com/oracle/fastr/commit/e08e2b19571479dddb6167d9a1d492a14cb4c7b2#diff-c842fa11097793b19bd410589c36af99">spec
 tests</a>.</li>
 </ul>
 
-<h5 id="bug-fixes-2">Bug Fixes</h5>
+<h5 id="bug-fixes">Bug Fixes</h5>
 <ul>
   <li>R incorrectly allowed Java interoperability when not started with <code>--jvm</code>.
 Starting from 1.0-RC15, <code>--jvm</code> flag is again necessary to enable interoperability with Java.</li>
@@ -665,20 +649,20 @@ Starting from 1.0-RC15, <code>--jvm</code> flag is again necessary to enable int
 <p>An extensive list of changes is available <a href="https://github.com/oracle/truffleruby/blob/master/CHANGELOG.md#10-rc-15">on GitHub</a>.
 Here is a short list of the most notable ones:</p>
 
-<h5 id="changes-4">Changes</h5>
+<h5 id="changes-1">Changes</h5>
 <ul>
   <li>Our experimental JRuby-compatible Java interop has been removed – use <code>Polyglot</code> and <code>Java</code> instead.</li>
   <li><code>Process.clock_getres</code> has been implemented.</li>
   <li><code>debug</code>, <code>profile</code>, <code>profiler</code>, which were already marked as unsupported, have been removed.</li>
 </ul>
 
-<h5 id="bug-fixes-3">Bug Fixes</h5>
+<h5 id="bug-fixes-1">Bug Fixes</h5>
 <ul>
   <li><code>autoload :C, "path"; require "path"</code> now correctly triggers the autoload.</li>
   <li>The shell standard library can now be <code>require</code>-d.</li>
 </ul>
 
-<h5 id="compatibility-2">Compatibility</h5>
+<h5 id="compatibility">Compatibility</h5>
 <ul>
   <li>Improved compatibility with MRI’s <code>Float#to_s</code> formatting <a href="https://github.com/oracle/truffleruby/issues/1626">#1626</a>.</li>
   <li>Added support for the base keyword argument to <code>Dir.{[], glob}</code>.</li>
@@ -686,7 +670,7 @@ Here is a short list of the most notable ones:</p>
 
 <h3 id="python-1">Python</h3>
 
-<h5 id="changes-5">Changes</h5>
+<h5 id="changes-2">Changes</h5>
 <ul>
   <li>Migrated to the new Truffle libraries for interoperability support.</li>
   <li>Added support for importing Java classes from the <code>java</code> namespace using normal Python import syntax, e.g. <code>from java.util import ArrayList</code>.</li>
@@ -773,7 +757,7 @@ pages. It is not part of GraalVM Community or Enterprise editions.</p>
 <p>We introduced a uniform <code>--vm.&lt;option&gt;</code> which allows to pass options in a uniform way, without knowing which VM mode (<code>--jvm</code>, or <code>--native</code>) will be used. It replaces  <code>--jvm.&lt;option&gt;</code> and <code>--native.&lt;option&gt;</code> command line options, e.g. the option to configure the maximum amount of memory used for the heap <code>--jvm.Xmx=5G</code> becomes <code>--vm.Xmx=5G</code>.
 This applies to all languages.</p>
 
-<h3 id="java-1">Java</h3>
+<h3 id="java-2">Java</h3>
 <h5 id="libgraal">libgraal</h5>
 <p>This is the first release to include a prebuilt <a href="https://github.com/oracle/graal/tree/master/compiler#libgraal">libgraal</a> shared library. This shared library is produced by the native-image and contains a pre-compiled version of the Graal compiler. In addition to improving startup, libgraal completely avoids interfering with the heap usage and profiling of the application code. That is, it has execution properties similar to other native HotSpot compilers such as C1 and C2. To try it out, add <code>-XX:+UseJVMCINativeLibrary</code> to your <code>java</code> command line. Note that this is still a work in progress and we are focusing on improving its stability and ensuring it does not compromise peak performance.</p>
 
@@ -781,7 +765,7 @@ This applies to all languages.</p>
 <p>The default behavior has changed for a failure (i.e., uncaught exception) during the Graal compilation. These are now silently ignored and nothing is printed to the console. To get the old behavior of a message being printed to the console and for collecting diagnostics about the failure, you now need to specify <code>-Dgraal.CompilationFailureAction=Diagnose</code> option.</p>
 
 <h3 id="native-images">Native Images</h3>
-<h5 id="new-features-2">New Features</h5>
+<h5 id="new-features-1">New Features</h5>
 <p>We introduced a tracing agent for the Java HotSpot VM that records usages of reflection and JNI that can then be converted to configuration files for the native image generator. This simplifies the process of getting new applications working as native images. For details, please look at the <a href="https://github.com/oracle/graal/blob/master/substratevm/CONFIGURE.md">documentation</a>.</p>
 
 <p>We improved support for the <code>java.util.logging</code> API. See the <a href="https://github.com/oracle/graal/blob/master/substratevm/LOGGING.md">GitHub docs</a> for details.</p>
@@ -810,7 +794,7 @@ This applies to all languages.</p>
 alert(s);
 &lt;!-- this is a comment --&gt;
 </code></pre>
-<h5 id="changes-6">Changes</h5>
+<h5 id="changes-3">Changes</h5>
 <ul>
   <li>Renamed the option <code>js.experimental-array-prototype</code> to <code>js.experimental-foreign-object-prototype</code>.</li>
 </ul>
@@ -834,12 +818,12 @@ i.e., if there are no <code>options(error = ...)</code> or <code>on.exit(...)</c
 
 <p>This version of GraalVM features new methods implementations and other updates for Ruby implementation.</p>
 
-<h5 id="new-features-3">New Features</h5>
+<h5 id="new-features-2">New Features</h5>
 <ul>
   <li>Implemented <code>Dir.children</code> and <code>Dir#children</code>, <code>String#delete_prefix</code>, <code>#delete_suffix</code> and related methods.</li>
 </ul>
 
-<h5 id="changes-7">Changes</h5>
+<h5 id="changes-4">Changes</h5>
 
 <ul>
   <li><code>-Xlog=</code> has been removed. Use <code>--log.level=</code> instead.</li>
@@ -853,7 +837,7 @@ i.e., if there are no <code>options(error = ...)</code> or <code>on.exit(...)</c
 <h3 id="python-2">Python</h3>
 <h5 id="python-370">Python 3.7.0</h5>
 <p>The standard library was updated to Python 3.7.0 from 3.6.5.</p>
-<h5 id="changes-8">Changes</h5>
+<h5 id="changes-5">Changes</h5>
 <ul>
   <li>Defined a subset of the <code>graalpython</code> launcher options as “stable”. All other options are subject to change and need to be unlocked explicitly on the command line.</li>
   <li>Added the support for  <code>-I</code> flag to ignore the user environment and not add the working directory to <code>sys.path</code>.</li>
@@ -869,7 +853,7 @@ i.e., if there are no <code>options(error = ...)</code> or <code>on.exit(...)</c
 
 <h3 id="api-changes-for-graalvm-integrators-sdk--truffle-1">API Changes for GraalVM Integrators (SDK + Truffle)</h3>
 
-<h5 id="new-features-4">New Features</h5>
+<h5 id="new-features-3">New Features</h5>
 <ul>
   <li>Added <a href="http://www.graalvm.org/sdk/javadoc/org/graalvm/polyglot/Context.Builder.html#allowExperimentalOptions-boolean-">Context.Builder#allowExperimentalOptions</a> to control whether experimental options can be passed to a Context.</li>
   <li>Added <a href="http://www.graalvm.org/sdk/javadoc/org/graalvm/polyglot/Engine.Builder.html#allowExperimentalOptions-boolean-">Engine.Builder#allowExperimentalOptions</a> to control whether experimental instrument and engine options can be passed.</li>
@@ -877,7 +861,7 @@ i.e., if there are no <code>options(error = ...)</code> or <code>on.exit(...)</c
   <li>Added engine bound <code>TruffleLogger</code> for instruments. The engine bound logger can be used by threads executing without any context.</li>
 </ul>
 
-<h5 id="changes-9">Changes</h5>
+<h5 id="changes-6">Changes</h5>
 <ul>
   <li>Multiple deprecated elements were removed from  the Truffle Language Implementation Framework, i.e., <code>TruffleException.isTimeout</code>, <code>EventBinding.getFilter</code> etc..</li>
 </ul>
@@ -1811,7 +1795,7 @@ This might cause issues with UI-related functionality:
 
 <h2 id="10-rc2">1.0-RC2</h2>
 <p>(2018-06-05)</p>
-<h3 id="graalvm-for-java-developers-1">GraalVM for Java Developers</h3>
+<h3 id="graalvm-for-java-developers">GraalVM for Java Developers</h3>
 <ul>
   <li>Updated the underlying JDK version to “1.8.0_171” from “1.8.0_161”. You can find the JDK release notes at the <a href="http://www.oracle.com/technetwork/java/javase/8u171-relnotes-4308888.html">Oracle Technology Network</a> website.</li>
   <li>Improved support for the Java Microbenchmark harness. Since JMH 1.21, GraalVM is a <a href="http://mail.openjdk.java.net/pipermail/jmh-dev/2018-May/002753.html">recognized and supported JVM</a>.</li>
