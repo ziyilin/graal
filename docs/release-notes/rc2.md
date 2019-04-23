@@ -1,12 +1,12 @@
 ## 1.0-RC2
 (2018-06-05)
-### GraalVM for Java developers
+### GraalVM for Java Developers
 * Updated the underlying JDK version to “1.8.0_171” from “1.8.0_161”. You can find the JDK release notes at the [Oracle Technology Network](http://www.oracle.com/technetwork/java/javase/8u171-relnotes-4308888.html) website.
 * Improved support for the Java Microbenchmark harness. Since JMH 1.21, GraalVM is a [recognized and supported JVM](http://mail.openjdk.java.net/pipermail/jmh-dev/2018-May/002753.html).
 * Fixed a [StackOverflow exception](https://github.com/oracle/graal/issues/341) an improved performance when recursively inlining of invokedynamic instructions.
 * Fixed a [compiler error](https://github.com/oracle/graal/issues/423) causing incorrect code generation while building the scalac compiler.
 
-### Native image generation
+### Native Image Generation
 
 * Added support for building statically linked native images. Now you can pass `--static`, and if you have static libc and zlib installed, it generates a standalone executable that will not require libc for running.
 * Added Classpath exception to the license of [SubstrateVM](https://github.com/oracle/graal/blob/master/substratevm/LICENSE.md) and the [Graal compiler](https://github.com/oracle/graal/blob/master/compiler/LICENSE.md) components to make sure all GraalVM code ending up in a native image is subject to this clause.
@@ -17,7 +17,7 @@
 
 * Updated [Node.js to 8.11.1](https://nodejs.org/en/blog/release/v8.11.1/) (from 8.9.4), it is not a breaking change, but it brings numerous improvements, including CVE-listed security fixes.
 
-### LLVM interpreter for C/C++ & other native languages
+### LLVM Runtime
 
 * Added a new API for accessing Java types and instantiating foreign objects from LLVM languages.
 
@@ -78,16 +78,16 @@ Among the other changes, we improved the stability of GraalVM’s R implementati
 * Added support for the Python [unittest](https://docs.python.org/3/library/unittest.html) framework.
 * Python now supports breaking on exceptions and unwinding to stack frames in Chrome inspector.
 
-### API changes for GraalVM integrators
+### API Changes for GraalVM Integrators (SDK + Truffle)
 
-Both Graal SDK and Truffle are offering API for developers trying to build things on top of GraalVM, language implementations, embedding GraalVM, and so on.
+Both GraalVM SDK and Truffle are offering API for developers trying to build things on top of GraalVM, language implementations, embedding GraalVM, and so on.
 
 * Enabled code sharing between guest language Contexts with the same Engine, speeding up the repeated evaluation of the code.
 
 To see the list of changes to the APIs please refer to the project changelogs:
 
-* [Graal SDK changelog](https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md#version-10-rc2)
-* [Truffle changelog](https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md#version-100-rc2)
+* [GraalVM SDK changelog](https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md#version-10-rc2)
+* [GraalVM Truffle changelog](https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md#version-100-rc2)
 
 ### Tools
 
@@ -101,7 +101,7 @@ To see the list of changes to the APIs please refer to the project changelogs:
 * Applicability fixes
 * added roots histogram for class
 
-#### Graal Updater `gu`
+#### GraalVM Updater `gu`
 
 * The default operation mode changed from “install from local files” to “install from catalog”.
 * `-c` option for installing from the catalog, can be omitted (installing from the catalog the default), but specifying `-c` still works.

@@ -32,17 +32,17 @@ More details can be found in the project [changelog](https://github.com/oracle/f
 ### JavaScript
 A complete [changelog](https://github.com/graalvm/graaljs/blob/master/CHANGELOG.md) is available on GitHub.
 
-### LLVM interpreter (Sulong)
+### LLVM Runtime
 The project [changelog](https://github.com/oracle/graal/blob/master/sulong/CHANGELOG.md) is available on GitHub.
 
-### API changes for GraalVM integrators (SDK + Truffle)
+### API Changes for GraalVM Integrators (SDK + Truffle)
 * Added `SourceElement.ROOT` and `StepConfig.suspendAnchors()` to tune debugger stepping.
 * Added [Context.Builder.logHandler](http://www.graalvm.org/sdk/javadoc/org/graalvm/polyglot/Context.Builder.html#logHandler-java.io.OutputStream-) and [Engine.Builder.logHandler](http://www.graalvm.org/sdk/javadoc/org/graalvm/polyglot/Engine.Builder.html#logHandler-java.io.OutputStream-) methods to install a logging handler writing into a given `OutputStream`.
 * Primitives, host and `Proxy` values can now be shared between multiple context and engine instances. They no longer throw an `IllegalArgumentException` when shared.
 
-The major Truffle and Graal SDK changes between GraalVM versions are summarized in the project changelogs:
-- [Graal SDK changelog](https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md#version-10-rc9)
-- [Truffle changelog](https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md#version-100-rc9)
+The major GraalVM SDK and Truffle changes between GraalVM versions are summarized in the project changelogs:
+- [GraalVM SDK changelog](https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md#version-10-rc9)
+- [GraalVM Truffle changelog](https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md#version-100-rc9)
 
 ### Tools
 **Graal VisualVM**

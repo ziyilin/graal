@@ -50,7 +50,7 @@ All service implementation classes, listed in the `META-INF` directory, are avai
 
 A complete [changelog](https://github.com/graalvm/graaljs/blob/master/CHANGELOG.md#version-100-rc8) is available on GitHub.
 
-### LLVM Interpreter (Sulong)
+### LLVM Runtime
 The project [changelog](https://github.com/oracle/graal/blob/master/sulong/CHANGELOG.md#version-100-rc8) is available on GitHub.
 
 ### Ruby
@@ -75,6 +75,6 @@ GraalVM 1.0-rc8 implementation of R came up with multiple bug fixes which can be
 * Submitted improvements in the R language heapwalker.
 
 ### API Changes for GraalVM Integrators (SDK + Truffle)
-The major Truffle and Graal SDK changes between GraalVM versions are summarized in the project changelogs:
-- [Graal SDK changelog](https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md#version-10-rc8)
-- [Truffle changelog](https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md#version-100-rc8)
+The major GraalVM SDK and Truffle changes between GraalVM versions are summarized in the project changelogs:
+- [GraalVM SDK changelog](https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md#version-10-rc8)
+- [GraalVM Truffle changelog](https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md#version-100-rc8)

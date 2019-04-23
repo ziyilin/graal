@@ -1,10 +1,10 @@
 ## 1.0-RC7
 (2018-10-03)
-### GraalVM for Java developers (GraalVM + compiler)
+### GraalVM for Java Developers (GraalVM + compiler)
 
 * Added the virtualization of `Unsafe` compare and swap calls, for more details see [GH-636](https://github.com/oracle/graal/pull/636).
 
-### Native image generation
+### Native Image Generation
 
 * Support for the Java security framework, see [JCA-SECURITY-SERVICES.md](https://github.com/oracle/graal/blob/master/substratevm/JCA-SECURITY-SERVICES.md) for the details.
 * Support for `https` URL connections, see [URL-PROTOCOLS.md](https://github.com/oracle/graal/blob/master/substratevm/URL-PROTOCOLS.md) for more details.
@@ -16,7 +16,7 @@
 
 More details can be found in the [project changelog on GitHub](https://github.com/graalvm/graaljs/blob/master/CHANGELOG.md#version-100-rc7).
 
-### LLVM interpreter (Sulong)
+### LLVM Runtime
 The full [changelog](https://github.com/oracle/graal/blob/master/sulong/CHANGELOG.md#version-100-rc7) is available on GitHub.
 
 * New polyglot builtin `polyglot_has_member`.
@@ -63,10 +63,10 @@ More details can be found in the project [changelog](https://github.com/oracle/f
 * Ideal Graph Visualizer prompts to download plugins to support Javascript editing.
 * Simple scripts (written in Javascript) can be applied on graph data.
 
-### API changes for GraalVM integrators (SDK + Truffle)
+### API Changes for GraalVM Integrators (SDK + Truffle)
 
-* Truffle and GraalSDK license changes from GPL2 with Class Path Exception to the Universal Permissive License (UPL). Please refer to the license files for more information: [Truffle license](https://github.com/oracle/graal/blob/master/truffle/LICENSE.md), [Graal-SDK license](https://github.com/oracle/graal/blob/master/sdk/LICENSE.md).
+* GraalVM SDK and Truffle license changes from GPL2 with Class Path Exception to the Universal Permissive License (UPL). Please refer to the license files for more information: [GraalVM Truffle license](https://github.com/oracle/graal/blob/master/truffle/LICENSE.md), [GraalVM SDK license](https://github.com/oracle/graal/blob/master/sdk/LICENSE.md).
 
 To see the list of changes to the APIs, please refer to the project changelogs:
-- [Graal SDK changelog](https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md#version-10-rc7)
-- [Truffle changelog](https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md#version-100-rc7)
+- [GraalVM SDK changelog](https://github.com/oracle/graal/blob/master/sdk/CHANGELOG.md#version-10-rc7)
+- [GraalVM Truffle changelog](https://github.com/oracle/graal/blob/master/truffle/CHANGELOG.md#version-100-rc7)
