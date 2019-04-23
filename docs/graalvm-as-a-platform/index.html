@@ -551,13 +551,13 @@ $(document).ready(function(){
 
 <h3 id="embed-graalvm">Embed GraalVM</h3>
 
-<p>The Java Polyglot API lets you embed and run code of Graal languages in JVM-based host applications.</p>
+<p>The Java Polyglot API lets you embed and run code of guest languages (languages implemented with <a href="https://github.com/oracle/graal/tree/master/truffle">Truffle Language Implementation Framework</a>) in JVM-based host applications.</p>
 
 <p>To get started please see our <a href="/docs/graalvm-as-a-platform/embed/">JVM Embedding Guide</a>.
 Alternatively you can have a look at the reference documentation in <a href="http://www.graalvm.org/sdk/javadoc/">JavaDoc</a>:</p>
 <ul>
   <li>The <a href="http://www.graalvm.org/sdk/javadoc/org/graalvm/polyglot/package-summary.html">Polyglot Package</a> allows you to configure and run polyglot applications.</li>
-  <li>The <a href="http://www.graalvm.org/sdk/javadoc/org/graalvm/polyglot/proxy/package-summary.html">Proxy Package</a> allows you to mimic Graal language objects using proxies.</li>
+  <li>The <a href="http://www.graalvm.org/sdk/javadoc/org/graalvm/polyglot/proxy/package-summary.html">Proxy Package</a> allows you to mimic guest language objects using proxies.</li>
   <li>The <a href="http://www.graalvm.org/sdk/javadoc/org/graalvm/polyglot/io/package-summary.html">IO Package</a> allows you to customize the file system access of languages.</li>
 </ul>
 
@@ -566,11 +566,11 @@ Alternatively you can have a look at the reference documentation in <a href="htt
 <h3 id="extend-graalvm">Extend GraalVM</h3>
 
 <p>GraalVM is an open ecosystem and we invite third party systems to participate via connecting their own programming languages, tools, or platforms.
-For that purpose we have developed <em>Truffle</em>, a language and tool development framework.</p>
+For that purpose we have developed <strong>Truffle</strong>, a languages and tools development framework.</p>
 
-<h4 id="implement-your-own-language">Implement your own Language</h4>
+<h4 id="implement-your-own-language">Implement your own language</h4>
 
-<p>The Truffle framework allows you to run programming languages efficiently on GraalVM.
+<p>The Truffle Framework allows you to run programming languages efficiently on GraalVM.
 It simplifies language implementation by automatically deriving high-performance code from interpreters.
 Find details about the approach in this <a href="http://chrisseaton.com/rubytruffle/pldi17-truffle/pldi17-truffle.pdf">research paper</a>.</p>
 
@@ -579,7 +579,7 @@ More importantly, it allows your language to connect with the rich tooling provi
 
 <p>To get started please see our <a href="/docs/graalvm-as-a-platform/implement-language/">Language Implementation</a> section.</p>
 
-<h4 id="implement-your-own-tools">Implement your own Tools</h4>
+<h4 id="implement-your-own-tool">Implement your own tool</h4>
 
 <p>GraalVM provides a framework for creating language-agnostic tools like debuggers, profilers, or other instrumentations.
 In general, GraalVM provides a standardized way to express and run program code enabling cross-language research and the development of tools that are developed once and then can be applied to any language.</p>

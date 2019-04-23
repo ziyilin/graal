@@ -429,7 +429,7 @@ $(document).ready(function(){
           
             
             <a href="/docs/reference-manual/graal-updater/">
-              Graal Updater
+              GraalVM Updater
             </a>
           </li>
 
@@ -2957,10 +2957,14 @@ $ lli --polyglot --jvm polyglot.bc
 
 <h3 id="how-does-polyglot-work">How Does Polyglot Work</h3>
 
-<p>In order to provide foreign polyglot values meaning in the languages we have developed the so-called <em>polyglot interoperability protocol</em>.
-This interoperability protocol consists of a set of standardized messages that every Graal language implements and uses for foreign polyglot values.
-The protocol allows GraalVM to support interoperability between any combination of languages without requiring them to know of each other.
-We plan to gradually improve the protocol to support more and more features over time.</p>
+<p>In order to provide foreign polyglot values in the languages implemented with the
+<a href="https://github.com/oracle/graal/blob/master/truffle/README.md">Truffle Language Implementation Framework</a>,
+we have developed the so-called <em>polyglot interoperability protocol</em>. This
+interoperability protocol consists of a set of standardized messages that every
+language implements and uses for foreign polyglot values. The protocol allows
+GraalVM to support interoperability between any combination of languages without
+requiring them to know of each other. We plan to gradually improve the protocol
+to support more and more features over time.</p>
 
 <p>For further details, we recommend reading:</p>
 
@@ -2972,18 +2976,21 @@ In <em>Proceedings of the 11th Dynamic Language Symposium (DLS)</em>.</li>
 
 <h3 id="running-polyglot-applications-1">Running Polyglot Applications</h3>
 
-<p>With polyglot applications it is often impossible to decide what the primary language of an application is.
-Therefore, we have added an experimental new launcher called <code>polyglot</code> to GraalVM.
-For the moment, this launcher runs code for JavaScript, Ruby, and R without requiring to select a primary language.
-The polyglot launcher does not require the <code>--polyglot</code> option, it is enabled by default.</p>
+<p>With polyglot applications it is often impossible to decide what the primary
+language of an application is. Therefore, we have added an experimental new
+launcher called <code>polyglot</code> to GraalVM. For the moment, this launcher runs code
+for JavaScript, Ruby, and R without requiring the selection of a primary
+language. The polyglot launcher does not require the <code>--polyglot</code> option, it is
+enabled by default.</p>
 
 <p>This is how you can run a polyglot application by using the examples from above:</p>
 
 <pre><code class="language-shell">$ polyglot --jvm polyglot.js polyglot.R polyglot.rb
 </code></pre>
 
-<p>We have also included a basic experimental shell for multiple languages called the <em>Polyglot Shell</em>.
-It is useful to quickly test interactive Graal languages.
+<p>We have also included a basic experimental shell for multiple languages called
+the <em>Polyglot Shell</em>. It is useful to quickly test to test the interactivity of
+languages implemented with the <a href="https://github.com/oracle/graal/blob/master/truffle/README.md">Truffle Language Implementation Framework</a>.
 This is how you can start it:</p>
 
 <pre><code class="language-shell">$ polyglot --jvm --shell
@@ -3002,10 +3009,12 @@ js&gt;
 
 <h2 id="polyglot-options">Polyglot Options</h2>
 
-<h4 id="polyglot-options-for-graal-language-launchers">Polyglot Options for Graal Language Launchers</h4>
+<h4 id="polyglot-options-for-language-launchers">Polyglot Options for Language Launchers</h4>
 
-<p>We have extended every language launcher with a set of so called <em>polyglot options</em>.
-Polyglot options allow users of any language launcher to access the options of other Graal languages.
+<p>We have extended every language launcher with a set of so called <em>polyglot
+options</em>. Polyglot options allow users of any language launcher to access the
+options of other languages supported by GraalVM (implemented with the Truffle
+Language Implementation Framework).
 The format is: <code>--&lt;languageID&gt;.&lt;property&gt;=&lt;value&gt;</code>.
 For example the <code>R</code> launcher also supports the <code>--js.atomics=true</code> JavaScript option.</p>
 
@@ -3029,7 +3038,6 @@ For example the <code>R</code> launcher also supports the <code>--js.atomics=tru
   <li><code>cpusampler</code> collects data about CPU usage.</li>
   <li><code>cputracer</code> captures trace information about CPU usage.</li>
   <li><code>memtracer</code> captures trace information about memory usage.</li>
-  <li><code>agent</code> enables remote profiling using the Agent UI.</li>
 </ul>
 
 <p>Use <code>--help:tools</code> to find out which options are available.</p>

@@ -429,7 +429,7 @@ $(document).ready(function(){
           
             
             <a href="/docs/reference-manual/graal-updater/">
-              Graal Updater
+              GraalVM Updater
             </a>
           </li>
 
@@ -649,15 +649,15 @@ Use <code>--help</code> to print the list of supported options. The most importa
 </ul>
 
 <p>Note: unlike other GraalVM languages, R does not yet ship with a
-<a href="/docs/reference-manual/aot-compilation/">native image</a> of its runtime.
+<a href="/docs/reference-manual/aot-compilation/">Native Image</a> of its runtime.
 Therefore the <code>--native</code> option, which is the default, will still start Rscript on top of JVM,
 but for the sake of future compatibility the Java interoperability will not be available in such case.</p>
 
 <p>Users can optionally build the native image using:</p>
 <pre><code class="language-shell">jre/languages/R/bin/install_r_native_image
 </code></pre>
-<p>Note that the native image is not stable yet and is intended for experimental use. Some features
-may not work properly or at all. The native image can be uninstalled using the installation script
+<p>Note that the Native Image is not stable yet and is intended for experimental use. Some features
+may not work properly or at all. The Native Image can be uninstalled using the installation script
 with ‘uninstall’ argument.</p>
 
 <h3 id="requirements">Requirements</h3>
@@ -706,13 +706,13 @@ Currently, those are <code>rJava</code> and <code>data.table</code>.</p>
   <li>Some parts of the native API (e.g., <code>DATAPTR</code>) expose implementation details that are hard to emulate for alternative implementations of R. These are implemented as needed while testing the GraalVM implementation of R with various CRAN packages.</li>
 </ul>
 
-<p>You can use the <a href="/docs/reference-manual/compatibility/">compatibility checker</a> to find whether the CRAN packages you’re interested in are tested on GraalVM and whether the tests pass successfully.</p>
+<p>You can use the <a href="/docs/reference-manual/compatibility/">compatibility checker</a> to find whether the CRAN packages you are interested in are tested on GraalVM and whether the tests pass successfully.</p>
 
 <h2 id="high-performance">High Performance</h2>
 <p>GraalVM runtime optimizes R code that runs for extended periods of time.
 The speculative optimizations based on the runtime behavior of the R code and dynamic compilation employed by GraalVM runtime are capable of removing most of the abstraction penalty incurred by the dynamism and complexity of the R language.</p>
 
-<p>Let’s look at an algorithm in R code. The following example calculates the
+<p>Let us look at an algorithm in R code. The following example calculates the
 mutual information of a large matrix:</p>
 <pre><code>x &lt;- matrix(runif(1000000), 1000, 1000)
 mutual_R &lt;- function(joint_dist) {
@@ -779,7 +779,7 @@ make the performance advantage of C/C++ negligible:</p>
 <h3 id="interoperability">Interoperability</h3>
 
 <p>GraalVM supports several other programming languages, including JavaScript, Ruby, Python, and LLVM.
-GraalVM implementation of R also provides an API for programming language interoperability that lets you execute code from any other language that GraalVM supports. Note that you must start the R script with <code>--polyglot</code> to have access to other GraalVM language.</p>
+GraalVM implementation of R also provides an API for programming language interoperability that lets you execute code from any other language that GraalVM supports. Note that you must start the R script with <code>--polyglot</code> to have access to other GraalVM languages.</p>
 
 <p>GraalVM execution of R provides the following interoperability primitives:</p>
 <ul>
@@ -949,7 +949,7 @@ which can be installed using:</p>
 <h2 id="graalvm-r-engine-additional-features">GraalVM R Engine Additional Features</h2>
 
 <h5 id="java-based-graphics">Java Based Graphics</h5>
-<p>GraalVM implementation of R includes its own Java based implementation of the <code>grid</code> package and the following graphics devices: <code>png</code>, <code>jpeg</code>, <code>bmp</code>, <code>svg</code> and <code>awt</code> (<code>X11</code> is aliased to <code>awt</code>). The <code>graphics</code> package and most of its functions are not supported at the moment.</p>
+<p>The GraalVM implementation of R includes its own Java based implementation of the <code>grid</code> package and the following graphics devices: <code>png</code>, <code>jpeg</code>, <code>bmp</code>, <code>svg</code> and <code>awt</code> (<code>X11</code> is aliased to <code>awt</code>). The <code>graphics</code> package and most of its functions are not supported at the moment.</p>
 
 <p>The <code>awt</code> device is based on the Java <code>Graphics2D</code> object and users can pass it their own <code>Graphics2D</code> object instance when opening the device using the <code>awt</code> function, as shown in the Java interop example.
 When the <code>Graphics2D</code> object is not provided to <code>awt</code>, it opens a new window similarly to <code>X11</code>.</p>

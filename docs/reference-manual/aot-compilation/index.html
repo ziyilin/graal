@@ -429,7 +429,7 @@ $(document).ready(function(){
           
             
             <a href="/docs/reference-manual/graal-updater/">
-              Graal Updater
+              GraalVM Updater
             </a>
           </li>
 
@@ -624,19 +624,37 @@ $(document).ready(function(){
               <div id="content-wrapper" class="docs-content docs-content--with-sidebar">
                 <h2 id="ahead-of-time-compilation">Ahead-of-time Compilation</h2>
 
-<p>GraalVM allows you to compile your programs ahead-of-time into a native executable. The resulting program does not run on the Java HotSpot VM, but uses necessary components like memory management, thread scheduling from a different implementation of a virtual machine, called Substrate VM. Substrate VM is written in Java and compiled into the native executable. The resulting program has faster startup time and lower runtime memory overhead compared to a Java VM.</p>
+<p>GraalVM allows you to compile your programs ahead-of-time into a native
+executable. The resulting program does not run on the Java HotSpot VM, but
+rather uses necessary components like memory management and thread scheduling
+from a different virtual machine, called “Native Image” (known by the code name
+<a href="https://github.com/oracle/graal/blob/master/substratevm/README.md">“Substrate
+VM”</a>). Native
+Image is written in Java and compiled into the native executable. The resulting
+program has faster startup time and lower runtime memory overhead compared to a
+Java VM.</p>
 
-<p>Currently, native images work mainly for JVM-based languages, e.g., Java, Scala, Clojure, Kotlin. The resulting image can, optionally, execute dynamic languages like Ruby, R, or Python, but it does not pre-compile their code itself.</p>
+<p>Currently, native images work mainly for JVM-based languages, e.g., Java, Scala,
+Clojure, Kotlin. The resulting image can, optionally, execute dynamic languages
+like Ruby, R, or Python, but it does not pre-compile their code itself.</p>
 
 <p>For example you can take a look at the <a href="/docs/examples/native-list-dir/">native image generation</a> or <a href="/docs/examples/java-kotlin-aot/">compiling a Java and Kotlin app ahead-of-time</a> samples.</p>
 
 <h2 id="prerequisites">Prerequisites</h2>
 
-<p>To build a native image of your program use the <code>native-image</code> utility located in the <code>bin</code> directory of the GraalVM distribution. For compilation <code>native-image</code> depends on the local toolchain, so please make sure: <code>glibc-devel</code>, <code>zlib-devel</code> (header files for the C library and <code>zlib</code>) and <code>gcc</code> are available on your system.</p>
+<p>To build a native image of your program use the <code>native-image</code> utility located
+in the <code>bin</code> directory of the GraalVM distribution. For compilation
+<code>native-image</code> depends on the local toolchain, so please make sure:
+<code>glibc-devel</code>, <code>zlib-devel</code> (header files for the C library and <code>zlib</code>) and
+<code>gcc</code> are available on your system.</p>
 
 <h2 id="image-generation-options">Image Generation Options</h2>
 
-<p>The <code>native-image</code> command line needs to provide the class path for all classes using the familiar option from the <code>java</code> launcher: <code>-cp</code> is followed by a list of directories or .jar files, separated by <code>:</code>. The name of the class containing the <code>main</code> method is the last argument; or you can use <code>-jar</code> and provide a .jar file that specifies the main method in its manifest.</p>
+<p>The <code>native-image</code> command line needs to provide the class path for all classes
+using the familiar option from the <code>java</code> launcher: <code>-cp</code> is followed by a list
+of directories or .jar files, separated by <code>:</code>. The name of the class containing
+the <code>main</code> method is the last argument; or you can use <code>-jar</code> and provide a .jar
+file that specifies the main method in its manifest.</p>
 
 <p>Go over the <code>native-image</code> command line options that may be useful:</p>
 
@@ -784,8 +802,8 @@ specified as <code>NativeImageArgs</code>, plus the arguments specified on comma
 
 <h2 id="generating-heap-dumps">Generating Heap Dumps</h2>
 
-<p>GraalVM also supports monitoring and generating heap dumps of the native image processes. This functionality is available in the <a href="http://www.oracle.com/technetwork/oracle-labs/program-languages/downloads/index.html">Enterprise edition of GraalVM</a>.
-It is <strong>not</strong> available in the Community edition of GraalVM.</p>
+<p>GraalVM also supports monitoring and generating heap dumps of the Native Image processes. This functionality is available in the <a href="http://www.oracle.com/technetwork/oracle-labs/program-languages/downloads/index.html">Enterprise Edition of GraalVM</a>.
+It is <strong>not</strong> available in the Community Edition of GraalVM.</p>
 
 <p>To find out more about generating heap dumps of the native image processes,
 refer to the <a href="/docs/reference-manual/native_heapdump/">step-by-step documentation</a>.</p>
@@ -796,22 +814,17 @@ refer to the <a href="/docs/reference-manual/native_heapdump/">step-by-step docu
 We need to know all classes and all bytecodes that are reachable at run time.
 Therefore, it is not possible to load new classes that have not been available during ahead-of-time-compilation.</p>
 
-<p>For a more detailed description of which features of Java are not supported by the native images or supported partially please refer to the <a href="https://github.com/oracle/graal/blob/master/substratevm/LIMITATIONS.md">documentation on the GitHub</a>. And if you’re interested in learning about the support for Java reflection, there’s a special document for <a href="https://github.com/oracle/graal/blob/master/substratevm/REFLECTION.md">Java reflection support</a>.</p>
+<p>For a more detailed description of which features of Java are not supported by the native images or supported partially please refer to the <a href="https://github.com/oracle/graal/blob/master/substratevm/LIMITATIONS.md">documentation on the GitHub</a>. And if you are interested in learning about the support for Java reflection, there is a separate document for <a href="https://github.com/oracle/graal/blob/master/substratevm/REFLECTION.md">Java reflection support</a>.</p>
 
 <h3 id="operational-information-for-native-images">Operational information for native images</h3>
 
-<p><em>When does it make sense to run native images instead of the JVM?</em></p>
+<p><em>When does it make sense to run in a Native Image instead of the JVM?</em></p>
 <ul>
   <li>When startup time and memory footprint is important.</li>
   <li>When you want to embed Java code with existing C/C++ applications</li>
 </ul>
 
-<p><em>What is the typical performance profile on the SVM?</em></p>
-<ul>
-  <li>Right now peak performance is a bit worse than HotSpot, but we don’t want to advertise that (and we want to fix it of course).</li>
-</ul>
-
-<p><em>What tools work with SVM: debugger, profilers? How to use them?</em></p>
+<p><em>What tools work with Native Image: debugger, profilers? How to use them?</em></p>
 <ul>
   <li>The community version does not support DWARF information. The enterprise version supports all native tools that rely on DWARF information, like debuggers (gdb) and profilers (VTune).</li>
 </ul>

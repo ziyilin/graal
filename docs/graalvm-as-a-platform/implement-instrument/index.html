@@ -547,8 +547,8 @@ $(document).ready(function(){
               <div id="content-wrapper" class="docs-content docs-content--with-sidebar">
                 <h3 id="getting-started-with-instruments-in-graalvm">Getting started with Instruments in GraalVM</h3>
 
-<p>Within the GraalVM platform Tools are also called <em>Instruments</em>.
-The <a href="http://www.graalvm.org/truffle/javadoc/com/oracle/truffle/api/instrumentation/package-summary.html">Truffle instrumentation API</a> is used to implement such instruments.
+<p>Tools are also called <em>Instruments</em> within the GraalVM platform.
+The <a href="http://www.graalvm.org/truffle/javadoc/com/oracle/truffle/api/instrumentation/package-summary.html">Instrumentation API</a> is used to implement such instruments.
 Instruments can track very fine-grained VM-level runtime events to profile, inspect, and analyze the runtime behavior of applications running on GraalVM.</p>
 
 <h3 id="examples">Examples</h3>
@@ -564,7 +564,7 @@ Instruments can track very fine-grained VM-level runtime events to profile, insp
 
 <h2 id="instrumentation-event-listeners">Instrumentation Event Listeners</h2>
 
-<p>The Truffle instrumentation application programming interface is defined in the <code>com.oracle.truffle.api.instrumentation</code> package. Instrumentation agents can be developed by extending the <code>TruffleInstrument</code> class, and can be attached to a running GraalVM instance using in the <code>Instrumenter</code> class. Once attached to a running language runtime, instrumentation agents remain usable as long as the language runtime is not disposed. Instrumentation agents on GraalVM can monitor a variety of VM-level runtime events, including any of the following:</p>
+<p>The Truffle Instrumentation application programming interface is defined in the <code>com.oracle.truffle.api.instrumentation</code> package. Instrumentation agents can be developed by extending the <code>TruffleInstrument</code> class, and can be attached to a running GraalVM instance using in the <code>Instrumenter</code> class. Once attached to a running language runtime, instrumentation agents remain usable as long as the language runtime is not disposed. Instrumentation agents on GraalVM can monitor a variety of VM-level runtime events, including any of the following:</p>
 
 <ol>
   <li><em>Source code-related events</em>: the agent can be notified every time a new <a href="http://www.graalvm.org/truffle/javadoc/com/oracle/truffle/api/source/Source.html">Source</a> or <a href="http://www.graalvm.org/truffle/javadoc/com/oracle/truffle/api/source/SourceSection.html">SourceSection</a> element is loaded by the monitored language runtime.</li>
@@ -576,8 +576,8 @@ Instruments can track very fine-grained VM-level runtime events to profile, insp
 <p>For each execution event, instrumentation agents can define <em>filtering</em> criteria that will be used by the GraalVM instrumentation runtime to monitor only the relevant execution events. Currently, GraalVM instruments accept one of the following two filter types:</p>
 
 <ol>
-  <li><code>AllocationEventFilter</code>. To filter allocation events by allocation type.</li>
-  <li><code>SourceSectionFilter</code>. To filter source code locations in an application.</li>
+  <li><code>AllocationEventFilter</code> to filter allocation events by allocation type.</li>
+  <li><code>SourceSectionFilter</code> to filter source code locations in an application.</li>
 </ol>
 
 <p>Filters can be created using the provided builder object. For example, the following builder creates a <code>SourceSectionFilter</code>:</p>
@@ -590,7 +590,7 @@ Instruments can track very fine-grained VM-level runtime events to profile, insp
 
 <p>The filter in the example can be used to monitor the execution of all JavaScript statements in a given application. Other filtering options such as line numbers or file extensions can also be provided.</p>
 
-<p>Source section filters like the one in the example can use <em>Tags</em> to specify a set of execution events to be monitored. Language-agnostic tags such as statements and expressions are defined in the <a href="http://www.graalvm.org/truffle/javadoc/com/oracle/truffle/api/instrumentation/Tag.html"><code>com.oracle.truffle.api.instrumentation.Tag</code></a> class, and are supported by all GraalVM languages. In addition to standard tags, GraalVM languages may provide other, language-specific, tags to enable fine-grained profiling of language-specific events (as an example, the Graal.js language runtime provides JavaScript-specific tags to track the usages of ECMA builtin objects such as <code>Array</code>, <code>Map</code>, or <code>Math</code>).</p>
+<p>Source section filters like the one in the example can use <em>Tags</em> to specify a set of execution events to be monitored. Language-agnostic tags such as statements and expressions are defined in the <a href="http://www.graalvm.org/truffle/javadoc/com/oracle/truffle/api/instrumentation/Tag.html"><code>com.oracle.truffle.api.instrumentation.Tag</code></a> class, and are supported by all GraalVM languages. In addition to standard tags, GraalVM languages may provide other, language-specific, tags to enable fine-grained profiling of language-specific events (as an example, the GraalVM JavaScript engine provides JavaScript-specific tags to track the usages of ECMA builtin objects such as <code>Array</code>, <code>Map</code>, or <code>Math</code>).</p>
 
 <h3 id="monitoring-execution-events">Monitoring execution events</h3>
 
@@ -598,14 +598,14 @@ Instruments can track very fine-grained VM-level runtime events to profile, insp
 
 <ol>
   <li><em>Execution listener</em>: an instrumentation agent that can be notified every time a given runtime event happens. Listeners implement the <a href="http://www.graalvm.org/truffle/javadoc/com/oracle/truffle/api/instrumentation/ExecutionEventListener.html"><code>ExecutionEventListener</code></a> interface, and cannot associate any <em>state</em> with source code locations.</li>
-  <li><em>Execution event node</em>: an instrumentation agent that can be expressed using Truffle AST nodes. Such agents extend the <a href="http://www.graalvm.org/truffle/javadoc/com/oracle/truffle/api/instrumentation/ExecutionEventNode.html"><code>ExecutionEventNode</code></a> class, have the same capabilities of an execution listener, but can associate state with source code locations.</li>
+  <li><em>Execution event node</em>: an instrumentation agent that can be expressed using Truffle Framework AST nodes. Such agents extend the <a href="http://www.graalvm.org/truffle/javadoc/com/oracle/truffle/api/instrumentation/ExecutionEventNode.html"><code>ExecutionEventNode</code></a> class and have the same capabilities of an execution listener, but can associate state with source code locations.</li>
 </ol>
 
 <h2 id="simple-instrumentation-agent">Simple Instrumentation Agent</h2>
 
 <p>A simple example of a custom instrumentation agent to perform runtime code coverage can be found in the <code>CoverageExample</code> class. What follows is an overview of the agent, of its design, and of its capabilities.</p>
 
-<p>All Truffle instruments extend the <code>TruffleInstrument</code> abstract class, and are registered in the GraalVM runtime through the <code>@Registration</code> annotation:</p>
+<p>All instruments extend the <code>TruffleInstrument</code> abstract class, and are registered in the GraalVM runtime through the <code>@Registration</code> annotation:</p>
 
 <pre><code class="language-java">@Registration(id = CoverageExample.ID, services = Object.class)
 public final class CoverageExample extends TruffleInstrument {
@@ -618,7 +618,7 @@ public final class CoverageExample extends TruffleInstrument {
 }
 </code></pre>
 
-<p>Instruments override the <code>onCreate(Env env)</code> method to perform custom operations at instrument loading time. Typically, an instrument would use this method to register itself in the existing GraalVM execution environment. As an example, an instrument using Truffle AST nodes can be registered in the following way:</p>
+<p>Instruments override the <code>onCreate(Env env)</code> method to perform custom operations at instrument loading time. Typically, an instrument would use this method to register itself in the existing GraalVM execution environment. As an example, an instrument using AST nodes can be registered in the following way:</p>
 
 <pre><code class="language-java">@Override
 protected void onCreate(final Env env) {
@@ -632,7 +632,7 @@ protected void onCreate(final Env env) {
 <p>The instrument connects itself to the running GraalVM using the <code>attachExecutionEventFactory</code> method, providing the following two arguments:</p>
 <ol>
   <li><code>SourceSectionFilter</code>: a source section filter used to inform the GraalVM about specific code sections to be tracked.</li>
-  <li><code>ExecutionEventNodeFactory</code>: a Truffle AST factory that provides instrumentation AST nodes to be executed by the agent every time a runtime event (as specified by the source filter) is executed.</li>
+  <li><code>ExecutionEventNodeFactory</code>: a Truffle Framework AST factory that provides instrumentation AST nodes to be executed by the agent every time a runtime event (as specified by the source filter) is executed.</li>
 </ol>
 
 <p>A basic <code>ExecutionEventNodeFactory</code> that instruments the AST nodes of an application can be implemented in the following way:</p>
@@ -681,7 +681,7 @@ public ExecutionEventNode create(final EventContext ec) {
 }
 </code></pre>
 
-<p>As the above code shows, an <code>ExecutionEventNode</code> is a valid Truffle AST node. This implies that the instrumentation code will be optimized by the GraalVM together with the instrumented application, resulting in minimal instrumentation overhead. Furthermore, this allows instrument developers to use <a href="http://www.graalvm.org/truffle/javadoc/com/oracle/truffle/api/CompilerDirectives.html">Truffle compiler directives</a> directly from Truffle instrumentation nodes. In the example, compiler directives are used to inform the Graal compiler that <code>visited</code> can be considered compilation-final.</p>
+<p>As the above code shows, an <code>ExecutionEventNode</code> is a valid AST node. This implies that the instrumentation code will be optimized by the GraalVM together with the instrumented application, resulting in minimal instrumentation overhead. Furthermore, this allows instrument developers to use <a href="http://www.graalvm.org/truffle/javadoc/com/oracle/truffle/api/CompilerDirectives.html">Truffle Framework compiler directives</a> directly from instrumentation nodes. In the example, compiler directives are used to inform the GraalVM compiler that <code>visited</code> can be considered compilation-final.</p>
 
 <p>Each instrumentation node is bound to a specific code location. Such locations can be accessed by the agent using the provided <a href="http://www.graalvm.org/truffle/javadoc/com/oracle/truffle/api/instrumentation/EventContext.html"><code>EventContext</code></a> object.
 The context object gives instrumentation nodes access to a variety of information about the current AST nodes being executed. Examples of query APIs available to instrumentation agents through <code>EventContext</code> include:</p>
@@ -706,7 +706,7 @@ SourceSectionFilter inputGeneratingLocations = SourceSectionFilter.newBuilder().
 instrumenter.attachExecutionEventFactory(sourceSectionFilter, inputGeneratingLocations, factory);
 </code></pre>
 
-<p>The first source section filter (<code>sourceSectionFilter</code>, in the example) is a normal filter equivalent to other filters described before, and is used to identify the source code locations to be monitored. The second section filter, <code>inputGeneratingLocations</code>, is used by the agent to specify the <em>intermediate values</em> that should be monitored for a certain source section. Intermediate values correspond to <em>all</em> observable values that are involved in the execution of a monitored code element, and are reported to the instrumentation agent by means of the <code>onInputValue</code> callback. As an example, let’s assume an agent needs to profile all <em>operand</em> values provided to sum operations (i.e., <code>+</code>) in JavaScript:</p>
+<p>The first source section filter (<code>sourceSectionFilter</code>, in the example) is a normal filter equivalent to other filters described before, and is used to identify the source code locations to be monitored. The second section filter, <code>inputGeneratingLocations</code>, is used by the agent to specify the <em>intermediate values</em> that should be monitored for a certain source section. Intermediate values correspond to <em>all</em> observable values that are involved in the execution of a monitored code element, and are reported to the instrumentation agent by means of the <code>onInputValue</code> callback. As an example, let us assume an agent needs to profile all <em>operand</em> values provided to sum operations (i.e., <code>+</code>) in JavaScript:</p>
 
 <pre><code class="language-javascript">var a = 3;
 var b = 4;
@@ -751,11 +751,11 @@ onEnter - VariableWrite
 onReturnValue - VariableWrite
 </code></pre>
 
-<p>The <code>onInputValue</code> method can be used in combination with source section filters to intercept very fine-grained execution events such as intermediate values used by language expressions. The intermediate values that are accessible to the instrumentation framework greatly depend on the instrumentation support provided by each language. Moreover, languages may provide additional metadata associated with language-specific <code>Tag</code> classes.</p>
+<p>The <code>onInputValue</code> method can be used in combination with source section filters to intercept very fine-grained execution events such as intermediate values used by language expressions. The intermediate values that are accessible to the Instrumentation framework greatly depend on the instrumentation support provided by each language. Moreover, languages may provide additional metadata associated with language-specific <code>Tag</code> classes.</p>
 
 <h3 id="altering-the-execution-flow-of-an-application">Altering the execution flow of an application</h3>
 
-<p>The instrumentation capabilities that we have presented so far enable users to <em>observe</em> certain aspects of a running application. In addition to passive monitoring of an application’s behavior, the Truffle instrumentation API features support for actively <em>altering</em> the behavior of an application at runtime. Such capabilities can be used to write complex instrumentation agents that affect the behavior of a running application to achieve specific runtime semantics. For example, one could alter the semantics of a running application to ensure that certain methods or functions are never executed (e.g., by throwing an exception when they are called).</p>
+<p>The instrumentation capabilities that we have presented so far enable users to <em>observe</em> certain aspects of a running application. In addition to passive monitoring of an application’s behavior, the Instrumentation API features support for actively <em>altering</em> the behavior of an application at runtime. Such capabilities can be used to write complex instrumentation agents that affect the behavior of a running application to achieve specific runtime semantics. For example, one could alter the semantics of a running application to ensure that certain methods or functions are never executed (e.g., by throwing an exception when they are called).</p>
 
 <p>Instrumentation agents with such capabilities can be implemented by leveraging the <code>onUnwind</code> callback in execution event listeners and factories. As an example, let’s consider the following JavaScript code:</p>
 
@@ -811,7 +811,7 @@ public static class UniversalAnswerInstrument extends TruffleInstrument {
 }
 </code></pre>
 
-<p>When enabled, the instrument will execute its <code>onReturnValue</code> callback each time a function call returns. The callback reads the associated source section (using <code>getInstrumentedSourceSection</code>) and looks for a specific source code pattern (the function call <code>inc(c)</code>, in this case). As soon as such code pattern is found, the instrument throws a special runtime exception, called <code>UnwindException</code>, that instructs the Truffle instrumentation framework about a change in the current application’s execution flow. The exception is intercepted by the <code>onUnwind</code> callback of the instrumentation agent, which can be used to return <em>any</em> arbitrary value to the original instrumented application. In the example, all calls to <code>inc(c)</code> will return <code>42</code> regardless of any application-specific data. A more realistic instrument might access and monitor several aspects of an application, and might not rely on source code locations, but rather on object instances or other application-specific data.</p>
+<p>When enabled, the instrument will execute its <code>onReturnValue</code> callback each time a function call returns. The callback reads the associated source section (using <code>getInstrumentedSourceSection</code>) and looks for a specific source code pattern (the function call <code>inc(c)</code>, in this case). As soon as such code pattern is found, the instrument throws a special runtime exception, called <code>UnwindException</code>, that instructs the Instrumentation framework about a change in the current application’s execution flow. The exception is intercepted by the <code>onUnwind</code> callback of the instrumentation agent, which can be used to return <em>any</em> arbitrary value to the original instrumented application. In the example, all calls to <code>inc(c)</code> will return <code>42</code> regardless of any application-specific data. A more realistic instrument might access and monitor several aspects of an application, and might not rely on source code locations, but rather on object instances or other application-specific data.</p>
 
               </div>
     

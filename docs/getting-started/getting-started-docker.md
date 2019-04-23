@@ -33,7 +33,7 @@ bash-4.2#
 ```
 
 Please note that the image contains only the components immediately available in the GraalVM CE distribution.
-However, the [Graal updater utility]({{ "/docs/reference-manual/graal-updater/" | relative_url}}) is on the path.
+However, the [GraalVM Updater utility]({{ "/docs/reference-manual/graal-updater/" | relative_url}}) is on the `PATH`.
 You can install the support for additional languages like Ruby, R, or Python at will.
 For example, the following command installs the Ruby support (the output below is truncated for brevity):
 

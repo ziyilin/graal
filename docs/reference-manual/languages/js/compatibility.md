@@ -38,14 +38,14 @@ Node.js based on GraalVM is largely compatible with the original Node.js (based 
 This leads to a high number of npm-based modules being compatible with GraalVM (out of the 95k modules we test, more than 90% of them pass all tests).
 Several sources of differences have to be considered.
 
-- **Setup**
+- **Setup:**
 GraalVM mostly mimicks the original setup of Node, including the `node` executable, `npm`, and similar. However, not all command-line options are supported (or behave exactly identically), you need to (re-)compile native modules against our v8.h file, etc.
 
-- **Internals**
+- **Internals:**
 GraalVM is implemented on top of a JVM, and thus has a different internal architecture. This implies that some internal mechanisms behave differently and cannot exactly replicate V8 behavior. This will hardly ever affect user code, but might affect modules implemented natively, depending on V8 internals.
 
-- **Performance**
-Due to GraalVM being implemented on top of a JVM, performance characteristics vary from the original native implementation. While GraalVM's peak performance can match V8 on many benchmarks, it will typically take longer to reach the peak (known as _warmup_). Be sure to give the Graal compiler some extra time when measuring (peak) performance.
+- **Performance:**
+Due to GraalVM being implemented on top of a JVM, performance characteristics vary from the original native implementation. While GraalVM's peak performance can match V8 on many benchmarks, it will typically take longer to reach the peak (known as _warmup_). Be sure to give the GraalVM compiler some extra time when measuring (peak) performance.
 
 _How do we determine GraalVM's JavaScript compatibility?_
 
@@ -53,10 +53,10 @@ GraalVM is compatible to ECMAScript 2019, guaranteeing compatibility on the lang
 In addition, GraalVM uses the following approaches to check and retain compatibility to Node.js code:
 
 * node-compat-table: GraalVM is compared against other engines using the _node-compat-table_ module, highlighting incompatibilities that might break Node.js code.
-* automated mass-testing of modules using _mocha_: In order to test a large set of modules, GraalVM is tested against 95k modules that use the mocha test framework. Using mocha allows automating the process of executing the test and comprehending the test result.
-* manual testing of popular modules: A select list of npm modules is tested in a manual test setup. These highly-relevant modules are tested in a more sophisticated manner.
+* automated mass-testing of modules using _mocha_: in order to test a large set of modules, GraalVM is tested against 95k modules that use the mocha test framework. Using mocha allows automating the process of executing the test and comprehending the test result.
+* manual testing of popular modules: a select list of npm modules is tested in a manual test setup. These highly-relevant modules are tested in a more sophisticated manner.
 
-If you want your module to be tested by GraalVM in the future, ensure the module provides some mocha tests (and send us an email so we can ensure it's on the list of tested modules).
+If you want your module to be tested by GraalVM in the future, ensure the module provides some mocha tests (and send us an email so we can ensure it is on the list of tested modules).
 
 _How can one verify GraalVM works on their application?_
 

@@ -1,34 +1,34 @@
-## Graal Compiler Configuration on JVM
+## Compiler Configuration on JVM
 
-The options for configuring the Graal compiler on the JVM are in 3 categories.
+The options for configuring the GraalVM compiler on the JVM are in 3 categories.
 
 ### General options
 
 These are general options for setting/getting configuration details.
 
-* `-XX:+UseJVMCICompiler`: This disables use of the Graal compiler as the top tier JIT.
-This is useful when wanting to compare performance of the Graal compiler against the native
+* `-XX:+UseJVMCICompiler`: This disables use of the GraalVM compiler as the top tier JIT.
+This is useful when wanting to compare performance of the GraalVM compiler against the native
 JIT compilers.
-* `-Dgraal.CompilerConfiguration=<name>`: Selects the Graal compiler configuration to use.
-    If omitted, the compiler configuration with the highest auto-selection priority is used.
-    To see the set of available configurations, supply the value `help` to this option.
+* `-Dgraal.CompilerConfiguration=<name>`: Selects the GraalVM compiler configuration to use. If omitted, the compiler
+configuration with the highest auto-selection priority is used. To see the set
+of available configurations, supply the value help to this option.
 
     The current configurations and their semantics are:
-    * `enterprise`: Produce highly optimized code with a possible trade-off to compilation time.
+    * `enterprise`: To produce highly optimized code with a possible trade-off to compilation time.
       **This value is only available in GraalVM EE.**
-    * `community`: Produce reasonably optimized code with a faster compilation time.
-    * `economy`: Compile as fast as possible with less optimal throughput of the generated code.
+    * `community`: To produce reasonably optimized code with a faster compilation time.
+    * `economy`: To compile as fast as possible with less optimal throughput of the generated code.
 
-* `-Dgraal.ShowConfiguration=none`: Prints information about the Graal compiler configuration selected.
-    This option only produces output when Graal is initialized. By default, Graal is
+* `-Dgraal.ShowConfiguration=none`: Prints information about the GraalVM compiler configuration selected.
+    This option only produces output when the compiler is initialized. By default, the GraalVM compiler is
     initialized on the first top-tier compilation. For this reason, the way to use this option
     is as follows: `java -XX:+EagerJVMCI -Dgraal.ShowConfiguration=info -version`.
 
     The accepted values for this option are:
-    * `none`: Shows no information.
-    * `info`: Prints one line of output showing the name of the compiler configuration in use
+    * `none`: To show no information.
+    * `info`: To print one line of output showing the name of the compiler configuration in use
        and the location it is loaded from.
-    * `verbose`: Prints detailed compiler configuration information.
+    * `verbose`: To print detailed compiler configuration information.
 
 * `-Dgraal.MitigateSpeculativeExecutionAttacks=None`: Selects a strategy to mitigate speculative
     execution attacks (e.g., SPECTRE).
@@ -42,10 +42,23 @@ JIT compilers.
     * `NonDeoptGuardTargets`: Same as GuardTargets except that branches which deoptimize are
       not protected since they can not be executed repeatedly.
 
-* `-XX:-UseJVMCINativeLibrary`: Disables use of [libgraal](https://github.com/oracle/graal/tree/master/compiler#libgraal). Instead, the Graal compiler is executed as classes loaded into
-the HotSpot heap. This will delay the time to reach peak performance as the Graal compiler
+* `--engine.Mode=default`: Configures the execution mode of the engine. The execution mode automatically
+tunes the polyglot engine towards latency or throughput.
+    * `throughput`: To collect the maximum amount of profiling information and compile using the
+    maximum number of optimizations. This mode results in slower application startup
+    but better throughput. This mode uses the compiler configuration `community` or
+    `enterprise` if not specified otherwise.
+    * `default`: To use a balanced engine configuration. This mode uses the compiler configuration `community` or
+    `enterprise` if not specified otherwise.
+    * `latency`: To collect only minimal profiling information and compile as fast as possible
+    with less optimal generated code. This mode results in faster application
+    startup but less optimal throughput. This mode uses the compiler configuration
+    `economy` if not specified otherwise.
+
+* `-XX:-UseJVMCINative Library`: Disables use of [libgraal](https://github.com/oracle/graal/tree/master/compiler#libgraal). Instead, the GraalVM compiler is executed as classes loaded into
+the HotSpot heap. This will delay the time to reach peak performance as the compiler
 itself needs to be compiled before it produces code quickly. This mode allows you to
-[debug the Graal compiler with a Java debugger]({{ "/docs/reference-manual/languages/jvm/#troubleshooting-graal" | relative_url }}).
+[debug the GraalVM compiler with a Java debugger]({{ "/docs/reference-manual/languages/jvm/#troubleshooting-graal" | relative_url }}).
 
 ### Performance tuning options
 
@@ -100,7 +113,7 @@ Graal diagnostic output saved in /Users/graal/graal_dumps/1549459528316/graal_di
     For all values except for `ExitVM`, the VM continues executing.
 * `-Dgraal.CompilationBailoutAsFailure=false`: The compiler may not complete compilation of a method due
  to some property or code shape in the method (e.g. exotic uses of the jsr and ret bytecodes). In this
- case the compilation _bails out_. If you want to be informed of such bailouts, this option makes Graal
+ case the compilation _bails out_. If you want to be informed of such bailouts, this option makes GraalVM
  treat bailouts as failures and thus be subject to the action specified by the
  `-Dgraal.CompilationFailureAction` option.
 * `-Dgraal.PrintCompilation=false`: Prints an informational line to the console for each completed compilation.
@@ -112,9 +125,9 @@ HotSpotCompilation-184 Ljava/util/concurrent/ConcurrentHashMap;      setTabAt   
 HotSpotCompilation-136 Lsun/nio/cs/UTF_8$Encoder;                    encode        ([CII[B)I |  591ms   740B   418B  4921
   ```
 
-## Setting Graal compiler options with language launchers
+## Setting Compiler Options with Language Launchers
 
-The Graal compiler properties above are usable with some other GraalVM launchers such as
+The GraalVM compiler properties above are usable with some other GraalVM launchers such as
 `node`, `js` and `lli`. The prefix for specifying the properties is slightly different.
 For example:
 

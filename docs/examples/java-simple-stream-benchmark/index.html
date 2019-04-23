@@ -437,7 +437,7 @@ $(document).ready(function(){
           
             
             <a href="/docs/examples/java-kotlin-aot/">
-              Polyglot Native Example
+              Java/Kotlin Native Example
             </a>
           </li>
 
@@ -621,13 +621,13 @@ You can run it with the following command:</p>
 </code></pre>
 <p>If you would like to run the benchmark on a different JVM, you can run it with
 whatever <code>java</code> you have. However, if you just want to run it on the same JVM,
-but without the Graal compiler, you may add the <code>-XX:-UseJVMCICompiler</code> option
+but without the GraalVM compiler, you may add the <code>-XX:-UseJVMCICompiler</code> option
 into the same command.</p>
 
 <pre><code>$GRAALVM_HOME/bin/java -XX:-UseJVMCICompiler -jar target/benchmarks.jar
 </code></pre>
 
-<p>This way, Graal will not be used as the JVMCI compiler and the JVM will use its default one.</p>
+<p>This way, the GraalVM compiler will not be used as the JVMCI compiler and the JVM will use its default one.</p>
 
 <h3 id="a-note-about-the-results">A note about the results</h3>
 

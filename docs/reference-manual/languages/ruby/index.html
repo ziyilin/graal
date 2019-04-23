@@ -429,7 +429,7 @@ $(document).ready(function(){
           
             
             <a href="/docs/reference-manual/graal-updater/">
-              Graal Updater
+              GraalVM Updater
             </a>
           </li>
 
@@ -791,7 +791,7 @@ GraalVM.</p>
 <h4 id="high-compatibility-with-the-standard-implementation-of-ruby">High compatibility with the standard implementation of Ruby</h4>
 
 <p>TruffleRuby aims to be fully compatible with the standard implementation of
-Ruby, MRI, version 2.4.4, revision 63013. We test extensively using the MRI
+Ruby, MRI, version 2.6.2. We test extensively using the MRI
 test suite and the Ruby Spec project.</p>
 
 <h2 id="interoperability">Interoperability</h2>
@@ -969,7 +969,7 @@ is UTF-8 or a subset of UTF-8, as the JVM has already decoded arguments by the
 time we get them.</p>
 
 <p><code>--jit</code> options and the <code>jit</code> feature are not supported because TruffleRuby
-uses Graal as a JIT.</p>
+uses the GraalVM compiler as a JIT.</p>
 
 <h4 id="setting-the-process-title-doesnt-always-work">Setting the process title doesn’t always work</h4>
 
@@ -1170,8 +1170,8 @@ Ruby, if run from the Ruby launcher.</p>
 
 <h3 id="unlisted-ruby-switches">Unlisted Ruby switches</h3>
 
-<p>MRI has some extra Ruby switches which are aren’t normally listed in help output
-but are documented in the Ruby manual page.</p>
+<p>MRI has some extra Ruby switches which are are not listed in help output but are
+documented in the Ruby manual page.</p>
 
 <pre><code>  -Xdirectory     cd to directory before executing your script (same as -C)
   -U              set the internal encoding to UTF-8
@@ -1192,9 +1192,9 @@ options. All options all experimental and subject to change at any time.</p>
 <p>Options can also be set as JVM system properties, where they have a prefix
 <code>polyglot.ruby.</code>. For example <code>--vm.Dpolyglot.ruby.cexts.remap=true</code>, or via
 any other way of setting JVM system properties. Finally, options can be set as
-Graal-SDK polyglot API configuration options.</p>
+GraalVM SDK Polyglot API configuration options.</p>
 
-<p>The priority for options is the command line first, then the Graal-SDK polyglot
+<p>The priority for options is the command line first, then the GraalVM SDK Polyglot
 API configuration, then system properties last.</p>
 
 <p>TruffleRuby options, as well as conventional Ruby options and VM options, can
@@ -1232,7 +1232,7 @@ These are stored in the TruffleRuby home directory.</p>
   <li>The parent of the directory containing the Ruby launcher executable.</li>
 </ul>
 
-<p>If the <code>home</code> option is set, it’s used even if it doesn’t appear to be a correct
+<p>If the <code>home</code> option is set, it is used even if it does not appear to be a correct
 home location. Other options are tried until one is found that appears to be a
 correct home location. If none appears to be correct a warning will be given but
 the program will continue and you will not be able to require standard
@@ -1241,38 +1241,38 @@ libraries. You can tell TruffleRuby not to try to find a home at all using the
 
 <h2 id="operations-manual">Operations Manual</h2>
 
-<p>If you’re attempting to experiment with deploying TruffleRuby to production we’d
-encourage you to contact us so we can help you understand what is possible at
-the moment and to help solve any issues for you.</p>
+<p>If you are attempting to experiment with deploying TruffleRuby to production we
+would encourage you to contact us so we can help you understand what is possible
+at the moment and to help solve any issues for you.</p>
 
 <h3 id="truffleruby-configurations">TruffleRuby configurations</h3>
 
-<p>There are two main configurations of TruffleRuby - <em>native</em> and <em>JVM</em>. It’s
+<p>There are two main configurations of TruffleRuby - <em>Native Image</em> and <em>JVM</em>. It’s
 important to understand the different configurations of TruffleRuby, as each has
 different capabilities and performance characteristics. You should pick the
 execution mode that is appropriate for your application.</p>
 
-<p>When distributed as part of GraalVM, TruffleRuby by default runs in the <em>native</em>
+<p>When distributed as part of GraalVM, TruffleRuby by default runs in the <em>Native Image</em>
 configuration. In this configuration, TruffleRuby is ahead-of-time compiled to a
-standalone native executable. This means that you don’t need a JVM installed on
+standalone native executable. This means that you do not need a JVM installed on
 your system to use it. The advantage of the native configuration is that it
 <a href="https://github.com/oracle/truffleruby/blob/master/doc/contributor/svm.md">starts about as fast as MRI</a>,
 it may use less memory, and it becomes fast in less time than the <em>JVM</em> configuration. The disadvantage
-of the native configuration is that you can’t use Java tools like VisualVM, you
-can’t use Java interoperability, and <em>peak performance may be lower than on the
-JVM</em>. The native configuration is used by default, but you can also request it
+of the native configuration is that you cannot use Java tools like VisualVM, you
+you cannot use Java interoperability, and <em>peak performance may be lower than on the
+JVM</em>. The Native Image configuration is used by default, but you can also request it
 using <code>--native</code>. To use polyglot programming with the <em>native</em> configuration,
 you need to use the <code>--polyglot</code> flag.</p>
 
 <p>TruffleRuby can also be used in the <em>JVM</em> configuration, where it runs as a
 normal Java application on the JVM, as any other Java application would. The
 advantage of the JVM configuration is that you can use Java interoperability, and
-<em>peak performance may be higher than the native configuration</em>. The disadvantage
+<em>peak performance may be higher than the Native Image configuration</em>. The disadvantage
 of the JVM configuration is that it takes much longer to start and to get fast,
 and may use more memory. The JVM configuration is requested using <code>--jvm</code>.</p>
 
 <p>If you are running a short-running program you probably want the default,
-<em>native</em>, configuration. If you are running a long-running program and want the
+<em>Native Image</em>, configuration. If you are running a long-running program and want the
 highest possible performance you probably want the <em>JVM</em> configuration, by using
 <code>--jvm</code>.</p>
 
@@ -1286,7 +1286,7 @@ native configuration, which is the default.</p>
 <p>To get the lowest memory footprint you probably initially want to use the native
 configuration, but as you get a larger working set of objects you may find that
 the simpler garbage collector and current lack of compressed ordinary object
-pointers (OOPS) actually increases your memory footprint and you’ll be better
+pointers (OOPS) actually increases your memory footprint and you will be better
 off with the JVM configuration using <code>--jvm</code> to reduce memory use.</p>
 
 <h3 id="getting-the-best-peak-performance-from-truffleruby">Getting the best peak performance from TruffleRuby</h3>
@@ -1304,7 +1304,7 @@ then probably stabilize.</p>
 <h3 id="tuning-truffleruby">Tuning TruffleRuby</h3>
 
 <p>To tune TruffleRuby you will need to consider the options of either your JVM or
-the SubstrateVM, and then Truffle, and Graal.</p>
+the Native Image, and then the Truffle framework, and the GraalVM compiler.</p>
 
 <p>TruffleRuby has a large set of options, which you can see with the <code>--help:languages</code>
 flag.</p>
@@ -1318,7 +1318,7 @@ Ruby.</p>
 level can be set with <code>--log.level=INFO</code>, <code>=FINEST</code>, or so on.</p>
 
 <h3 id="troubleshooting-truffleruby">Troubleshooting TruffleRuby</h3>
-<p>The GraalVM implementation of Ruby is experimental and we can not guarantee it to be bug free.
+<p>The GraalVM implementation of Ruby is experimental and we cannot guarantee it to be bug free.
 TruffleRuby uses sophisticated techniques to optimise a Ruby program and its users are strongly encouraged to submit useful bug reports to <a href="https://github.com/oracle/truffleruby/issues">Truffleruby issues</a>.
  If you encounter a performance problem, please  consider the recommendations in <a href="https://github.com/oracle/truffleruby/blob/master/doc/user/reporting-performance-problems.md">Reporting Performance Problems</a> document  .</p>
 

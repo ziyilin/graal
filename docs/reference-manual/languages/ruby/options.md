@@ -48,8 +48,8 @@ Ruby, if run from the Ruby launcher.
 
 ### Unlisted Ruby switches
 
-MRI has some extra Ruby switches which are aren't normally listed in help output
-but are documented in the Ruby manual page.
+MRI has some extra Ruby switches which are are not listed in help output but are
+documented in the Ruby manual page.
 
 ```
   -Xdirectory     cd to directory before executing your script (same as -C)
@@ -71,9 +71,9 @@ options. All options all experimental and subject to change at any time.
 Options can also be set as JVM system properties, where they have a prefix
 `polyglot.ruby.`. For example `--vm.Dpolyglot.ruby.cexts.remap=true`, or via
 any other way of setting JVM system properties. Finally, options can be set as
-Graal-SDK polyglot API configuration options.
+GraalVM SDK Polyglot API configuration options.
 
-The priority for options is the command line first, then the Graal-SDK polyglot
+The priority for options is the command line first, then the GraalVM SDK Polyglot
 API configuration, then system properties last.
 
 TruffleRuby options, as well as conventional Ruby options and VM options, can
@@ -109,7 +109,7 @@ The search priority for finding Ruby home is:
 * The home that the Truffle framework reports.
 * The parent of the directory containing the Ruby launcher executable.
 
-If the `home` option is set, it's used even if it doesn't appear to be a correct
+If the `home` option is set, it is used even if it does not appear to be a correct
 home location. Other options are tried until one is found that appears to be a
 correct home location. If none appears to be correct a warning will be given but
 the program will continue and you will not be able to require standard

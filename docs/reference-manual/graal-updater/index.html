@@ -9,7 +9,7 @@
 
   <title>
     
-      Graal updater
+      GraalVM Updater
     
   </title>
   <meta
@@ -429,7 +429,7 @@ $(document).ready(function(){
           
             
             <a href="/docs/reference-manual/graal-updater/">
-              Graal Updater
+              GraalVM Updater
             </a>
           </li>
 
@@ -624,14 +624,18 @@ $(document).ready(function(){
               <div id="content-wrapper" class="docs-content docs-content--with-sidebar">
                 <h2 id="component-installation">Component installation</h2>
 
-<p>Some languages are not part of the GraalVM core download package and must be downloaded and installed separately. To assist you with this installation, languages are pre-packaged as <strong>Components</strong>.
-The GraalVM installation contains the <strong>Graal Updater</strong> utility, <code>gu</code>,
-that can be used to manage components. Add the GraalVM <code>/bin</code> folder to your <code>PATH</code> environment variable in order to deploy the <code>gu</code> installer tool.</p>
+<p>Some languages are not part of the GraalVM core download package and must be
+downloaded and installed separately. To assist you with this installation,
+languages are pre-packaged as <strong>Components</strong>. The GraalVM installation contains
+the <strong>GraalVM Updater</strong> utility, <code>gu</code>, that can be used to manage components.
+Due to the primary function of <code>gu</code> – updating components – the tool is
+sometimes called a “Component Updater”.</p>
 
-<p>The Graal Updater also verifies whether the version of the component is
+<p>GraalVM Updater also verifies whether the version of the component is
 appropriate for your GraalVM installation. Component packages are released for
 each GraalVM release with respective updates.
-Component packages downloaded for previous release(s) cannot be used with newer ones.</p>
+Component packages downloaded for previous release(s) cannot be used with newer ones.
+Add the GraalVM <code>/bin</code> folder to your <code>PATH</code> environment variable in order to deploy the <code>gu</code> installer tool.</p>
 
 <p>There is a command-line help available.
 Run <code>gu</code> or <code>gu -h</code> to get command overview.
@@ -640,7 +644,7 @@ Run <code>gu &lt;command&gt; -h</code> to get help specific for the particular c
 <p>Two modes of component installation are supported:</p>
 
 <p><strong>Manual installation</strong>:
-You download the component package yourself and the Graal Updater will install it.
+You download the component package yourself and GraalVM Updater will install it.
 The following pre-built language packages are at your disposal:</p>
 
 <ul>
@@ -651,10 +655,10 @@ The following pre-built language packages are at your disposal:</p>
 
 <p><strong>Installation from Catalog</strong>: There is a list of components maintained by Oracle,
 from which you can install a component just by name.
-The Graal Updater will download the component package for you. This is the default mode of operation.</p>
+GraalVM Updater will download the component package for you. This is the default mode of operation.</p>
 
 <h2 id="installation-from-catalog">Installation from Catalog</h2>
-<p>The Graal Updater first downloads the list of components,
+<p>GraalVM Updater first downloads the list of components,
 then uses the information in the list to download the actual component package for you and install it.
 To see which components are available in the catalog, use</p>
 <pre><code class="language-bash">gu available
@@ -678,12 +682,13 @@ the component can be installed as</p>
 <p>Installed components can be printed by</p>
 <pre><code class="language-bash">gu list
 </code></pre>
-<p>The Graal Updater can list components in the component catalog (not necessarily installed on your machine):</p>
+<p>GraalVM Updater can list components in the component catalog (not necessarily installed on your machine):</p>
 <pre><code class="language-bash">gu available
 </code></pre>
 
 <h2 id="rebuilding-images">Rebuilding images</h2>
-<p>A set of Graal VM components that provide language implementations may change.
+
+<p>GraalVM components used to create guest language implementations may change over time, requiring a Native Image to be rebuilt.
 Polyglot native image and polyglot native C library may be out of sync, particularly:</p>
 <ul>
   <li>new languages may not be accessible;</li>
@@ -704,16 +709,16 @@ The command to uninstall the component is:</p>
 The uninstallation removes the files created during the installation. If a file belongs to multiple components, it will be removed when the last component using it is removed.</p>
 
 <h2 id="proxies">Proxies</h2>
-<p>If the <em>Graal Updater</em> needs to reach the component catalog, or download a component package, it may need to pass through your HTTP proxy, if your network uses one. On <em>MacOS X</em>, the proxy settings are automatically obtained from the OS. On <em>Linux</em>, you must ensure that the <code>http_proxy</code> and <code>https_proxy</code> environment variables are set appropriately <strong>before</strong> you launch <code>gu</code>. Please refer to your distribution and/or desktop environment documentation for the details.</p>
+<p>If <em>GraalVM Updater</em> needs to reach the component catalog, or download a component package, it may need to pass through your HTTP proxy, if your network uses one. On <em>macOS</em>, the proxy settings are automatically obtained from the OS. On <em>Linux</em>, you must ensure that the <code>http_proxy</code> and <code>https_proxy</code> environment variables are set appropriately <strong>before</strong> you launch <code>gu</code>. Please refer to your distribution and/or desktop environment documentation for the details.</p>
 
 <h2 id="replacing-components-and-files">Replacing Components and Files</h2>
-<p>A component may be only installed once. The Graal Updater refuses to install a component if a component with the same ID is already installed. But the installed component may be <strong>replaced</strong>. Graal Updater first <em>uninstalls</em> the component and then installs the new package. To replace component, use <code>-r</code> option:</p>
+<p>A component may be only installed once. GraalVM Updater refuses to install a component if a component with the same ID is already installed. But the installed component may be <strong>replaced</strong>. GraalVM Updater first <em>uninstalls</em> the component and then installs the new package. To replace a component, use the <code>-r</code> option:</p>
 <pre><code class="language-bash">gu install -L -r component.jar
 gu install -r ruby
 </code></pre>
 <p>The process is the same as if <code>gu uninstall</code> is run first and <code>gu install</code> next.</p>
 
-<p>The Graal Updater also refuses to overwrite existing files if the to-be-installed and existing versions differ. There are cases when you may need to refresh file contents, if they were modified or damaged. Use <code>-o</code> option:</p>
+<p>GraalVM Updater also refuses to overwrite existing files if the to-be-installed and existing versions differ. There are cases when you may need to refresh file contents, if they were modified or damaged. Use the <code>-o</code> option:</p>
 <pre><code class="language-bash">gu install -L -o component.jar
 gu install -o ruby
 </code></pre>

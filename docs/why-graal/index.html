@@ -557,13 +557,14 @@ Some of versatile GraalVM capabilities, that might be missing on this page are t
 
 <p>Apart from the standard GraalVM benefits such as language interoperability (e.g., use Java or JavaScript from those applications), GraalVM can achieve high speedups of 10x or more for those languages. We are happy to assist with making existing Ruby and R applications work with GraalVM, but we cannot guarantee out-of-the-box compatibility for these languages yet.</p>
 
-<h2 id="for-oracle-database--mysql">For Oracle Database &amp; MySQL</h2>
-
-<p>GraalVM is designed for embeddability and can be executed in databases. We  provide experimental integrations for the Oracle Database and MySQL and expect GraalVM to be integrated in more artifacts in the future.</p>
-
 <h3 id="running-in-oracle-database">Running in Oracle Database</h3>
 
-<p>Our prototype of the Oracle Database Multilingual Engine (MLE) is available <a href="https://oracle.github.io/oracle-db-mle/">here</a>. It allows Oracle Database users to run JavaScript, using browserify to execute Node.js modules, and to write extensions in Python. Note, the current Python implementation is experimental at the moment.</p>
+<p>GraalVM is designed for embeddability and can be executed in databases. Our
+prototype of the Oracle Database Multilingual Engine (MLE) is available
+<a href="https://oracle.github.io/oracle-db-mle/">here</a>. It allows Oracle Database users
+to run JavaScript, using browserify to execute Node.js modules, and to write
+extensions in Python. Note, the current Python implementation is experimental at
+the moment.</p>
 
 <h3 id="running-in-mysql">Running in MySQL</h3>
 
@@ -579,7 +580,7 @@ Some of versatile GraalVM capabilities, that might be missing on this page are t
 
 <h3 id="implement-your-own-language">Implement Your Own Language</h3>
 
-<p>The Truffle language development framework allows running programming languages efficiently on GraalVM. It simplifies language implementation by automatically deriving high-performance code from interpreters. Find details about the approach in this <a href="http://chrisseaton.com/rubytruffle/pldi17-truffle/pldi17-truffle.pdf">research paper</a>.</p>
+<p>The Truffle Language Implementation Framework allows running programming languages efficiently on GraalVM. It simplifies language implementation by automatically deriving high-performance code from interpreters. You can find details about the approach in this <a href="http://chrisseaton.com/rubytruffle/pldi17-truffle/pldi17-truffle.pdf">research paper</a>.</p>
 
 <p>Implementing your own language using GraalVM will not only give you high performance. More importantly, it allows your language to connect with the rich tooling provided by the GraalVM ecosystem. Also, it enables your language to run in the context of any GraalVM embedding.</p>
 

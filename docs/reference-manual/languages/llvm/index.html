@@ -9,7 +9,7 @@
 
   <title>
     
-      Reference Manual for Graal LLVM
+      Reference Manual for LLVM
     
   </title>
   <meta
@@ -429,7 +429,7 @@ $(document).ready(function(){
           
             
             <a href="/docs/reference-manual/graal-updater/">
-              Graal Updater
+              GraalVM Updater
             </a>
           </li>
 
@@ -628,7 +628,7 @@ programs from LLVM bitcode.</p>
 
 <p>In contrast to static compilation that is normally used for LLVM based
 languages, LLI first interprets the bitcode and then dynamically compiles the
-hot parts of the program using the Graal compiler. This allows seamless
+hot parts of the program using the GraalVM compiler. This allows seamless
 interoperability with the dynamic languages supported by GraalVM.</p>
 
 <p>Run programs in LLVM bitcode format:</p>
@@ -640,7 +640,7 @@ interoperability with the dynamic languages supported by GraalVM.</p>
 bitcode for the appropriate platform.</p>
 
 <h3 id="compiling-to-llvm-bitcode">Compiling to LLVM Bitcode</h3>
-<p>GraalVM can execute C/C++, Fortran, and other languages that can be compiled to
+<p>GraalVM can execute C/C++, Rust, and other languages that can be compiled to
 LLVM bitcode. As a first step, you have to compile the program to LLVM bitcode
 using an LLVM frontend such as <code>clang</code>. C/C++ code can be compiled to LLVM
 bitcode using <code>clang</code> with the <code>-emit-llvm</code> option.</p>
@@ -707,7 +707,7 @@ Hello, C++ World!
 </code></pre>
 
 <h2 id="running-rust">Running Rust</h2>
-<p>LLI doesn’t load the Rust standard libraries automatically.
+<p>LLI does not load the Rust standard libraries automatically.
 To install Rust, run the following in your terminal, then follow the onscreen instructions:</p>
 <pre><code class="language-shell">curl https://sh.rustup.rs -sSf | sh
 </code></pre>
@@ -738,7 +738,7 @@ info enabled.</p>
 <p>The following example demonstrates how you can use the API for interoperability
 with other programming languages.</p>
 
-<p>Let’s define a C struct for points and implement allocation functions:</p>
+<p>Let us define a C struct for points and implement allocation functions:</p>
 
 <pre><code class="language-c">// cpart.c
 #include &lt;polyglot.h&gt;
@@ -846,7 +846,7 @@ int main() {
 <pre><code class="language-shell">$ clang -g -O1 -c -emit-llvm -I$GRAALVM_HOME/jre/languages/llvm polyglot.c
 </code></pre>
 
-<p>And run it, using the <code>--jvm</code> argument to run GraalVM in JVM mode, since we are
+<p>And run it, using the <code>--jvm</code> argument to run GraalVM in the JVM mode, since we are
 using a Java type:</p>
 
 <pre><code class="language-shell">$ lli --jvm polyglot.bc
@@ -857,7 +857,7 @@ using a Java type:</p>
 
 <p>GraalVM can also be used to embed LLVM bitcode in Java host programs.</p>
 
-<p>For example, let’s write a Java class <code>Polyglot.java</code> that embeds GraalVM to
+<p>For example, let us write a Java class <code>Polyglot.java</code> that embeds GraalVM to
 run the previous example:</p>
 
 <pre><code class="language-java">import java.io.*;
@@ -886,7 +886,7 @@ for more information.</p>
 
 <h2 id="source-level-debugging">Source-Level Debugging</h2>
 
-<p>You can use <a href="/docs/reference-manual/tools/">GraalVM’s Debugger</a> to debug the program
+<p>You can use <a href="/docs/reference-manual/tools/#debugger">GraalVM’s Debugger</a> to debug the program
 you compiled to LLVM bitcode.
 To use this feature, please make sure to compile your program with debug information by specifying the <code>-g</code>
 argument when compiling with <code>clang</code>.
@@ -903,13 +903,13 @@ This option is not enabled per default as it can significantly decrease your pro
 
 <p>In contrast to the static compilation model of LLVM languages, in GraalVM the
 machine code is not directly produced from the LLVM bitcode, but there is an
-additional dynamic compilation step by the Graal compiler.</p>
+additional dynamic compilation step by the GraalVM compiler.</p>
 
 <p>In this scenario, first the LLVM frontend (e.g. <code>clang</code>) does optimizations on
-the bitcode level, and then Graal does its own optimizations on top of that
+the bitcode level, and then the GraalVM compiler does its own optimizations on top of that
 during dynamic compilation. Some optimizations are better when done
 ahead-of-time on the bitcode, while other optimizations are better left for the
-dynamic compilation of Graal, when profiling information is available.</p>
+dynamic compilation of the GraalVM compiler, when profiling information is available.</p>
 
 <p>In principle, all optimization levels should work, but for best results we
 suggest compiling the bitcode with optimization level <code>-O1</code>.</p>

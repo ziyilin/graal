@@ -437,7 +437,7 @@ $(document).ready(function(){
           
             
             <a href="/docs/examples/java-kotlin-aot/">
-              Polyglot Native Example
+              Java/Kotlin Native Example
             </a>
           </li>
 
@@ -580,7 +580,7 @@ $(document).ready(function(){
               <div id="content-wrapper" class="docs-content docs-content--with-sidebar">
                 <h3 id="graalvm-demos-performance-examples-for-java">GraalVM demos: Performance Examples for Java</h3>
 
-<p>The Graal compiler achieves excellent performance for modern workloads
+<p>The GraalVM compiler achieves excellent performance for modern workloads
 such as Scala or usage of the Java Streams API. The examples below
 demonstrate this.</p>
 
@@ -592,7 +592,7 @@ demonstrate this.</p>
 <h3 id="running-the-examples">Running the examples</h3>
 
 <p>Let us use a simple example based on the <a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html">Streams API</a>
-to demonstrate performance of the Graal compiler. This example counts the number of upper case characters in a body of text. To simulate a large load, the same sentence is processed 10 million times:</p>
+to demonstrate performance of the GraalVM compiler. This example counts the number of uppercase characters in a body of text. To simulate a large load, the same sentence is processed 10 million times:</p>
 
 <p>1. Save the following code snippet to a file named <code>CountUppercase.java</code>:</p>
 
@@ -691,13 +691,12 @@ $ java CountUppercase In 2019 I would like to run ALL languages in one VM.
 total: 69999993 (1408 ms)
 </code></pre>
 
-<p>The <em>warmup</em> time depends on numerous factors including how multi-threaded
-the application code is, how many cores a machine has. If the performance profile
-of <code>CountUppercase</code> on your machine does not match the above, run it for more
-iterations by adding <code>-Diterations=N</code> just after <code>java</code> for some <code>N</code> greater than 1.</p>
+<p>The <em>warmup</em> time depends on numerous factors like the source code or how
+many cores a machine has. If the performance profile of <code>CountUppercase</code> on your
+machine does not match the above, run it for more iterations by adding
+<code>-Diterations=N</code> just after <code>java</code> for some <code>N</code> greater than 1.</p>
 
-<p>3. Add the <code>-Dgraal.PrintCompilation=true</code> option to see statistics for
-Graal compilations:</p>
+<p>3. Add the <code>-Dgraal.PrintCompilation=true</code> option to see statistics for the compilations:</p>
 <pre><code>$ java -Dgraal.PrintCompilation=true CountUppercase In 2019 I would like to run ALL languages in one VM.
 </code></pre>
 
@@ -705,7 +704,7 @@ Graal compilations:</p>
 compiled, time taken, bytecodes processed (including inlined methods), size
 of machine code produced, and amount of memory allocated during compilation.</p>
 
-<p>4. Use the <code>-XX:-UseJVMCICompiler</code> option to disable the Graal compiler and
+<p>4. Use the <code>-XX:-UseJVMCICompiler</code> option to disable the GraalVM compiler and
 use the native top tier compiler in the VM to compare performance, as follows:</p>
 <pre><code>$ java -XX:-UseJVMCICompiler CountUppercase In 2019 I would like to run ALL languages in one VM.
 1 (602 ms)
@@ -876,7 +875,7 @@ $ java Blender
 554 ms
 </code></pre>
 
-<p>3. Once again, use the <code>-XX:-UseJVMCICompiler</code> option to disable the Graal compiler:</p>
+<p>3. Once again, use the <code>-XX:-UseJVMCICompiler</code> option to disable the GraalVM compiler:</p>
 <pre><code>$ java -XX:-UseJVMCICompiler Blender
 1194 ms
 916 ms

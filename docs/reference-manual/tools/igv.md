@@ -1,15 +1,24 @@
- Ideal Graph Visualizer or IGV is a developer tool, currently maintained as part of the Graal compiler, recommended for performance issues investigation.
- The tool is essential for any language implementers on top of GraalVM and is available as a part of **GraalVM Enterprise Edition** on [Oracle Technology Network](https://www.oracle.com/technetwork/oracle-labs/program-languages/downloads/index.html) download.
+Ideal Graph Visualizer or IGV is a developer tool, currently maintained as part of the GraalVM compiler, recommended for performance issues investigation.
 
- Ideal Graph Visualizer is developed to view and inspect interim graph representations from Graal and Truffle compilations.
+The tool is essential for any language implementers building on top of **GraalVM Enterprise Edition**.
+It is available as a separate download on [Oracle Technology Network](https://www.oracle.com/technetwork/oracle-labs/program-languages/downloads/index.html) and requires accepting the Oracle Technology Network Developer License.
 
-1.Having set your PATH environment variable to `GraalVM/bin` folder, launch IGV:
+Ideal Graph Visualizer is developed to view and inspect interim graph representations from GraalVM and Truffle compilations.
 
-```shell
-$ idealgraphvsiualizer
+
+1.Unzip the downloaded package and enter `bin` directory:
+
+```
+$ cd idealgraphvisualizer/bin
 ```
 
-2.Save the following code snippet as  `Test.rb`:
+2.Launch the tool:
+
+```
+$ idealgraphvisualizer
+```
+
+3.Save the following code snippet as  `Test.rb`:
 
 ```
 require 'json'
@@ -29,14 +38,14 @@ puts js_obj[:msg]
 puts js_obj[:payload].join(' ')
 ```
 
-3.From another console window, make sure `ruby` component is installed in GraalVM,
+4.From another console window, make sure `ruby` component is installed in GraalVM,
 and connect `Test.rb` script to the running IGV:
 
 ```shell
 $ gu list
 $ ruby --jvm --vm.Dgraal.Dump=:1 --vm.Dgraal.PrintGraph=Network Test.rb
 ```
-This causes GraalVM to dump Graal compiler graphs in IGV format over the network to an IGV process listening
+This causes GraalVM to dump compiler graphs in IGV format over the network to an IGV process listening
 on `127.0.0.1:4445`. Once the connection is made, you are able to see the graphs in the Outline window.
 Find e.g. `java.lang.String.char(int)` folder and open its _After parsing_ graph by double-clicking.
 If the node has `sourceNodePosition` property, then the Processing Window will attempt to display its location and the entire stacktrace.
@@ -80,7 +89,7 @@ but you can display the list of opened projects using Window - Projects.
 
 ### Dumping Graphs
 
- To dump Graal compiler graphs from an embedded Java application to IGV,
+To dump GraalVM compiler graphs from an embedded Java application to IGV,
 you need to add options to GraalVM based processes. Depending on the language/VM
 used, you may need to prefix the options by `--vm`.
 See the particular language's documentation for the details. The main option to

@@ -1,9 +1,11 @@
 ## Polyglot Options
 
-#### Polyglot Options for Graal Language Launchers
+#### Polyglot Options for Language Launchers
 
-We have extended every language launcher with a set of so called _polyglot options_.
-Polyglot options allow users of any language launcher to access the options of other Graal languages.
+We have extended every language launcher with a set of so called _polyglot
+options_. Polyglot options allow users of any language launcher to access the
+options of other languages supported by GraalVM (implemented with the Truffle
+Language Implementation Framework).
 The format is: `--<languageID>.<property>=<value>`.
 For example the `R` launcher also supports the `--js.atomics=true` JavaScript option.
 
@@ -24,7 +26,6 @@ Allowed values for `<toolID>` are:
 - `cpusampler` collects data about CPU usage.
 - `cputracer` captures trace information about CPU usage.
 - `memtracer` captures trace information about memory usage.
-- `agent` enables remote profiling using the Agent UI.
 
 Use `--help:tools` to find out which options are available.
 

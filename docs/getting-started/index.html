@@ -527,7 +527,7 @@ choice depending on your operating system and use case.</p>
 
 <p>In this getting started guide we will focus on working with the GraalVM archive
 obtained from the <a href="http://www.oracle.com/technetwork/oracle-labs/program-languages/downloads/index.html">Oracle Technology Network</a>,
-called the GraalVM Enterprise Edition. Similar to the Community Edition, this includes the JVM, the Graal compiler, the LLVM interpreter
+called the GraalVM Enterprise Edition. Similar to the Community Edition, this includes the JVM, the GraalVM compiler, the LLVM interpreter
 and the JavaScript runtime with Node.js support – all in one package.</p>
 
 <h2 id="install-graalvm">Install GraalVM</h2>
@@ -570,17 +570,17 @@ Within a specific version, the sort order appears to be stable but is unspecifie
   <li><strong>node</strong> is a drop-in replacement for Node.js, using GraalVM’s JavaScript engine.</li>
   <li><strong>lli</strong> is a high-performance LLVM bitcode interpreter integrated with GraalVM.</li>
   <li><strong>native-image</strong> builds an ahead-of-time compiled executable or a shared library from Java applications.</li>
-  <li><strong>gu</strong> (Graal updater) can be used to install language packs for Python, R, and Ruby.</li>
+  <li><strong>gu</strong> (GraalVM Updater) can be used to install language packs for Python, R, and Ruby.</li>
 </ul>
 
-<p>Notably, <strong>java</strong> in GraalVM runs the JVM with Graal as the default compiler.
+<p>Notably, <strong>java</strong> runs the JVM with GraalVM’s default compiler.
 The Ruby, Python and R executables become available only if you install the corresponding language engines.
 For example, running the following command will install Ruby support:</p>
 
 <pre><code class="language-shell">gu install ruby
 </code></pre>
 
-<p>For more information on using Graal updater please refer to <a href="/docs/reference-manual/graal-updater/">its documentation</a>.</p>
+<p>For more information on using GraalVM Updater please refer to <a href="/docs/reference-manual/graal-updater/">its documentation</a>.</p>
 
 <p>Once the <code>PATH</code> environment variable is set properly, it’s easy to check language versions with GraalVM launchers:</p>
 
@@ -633,7 +633,7 @@ bash-4.2#
 </code></pre>
 
 <p>Please note that the image contains only the components immediately available in the GraalVM CE distribution.
-However, the <a href="/docs/reference-manual/graal-updater/">Graal updater utility</a> is on the path.
+However, the <a href="/docs/reference-manual/graal-updater/">GraalVM Updater utility</a> is on the <code>PATH</code>.
 You can install the support for additional languages like Ruby, R, or Python at will.
 For example, the following command installs the Ruby support (the output below is truncated for brevity):</p>
 
@@ -825,7 +825,7 @@ Hello from GraalVM!
 
 <h2 id="running-ruby">Running Ruby</h2>
 
-<p>The Ruby engine is not installed by default, but it can easily be added using the <a href="/docs/reference-manual/graal-updater/">Graal updater</a>:</p>
+<p>The Ruby engine is not installed by default, but it can easily be added using <a href="/docs/reference-manual/graal-updater/">GraalVM Updater</a>:</p>
 <pre><code class="language-shell">gu install ruby
 </code></pre>
 
@@ -853,7 +853,7 @@ Therefore its installation, <code>gem install bundler</code>, is not needed.</p>
 
 <h2 id="running-r">Running R</h2>
 
-<p>The R engine is not installed by default, but it can easily be added using the <a href="/docs/reference-manual/graal-updater/">Graal updater</a>:</p>
+<p>The R engine is not installed by default, but it can easily be added using <a href="/docs/reference-manual/graal-updater/">GraalVM Updater</a>:</p>
 <pre><code class="language-shell">gu install R
 </code></pre>
 
@@ -872,7 +872,7 @@ R version 3.5.1 (FastR)
 <h2 id="running-python">Running Python</h2>
 
 <p>GraalVM implementation of Python 3.7 has recently been started.
-The Python engine is not installed by default, but it can easily be added using the <a href="/docs/reference-manual/graal-updater/">Graal updater</a>:</p>
+The Python engine is not installed by default, but it can easily be added using <a href="/docs/reference-manual/graal-updater/">GraalVM Updater</a>:</p>
 <pre><code class="language-shell">gu install python
 </code></pre>
 
@@ -991,7 +991,7 @@ listed <a href="/docs/reference-manual/aot-compilation/">here</a>.</p>
 
 <h2 id="what-to-read-next">What to read next?</h2>
 
-<p>If you want to learn what GraalVM offers to different types of teams, read the <a href="/docs/why-graal/">Why Graal page</a>. Some of the diverse features of GraalVM are disclosed and supported with examples in <a href="https://medium.com/graalvm/graalvm-ten-things-12d9111f307d">Top 10 Things To Do With GraalVM</a> article.
+<p>If you want to learn what GraalVM offers to different types of teams, read the <a href="/docs/why-graal/">Why GraalVM page</a>. Some of the diverse features of GraalVM are disclosed and supported with examples in <a href="https://medium.com/graalvm/graalvm-ten-things-12d9111f307d">Top 10 Things To Do With GraalVM</a> article.
 Or, you can examine different supported languages in action by looking at
 <a href="/docs/examples/">example applications</a>. If you want to learn about the common tools GraalVM enables for the supported languages, proceed to the <a href="/docs/reference-manual/tools/">tools section</a> of the reference manual.
 And if you are mostly interested in a specific language, more extensive documentation is available in the <a href="/docs/reference-manual/">reference manual</a> as well.</p>

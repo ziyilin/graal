@@ -115,7 +115,7 @@ algorithm.
 
     ```
 
-    Let's find out more about this function by filtering the samples and
+    Now find out more about this function by filtering the samples and
     include statements in the profile in addition to methods.
 
 4. Run `js primes.js --cpusampler --cpusampler.Mode=statements --cpusampler.FilterRootName=*accept`
@@ -149,8 +149,7 @@ to collect statement samples for all functions that end with `accept`.
     The if condition contains an expensive modulo operation, which might
     explain the runtime of the statement.
 
-    Now let's use the CPU tracer tool to collect execution counts of each
-    statement.
+    Now use the CPU tracer tool to collect execution counts of each statement.
 
 5. Run `js primes.js --cputracer --cputracer.TraceStatements --cputracer.FilterRootName=*accept`
 to collect execution counts for all statements in methods ending with `accept`.
@@ -182,8 +181,8 @@ to collect execution counts for all statements in methods ending with `accept`.
     information. Tracing histograms often provides insights into the behavior
     of the algorithm that needs optimization.
 
-    Lastly, let's look at the memory tracer tool for capturing allocations, for
-    which GraalVM currently provides experimental support.
+    Lastly, use the memory tracer tool for capturing allocations, for which
+    GraalVM currently provides experimental support.
     Node, `--memtracer` as an experimental tool must be preceded by the `--experimental-options` command line option.
 
 6. Run `js primes.js --experimental-options --memtracer` to display source code locations and
@@ -212,7 +211,7 @@ counts of reported allocations.
     independently of whether they could get eliminated by the compiler. The Graal
     compiler is particularly powerful in optimizing allocations and can push
     allocations into infrequent branches to increase execution performance. The
-    Graal team plans to add information about memory optimizations to the
+    GraalVM team plans to add information about memory optimizations to the
     memory tracer in the future.
 
 ### Tool Reference

@@ -429,7 +429,7 @@ $(document).ready(function(){
           
             
             <a href="/docs/reference-manual/graal-updater/">
-              Graal Updater
+              GraalVM Updater
             </a>
           </li>
 
@@ -628,7 +628,7 @@ administrators to debug and monitor GraalVM and deployed applications.</p>
 
 <h2 id="component-updater">Component Updater</h2>
 <p>GraalVM allows you to install additional components (languages). Use the
-<a href="/docs/reference-manual/graal-updater/">Graal updater</a> utility to manage the installation.</p>
+<a href="/docs/reference-manual/graal-updater/">GraalVM Updater</a> utility to manage the installation.</p>
 
 <h2 id="debugger">Debugger</h2>
 <p>GraalVM supports debugging of guest language applications and provides a
@@ -920,7 +920,7 @@ algorithm.</p>
 
 </code></pre>
 
-    <p>Let’s find out more about this function by filtering the samples and
+    <p>Now find out more about this function by filtering the samples and
  include statements in the profile in addition to methods.</p>
   </li>
   <li>
@@ -953,8 +953,7 @@ to collect statement samples for all functions that end with <code>accept</code>
     <p>The if condition contains an expensive modulo operation, which might
  explain the runtime of the statement.</p>
 
-    <p>Now let’s use the CPU tracer tool to collect execution counts of each
- statement.</p>
+    <p>Now use the CPU tracer tool to collect execution counts of each statement.</p>
   </li>
   <li>
     <p>Run <code>js primes.js --cputracer --cputracer.TraceStatements --cputracer.FilterRootName=*accept</code>
@@ -986,8 +985,8 @@ to collect execution counts for all statements in methods ending with <code>acce
  information. Tracing histograms often provides insights into the behavior
  of the algorithm that needs optimization.</p>
 
-    <p>Lastly, let’s look at the memory tracer tool for capturing allocations, for
- which GraalVM currently provides experimental support.
+    <p>Lastly, use the memory tracer tool for capturing allocations, for which
+ GraalVM currently provides experimental support.
  Node, <code>--memtracer</code> as an experimental tool must be preceded by the <code>--experimental-options</code> command line option.</p>
   </li>
   <li>
@@ -1016,7 +1015,7 @@ counts of reported allocations.</p>
  independently of whether they could get eliminated by the compiler. The Graal
  compiler is particularly powerful in optimizing allocations and can push
  allocations into infrequent branches to increase execution performance. The
- Graal team plans to add information about memory optimizations to the
+ GraalVM team plans to add information about memory optimizations to the
  memory tracer in the future.</p>
   </li>
 </ol>
@@ -1096,17 +1095,24 @@ Make sure to prepend  <code>--experimental-options</code> flag to enable <code>-
 </ul>
 
 <h2 id="ideal-graph-visualizer">Ideal Graph Visualizer</h2>
-<p>Ideal Graph Visualizer or IGV is a developer tool, currently maintained as part of the Graal compiler, recommended for performance issues investigation.
- The tool is essential for any language implementers on top of GraalVM and is available as a part of <strong>GraalVM Enterprise Edition</strong> on <a href="https://www.oracle.com/technetwork/oracle-labs/program-languages/downloads/index.html">Oracle Technology Network</a> download.</p>
+<p>Ideal Graph Visualizer or IGV is a developer tool, currently maintained as part of the GraalVM compiler, recommended for performance issues investigation.</p>
 
-<p>Ideal Graph Visualizer is developed to view and inspect interim graph representations from Graal and Truffle compilations.</p>
+<p>The tool is essential for any language implementers building on top of <strong>GraalVM Enterprise Edition</strong>.
+It is available as a separate download on <a href="https://www.oracle.com/technetwork/oracle-labs/program-languages/downloads/index.html">Oracle Technology Network</a> and requires accepting the Oracle Technology Network Developer License.</p>
 
-<p>1.Having set your PATH environment variable to <code>GraalVM/bin</code> folder, launch IGV:</p>
+<p>Ideal Graph Visualizer is developed to view and inspect interim graph representations from GraalVM and Truffle compilations.</p>
 
-<pre><code class="language-shell">$ idealgraphvsiualizer
+<p>1.Unzip the downloaded package and enter <code>bin</code> directory:</p>
+
+<pre><code>$ cd idealgraphvisualizer/bin
 </code></pre>
 
-<p>2.Save the following code snippet as  <code>Test.rb</code>:</p>
+<p>2.Launch the tool:</p>
+
+<pre><code>$ idealgraphvisualizer
+</code></pre>
+
+<p>3.Save the following code snippet as  <code>Test.rb</code>:</p>
 
 <pre><code>require 'json'
 
@@ -1125,13 +1131,13 @@ puts js_obj[:msg]
 puts js_obj[:payload].join(' ')
 </code></pre>
 
-<p>3.From another console window, make sure <code>ruby</code> component is installed in GraalVM,
+<p>4.From another console window, make sure <code>ruby</code> component is installed in GraalVM,
 and connect <code>Test.rb</code> script to the running IGV:</p>
 
 <pre><code class="language-shell">$ gu list
 $ ruby --jvm --vm.Dgraal.Dump=:1 --vm.Dgraal.PrintGraph=Network Test.rb
 </code></pre>
-<p>This causes GraalVM to dump Graal compiler graphs in IGV format over the network to an IGV process listening
+<p>This causes GraalVM to dump compiler graphs in IGV format over the network to an IGV process listening
 on <code>127.0.0.1:4445</code>. Once the connection is made, you are able to see the graphs in the Outline window.
 Find e.g. <code>java.lang.String.char(int)</code> folder and open its <em>After parsing</em> graph by double-clicking.
 If the node has <code>sourceNodePosition</code> property, then the Processing Window will attempt to display its location and the entire stacktrace.</p>
@@ -1175,7 +1181,7 @@ but you can display the list of opened projects using Window - Projects.</p>
 
 <h3 id="dumping-graphs">Dumping Graphs</h3>
 
-<p>To dump Graal compiler graphs from an embedded Java application to IGV,
+<p>To dump GraalVM compiler graphs from an embedded Java application to IGV,
 you need to add options to GraalVM based processes. Depending on the language/VM
 used, you may need to prefix the options by <code>--vm</code>.
 See the particular language’s documentation for the details. The main option to
@@ -1204,12 +1210,13 @@ include the <code>nodeSourcePosition</code> property. This is done by adding the
 <h3 id="starting-graal-visualvm">Starting Graal VisualVM</h3>
 <p>To start Graal VisualVM execute <code>jvisualvm</code>. Immediately after the startup, the tool shows all locally running Java processes in the Applications area, including the VisualVM process itself.</p>
 
-<p><strong>NOTE:</strong> GraalVM native images do not implement JVMTI agent, hence triggering heap dump creation from Applications area is impossible. Apply <code>-H:+AllowVMInspection</code> flag with the <code>native-image</code> tool for Substrate VM processes. This way your application will handle signals and get a heap dump when it receives SIGUSR1 signal. Guest language REPL process must be started also with the <code>--jvm</code> flag to monitor it using Graal VisualVM. This functionality is available with <a href="http://www.oracle.com/technetwork/oracle-labs/program-languages/downloads/index.html">GraalVM Enterprise Edition</a>. It is <strong>not</strong> available in GraalVM open source version available on GitHub. See the <a href="/docs/reference-manual/native_heapdump/">Generating Native Heap Dumps</a> page for details on creating heap dumps from a Substrate VM process.</p>
+<p><strong>NOTE:</strong> GraalVM native images do not implement JVMTI agent, hence triggering heap dump creation from Applications area is impossible. Apply <code>-H:+AllowVMInspection</code> flag with the <code>native-image</code> tool for Native Image processes. This way your application will handle signals and get a heap dump when it receives SIGUSR1 signal. Guest language REPL process must be started also with the <code>--jvm</code> flag to monitor it using Graal VisualVM. This functionality is available with <a href="http://www.oracle.com/technetwork/oracle-labs/program-languages/downloads/index.html">GraalVM Enterprise Edition</a>. It is <strong>not</strong> available in GraalVM open source version available on GitHub. See the <a href="/docs/reference-manual/native_heapdump/">Generating Native Heap Dumps</a> page for details on creating heap dumps from a Native Image process.</p>
 
 <h3 id="getting-heap-dump">Getting Heap Dump</h3>
-<p>Let’s say you are trying to analyze a Ruby application. To get a heap dump, first start your application and let it run for a few seconds to warm up.</p>
-
-<p>Then right-click its process in VisualVM and invoke the Heap Dump action. A new heap viewer for the Ruby process opens.</p>
+<p>Let us say you are trying to analyze a Ruby application. To get a heap dump for
+a Ruby application, first start your application, and let it run for a few
+seconds to warm up. Then right-click its process in Graal VisualVM and invoke
+the Heap Dump action. A new heap viewer for the Ruby process opens.</p>
 
 <h3 id="analyzing-objects">Analyzing Objects</h3>
 <p>Initially the Summary view for the Java heap is displayed. To analyze the Ruby heap, click the leftmost (Summary) dropdown in the heap viewer toolbar, choose the Ruby Heap scope and select the Objects view. Now the heap viewer displays all Ruby heap objects, aggregated by their type.</p>

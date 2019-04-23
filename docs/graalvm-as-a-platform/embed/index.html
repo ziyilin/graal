@@ -9,7 +9,7 @@
 
   <title>
     
-      Embed Languages with the Graal Polyglot API
+      Embed Languages with the GraalVM Polyglot API
     
   </title>
   <meta
@@ -546,7 +546,7 @@ $(document).ready(function(){
             <div class="col-sm-9">
               <div id="content-wrapper" class="docs-content docs-content--with-sidebar">
                 <h2 id="introduction">Introduction</h2>
-<p>The Graal Polyglot API lets you embed and run code from guest languages in JVM-based host applications.</p>
+<p>The GraalVM Polyglot API lets you embed and run code from guest languages in JVM-based host applications.</p>
 
 <p>Throughout this section you learn how to create a host application in Java that
 runs on GraalVM and directly calls a guest language. You can use the tabs
@@ -556,8 +556,8 @@ beneath each code example to choose between JavaScript, R, Ruby and Python.</p>
 <a href="/docs/getting-started/">Get Started</a>.</p>
 
 <h2 id="compile-and-run-a-polyglot-application">Compile and Run a Polyglot Application</h2>
-<p>Polyglot applications run code written in any programming language that GraalVM
-supports. These programming languages are also known as Graal languages.</p>
+<p>Polyglot applications run code written in any language implemented with the <a href="https://github.com/oracle/graal/tree/master/truffle">Truffle Language Implementation Framework</a>.
+These languages are here and after referenced as a <strong>guest language</strong>.</p>
 
 <p>Complete the steps in this section to create a sample polyglot
 application that runs on GraalVM and demonstrates programming language
@@ -1300,7 +1300,7 @@ values.</p>
 <p> In this code:</p>
 <ul>
   <li><code>Value function</code> is a Java value that refers to a function.</li>
-  <li>The <code>eval</code> call parses the script and returns the Graal language function.</li>
+  <li>The <code>eval</code> call parses the script and returns the guest language function.</li>
   <li>The first assertion checks that the value returned by the code snippet can be
 executed.</li>
   <li>The <code>execute</code> call executes the function with the argument <code>41</code>.</li>
@@ -1308,7 +1308,7 @@ executed.</li>
   <li>The second assertion checks that the Java integer has a value of <code>42</code>.</li>
 </ul>
 
-<h2 id="access-graal-languages-directly-from-java">Access Graal Languages Directly from Java</h2>
+<h2 id="access-guest-languages-directly-from-java">Access Guest Languages Directly from Java</h2>
 <p>Polyglot applications can readily access most language types and are not
 limited to functions. Host languages, such as Java, can directly access guest
 language code embedded in the polyglot application.</p>
@@ -1721,12 +1721,12 @@ indexing with polyglot values is always zero-based, even for languages such as
 R where indices start with one.</li>
 </ul>
 
-<h2 id="access-java-from-graal-languages">Access Java from Graal Languages</h2>
+<h2 id="access-java-from-guest-languages">Access Java from Guest Languages</h2>
 <p>Polyglot applications offer bi-directional access between guest languages and
-host languages. As a result, you can pass Java objects to Graal languages.</p>
+host languages. As a result, you can pass Java objects to guest languages.</p>
 
 <p>Use the code example in this section with your polyglot application to show how
-Graal languages can access primitive Java values, objects, arrays, and
+guest languages can access primitive Java values, objects, arrays, and
 functional interfaces.</p>
 
 <div class="tabs-below">
@@ -2123,7 +2123,7 @@ lambda <code>() -&gt; 42</code> that always returns an <code>int</code> value of
   <li>The Java class <code>MyClass</code> is instantiated and exported with the name <code>javaObj</code>
 into the polyglot scope, which allows the host and guest languages to exchange
 symbols.</li>
-  <li>A Graal language script is evaluated that imports the <code>javaObj</code> symbol and
+  <li>A guest language script is evaluated that imports the <code>javaObj</code> symbol and
 assigns it to the local variable which is also named <code>javaObj</code>. To avoid
 conflicts with variables, every value in the polyglot scope must be explicitly
 imported and exported in the top-most scope of the language.</li>
@@ -2131,7 +2131,7 @@ imported and exported in the top-most scope of the language.</li>
 to the number <code>42</code> and the string <code>'42'</code>.</li>
   <li>The third verification reads from the second array position and compares it
 to the number <code>42</code>. Whether arrays are accessed using 0-based or 1-based indices
-depends on the Graal language. Independently of the language, the Java array
+depends on the guest language. Independently of the language, the Java array
 stored in field <code>arr</code> is always accessed using translated 0-based indices. For
 example, in the R language, arrays are 1-based so the second array element is
 accessible using index <code>2</code>. In the JavaScript and Ruby languages, the second
@@ -2139,7 +2139,7 @@ array element is at index <code>1</code>. In all language examples, the Java arr
 from using the same index <code>1</code>.</li>
   <li>The last line invokes the Java lambda that is contained in the field <code>ret42</code>
 and compares the result to the number value <code>42</code>.</li>
-  <li>After the Graal language script executes, validation takes place to ensure
+  <li>After the guest language script executes, validation takes place to ensure
 that the script returns a <code>boolean</code> value of <code>true</code> as a result.</li>
 </ul>
 
@@ -2163,7 +2163,7 @@ in the image, since the example uses <code>assert</code>.</p>
 
 <h3 id="accessing-java-directly-from-other-languages">Accessing Java directly from other languages</h3>
 <p>See the <a href="/docs/reference-manual/polyglot/">Polyglot Reference</a>
-for more details on how to access Java from other Graal languages.</p>
+for more details on how to access Java from other guest languages.</p>
 
 <h2 id="computed-arrays-using-polyglot-proxies">Computed Arrays Using Polyglot Proxies</h2>
 <p>The Polyglot API includes polyglot proxy interfaces that let you
@@ -2573,7 +2573,7 @@ in a native image executable.</p>
 <p> In this code:</p>
 <ul>
   <li>The Java class <code>ComputedArray</code> implements the proxy interface <code>ProxyArray</code> so
-that Graal languages treat instances of the Java class like arrays.</li>
+that guest languages treat instances of the Java class like arrays.</li>
   <li><code>ComputedArray</code> array overrides the method <code>get</code> and computes the value
 using an arithmetic expression.</li>
   <li>The array proxy does not support write access. For this reason, it throws
@@ -3022,11 +3022,11 @@ originating from a cancel event.</li>
 </ul>
 
 <h2 id="build-a-shell-for-many-languages">Build a Shell for Many Languages</h2>
-<p>With just a few lines of code, the Graal Polyglot API lets you build
-applications that integrate with any Graal language that is available by
+<p>With just a few lines of code, the GraalVM Polyglot API lets you build
+applications that integrate with any guest language that is available by
 default with GraalVM.</p>
 
-<p>This shell implementation is agnostic to any particular Graal language.</p>
+<p>This shell implementation is agnostic to any particular guest language.</p>
 
 <pre><code class="language-java">BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 PrintStream output = System.out;

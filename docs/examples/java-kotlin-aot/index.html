@@ -9,7 +9,7 @@
 
   <title>
     
-      Polyglot Native Example
+      Java/Kotlin Native Image Examples
     
   </title>
   <meta
@@ -420,7 +420,7 @@ $(document).ready(function(){
           
             
             <a href="/docs/examples/java-kotlin-aot/">
-              Polyglot Native Example
+              Java/Kotlin Native Example
             </a>
           </li>
 
@@ -578,7 +578,7 @@ $(document).ready(function(){
     
             <div class="col-sm-9">
               <div id="content-wrapper" class="docs-content docs-content--with-sidebar">
-                <h3 id="graalvm-demos-aot-compilation-of-a-java--kotlin-application">GraalVM demos: AOT compilation of a Java / Kotlin application</h3>
+                <h3 id="graalvm-demos-aot-compilation-of-an-application-using-java-and-kotlin">GraalVM demos: AOT compilation of an application using Java and Kotlin</h3>
 
 <p>This is an example of a GraalVM demo application that shows ahead-of-time
 compilation of Java and Kotlin code.</p>
@@ -621,7 +621,7 @@ to the path, using a command-line shell for Linux:</p>
 
 <p>Have a look at the <code>build.sh</code> script  which creates a native image from the Java class.
 The <code>native-image</code> utility is a part of GraalVM. It is used to compile
-applications ahead-of-time for faster starup and lower general overhead at runtime.</p>
+applications ahead-of-time for faster startup and lower general overhead at runtime.</p>
 
 <pre><code>$GRAALVM_HOME/bin/native-image -cp ./target/mixed-code-hello-world-1.0-SNAPSHOT.jar -H:Name=helloworld -H:Class=hello.JavaHello -H:+ReportUnsupportedElementsAtRuntime --allow-incomplete-classpath
 </code></pre>

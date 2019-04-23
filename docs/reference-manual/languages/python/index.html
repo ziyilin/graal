@@ -429,7 +429,7 @@ $(document).ready(function(){
           
             
             <a href="/docs/reference-manual/graal-updater/">
-              Graal Updater
+              GraalVM Updater
             </a>
           </li>
 
@@ -745,14 +745,14 @@ for more information about interoperability with other programming languages.</p
 debugger <code>pdb</code>, the tools that GraalVM itself provides do work.
 To debug applications in the Chrome browser, for example, you can run a script like so:</p>
 
-<pre><code class="language-shell">$ graalpython --jvm --inspect [script-to-debug.py]
+<pre><code class="language-shell">$ graalpython --inspect [script-to-debug.py]
 Debugger listening on port 9229.
 To start debugging, open the following URL in Chrome:
     chrome-devtools://devtools/bundled/inspector.html?ws=127.0.0.1:9229/15615099-351e94d1e2db
 Please note: This Python implementation is in the very early stages, and can run little more than basic benchmarks at this point.
 </code></pre>
 
-<p>The <code>graalpython --jvm --help:tools</code> command will give you more information
+<p>The <code>graalpython --help:tools</code> command will give you more information
 about tools currently supported on Python.</p>
 
 <h3 id="native-images-and-jvm-runtime">Native Images and JVM Runtime</h3>
@@ -761,7 +761,7 @@ about tools currently supported on Python.</p>
 faster startup time and lower footprint. However, the ahead-of-time compiled
 binary only includes the Python and LLVM interpreters. To interoperate with
 other languages, we had to supply the <code>--jvm</code> argument above. This instructs the
-launcher to run on the JVM instead of from the native code – you will notice a
+launcher to run on the JVM instead of in the Native Image mode – you will notice a
 longer startup time.</p>
 
 <h2 id="python-compatibility">Python Compatibility</h2>
