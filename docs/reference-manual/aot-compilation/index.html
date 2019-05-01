@@ -634,7 +634,7 @@ Image is written in Java and compiled into the native executable. The resulting
 program has faster startup time and lower runtime memory overhead compared to a
 Java VM.</p>
 
-<p>Currently, native images work mainly for JVM-based languages, e.g., Java, Scala,
+<p>Currently, GraalVM Native Images Generator works mainly for JVM-based languages, e.g., Java, Scala,
 Clojure, Kotlin. The resulting image can, optionally, execute dynamic languages
 like Ruby, R, or Python, but it does not pre-compile their code itself.</p>
 
@@ -647,6 +647,14 @@ in the <code>bin</code> directory of the GraalVM distribution. For compilation
 <code>native-image</code> depends on the local toolchain, so please make sure:
 <code>glibc-devel</code>, <code>zlib-devel</code> (header files for the C library and <code>zlib</code>) and
 <code>gcc</code> are available on your system.</p>
+
+<p>Another prerequisite to consider is the maximum heap size. Physical memory for
+running a JVM-based application may be insufficient to build a native image. For
+server-based image building we allow to use 80% of the reported physical RAM for
+all servers together, but never more than 14GB per server (for exact details
+please consult the native-image source code). If you run with <code>--no-server</code>
+option, you will get the whole 80% of what is reported as physical RAM as the
+baseline. This mode respects <code>-Xmx</code> arguments additionally.</p>
 
 <h2 id="image-generation-options">Image Generation Options</h2>
 

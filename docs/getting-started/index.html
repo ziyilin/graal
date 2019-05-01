@@ -920,7 +920,7 @@ Hello, World!
 </code></pre>
 <h4 id="polyglot-capabilities-of-native-images">Polyglot Capabilities of Native Images</h4>
 
-<p>The <code>native-image</code> tool also makes it easy to use polyglot capabilities.
+<p>GraalVM Native Image Generator also makes it easy to use polyglot capabilities.
 Take this example of a JSON pretty-printer using the GraalVM implementation of JavaScript:</p>
 <pre><code>// PrettyPrintJSON.java
 import java.io.*;
@@ -934,7 +934,7 @@ public class PrettyPrintJSON {
     try (Context context = Context.create("js")) {
       Value parse = context.eval("js", "JSON.parse");
       Value stringify = context.eval("js", "JSON.stringify");
-      Value result = stringify.execute(parse.execute(input));
+      Value result = stringify.execute(parse.execute(input), null, 2);
       System.out.println(result.asString());
     }
   }
@@ -945,8 +945,16 @@ public class PrettyPrintJSON {
 <pre><code>$ javac PrettyPrintJSON.java
 $ native-image --language:js PrettyPrintJSON
 </code></pre>
+<p>The native image generation will take several minutes as it does not just build
+the <code>PrettyPrintJSON</code> class, but includes building a JavaScript engine
+(along with the support for partial evaluation). Additionally, the image building
+requires large amounts of physical memory, especially if you build an image with
+Truffle Language Implementation Framework included, which is exactly the case
+here. Memory  requirements and some other limitations of ahead-of-time
+compilation with GraalVM are listed
+<a href="/docs/reference-manual/aot-compilation/">here</a>.</p>
 
-<p>This native executable can now perform JSON pretty printing:</p>
+<p>The resulting executable can now perform JSON pretty printing:</p>
 
 <pre><code class="language-shell">$ ./prettyprintjson &lt;&lt;EOF
 {"GraalVM":{"description":"Language Abstraction Platform","supports":["combining languages","embedding languages","creating native images"],"languages": ["Java","JavaScript","Node.js", "Python", "Ruby","R","LLVM"]}}
@@ -986,8 +994,6 @@ real	0m0.037s
 user	0m0.015s
 sys	0m0.016s
 </code></pre>
-<p>There are certain limitations of ahead-of-time compilation with GraalVM,
-listed <a href="/docs/reference-manual/aot-compilation/">here</a>.</p>
 
 <h2 id="what-to-read-next">What to read next?</h2>
 
