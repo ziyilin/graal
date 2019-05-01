@@ -808,6 +808,35 @@ specified as <code>NativeImageArgs</code>, plus the arguments specified on comma
 
 <p>For a more comprehensive list of options please check the <a href="https://github.com/oracle/graal/blob/master/substratevm/OPTIONS.md">documentation on Github</a>.</p>
 
+<p><strong>Important:</strong>
+Python source code or LLVM bitcode interpreted or compiled with GraalVM
+Community Edition will not have the same security characteristics as the same
+code interpreted or compiled using GraalVM Enterprise Edition. There is a
+GraalVM string embedded in each image that allows to figure out the version and
+variant of the base (Community or Enterprise) used to build an image.
+The following command will query that information from an image:</p>
+<pre><code>strings &lt;path to native-image exe or shared object&gt; | grep com.oracle.svm.core.VM
+</code></pre>
+
+<p>Assuming you have a Java class file <em>EmptyHello.class</em> containing an empty main method
+and have generated an empty shared object <code>emptyhello</code> with GraalVM Native Image Generator utility of it:</p>
+<pre><code>$ native-image -cp hello EmptyHello
+Build on Server(pid: 11228, port: 41223)
+[emptyhello:11228]    classlist:     149.59 ms
+...
+</code></pre>
+
+<p>If you do not know what GraalVM distribution is set to the <code>PATH</code> environment
+variable, how to determine if a native image was compiled with Community or
+Enterprise Edition? Run this command:</p>
+
+<pre><code>$ strings emptyhello | grep com.oracle.svm.core.VM
+</code></pre>
+
+<p>The expected output should match the following:</p>
+<pre><code>com.oracle.svm.core.VM GraalVM 19.0.0 CE
+</code></pre>
+
 <h2 id="generating-heap-dumps">Generating Heap Dumps</h2>
 
 <p>GraalVM also supports monitoring and generating heap dumps of the Native Image processes. This functionality is available in the <a href="http://www.oracle.com/technetwork/oracle-labs/program-languages/downloads/index.html">Enterprise Edition of GraalVM</a>.

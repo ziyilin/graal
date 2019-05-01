@@ -2,7 +2,7 @@
 
 GraalVM works with LLVM bitcode versions 3.8 to 7.0.
 
-### Optimization flags
+### Optimization Flags
 
 In contrast to the static compilation model of LLVM languages, in GraalVM the
 machine code is not directly produced from the LLVM bitcode, but there is an
