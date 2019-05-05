@@ -1181,16 +1181,24 @@ but you can display the list of opened projects using Window - Projects.</p>
 
 <h3 id="dumping-graphs">Dumping Graphs</h3>
 
-<p>To dump GraalVM compiler graphs from an embedded Java application to IGV,
+<p>The IGV tool is developed to allow GraalVM language implementers
+to optimize their languages assembled with the Truffle framework. As a development
+tool it should not be installed to production environments.</p>
+
+<p>To dump the GraalVM compiler graphs from an embedded Java application to IGV,
 you need to add options to GraalVM based processes. Depending on the language/VM
-used, you may need to prefix the options by <code>--vm</code>.
-See the particular language’s documentation for the details. The main option to
-add is <code>-Dgraal.Dump=:1</code>. This will dump graphs in an IGV readable format to the local file system.
-To send the dumps directly to IGV over the network, add <code>-Dgraal.PrintGraph=Network</code>.
-If there is not an IGV instance listening on <code>127.0.0.1</code> or it cannot be connected to,
-the dumps will be redirected to the local file system. The file system location is
-<code>graal_dumps/</code> under the current working directory of the process and can be changed
-with the <code>-Dgraal.DumpPath</code> option.</p>
+used, you may need to prefix the options by <code>--vm</code>. See the particular
+language’s documentation for the details. The main option to add is
+<code>-Dgraal.Dump=:1</code>. This will dump graphs in an IGV readable format to the local
+file system. To send the dumps directly to IGV over the network, add
+<code>-Dgraal.PrintGraph=Network</code> when starting a GraalVM instance. Optionally a
+port can be specified. Then dumps are sent to IGV from the running GraalVM on
+localhost. If IGV does not listen on localhost, options “Ideal Graph Settings|
+Accept Data from network” can be checked. If there is not an IGV instance
+listening on <code>127.0.0.1</code> or it cannot be connected to, the dumps will be
+redirected to the local file system. The file system location is <code>graal_dumps/</code>
+under the current working directory of the process and can be changed with the
+<code>-Dgraal.DumpPath</code> option.</p>
 
 <p>In case an older GraalVM is used, you may need to explicitly request that dumps
 include the <code>nodeSourcePosition</code> property. This is done by adding the

@@ -632,6 +632,28 @@ ecosystem and provides <a href="#graalvm-r-engine-additional-features">additiona
 <p>The R language can be installed to a GraalVM build with the <code>gu</code> command.
 See <code>graalvm/bin/gu --help</code> for more information.</p>
 
+<h3 id="requirements">Requirements</h3>
+<p>GraalVM R engine requires the OpenMP runtime library be installed on the target system.
+Moreover, to install R packages that contain C/C++ or Fortran code, compilers
+for those languages must be present on the target system. Note that all these
+requirements can be satisfied by, e.g., installing the GNU Compiler Collection (GCC).</p>
+
+<p>The installation of R packages uses the configuration from <code>jre/languages/R/etc/Makeconf</code>.
+This includes, for example, the configuration of C compiler options.
+If you intend to install R packages, it is recommended to update this configuration
+to match your target system by running the <code>jre/languages/R/bin/configure_fastr</code> script.
+Experienced users can also edit the <code>Makeconf</code> file manually.</p>
+
+<h3 id="search-paths-for-packages">Search Paths for Packages</h3>
+<p>The default R library location is within the GraalVM installation directory.
+In order to allow installation of additional packages for users that
+do not have write access to the GraalVM installation directory,
+edit the <code>R_LIBS_USER</code> variable in the <code>jre/languages/R/etc/Renviron</code> file.</p>
+
+<p>Alternatively, the configuration script <code>jre/languages/R/bin/configure_fastr</code>
+automatically creates a local R library directory in the current user’s home and changes
+the <code>R_LIBS_USER</code> variable to point to that directory.</p>
+
 <h2 id="running-r-code">Running R Code</h2>
 
 <p>Run R code with the <code>R</code> and <code>Rscript</code> commands:</p>
@@ -659,18 +681,6 @@ but for the sake of future compatibility the Java interoperability will not be a
 <p>Note that the Native Image is not stable yet and is intended for experimental use. Some features
 may not work properly or at all. The Native Image can be uninstalled using the installation script
 with ‘uninstall’ argument.</p>
-
-<h3 id="requirements">Requirements</h3>
-<p>The R language requires the OpenMP runtime library be installed on the target system.
-Moreover, to install R packages that contain C/C++ or Fortran code, compilers
-for those languages must be present on the target system. Note that all these
-requirements can be satisfied by, e.g., installing the GNU Compiler Collection (GCC).</p>
-
-<p>Installation of R packages uses the configuration from <code>jre/languages/R/etc/Makeconf</code>.
-This includes, for example, the configuration of C compiler options.
-If you intend to install R packages, it is recommended to update this configuration
-to match your target system by running the <code>jre/languages/R/bin/configure_fastr</code> script.
-Experienced users can also edit the <code>Makeconf</code> file manually.</p>
 
 <h2 id="graalvm-r-engine-compatibility">GraalVM R Engine Compatibility</h2>
 
@@ -968,12 +978,24 @@ cat(svgCode)
 
 <h5 id="in-process-parallel-execution">In-Process Parallel Execution</h5>
 
-<p>GraalVM execution of R adds a new cluster type <code>SHARED</code> for the <code>parallel</code> package. This cluster starts new jobs as new threads inside the same process. Example:</p>
+<p>GraalVM R engine adds a new cluster type <code>SHARED</code> for the <code>parallel</code> package. This cluster starts new jobs as new threads inside the same process. Example:</p>
 
 <pre><code>library(parallel)
 cl0 &lt;- makeCluster(7, 'SHARED')
 clusterApply(cl0, seq_along(cl0), function(i) i)
 </code></pre>
+
+<p>Worker nodes inherit the attached packages from the parent node with copy-on-write semantics, but not the global environment.
+This means that you do not need to load again R libraries on the worker nodes but values (including functions) from the global
+environment have to be transfered to the worker nodes, e.g., using <code>clusterExport</code>.</p>
+
+<p>Note that unlike with the <code>FORK</code> or <code>PSOCK</code> clusters the child nodes in <code>SHARED</code> cluster are running in the same process,
+therefore, e.g., locking files with <code>lockfile</code> or <code>flock</code> will not work. Moreover, the <code>SHARED</code> cluster is based on
+an assumption that packages’ native code does not mutate shared vectors (which is a discouraged practice) and is thread
+safe and re-entrant on the C level.</p>
+
+<p>If the code that you want to parallelize does not match these expectations, you can still use the <code>PSOCK</code> cluster with the GraalVM R engine.
+The <code>FORK</code> cluster and functions depending solely on forking (e.g., <code>mcparallel</code>) are not supported at the moment.</p>
 
 <p><br />
 <br />
