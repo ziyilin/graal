@@ -6,7 +6,7 @@ at the moment and to help solve any issues for you.
 
 ### TruffleRuby configurations
 
-There are two main configurations of TruffleRuby - *Native Image* and *JVM*. It's
+There are two main configurations of TruffleRuby - *Native Image* and *JVM*. It is
 important to understand the different configurations of TruffleRuby, as each has
 different capabilities and performance characteristics. You should pick the
 execution mode that is appropriate for your application.

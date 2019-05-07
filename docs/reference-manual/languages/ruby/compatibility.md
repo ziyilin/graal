@@ -46,8 +46,10 @@ as their semantics fundamentally do not match the technology that we are using.
 #### Fork
 
 You cannot `fork` the TruffleRuby interpreter. The feature is unlikely to ever
-be supported when running on the JVM but could be supported in the future on
-the SVM. The correct and portable way to test if `fork` is available is:
+be supported when running on the JVM but could be supported in the future in
+the native configuration. The correct and portable way to test if `fork` is
+available is:
+
 ```ruby
 Process.respond_to?(:fork)
 ```
@@ -60,14 +62,13 @@ The following standard libraries are unsupported.
 * `dbm`
 * `gdbm`
 * `sdbm`
-* `debug` (could be implemented in the future) <!-- TODO CS 26 Feb 19 document alternatives -->
-* `profile` (could be implemented in the future)
-* `profiler` (could be implemented in the future)
+* `debug` (could be implemented in the future, use [`--inspect`](tools.md) instead)
+* `profile` (could be implemented in the future, use [`--cpusampler`](tools.md) instead)
+* `profiler` (could be implemented in the future, use [`--cpusampler`](tools.md) instead)
 * `io/console` (partially implemented, could be implemented in the future)
 * `io/wait` (partially implemented, could be implemented in the future)
 * `pty` (could be implemented in the future)
 * `ripper` (has a no-op implementation, and could be implemented in the future)
-* `shell` (could be implemented in the future) <!-- TODO CS 26 Feb 19 probably due to simple bug -->
 * `win32`
 * `win32ole`
 
@@ -75,18 +76,23 @@ The following standard libraries are unsupported.
 but not enough to run anything serious.
 
 We provide our own included implementation of the interface of the `ffi` gem,
-like JRuby and Rubinius, but the implemention of this is limited at the
-moment.
+like JRuby and Rubinius. The implementation should be fairly complete and passes
+all the specs of the `ffi` gem except for some rarely-used corner cases.
 
 #### Safe levels
 
 `$SAFE` and `Thread#safe_level` are `0` and no other levels are implemented.
 Trying to use level `1` will raise a `SecurityError`. Other levels will raise
-`ArgumentError` as in standard Ruby. See our [security notes](https://github.com/oracle/truffleruby/blob/master/doc/user/security.md) for more explanation on this.
+`ArgumentError` as in standard Ruby. See our [security notes](security.md) for
+more explanation on this.
 
 #### Internal MRI functionality
 
 `RubyVM` is not intended for users and is not implemented.
+
+#### RDoc HTML generation
+
+TruffleRuby does not include the Darkfish theme for RDoc.
 
 ### Features with major differences
 
@@ -103,7 +109,7 @@ interpreter.
 TruffleRuby threads may detect that they have been interrupted at different
 points in the program to where it would on MRI. In general, TruffleRuby seems
 to detect an interrupt sooner than MRI. JRuby and Rubinius are also different
-to MRI, the behaviour isn't documented in MRI, and it's likely to change
+to MRI, the behaviour is not documented in MRI, and it is likely to change
 between MRI versions, so we would not recommend depending on interrupt points
 at all.
 
@@ -113,14 +119,14 @@ Most use cases of fibers rely on them being easy and cheap to start up and
 having low memory overheads. In TruffleRuby we implement fibers using operating
 system threads, so they have the same performance characteristics as Ruby
 threads. As with coroutines and continuations, a conventional implementation
-of fibers fundamentally isn't compatible with the execution model we are
+of fibers fundamentally is not compatible with the execution model we are
 currently using.
 
 #### Some classes marked as internal will be different
 
 MRI provides some classes that are described in the documentation as being only
-available on MRI (C Ruby). We implement these classes if it's practical to do
-so, but this isn't always the case. For example `RubyVM` is not available.
+available on MRI (C Ruby). We implement these classes if it is practical to do
+so, but this is not always the case. For example `RubyVM` is not available.
 
 ### Features with subtle differences
 
@@ -134,9 +140,16 @@ is UTF-8 or a subset of UTF-8, as the JVM has already decoded arguments by the
 time we get them.
 
 `--jit` options and the `jit` feature are not supported because TruffleRuby
-uses the GraalVM compiler as a JIT.
+uses Graal as a JIT.
 
-#### Setting the process title doesn't always work
+#### Time is limited to millisecond precision
+
+Ruby normally provides microsecond (millionths of a second) clock precision,
+but TruffleRuby is currently limited to millisecond (thousands of a second)
+precision. This applies to `Time.now` and
+`Process.clock_gettime(Process::CLOCK_REALTIME)`.
+
+#### Setting the process title does not always work
 
 Setting the process title (via `$0` or `Process.setproctitle` in Ruby) is done
 as best-effort. It may not work, or the title you try to set may be truncated.
@@ -152,7 +165,7 @@ The `erb` standard library has been modified to not use negative line numbers.
 #### Polyglot standard IO streams
 
 If you use standard IO streams provided by the Polyglot engine, via the
-experimental `--polyglot.stdio` option, reads and writes to file descriptors 1,
+experimental `--polyglot-stdio` option, reads and writes to file descriptors 1,
 2 and 3 will be redirected to these streams. That means that other IO
 operations on these file descriptors, such as `isatty` may not be relevant for
 where these streams actually end up, and operations like `dup` may lose the
@@ -169,13 +182,31 @@ streams do not provide a way to detect this.
 Error message strings will sometimes differ from MRI, as these are not generally
 covered by the Ruby Specification suite or tests.
 
+#### Signals
+
+The set of signals that TruffleRuby can handle is different from MRI. When
+launched as a GraalVM Native Image, TruffleRuby allows trapping all the same
+signals that MRI does, as well as a few that MRI does not. The only signals
+that cannot be trapped are `KILL`, `STOP`, and `VTALRM`. Consequently, any
+signal handling code that runs on MRI can run on TruffleRuby without modification
+in the GraalVM Native Image.
+
+However, when run on the JVM, TruffleRuby is unable to trap `USR1` or `QUIT`,
+as these are reserved by the JVM itself. Any code that relies on being able to
+trap those signals will need to fallover to another available signal. Additionally,
+`FPE`, `ILL`, `KILL`, `SEGV`, `STOP`, and `VTALRM` cannot be trapped, but these
+signals are also unavailable on MRI.
+
+When TruffleRuby is run as part of a polyglot application, any signals that are
+handled by another language become unavailable for TruffleRuby to trap.
+
 ### Features with very low performance
 
 #### `ObjectSpace`
 
 Using most methods on `ObjectSpace` will temporarily lower the performance of
 your program. Using them in test cases and other similar 'offline' operations is
-fine, but you probably don't want to use them in the inner loop of your
+fine, but you probably do not want to use them in the inner loop of your
 production application.
 
 #### `set_trace_func`
@@ -189,12 +220,12 @@ loop of your production application.
 Throwing exceptions, and other operations which need to create a backtrace, are
 slower than on MRI. This is because we have to undo optimizations that we have
 applied to run your Ruby code fast in order to recreate the backtrace entries.
-We wouldn't recommend using exceptions for control flow on any implementation of
+We would not recommend using exceptions for control flow on any implementation of
 Ruby anyway.
 
 To help alleviate this problem in some cases backtraces are automatically
-disabled where we dynamically detect that they probably won't be used. See the
-experimental `--backtraces.omit_unused` option.
+disabled where we dynamically detect that they probably will not be used. See the
+experimental `--backtraces-omit-unused` option.
 
 ### C Extension Compatibility
 
@@ -232,19 +263,19 @@ understand. The process should behave identically to MRI.
 
 #### Ruby to Java interop
 
-JRuby's Java interop API is not implemented far enough to be used. We provide an
-alternate polyglot API for interoperating with multiple languages, including
-Java, instead.
+TruffleRuby does not support the same interop to Java interface as JRuby does.
+We provide [an alternate polyglot API](polyglot.md) for interoperating with
+multiple languages, including Java, instead.
 
 #### Java to Ruby interop
 
 Calling Ruby code from Java is supported by the
-[Graal-SDK polyglot API](http://www.graalvm.org/truffle/javadoc/org/graalvm/polyglot/package-summary.html).
+[GraalVM polyglot API](http://www.graalvm.org/truffle/javadoc/org/graalvm/polyglot/package-summary.html).
 
 #### Java extensions
 
 Use Java extensions written for JRuby is not supported. We could apply the same
-techniques as we have developed to run C extensions to this problem, but it's
+techniques as we have developed to run C extensions to this problem, but it is
 not clear if this will ever be a priority.
 
 ### Compatibility with Rubinius
@@ -256,28 +287,31 @@ extensions to Ruby.
 
 * Java interop
 
-Running TruffleRuby in the native configuration is mostly the same as running on
-the JVM. There are differences in resource management, as both VMs use different
-garbage collectors. But, functionality-wise, they are essentially on par with
-one another. The big difference is support for Java interop, which currently
-relies on reflection. TruffleRuby's implementation of Java interop does not work
-with the SVM's limited support for runtime reflection.
+Running TruffleRuby in the native configuration is mostly the same as running
+on the JVM. There are differences in resource management, as both VMs use
+different garbage collectors. But, functionality-wise, they are essentially on
+par with one another. The big difference is support for Java interop, which
+currently relies on reflection. TruffleRuby's implementation of Java interop
+does not work with the GraalVM Native Image Generator's limited support for
+runtime reflection.
 
 ### Spec Completeness
 
-'How many specs are there' is not a question with an easy precise answer. The
-three numbers listed below for each part of the specs are the number of
-expectations that the version of MRI we are compatible with passes, then the
-number TruffleRuby passes, and then the TruffleRuby number as a percentage of
-the MRI number. This is run on macOS. The numbers probably vary a little based
-on platform and configuration. The library and C extension specs are quite
-limited so may be misleading.
+'How many specs are there?' is not a question with an easy precise answer. The
+number of specs varies for different versions of the Ruby language, different
+platforms, different versions of the specs, and different configurations of
+the specs. The specs for the standard library and C extension API are also
+very uneven and they so can give misleading results.
 
-* Language: 3913, 3903, 99%
-* Core: 176111, 169117, 96%
-* Library (`:library` and `:openssl` on TruffleRuby): 20820, 16934, 81%
-* C extensions: 1679, 1627, 97%
+For the command line interface, the language, and the core library specs,
+which covers the bulk of what TruffleRuby reimplements, this is how many spec
+examples TruffleRuby runs successfully compared to our compatible version of
+MRI running the version of specs from TruffleRuby:
+
+* Command line 112 / 136, **82%**
+* Language 2270 / 2332, **97%**
+* Core library 19453 / 20644, **94%**
 
 ### Compatibility with gems
 
-You can use the [compatibility checker]({{"/docs/reference-manual/compatibility/" | relative_url}}) to find whether the gems you're interested in are tested on GraalVM, whether the tests pass successfully and so on. Additionally, you can drop your `Gemfile.lock` file into that tool and it'll analyze all the gems you're using at once. Note that the processing is done on the client-side, so no information is uploaded to any servers.
+You can use the [compatibility checker]({{"/docs/reference-manual/compatibility/" | relative_url}}) to find whether the gems you are interested in are tested on GraalVM, whether the tests pass successfully and so on. Additionally, you can drop your `Gemfile.lock` file into that tool and it will analyze all the gems you are using at once. Note that the processing is done on the client-side, so no information is uploaded to any servers.
