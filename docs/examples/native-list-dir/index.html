@@ -627,7 +627,7 @@ applications ahead-of-time for faster startup and lower general overhead at runt
 <p>After executing the <code>native-image</code> command, check the directory,
 it should have produced an executable file <code>listdir</code>.</p>
 
-<h3 id="running-the-application">Running the application</h3>
+<h3 id="running-the-application">Running the Application</h3>
 
 <p>To run the application, you need to either execute the <code>ListDir</code> class,
 as a normal Java application using <code>java</code>, or, since we have a native image
@@ -658,6 +658,35 @@ user	0m0.005s
 sys	0m0.011s
 </code></pre>
 <p>The performance gain of the native version is largely due to the faster startup.</p>
+
+<h3 id="profile-guided-optimizaitons-for-high-throughput">Profile-Guided Optimizaitons for High Throughput</h3>
+
+<p>To get all the benefits of GraalVM EE we need to build an image with profile-guided optimisations (PGO). As an example we can use a <a href="https://github.com/graalvm/graalvm-demos/blob/master/scala-days-2018/streams/Streams.java">small application</a> demonstrating Java streams.</p>
+
+<p>First lets run the application with <code>java</code> to see the output:</p>
+<pre><code>+ javac Streams.java
++ $GRAALVM_HOME/bin/native-image Streams
++ ./streams 1000000 200
+...
+Iteration 20 finished in 1955 milliseconds with checksum 6e36c560485cdc01
+</code></pre>
+
+<p>To enable PGO we need to build an instrumented image and run it to collect profiles:</p>
+<pre><code>+ $GRAALVM_HOME/bin/native-image --pgo-instrument Streams
++ ./streams 1000 200
+</code></pre>
+<p>Profiles collected from this run are now stored in the <code>default.iprof</code> file. Note that we run the profiling with a much smaller data size.</p>
+
+<p>Now we can use these profiles to make an optimized image:</p>
+<pre><code>+ $GRAALVM_HOME/bin/native-image --pgo Streams
+</code></pre>
+
+<p>When we run the PGO image with</p>
+<pre><code>+ ./streams 1000000 200
+...
+Iteration 20 finished in 827 milliseconds with checksum 6e36c560485cdc01
+</code></pre>
+<p>we will see more than 2x improvements in performance.</p>
 
 <h3 id="polyglot-capabilities">Polyglot Capabilities</h3>
 

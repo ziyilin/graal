@@ -9,7 +9,7 @@
 
   <title>
     
-      Native Images
+      Native Image
     
   </title>
   <meta
@@ -539,7 +539,7 @@ $(document).ready(function(){
           
             
             <a href="/docs/reference-manual/aot-compilation/">
-              Native Images
+              Native Image
             </a>
           </li>
 
@@ -633,23 +633,46 @@ $(document).ready(function(){
     
             <div class="col-sm-9">
               <div id="content-wrapper" class="docs-content docs-content--with-sidebar">
-                <h2 id="ahead-of-time-compilation">Ahead-of-time Compilation</h2>
+                <h2 id="graalvm-native-image">GraalVM Native Image</h2>
 
-<p>GraalVM allows you to compile your programs ahead-of-time into a native
-executable. The resulting program does not run on the Java HotSpot VM, but
-rather uses necessary components like memory management and thread scheduling
-from a different virtual machine, called “Native Image” (known by the code name
-<a href="https://github.com/oracle/graal/blob/master/substratevm/README.md">“Substrate
-VM”</a>). Native
-Image is written in Java and compiled into the native executable. The resulting
-program has faster startup time and lower runtime memory overhead compared to a
-Java VM.</p>
+<p><strong>GraalVM Native Image</strong> is the technology to ahead-of-time compile Java code to a
+standalone executable, called a <strong>native image</strong>. This executable – native
+image – includes the application, the libraries, the JDK and does not run on
+the Java VM, but includes necessary components like memory management and
+thread scheduling from a different virtual machine, called “Substrate VM”.
+<a href="https://github.com/oracle/graal/blob/master/substratevm/README.md">“Substrate VM”</a> is the
+name for the runtime components (like the garbage collector, thread scheduling
+etc.). The resulting program has faster startup time and lower runtime memory
+overhead compared to a Java VM.</p>
 
-<p>Currently, GraalVM Native Images Generator works mainly for JVM-based languages, e.g., Java, Scala,
-Clojure, Kotlin. The resulting image can, optionally, execute dynamic languages
-like Ruby, R, or Python, but it does not pre-compile their code itself.</p>
+<p><strong>Native Image Generator</strong> or <code>native-image</code> is a utility that processes all the classes of your application,
+the classes of its dependencies, and the classes from the JDK standard library
+and statically analyses them to figure out which classes and methods are
+reachable and used during application execution. Then it passes all this
+reachable code as the input to the GraalVM compiler which ahead-of-time compiles
+it to the native binary.</p>
 
-<p>For example you can take a look at the <a href="/docs/examples/native-list-dir/">native image generation</a> or <a href="/docs/examples/java-kotlin-aot/">compiling a Java and Kotlin app ahead-of-time</a> samples.</p>
+<p>GraalVM <code>native-image</code> supports JVM-based languages, e.g., Java, Scala,
+Clojure, Kotlin. The resulting native image can, optionally, execute dynamic
+languages like Ruby, R, or Python, but it does not pre-compile their code
+itself. Polyglot embeddings can also be compiled ahead-of-time. To inform
+<code>native-image</code> of guest languages used by an application, specify
+<code>--language:&lt;languageId&gt;</code> for each guest language used (e.g., <code>--language:js</code>).</p>
+
+<p><strong>Important</strong>: GraalVM Native Image is available as an early access feature. This means its
+functionality is subject to change while its specification is being developed by
+the Java community.</p>
+
+<h2 id="install-native-image">Install Native Image</h2>
+
+<p>Starting from GraalVM 19.0, Native Image was extracted from the base distribution.
+This functionality can be added to the core installation with <a href="/docs/reference-manual/graal-updater/">GraalVM Updater</a> tool in a similar way as other additional components by running:</p>
+<pre><code>gu install native-image
+</code></pre>
+<p>After this additional step, the <code>native-image</code> executable will be in the <code>bin</code>
+directory, as for the previous releases. Use it normally.</p>
+
+<p>Take a look at the <a href="/docs/examples/native-list-dir/">native image generation</a> or <a href="/docs/examples/java-kotlin-aot/">compiling a Java and Kotlin app ahead-of-time</a> samples.</p>
 
 <h2 id="prerequisites">Prerequisites</h2>
 
@@ -686,7 +709,7 @@ file that specifies the main method in its manifest.</p>
   </li>
 </ul>
 
-<p>You may provide additional options to native-image building:</p>
+<p>You may provide additional options to the native image building:</p>
 
 <ul>
   <li>
@@ -700,7 +723,10 @@ help to search for class files through separated list of directories, JAR archiv
     <p><code>--static</code>  builds statically linked executable (requires static libc and zlib) (since 1.0-rc2);</p>
   </li>
   <li>
-    <p><code>--delay-class-initialization-to-runtime=&lt;comma separate list of class names&gt;</code> delays class initialization to runtime for given classes and their subclasses (since 1.0-rc6);</p>
+    <p><code>--initialize-at-build-time=&lt;comma separated list of class/package names&gt;</code> initializes classes during image building;</p>
+  </li>
+  <li>
+    <p><code>--initialize-at-run-time=&lt;comma separated list of class/package names&gt;</code> initializes classes at run time;</p>
   </li>
   <li>
     <p><code>-D&lt;name&gt;=&lt;value&gt;</code>  sets a system property;</p>
@@ -762,7 +788,7 @@ and fields at run time when they are accessed the first time, instead of as an e
 
 <h3 id="non-standard-options">Non-standard Options</h3>
 
-<p>Get acquainted with the non-standard native-image building options, that are subject to change without notice:</p>
+<p>Get acquainted with the non-standard native image building options, that are subject to change without notice:</p>
 
 <ul>
   <li>
@@ -804,17 +830,18 @@ and fields at run time when they are accessed the first time, instead of as an e
   </li>
 </ul>
 
-<p>If the environment variable <code>NATIVE_IMAGE_CONFIG_FILE</code> is set to a Java properties file,
-native-image will use the defaults defined in there on each invocation.</p>
+<p>If the environment variable <code>NATIVE_IMAGE_CONFIG_FILE</code> is set to a Java
+properties file, a native image will use the defaults defined in there on each
+invocation.</p>
 
-<p>Here is an example of configuration file (saved as <code>~/.native-image/default.properties</code>) :</p>
+<!-- Here is an example of configuration file (saved as `~/.native-image/default.properties`) :
 
-<pre><code class="language-shell">NativeImageArgs = --no-server \
-                  --configurations-path /home/user/custom-image-configs
-</code></pre>
+```
+NativeImageArgs = --configurations-path /home/user/custom-image-configs \
+                  -g
+``` -->
 
-<p>If the user has this configuration file and export <code>NATIVE_IMAGE_CONFIG_FILE=$HOME/.native-image/default.properties</code> in <code>~/.bash_profile</code>,
-every time the native-image gets used, it will implicitly use the arguments
+<p>If the user has a configuration file and export <code>NATIVE_IMAGE_CONFIG_FILE=$HOME/.native-image/default.properties</code> in <code>~/.bash_profile</code>, every time the native image gets used, it will implicitly use the arguments
 specified as <code>NativeImageArgs</code>, plus the arguments specified on command line.</p>
 
 <p>For a more comprehensive list of options please check the <a href="https://github.com/oracle/graal/blob/master/substratevm/OPTIONS.md">documentation on Github</a>.</p>
@@ -864,7 +891,7 @@ Therefore, it is not possible to load new classes that have not been available d
 
 <p>For a more detailed description of which features of Java are not supported by the native images or supported partially please refer to the <a href="https://github.com/oracle/graal/blob/master/substratevm/LIMITATIONS.md">documentation on the GitHub</a>. And if you are interested in learning about the support for Java reflection, there is a separate document for <a href="https://github.com/oracle/graal/blob/master/substratevm/REFLECTION.md">Java reflection support</a>.</p>
 
-<h3 id="operational-information-for-native-images">Operational information for native images</h3>
+<h3 id="operational-information-for-native-images">Operational Information for Native Images</h3>
 
 <p><em>When does it make sense to run in a Native Image instead of the JVM?</em></p>
 <ul>
