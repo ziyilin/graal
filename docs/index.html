@@ -501,7 +501,7 @@ $(document).ready(function(){
 not only to JVM-based languages such as Java, Scala, Groovy, and
 Kotlin, but also to other programming languages such as JavaScript, Ruby, Python, and R.
 Additionally, it enables the execution of native code on the JVM via an LLVM front-end.
-GraalVM 1.0 is based on JDK 8.</p>
+GraalVM 19.0.0 is based on JDK version 8u212.</p>
 
 <p><img src="/docs/img/graalvm_architecture.png" alt="GraalVM system diagram" /></p>
 
@@ -515,27 +515,28 @@ and pass data back and forth in the same memory space.</p>
 
 <p>The bottom part demonstrates the applicability range. GraalVM can either run standalone,
 be embedded as part of the OpenJDK or Node.js platforms,
-or even embed inside databases such as MySQL or <a href="https://oracle.github.io/oracle-db-mle/">Oracle RDBMS</a>.</p>
+or even execute inside <a href="https://oracle.github.io/oracle-db-mle/">Oracle RDBMS</a>.</p>
 
-<p>The GraalVM 1.0 release contains language interpreters for:</p>
+<p>The GraalVM 19 release contains language interpreters for:</p>
 <ul>
   <li>JVM-based languages like Java, Scala, Groovy, or Kotlin</li>
-  <li>JavaScript (including Node.js)</li>
+  <li>JavaScript</li>
   <li>languages compiling to LLVM bitcode like C, C++, or Rust</li>
   <li>experimental versions of Ruby, R, and Python</li>
 </ul>
 
 <p>GraalVM includes the following components:</p>
 <ul>
-  <li><strong>GraalVM Compiler</strong>: A dynamic just-in-time (JIT) compiler that improves efficiency and
+  <li><strong>GraalVM Compiler</strong>: a dynamic just-in-time (JIT) compiler that improves efficiency and
 speed of applications through unique approaches to code analysis and
 optimization.</li>
+  <li><strong>GraalVM Native Image Generator</strong>: a utility to compile scripted applications ahead-of-time into a native machine-code binary or a shared library.</li>
   <li><strong>GraalVM Polyglot APIs</strong>: APIs for combining programming
 languages in a shared runtime. These APIs allow you to match programming
 languages to your needs and gives you better performance using fewer resources.</li>
   <li><strong>GraalVM SDK</strong>:
-A set of APIs useful for embedding Graal languages and configuring native images.</li>
-  <li><strong>Oracle HotSpot Java Virtual Machine (JVM)</strong>: A runtime environment for JVM-based
+a set of APIs useful for embedding guest languages and configuring native images.</li>
+  <li><strong>Oracle HotSpot Java Virtual Machine (JVM)</strong>: a runtime environment for JVM-based
 languages and supported guest programming languages.</li>
 </ul>
 
@@ -546,7 +547,7 @@ languages and supported guest programming languages.</li>
 <ul>
   <li><a href="/docs/examples/java-performance-examples/">Run your code faster and more efficiently</a></li>
   <li><a href="/docs/reference-manual/polyglot/">Interoperate directly with most modern programming languages</a></li>
-  <li><a href="/docs/graalvm-as-a-platform/embed/">Embed languages with the Graal SDK</a></li>
+  <li><a href="/docs/graalvm-as-a-platform/embed/">Embed languages with the GraalVM SDK</a></li>
   <li><a href="/docs/reference-manual/aot-compilation/">Create compiled native images</a></li>
   <li><a href="/docs/reference-manual/tools/">Use a single set of tools to monitor, debug, and profile all your code</a></li>
 </ul>
@@ -566,7 +567,7 @@ documentation to help you on your way.</p>
   <li><a href="/docs/faq/">FAQ</a></li>
 </ul>
 
-<p>Alternatively you can have a look at the reference documentation in <a href="http://www.graalvm.org/sdk/javadoc/">JavaDoc</a>:</p>
+<p>Alternatively you can have a look at the reference documentation in <a href="http://www.graalvm.org/sdk/javadoc/">Javadoc</a>:</p>
 <ul>
   <li>The <a href="http://www.graalvm.org/sdk/javadoc/org/graalvm/polyglot/package-summary.html">Polyglot Package</a> allows you to configure and run polyglot applications.</li>
   <li>The <a href="http://www.graalvm.org/sdk/javadoc/org/graalvm/polyglot/proxy/package-summary.html">Proxy Package</a> allows you to mimic Graal language objects using proxies.</li>

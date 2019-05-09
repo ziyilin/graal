@@ -2961,7 +2961,7 @@ $ java Polyglot
 
 <p>Run:</p>
 
-<pre><code>$ clang -g -O1 -c -emit-llvm -I$GRAALVM_HOME/jre/languages/llvm polyglot.c
+<pre><code>$ clang -g -O1 -c -emit-llvm -I$GRAALVM_HOME/jre/languages/llvm/include polyglot.c
 $ lli --polyglot --jvm polyglot.bc
 42
 </code></pre>
@@ -3006,9 +3006,9 @@ This is how you can start it:</p>
 
 <pre><code class="language-shell">$ polyglot --jvm --shell
 
-GraalVM MultiLanguage Shell 1.0.0-rc16
+GraalVM MultiLanguage Shell 19.0.0
 Copyright (c) 2013-2019, Oracle and/or its affiliates
-  JavaScript version 1.0
+  JavaScript version 19.0.0
   Python version 3.7.0
   R version 3.5.1
   Ruby version 2.6.2
@@ -3098,7 +3098,7 @@ For languages the following format can be used: <code>-Dpolyglot.&lt;languageID&
 class SystemPropertiesTest {
 
     public static void main(String[] args) {
-        Context polyglot = Context.create();
+        Context polyglot = Context.newBuilder().allowExperimentalOptions(true).build();
         // the use of shared array buffer requires
         // the 'js.shared-array-buffer' option to be 'true'
         polyglot.eval("js", "new SharedArrayBuffer(1024)");
@@ -3109,7 +3109,7 @@ class SystemPropertiesTest {
 <p>Run:</p>
 
 <pre><code>$ javac SystemPropertiesTest.java
-$ java -Dpolyglot.js.shared-array-buffer=true SystemPropertiesTest
+$ java -Dpolyglot.js.strict=true SystemPropertiesTest
 </code></pre>
 
 <p><em>Note</em>: System properties are read once when the polyglot context is created. Subsequent changes have no effect.</p>

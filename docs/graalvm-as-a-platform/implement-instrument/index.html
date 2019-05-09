@@ -537,7 +537,7 @@ $(document).ready(function(){
                 <h3 id="getting-started-with-instruments-in-graalvm">Getting started with Instruments in GraalVM</h3>
 
 <p>Tools are also called <em>Instruments</em> within the GraalVM platform.
-The <a href="http://www.graalvm.org/truffle/javadoc/com/oracle/truffle/api/instrumentation/package-summary.html">Instrumentation API</a> is used to implement such instruments.
+The <a href="http://www.graalvm.org/truffle/javadoc/com/oracle/truffle/api/instrumentation/package-summary.html">Truffle Instrument API</a> is used to implement such instruments.
 Instruments can track very fine-grained VM-level runtime events to profile, inspect, and analyze the runtime behavior of applications running on GraalVM.</p>
 
 <h3 id="examples">Examples</h3>
@@ -553,7 +553,7 @@ Instruments can track very fine-grained VM-level runtime events to profile, insp
 
 <h2 id="instrumentation-event-listeners">Instrumentation Event Listeners</h2>
 
-<p>The Truffle Instrumentation application programming interface is defined in the <code>com.oracle.truffle.api.instrumentation</code> package. Instrumentation agents can be developed by extending the <code>TruffleInstrument</code> class, and can be attached to a running GraalVM instance using in the <code>Instrumenter</code> class. Once attached to a running language runtime, instrumentation agents remain usable as long as the language runtime is not disposed. Instrumentation agents on GraalVM can monitor a variety of VM-level runtime events, including any of the following:</p>
+<p>The Truffle Instrument application programming interface is defined in the <code>com.oracle.truffle.api.instrumentation</code> package. Instrumentation agents can be developed by extending the <code>TruffleInstrument</code> class, and can be attached to a running GraalVM instance using in the <code>Instrumenter</code> class. Once attached to a running language runtime, instrumentation agents remain usable as long as the language runtime is not disposed. Instrumentation agents on GraalVM can monitor a variety of VM-level runtime events, including any of the following:</p>
 
 <ol>
   <li><em>Source code-related events</em>: the agent can be notified every time a new <a href="http://www.graalvm.org/truffle/javadoc/com/oracle/truffle/api/source/Source.html">Source</a> or <a href="http://www.graalvm.org/truffle/javadoc/com/oracle/truffle/api/source/SourceSection.html">SourceSection</a> element is loaded by the monitored language runtime.</li>
@@ -744,7 +744,7 @@ onReturnValue - VariableWrite
 
 <h3 id="altering-the-execution-flow-of-an-application">Altering the execution flow of an application</h3>
 
-<p>The instrumentation capabilities that we have presented so far enable users to <em>observe</em> certain aspects of a running application. In addition to passive monitoring of an application’s behavior, the Instrumentation API features support for actively <em>altering</em> the behavior of an application at runtime. Such capabilities can be used to write complex instrumentation agents that affect the behavior of a running application to achieve specific runtime semantics. For example, one could alter the semantics of a running application to ensure that certain methods or functions are never executed (e.g., by throwing an exception when they are called).</p>
+<p>The instrumentation capabilities that we have presented so far enable users to <em>observe</em> certain aspects of a running application. In addition to passive monitoring of an application’s behavior, the Instrument API features support for actively <em>altering</em> the behavior of an application at runtime. Such capabilities can be used to write complex instrumentation agents that affect the behavior of a running application to achieve specific runtime semantics. For example, one could alter the semantics of a running application to ensure that certain methods or functions are never executed (e.g., by throwing an exception when they are called).</p>
 
 <p>Instrumentation agents with such capabilities can be implemented by leveraging the <code>onUnwind</code> callback in execution event listeners and factories. As an example, let’s consider the following JavaScript code:</p>
 

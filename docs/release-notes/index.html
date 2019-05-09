@@ -545,27 +545,22 @@ add support for the other GraalVM languages.</p>
 
 <h3 id="native-image">Native Image</h3>
 
-<ul>
-  <li>
-    <p>Native Image was extracted from the base GraalVM distribution. Currently it is
+<p>Native Image was extracted from the base GraalVM distribution. Currently it is
 available as an early adopter plugin. To install it, run: <code>gu install
 native-image</code>. After this additional step, the <code>native-image</code> executable will be
 in the <code>bin</code> directory, as for the previous releases.</p>
-  </li>
-  <li>
-    <p>There was a change in how classes are initialized in a <code>native-image</code>. Now, we initialize application classes at run time by default. The policy for initialization is as follows:</p>
-    <ol>
-      <li>All JDK classes are initialized at build time.</li>
-      <li>We prove the safety of application static initializers after the analysis and initialize the safe classes.</li>
-      <li>We provide the following flags to control class initialization in a fine-grained way: <code>--initialize-at-build-time</code> and <code>--initialize-at-run-time</code>.</li>
-    </ol>
-  </li>
+
+<p>There was a change in how classes are initialized in a <code>native-image</code>. Now, we initialize application classes at run time by default. The policy for initialization is as follows:</p>
+<ul>
+  <li>All JDK classes are initialized at build time.</li>
+  <li>We prove the safety of application static initializers after the analysis and initialize the safe classes.</li>
+  <li>We provide the following flags to control class initialization in a fine-grained way: <code>--initialize-at-build-time</code> and <code>--initialize-at-run-time</code>.</li>
 </ul>
 
 <p>The performance and startup impact of this change is negligible on all benchmarks that we have.</p>
 
-<p>This change was made to improve end-user experience:s end users will not have
-to write substitutions and will not have to deal with instances of unsupported
+<p>This change was made to improve user experience: there is no need to
+to write substitutions and to deal with instances of unsupported
 classes ending up in the image heap. Their applications, given the right
 configuration for reflection, proxies, etc., should work without performance
 degradation.</p>
@@ -582,7 +577,7 @@ packages or individual classes. For example, if we have classes <code>p.C1</code
 
 <p>We also introduced the flag <code>-H:+PrintClassInitialization</code> which allows you to track what class initialization does during the image build. This flag will help you configure the build to work as intended.</p>
 
-<p>What should I do if I am a library author?</p>
+<p><em>What should I do if I am a library author?</em></p>
 <ol>
   <li>To get your tests back in check you can use <code>--intialize-at-build-time</code> which will revert to the previous behaviour.</li>
   <li>Then use the flag <code>-H:+PrintClassInitialization</code> to see when classes get initialized. Based on this output you can make the proper configuration.</li>

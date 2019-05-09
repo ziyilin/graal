@@ -633,20 +633,23 @@ $(document).ready(function(){
     
             <div class="col-sm-9">
               <div id="content-wrapper" class="docs-content docs-content--with-sidebar">
-                <h2 id="component-installation">Component installation</h2>
+                <h2 id="component-installation">Component Installation</h2>
 
-<p>Some languages are not part of the GraalVM core download package and must be
-downloaded and installed separately. To assist you with this installation,
-languages are pre-packaged as <strong>Components</strong>. The GraalVM installation contains
-the <strong>GraalVM Updater</strong> utility, <code>gu</code>, that can be used to manage components.
-Due to the primary function of <code>gu</code> – updating components – the tool is
-sometimes called a “Component Updater”.</p>
+<p>Some languages and functionalities are not part of the GraalVM core distribution and must be
+downloaded and installed separately. These include:</p>
+<ul>
+  <li><a href="/docs/reference-manual/aot-compilation/">GraalVM Native Image</a> – a technology to compile an application ahead-of-time into a binary that runs natively on the system.</li>
+  <li>Polyglot capabilities – support for Ruby, R and Python.</li>
+</ul>
 
-<p>GraalVM Updater also verifies whether the version of the component is
-appropriate for your GraalVM installation. Component packages are released for
-each GraalVM release with respective updates.
-Component packages downloaded for previous release(s) cannot be used with newer ones.
-Add the GraalVM <code>/bin</code> folder to your <code>PATH</code> environment variable in order to deploy the <code>gu</code> installer tool.</p>
+<p>To assist you with this installation, these features are pre-packaged as
+<strong>Components</strong>. The GraalVM installation contains the <strong>GraalVM Updater</strong>
+utility, <code>gu</code>, that can be used to manage components. GraalVM Updater also
+verifies whether the version of the component is appropriate for your GraalVM
+installation. Component packages are released for each GraalVM release with
+respective updates. Component packages downloaded for previous release(s) cannot
+be used with newer ones. Add the GraalVM <code>/bin</code> folder to your <code>PATH</code>
+environment variable in order to deploy the <code>gu</code> installer tool.</p>
 
 <p>There is a command-line help available.
 Run <code>gu</code> or <code>gu -h</code> to get command overview.
@@ -659,80 +662,102 @@ You download the component package yourself and GraalVM Updater will install it.
 The following pre-built language packages are at your disposal:</p>
 
 <ul>
+  <li><em>native-image.jar</em></li>
   <li><em>python-installable.jar</em></li>
   <li><em>ruby-installable.jar</em></li>
   <li><em>r-installable.jar</em></li>
 </ul>
 
-<p><strong>Installation from Catalog</strong>: There is a list of components maintained by Oracle,
-from which you can install a component just by name.
-GraalVM Updater will download the component package for you. This is the default mode of operation.</p>
+<p><strong>Installation from Catalog</strong>: There is a list of components maintained by Oracle, from which you can install a
+component just by name. GraalVM Updater will download the component package for
+you. This is the default mode of operation.</p>
 
 <h2 id="installation-from-catalog">Installation from Catalog</h2>
-<p>GraalVM Updater first downloads the list of components,
-then uses the information in the list to download the actual component package for you and install it.
+<p>GraalVM Updater first downloads the list of components, then uses the
+information in the list to download the actual component package for you and
+install it.
 To see which components are available in the catalog, use</p>
-<pre><code class="language-bash">gu available
+<pre><code>gu available
 </code></pre>
 <p>to get a list of available components, their IDs, and descriptive names. Then,
 the <code>ComponentId</code> (for example <code>ruby</code>) can be used as</p>
-<pre><code class="language-bash">gu install ruby
+<pre><code>gu install ruby
 </code></pre>
 <p>and that is all!</p>
 
 <p>If you want to see more verbose messages during installation, you may use the <code>-v</code>
 switch to see the download progress bar and verbose messages.</p>
 
-<h2 id="manual-installation">Manual installation</h2>
+<h2 id="manual-installation">Manual Installation</h2>
 <p>With the already downloaded component package archive,  <code>component.jar</code>,
 the component can be installed as</p>
-<pre><code class="language-bash">gu -L install component.jar
+<pre><code>gu -L install component.jar
 </code></pre>
 
-<h2 id="components-list">Components list</h2>
+<h2 id="components-list">Components List</h2>
 <p>Installed components can be printed by</p>
-<pre><code class="language-bash">gu list
+<pre><code>gu list
 </code></pre>
 <p>GraalVM Updater can list components in the component catalog (not necessarily installed on your machine):</p>
-<pre><code class="language-bash">gu available
+<pre><code>gu available
 </code></pre>
 
-<h2 id="rebuilding-images">Rebuilding images</h2>
+<h2 id="rebuilding-images">Rebuilding Images</h2>
 
-<p>GraalVM components used to create guest language implementations may change over time, requiring a Native Image to be rebuilt.
-Polyglot native image and polyglot native C library may be out of sync, particularly:</p>
+<p>GraalVM components used to create guest language implementations may change over
+time, requiring a Native Image to be rebuilt. Polyglot native image and polyglot
+native C library may be out of sync, particularly:</p>
 <ul>
   <li>new languages may not be accessible;</li>
   <li>removed languages may cause the native binary to fail on missing resources or libraries.</li>
 </ul>
 
 <p>To rebuild and refresh the native binaries, use the following command:</p>
-<pre><code class="language-bash">gu rebuild-images [--verbose] polyglot libpolyglot js llvm python ruby
+<pre><code>gu rebuild-images [--verbose] polyglot|libpolyglot|js|llvm|python|ruby [custom native-image args]
 </code></pre>
 
 <h2 id="uninstallation">Uninstallation</h2>
-<p>Components may be uninstalled from the GraalVM installation when you no longer need them.
-To uninstall a specific component you need to know its <code>ComponentId</code>, which can be <code>ruby</code>, or <code>r</code> or <code>python</code>.
-The command to uninstall the component is:</p>
-<pre><code class="language-bash">gu uninstall ruby
+<p>Components may be uninstalled from the GraalVM environment when you no longer
+need them. To uninstall a specific component you need to know its <code>ComponentId</code>,
+which can be <code>ruby</code>, or <code>r</code> or <code>python</code>. The command to uninstall the component
+is:</p>
+<pre><code>gu remove ruby
 </code></pre>
-<p>If more components end with, for example, <code>ruby</code>, the installer will print an error message that you need to use component’s full names (<code>org.graalvm.ruby</code>).
-The uninstallation removes the files created during the installation. If a file belongs to multiple components, it will be removed when the last component using it is removed.</p>
+<p>If more components end with, for example, <code>ruby</code>, the installer will print an
+error message that you need to use component’s full names (<code>org.graalvm.ruby</code>).
+The uninstallation removes the files created during the installation. If a file
+belongs to multiple components, it will be removed when the last component using
+it is removed.</p>
 
 <h2 id="proxies">Proxies</h2>
-<p>If <em>GraalVM Updater</em> needs to reach the component catalog, or download a component package, it may need to pass through your HTTP proxy, if your network uses one. On <em>macOS</em>, the proxy settings are automatically obtained from the OS. On <em>Linux</em>, you must ensure that the <code>http_proxy</code> and <code>https_proxy</code> environment variables are set appropriately <strong>before</strong> you launch <code>gu</code>. Please refer to your distribution and/or desktop environment documentation for the details.</p>
+<p>If <em>GraalVM Updater</em> needs to reach the component catalog, or download a
+component package, it may need to pass through your HTTP proxy, if your network
+uses one. On <em>macOS</em>, the proxy settings are automatically obtained from the OS.
+On <em>Linux</em>, you must ensure that the <code>http_proxy</code> and <code>https_proxy</code> environment
+variables are set appropriately <strong>before</strong> you launch <code>gu</code>. Please refer to your
+distribution and/or desktop environment documentation for the details.</p>
 
 <h2 id="replacing-components-and-files">Replacing Components and Files</h2>
-<p>A component may be only installed once. GraalVM Updater refuses to install a component if a component with the same ID is already installed. But the installed component may be <strong>replaced</strong>. GraalVM Updater first <em>uninstalls</em> the component and then installs the new package. To replace a component, use the <code>-r</code> option:</p>
-<pre><code class="language-bash">gu install -L -r component.jar
+<p>A component may be only installed once. GraalVM Updater refuses to install a
+component if a component with the same ID is already installed. But the
+installed component may be <strong>replaced</strong>. GraalVM Updater first <em>uninstalls</em> the
+component and then installs the new package. To replace a component, use the
+<code>-r</code> option:</p>
+<pre><code>gu install -L -r component.jar
 gu install -r ruby
 </code></pre>
-<p>The process is the same as if <code>gu uninstall</code> is run first and <code>gu install</code> next.</p>
+<p>The process is the same as if <code>gu remove</code> is run first and <code>gu install</code> next.</p>
 
-<p>GraalVM Updater also refuses to overwrite existing files if the to-be-installed and existing versions differ. There are cases when you may need to refresh file contents, if they were modified or damaged. Use the <code>-o</code> option:</p>
-<pre><code class="language-bash">gu install -L -o component.jar
+<p>GraalVM Updater also refuses to overwrite existing files if the to-be-installed
+and existing versions differ. There are cases when you may need to refresh file
+contents, if they were modified or damaged. Use the <code>-o</code> option:</p>
+<pre><code>gu install -L -o component.jar
 gu install -o ruby
 </code></pre>
+<p>GraalVM Updater will just instruct to replace the contained files of a
+component. By default, it will not alter anything. You can also use <code>-f</code>
+(<code>--force</code>) option, which disables most of the checks and allows you to install
+non-matching versions.</p>
 
               </div>
     

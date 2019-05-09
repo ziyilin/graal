@@ -497,16 +497,16 @@ $(document).ready(function(){
               <div id="content-wrapper" class="docs-content docs-content--with-sidebar">
                 <h3 id="generating-native-heap-dumps">Generating Native Heap Dumps</h3>
 <p>As described in the <a href="/docs/reference-manual/aot-compilation/">Creating Native Images chapter</a> in the GraalVM section, it is possible to create highly performing applications. It is also possible to
-monitor the execution and generate Java heap dumps from within the Native Image
+monitor the execution and generate Java heap dumps from within the native image
 application. The functionality is available only with <a href="http://www.oracle.com/technetwork/oracle-labs/program-languages/downloads/index.html">GraalVM Enterprise Edition</a>.</p>
 
-<p>GraalVM Native Images do not implement JVMTI agent and it is not possible to
-trigger heap dump creation using tools like <em>Graal Visual VM</em> or <em>jmap</em>. But it
-is possible to build a Native Image for your application to handle signals and
+<p>GraalVM Native Image does not implement JVMTI agent and it is not possible to
+trigger heap dump creation using tools like <em>GraalVM Visual VM</em> or <em>jmap</em>. But it
+is possible to build a native image for your application to handle signals and
 then get a heap dump when the application receives the SIGUSR1 signal. Another possibility
 is to add a special method to your application which will generate the heap dump
 at certain points in the lifetime of your application. E.g., when certain
-conditions are met while running a Native Image application, your application
+conditions are met while running a native image application, your application
 code can trigger heap dump creation. We will show both possibilities in this
 chapter.</p>
 
@@ -588,7 +588,7 @@ Build on Server(pid: 31386, port: 26682)
        write:     464.04 ms
      [total]:   8,714.06 ms
 </code></pre>
-<p>The native-image tool analyzes existing <code>SVMHeapDump.class</code> and creates from it an executable file. When the command completes, <code>svmheapdump</code> is created in current directory.</p>
+<p>The <code>native-image</code> tool analyzes existing <code>SVMHeapDump.class</code> and creates from it an executable file. When the command completes, <code>svmheapdump</code> is created in the current directory.</p>
 
 <h3 id="run-the-application-and-get-heap-dump">Run the Application and Get Heap Dump</h3>
 <h4 id="1-run-the-app">1. Run the App</h4>
@@ -688,7 +688,7 @@ Then compile using following command:</p>
 <pre><code class="language-bash">$ javac SVMHeapDumpAPI.java
 </code></pre>
 <h2 id="build-native-image">Build Native Image</h2>
-<p>Heap dump creation will work after the executable is created from a class file. Use the following command:</p>
+<p>Heap dump creation will work after the native image is built from a class file. Use the following command:</p>
 <pre><code class="language-bash">$ $GRAALVM_HOME/bin/native-image SVMHeapDumpAPI
    Build on Server(pid: 31386, port: 26682)*
    classlist:     804.50 ms
@@ -708,7 +708,7 @@ Then compile using following command:</p>
      [total]:  21,388.04 ms
 
 </code></pre>
-<p>When the command completes, <code>svmheapdumpapi</code> is created in the current directory.</p>
+<p>When the command completes, <code>svmheapdumpapi</code> executable is created in the current directory.</p>
 
 <h3 id="run-the-application-and-check-heap-dump">Run the Application and Check Heap Dump</h3>
 <p>Now you can run your native image application and generate heap dump from it
