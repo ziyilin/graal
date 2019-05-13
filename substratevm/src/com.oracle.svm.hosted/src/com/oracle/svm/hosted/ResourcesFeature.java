@@ -106,7 +106,8 @@ public final class ResourcesFeature implements Feature {
         ResourceConfigurationParser parser = new ResourceConfigurationParser(ImageSingletons.lookup(ResourcesRegistry.class));
         ConfigurationParser.parseAndRegisterConfigurations(parser, imageClassLoader, "resource",
                         Options.ResourceConfigurationFiles, Options.ResourceConfigurationResources, ConfigurationDirectories.FileNames.RESOURCES_NAME);
-
+        // Get configurations from target program's annotations
+        parser.parseAndRegisterFromTypeAnnotation();
         newResources.addAll(Arrays.asList(Options.IncludeResources.getValue()));
     }
 

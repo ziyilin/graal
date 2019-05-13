@@ -43,6 +43,7 @@ import com.oracle.svm.core.hub.ClassForNameSupport;
 import com.oracle.svm.core.hub.DynamicHub;
 import com.oracle.svm.core.jdk.JavaLangSubstitutions.ClassLoaderSupport;
 import com.oracle.svm.core.util.VMError;
+import java.security.ProtectionDomain;
 
 @TargetClass(ClassLoader.class)
 @Substitute
@@ -129,6 +130,17 @@ public final class Target_java_lang_ClassLoader {
     @Substitute
     private Class<?> loadClass(String name) throws ClassNotFoundException {
         return ClassForNameSupport.forName(name);
+    }
+
+    @Substitute
+    Class<?> defineClass(String name, byte[] b, int off, int len,
+                    ProtectionDomain protectionDomain)
+                    throws ClassFormatError {
+	try {
+            return ClassForNameSupport.forName(name);
+        } catch (ClassNotFoundException e) {
+            throw new ClassFormatError("class "+ name + " has not been prepared.");
+        }
     }
 
     @Substitute
