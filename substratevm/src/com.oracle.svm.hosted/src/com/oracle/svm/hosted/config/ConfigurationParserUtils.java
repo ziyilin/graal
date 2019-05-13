@@ -105,4 +105,52 @@ public final class ConfigurationParserUtils {
                             SubstrateOptionsParser.commandArgument(PrintFlags, "+") + " output for option " + option.getName() + ".");
         }
     }
+
+    public abstract void parseAndRegister(Reader reader) throws IOException;
+
+    /**
+     * Parse configuration annotations on classes. This has the same effects as configuration files.
+     * User can write annotations on class in addition to prepare configuration files.
+     *
+     * @Reflects for reflections
+     * @return true if configuration annotation is found on class and successfully registered
+     */
+    public abstract boolean parseAndRegisterFromTypeAnnotation();
+
+    @SuppressWarnings("unchecked")
+    static List<Object> asList(Object data, String errorMessage) {
+        if (data instanceof List) {
+            return (List<Object>) data;
+        }
+        throw new JSONParserException(errorMessage);
+    }
+
+    @SuppressWarnings("unchecked")
+    static Map<String, Object> asMap(Object data, String errorMessage) {
+        if (data instanceof Map) {
+            return (Map<String, Object>) data;
+        }
+        throw new JSONParserException(errorMessage);
+    }
+
+    static String asString(Object value) {
+        if (value instanceof String) {
+            return (String) value;
+        }
+        throw new JSONParserException("Invalid string value \"" + value + "\".");
+    }
+
+    static String asString(Object value, String propertyName) {
+        if (value instanceof String) {
+            return (String) value;
+        }
+        throw new JSONParserException("Invalid string value \"" + value + "\" for element '" + propertyName + "'");
+    }
+
+    static boolean asBoolean(Object value, String propertyName) {
+        if (value instanceof Boolean) {
+            return (boolean) value;
+        }
+        throw new JSONParserException("Invalid boolean value '" + value + "' for element '" + propertyName + "'");
+    }
 }

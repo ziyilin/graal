@@ -89,4 +89,10 @@ public class ResourceConfigurationParser extends ConfigurationParser {
         String value = asString(valueObject, valueKey);
         registry.accept(value);
     }
+
+    @Override
+    public boolean parseAndRegisterFromTypeAnnotation() {
+        // TODO Auto-generated method stub
+        return false;
+    }
 }

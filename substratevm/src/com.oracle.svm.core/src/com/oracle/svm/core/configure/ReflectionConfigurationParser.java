@@ -31,6 +31,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.graalvm.nativeimage.impl.ReflectionRegistry;
+
+import com.alibaba.ajdk.annotations.ContainReflection;
+import com.alibaba.ajdk.annotations.Reflects;
 import com.oracle.svm.core.util.json.JSONParser;
 import com.oracle.svm.core.util.json.JSONParserException;
 
@@ -58,6 +62,26 @@ public final class ReflectionConfigurationParser<T> extends ConfigurationParser 
         } catch (NoClassDefFoundError e) {
             throw e;
         }
+    }
+
+    @Override
+    public boolean parseAndRegisterFromTypeAnnotation() {
+        boolean ret = false;
+        List<Class<?>> classesWithAnnotations = ((ReflectionRegistryAdapter) delegate).getClassLoader().findAnnotatedClasses(Reflects.class);
+        for (Class<?> annotatedClass : classesWithAnnotations) {
+            Reflects reflects = annotatedClass.getAnnotation(Reflects.class);
+            ContainReflection[] reflectConfigs = reflects.value();
+            for (ContainReflection config : reflectConfigs) {
+                String reflectClassName = config.value();
+                T clazz = delegate.resolveType(reflectClassName);
+                delegate.registerType(clazz);
+                if (config.allDeclaredFields()) {
+                    delegate.registerDeclaredFields(clazz);
+                }
+                ret = true;
+            }
+        }
+        return ret;
     }
 
     private void parseClassArray(List<Object> classes) {

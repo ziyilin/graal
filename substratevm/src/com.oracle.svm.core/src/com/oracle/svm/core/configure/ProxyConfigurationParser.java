@@ -72,4 +72,10 @@ public final class ProxyConfigurationParser extends ConfigurationParser {
         }
     }
 
+    @Override
+    public boolean parseAndRegisterFromTypeAnnotation() {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
 }

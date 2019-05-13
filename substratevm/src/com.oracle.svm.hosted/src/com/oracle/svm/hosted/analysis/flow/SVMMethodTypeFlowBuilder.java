@@ -46,8 +46,10 @@ import com.oracle.svm.core.graal.nodes.NewPinnedArrayNode;
 import com.oracle.svm.core.graal.nodes.NewPinnedInstanceNode;
 import com.oracle.svm.core.meta.SubstrateObjectConstant;
 import com.oracle.svm.core.util.UserError.UserException;
+import com.oracle.svm.hosted.HostedConfiguration;
 import com.oracle.svm.hosted.NativeImageOptions;
 import com.oracle.svm.hosted.analysis.Inflation;
+import com.oracle.svm.hosted.classinitialization.ClassInitializationFeature;
 import com.oracle.svm.hosted.substitute.ComputedValueField;
 
 import jdk.vm.ci.meta.JavaKind;
@@ -126,7 +128,22 @@ public class SVMMethodTypeFlowBuilder extends MethodTypeFlowBuilder {
             /* Skip the checks bellow. */
             return;
         }
-
+        NodeSourcePosition pos = offsetNode.getNodeSourcePosition();
+        /*
+         * if(NativeImageOptions.DisableEagerCLInit.getValue()) { boolean found=false;
+         * if(pos!=null&&pos.getCaller()!=null){ String
+         * callerClass=pos.getCaller().getClass().toString();
+         * System.out.println("checkUnsafeOffset:"+callerClass); for(String
+         * classname:ClassInitializationFeature.Options.EagerClassInitialization.getValue()) {
+         * if(classname.equals(callerClass)) { found=true; break; } }} if(!found) { return; } }
+         */
+        // Don't check Unsafe if the class is initialized at runtime
+        if (pos != null) {
+            Class<?> methodClass = ((AnalysisType) (pos.getMethod().getDeclaringClass())).getJavaClass();
+            if (HostedConfiguration.instance().getClassInitializationSupport().shouldInitializeAtRuntime(methodClass)) {
+                return;
+            }
+        }
         /*
          * Offset fields used in unsafe operations need value recomputation. Check that they are
          * properly intercepted. Detection of offset fields that need value re-computation is best
@@ -147,7 +164,6 @@ public class SVMMethodTypeFlowBuilder extends MethodTypeFlowBuilder {
          * if it was properly intercepted or not is LoadFieldNode.
          */
 
-        NodeSourcePosition pos = offsetNode.getNodeSourcePosition();
         if (offsetNode instanceof LoadFieldNode) {
             LoadFieldNode offsetLoadNode = (LoadFieldNode) offsetNode;
             AnalysisField field = (AnalysisField) offsetLoadNode.field();

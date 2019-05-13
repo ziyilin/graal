@@ -38,6 +38,10 @@ public class ReflectionRegistryAdapter implements ReflectionConfigurationParserD
     private final ReflectionRegistry registry;
     private final ImageClassLoader classLoader;
 
+    public ImageClassLoader getClassLoader() {
+        return classLoader;
+    }
+
     public ReflectionRegistryAdapter(ReflectionRegistry registry, ImageClassLoader classLoader) {
         this.registry = registry;
         this.classLoader = classLoader;
