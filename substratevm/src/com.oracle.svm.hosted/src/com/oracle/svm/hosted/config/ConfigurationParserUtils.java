@@ -111,7 +111,6 @@ public final class ConfigurationParserUtils {
     /**
      * Parse configuration annotations on classes. This has the same effects as configuration files.
      * User can write annotations on class in addition to prepare configuration files.
-     *
      * @Reflects for reflections
      * @return true if configuration annotation is found on class and successfully registered
      */

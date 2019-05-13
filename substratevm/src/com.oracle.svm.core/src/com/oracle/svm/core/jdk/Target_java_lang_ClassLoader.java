@@ -144,6 +144,17 @@ public final class Target_java_lang_ClassLoader {
     }
 
     @Substitute
+    Class<?> defineClass(String name, byte[] b, int off, int len,
+                    ProtectionDomain protectionDomain)
+                    throws ClassFormatError {
+	try {
+            return ClassForNameSupport.forName(name);
+        } catch (ClassNotFoundException e) {
+            throw new ClassFormatError("class "+ name + " has not been prepared.");
+        }
+    }
+
+    @Substitute
     @SuppressWarnings("unused")
     static void checkClassLoaderPermission(ClassLoader cl, Class<?> caller) {
     }
