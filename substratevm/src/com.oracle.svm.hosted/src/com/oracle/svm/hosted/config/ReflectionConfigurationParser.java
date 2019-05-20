@@ -27,14 +27,17 @@ package com.oracle.svm.hosted.config;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.graalvm.nativeimage.impl.ReflectionRegistry;
 
-import com.alibaba.ajdk.annotations.ContainReflection;
-import com.alibaba.ajdk.annotations.Reflects;
+import com.alibaba.staticcompile.annotations.ContainReflection;
+import com.alibaba.staticcompile.annotations.FieldContent;
+import com.alibaba.staticcompile.annotations.MethodContent;
+import com.alibaba.staticcompile.annotations.Reflects;
 import com.oracle.svm.core.util.json.JSONParser;
 import com.oracle.svm.core.util.json.JSONParserException;
 import com.oracle.svm.hosted.ImageClassLoader;
@@ -82,6 +85,42 @@ public final class ReflectionConfigurationParser<T> extends ConfigurationParser 
                 delegate.registerType(clazz);
                 if (config.allDeclaredFields()) {
                     delegate.registerDeclaredFields(clazz);
+                } else if (config.allPublicFields()) {
+                    delegate.registerPublicFields(clazz);
+                } else if (config.allDeclaredClasses()) {
+                    delegate.registerDeclaredClasses(clazz);
+                } else if (config.allPublicClasses()) {
+                    delegate.registerPublicClasses(clazz);
+                } else if (config.allDeclaredConstructors()) {
+                    delegate.registerDeclaredConstructors(clazz);
+                } else if (config.allPublicConstructors()) {
+                    delegate.registerPublicConstructors(clazz);
+                } else if (config.allDeclaredMethods()) {
+                    delegate.registerDeclaredMethods(clazz);
+                } else if (config.allPublicMethods()) {
+                    delegate.registerPublicMethods(clazz);
+                } else if (config.methods().length > 0) {
+                    List<Object> methodList = new ArrayList<>();
+                    for (MethodContent mc : config.methods()) {
+                        Map<String, Object> methodMap = new HashMap<>();
+                        methodMap.put("name", mc.name());
+                        List<String> parameterTypes = new ArrayList<>();
+                        for (String s : mc.parameterTypes()) {
+                            parameterTypes.add(s);
+                        }
+                        methodMap.put("parameterTypes", parameterTypes);
+                        methodList.add(methodMap);
+                    }
+                    parseMethods(methodList, clazz);
+                } else if (config.fields().length > 0) {
+                    List<Object> fieldList = new ArrayList<>();
+                    for (FieldContent fc : config.fields()) {
+                        Map<String, Object> fieldMap = new HashMap<>();
+                        fieldMap.put("name", fc.name());
+                        fieldMap.put("allowWrite", fc.allowWrite());
+                        fieldList.add(fieldMap);
+                    }
+                    parseFields(fieldList, clazz);
                 }
                 ret = true;
             }
