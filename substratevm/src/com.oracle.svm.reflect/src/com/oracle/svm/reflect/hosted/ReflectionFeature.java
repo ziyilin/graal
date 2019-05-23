@@ -90,7 +90,6 @@ public final class ReflectionFeature implements GraalFeature {
         FallbackFeature.FallbackImageRequest reflectionFallback = ImageSingletons.lookup(FallbackFeature.class).reflectionFallback;
         if (reflectionFallback != null && !configedByAnnotations && ConfigurationFiles.Options.ReflectionConfigurationFiles.getValue() == null &&
                         ConfigurationFiles.Options.ReflectionConfigurationResources.getValue() == null) {
-
             throw reflectionFallback;
         }
     }
