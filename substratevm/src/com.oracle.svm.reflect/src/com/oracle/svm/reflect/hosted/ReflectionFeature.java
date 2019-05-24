@@ -45,7 +45,7 @@ import com.oracle.svm.hosted.config.ConfigurationParserUtils;
 import com.oracle.svm.hosted.snippets.ReflectionPlugins;
 import com.oracle.svm.hosted.substitute.AnnotationSubstitutionProcessor;
 
-import com.com.alibaba.staticcompile.Reflect;
+import com.alibaba.staticcompile.Reflect;
 
 @AutomaticFeature
 public final class ReflectionFeature implements GraalFeature {
