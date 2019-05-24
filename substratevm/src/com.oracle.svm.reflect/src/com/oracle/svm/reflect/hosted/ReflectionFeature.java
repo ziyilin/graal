@@ -24,6 +24,7 @@
  */
 package com.oracle.svm.reflect.hosted;
 
+import java.lang.annotation.Annotation;
 import java.util.List;
 
 import org.graalvm.compiler.api.replacements.SnippetReflectionProvider;
@@ -44,8 +45,6 @@ import com.oracle.svm.hosted.analysis.Inflation;
 import com.oracle.svm.hosted.config.ConfigurationParserUtils;
 import com.oracle.svm.hosted.snippets.ReflectionPlugins;
 import com.oracle.svm.hosted.substitute.AnnotationSubstitutionProcessor;
-
-import com.alibaba.staticcompile.Reflect;
 
 @AutomaticFeature
 public final class ReflectionFeature implements GraalFeature {
@@ -70,7 +69,13 @@ public final class ReflectionFeature implements GraalFeature {
         ImageSingletons.add(RuntimeReflectionSupport.class, reflectionData);
 
         ReflectionConfigurationParser<Class<?>> parser = ConfigurationParserUtils.create(reflectionData, access.getImageClassLoader());
-        List<Class<?>> classesWithAnnotations = access.getImageClassLoader().findAnnotatedClasses(Reflects.class, true);
+
+        List<Class<?>> classesWithAnnotations;
+        try {
+            classesWithAnnotations = access.getImageClassLoader().findAnnotatedClasses((Class<? extends Annotation>) Class.forName("com.alibaba.staticcompile.Reflects"), true);
+        } catch (ClassNotFoundException e) {
+            classesWithAnnotations = null;
+        }
         configedByAnnotations = parser.parseAndRegisterFromTypeAnnotation(classesWithAnnotations);
         ConfigurationParserUtils.parseAndRegisterConfigurations(parser, access.getImageClassLoader(), "reflection",
                         ConfigurationFiles.Options.ReflectionConfigurationFiles, ConfigurationFiles.Options.ReflectionConfigurationResources,
