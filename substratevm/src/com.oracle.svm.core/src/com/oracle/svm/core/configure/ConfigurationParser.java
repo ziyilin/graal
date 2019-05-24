@@ -35,6 +35,15 @@ public abstract class ConfigurationParser {
 
     public abstract void parseAndRegister(Reader reader) throws IOException;
 
+    /**
+     * Parse configuration annotations on classes. This has the same effects as configuration files.
+     * User can write annotations on class in addition to prepare configuration files.
+     *
+     * @Reflects for reflections
+     * @return true if configuration annotation is found on class and successfully registered
+     */
+    public abstract boolean parseAndRegisterFromTypeAnnotation(List<Class<?>> classesWithAnnotations);
+
     @SuppressWarnings("unchecked")
     static List<Object> asList(Object data, String errorMessage) {
         if (data instanceof List) {

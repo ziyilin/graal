@@ -68,9 +68,8 @@ public final class ReflectionConfigurationParser<T> extends ConfigurationParser 
     }
 
     @Override
-    public boolean parseAndRegisterFromTypeAnnotation() {
+    public boolean parseAndRegisterFromTypeAnnotation(List<Class<?>> classesWithAnnotations) {
         boolean ret = false;
-        List<Class<?>> classesWithAnnotations = ((ReflectionRegistryAdapter) delegate).getClassLoader().findAnnotatedClasses(Reflects.class);
         for (Class<?> annotatedClass : classesWithAnnotations) {
             Reflects reflects = annotatedClass.getAnnotation(Reflects.class);
             ContainReflection[] reflectConfigs = reflects.value();

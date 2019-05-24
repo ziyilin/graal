@@ -93,7 +93,7 @@ public final class ResourcesFeature implements Feature {
     public void beforeAnalysis(BeforeAnalysisAccess access) {
         ImageClassLoader imageClassLoader = ((BeforeAnalysisAccessImpl) access).getImageClassLoader();
         ResourceConfigurationParser parser = new ResourceConfigurationParser(ImageSingletons.lookup(ResourcesRegistry.class));
-        parser.parseAndRegisterFromTypeAnnotation();
+        parser.parseAndRegisterFromTypeAnnotation(null);
         ConfigurationParserUtils.parseAndRegisterConfigurations(parser, imageClassLoader, "resource",
                         ConfigurationFiles.Options.ResourceConfigurationFiles, ConfigurationFiles.Options.ResourceConfigurationResources,
                         ConfigurationFiles.RESOURCES_NAME);

@@ -91,7 +91,7 @@ public class ResourceConfigurationParser extends ConfigurationParser {
     }
 
     @Override
-    public boolean parseAndRegisterFromTypeAnnotation() {
+    public boolean parseAndRegisterFromTypeAnnotation(List<Class<?>> classesWithAnnotations) {
         // TODO Auto-generated method stub
         return false;
     }

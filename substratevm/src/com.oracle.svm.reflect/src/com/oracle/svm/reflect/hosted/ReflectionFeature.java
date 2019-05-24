@@ -24,6 +24,8 @@
  */
 package com.oracle.svm.reflect.hosted;
 
+import java.util.List;
+
 import org.graalvm.compiler.api.replacements.SnippetReflectionProvider;
 import org.graalvm.compiler.nodes.graphbuilderconf.InvocationPlugins;
 import org.graalvm.compiler.phases.util.Providers;
@@ -42,6 +44,8 @@ import com.oracle.svm.hosted.analysis.Inflation;
 import com.oracle.svm.hosted.config.ConfigurationParserUtils;
 import com.oracle.svm.hosted.snippets.ReflectionPlugins;
 import com.oracle.svm.hosted.substitute.AnnotationSubstitutionProcessor;
+
+import com.com.alibaba.staticcompile.Reflect;
 
 @AutomaticFeature
 public final class ReflectionFeature implements GraalFeature {
@@ -66,7 +70,8 @@ public final class ReflectionFeature implements GraalFeature {
         ImageSingletons.add(RuntimeReflectionSupport.class, reflectionData);
 
         ReflectionConfigurationParser<Class<?>> parser = ConfigurationParserUtils.create(reflectionData, access.getImageClassLoader());
-        configedByAnnotations = parser.parseAndRegisterFromTypeAnnotation();
+        List<Class<?>> classesWithAnnotations = access.getImageClassLoader().findAnnotatedClasses(Reflects.class, true);
+        configedByAnnotations = parser.parseAndRegisterFromTypeAnnotation(classesWithAnnotations);
         ConfigurationParserUtils.parseAndRegisterConfigurations(parser, access.getImageClassLoader(), "reflection",
                         ConfigurationFiles.Options.ReflectionConfigurationFiles, ConfigurationFiles.Options.ReflectionConfigurationResources,
                         ConfigurationFiles.REFLECTION_NAME);
