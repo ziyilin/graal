@@ -72,7 +72,7 @@ public final class ReflectionFeature implements GraalFeature {
 
         List<Class<?>> classesWithAnnotations;
         try {
-            classesWithAnnotations = access.getImageClassLoader().findAnnotatedClasses((Class<? extends Annotation>) Class.forName("com.alibaba.staticcompile.Reflects"), true);
+            classesWithAnnotations = access.getImageClassLoader().findAnnotatedClasses((Class<? extends Annotation>) Class.forName("com.alibaba.staticcompile.annotations.Reflects"), true);
         } catch (ClassNotFoundException e) {
             classesWithAnnotations = null;
         }

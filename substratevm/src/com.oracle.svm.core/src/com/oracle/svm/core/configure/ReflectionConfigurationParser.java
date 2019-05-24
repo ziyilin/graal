@@ -70,53 +70,55 @@ public final class ReflectionConfigurationParser<T> extends ConfigurationParser 
     @Override
     public boolean parseAndRegisterFromTypeAnnotation(List<Class<?>> classesWithAnnotations) {
         boolean ret = false;
-        for (Class<?> annotatedClass : classesWithAnnotations) {
-            Reflects reflects = annotatedClass.getAnnotation(Reflects.class);
-            ContainReflection[] reflectConfigs = reflects.value();
-            for (ContainReflection config : reflectConfigs) {
-                String reflectClassName = config.value();
-                T clazz = delegate.resolveType(reflectClassName);
-                delegate.registerType(clazz);
-                if (config.allDeclaredFields()) {
-                    delegate.registerDeclaredFields(clazz);
-                } else if (config.allPublicFields()) {
-                    delegate.registerPublicFields(clazz);
-                } else if (config.allDeclaredClasses()) {
-                    delegate.registerDeclaredClasses(clazz);
-                } else if (config.allPublicClasses()) {
-                    delegate.registerPublicClasses(clazz);
-                } else if (config.allDeclaredConstructors()) {
-                    delegate.registerDeclaredConstructors(clazz);
-                } else if (config.allPublicConstructors()) {
-                    delegate.registerPublicConstructors(clazz);
-                } else if (config.allDeclaredMethods()) {
-                    delegate.registerDeclaredMethods(clazz);
-                } else if (config.allPublicMethods()) {
-                    delegate.registerPublicMethods(clazz);
-                } else if (config.methods().length > 0) {
-                    List<Object> methodList = new ArrayList<>();
-                    for (MethodContent mc : config.methods()) {
-                        Map<String, Object> methodMap = new HashMap<>();
-                        methodMap.put("name", mc.name());
-                        List<String> parameterTypes = new ArrayList<>();
-                        for (String s : mc.parameterTypes()) {
-                            parameterTypes.add(s);
+        if (classesWithAnnotations != null) {
+            for (Class<?> annotatedClass : classesWithAnnotations) {
+                Reflects reflects = annotatedClass.getAnnotation(Reflects.class);
+                ContainReflection[] reflectConfigs = reflects.value();
+                for (ContainReflection config : reflectConfigs) {
+                    String reflectClassName = config.value();
+                    T clazz = delegate.resolveType(reflectClassName);
+                    delegate.registerType(clazz);
+                    if (config.allDeclaredFields()) {
+                        delegate.registerDeclaredFields(clazz);
+                    } else if (config.allPublicFields()) {
+                        delegate.registerPublicFields(clazz);
+                    } else if (config.allDeclaredClasses()) {
+                        delegate.registerDeclaredClasses(clazz);
+                    } else if (config.allPublicClasses()) {
+                        delegate.registerPublicClasses(clazz);
+                    } else if (config.allDeclaredConstructors()) {
+                        delegate.registerDeclaredConstructors(clazz);
+                    } else if (config.allPublicConstructors()) {
+                        delegate.registerPublicConstructors(clazz);
+                    } else if (config.allDeclaredMethods()) {
+                        delegate.registerDeclaredMethods(clazz);
+                    } else if (config.allPublicMethods()) {
+                        delegate.registerPublicMethods(clazz);
+                    } else if (config.methods().length > 0) {
+                        List<Object> methodList = new ArrayList<>();
+                        for (MethodContent mc : config.methods()) {
+                            Map<String, Object> methodMap = new HashMap<>();
+                            methodMap.put("name", mc.name());
+                            List<String> parameterTypes = new ArrayList<>();
+                            for (String s : mc.parameterTypes()) {
+                                parameterTypes.add(s);
+                            }
+                            methodMap.put("parameterTypes", parameterTypes);
+                            methodList.add(methodMap);
                         }
-                        methodMap.put("parameterTypes", parameterTypes);
-                        methodList.add(methodMap);
+                        parseMethods(methodList, clazz);
+                    } else if (config.fields().length > 0) {
+                        List<Object> fieldList = new ArrayList<>();
+                        for (FieldContent fc : config.fields()) {
+                            Map<String, Object> fieldMap = new HashMap<>();
+                            fieldMap.put("name", fc.name());
+                            fieldMap.put("allowWrite", fc.allowWrite());
+                            fieldList.add(fieldMap);
+                        }
+                        parseFields(fieldList, clazz);
                     }
-                    parseMethods(methodList, clazz);
-                } else if (config.fields().length > 0) {
-                    List<Object> fieldList = new ArrayList<>();
-                    for (FieldContent fc : config.fields()) {
-                        Map<String, Object> fieldMap = new HashMap<>();
-                        fieldMap.put("name", fc.name());
-                        fieldMap.put("allowWrite", fc.allowWrite());
-                        fieldList.add(fieldMap);
-                    }
-                    parseFields(fieldList, clazz);
+                    ret = true;
                 }
-                ret = true;
             }
         }
         return ret;
