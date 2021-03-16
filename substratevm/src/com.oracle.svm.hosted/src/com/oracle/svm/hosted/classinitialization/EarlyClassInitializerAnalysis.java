@@ -149,6 +149,7 @@ class EarlyClassInitializerAnalysis {
             return true;
 
         } catch (ClassInitalizerHasSideEffectsException ex) {
+            ClassInitializationStatistics.addDelayedInitializationReason(clinit.getDeclaringClass().getName(), ex);
             return false;
         } catch (BytecodeParser.BytecodeParserError ex) {
             if (ex.getCause() instanceof ClassInitalizerHasSideEffectsException) {

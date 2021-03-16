@@ -46,6 +46,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ForkJoinPool;
 import java.util.function.BiConsumer;
 
+import org.graalvm.collections.Pair;
 import org.graalvm.compiler.core.common.spi.ForeignCallDescriptor;
 import org.graalvm.compiler.core.common.spi.ForeignCallsProvider;
 import org.graalvm.compiler.graph.Node;
@@ -128,7 +129,7 @@ public final class SVMHost implements HostVM {
      * need to keep the whole graphs alive.
      */
     private final ConcurrentMap<AnalysisMethod, Boolean> containsStackValueNode = new ConcurrentHashMap<>();
-    private final ConcurrentMap<AnalysisMethod, Boolean> classInitializerSideEffect = new ConcurrentHashMap<>();
+    private final ConcurrentMap<AnalysisMethod, Pair<Boolean, String>> classInitializerSideEffect = new ConcurrentHashMap<>();
     private final ConcurrentMap<AnalysisMethod, Set<AnalysisType>> initializedClasses = new ConcurrentHashMap<>();
     private final ConcurrentMap<AnalysisMethod, Boolean> analysisTrivialMethods = new ConcurrentHashMap<>();
 
@@ -579,21 +580,21 @@ public final class SVMHost implements HostVM {
         if (n instanceof AccessFieldNode) {
             ResolvedJavaField field = ((AccessFieldNode) n).field();
             if (field.isStatic() && (!method.isClassInitializer() || !field.getDeclaringClass().equals(method.getDeclaringClass()))) {
-                classInitializerSideEffect.put(method, true);
+                classInitializerSideEffect.put(method, Pair.create(true, "Access static field " + field.getDeclaringClass().getName() + "." + field.getName()));
             }
         } else if (n instanceof UnsafeAccessNode) {
             /*
              * Unsafe memory access nodes are rare, so it does not pay off to check what kind of
              * field they are accessing.
              */
-            classInitializerSideEffect.put(method, true);
+            classInitializerSideEffect.put(method, Pair.create(true, "Has unsafe access " + n.toString()));
         } else if (n instanceof EnsureClassInitializedNode) {
             Constant constantHub = ((EnsureClassInitializedNode) n).getHub().asConstant();
             if (constantHub != null) {
                 AnalysisType type = (AnalysisType) bb.getProviders().getConstantReflection().asJavaType(constantHub);
                 initializedClasses.computeIfAbsent(method, k -> new HashSet<>()).add(type);
             } else {
-                classInitializerSideEffect.put(method, true);
+                classInitializerSideEffect.put(method, Pair.create(true, "Make other class initialized"));
             }
         }
     }
@@ -613,8 +614,8 @@ public final class SVMHost implements HostVM {
         return containsStackValueNode.containsKey(method);
     }
 
-    public boolean hasClassInitializerSideEffect(AnalysisMethod method) {
-        return classInitializerSideEffect.containsKey(method);
+    public Pair<Boolean, String> hasClassInitializerSideEffect(AnalysisMethod method) {
+        return classInitializerSideEffect.get(method);
     }
 
     public Set<AnalysisType> getInitializedClasses(AnalysisMethod method) {

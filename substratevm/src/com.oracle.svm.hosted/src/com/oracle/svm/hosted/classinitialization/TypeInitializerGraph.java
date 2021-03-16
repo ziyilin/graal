@@ -46,6 +46,7 @@ import com.oracle.svm.hosted.substitute.SubstitutionMethod;
 import com.oracle.svm.hosted.substitute.SubstitutionType;
 
 import jdk.vm.ci.meta.ResolvedJavaType;
+import org.graalvm.collections.Pair;
 
 /**
  * Keeps a type-hierarchy dependency graph for {@link AnalysisType}s from {@code universe}. Each
@@ -72,10 +73,10 @@ public class TypeInitializerGraph {
         UNSAFE,
     }
 
-    private final Map<AnalysisType, Safety> types = new HashMap<>();
+    private final Map<AnalysisType, Pair<Safety, String>> types = new HashMap<>();
     private final Map<AnalysisType, Set<AnalysisType>> dependencies = new HashMap<>();
 
-    private final Map<AnalysisMethod, Safety> methodSafety = new HashMap<>();
+    private final Map<AnalysisMethod, Pair<Safety, String>> methodSafety = new HashMap<>();
     private final Collection<AnalysisMethod> methods;
 
     TypeInitializerGraph(AnalysisUniverse universe) {
@@ -98,7 +99,7 @@ public class TypeInitializerGraph {
         boolean newPromotions;
         do {
             AtomicBoolean methodSafetyChanged = new AtomicBoolean(false);
-            methods.stream().filter(m -> methodSafety.get(m) == Safety.SAFE)
+            methods.stream().filter(m -> methodSafety.get(m) != null && methodSafety.get(m).getLeft() == Safety.SAFE)
                             .forEach(m -> {
                                 if (updateMethodSafety(m)) {
                                     methodSafetyChanged.set(true);
@@ -118,11 +119,11 @@ public class TypeInitializerGraph {
     }
 
     boolean isUnsafe(AnalysisType type) {
-        return types.get(type) == Safety.UNSAFE;
+        return types.get(type).getLeft() == Safety.UNSAFE;
     }
 
-    public void setUnsafe(AnalysisType t) {
-        types.put(t, Safety.UNSAFE);
+    public void setUnsafe(AnalysisType t, String reason) {
+        types.put(t, Pair.create(Safety.UNSAFE, reason));
     }
 
     private boolean updateTypeInitializerSafety() {
@@ -158,10 +159,21 @@ public class TypeInitializerGraph {
      * Substituted methods are unsafe because their execution at image-build time would initialize
      * types unknown to points-to analysis (which sees only the substituted version.
      */
-    private Safety initialMethodSafety(AnalysisMethod m) {
-        return m.getTypeFlow().getInvokes().stream().anyMatch(this::isInvokeInitiallyUnsafe) ||
-                        hostVM.hasClassInitializerSideEffect(m) ||
-                        isSubstitutedMethod(m) ? Safety.UNSAFE : Safety.SAFE;
+    private Pair<Safety, String> initialMethodSafety(AnalysisMethod m) {
+        for (InvokeTypeFlow invoke : m.getTypeFlow().getInvokes()) {
+            Pair<Boolean, String> invokeSafety = isInvokeInitiallyUnsafe(invoke);
+            if (invokeSafety.getLeft()) {
+                return Pair.create(Safety.UNSAFE, invokeSafety.getRight());
+            }
+        }
+        Pair<Boolean, String> sideEffectPair = hostVM.hasClassInitializerSideEffect(m);
+        if (sideEffectPair != null && sideEffectPair.getLeft()) {
+            return Pair.create(Safety.UNSAFE, "Method " + m.getQualifiedName() + " has class initializer side effect: " + sideEffectPair.getRight());
+        }
+        if (isSubstitutedMethod(m)) {
+            return Pair.create(Safety.UNSAFE, "Method " + m.getQualifiedName() + " is a substituted method.");
+        }
+        return Pair.create(Safety.SAFE, "");
     }
 
     private boolean isSubstitutedMethod(AnalysisMethod m) {
@@ -171,9 +183,15 @@ public class TypeInitializerGraph {
     /**
      * Unsafe invokes (1) call native methods, and/or (2) can't be statically bound.
      */
-    private boolean isInvokeInitiallyUnsafe(InvokeTypeFlow i) {
-        return i.getTargetMethod().isNative() ||
-                        !i.canBeStaticallyBound();
+    private Pair<Boolean, String> isInvokeInitiallyUnsafe(InvokeTypeFlow i) {
+        AnalysisMethod invokedMethod = i.getTargetMethod();
+        if (invokedMethod.isNative()) {
+            return Pair.create(true, "Invoked native method " + invokedMethod.getQualifiedName());
+        }
+        if (!i.canBeStaticallyBound()) {
+            return Pair.create(true, "Invoked method " + invokedMethod.getQualifiedName() + " cannot be statically bound");
+        }
+        return Pair.create(false, "");
     }
 
     /**
@@ -182,17 +200,37 @@ public class TypeInitializerGraph {
      *
      * @return if pomotion to unsafe happened
      */
-    private boolean tryPromoteToUnsafe(AnalysisType type, Map<AnalysisMethod, Safety> safeMethods) {
-        if (types.get(type) == Safety.UNSAFE) {
+    private boolean tryPromoteToUnsafe(AnalysisType type, Map<AnalysisMethod, Pair<Safety, String>> safeMethods) {
+        if (types.get(type).getLeft() == Safety.UNSAFE) {
             return false;
-        } else if (type.getClassInitializer() != null && safeMethods.get(type.getClassInitializer()) == Safety.UNSAFE ||
-                        dependencies.get(type).stream().anyMatch(t -> types.get(t) == Safety.UNSAFE) ||
-                        dependencies.get(type).stream().anyMatch(t -> tryPromoteToUnsafe(t, safeMethods))) {
-            setUnsafe(type);
-            return true;
         } else {
-            return false;
+            if (type.getClassInitializer() != null) {
+                Pair<Safety, String> safetyStringPair = safeMethods.get(type.getClassInitializer());
+                if (safetyStringPair != null && safetyStringPair.getLeft() == Safety.UNSAFE) {
+                    setUnsafe(type, "<clinit> is unsafe.");
+                    return true;
+                }
+            } else {
+                String reason = "";
+                for (AnalysisType t : dependencies.get(type)) {
+                    boolean unsafe = types.get(t).getLeft() == Safety.UNSAFE;
+                    if (unsafe) {
+                        reason = "Dependent class " + t.getName() + " is unsafe.";
+                        setUnsafe(type, reason);
+                        return true;
+                    }
+                }
+
+                for (AnalysisType t : dependencies.get(type)) {
+                    if (tryPromoteToUnsafe(t, safeMethods)) {
+                        reason = "Dependent class " + t.getName() + " is promoted to unsafe";
+                        setUnsafe(type, reason);
+                        return true;
+                    }
+                }
+            }
         }
+        return false;
     }
 
     /**
@@ -200,15 +238,19 @@ public class TypeInitializerGraph {
      * unsafe class initializer.
      */
     private boolean updateMethodSafety(AnalysisMethod m) {
-        assert methodSafety.get(m) == Safety.SAFE;
-        Collection<InvokeTypeFlow> invokes = m.getTypeFlow().getInvokes();
-        if (invokes.stream().anyMatch(this::isInvokeUnsafeIterative)) {
-            methodSafety.put(m, Safety.UNSAFE);
-            return true;
+        assert methodSafety.get(m).getLeft() == Safety.SAFE;
+        for (InvokeTypeFlow invokeTypeFlow : m.getTypeFlow().getInvokes()) {
+            if (isInvokeUnsafeIterative(invokeTypeFlow)) {
+                methodSafety.put(m, Pair.create(Safety.UNSAFE, "Invoked unsafe method " + invokeTypeFlow.getTargetMethod().getQualifiedName()));
+                return true;
+            }
         }
-        if (hostVM.getInitializedClasses(m).stream().anyMatch(this::isUnsafe)) {
-            methodSafety.put(m, Safety.UNSAFE);
-            return true;
+
+        for (AnalysisType type : hostVM.getInitializedClasses(m)) {
+            if (isUnsafe(type)) {
+                methodSafety.put(m, Pair.create(Safety.UNSAFE, "Initialize unsafe class " + type.getName()));
+                return true;
+            }
         }
         return false;
     }
@@ -218,7 +260,7 @@ public class TypeInitializerGraph {
      */
     private boolean isInvokeUnsafeIterative(InvokeTypeFlow i) {
         assert i.getTargetMethod() != null : "All methods can be statically bound.";
-        return methodSafety.get(i.getTargetMethod()) == Safety.UNSAFE;
+        return methodSafety.get(i.getTargetMethod()).getLeft() == Safety.UNSAFE;
     }
 
     private void addInitializer(AnalysisType t) {
@@ -233,7 +275,18 @@ public class TypeInitializerGraph {
                 }
             }
         }
-        types.put(t, isSubstituted ? Safety.UNSAFE : initialTypeInitializerSafety(t));
+        String reason = "";
+        Pair<Safety, String> ret;
+        if (isSubstituted) {
+            ret = Pair.create(Safety.UNSAFE, "Class " + rt.getName() + " is substituted.");
+        } else {
+            Safety safety = initialTypeInitializerSafety(t);
+            if (safety == Safety.UNSAFE) {
+                reason = "Class " + t.getName() + " is configured to be initialize at runtime.";
+            }
+            ret = Pair.create(safety, reason);
+        }
+        types.put(t, ret);
         dependencies.put(t, new HashSet<>());
     }
 
@@ -241,4 +294,13 @@ public class TypeInitializerGraph {
         return Collections.unmodifiableSet(dependencies.get(type));
     }
 
+    public Map<AnalysisMethod, String> getUnsafeMethods() {
+        Map<AnalysisMethod, String> ret = new HashMap<>();
+        methodSafety.forEach((k, v) -> {
+            if (v.getLeft() == Safety.UNSAFE && k.isImplementationInvoked()) {
+                ret.put(k, v.getRight());
+            }
+        });
+        return ret;
+    }
 }

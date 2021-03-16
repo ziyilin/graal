@@ -182,6 +182,7 @@ public class ConfigurableClassInitialization implements ClassInitializationSuppo
                                     SubstrateOptionsParser.commandArgument(NativeImageOptions.AllowIncompleteClasspath, "+") + " is used for image building. " +
                                     instructionsToInitializeAtRuntime(clazz));
                 }
+                ClassInitializationStatistics.addDelayedInitializationReason(clazz.getName(), ex);
                 return InitKind.RUN_TIME;
             } else {
                 return reportInitializationError(allowErrors, clazz, ex);
@@ -194,6 +195,7 @@ public class ConfigurableClassInitialization implements ClassInitializationSuppo
 
     private InitKind reportInitializationError(boolean allowErrors, Class<?> clazz, Throwable t) {
         if (allowErrors) {
+            ClassInitializationStatistics.addDelayedInitializationReason(clazz.getName(), t);
             return InitKind.RUN_TIME;
         } else {
             String msg = String.format("Class initialization of %s failed. %s", clazz.getTypeName(), instructionsToInitializeAtRuntime(clazz));
